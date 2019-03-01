@@ -1,0 +1,127 @@
+\chapter{Installation}
+\label{cha:Instalation}
+
+This manual covers features or areas of Cinelerra that are different or new in the Cinelerra-GG Infinity
+version. Many of the new features were created by a lot of different people to include the original
+author and were merged in from various sources and each person is to be commended for their efforts.
+The content of this manual also came from various people/places/email and thanks to all.
+
+The standard Cinelerra Manual covers “The Secrets of Cinelerra” and can be found at:\par
+\url{
+https://cinelerra-cv.org/docs/cinelerra_cv_manual_en.html
+}
+\section{How to Build Cinelerra-GG Infinity from Developer's Git Repository}%
+\label{sec:}
+
+These are generic build instructions for building Cinelerra-GG Infinity. Known to work on ubuntu,
+mint, suse, fedora, debian, centos, arch, and 32-bit slackware. It has not been tested on every single
+possible distro yet so you might expect to have to make some minor changes. It has failed miserably
+on FreeBSD. At least once, a Gentoo version was successfully created.
+
+Alternatively, there are some pre-built dynamic or static binaries which are updated on a fairly regular
+basis (as long as code changes have been made) available at link below. See Section 1.2.
+
+\url{https://cinelerra-gg.org/download/}
+    There are 2 kinds of builds, the default system-build and a single-user build. A system build has results
+which are installed to the system. The majority of the files are installed in the standard system paths,
+but some customization is possible. The single user build allows for running completely out of a local
+user directory so it doesn't affect the system.
+
+We recommend the single-user version when possible. It makes it very easy to install a new version
+without having to delete the older version in case you want it for backup – once you are happy with the
+new version, all you have to do is delete the entire old directory path. Also, if you install a new
+Operating System version and if you have Cinelerra on separate disk space that is preserved, you won't
+have to reinstall Cinelerra. In addition for purposes of having the ability to interrupt or to see any
+possible error messages, if you start the application from a terminal window command line you will
+have more control to catch problems. The system builds can be useful in a university lab setting where
+there are possibly multiple users, or multiple versions.
+
+There are two notable differences between “standard” views of Cinelerra and this implementation for
+the system builds. Both of these can be configured during installation. These differences make it
+possible to have several different versions installed without having them “walk” on each other.ault system-build an
+
+\begin{enumerate}
+    \item 
+        application name can be set during installation and defaults to: “\texttt{cin}”
+        \item 
+            the home configuration directory can also be set and defaults to:\\ “\texttt{\$HOME/.bcast5}”
+
+
+\end{enumerate}
+\paragraph{To do a system build,} you should read the \texttt{README} that is at the top level after you get the source.
+
+\begin{enumerate}
+    \item 
+        You need at least 2.5GB of disk storage to operate a build. Need to have “\texttt{git}” installed.
+    \item  Obviously in order to install into the system, you must run as root.
+    \item  The "\texttt{git}" step has to download a bunch of stuff (approx 100MB) so allow time.
+    \item  Run the following commands (this takes awhile):
+        \begin{lstlisting}[language=bash]
+cd /<build_path>/
+# this is where you need the 2.5GB of disk space
+git clone --depth 1 "git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5
+cd cinelerra5/cinelerra-5.1 # toplevel directory
+        \end{lstlisting}
+        NOTE: if your system has never had Cinelerra-GG Infinity installed, you will have to make sure you
+        have all of the compilers and libraries necessary. So on the very first build you should run:
+
+        \begin{lstlisting}[language=bash]
+./blds/bld_prepare.sh <os> # where <os> represents the Operating System of centos, fedora, suse, leap, ubuntu, debian.
+./autogen.sh
+./configure --prefix=/usr
+# optional parameters can be added here
+make 2>&1 | tee log
+# make and log the build
+\end{lstlisting}
+\item  Check for obvious build errors:
+    \begin{lstlisting}[language=bash]
+grep "\*\*\*.*error" -ai log
+    \end{lstlisting}
+    If this reports errors and you need assistance or you think improvements can be made to the build s,
+    email the log which is listed below to cin@lists.cinelerra-gg.org:
+    \begin{lstlisting}[language=bash]
+/<build_path>/cinelerra5/cinelerra-5.1/log
+    \end{lstlisting}
+\item  If there are no build errors, finally just run:
+    \begin{lstlisting}[language=bash]
+    make install
+    \end{lstlisting}
+\item  If it all worked, you are all setup. Just click on the “blue lady” cinelerra desktop icon.
+\end{enumerate}
+
+\paragraph{To do a single-user build,} read the \texttt{README} that is at the top level after you get the source.
+\begin{enumerate}
+    \item  You need at least 2.5GB of disk storage to operate a build. Need to have “\texttt{git}” installed.
+    \item  Recommend you build and run as root, just to avoid permission issues initially.
+    \item  The "\texttt{git}" step has to download a bunch of stuff (approx 100MB) so allow time.
+    \item  Run the following commands (this takes awhile):
+        \begin{lstlisting}[language=bash]
+cd /<build_path>/
+# this is where you need the 2.5GB of disk space
+git clone --depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5
+cd cinelerra5/cinelerra-5.1
+        \end{lstlisting}
+\end{enumerate}
+NOTE: if your system has never had Cinelerra-GG Infinity installed, you will have to make sure all
+the compilers and libraries necessary are installed. So on the very first build you should run as root:
+\begin{lstlisting}[language=bash]
+./blds/bld_prepare.sh <os> # where <os> represents the Operating System of
+centos, fedora, suse, leap, ubuntu, debian.
+./autogen.sh
+./configure --with-single-user
+# the “with-single-user” parameter makes it so
+make 2>&1 | tee log
+# make and log build (check for errors before proceeding)
+make install
+\end{lstlisting}
+
+Then just start the application by keying in: ./cin in the bin subdirectory OR add a desktop icon by
+using the appropriate directory to copy the files to, run as root, and edit to correct the directory path.
+\begin{lstlisting}[language=bash]
+cd /cinelerra_directory_path
+cp -a image/cin.{svg,xpm} /usr/share/pixmaps/.
+cp -a image/cin.desktop /usr/share/applications/cin.desktop
+change the “Exec=cin” line to be “Exec=<your_directory_path>/bin/cin”
+\end{lstlisting}
+The preceding directions for doing a single-user build has been meticulously followed to build and run
+on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{bld\_prepare.sh} and creating the desktop icon.

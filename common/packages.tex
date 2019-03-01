@@ -1,0 +1,133 @@
+
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}  % file encoding
+\usepackage[english]{babel}  % default language for document
+\usepackage{
+    amssymb,
+    amsfonts,
+    mathtools,
+    mathtext,
+    cite,
+    enumerate,
+    float,
+    textcomp
+} % some packages 
+%\usepackage[font={small}]{caption}
+\usepackage{hhline}        % beautiful links
+\usepackage{hyperref}      % beautiful links
+\usepackage{pdflscape}     % landscape pages
+\usepackage{longtable}     % longtable support
+\usepackage{multirow}      % vertical cell in table
+\usepackage{bigstrut}      % big strut
+\usepackage{array}         % additional cell aligh
+\usepackage{indentfirst}   % first line indent
+\usepackage{gensymb}       % symbols
+
+%\usepackage[nottoc]{tocbibind} %  do we need bibliography in toc
+%----------------------------------------------
+%\usepackage{mhchem}        
+%===============  Font for tables  ============
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\small\oldtabular}
+\hypersetup{colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue, 
+    filecolor=blue, 
+    urlcolor=blue, 
+    pdftitle={Cinelerra GG Infinity Manual}, 
+    pdfauthor={Cinelerra Authors},
+    pdfsubject={Video Editing}, 
+    pdfkeywords={Cinelerra, Good Guy}
+} % pdf properties
+\usepackage[pdftex]{graphicx}   % do we need some figures in our pdf 
+\graphicspath{{images/}}        % path to images
+%% drawing package
+\usepackage{tikz}
+%----------------------------------------------------------------------
+\usepackage{listings}               % include code 
+\lstset{                            % begin settings
+  %language=R,                      % the language of the code
+  inputencoding=utf8,
+  basicstyle=\footnotesize,         % the size of the fonts that are used for the code
+  numbers=left,                     % where to put the line-numbers
+  numberstyle=\tiny\color{black},   % the style that is used for the line-numbers
+  stepnumber=1,                     % the step between two line-numbers. If it's 1, each line
+                                    % will be numbered
+  numbersep=5pt,                    % how far the line-numbers are from the code
+  %backgroundcolor=\color{white},   % choose the background color. You must add \usepackage{color}
+  showspaces=false,                 % show spaces adding particular underscores
+  showstringspaces=false,           % underline spaces within strings
+  showtabs=false,                   % show tabs within strings adding particular underscores
+  frame=lines,                      % adds a frame around the code
+  %frame=single,                    % adds a frame around the code
+  rulecolor=\color{black},          % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                        % sets default tabsize to 2 spaces
+  captionpos=b,                     % sets the caption-position to bottom
+  breaklines=true,                  % sets automatic line breaking
+  breakatwhitespace=false,          % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                    % also try caption instead of title
+  keywordstyle=\color{blue},        % keyword style
+  commentstyle=\color{gray},        % comment style
+  stringstyle=\color{black},        % string literal style
+  %backgroundcolor=\color{green!10},
+  escapeinside={\%*}{*)},           % if you want to add a comment within your code
+  extendedchars=\true,
+  %keepspaces = true                %!!!! spaces in comments
+  texcl=true,
+  morekeywords={*,...}            % if you want to add more keywords to the set
+}
+%======================геометрия полей
+\usepackage{geometry} % Меняем поля страницы
+\geometry{left=2.0cm}% левое поле
+\geometry{right=2.0cm}% правое поле
+\geometry{top=2.0cm}% верхнее поле
+\geometry{bottom=1.0cm}% нижнее поле
+\parindent=1.0cm %красная срока
+\righthyphenmin=2 %разрешить перенос 2-х последних букв
+%---------------------------------------------------------------------------
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.}
+%---------------------------------------------------------------
+
+% Title page definition
+%\providecommand{\HUGE}{\Huge}% if not using memoir
+\newlength{\drop}% for my convenience
+%% specify the Webomints family
+%\newcommand*{\wb}[1]{\fontsize{#1}{#2}\usefont{U}{webo}{xl}{n}}
+%% select a (FontSite) font by its font family ID
+\newcommand*{\FSfont}[1]{\fontencoding{T1}\fontfamily{#1}\selectfont}
+%% if you don’t have the FontSite fonts either \renewcommand*{\FSfont}[1]{}
+%% or use your own choice of family.
+%% select a (TeX Font) font by its font family ID
+\newcommand*{\TXfont}[1]{\fontencoding{T1}\fontfamily{#1}\selectfont}
+%% Generic publisher’s logo
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}}
+%% Some shades
+\definecolor{Dark}{gray}{0.2}
+\definecolor{MedDark}{gray}{0.4}
+\definecolor{Medium}{gray}{0.6}
+\definecolor{Light}{gray}{0.8}
+%%%% Additional font series macros
+
+\newcommand*{\titleLL}{\begingroup% Lost Languages
+\drop=0.1\textheight
+\fboxsep 0.5\baselineskip
+\sffamily
+\vspace*{\drop}
+\centering
+{\textcolor{Dark}{\HUGE Cinelerra-GG Version Infinity}}\par
+\vspace{0.5\drop}
+{\includegraphics[width=0.1\linewidth]{./images/cin-logo}}\par
+\vspace{0.5\drop}
+\colorbox{Dark}{\textcolor{white}{\normalfont\itshape\Large
+User Manual}}\par
+\vspace{0.3\drop}
+{\Large Last update}\\
+{\footnotesize \today}\\
+\url{https://www.cinelerra-gg.org}\par
+\vspace*{\drop}
+{\includegraphics[width=0.5\linewidth]{./images/cin-big.png}}\par
+\endgroup}
+

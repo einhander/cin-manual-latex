@@ -117,11 +117,13 @@ make install
 
 Then just start the application by keying in: ./cin in the bin subdirectory OR add a desktop icon by
 using the appropriate directory to copy the files to, run as root, and edit to correct the directory path.
+
 \begin{lstlisting}[language=bash]
 cd /cinelerra_directory_path
 cp -a image/cin.{svg,xpm} /usr/share/pixmaps/.
 cp -a image/cin.desktop /usr/share/applications/cin.desktop
 change the “Exec=cin” line to be “Exec=<your_directory_path>/bin/cin”
 \end{lstlisting}
+
 The preceding directions for doing a single-user build has been meticulously followed to build and run
 on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{bld\_prepare.sh} and creating the desktop icon.

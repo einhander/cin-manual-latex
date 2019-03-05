@@ -1,8 +1,8 @@
 
 \usepackage{cmap}
 \usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}  % file encoding
-\usepackage[english]{babel}  % default language for document
+\usepackage[utf8]{inputenc}         % file encoding
+\usepackage[english]{babel}         % default language for document
 \usepackage{
     amssymb,
     amsfonts,
@@ -12,17 +12,17 @@
     enumerate,
     float,
     textcomp
-} % some packages 
+}                                   % some packages 
 %\usepackage[font={small}]{caption}
-\usepackage{hhline}        % beautiful links
-\usepackage{hyperref}      % beautiful links
-\usepackage{pdflscape}     % landscape pages
-\usepackage{longtable}     % longtable support
-\usepackage{multirow}      % vertical cell in table
-\usepackage{bigstrut}      % big strut
-\usepackage{array}         % additional cell aligh
-\usepackage{indentfirst}   % first line indent
-\usepackage{gensymb}       % symbols
+\usepackage{hhline}                 % beautiful links
+\usepackage{hyperref}               % beautiful links
+\usepackage{pdflscape}              % landscape pages
+\usepackage{longtable}              % longtable support
+\usepackage{multirow}               % vertical cell in table
+\usepackage{bigstrut}               % big strut
+\usepackage{array}                  % additional cell aligh
+\usepackage{indentfirst}            % first line indent
+\usepackage{gensymb}                % symbols
 
 %\usepackage[nottoc]{tocbibind} %  do we need bibliography in toc
 %----------------------------------------------
@@ -40,10 +40,11 @@
     pdfsubject={Video Editing}, 
     pdfkeywords={Cinelerra, Good Guy}
 } % pdf properties
-\usepackage[pdftex]{graphicx}   % do we need some figures in our pdf 
-\graphicspath{{images/}}        % path to images
-%% drawing package
-\usepackage{tikz}
+\usepackage[pdftex]{graphicx}       % do we need some figures in our pdf 
+\graphicspath{{images/}}            % path to images
+\usepackage{tikz}                   % drawing package
+\usepackage{nameref}                % use \nameref{} to set reference to chapter neme.
+
 %----------------------------------------------------------------------
 \usepackage{listings}               % include code 
 \lstset{                            % begin settings
@@ -76,16 +77,16 @@
   extendedchars=\true,
   %keepspaces = true                %!!!! spaces in comments
   texcl=true,
-  morekeywords={*,...}            % if you want to add more keywords to the set
+  morekeywords={*,...}              % if you want to add more keywords to the set
 }
 %======================геометрия полей
-\usepackage{geometry} % Меняем поля страницы
-\geometry{left=2.0cm}% левое поле
-\geometry{right=2.0cm}% правое поле
-\geometry{top=2.0cm}% верхнее поле
-\geometry{bottom=1.5cm}% нижнее поле
-\parindent=1.0cm %красная срока
-\righthyphenmin=2 %разрешить перенос 2-х последних букв
+\usepackage{geometry}               % page geometry
+\geometry{left=2.0cm}
+\geometry{right=2.0cm}
+\geometry{top=2.0cm}
+\geometry{bottom=1.5cm}
+\parindent=1.0cm                    % first indent in section
+\righthyphenmin=2                   % hyphen last charecter
 %---------------------------------------------------------------------------
 \makeatletter
 \renewcommand{\@biblabel}[1]{#1.}

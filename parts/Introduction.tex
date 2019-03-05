@@ -82,12 +82,189 @@ The GG version of Cinelerra has been improved for \emph{stability}, \emph{modern
             \item  several standard native formats, such as mpeg, ac3, flac, exr and jpeg/png/ppm/tiff sequences
             \item FFmpeg’s over 400 decoders and 150 encoders accessible from within Cinelerra to include:
                 mp4, mkv, mpeg, mov, m2ts, mp3, dvd, ogg, theora, prores, tiff, webm, flac, opus, vorbis,
-                quicktime (div, dnxhd, jpeg, mjpeg, mp4, rle, v308, v410), h264 & h265 usage, avc, hevc,
+                quicktime (div, dnxhd, jpeg, mjpeg, mp4, rle, v308, v410), h264 \& h265 usage, avc, hevc,
                 and recently released AV1 and WebP
             \item raw image format for over 700 supported cameras, courtesy Dave Coffin DCraw
         \end{itemize}
+        \item[Standard Features] ~\\
+            \begin{itemize}
+                \item Program window for video and audio tracks, navigation, popups, playing and seeking functions.
+                \item Editing via track manipulation with either drag and drop editing or cut and paste editing.
+                \item  Patchbay tools: fader, gang, arm, enable output, expanders, mixers, and blending operations.
+                \item Undo and Redo capability for many editing functions.
+                \item Drag handle functionality for Ripple, Roll, Slip, Slide, Edge, and No Effect.
+                \item Dynamic Keyframe support with curve, toggle, automatic, compositor, and editing capabilities.
+                \item Proxy editing support to speed up editing for large formatted files or slower computers.
+                \item Compositor window with masking, zooming, cropping, projector and camera capabilities.
+                \item Viewing window for quickly viewing/playing audio, video, clips, or proxies.
+                \item Resources window with Media, Proxy, Clips, Video and Audio Effects/Transitions.
+                \item User defined bins/folders for a project.
+                \item Expandable Video/Audio effects for grouping selections such as Color Correction or Motion plugins.
+                \item Included are over 400 Plugins – audio and video native, FFmpeg, plus expandable to include others.
+                \item LV2 and Ladspa plugins audio support.
+                \item Mouse over Media or Proxy folders to get a 5 second real time preview of the media.
+                \item Single or multiple files rendering; background rendering, batch rendering, command line rendering, and use of a Render Farm to take advantage of multiple computer CPUs.
+                \item Numerous pre-defined output formats automatically available and allowance for user-defined formats.
+                \item Capture and Recording capability to include Broadcast TV recording, editing, and viewing.
+                \item Hundreds of Shortcuts are defined which are easily viewed using the shell commands pulldown.
+                \item PorterDuff operations are available in the patchbay of the main timeline window for alpha blending.
+                \item Color correction + 8-bit and 10-bit color space.
+                \item Up to 8K video supported.
+                \item ShuttlePro and ShuttleXpress functionality.
+                \item International language support.
+                \item Multi-screen, Multi-viewers, Multi-session, Multi-pane capability.
+                \item Menu bar shell commands with reference to some manuals and user-definable additions.
+                \item Video stabilization, Motion tracking, Motion Graphics.
+                \item Blade Cut / Hard Edges, Snap/Cut editing and Snap Dragging.
+                \item OpenGL support as well as Direct X11 speedup.
+                \item Advanced Trim Features and Grouping.
+                \item Asset and Title colors selection including Alpha slider adjustment.
+            \end{itemize}
+            \item[Innovative New Features] ~\\
+                \begin{itemize}
+                    \item Inter-View mode as invented through a collaborative effort by a user and the developer.
+                    \item Proxy settings for large formatted media with the coveted Scalar option and proxy quick switch.
+                    \item Multiple cameras / Mixer Viewer with the number of cameras only limited by the resources on the user’s computer (on a large system, 50 are known to work).
+                    \item DVD/bluray creation, editing, and copying for non-commercial media greatly enhanced for usability.
+                    \item Title plugin virtually unlimited script size with many changeable attributes such as size, blink, color.
+                    \item Motion Graphics using the Sketcher plugin to create elements such as ellipses, rectangles and shapes for simpler motion graphics.
+                \end{itemize}
 \end{description}
 
+\section{Chapters Overview}%
+\label{sec:chapters_overview}
 
+Below is listed a brief overview of each chapter to help you to decide which chapters you should pay the most attention to and read more thoroughly. 
+And which chapters are important for beginning to learn to use Cinelerra-GG. At the end of the descriptions is a list of the sections to read for beginners.
+
+\begin{description}
+    \item[Chapter 2 ] \nameref{cha:Instalation}.
+
+        If you just want to get started using the program, you can safely skip this chapter and instead go to:
+        \url{https://www.cinelerra-gg.org}
+        and simply download a pre-built linux version for your Operating System. If you would like to do your own builds so that you always have the latest, refer to this chapter to learn how. 
+        But if you are already familiar with doing your own builds, you can just refer to this chapter if you encounter issues.
+    \item[Chapter 3 ] The 4+ Windows.
+
+        It is important to understand the window setup in Cinelerra-GG and what each of them is used for. 
+        In addition this chapter covers some basic navigation functions that you will need to know. 
+        However, if you have used an NLE before and don’t mind experimenting to learn how to execute certain functions, probably there is no need to peruse this chapter.
+    \item[Chapter 4 ] – Project and Media Attributes.
+
+        This chapter is helpful for basic understanding of setting up your session but it can easily be skipped.
+
+    \item[Chapter 5] Load, Save, and the EDL.
+
+        Since this is important to not losing your work, you should read this chapter for some basic usage concepts and for some lesser used functions that may come in handy. 
+        Besides how to Load and Save files, there is also information on using raw camera formats. 
+        Helpful hints on working with image sequences, such as a bunch of pictures from your camera all loaded at once, is a time saver.
+
+    \item[Chapter 6] Editing.
+
+        New and occasional users will find it necessary to read this chapter. However, you can decide which editing mode you prefer and concentrate on reading that section. 
+        Even seasoned users will want to read this chapter in order to take advantage of features that have been newly implemented or may be less familiar due to infrequent usage. 
+        Anyone who wants the editing capabilities that comes with use of the Shuttle Jog Wheel, will initially need to read that section to become familiar with its usage.
+
+    \item[Chapter 7] Rendering.
+
+        Minimally most users will need to read the section on single file rendering to get started; since after all the whole purpose of using an NLE is to create your own media. 
+        The end of this chapter includes some helpful specific rendering scenarios which could prove quite useful. 
+        You might also want to consider using batch rendering and background rendering for performance reasons. 
+        And, of course, render farm usage to take advantage of multiple computers can be a real boost.
+
+    \item[Chapter 8] Keyframes.
+
+        This is a more advanced topic but extremely useful to know. 
+        Keyframes are data values that have been associated to the timeline that affect the media presentation. 
+        You can go for years without knowing all of the nuances but you will most likely have a need to use and understand them sooner or later.
+
+    \item[Chapter 9] Ffmpeg Interactions.
+
+        Skip this chapter if you are just getting started. Skip this chapter if you just want to use common
+        formats that are already set up for you. Experts may want to refer to this chapter in order to set up their
+        own option files.
+
+    \item[Chapter 10] Effect Plugins.
+
+        Use this chapter as a reference to add an audio or video plugin in order to correct color or add some fancy effect. 
+        You will not want to read about each and every plugin, most of which you will never use.  
+        On the other hand, going over the section on “some specific details concerning plugins” might come in handy.
+
+    \item[Chapter 11] Transition Plugins.
+
+        Everyone who does not know about using transitions should read this chapter because you will want to use transitions between cuts in your video for smoothly changing scenes. 
+        It is short and easy reading.
+
+    \item[Chapter 12] Overlay Modes, Alpha Blending, and Porter Duff.
+
+        Experts can really use the information in this chapter to spiff up their editing work through some blending type techniques. 
+        A lot of information and possibilities are described here.
+
+    \item[Chapter 13] Capturing and Recording Media + DVD/Bluray Creation.
+
+        If this is what you want to do, then read this chapter. 
+        In the case of DVD media creation it includes many examples and lots of tips for checking your methods. 
+        A section on using cinelerra with broadcast TV is especially useful if that is something you want to do.
+
+    \item[Chapter 14] The 5 Multi-s.
+
+        For using multiple cameras in your video creation, this chapter is a must to read. Otherwise, just refer
+        to the section that becomes pertinent as you familiarize yourself with using Cinelerra.
+
+    \item[Chapter 15] Shortcuts with Keyboard and the Mouse.
+
+        Everyone will want to use this chapter to speed up their editing sessions. 
+        Once you find yourself doing the same thing over and over again, you will want to know if there is a shortcut. Then look here!  
+
+    \item[Chapter 16] Configuration, Settings, and Preferences
+
+        Refer to this chapter when you want to change some setting or preference. 
+        Otherwise if a new user, you should make sure to read the first page which includes some important basic information.  
+
+    \item[Chapter 17] How Some Stuff Works.
+
+        Only read this chapter if you are confused about a specific covered topic and how it works.
+
+    \item[Chapter 18] Troubleshooting.
+
+        Use this chapter for diagnosing a problem and find out what to report to get the best resolution or help.
+
+    \item[Chapter 19]  Performance Tips and Other Tips.
+
+        There are a few performance tips in this chapter that may eventually prove useful.
+
+    \item[Chapter 20] Language Translations.
+
+        If you want to help by providing translations for a specific language, there is a complete description of how to do this and what to do.
+
+    \item[Chapter 21] Licenses.
+
+    \item[Appendix A] QuickStarts
+
+        Here you go! If you hate to read, just go over the quick start guide or the youtube video creation and simply be on your way.
+
+    \item[Appendix B] Developer’s Section.
+
+        Some extra information that developers may or may not find useful.
+
+    \item[Appendix C] Auxiliary Programs
+
+        This is a catch-all for any useful programs that may need to be included, mostly for analysis.
+
+\end{description}
+
+In summary, “must” reads for a new user would be these chapters or sections:
+
+\begin{itemize}
+    \item Chapter 3 - The 4+ Windows
+    \item Chapter 5 - Load, Save, and the EDL
+    \item Chapter 6 - Editing; read all sections except emphasize only either Cut\&Paste or Drag\&Drop
+
+    \item editing to suit your purpose and then skim the editing mode that is not your preference as some operations work in either mode. Skip the Shuttle section unless you have this jog wheel in hand.
+    \item Chapter 7 – Rendering; minimally read the “single file rendering” section.
+    \item Chapter 10 – Effect Plugins; read the section on “how to use plugins”.
+    \item Chapter 11 – Transition Plugins
+    \item Chapter 16 – Configuration, Settings and Preferences; read at least the first couple of paragraphs.
+\end{itemize}
 
 

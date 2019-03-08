@@ -1,10 +1,7 @@
 %
 \documentclass[letter,14pt,oneside,openright,svgnames]{memoir} % paper size, font size and other options for document
-%\input{common/setup.tex}
 \input{common/packages.tex} % common packages
 
-
-%\includeonly{parts/Disclaimer}
 \begin{document}
 
 \titleLL % use cutom title
@@ -13,9 +10,8 @@
 
 \newpage
 
-\mainmatter
-\tableofcontents
-\pagestyle{plain}
+%\pagestyle{plain}
+%\pagenumbering{roman}
 %\renewcommand{\chapterheadstart}{
 %%\vspace*{\beforechapskip}
 %\hrule\medskip}
@@ -34,8 +30,17 @@
 %\renewcommand{\printchaptername}{\normalfont\large\scshape Chapter}
 \renewcommand{\chapterheadstart}{}
 %\renewcommand{\beforechapskip}{\vspace{2pt}}
+\frontmatter
+%\pagenumbering{Roman}
 
-\include{parts/Introduction}
+\include{parts/Introduction}     % Introduction 
+
+\tableofcontents
+
+\pagestyle{plain}
+
+\mainmatter
+
 \include{parts/Instalation}
 
 \end{document}

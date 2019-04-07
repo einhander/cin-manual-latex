@@ -51,7 +51,7 @@ These differences make it possible to have several different versions installed 
 \begin{enumerate}
     \item 
         You need at least 2.5\,GB of disk storage to operate a build + you need to have “\texttt{git}” installed.
-    \item  Obviously in order to install into the system, you must run as root.
+    \item  Obviously in order to install into the system, you must run as \textbf{root}.
     \item  The "\texttt{git}" step has to download many files (approx 100\,MB) so allow time.
     \item  Run the following commands (this takes awhile):
 
@@ -89,7 +89,7 @@ grep "\*\*\*.*error" -ai log
 \paragraph{To do a single-user build,} read the \texttt{README} that is at the top level after you get the source.
 \begin{enumerate}
     \item  You need at least 2.5\,GB of disk storage to operate a build + you need to have  “\texttt{git}” installed.
-    \item  Recommend you build and run as root, just to avoid permission issues initially.
+    \item  Recommend you build and run as \textbf{root}, just to avoid permission issues initially.
     \item  The "\texttt{git}" step has to download many files (approx 100\,MB) so allow time.
     \item  Run the following commands (this takes awhile):
         \begin{lstlisting}[language=bash]
@@ -100,7 +100,7 @@ cd cinelerra5/cinelerra-5.1 # toplevel directory
 \end{enumerate}
 
 NOTE: if your system has never had Cinelerra-GG Infinity installed, you will have to make sure all
-the compilers and libraries necessary are installed. So on the very first build you should run as root:
+the compilers and libraries necessary are installed. So on the very first build you should run as \textbf{root}:
 
 \begin{lstlisting}[language=bash]
 ./blds/bld_prepare.sh <os>     # where <os> represents the Operating System of centos, fedora, suse, leap, ubuntu, debian.
@@ -111,7 +111,7 @@ make install
 \end{lstlisting}
 
 Then just start the application by keying in: ./cin in the bin subdirectory OR add a desktop icon by
-using the appropriate directory to copy the files to, run as root, and edit to correct the directory path.
+using the appropriate directory to copy the files to, run as \textbf{root}, and edit to correct the directory path.
 
 \begin{lstlisting}[language=bash]
 cd /cinelerra_directory_path
@@ -122,3 +122,9 @@ change the “Exec=cin” line to be “Exec=<your_directory_path>/bin/cin”
 
 The preceding directions for doing a single-user build has been meticulously followed to build and run
 on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{bld\_prepare.sh} and creating the desktop icon.
+
+\subsection{Notable Options and Caveats}%
+\label{sub:notable_options_and_caveats}
+
+These procedures and the Cinelerra-GG Infinity software have all been run as “\textbf{root}” on various home laptops and desktops. This provides the best chance to ensure all works correctly and also allows for handling errors, other problems and potential crashes with the most success.  Included in this section are some of the build variations easily available for normal builds.
+

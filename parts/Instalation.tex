@@ -128,3 +128,132 @@ on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{
 
 These procedures and the Cinelerra-GG Infinity software have all been run as “\textbf{root}” on various home laptops and desktops. This provides the best chance to ensure all works correctly and also allows for handling errors, other problems and potential crashes with the most success.  Included in this section are some of the build variations easily available for normal builds.
 
+To see the full list of features use:	 
+
+\begin{lstlisting}[language=bash]
+./configure –help
+\end{lstlisting}
+The default build is a system build which uses:    
+
+\begin{lstlisting}[language=bash]
+./configure –without-single-user
+\end{lstlisting}
+
+In the single-user build, the target directory is always “cin”.  
+Because this is also the developer build, constant names are used throughout.  
+However, you can rename files after the install is complete.
+
+f your distro/operating system has issues with the default install to \texttt{/usr/local}, you might have to change the location to /usr for a system build.  Then you will have to use:
+\begin{lstlisting}[language=bash]
+./configure --prefix=/usr
+\end{lstlisting}
+
+If you wish to change the default directory for a system build you will have to add the destination directory path on the “\texttt{make install}” line.  For example:
+\begin{lstlisting}[language=bash]
+make install DESTDIR=<your selected target directory path>
+\end{lstlisting}
+
+The application name can be set during installation, but defaults to cin so that the GG/Infinity build can coexist with other Cinelerra builds if necessary.  To override the default cin name, use:	
+\begin{lstlisting}[language=bash]
+./configure --with-exec-name=cinelerra
+\end{lstlisting}
+
+The home configuration directory can also be set, but defaults to \texttt{\$\$HOME/.bcast5}.  
+For example:
+
+\begin{lstlisting}[language=bash]
+./configure –with-config-dir=/myusername/.bcast5
+\end{lstlisting}
+
+NOTE:  when you specify parameters to the configure program, it will create a make file as a consequence.  
+Since in a make file, the \$ is a special character, it must be escaped so in order to represent a \$ as part of an input parameter, it has to be stuttered.  
+That is, you will need \$\$ (2 dollar signs) to represent a single dollar sign. 
+
+It may be necessary on some distros which have missing or incomplete up-to-date libraries, to build cinelerra without Ladspa.  
+To do so, use:
+
+\begin{lstlisting}[language=bash]
+./configure --prefix=/usr --without-ladspa-build
+\end{lstlisting}
+
+Note that the with-ladspa-dir is the ladspa search path, and exists even if the ladspa build is not selected.  This gives you the ability to specify an alternate ladspa system path by utilizing the \texttt{LADSPA\_PATH} environment variable (that is, the default ladspa build is deselected).
+
+Note for 32-bit 14.2 Slackware, Debian, Gentoo, Arch, FreeBSD, before running the configure, you will need to set up the following:
+
+\begin{lstlisting}[language=bash]
+export ac_cv_header_xmmintrin_h=no
+export FFMPEG_EXTRA_CFG=" --disable-vdpau"
+\end{lstlisting}
+
+\subsection{Notes about Building from Git in your Customized Environment}%
+\label{sub:notes_about_building_from_git_in_your_customized_environment}
+
+Getting a build to work in a custom environment is not easy.  If you have already installed libraries which are normally in the thirdparty build, getting them to be recognized means you have to install the "devel" version so the header files which match the library interfaces exist.  Below is the list of thirdparty builds, but this list may have changed over time:
+% It's list of Table?
+
+\begin{table}[htpb]
+    \centering
+    \caption{List of thirdparty builds}
+    \label{tab:List_of_thirdparty_builds}
+    \begin{tabular}{m{8em}c}
+        \toprule
+ 	a52dec   & yes\\
+ 	djbfft   & yes\\
+	fdk      & auto\\
+ 	ffmpeg   & yes\\
+ 	fftw     & auto\\
+ 	flac     & auto\\
+ 	giflib   & yes\\
+ 	ilmbase&auto\\
+ 	lame    &  auto\\
+ 	libavc1394&auto\\
+ 	libraw1394&auto\\
+ 	libiec61883&auto\\
+	libdv     &auto\\
+ 	libjpeg   &auto\\
+ 	openjpeg  &auto\\
+ 	libogg    &auto\\
+ 	libsndfile&auto\\
+ 	libtheora&auto\\
+ 	libuuid  & yes\\
+ 	libvorbis&auto\\
+ 	mjpegtools&yes\\
+ 	openexr   &auto\\
+	tiff      &auto\\
+ 	twolame   &auto\\
+ 	x264      &auto\\
+ 	x265      &auto\\
+ 	libvpx	&auto\\
+	libwebp&auto\\
+	libaom&	auto\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+
+The "yes" means force build and “auto” means probe and use the system version if the build operation is not static.  
+To get your customized build to work, you need to change the probe options for the conflicting libraries from "yes" to "auto", or even rework the \texttt{configure.ac} script.  
+There may be several libraries which need special treatment.
+
+An example of a problem you might encounter with your customized installation is with “\texttt{a52dec}” which has probes \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
+In this case, \texttt{djbfft} is only built because \texttt{a52dec} is built, so if your system has \texttt{a52dec}, set \texttt{a52dec} to auto and see if that problem is solved by retrying the build with:  
+\begin{lstlisting}[language=bash]
+./confgure --with-single-user –enable-a52dec=auto .
+\end{lstlisting}
+
+With persistence, you can get results, but it may take several tries to stabilize the build.  
+If you need help, email the "\texttt{log}" and "\texttt{config.log}", which is usually sufficient to determine why a build failed.
+
+If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational.
+
+\begin{lstlisting}[language=bash]
+export FFMPEG_EXTRA_CFG=" --enable-libfdk-aac --enable-nonfree"
+export EXTRA_LIBS=" -lfdk-aac"
+for f in `grep -lw aac cinelerra-5.1/ffmpeg/audio/*`; do
+  sed -e 's/\<aac\>/libfdk_aac/' -i $f
+done
+\end{lstlisting}
+
+
+
+

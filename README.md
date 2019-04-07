@@ -11,6 +11,7 @@ There is a good guide for LaTeX at OverLeaf: https://www.overleaf.com/learn/late
 
 Use bold font for \textbf{root} user name.
 Use \begin{lstlisting}[language=bash], \end{lstlisting} for code blocks.
+Use typescript for file names and path.
 
 
 

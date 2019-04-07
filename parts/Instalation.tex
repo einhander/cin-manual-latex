@@ -243,6 +243,7 @@ In this case, \texttt{djbfft} is only built because \texttt{a52dec} is built, so
 
 With persistence, you can get results, but it may take several tries to stabilize the build.  
 If you need help, email the "\texttt{log}" and "\texttt{config.log}", which is usually sufficient to determine why a build failed.
+\vspace{5ex}
 
 If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational.
 
@@ -252,6 +253,32 @@ export EXTRA_LIBS=" -lfdk-aac"
 for f in `grep -lw aac cinelerra-5.1/ffmpeg/audio/*`; do
   sed -e 's/\<aac\>/libfdk_aac/' -i $f
 done
+\end{lstlisting}
+
+\subsection{Cloning the Repository for Faster Updates}%
+\label{sub:cloning_the_repository_for_faster_updates}
+
+If you want to avoid downloading the software every time an update is available you need to create a local "repository" or repo.  
+The repo is a directory where you first do a “\texttt{git clone}”.  
+For the initial git clone, setup a local area for the repository storage, referred to as \texttt{<repo\_path>}.  
+The “\texttt{git clone}” creates a repo named "\texttt{cin5}" in the \texttt{/<repo\_path>/} directory.  
+This accesses over 300\,MB of repo data, so the device has to have at least that available.  
+The repo path is always a perfect clone of the main repo.
+
+\paragraph{Setting up the initial clone}%
+\label{par:setting_up_the_initial_clone}
+add “- - depth 1” before cin5 which is faster/smaller, but has no history.
+
+\begin{lstlisting}
+# cd /<repo\_path>/
+# git clone "git://git.cinelerra-gg.org/goodguy/cinelerra" cin5
+Cloning into "cin5"...
+remote: Counting objects: 20032, done.
+remote: Compressing objects: 100% (11647/11647), done.
+remote: Total 20032 (delta 11333), reused 16632 (delta 8189)
+Receiving objects: 100% (20032/20032), 395.29 MiB | 3.26 MiB/s, done.
+Resolving deltas: 100% (11333/11333), done.
+Checking connectivity... done.
 \end{lstlisting}
 
 

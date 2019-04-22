@@ -267,7 +267,7 @@ The repo path is always a perfect clone of the main repo.
 
 \paragraph{Setting up the initial clone}%
 \label{par:setting_up_the_initial_clone}
-add “- - depth 1” before cin5 which is faster/smaller, but has no history.
+add “\texttt{ -\,- depth 1}” before cin5 which is faster/smaller, but has no history.
 
 \begin{lstlisting}
 $ cd /<repo\_path>/
@@ -284,14 +284,22 @@ Checking connectivity... done.
 
 \paragraph{Update an existing repo}%
 \label{par:update_an_existing_repo}
-~
 
 \begin{lstlisting}
     $ cd /<repo home>/cin5
     $ git pull
 \end{lstlisting}
 
+\paragraph{Useful git commands}%
+\label{par:useful_git_commands}
 
+
+\begin{lstlisting}
+git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cin5
+git pull         # pull remote changes to the local version
+git status       # shows changed files
+git clean -i     # interactive clean, use answer 1 to "clean"
+\end{lstlisting}
 
 
 

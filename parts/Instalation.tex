@@ -286,8 +286,8 @@ Checking connectivity... done.
 \label{par:update_an_existing_repo}
 
 \begin{lstlisting}
-    $ cd /<repo home>/cin5
-    $ git pull
+ $ cd /<repo home>/cin5
+ $ git pull
 \end{lstlisting}
 
 \paragraph{Useful git commands}%
@@ -295,11 +295,310 @@ Checking connectivity... done.
 
 
 \begin{lstlisting}
-git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cin5
-git pull         # pull remote changes to the local version
-git status       # shows changed files
-git clean -i     # interactive clean, use answer 1 to "clean"
+$ git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cin5
+$ git pull         # pull remote changes to the local version
+$ git status       # shows changed files
+$ git clean -i     # interactive clean, use answer 1 to "clean"
 \end{lstlisting}
+
+
+
+\subsection{How to Build from a Previous GIT Version}%
+\label{sub:how_to_build_from_a_previous_git_version}
+
+
+\begin{lstlisting}
+$ cd /<path>/cin5_repo
+$ git log
+$ git checkout <version>
+\end{lstlisting}
+
+
+The “git log” command produces a log file with hash values for commit keys.  The hash ids are the commit names to use when you use git checkout.  
+Next is displayed sample output:
+
+
+\begin{lstlisting}
+delete stray line in last checkin
+
+commit 4a90ef3ae46465c0634f81916b79e279e4bd9961
+Author: Good Guy <good1.2guy@gmail.com>
+Date: Thu Feb 22 14:56:45 2018 -0700
+
+nested clips, big rework and cleanup, sams new icons, leaks and tweaks
+
+commit f87479bd556ea7db4afdd02297fc00977412b873
+Author: Good Guy <good1.2guy@gmail.com>
+Date: Sat Feb 17 18:09:22 2018 -0700
+\end{lstlisting}
+
+For the “git checkout <version>, you would then keyin the line below for the following results:
+
+\begin{lstlisting}
+$ git checkout f87479bd556ea7db4afdd02297fc00977412b873
+
+Note: checking out 'f87479bd556ea7db4afdd02297fc00977412b873'.
+
+	You are in 'detached HEAD' state. You can look around, make experimental
+	changes and commit them, and you can discard any commits you make in this
+	state without impacting any branches by performing another checkout.
+
+	If you want to create a new branch to retain commits you create, you may
+	do so (now or later) by using -b with the checkout command again. Example:
+
+  	git checkout -b <new-branch-name>
+
+	HEAD is now at f87479bd... more file size icon updates, and more to followend
+\end{lstlisting}
+
+Later to get the repo back to current, use:    
+\begin{lstlisting}
+$ git checkout master
+\end{lstlisting}
+
+
+\subsection{Debuggable Single User Build}%
+\label{sub:debuggable_single_user_build}
+
+
+To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead /tmp substituted with a permanent disk path if you want to keep it.
+
+\begin{lstlisting}
+$ git clone ...
+$ cp -a /path/cinelerra-5.1 /tmp/.
+$ cd /tmp/cinelerra-5.1
+$ ./bld.sh
+\end{lstlisting}
+
+
+Then, to run as a developer in the debugger:
+
+\begin{lstlisting}
+$ CFLAGS=”-O2 -ggdb” make -j8 rebuild_all
+$ cd cinelerra
+$ gdb ./ci
+\end{lstlisting}
+
+
+\subsection{Unbundled Builds}%
+\label{sub:unbundled_builds}
+
+There are some generic build scripts included in the Cinelerra-GG GIT repository for users who want to do unbundled builds with ffmpeg already available on their system.  
+This has been tested on Arch, Ubuntu 18, FreeBSD, and Leap 15 (rpm) at the time this was documented.  
+The names of the build scripts are:  arch.bld ,  bsd.bld , deb.bld , and rpm.bld .  
+These scripts are in the “blds” subdirectory.  
+The bsd.bld should be used with the bsd.patch file in that same directory.
+
+The reason that Cin Infinity traditionally uses thirdparty builds (bundled builds) is because there are a lot of different distros with varying levels of ffmpeg and other needed thirdparty libraries.  
+However, some users prefer using their current system baseline without another/different copy of ffmpeg.  
+With different levels of the user’s libraries, uncertainty, potential instability, and unknown issues may come up while running Cinelerra and this will make it, for all practical purposes, impossible to diagnose and debug problems or crashes.  
+There may be no help in these cases.  You are encouraged to report any errors which potentially originate from Cin Infinity, but if the data indicates alternate library sources, please report the problems to the appropriate maintainers.
+
+With the unbundled builds, some features may not be available and no attempt to comment them out has been made.  
+So if you use a pulldown, or pick a render option, or choose something that is not available, it just will not work.  
+For example, unless special options were set up by you, the LV2 audio plugins will not be available.  
+Nor will the codec libzmpeg, the file codec ac3, or DVD creation.  
+The old school file classes will all work, but some of the formats that come with ffmpeg may not because of the way that ffmpeg was installed on your operating system.  
+That is because the Cinelerra ffmpeg is a known static build and is usually the latest stable/released version.  
+In the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating;  You can always run “ffmpeg -formats” and “ffmpeg -codecs” to see what is available on your system.
+
+
+\section{Download Already Built Cinelerra-GG}%
+\label{sec:download_already_built_cinelerra_gg}
+
+If you prefer to not have to take the time to build Cinelerra-GG Infinity yourself, there are pre-built dynamic or static binaries for various versions of ubuntu, mint, suse, fedora, debian, centos, arch, and slackware linux as well as Gentoo and FreeBSD.  
+There are also 32-bit i686 ubuntu, debian, and slackware versions available.  
+These are updated on a fairly regular basis as long as significant code changes have been made.  
+They are in subdirectories of:
+
+\url{https://cinelerra-gg.org/download/tars}
+
+\url{https://cinelerra-gg.org/download/pkgs}
+
+The “\textbf{tars}” directory contains single-user static builds for different distros.  
+This is the recommended usage of Cinelerra-GG because all of the files will exist in a single directory.  
+To install the single user builds, download the designated tarball from the ./tars subdirectory and unpack as indicated below:
+
+\begin{lstlisting}
+$ cd /path
+$ mkdir cin
+$ cd cin
+$ tar -xJf /src/path/cinelerra-5.1-*.txz    # for the *, substitute your distro tarball name
+\end{lstlisting}
+
+Do NOT download the LEAP 10-bit version unless you use h265 (it can't render 8-bit h265).
+
+The “\textbf{pkgs}” directory contains the standard packaged application for various distros.  
+This will install a dynamic system version for users who prefer to have the binaries in the system area and for multi-user systems.  
+In addition, performing the package install checks the md5sum in the file md5sum.txt to ensure the channel correctly transmits the package.  
+There is a README.pkgs file in the “pkgs” directory with instructions so you can “cut and paste” and avoid typos; it is also shown next.
+
+%TODO point to real READ.pkgs
+
+\begin{lstlisting}
+Depending on the distro, use the instructions below and select the appropriate 
+setup operations to install, update or remove cinelerr-gg infinity.  (03/04/2019)
+To upgrade, refresh repo, then replace "install" with "update", or whatever.
+
+Email problems to cin@lists.cinelerra-gg.org
+If repository problems, usually you can manually do an install by using:
+  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.deb
+  and install it manually, for example: dpkg -i cin_5.1.{substitute_filename}.deb
+
+# GENTOO – courtesy Dominque Michel
+# There is an ebuild package at this time as of 01/03/2019 at:
+#    https://svnweb.tuxfamily.org/listing.php?repname=proaudio%2Fproaudio&path=
+#    %2Ftrunk%2Foverlays%2Fproaudio%2Fmedia-video%2Fcinelerra%2F&#ab000caf7024d83112f42a7e8285f2f29
+
+# FREEBSD – courtesy Yuri
+# There is a port available at: https://www.freshports.org/multimedia/cinelerra-gg/
+# To use this port: cd /usr/ports/multimedia/cinelerra-gg && make install clean
+#   and then install this precompiled package via: pkg install cinelerra-gg
+
+# FEDORA
+# Replace the XX in fedoraXX in the next line with your current O/S version number
+dnf install cinelerra --nogpgcheck --repofrompath cingg,https://cinelerra-gg.org/download/pkgs/fedoraXX/
+##dnf erase cinelerra
+
+# CENTOS
+# Python 2 has been updated for other distros to Python 3 so you might have to create a soft link
+#   to get the correct version.  For help, send email to cin@lists.cinelerra-gg.org
+# first create the file /etc/yum.repos.d/cin_gg, with the following contents:
+[cin_gg]
+name=cingg
+baseurl=https://cinelerra-gg.org/download/pkgs/centos7
+gpgcheck=0
+# end of cin_gg
+yum install cinelerra
+##yum erase cinelerra
+
+# UBUNTU, replace ub14 with your distro id: ub16,ub17,ub18
+#  Some ubuntu apt downloads register status as working 0% constantly while running the package
+#   download, like ubuntu 14.  It may take a few minutes for this step so be patient.
+apt install software-properties-common apt-transport-https
+apt-add-repository https://cinelerra-gg.org/download/pkgs/ub14
+# UBUNTU 16/17/18 note - This has been known to work, but things change quickly:
+# VIP - for the first install, the above line adds cinelerra to /etc/apt/sources.list but...
+# Version 16/17/18 of Ubuntu are more strict for licensing so you will have to edit
+#  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
+# For example the line should be: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub16 xenial main
+#   Or for ub17: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub17 zesty main
+#   Or for ub18: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub18 bionic main
+# Also, on the install you will get an error message that you can either ignore as cinelerra
+#  will run anyway, or else (the first time only) on the commnand line keyin: 
+#  echo > /etc/sysctl.d/50-cin.conf "kernel.shmmax=0x7fffffff"
+apt update
+apt install cin
+#to update a previous install (ignore any i386 errors as only 64 bit version available):
+apt update
+apt upgrade cin
+##apt remove cin
+
+# MINT should use the same procedure as Ubuntu, but: 
+# Note: apt-add-repository did not work for me, I had to use the gui version:
+#  System_OR_Administration->Software Sources->Additional Repositories->Add a new repository
+#  For Mint18,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint18 xenial main
+#  For Mint19,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint19 bionic main 
+apt update
+apt install cin
+#to update a previous install
+apt update
+apt upgrade cin
+##apt remove cin
+
+# DEBIAN uses the same basic procedure as Ubuntu.
+#  The apt-add-repository varies per system so you will have to use your best judgement
+apt install software-properties-common apt-transport-https
+apt-add-repository https://cinelerra-gg.org/download/pkgs/debian8
+OR apt-add-repository https://cinelerra-gg.org/download/pkgs/debian9
+# VIP - for the first install, the above line adds cinelerra to /etc/apt/sources.list but...
+# Debian stretch and jessie are more strict for licensing so you will have to edit
+#  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
+# For example for debian8: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian8 jessie main
+# For example for debian9: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian9 stretch main
+apt update
+apt install cin
+#to update a previous install
+apt update
+apt upgrade cin
+##apt remove cin
+
+# SUSE/LEAP
+# (Note: you may have to zypper libavc and libiec versions if not already installed)
+# cinelerra packages are unsigned so you will have to ignore: Package is not signed!
+# openSUSE LEAP 15
+zypper ar -f https://cinelerra-gg.org/download/pkgs/leap15/ cingg
+zypper install -r cingg cinelerra   # or cinelerra10bit for 10 bit
+# openSUSE LEAP 42
+zypper ar -f https://cinelerra-gg.org/download/pkgs/leap42/ cingg
+# as of 42.3 SUSE there is a new requirement, so you will need to add:
+zypper mr -G cingg
+zypper install -r cingg cinelerra   # or cinelerra10bit for 10 bit
+##zypper remove cinelerra	    # or cinelerra10bit for 10 bit
+#to update a previous install (assuming you enabled autorefresh as above)
+zypper refresh cingg
+zypper up cinelerra  # or cinelerra10bit for 10 bit
+
+# SLACKWARE, substitute slk32 for slk64 and i486-1 for x86_64-1
+wget -P /tmp https://cinelerra-gg.org/download/pkgs/slk64/cin-{date}-slk64-x86_64.txz
+installpkg /tmp/cin...    # name you used in the above line
+#to update a previous install
+upgradepkg /tmp/cin...    # name you used in the above line
+##removepkg cin
+
+# ARCH linux
+# first edit the file /etc/pacman.conf, to include the following:
+[cingg]
+SigLevel = Optional TrustAll
+Server = https://cinelerra-gg.org/download/pkgs/arch
+# end of cingg
+pacman -Sy
+pacman -S cin
+##pacman -R cin
+\end{lstlisting}
+
+\section{Distribution Systems with Cinelerra Included}%
+\label{sec:distribution_systems_with_cinelerra_included}
+
+There are also some special complete distribution systems available that include Cinelerra-GG for audio and video production capabilities.
+
+AV Linux is a downloadable/installable shared snapshot ISO image based on Debian. 
+It provides the user an easy method to get an Audio and Video production workstation without the hassle of trying to find and install all of the usual components themselves. 
+Of course, it includes Cinelerra-GG!  
+It is at:
+
+\url{http://www.bandshed.net/avlinux/}
+
+Bodhi Linux is a free and open source distribution that comes with a curated list of open source software for digital artists who work with audio, video, includes Cinelerra GG, games, graphics, animations, physical computing, etc.  
+It is at:
+
+\url{https://gitlab.com/giuseppetorre/bodhilinuxmedia}	
+
+\section{Cinx and a “Bit” of Confusion}%
+\label{sec:cinx_and_a_bit_of_confusion}
+
+Cinx is the exact same program as Cin.  
+The X (x) represents the roman numeral 10 for 10-bit as opposed to 8-bit standard.  
+The third-party library used for x265 must be specially compiled with \texttt{--bit-depth=10} in order to produce 10-bit rendered output.  
+This build will not be able to output 8-bit depth which means you have to retain the Cin version also.  
+Whatever build ffmpeg is linked to will determine what bit depth it can output.  
+This is why there have to be separate builds.  
+If you install both packages, Cin and CinX, you may get “file conflicts of same file name” --- just continue.
+
+Keep in mind that the regular 8-bit version works on 8-bit bytes --- the standard word size for computers, but the 10-bit version has to use 2 words to contain all 10 bits so you can expect rendering to be as much as twice as slow.  
+There is also a 12-bit version for consideration but currently the results are simply the same as 10-bit with padding to make 12-bit so it is of no value.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

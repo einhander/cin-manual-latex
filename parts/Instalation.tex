@@ -285,7 +285,7 @@ Checking connectivity... done.
 \paragraph{Update an existing repo}%
 \label{par:update_an_existing_repo}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
  $ cd /<repo home>/cin5
  $ git pull
 \end{lstlisting}
@@ -294,7 +294,7 @@ Checking connectivity... done.
 \label{par:useful_git_commands}
 
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
 $ git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cin5
 $ git pull         # pull remote changes to the local version
 $ git status       # shows changed files
@@ -307,7 +307,7 @@ $ git clean -i     # interactive clean, use answer 1 to "clean"
 \label{sub:how_to_build_from_a_previous_git_version}
 
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
 $ cd /<path>/cin5_repo
 $ git log
 $ git checkout <version>
@@ -373,7 +373,7 @@ $ ./bld.sh
 
 Then, to run as a developer in the debugger:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
 $ CFLAGS=”-O2 -ggdb” make -j8 rebuild_all
 $ cd cinelerra
 $ gdb ./ci
@@ -419,7 +419,7 @@ The “\textbf{tars}” directory contains single-user static builds for differe
 This is the recommended usage of Cinelerra-GG because all of the files will exist in a single directory.  
 To install the single user builds, download the designated tarball from the ./tars subdirectory and unpack as indicated below:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
 $ cd /path
 $ mkdir cin
 $ cd cin

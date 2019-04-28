@@ -1,35 +1,20 @@
 %
-\documentclass[letter,14pt,oneside,openright,svgnames]{memoir} % paper size, font size and other options for document
-\input{common/packages.tex} % common packages
+\documentclass[
+letter,
+14pt,
+oneside,
+openright,
+svgnames
+]{memoir}                       % paper size, font size and other options for document
+\input{common/packages.tex}     % common packages
 
 \begin{document}
+\input{common/title.tex}        % create and use custom title page
 
-\titleLL % use cutom title
-
-\thispagestyle{empty} % no page numbers
+\thispagestyle{empty}           % no page numbers
 
 \newpage
 
-%\pagestyle{plain}
-%\pagenumbering{roman}
-%\renewcommand{\chapterheadstart}{
-%%\vspace*{\beforechapskip}
-%\hrule\medskip}
-%\renewcommand{\chapnamefont}{\normalfont\large\scshape}
-%\renewcommand{\chapnumfont}{\normalfont\large\scshape}
-%\renewcommand{\chaptitlefont}{\normalfont\large\scshape}
-%\renewcommand{\printchaptername}{\normalfont\large\scshape История}
-%\renewcommand{\chapternamenum}{ }
-%\renewcommand{\printchapternum}{\chapnumfont \thechapter}
-%\renewcommand{\afterchapternum}{. }
-%\renewcommand{\afterchapskip}{\vspace{2ex}}
-%\renewcommand{\afterchaptertitle}{\par\nobreak\medskip\hrule\vskip 
-%\afterchapskip}
-%}
-\chapterstyle{madsen}         % one of chapter header style for memoir documentclass
-%\renewcommand{\printchaptername}{\normalfont\large\scshape Chapter}
-\renewcommand{\chapterheadstart}{}
-%\renewcommand{\beforechapskip}{\vspace{2pt}}
 \frontmatter
 %\pagenumbering{Roman}
 

@@ -313,8 +313,8 @@ As long as we are on the subject of color, just a reminder that you can also cha
 This is on right left hand side of the menu more than half the way down and you can see this in the figure~\ref{fig:autocolor_assets}.  
 That setting defaults to white (ffffff) but sometimes this is a little bright so you can put any hex value in that suits you.
 
-Screencast (figure~\ref{fig:autocolor_assets_alpha}) which shows an example of the Autocolor assets with alpha set to 0.0.
-In this screencast (figure~\ref{fig:autocolor_assets_alpha}), the alpha is set to show the image as well as the colors.  The pink media file has been self-colored rather than the autocolor to make it easy to see.
+Screencast (figure~\ref{fig:autocolor_assets_alpha}a) which shows an example of the Autocolor assets with alpha set to 0.0.
+In this screencast (figure~\ref{fig:autocolor_assets_alpha}b), the alpha is set to show the image as well as the colors.  The pink media file has been self-colored rather than the autocolor to make it easy to see.
 
 \begin{figure}[htpb]
     \centering
@@ -352,16 +352,180 @@ The main window pulldowns are quite obvious in their meaning and usage, so here 
 \end{description}
 
 
+\subsection{Window Layouts}%
+\label{sub:window_layouts}
+
+If you like to use different window layouts than the default for certain scenarios, you can setup, save, and load 4 options.   
+First position your Cinelerra windows where you want them to be and then use the Window pulldown and choose \emph{Save layout}.  
+To use the default name of Layout \#, when the popup comes up, just click the green checkmark OK on the Layout popup menu.  
+If you would like a specific name for your layout so you can remember what it is for, keyin 1-8 english characters that are meaningful to you (english characters mean you can not use the German umlaut or the French accent).  
+Legal characters are a-z, A-z, 0-9, \_ (the underscore character) and a limit of 8 total.  
+If you keyin more than 8, only the last 8 characters will be used.  
+To rename a currently existing layout, use the Save layout option again on the one to rename, and keyin a different name into the text box or blank for the default name (figure~\ref{fig:window_layouts}).
+
+\begin{figure}[htpb]
+    \centering
+    \begin{minipage}{.49\linewidth}
+        \center{\includegraphics[width=1\linewidth]{images/window_layout1.png}}\\ a)
+        %TODO High res image replace
+    \end{minipage}
+    \begin{minipage}{.49\linewidth}
+        \vspace{13ex}
+        \center{\includegraphics[width=1\linewidth]{images/window_layout2.png}}\\ b)
+        %TODO Alpha channel
+    \end{minipage}
+    \caption{Window Layouts}
+    \label{fig:window_layouts}
+\end{figure}
+
+The files containing the coordinates for your layouts will automatically be saved in the \texttt{\$HOME/.bcast} directory as \texttt{layout\#\_rc} or \texttt{layout\#\_8chars\_rc}.
+
+To use the desired layout, keyin the shortcut or use the Window pulldown and choose \emph{Load layout} and then make your choice. 
+
+\subsection{Just Playing!}%
+\label{sub:just_playing_}
+What if you are just using Cinelerra to play media and listen to tunes? 
+After loading your media, just hit the space bar to start playing and then again to stop playing.  
+Other than that, use the transport buttons on the top bar of the Program window.  
+Other ways, not previously mentioned to “play around” are described next. 
+
+\subsubsection*{Repeat Play / Looping Method}%
+\label{ssub:repeat_play_looping_method}
+
+There are 2 methods for repeat play or looping on the timeline and 1 method for both the Compositor and the Viewer.  This works in conjunction with any of the transport buttons or shortcuts in either forward or reverse as usual.  The 1 exception is that the Shift button can not be used to either add or subtract audio within the repeat area.
 
 
+\emph{Shift-L on the Timeline}, repeats the selection per the algorithm outlined next.  
+When setup, long green lines are displayed across the entire set of tracks which shows the start and end of the loop.
+\begin{enumerate}
+    \item  Highlighted selection repeats loop and takes precedence over all other possibilities.  
+        If the cursor is before the highlighted area, it will play up to the area and then repeat the highlighted section.  
+        If the cursor is after the highlighted section, play will start at the beginning until you get to the
+        highlighted section and then repeat.
+    \item  When both In and Out pointers are set, it repeats the section between [ and ].
+    \item  If only one of the In or Out pointers is set, it loops the whole media.
+\end{enumerate}
+
+\emph{Ctrl+Shift+transport button on the Timeline, Viewer, and Compositor}
+
+\begin{enumerate}
+    \item Repeats entire media if no In or Out pointer set.
+    \item  In and Out pointer set, repeats area between pointers.
+    \item  Only In pointer set, repeats from In to end of media.
+\end{enumerate}
+
+\subsubsection*{Last Play Position Memory}%
+\label{ssub:last_play_position_memory}
 
 
+When you play media, the start/end playback positions are saved as if they had been made into temporary labels.  
+They appear on the timeline as purple/yellow hairline markers representing the last start/end labels for the last playback. 
+They can be addressed as if they are label markers using:
+
+\begin{description}
+    \item[Ctrl$\leftarrow$]   tab to the label before the cursor, that is “play start”
+    \item[Ctrl$\rightarrow$]   tab to the label after the cursor, that is “play stop”
+\end{description}
 
 
+You can use these markers for re-selection.  
+Additionally, the selection region can be expanded by “pushing” the markers using single frame playback.  
+Use frame reverse (keypad 4) to push the start play marker backward, or use frame forward (keypad 1) to push the end play marker forward.
+
+Another handy feature is to use the combination of Ctrl-shift-arrow (left or right) to select the media from the cursor position (red hairline) to the start or end marker by “tabbing” to the label markers.  
+For example, tab to the beginning of the previous play region using Ctrl-left-arrow to move the cursor to the beginning of last play, then press Ctrl-Shift-right-arrow to tab to the end of the playback region. 
+Now you can clip/play/expand or edit the previous playback selection.
+
+\begin{description}
+    \item[Ctrl SHIFT$\rightarrow$] 	  tab cursor to label right of cursor position and expand selection
+    \item[Ctrl SHIFT$\leftarrow$] 	  tab cursor to label left of cursor position and expand selection
+\end{description}
 
 
+\subsubsection*{Playback Speed Automation Support}%
+\label{ssub:playback_speed_automation_support}
 
 
+The speed automation causes the playback sampling rate to increase or decrease to a period controlled by the speed automation curve.  
+This can make playback speed-up or slow-down according to the scaled sampling rate, as “time is multiplied by speed” (speed X unit\_rate).
+
+\subsubsection*{Alternative to using Numeric Keypad for Playing}%
+\label{ssub:alternative_to_using_numeric_keypad_for_playing}
 
 
+For the keyboards without a numeric keypad or if you prefer to use keys closer to where you normally type, there are alternative keys for the play/transport functions.  These are listed below.
+
+\begin{tabular}{lcl}
+	Alt + m&=&stop playback\\
+
+	Alt + j&=&forward single frame\\
+
+	Alt + k&=&forward slow playback\\
+
+	Alt + l&=&forward normal playback\\
+
+	Alt + ;&=&forward fast playback\\
+
+	Alt + u&=&reverse single frame\\
+
+	Alt + i&=&reverse slow playback\\
+
+	Alt + o&=&reverse normal playback\\
+
+	Alt + p&=&reverse fast playback\\
+\end{tabular}
+\begin{minipage}{.45\linewidth}
++ Shift key, results in the reverse of whether audio is included or not.
+\vspace{1ex}
+
++ Ctrl, results in the transport function operating only between the in/out pointers.
+\end{minipage}
+
+\section{Compositor Window}%
+\label{sec:compositor_window}
+
+The Compositor window (figure~\ref{fig:compositor_window}) displays the output of the timeline. 
+It is the interface for most compositing operations or operations that affect the appearance of the timeline output. 
+Operations done in the Compositor affect the timeline but do not affect clips.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/compositor_window.png}
+    \caption{Upper right side contains navigation tools / bottom bar has manu control functions}
+    \label{fig:compositor_window}
+\end{figure}
+
+\subsection{Compositor controls}%
+\label{sub:compositor_controls}
+
+
+Navigating the video output does not affect the rendered output; it just changes the point of view in the compositor window. 
+The video output has several navigation functions. 
+The video output size is either locked to the window size or unlocked with scrollbars for navigation. 
+The video output can be zoomed in and out and panned. 
+If it is unlocked from the window size, middle clicking and dragging anywhere in the video pans the point of view. Hitting the + and - keys zooms in and out of the video output.
+
+Underneath the video output are copies of many of the functions available in the main window. 
+In addition there is a zoom menu and a tally light. 
+The zoom menu jumps to all the possible zoom settings and, through the Auto option, locks the video to the window size. 
+The zoom menu does not affect the window size. 
+The tally light turns red when rendering is happening. This is useful for knowing if the output is current. 
+Right clicking anywhere in the video output brings up a menu with all the zoom levels, zoom auto mode, and some other options. 
+In this particular case the zoom levels resize the entire window and not just the video. 
+The \emph{Reset camera} and \emph{Reset projector} options center the camera and projector. 
+The \emph{Hide controls} option hides everything except the video. 
+
+On the left of the video output is a toolbar specific to the compositor window. The toolbar has the following functions:
+
+\emph{Protect video} --- disables changes to the compositor output from clicks in it. It is an extra layer on top of the track arming toggle to prevent unwanted changes.
+
+\emph{Magnifying glass} --- this tool zooms in and out of the compositor output without resizing the window. If the video output is currently locked to the size of the window, clicking in it with the magnifying glass unlocks it and creates scrollbars for navigation.
+
+\begin{description}
+    \item[ Left clicking] in the video zooms in;
+    \item[Ctrl clicking] in the video zooms out;
+    \item[Rotating the wheel] on a wheel mouse zooms in and out.
+\end{description}
+
+In addition, if you enable the Magnifying glass, a zoom slider for fine-viewing appears below these tools.  It allows you to zoom to most any size. A “zoom slider” will pop-up towards the bottom on the left-hand side of the Compositor when you enable “Zoom view” via the magnifying glass or when you click on the icons for “Adjust camera automation” or “Adjust projector automation”.  This will allow for adjusting the amount of zoom at any level between .01 and 100 based on a logarithmic scale.  When using the zoom slider, the number by which the view is zoomed can be seen in the textbox where the original-also-working % zoom is located.  The zoom slider size is in the form of “times”, such as x 0.82 which indicates that the picture is zoomed to 82/100th of the original size as seen in Settings→Format.  Once you have set the zoom to the desired size, use the vertical and horizontal scroll bars to position the view as needed.
 

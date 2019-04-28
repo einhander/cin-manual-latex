@@ -174,7 +174,7 @@ Dragging in the timeline highlights a region.
 The highlighted region becomes the region affected by cut and paste operations and the playback range during the next playback operation. 
 Shift-clicking in the timeline extends the highlighted region.
 
-When highlighting a region, the start and end points are either aligned to frames or aligned to samples. When editing video, you will want to align to frames. When editing audio you will want to align to samples. Select your preference by using settings->align cursor on frames.
+When highlighting a region, the start and end points are either aligned to frames or aligned to samples. When editing video, you will want to align to frames. When editing audio you will want to align to samples. Select your preference by using settings$\rightarrow$align cursor on frames.
 
 \begin{figure}[htpb]
     \centering
@@ -257,7 +257,7 @@ If you hit the label button when a region is highlighted, labels are created at 
 However, if one end already has a label, then the existing label is deleted. 
 Hitting the label button again when a label is selected deletes it. 
 Manually hitting the label button or L key over and over again to delete a series of labels can get tedious. 
-To delete a set of labels, first highlight a region, then use the Edit->Clear labels function. 
+To delete a set of labels, first highlight a region, then use the Edit$\rightarrow$Clear labels function. 
 If in/out points exist, the labels between the in/out points are cleared and the highlighted region is ignored.
 
 
@@ -490,7 +490,7 @@ Operations done in the Compositor affect the timeline but do not affect clips.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/compositor_window.png}
+    \includegraphics[width=0.99\linewidth]{images/compositor_window.png}
     \caption{Upper right side contains navigation tools / bottom bar has manu control functions}
     \label{fig:compositor_window}
 \end{figure}
@@ -522,10 +522,157 @@ On the left of the video output is a toolbar specific to the compositor window. 
 \emph{Magnifying glass} --- this tool zooms in and out of the compositor output without resizing the window. If the video output is currently locked to the size of the window, clicking in it with the magnifying glass unlocks it and creates scrollbars for navigation.
 
 \begin{description}
-    \item[ Left clicking] in the video zooms in;
+    \item[Left clicking] in the video zooms in;
     \item[Ctrl clicking] in the video zooms out;
     \item[Rotating the wheel] on a wheel mouse zooms in and out.
 \end{description}
 
-In addition, if you enable the Magnifying glass, a zoom slider for fine-viewing appears below these tools.  It allows you to zoom to most any size. A “zoom slider” will pop-up towards the bottom on the left-hand side of the Compositor when you enable “Zoom view” via the magnifying glass or when you click on the icons for “Adjust camera automation” or “Adjust projector automation”.  This will allow for adjusting the amount of zoom at any level between .01 and 100 based on a logarithmic scale.  When using the zoom slider, the number by which the view is zoomed can be seen in the textbox where the original-also-working % zoom is located.  The zoom slider size is in the form of “times”, such as x 0.82 which indicates that the picture is zoomed to 82/100th of the original size as seen in Settings→Format.  Once you have set the zoom to the desired size, use the vertical and horizontal scroll bars to position the view as needed.
+In addition, if you enable the Magnifying glass, a zoom slider for fine-viewing appears below these tools.  
+It allows you to zoom to most any size. 
+A “zoom slider” will pop-up towards the bottom on the left-hand side of the Compositor when you enable “Zoom view” via the magnifying glass or when you click on the icons for “Adjust camera automation” or “Adjust projector automation”.  
+This will allow for adjusting the amount of zoom at any level between 0.01 and 100 based on a logarithmic scale.  
+When using the zoom slider, the number by which the view is zoomed can be seen in the textbox where the original-also-working \% zoom is located.  
+The zoom slider size is in the form of “times”, such as x 0.82 which indicates that the picture is zoomed to 82/100th of the original size as seen in Settings$\rightarrow$Format.  
+Once you have set the zoom to the desired size, use the vertical and horizontal scroll bars to position the view as needed.
+
+Screencast (figure~\ref{fig:zoom_slider}) shows below at a zoom slider bar with the diamond shaped slider in the middle.  Note 
+that the magnifying glass is  enabled which automatically pops-up the slider.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.99\linewidth]{images/zoom_slider.png}
+    \caption{A zoom slider bar with the diamond shaped slider in the middle}
+    \label{fig:zoom_slider}
+\end{figure}
+The Format shows a large 5204x3468 video and the box at the arrow shows x 0.82 size.  
+
+\begin{description}
+    \item[Masks tool] this tool brings up the mask editing tool. Enable “Show tool info” to see the options.
+    \item[Camera]  the camera brings up the camera editing tool. Enable “Show tool info” to see options.
+    \item[Projector]  the projector brings up the projector editing tool. Enable “Show tool info” for options.
+    \item[Crop tool]  this tool brings up the cropping tool. “Show tool info” must be enabled to use this tool.
+    \item[Eyedropper]  brings up the eyedropper. The eyedropper detects whatever color is under it and stores it
+        in a temporary area. Enabling the “Show tool info” shows the currently selected color. Click
+        anywhere in the video output to select the color at that point. The eyedropper not only lets you see
+        areas which are clipped, but its value can be applied to many effects. Different effects handle the
+        eyedropper differently.
+    \item[Show tool info]  this tool button works only in conjunction with the other controls on the compositor.
+        Based on what compositing control is active, the toggle button will activate or deactivate the
+        appropriate control dialog box. Controls with dialog boxes are: Edit mask, Camera and Projector
+        automation, Crop control, and Get color.
+    \item[Safe regions tool]  draws the safe regions in the video output. This does not affect the rendered output
+\end{description}
+
+\subsection{Compositing}%
+\label{sub:compositing}
+
+A large amount of Cinelerra's editing is directed towards compositing. 
+Changing the resolution of a show, making a split screen, and fading in and out among other things are all compositing operations in Cinelerra. 
+Cinelerra detects when it is in a compositing operation and plays back through the compositing engine only then. 
+Otherwise, it uses the fastest decoder available in the hardware.
+
+Compositing operations are done on the timeline and in the Compositor window. Shortcuts exist in the Resource window for changing some compositing attributes. 
+Once some video files are on the timeline, the compositor window is a good place to try compositing.
+
+\subsection{Camera and Projector}%
+\label{sub:camera_and_projector}
+
+In the compositor window, two of the more important functions are the adjust camera automation and the adjust projector automation which control operation of the camera and projector. 
+Cinelerra's compositing routines use a "temporary", a frame of video in memory where all graphics processing is performed. 
+Inside Cinelerra's compositing pipeline, the camera determines where in the source video the "temporary" is copied from. 
+The projector determines where in the output the "temporary" is copied to. 
+Each track has a different "temporary" which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms.
+
+In compositing, each frame can be digitally altered using various options, such as a color correction plugin (figure~\ref{fig:camera_and_projector}). 
+Once the image has been transformed, the finished image is then projected to the compositor thus creating a modified version of the original.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/camera_and_projector.png}
+    \caption{Camera and Projector}
+    \label{fig:camera_and_projector}
+\end{figure}
+
+When editing the camera and projector in the compositing window, the first track with record enabled is the track affected. 
+Even if the track is completely transparent, it is still the affected track. 
+If multiple video tracks exist, the easiest way to select one track for editing is to Shift-click on the record icon of the track. 
+This solos the track.
+
+The purpose of the projector is to place the contents of the "temporary" into the project's output. 
+The intent of the projector is to composite several sources from the various tracks into one final output track. 
+The projector alignment frame is identical to the camera's viewport, except that it guides where on the output canvas to put the contents of each temporary.
+
+\subsubsection*{Compositing projector controls}%
+\label{ssub:compositing_projector_controls}
+
+When the projector button is enabled in the compositor window, you are in projector editing mode. 
+A guide box appears in the video window. 
+Dragging anywhere in the video window causes the guide box to move along with the video. 
+Shift-dragging anywhere in the video window causes the guide box to shrink and grow along with the video. Once you have positioned the video with the projector, you may want to work with adjusting the camera automation.
+
+\subsubsection*{Compositing camera controls}%
+\label{ssub:compositing_camera_controls}
+
+Select the camera button to enable camera editing mode. 
+In this mode, the guide box shows where the camera position is in relation to past and future camera positions but not where it is in relation to the source video. 
+Dragging the camera box in the compositor window does not move the box but instead moves the location of the video inside the box. 
+The viewport is a window on the camera that frames the area of source video to be scanned. 
+The viewport is represented as a red frame with diagonal cross bars.
+
+\subsubsection*{Viewport sizes}%
+\label{ssub:viewport_sizes}
+
+The size of the viewport is defined by the size of the current track. 
+A smaller viewport (640x400) captures a smaller area. 
+A larger viewport (800x200) captures an area larger than the source video and fills the empty spaces with blanks. 
+Once we have our viewport defined, we still need to place the camera right above the area of source video we are interested on. To control the location of the camera:
+
+\begin{enumerate}
+    \item  Open the compositor window with a track selected.
+    \item  Select the camera button to enable camera editing mode.
+    \item  Drag over the display window.
+\end{enumerate}
+
+When we drag over the viewport in the compositor window, the way it looks is as if you “move the camera with the mouse”.  The viewport also moves with it.
+
+In the compositing window, there is a popup menu of options for the camera and projector. Right click over the video portion of the compositing window to bring up the menu.
+
+\begin{description}
+    \item[Reset Camera] causes the camera to return to the center position.	
+	\item[Reset Projector] causes the projector to return to the center.
+\end{description}
+
+\subsubsection*{The camera and projector tool window}%
+\label{ssub:the_camera_and_projector_tool_window}
+
+The camera and projector have shortcut operations that do not appear in the popup menu and are not represented in video overlays. 
+These are accessed in the \emph{Show tool info} window. 
+Most operations in the Compositor window have a tool window which is enabled by activating the question mark icon.
+
+\begin{wrapfigure}[12]{O}{0.3\linewidth} 
+	\vspace{-4ex}
+    \includegraphics[width=0.9\linewidth]{images/camera_tool.png}
+    \caption{Camera and Projector tool}
+    \label{fig:images/camera_tool}
+\end{wrapfigure}
+
+In the case of the camera and projector, the tool window shows x, y, and z coordinates. 
+By either tumbling or entering text directly, the camera and projector can be precisely positioned.  
+Justification types are also defined for easy access. 
+A popular justification operation is upper left projection after image reduction. 
+This is used when reducing the size of video with aspect ratio adjustment.  
+In the last figure you see the choices for justification as the red stripe in the 6 boxes in the order of left, center horizontal, right, top, center vertical, and bottom.
+
+The translation effect allows simultaneous aspect ratio conversion and reduction but is easier to use if the reduced video is put in the upper left of the “temporary” instead of in the center. 
+The track size is set to the original size of the video and the camera is centered. 
+The output size is set to the reduced size of the video. 
+Without any effects, this produces just the cropped center portion of the video in the output.
+
+The translation effect is dropped onto the video track. The input dimensions of the translation effect are set to the original size and the output dimensions are set to the reduced size. 
+To put the reduced video in the center subsection that the projector shows would require offsetting out x and out y by a complicated calculation. 
+Instead, we leave out x and out y at 0 and use the projector's tool window. 
+By selecting left justify and top justify, the projector displays the reduced image from the top left corner of the “temporary” in the center of the output.
+
+ 
+
 

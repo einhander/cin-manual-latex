@@ -673,6 +673,166 @@ To put the reduced video in the center subsection that the projector shows would
 Instead, we leave out x and out y at 0 and use the projector's tool window. 
 By selecting left justify and top justify, the projector displays the reduced image from the top left corner of the “temporary” in the center of the output.
 
+\subsection{Masks}%
+\label{sub:masks}
+
+Masks select a region of the video for either displaying or hiding. 
+Masks are also used in conjunction with another effect to isolate the effect to a certain region of the frame. 
+A copy of one video track may be delayed slightly and unmasked in locations where the one copy has interference but the other copy does not. 
+Color correction may be needed in one subsection of a frame but not another. 
+A mask can be applied to just a subsection of the color corrected track while the plain track shows through. 
+Removal of boom microphones and airplanes are a common kind of mask uses.
+
+The order of the compositing pipeline affects what can be done with masks. Mainly, masks are performed on the temporary after effects and before the projector. This means multiple tracks can be bounced to a masked track and projected with the same mask.
+
+The compositing pipeline graph has a masking stage. 
+There are 8 possible masks per track. Each mask is defined separately, although they each perform the same operation, whether it is addition or subtraction.
+
+\subsubsection*{Compositing pipeline with masks}%
+\label{ssub:compositing_pipeline_with_masks}
+
+\begin{enumerate}
+    \item To define a mask, go into the Compositor window and enable the mask toggle.
+    \item  Next go over the video and click-drag. 
+        Note: You have to select automatic keyframes if you wish to move a mask over time.  
+        If you do not, the mask position will be the same even if you edit at different places on the timeline.
+    \item  Click-drag again in another part of the image to create each new point of the mask. 
+        While it is not the conventional Bezier curve behavior, this masking interface performs in realtime what the effect 
+        of the mask is going to be. Creating each point of the mask expands a rubber band curve.
+
+        Once points are defined, they can be moved by Ctrl-dragging in the vicinity of the corner. 
+        Shift-drag allows you to move existing points to new locations, thus altering the shape of the mask.  
+        However, this does not smooth out the curve. 
+        The In/Out points of the Bezier curve are accessed by Ctrl-dragging in the vicinity of the corner. 
+        Then Ctrl-dragging near the In or Out point causes the point to move.  
+        Shift-drag activates bezier handles to create curves between mask points.       
+
+    \item  Finally once you have a mask, the mask can be translated in one piece by Alt-dragging the mask.
+        The effect of the mask is always on.  
+        Ctrl-Alt-drag translates an entire mask to a new location on the
+        screen.
+\end{enumerate}
+
+The masks have many more parameters which could not be represented with video overlays. 
+These are represented in the tool window for masks. 
+Selecting the question mark when the mask toggle is highlighted brings up the mask options window (figure~\ref{fig:mask_window}).
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/mask_window.png}
+    \caption{Mask options window}
+    \label{fig:mask_window}
+\end{figure}
+
+The mode of the mask determines if the mask removes data or makes data visible. 
+If the mode is \emph{Subtract alpha}, the mask causes video to disappear. 
+If the mode is \emph{Multiply alpha}, the mask causes video to appear and everything outside the mask to disappear.
+
+The \emph{Value of the mask}, set by a slider bar, determines how extreme the subtraction or addition is. 
+In the subtractive mode, higher values subtract more alpha. 
+In the additive mode, higher values make the region in the mask brighter while the region outside the mask is always hidden.
+
+The \emph{Mask number} determines which one of the 8 possible masks we are editing. 
+Each track has 8 possible masks. 
+When you click-drag in the compositor window, you are only editing one of the masks. 
+Change the value of mask number to cause another mask to be edited. 
+The previous mask is still active but only the curve overlay for the currently selected mask is visible. 
+When multiple masks are used, their effects are OR-ed together. 
+Every mask in a single track uses the same value and mode.
+
+The edges of a mask are hard by default but this rarely is desired. 
+The \emph{Feather} parameter determines how many pixels to feather the mask. 
+This creates softer edges but takes longer to render. 
+
+Two checkbox options are \emph{Apply mask} before plugins and \emph{Disable OpenGL masking}.  
+Note that the OpenGL mask renderer is of low quality and only suitable as a preview for initial work. 
+For fine-tuning of masks (with large feather values) \emph{OpenGL masking} should be switched off so that the software renderer is used instead.
+
+Finally, there are parameters which affect one point on the current mask instead of the whole mask. 
+These are \emph{Delete}, \emph{X}, and \emph{Y}. 
+The active point is defined as the last point dragged in the compositor window. 
+Any point can be activated merely by Ctrl-clicking near it without moving the pointer. 
+Once a point is activated, \emph{Delete} deletes it and \emph{X}, \emph{Y} allow repositioning by numeric entry.
+
+\subsection{Cropping}%
+\label{sub:cropping}
+
+
+
+Cropping reduces the visible picture area of the whole project. It changes the values of the output dimensions (width and height in pixels) and the X, Y values of the projector in a single operation. Since it changes project settings it affects all the tracks for their entire duration and it is not keyframable. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/cropped_area.png}
+    \caption{Cropped area is in the top right corner}
+    \label{fig:images/cropped_area}
+\end{figure}
+
+\begin{itemize}
+    \item Enable the crop toggle and the tool window in the compositor window to display the Crop control dialog box.
+    \item Click-drag anywhere in the video to define the crop area. This draws a rectangle over the video.
+    \item Click-drag anywhere in the video to start a new rectangle.
+    \item Click-drag over any corner of the rectangle to reposition the corner.
+    \item Alt-click in the cropping rectangle to translate the rectangle to any position without resizing it.
+    \item The crop control dialog allows text entry of the top left coordinates (X1,Y1) and bottom right coordinates (X2,Y2) that define the crop rectangle. 
+        When the rectangle is positioned, hit the \emph{Do it} button in the crop control dialog to execute the cropping operation: the portion of the image outside  the rectangle will be cut off and the projector will make the output fit the canvas.
+    \item The Set Format window will show the new project Width and Height values.
+    \item The projector tool window will show the new X, Y values.
+    \item Track size will remain unchanged.
+\end{itemize}
  
+To undo the cropping enter the original project dimensions in the Set Format window and click on Reset projector in the popup menu of the compositor.
+
+\subsection{Safe Regions}%
+\label{sub:safe_regions}
+
+On consumer displays the borders of the image are cut off and within the cut-off point is a region which is not always square like it is in the compositor window. 
+The borders are intended for scratch room and vertical blanking data. 
+You can show where these borders are by enabling the safe regions toggle. 
+Keep titles inside the inner rectangle and keep action inside the outer rectangle.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/safe_regions.png}
+    \caption{Note the black frames showing the safe regions}
+    \label{fig:safe_regions}
+\end{figure}
+
+\subsection{Track and Output Sizes}%
+\label{sub:track_and_output_sizes}
+
+
+The size of the temporary and the size of the output in our compositing pipeline are independent and variable. 
+The camera's viewport is the temporary size. 
+Effects are processed in the temporary and are affected by the temporary size. 
+Projectors are rendered to the output and are affected by the output size. 
+If the temporary is smaller than the output, the temporary is bordered by blank regions in the output. 
+If the temporary is bigger than the output, the temporary is cropped.
+
+\subsubsection*{Track size}%
+\label{ssub:track_size}
+
+The temporary size is defined as the track size. 
+Each track has a different size. 
+Right click on a track to bring up the track's menu. 
+Select \emph{Resize Track} to resize the track to any arbitrary size. 
+Alternatively you can select \emph{Match output size} to make the track the same size as the output. 
+If you resize a track, then its appearance on the compositor changes accordingly. 
+Using the relationship between the track and the project's output size you can effectively reduce or magnify the size of a particular track with regards to the final output and therefore create visual effects like split screens, pans, and zooms on the compositor.
+
+\subsubsection*{Output size}%
+\label{ssub:output_size}
+
+
+The output size is set in either File$\rightarrow$\emph{New} when creating a new project or Settings$\rightarrow$\emph{Format}. 
+In the Resources window there is another way to change the output size. 
+Right click on a video asset and select \emph{Match project size} to conform the output to the asset. 
+When new tracks are created, the track size always conforms to the output size specified by these methods.
+
+When rendering, the project's output size is the final video track size where the temporary pipeline is rendered into.  
+If the output size is larger than the temporary then the image transferred from the temporary will fit inside the Output Track. 
+Any space left on the Output is left blank.  
+If the output size is smaller than the temporary then some of the temporary video will be cropped.
+
 
 

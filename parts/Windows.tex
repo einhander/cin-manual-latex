@@ -37,7 +37,7 @@ The individual images you see on the track are samples of what is located at tha
 Audio tracks represent your sound media as an audio waveform. 
 Following the film analogy, it would be as if you "viewed" magnetic tape horizontally on your table. 
 You can adjust the horizontal and vertical magnification of the tracks and the magnification of the audio "waveform" display using the zoom panel controls. 
-Every track on the timeline has a set of attributes on the left, called the patch- bay. 
+Every track on the timeline has a set of attributes on the left, called the patch-bay. 
 It is used to control some of the behavior of the tracks.
 
 Track Navigation involves both selecting a specific audio or video track and moving to a certain time in the track. 
@@ -122,12 +122,12 @@ The insertion point (figure~\ref{fig:insertion-points}) is the flashing hairline
 Analogous to the cursor on your word processor, the insertion point marks the place on the timeline where the next activity will begin. 
 It is the point where a paste operation takes place. 
 When rendering, it defines the beginning of the region of the timeline to be rendered. It is also the starting point of all playback operations.
-                           
+
 Normally, the insertion point is moved by clicking inside the main timebar. 
 Any region of the timebar not obscured by labels and in or out points is a hotspot for repositioning the insertion point. 
 In cut and paste editing mode only, the insertion point can be moved also by clicking in the timeline itself. 
 When moving the insertion point the position is either aligned to frames or aligned to samples. 
-When editing video, you will want to align to frames. When editing audio you will want to align to samples. Select your preference by using Settings->Align cursor on frames.
+When editing video, you will want to align to frames. When editing audio you will want to align to samples. Select your preference by using Settings$\rightarrow$Align cursor on frames.
 
 \begin{figure}[htpb]
     \centering
@@ -653,7 +653,7 @@ Most operations in the Compositor window have a tool window which is enabled by 
 	\vspace{-4ex}
     \includegraphics[width=0.9\linewidth]{images/camera_tool.png}
     \caption{Camera and Projector tool}
-    \label{fig:images/camera_tool}
+    \label{fig:camera_tool}
 \end{wrapfigure}
 
 In the case of the camera and projector, the tool window shows x, y, and z coordinates. 
@@ -765,7 +765,7 @@ Cropping reduces the visible picture area of the whole project. It changes the v
     \centering
     \includegraphics[width=0.5\linewidth]{images/cropped_area.png}
     \caption{Cropped area is in the top right corner}
-    \label{fig:images/cropped_area}
+    \label{fig:cropped_area}
 \end{figure}
 
 \begin{itemize}
@@ -833,6 +833,847 @@ When rendering, the project's output size is the final video track size where th
 If the output size is larger than the temporary then the image transferred from the temporary will fit inside the Output Track. 
 Any space left on the Output is left blank.  
 If the output size is smaller than the temporary then some of the temporary video will be cropped.
+
+\section{Viewer Window}%
+\label{sec:viewer_window}
+
+The viewer window (figure~\ref{fig:viewer_window}) is a place to load and preview your source media and clips.  
+Here you can quickly browse through an asset using the slider control, focus on an area of work with the preview region or you use editing controls to cut and paste segments into the project or create a clip for later use.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.99\linewidth]{images/viewer_window.png}
+    \caption{Viewer Window}
+    \label{fig:viewer_window}
+\end{figure}
+
+To open the viewer window, go to Window$\rightarrow$Show Viewer.  
+The display is the area on the viewer where you actually see media playing.  
+Before you can play any media, you must first load it on the viewer. 
+To load media into the viewer:
+
+\begin{enumerate}
+    \item  Open the resources manager window and select the Media folder or the Clip folder.
+    \item  Drag a file from the Media or the Clip folder to the viewer.
+\end{enumerate}
+
+You can also load media onto the viewer by right clicking on a file in the asset manager and selecting View from the popup menu or by double clicking on the icon. 
+Once your media loads you will see it appear on the display. 
+To play, rewind or forward through it use the slider control or the transport controls. 
+You can change the media display size by right clicking on the screen to activate the display zoom menu. 
+Select zoom levels of 50\%, 100\% or 200\% of the original media size.
+
+When displaying media, the viewer uses the project's defined output size format settings, not the original assets format. 
+You can change the project's output to match the asset's format using the match project size menu option in the asset manager. 
+In the Viewer you can move around in the source media or clips and select regions to paste into the project. 
+Operations done in the viewer affect a temporary EDL or a clip, but not the timeline.
+
+\section{Options in both the Compositor and Viewer Windows}%
+\label{sec:options_in_both_the_compositor_and_viewer_windows}
+
+The next sections describe capabilities that are available in both the Compositor and Viewer windows.
+
+\subsection{Click to Play in Viewer and Compositor}%
+\label{sub:click_to_play_in_viewer_and_compositor}
+
+In both the Viewer and Compositor windows, there is an arrow on the right hand side of the other buttons in the edit panel.  
+Mouse action can be toggled on/off via this arrow, which has a tooltip of “Click to play” with the letter ‘p’ to be used for a shortcut.  
+When enabled there is a gold-colored shadow around the usual green-colored arrow.  
+The purpose of enabling this capability is to make it really easy to play the media in the window by just using the left mouse button to start or stop the play.  
+The entire main canvas surface becomes a big play button!  
+Although the default is initially off, a good reason to enable this, at least temporarily, is so that you can quickly review your video before a render. 
+ 
+\begin{description}
+    \item[left click]          forward play or stop forward play if already playing
+    \item[middle wheel]  single frame forward or back
+    \item[middle click]    reverse play or stop reverse play if already playing. 
+        Note that some 3 button mice do not accommodate a middle click for reverse but you can find out by testing from a terminal window with the command xev.
+\end{description}
+
+\subsection{Timebar + Preview Region Usage in the Compositor and Viewer}%
+\label{sub:timebar_preview_region_usage_in_the_compositor_and_viewer}
+
+The navigation features of the Viewer and Compositor behave very similarly. 
+Each has a timebar and slider below the video output. 
+The timebar represents the entire time covered by the program.   
+When you have a file loaded in the main window and then slide around it using the compositor slider. The insertion point in the main window follows the compositor. 
+
+Labels and in/out points are fully supported in the viewer and compositor.  
+In the viewer and compositor, labels and in/out points are displayed in the timebar.  
+But there is a difference between the viewer and compositor in that the compositor reflects the state of the program while the viewer reflects the state of a clip but not the program. 
+When you hit the label button in the compositor, the label appears both in the compositor timebar and the program timebar. 
+When you select a label or in/out point in the compositor, the insertion point in the program window jumps to that position. 
+
+The timebar in the compositor and the viewer can be used to define a region known as the preview region.  
+This preview region is the region of the timeline which the slider affects.  
+By using a preview region inside the entire program and using the slider inside the preview region you can very precisely and relatively quickly seek in the compositor and viewer.  
+The preview region can be especially handy when you have large pieces of media by previewing one section, then move to the next section.  
+
+The active preview region is the zone between the edge bars.  
+The full range of the window slider pointer action is down-scaled to the active preview region.   
+To use this, set the preview active region as a media time region of interest.  
+Now addressing the timebar with the mouse only operates as if the timebar is zoomed to the scale of the active preview zone.  
+This has the effect of magnifying the interesting media in terms of the mouse pointer addressing, for fine-tuning.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/timebar1.png}
+    \caption{The arrow above the green colored “play forward” transport button is on the timebar.}
+    \label{fig:timebar1}
+\end{figure}
+
+To create and use a preview region, hold down the right mouse button inside the timebar on either end of the timebar close to the edge until you see the resize pointer.  
+While continuously holding the right mouse button down, drag the arrow away from the end towards the middle of the timebar until you have the desired area outlined.  
+The slider will be a light blue color while the selected preview region will remain the same initial black color.  
+There are either a left or right resize pointer and you can click and drag in either direction to expand or shrink the region.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/timebar2.png}
+    \caption{ A left-facing arrow on the right side of the blue slider bar is used to drag the bar.}
+    \label{fig:timebar2}
+\end{figure}
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/timebar3.png}
+    \caption{Here you can see the right-facing arrow used to drag the other end of the slider bar.  
+        The black area between is the actual preview area.}
+    \label{fig:timebar3}
+\end{figure}
+
+You can slide the preview zone left or right by holding the right mouse button over the preview zone where you will see a fat double headed arrow.  
+The selected area will move left or right as you drag and still retains the same size.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/timebar4.png}
+    \caption{Note the double-headed fat arrow in the preview area used  to move the selection over.}
+    \label{fig:timebar4}
+\end{figure}
+
+Settings:
+
+\begin{enumerate}
+    \item  If no preview region is set, increasing the length of the media on the timeline by inserting media or
+        appending, has no effect on the non-selected preview region.  That is, you will not see the blue slider
+        suddenly mysteriously appear.
+    \item  If the preview region is set, when you replace the current project or file,  the preview region is
+        automatically disabled.
+    \item  If the preview region is set, when you append data or change the size of the current project, the
+        preview region may appear to either move, shrink, or grow depending on the new length of the
+        media on the timeline.  
+    \item  To disable the preview region, you will have to drag both the right and the left blue slider bars
+        completely to their corresponding end so that there is no longer any visible blue slider.
+\end{enumerate}
+
+A good method for taking advantage of the preview region is described here.  
+On the main track canvas, scroll to the beginning of the area of interest.  
+When you do that, you will see in the compositor the red indicator line of that location.  
+Now in the compositor window, right mouse drag from the left side of the edge of the timebar to create the blue slider bar line up to the red indicator.  
+Back in the main track canvas, move to the location of the area you want to end looking and again you will see the red indicator line in the compositor.  
+Use the right mouse drag from the right to stop at that end point.  Using this method is often easier than continuous usage of the single frame move which can be tedious.
+
+One last interesting item of note --- sometimes you may wish to see just a little more that is outside the preview region and you can do so!  You can actually move outside the compositor or viewer window space and view more, at least until you hit the end of the monitor space.
+
+\section{Resources Window}%
+\label{sec:resources_window}
+
+Effects, transitions, labels, clips, proxies, user bins, and media assets are accessed here. 
+Most of the resources are inserted into the project by dragging them out of the resource window. 
+Management of resource allocation is also performed here.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.99\linewidth]{images/resource_window.png}
+    \caption{Folders are in the first column with contents of that folder on the right hand side}
+    \label{fig:resource_window}
+\end{figure}
+
+The resources window is divided into two areas (figure~\ref{fig:resource_window}. 
+One area lists folders and another area lists the folder contents. 
+Going into the folder list and clicking on a folder updates the contents area with the contents of that folder. 
+The folders can be displayed as icons or text. 
+There are several variations for displaying the contents; select \emph{Display text}, \emph{Display icons}, \emph{Display icons packed}, \emph{Display icons list} as types of display for the assets or plugins. 
+Use the letter “v” to easily scroll through the choices and see which you prefer.  
+You can also get to these options from the menu by a right mouse click in the window.
+
+A \emph{Search} option is available for any of the folders in the Resources window (and when using “Attach effect” on the main track canvas for the Plugins).  
+As you type in characters a match is made with that substring.  
+Names that do not match are filtered out making it a lot easier to find the item you are looking for.  
+The characters can be any where within the phrase and it does not matter if upper or lower case. 
+
+Other options you will see if you \textbf{right mouse click in the folder} which brings up the menu are described next.  
+
+\begin{description}
+    \item[ Load files ]  for convenience to load files same as from the main window so you do not have to move the mouse so far in case you have multiple monitors.
+    \item[Display text/icons]  as described previously for format variations preference.
+    \item[Select]  options are All, Used, Unused, and None.  This gives you the capability to have a set of the
+        contents highlighted for ease of use so you can see what is or is not loaded, or unset the highlight.
+    \item[Sort items]  to sort the contents of the folder alphabetically.  Especially helpful if you accidentally did a 
+        drag and changed your mind or dropped suddenly so that the assets no longer look nicely aligned.
+    \item[Copy/Paste file list]  use to easily copy a set of files or paste a set of files between Cin and windows.
+    \item[Snapshot/Grabshot]  described elsewhere in more detail.
+\end{description}
+
+Using the right mouse click to bring up a menu in the folder area, you can also switch from Display text to Display icons, Sort items and create, delete and manipulate user defined folders/bins. Select Folder to create a user Folder or modify an existing folder.
+
+If you \textbf{right mouse click on a highlighted/selected resource}, several options are available depending on whether the resource is an effect or transition or a piece of media.  
+You can highlight several for some options so that it is applicable to all of them, such as Info.  
+Those listed immediately below are the available choices for media assets.
+
+
+\begin{description}
+    \item[Info]  provided basic Asset information; details are described later in this section.
+    \item[Display text/icons]  same as mentioned previously.
+    \item[Sort]  same as mentioned previously.
+    \item[Rebuild index] if you switch from/to using ffmpeg/native for media loading, you should rebuild
+        indexes.  Or if you get hangs on media or strange looking tracks, you might want to rebuild indexes.
+    \item[View]  use this option to bring up the media in the Viewer window.
+    \item[View in new window]  in order to not overwrite your current viewer window, you can open any
+        number of viewer windows to simultaneously view multiple media.
+    \item[Open mixers]  when you record with multiple cameras setup, you can work with them most easily
+        using the mixer mode.  This is described in detail
+    \item[Paste]  
+    \item[Match]  if you need to change your media parameters you can choose from the following: Match frame
+        rate, Match project size, Match all 
+    \item[Remove]  use to Remove the asset from the project or with caution, to Remove from disk permanently.
+\end{description}
+
+In the case of Effects or Transitions, a right mouse click on a highlighted selection leads to an \emph{Info} button which gives a short 1 line description of what the effect/transition can be used for.
+For Labels, choices are \emph{Edit}, \emph{Label}, and \emph{Go to}.
+For Clips, \emph{Nest} and \emph{UnNest} as described elsewhere are available.
+
+\subsection{Info Asset Details}%
+\label{sub:info_asset_details}
+
+The asset \emph{Info} window also can be used to display detailed information about the selected/highlighted media file --- available for any loaded media of type mpeg or ffmpeg.  
+This is extremely helpful in determining what type of media it is, size, resolution, format, and type/number of audio streams.  It is especially useful for multiple program streams.  You can have the info window popped on several of your assets simultaneously.
+
+Figure~\ref{fig:info_asset_details} shows the “Detail” box to click on the left side and a simple, typical output in the Asset Detail window on the right side.  Also, note the highlighted media in the Resources window.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.99\linewidth]{images/info_asset_details.png}
+    \caption{The “Detail” box}
+    \label{fig:info_asset_details}
+\end{figure}
+
+\subsection{User Folders/Bins}%
+\label{sub:user_folders_bins}
+
+Creating folders that are more specific to a particular project is helpful in better organizing your work.  
+This can be done by utilizing the files already loaded to the “master” Media or Clips folders in the Resources window.  
+Below are steps illustrating an easy way to set up a folder.
+
+%TODO Below part need to be rewriten
+\begin{enumerate}
+    \item In the Resources window (figure~\ref{fig:folder_resources}), in the location of the Video/Audio effects and Media folders, bring up the “Folder...” popup by clicking the right mouse button.  
+        Highlight, then click “New Media or Clips”.
+        \begin{figure}[htpb]
+            \begin{minipage}{.55\linewidth}
+                \centering
+                \includegraphics[width=0.9\linewidth]{images/folder_resources.png}
+                \caption{Highlight, then click “New Media or Clips”.
+                    “Modify folder” can be used to   change the name of a folder.
+                    “Delete folder” in the popup can be used to delete a folder.
+                }
+                \label{fig:folder_resources}
+            \end{minipage}
+            \hfill
+            \begin{minipage}{.35\linewidth}
+                \centering
+                \vspace{18ex}
+
+                \includegraphics[width=0.9\linewidth]{images/folder_new.png}
+                \caption{Type in your folder name in the textbox.  Click OK.}
+                \label{fig:folder_new}
+            \end{minipage}
+        \end{figure}
+    \item  In the “New folder” popup as shown below (figure~\ref{fig:folder_new}), type in your folder name in the textbox.  Click OK.
+        \begin{figure}[htpb]
+            \centering
+        \end{figure}
+    \item  Select the “master” Media folder to see which files are currently loaded, figure~\ref{fig:folder_master}.  
+        Highlight the files there that you want to copy to your new folder (named Photos of Garden).  
+        Drag the files to the left and when you see the Photos of Garden folder become highlighted, then drop there.  
+        You can drag and drop any of the media from the “master” Media at any time.  
+        It flashes when the drop is successful.
+\end{enumerate}
+
+\begin{wrapfigure}[12]{O}{0.53\linewidth} 
+    \vspace{-4ex}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/folder_master.png}
+    \caption{The “master” Media folder}
+    \label{fig:folder_master}
+\end{wrapfigure}
+
+Adding the Shift key before the actual drop, will allow for relative path filenames instead of full path.
+But you might want to include or eliminate some of the media that exists in one of the folders that you have set up already.  
+In this case you will want to click on the “Modify folder” in the popup.  
+When you bring up the Modify folder window, if you already have files in that folder, you will see filters that were generated automatically when you did a Drag and Drop.
+
+
+\begin{figure}[htpb]
+    \centering
+    %\includegraphics[width=0.8\linewidth]{name.ext}
+    \begin{tikzpicture}[scale=1, transform shape]
+        \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.7\linewidth]{images/folder_modify.png}};
+        \node [yshift=-29mm, xshift=-1cm,anchor=east] at (img1.north west) (Arrow1) {\parbox{8em}{Here is the filter that was generated with the original drop }};
+        \node [yshift=-85mm, xshift=0cm,anchor=east] at (img1.north west) (Arrow2) {\parbox{10em}{When you click on the Value portion of that filter, the entire set of files that are covered by the filter rules pops up.   Now you can highlight a target filename that you would like to remove, and just erase that line and check the green checkmark for OK.}};
+        \draw [->, line width=1mm] (Arrow1) edge  ([yshift=-29mm] img1.north west);
+        \end{tikzpicture}
+    
+    \caption{Modify target}
+    \label{fig:insertion-points}
+\end{figure}
+
+To delete the entire set of files listed on the filter rule, highlight the rule line and hit the “Del” button.  
+To add a new filter rule, click on the “Add” button which will automatically add a default line after any current lines.  
+The default line will be a line that matches everything in the “master” Media folder which is “Or  Patterns  Matches   *”.  
+Click the right mouse button on the current field underneath the column header to see the choices available for each column.  
+
+Modifications will not be in effect until you click on the green arrow OK button or click on the Apply button.  
+But once you hit Apply, clicking on the red X button will not undo your changes.  
+The filter/search rules are applied in the order listed in the Modify folder window.  
+You can change the order of the filter rules by highlighting the rule you want to move and then drag and drop to a new location.
+
+The figure~\ref{fig:} below displays the available choices for each field.
+
+\begin{figure}[htpb]
+    \centering
+    %\includegraphics[width=0.8\linewidth]{name.ext}
+    \begin{tikzpicture}[scale=1, transform shape]
+        \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/modify_folder1.png}};
+        \node (img2) [yshift=-1cm, xshift=4cm, rotate=0] at (img1) {\includegraphics[width=0.6\linewidth]{images/modify_folder2.png}};
+        \node (img3) [yshift=-1cm, xshift=3cm, rotate=0] at (img2){\includegraphics[width=0.3\linewidth]{images/modify_folder3.png}};
+    \end{tikzpicture}
+    \caption{The available choices for each field}
+    \label{fig:modify_folder}
+\end{figure}
+
+Information about the columns and rules for the search filters in the Modify folder window follows.
+
+Column headers:
+
+\begin{description}
+\item[ Enable]  this column is used to designate the state of that filter rule
+    \begin{description}
+        \item[ Off]		disable the filter
+                \item[And] 		narrow your search; all of your search terms must be present
+                \item[Or]		broaden your search to include more values
+                \item[And Not]	exclude terms that do not contain the given value from your search results
+                \item[Or Not]	include terms that do not contain the given value from your search results
+    \end{description}
+\item [Target] – this column designates which media asset attribute to look at
+    \begin{description}
+        \item[ Patterns]	each line contains a filename filter, matches the file path
+                \item[Filesize]	number of bytes in a file
+                \item[Time]		date file was created
+                \item[Track Type]	track type of video, audio, or audio video (for both)
+                \item[Width]	Format width
+                \item[Height]	Format height
+                \item[Framerate]	Video framerate
+                \item[Samplerate]	Audio samplerate
+                \item[Channels]	Number of audio channels
+                \item[Duration]	Playback time in seconds --- it uses the largest of audio or video if contains both
+    \end{description}
+\item[Op] – boolean operators used to narrow or broaden the relationship between your search terms
+    \begin{description}
+        \item[Around]	about this value; use “+radius” for a search range: [target–radius ...  target+radius]
+        \item[Eq	]	equal to
+        \item[Ge]	greater than or equal to
+        \item[Gt]	greater than
+        \item[Ne]not equal
+        \item[Le]	less than or equal
+        \item[Lt] less than
+        \item[Matches]	exactly matches for strings
+    \end{description}
+\end{description}
+
+\textbf{Value} --- the characteristic you are looking for with expressions that can be written with the following:
+
+\begin{description}
+\item[Number] (decimal points are allowed and will be converted to a standard form):
+    \begin{description}
+        \item[inf] representing infinity
+        \item[\#[TtGgMmKk]]  ---  where \# represents a number and the characters mean:
+    \end{description}
+
+    \begin{tabular}{rcl}
+        inf&=& infinity\\
+        T&=&1099511627776\\
+        t&=&1000000000000\\
+        G&=&1073741824\\
+        g&=&1000000000\\
+        M&=&1048576\\
+        m&=&1000000\\
+        K&=&1024\\
+        k&=&1000\\
+    \end{tabular}
+
+\item[Scalar:] 
+
+    \begin{tabular}{l}
+        Number\\
+        Number+Number\\
+    \end{tabular}
+\item[Date time:]
+    \begin{tabular}{rcl}
+        date&=&year/month\\
+        date&=&year/month/day\\
+        time&=&hour:minute\\
+        time&=&hour:minute:second\\
+        date\_time&=&date time\\
+    \end{tabular}
+
+  \item[Duration:]
+      \begin{tabular}{rcl}
+    day  &=&	\#day 	  | \#days\\
+    week &=&	\#week 	  | \#weeks\\
+    month&=&	\#month | \#months\\
+    year &=&	\#year	  | \#years\\
+    delta&=&secs\\
+    delta&=&mins:secs\\
+    delta&=&hours:mins:secs\\
+      \end{tabular}
+
+\item[Around time:]
+    date time+duration
+
+  \item[Around length:]
+    duration+duration
+
+\end{description}
+
+Table showing the allowed usage:
+
+%TODO crate table for below code
+\begin{lstlisting}
+target:    |  eq  ge  gt  ne  le  lt   matches  around
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+patterns   | <---- strcmp ---------> + filter + nearest
+file_size  | <---- arithmetic -------+------> + radius
+mod_time   | <---- arithmetic -------+------> + radius
+track_type | <---- member test ------+--------+------>
+width      | <---- arithmetic -------+------> + radius
+height     | <---- arithmetic -------+------> + radius
+framerate  | <---- arithmetic -------+------> + radius
+samplerate | <---- arithmetic -------+------> + radius
+channels   | <---- arithmetic -------+------> + radius
+duration   | <---- arithmetic -------+------> + radius
+\end{lstlisting}
+
+where in the above, the filter can be:
+
+\begin{tabular}{rcl}
+    filter&=&list\\
+    filter&=&token\\
+    list&=&[token]\\
+    list&=&[token]list\\
+    string&=&<chars>|<empty>\\
+    token&=&string\\
+    token&=&string*token\\
+\end{tabular}
+
+Examples with some caveats first:
+
+\begin{enumerate}
+    \item   “Or” generally includes or adds whereas “And” generally excludes or subtracts.
+    \item   The filters only work on media in the folder; if there is no media, then there is nothing to search.
+    \item   The examples below are not meant to be executed as a list of filters in Modify folder, they are just single line examples to indicate what can work.
+    \item   Sort is by filename base name (directory path not included automatically) except when the “Around” operation is used and then it is sorted by that Target distance first and then filename.
+\end{enumerate}
+
+\begin{table}[htpb]
+    \centering
+    \caption{Examples}
+    \label{tab:label}
+    \small
+    \begin{tabular}{llllm{10em}} \toprule
+        Enable&	Target&	Op&	Value&	meaning\\\midrule
+Or	&Patterns  &Matches   &*&	 all files from the Media folder are included\\
+And Not&Filesize&Lt	&160000000& no files that are less than 160MB in size \\
+Or Not&	Time	&Ge	&2018/07/30 06:13:00	& files not greater than or equal date\\
+And	&Duration&Eq	&01:00		& files included must have 60 secs. Duration\\
+Off	&Samplerate&Ne	&44000		& off for now, but may want to include later\\
+And	&Framerate&Around&24+1		& files included all have 24 to 25 framerate\\
+Or	&Patterns&Matches&[*.mp4]	& all files with the extension of mp4\\
+Or	&Time&	Around&2018/08/02 06:00:00 + 02:00:00  & files at 4AM to 8 AM\\\bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsection{Vicons \& Aicons – aka Video Icons / Audio Icons}%
+\label{sub:vicons_aicons_aka_video_icons_audio_icons}
+
+Vicons are video icons.  
+Aicons are audio icons.  
+By default the Resources window will play the first 5 seconds of video or audio waveform looped in the area occupied by the media icons (figure~\ref{fig:vicons1}). 
+This is enabled for the Media/Proxy folders in icon mode when the mouse pointer is inside the Resources window. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.99\linewidth]{images/vicons1.png}
+    \caption{Note "Full Play" mode and Vicons and Aicons in Media folder}
+    \label{fig:vicons1}
+\end{figure}
+
+The waveform in the figure~\ref{fig:vicons2} is displayed in the Resources window in the color green/yellow for the 2 audio tracks. 
+There is a colored bar on the top of each a-icon where the color is based on the Color Spectrum --- the smaller the time duration, the redder the color; then as the time duration goes up, the color goes up so that you will go to green, then yellow, then blue, then really dark blue, then purple for the audio files 1 hour and over.  
+There are various other colors between these colors same as that seen in the color spectrum in the screenshot below.  
+Colors are utilized from the hue wheel in the counter-clockwise direction.  
+Note that the horizontal line in the middle of the a-icon is yellow/red representing the 2 audio tracks and is only red for mono.
+
+
+
+\begin{figure}[htpb]
+    \centering
+    %\includegraphics[width=0.8\linewidth]{name.ext}
+    \begin{tikzpicture}[scale=1, transform shape]
+        \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.99\linewidth]{images/vicons2.png}};
+        \node (img2) [yshift=0cm, xshift=2.8cm, rotate=0] at (img1.south west) {\includegraphics[width=0.3\linewidth]{images/hue_wheel.png}};
+        \node [yshift=-5mm, xshift=1cm,anchor=west] at (img2.east) (Arrow1) {\parbox{18em}{Color hue wheel. For illustration only}};
+        \draw [->, line width=1mm] (Arrow1) edge  ([yshift=-5mm] img2.east);
+    \end{tikzpicture}
+    \caption{Draw Vicons   |            Screenshot display various audio file lengths; red is shortest.}
+    \label{fig:vicons2}
+\end{figure}
+
+Note that if in Settings$\rightarrow$Preferences under the Appearance tab, you have unchecked “Use thumbnails in resource window” you will only have default icons and none of the above capabilities.
+
+
+\subsection{Resources Window Preview Mode}%
+\label{sub:resources_window_preview_mode}
+
+
+Preview mode can be used to pop up a window which draws the vicons/aicons thumbnails in a larger size.  
+Preview or “draw vicons” mode is a helpful feature of cinelerra that lets you see and/or hear the first 5 seconds of the video for identification purposes. 
+The Preview mode/playback toggle is to the right of the Visibility label as seen in the screenshot above. 
+Preview mode is available for the Media, Proxy, Media User Bins, and Clips but clips are only 1 image.
+
+When “Preview”/“draw vicons” is enabled/active, if you click on one of the video icons or an audio waveform icon, a view pops up that increases the size to 4 times the surface area larger. 
+This makes it easier to see or hear if it is the media you are looking for in case you have many similar media files. 
+To conserve memory, the video is stored 8-bits per pixel which results in low image quality while the audio is 16-bit. 
+The reason for playing 5 seconds of a video for a vicon is that until the first I-frame, the media frequently does not decode properly.  
+In other words, a lot of media does not begin at the “beginning” point and will not be properly rendered until enough data has been read to assemble a picture.  
+You can increase the thumbnail size, clarity of pixels (memory size) and color mode but it takes a lot more memory.  
+Change these values in Settings$\rightarrow$Preferences, Appearance tab, right hand side of the Layout section – be aware that when you click OK, your session will re-initialize.  
+You can also temporarily increase the preview mini-window by use of the mouse wheel up or down.
+
+There are 4 options for the preview mode.
+
+\begin{enumerate}
+    \item  \emph{Full Play} is the default mode.  
+        This means all of the media will automatically play when the mouse is in the Resources window and you can use the left mouse button to click on specific media to see it pop up in a larger view.  
+        Audio only files do not play the audio until the icon is clicked on and the waveform aicon pops up into the 4x larger mode. 
+        \emph{Full Play} includes the \emph{Mouse Over} capabilities as described below as well as the Inter-View \emph{Src Target} functions.
+
+\item  \emph{No Play} mode is especially useful on smaller computers and for users who find the constant loop play to be somewhat distracting.
+
+\item  \emph{Mouse Over} mode is activated by a single click on one of the vicons/aicons and deactivated with another single click over any of the icons.  
+    Once activated, whenever you just move the mouse over an icon, it automatically pops up the increased size preview.  
+    The first time in your session that you enable this feature, it may take a few seconds to load all of the icon previews into memory so be patient and just wait.  
+    \emph{Mouse Over} mode makes it quick and easy to preview without having to drag the media to the viewer.  
+    You can still drag the media same as without preview enabled.  
+
+\item  \emph{Src Target} mode gives easy access to the Inter-View source target available by using the middle mouse button on media.  
+    There are 2 advantages to this mode --- there is no 5 second play loop taking up cpu time and the popup allows for the use of the letter “f” on that popup to have it go to fullscreen mode.  
+    \emph{Src Target} mode in any scenario never plays sound as that is nonsensical usage.  
+    After the initial click to pop media in this mode, you also have the \emph{Mouse over} feature.
+\end{enumerate}
+
+For any of the options, but not \emph{No Play}, you can temporarily turn off that option by clicking on the button using the middle mouse button.  
+This helps to avoid having the thumbnail get in the way of dragging or other functions.  
+When you do, a line will be drawn through the current preview mode so that you are aware that it is in \emph{No Play} mode until click it again.
+
+Note that if in Settings$\rightarrow$Preferences under the Appearance tab, you have unchecked “Use thumbnails in resource window” you will only have default icons and no active previews.
+
+\begin{figure}[htpb]
+    \begin{minipage}{.69\linewidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{images/preview_icon_mode.png}
+        \caption{The location of the Preview/Draw Icons mode.}
+        \label{fig:preview_icon_mode}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.29\linewidth}
+        \vspace{2ex}
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/line_through_mode.png}
+        \caption{Note the line through the mode.}
+        \label{fig:line_through_mode}
+    \end{minipage}
+\end{figure}
+
+
+
+\subsection{Moving clips/media from/to Resources window}%
+\label{sub:moving_clips_media_from_to_resources_window}
+
+If you have several media files loaded into the Resources window of one instance of Cinelerra and want to load some of the same ones into another instance or just want a listing to save in a file for later use, you can do this with these set of steps:
+
+Copy or paste a list of files in the Media Resources window:  
+
+
+\begin{enumerate}
+    \item  create a highlighted selection of the desired media files in the media Resources window
+    \item    right click on an unused portion of that window to bring up the popup menu
+    \item     select the “Copy file list” item and a file list box will appear that contains the full path filenames
+    \item     wipe the textbox using your standard copy/paste method to put the list of files in the copy buffer
+    \item     in another cinelerra instance, choose the “Paste file list” of the media Resources window
+    \item     paste the list of files, again using your standard paste method, into the new file list box; press OK
+    \item    the status bar of the main window will be updated as the file list is loaded to the media folder (the purpose of displaying the status is simply to show that the load is progressing normally).
+\end{enumerate}
+
+Obviously this “Paste file list” feature means you can create a list of files outside of cinelerra using an editor, wipe the names, and then use “Paste file list” to load them into the media Resources window.  
+
+It is important to note that in the steps above, the Operating System cut and paste capabilities are in use for steps 4 and 6 as opposed to Cinelerra’s c/v shortcuts.  
+Since the procedure varies among the distros, you will have to adapt to your specific one.  For example, a usage for ubuntu consists of:
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item   Ctrl-c to copy the list of files; open gedit; Ctrl-v to paste the list of files into gedit
+    \item   Ctrl-c or the standard way using the right click to copy this list from gedit
+    \item Ctrl-v paste the list of files into the new file list box, and press OK
+\end{enumerate}
+
+\begin{figure}[htpb]
+    \centering
+    \begin{minipage}{.49\linewidth}
+    \centering
+        \includegraphics[width=0.99\linewidth]{images/copy_files1.png}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.49\linewidth}
+    \centering
+        \includegraphics[width=0.99\linewidth]{images/copy_files2.png}
+    \end{minipage}
+    \caption{Example of copy file list}
+    \label{fig:copy_files1}
+\end{figure}
+
+In the Figure~\ref{fig:copy_files1}, one instance of cinelerra has 6 items in the Media area highlighted that were copied to the file list.  
+Note how it includes the full pathname.
+
+In this screenshot on another instance of cinelerra, there are only 2 items in the media but the “Paste file list” box is ready to have the items inserted via the standard text box paste method.  When that is done, the additional 6 media files will be available on this other instance too.
+
+
+Another possible usage of this capability:
+
+\begin{enumerate}
+    \item  Right Click on the Clips Resources window and use the “Paste Clip” option to paste the Copy selection as a clip.  
+    \item  Similarly, by highlighting a clip in the Resources window and selecting its copy popup menu item using the right mouse button, that copy buffer can now be loaded onto the timeline.
+\end{enumerate}
+
+
+\subsection{Snapshot / Grabshot}%
+\label{sub:snapshot_grabshot}
+
+\begin{figure}[htpb]
+    \centering
+    \begin{minipage}{.49\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/snapshot.png}
+    \caption{Snapshot menu and choices}
+    \label{fig:}
+    \end{minipage}
+    \begin{minipage}{.49\linewidth}
+    \centering
+    \begin{tikzpicture}[scale=1, transform shape]
+        \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.65\linewidth]{images/grabshot.png}};
+        \node (img2) [yshift=2cm, xshift=-1cm, rotate=0] {\includegraphics[width=0.07\linewidth]{images/reticle.png}};
+    \end{tikzpicture}
+    \caption{Grabshot reticle \& orange box}
+    \label{fig:}
+    \end{minipage}
+\end{figure}
+
+To take a snapshot, perform the following steps:
+
+\begin{enumerate}
+    \item set your timeline insert marker where you want the snapshot --- this frame shows in the compositor
+    \item  right click in an empty spot in the media folder and the popup shows snapshot as the 5th item down
+    \item  highlight that and the submenu comes up allowing you to choose png, jpg, ppm or tiff
+\end{enumerate}
+
+The snapshot shows up in the Media folder.  
+It is saved by default in \texttt{/tmp} as \texttt{snap\_date-time.ext} BUT you can change the default directory path in Settings $\rightarrow$ Preferences $\rightarrow$Interface tab in the right hand side of the Editing section.
+
+Grabshot is the 6\textsuperscript{th} menu item.  
+A red circle reticle can be moved to the area to grab; use left mouse drag to surround an area; and right click to grab.
+
+
+
+
+\section{Other Options and Other Windows}%
+\label{sec:other_options_and_other_windows}
+
+\subsection{Transport Controls}%
+\label{sub:transport_controls}
+
+Transport controls are useful for navigation and for playing media.  
+Each of the Viewer, Compositor, and Program windows has its own transport panel.  
+The controls generally all contain a yellow colored tooltip when you mouse over the control, providing a hint of their function and shortcuts for usage.
+
+The transport panel is controlled by the keyboard as well as the graphical interface. 
+For each of the operations it performs, the starting position is the position of the insertion point in the Program window and the slider in the Compositor and Viewer windows. 
+The ending position is either the end or start of the timeline or the end or start of the selected region if there is one.
+
+The orientation of the end or start depends on the direction of playback. 
+If it is forward the end position is the end of the selected region. 
+If it is backward the end position is the start of the selected region.  
+The insertion point moves to track playback. 
+When playback stops, the insertion point stays where playback stopped. 
+Thus, by playing back you change the position of the insertion point. 
+The keyboard interface of either the numeric pad or alternative keys has more speeds with the addition of \emph{Forward Slow}(2) and \emph{Reverse Slow} (5).  
+Hitting any key on the keyboard twice pauses it. 
+The shortcuts section of this manual as well as a Shell Command available from the Cinelerra main window has a listing of each of the keys.
+
+When using frame advance functions the behavior may seem odd. 
+If you frame advance forward and then frame advance backward, the displayed frame does not change. 
+This is because the playback position is not the frame but the time between two frames. 
+The rendered frame is the area that the playback position crosses. 
+When you increment the time between two frames by one and decrement it by one, you cross the same frame both times and so the same frame is displayed.  
+There is an option in Settings$\rightarrow$Preferences, Appearance tab to “Always show next frame” that may help make this clearer for some users.
+
+The transport behavior changes if you hold down Ctrl when issuing any of the transport commands. This causes the starting point to be the In point if playing forward and the Out point if playing backward. If playing forward, the Out point becomes the ending point and if playing backward, the In point becomes the ending point. If no In/Out points are specified, the behavior falls back to using the insertion point and track boundaries as the starting and ending points.
+
+The transport behavior also changes if you hold down the Shift key along with KeyPad 1--6.  
+If normally audio is included in the play, it will be removed and if normally audio is not included in the play, it will be added.
+
+
+\subsection{Zoombar}%
+\label{sub:zoombar}
+
+The compositor has zoom capability. 
+The pull-down menu on the bottom of the compositor window has a number of zoom options. 
+When set to Auto the video is zoomed to match the compositor window size as closely as possible. 
+When set to any other percentage, the video is zoomed a power of 2 and scrollbars can be used to scroll around the output. 
+When the video is zoomed bigger than the window size,  you can use scrollbars to scan around or if the zoom icon is enabled, the middle mouse button can be used to zoom in or out the video.
+
+The zoom toggle also causes the Compositor window to enter zoom mode. 
+In zoom mode, clicking in the video output zooms in while a Ctrl-click in the video output zooms out. 
+If you have a wheel mouse, rotating the wheel zooms in or out too. 
+Zooming in or out with the zoom tool does not change the rendered output. 
+It is merely for scrutinizing video or fitting it in the desktop. Playing video on the compositor when zoomed to any size other that 100\%, the original size, requires Cinelerra to do extra processing steps. 
+This could affect performance on slower systems
+
+\subsection{Show Overlays}%
+\label{sub:show_overlays}
+
+Color Coded Keyframe Curves are a big feature in the “Show Overlays” window because by changing the colors to suit the user, it helps to remove confusion from multiple curves on the track canvas.  
+They can be viewed from the pulldown menu of Window$\rightarrow$Show overlays but they will operate the same as when used from the View pulldown menu.  
+The “Color Coded Keyframe Curves” have distinct colors associated with each type for ease of identification.  
+By clicking button 1 on the “Color Ball” to the right of any keyframe type in the “Show overlays” menu you have the ability to change the colors to whatever works best for your video.  
+The color ball changes made will be retained across sessions.
+
+There is a line separating the first 4 items, which are just non-automation type settable values as opposed to “auto” keyframe types.  
+The color is not changeable for the 3 items of Mode, Pan, and Mask which simply display their symbol icon.
+
+Screenshot below displays the Show overlays popup with all of its options and color coded types such as yellow for Speed and blue for Camera Z.  
+Upon clicking on the associated “color ball” to the right of any keyframe type, for example “Fade” in this screenshot, the color wheel palette window pops up so that you can manipulate the color as desired.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.99\linewidth]{images/overlays_window.png}
+    \caption{Show Overlays window on the left with the Color ball window to the right to set color}
+    \label{fig:overlays_window}
+\end{figure}
+
+Screenshot below shows several color coded lines for different keyframes along with the Fade slider for manipulation.  
+The slider is in the same color as the color coded keyframe type line which is the same color as in the “Show overlays” window.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/overlays1.png}
+    \caption{Lines are colored here on the timeline as designated in Show Overlays}
+    \label{fig:overlays1}
+\end{figure}
+
+Overlays Window Nuances:
+
+The Overlays window is an alternative to the main track canvas View pulldown, and thus the order is mostly maintained to match each other.  
+To make it easier to get a quick temporary look at a specific option, there is a shortcut of Shift-LMB (left mouse button) that can be used as opposed to having to uncheck everything that is currently checked and then having to recheck them on when done.  
+Here is a list of how they work.  Keep in mind that if the Expander on the patchbay is enabled, you still see the track.
+
+\begin{itemize}
+    \item  Shift+LMB (left mouse button) in the Overlays Window on a checkbox will turn off all other
+        checkboxes except for the one you are on.  Then this named box will have outline for a  "hot" spot.
+    \item  Shift+LMB on this "hot" spot will return to "cool" of the previous settings with all of the previous
+        checkboxes checked again.
+    \item  Shift+LMB on a non-"hot" spot will simply check or uncheck a box and there is no previous state.
+    \item This all works in conjunction with the View pulldown menu which, of course, has no hot spots.
+    \item  Caveat \#1 - Shift+LMB on the top 4 choices of Assets, Titles, Transitions, Plugin Keyframes will turn
+        off all of the checkboxes below because it makes sense to do so.
+    \item  Caveat \#2 - Shift+LMB on the Autos will not turn off Assets, Titles, Transitions, or Plugin Keyframes
+        because you need to be able to see what is going on.
+        \item Caveat \#3 - XYZ toggle on/off of Camera and Projector are not affected.
+\end{itemize}
+
+\begin{figure}[htpb]
+    \begin{minipage}{.29\linewidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{images/overlays_list1.png}
+        \caption{Original Settings --- cool spot}
+        \label{fig:overlays_list1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.29\linewidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{images/overlays_list1.png}
+        \caption{Note Titles box hot spot  }
+        \label{fig:overlays_list1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.29\linewidth}
+        \centering
+        \includegraphics[width=0.99\linewidth]{images/overlays_list1.png}
+        \caption{Cam/Proj XYZ toggle to fine tune}
+        \label{fig:overlays_list1}
+    \end{minipage}
+\end{figure}
+
+
+
+\subsection{Sound Level Meters Window}%
+\label{sub:sound_level_meters_window}
+
+An additional window, the levels window, can be brought up from the Window pulldown.  
+The levels window displays the output audio levels after all mixing is done.  
+The visible range of the sound level meters is configurable in Settings$\rightarrow$Preferences, Interface tab under the Operations section.
+
+\begin{wrapfigure}[16]{O}{0.3\linewidth} 
+    \centering
+    \vspace{-4ex}
+    \includegraphics[width=0.5\linewidth]{images/volume_meter.png}
+    \caption{Sound Level Meters Window}
+    \label{fig:volume_meter}
+\end{wrapfigure}
+
+Sound level meters can be toggled in the viewer and compositor windows with the show meters button.  
+They also appear in the patchbay when the track is expanded and in the recording monitor when audio is being recorded. 
+
+The sound levels in the levels window, compositor, and viewer correspond to the final output levels before they are clipped to the sound card range.  
+In the record monitor they are the input values from the sound card.  
+In the patchbay they are the sound levels for each track after all effects are processed and before down-mixing for the output.  
+Most of the time, audio levels have numerical markings in dB but in the patchbay there is not enough room.
+
+
+
+The sound level is color coded as an extra means of determining the sound level.  
+Even without numerical markings, the sound level color can distinguish between several ranges and overload.  
+Look at the color codings in a meter with numerical markings to see what colors correspond to what sound level.  
+Then for meters in the patchbay in expanded audio tracks, use the color codings to see if it is overloading.
+
+Be aware that sound levels in Cinelerra can go above 0 dB.  
+This allows for not only seeing if a track is overloading but how much information is being lost by the overloading.  
+Overloading by less than 3 dB is usually acceptable.  
+While overloading is treated as positive numbers in Cinelerra, it is clipped to 0 when sent to a sound card or file.
+
+
+
+
 
 
 

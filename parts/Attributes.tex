@@ -116,20 +116,20 @@ Explanation of the various fields is described next.
 
         \begin{description}
             \item[RGB-8 bit] 
-                Allocates 8 bits for the R, G, and B channels and no alpha. This is normally used for uncompressed media with low dynamic range.
+                Allocates 8\,bits for the R, G, and B channels and no alpha. This is normally used for uncompressed media with low dynamic range.
             \item[RGBA-8 bit]
-                Allocates an alpha channel to the 8 bit RGB colormodel. It can be used for overlaying multiple tracks.\\
+                Allocates an alpha channel to the 8\,bit RGB colormodel. It can be used for overlaying multiple tracks.\\
             \item[RGB-Float]
-                Allocates a 32 bit float for the R, G, and B channels and no alpha. This is used  for high dynamic range processing with no transparency.
+                Allocates a 32\,bit float for the R, G, and B channels and no alpha. This is used  for high dynamic range processing with no transparency.
             \item[RGBA-Float]
-                This adds a 32 bit float for alpha to RGB-Float. It is used for high dynamic range processing with transparency.\\
+                This adds a 32\,bit float for alpha to RGB-Float. It is used for high dynamic range processing with transparency.\\
             \item[YUV-8 bit]
-                Allocates 8 bits for Y, U, and V. This is used for low dynamic range operations in which the media is compressed in the YUV color space. Most compressed media is in YUV and this derivative allows video to be processed fast with the least color degradation.
+                Allocates 8\,bits for Y, U, and V. This is used for low dynamic range operations in which the media is compressed in the YUV color space. Most compressed media is in YUV and this derivative allows video to be processed fast with the least color degradation.
             \item[YUVA-8 bit]
-                Allocates an alpha channel to the 8 bit YUV colormodel for transparency.
+                Allocates an alpha channel to the 8\,bit YUV colormodel for transparency.
                 In order to do effects which involve alpha channels, a colormodel with an alpha channel must be selected. 
                 These are RGBA-8 bit, YUVA-8 bit, and RGBA-Float. 
-                The 4 channel colormodels are slower than 3 channel colormodels, with the slowest being RGBA-Float. 
+                The 4 channel colormodels are slower than 3\,channel colormodels, with the slowest being RGBA-Float. 
                 Some effects, like fade, work around the need for alpha channels while other effects, like chromakey, require an alpha channel in order to be functional.  
                 So in order to get faster results, it is always a good idea to try the effect without alpha channels to see if it works before settling on an alpha channel and slowing it down.
 

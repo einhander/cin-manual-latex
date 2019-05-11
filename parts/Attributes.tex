@@ -127,6 +127,7 @@ Explanation of the various fields is described next.
                 Allocates 8\,bits for Y, U, and V. This is used for low dynamic range operations in which the media is compressed in the YUV color space. Most compressed media is in YUV and this derivative allows video to be processed fast with the least color degradation.
             \item[YUVA-8 bit]
                 Allocates an alpha channel to the 8\,bit YUV colormodel for transparency.
+        \end{description}       
                 In order to do effects which involve alpha channels, a colormodel with an alpha channel must be selected. 
                 These are RGBA-8 bit, YUVA-8 bit, and RGBA-Float. 
                 The 4 channel colormodels are slower than 3\,channel colormodels, with the slowest being RGBA-Float. 
@@ -140,7 +141,7 @@ Explanation of the various fields is described next.
                 16 bit integers were used in the past and were too lossy and slow for the amount of improvement.  
                 RGB float does not destroy information when used with YUV source footage and also supports brightness above 100\,\%. 
                 Be aware that some effects, like Histogram, still clip above 100\,\% when in floating point.
-        \end{description}
+        
     \item[Interlace mode:]
         this is mostly obsolete in the modern digital age, but may be needed for older media such as that from broadcast TV.  Interlacing uses two fields to create a frame. One field contains all odd-numbered lines in the image; the other contains all even-numbered lines.  Interlaced fields are stored in alternating lines of interlaced source footage. The alternating lines missing on each output frame are interpolated.
 \end{description}

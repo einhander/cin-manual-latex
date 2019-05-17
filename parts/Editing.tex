@@ -21,14 +21,17 @@ On the left of the timeline is a region known as the patchbay.  The patchbay ena
     \item[Expander] which is a down arrow on the right side, is for viewing more options on the patchbay and for viewing the effects represented on the track.   You can just click on the expander to expand or collapse the patchbay and the track.  If it is pointing sideways, the track is collapsed.  If it is pointing down, the track is expanded.  Existing effects appear below the media for the track.
 \end{description}
 
-\noindent Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay}).
-
-\begin{wrapfigure}[20]{r}{0.5\textwidth}
+\begin{wrapfigure}[17]{O}{0.4\linewidth}
+    \vspace{-2ex}
     \centering
-    \includegraphics[width=0.6\linewidth]{images/patchbay01.png}
+    \includegraphics[width=0.79\linewidth]{images/patchbay01.png}
     \caption{Patchbay}
     \label{fig:patchbay}
 \end{wrapfigure}
+
+Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay}).
+
+
 
 If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click on the toggle to enable/disable the feature.
 
@@ -185,9 +188,9 @@ pasted one after the other, keeping the same order they have on the stack.
 
 \paragraph{Split --- blade cut and hard edges:} You can cut the tracks into 2 pieces on the timeline by putting the hairline cursor on the place you want to do a cut and then using the character “x” or the scissors tool (figure~\ref{fig:cut}). 
 
-\begin{wrapfigure}{r}{0.4\textwidth}
+\begin{wrapfigure}[16]{O}{0.3\textwidth}
     \centering
-    \includegraphics[width=0.7\linewidth]{images/cut.png}
+    \includegraphics[width=0.9\linewidth]{images/cut.png}
     \caption{Blade cut}
     \label{fig:cut}
 \end{wrapfigure}
@@ -246,7 +249,7 @@ When an edit is marked as selected, it can be cut/copied into the paste clip buf
 The \textit{edits} popup is activated on a track and a red and yellow colored reticle appears to temporarily mark the location when you click on the middle mouse button.  An expanded explanation is provided below.
 
 \begin{center}
-    \begin{tabular}{l p{12cm}}
+    \begin{tabular}{l p{12.9cm}}
         \toprule
         \textbf{Key} & \textbf{Operations} \\ \hline
         Drag & Hold down the Ctrl key while dragging to move a single edit elsewhere. \\
@@ -346,15 +349,17 @@ Figure~\ref{fig:inter-view01} shows an example of the Inter-View mode mapping pr
     \label{fig:inter-view01}
 \end{figure}
 
-\noindent Explanation of how to use Inter-View mode will be described here next.
+Explanation of how to use Inter-View mode will be described here next.
 
 \begin{itemize}
     \item Do your editing as usual on the timeline until you are ready to see what is used or unused.
     \item Make sure you are in Preview mode in the Resources window; you enable this mode using the menu
-    \textit{Full play} to the left of the word Search \quad
-    \includegraphics[height=\baselineskip]{images/fullplay.png}.   \item Middle mouse click on a thumbnail in the Resources window and a popup occurs of that media with a
-    white colored bar at the top and a red colored bar at the bottom with black sections.
+        \textit{Full play} to the left of the word Search \quad
+        \includegraphics[height=\baselineskip]{images/fullplay.png}.
+    \item Middle mouse click on a thumbnail in the Resources window and a popup occurs of that media with a
+        white colored bar at the top and a red colored bar at the bottom with black sections.
 \end{itemize}
+
 The red/white bars represent the presence and the black sections represent the absence of where that media is used on the timeline.  To get to a bigger representation, use the “f” key for a full screen.  Now
 you can operate the following buttons to display what you need to see and to move around.  It is important to note that \textit{locked tracks} will not be represented.  This makes it easy to ignore the audio track segments if you want so there is less confusion in the display.
 \begin{itemize}
@@ -368,6 +373,7 @@ you can operate the following buttons to display what you need to see and to mov
     \item Shift-click on the bottom bar and a \textit{selection} is made of that section in the timeline and the composer
     is updated with that start position.
 \end{itemize}
+
 Figure~\ref{fig:inter-view02} displays Inter-View window and its relation to the timeline, viewer, and compositor.
 \begin{figure}[htpb]
     \centering
@@ -380,7 +386,7 @@ The Inter-View mode works for Media, Proxy, and User Bins.  When the preview win
 \section{Some Specific Editing Tools}%
 \label{sec:specific_editing_tools}
 
-\noindent This section covers some more detailed editing tools and scenarios for edit management.
+This section covers some more detailed editing tools and scenarios for edit management.
 
 \subsection{Edit Length}%
 \label{sub:edit-lenght}
@@ -486,19 +492,92 @@ c = cut distance \\
 rest == p+=c: for rest of clips \\
 01 = flags edits\_moved, rest\_moved
 
-\vspace{2ex} \textbf{Cinelerra-HV/CV:}
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=1.0\linewidth]{images/trim-cv.png}
-\end{figure}
+\paragraph{Cinelerra-GG:}
 
-\vspace{2ex} \textbf{Cinelerra-GG:}
+{\small
+\begin{verbatim}
+                                   drag left       drag right
+curr s+=c,l-=c; +rest                 <               >     ... rest
++-------------+    all left      +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|012345|xyz++abc|2345|xyz+
++-------------+            11    +-------------+ +-------------+
+curr l+=c; +rest                          <               >  ... rest
++-------------+  ripple right    +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
++-------------+            01    +-------------+ +-------------+
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=1.0\linewidth]{images/trim-gg.png}
-\end{figure}
+prev l+=c; curr ps+=c,l-=c            <              >
++-------------+    roll left     +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +ab|012345|xyz+ +abcd|2345|xyz+
++-------------+            00    +-------------+ +-------------+
+|curr l+=c; next ps+=c,l-=c                <               >
++-------------+    roll right    +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|1234|wxyz+ +abc|123456|yz+
++-------------+            00    +-------------+ +-------------+
+
+s-=c                                  <              >
++-------------+    slip left     +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|23456|xyz+ +abc|01234|xyz+
++-------------+            10    +-------------+ +-------------+
+s-=c                                      <               >
++-------------+    slip right    +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|23456|xyz+ +abc|01234|xyz+
++-------------+            10    +-------------+ +-------------+
+
+prev l+=c; curr p+=c; next ps+=c,l-=c <              >
++-------------+   slide left     +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +ab|12345|wxyz+ +abcd|12345|yz+
++-------------+            10    +-------------+ +-------------+
+prev l+=c; curr p+=c; next ps+=c,l-=c     <               >
++-------------+   slide right    +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +ab|12345|wxyz+ +abcd|12345|yz+
++-------------+            10    +-------------+ +-------------+
+
+curr s-=c,l+=c; +rest                 <               >      ... rest
++-------------+    edge left     +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|2345|xyz+  +abc|012345|xyz+
++-------------+            11    +-------------+ +-------------+
+curr l+=c; +rest                          <               >  ... rest
++-------------+    edge right    +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
++-------------+            01    +-------------+ +-------------+
+\end{verbatim}
+}
+
+\paragraph{Cinelerra-HV/CV:}
+
+{\small
+\begin{verbatim}
+                                   drag left       drag right
+curr s+=c,l-=c; next p-=c; +rest      <               >     ... rest
++-------------+    all left      +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|012345|xyz++abc|2345|xyz+
++-------------+            11    +-------------+ +-------------+
+curr l+=c; +rest                           <              >  ... rest
++-------------+    all right     +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
++-------------+            01    +-------------+ +-------------+
+
+prev l+=c; curr ps+=c,l-=c            <               >
++-------------+    one left      +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +ab|012345|xyz+ +abcd|2345|xyz+
++-------------+            00    +-------------+ +-------------+
+curr l+=c; next ps+=c,l-=c                 <              >
++-------------+    one right     +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|1234|wxyz+ +abc|123456|yz+
++-------------+            00    +-------------+ +-------------+
+
+s+=c                                  <               >
++-------------+    src left      +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|01234|xyz+ +abc|23456|xyz+
++-------------+            10    +-------------+ +-------------+
+s+=c                                       <              >
++-------------+    src right     +-------------+ +-------------+
++abc|12345|xyz+ ---------------> +abc|01234|xyz+ +abc|23456|xyz+
++-------------+            10    +-------------+ +-------------+
+\end{verbatim}
+}
 
 \paragraph{How to do a J-cut or L-cut} A J-cut is a split edit film editing technique in which the audio from a following scene overlaps the picture from the preceding scene, so that the audio portion of the later scene starts playing before its picture as a lead-in to the visual cut.  An L-cut is a different split edit film editing technique in which the audio from preceding scene overlaps the picture from the following scene, so that the audio cuts after the picture, and continues playing over the beginning of the next scene (figure~\ref{fig:j-cut}). To do either a J-cut or an L-cut, you first shorten the first or second video a little.  Then you block the audio tracks from changing by disarming the appropriate tracks.  Finally use \textit{One Edit (roll)} the cutting edge off the videos.  Moving to the right creates a J-cut and moving to the left creates an L-cut.
 \begin{figure}[htpb]
@@ -542,21 +621,24 @@ Now to use this feature, create a track with edits that have trims on the left a
 
 \paragraph{Cutting/Snapping edits} cuts from an edit handle to the insert point. 
 There are Edit Panel buttons which normally are used to move to the previous or next edit handle/label.
-\begin{wrapfigure}[10]{r}{0.5\textwidth}
+
+\begin{wrapfigure}[8]{O}{0.3\textwidth}
+    \vspace{-2ex}
     \centering
-    \includegraphics[width=0.6\linewidth]{images/snap.png}
+    \includegraphics[width=0.99\linewidth]{images/snap.png}
 \end{wrapfigure}
+
 They look like tags and the letter E on the menu bar and are oriented forward/backward.  These same buttons can be used to \textit{cut} from the insert pointer to the previous or next edit/label when the \texttt{ctrl+alt} keys are both pressed when the buttons are used.  They \textit{snap} off the media instead of doing the standard re-positioning.  This is useful to minimize the number of operations necessary to cut between edits/labels.
 
 Instead of using the edit panel buttons, you can more easily use the following keyboard shortcuts to perform the same functions:
 \begin{center}
     \begin{tabular}{l l l}
-        \hline \hline
+        \toprule 
         snap\_right\_edit &	ctrl+alt+ '.' \\
         snap\_left\_edit &	ctrl+alt+ ',' \\
         snap\_right\_label &	ctrl+alt +shift '.' &  shift+period is the > sign on US keyboards \\
         snap\_left\_label & 	ctrl+alt +shift',' &  shift+comma is the < sign on US keyboards \\
-        \hline
+        \bottomrule
     \end{tabular}
 \end{center}
 
@@ -593,13 +675,13 @@ It is easy to copy/paste clips/media within a single instance of cinelerra or ac
     \item use the Paste icon (shortcut v) to paste the clip to that other instance selection target
 \end{enumerate}
 
-\section{ShuttlePROv2 and ShuttleXpress Jog Wheels for Editing}%
+\section[ShuttlePROv2 and ShuttleXpress Jog Wheels for Editing]{ShuttlePROv2 and ShuttleXpress Jog Wheels for Editing\protect\footnote{credit Eric Messick --- \url{FixedImagePhoto.com/contact}}}%
 \label{sec:shuttle_jog_wheels_editing}
 
-\vspace{-2ex} {\footnotesize (credit Eric Messick --- FixedImagePhoto.com/contact)}
 
-\vspace{2ex} The ShuttlePROv2 and ShuttleXpress are affordable jog wheels which can be useful for working with Cin, especially if you do a lot of playing forward/backward, fast/slow/normal, and single frames (figure~\ref{fig:shuttle}).
+The ShuttlePROv2 and ShuttleXpress are affordable jog wheels which can be useful for working with Cin, especially if you do a lot of playing forward/backward, fast/slow/normal, and single frames (figure~\ref{fig:shuttle}).
 Directions for using the ShuttlePROv2 and the ShuttleXpress with Cinelerra are described next. These devices work by sending keystrokes used in Cin, corresponding to the shuttle action, to the keyboard buffer. The shuttle has been fully integrated into the Cinelerra code so that after the one initial setup, no further intervention is required.  The multi-speed outer wheel works the same and has the same number of S positions on both shuttles but the shuttle Xpress has only 5 keys.  Since the majority of user operations will most likely be with the use of the 2 wheels, the slightly smaller Xpress could be a better choice with its 5 easy to reach keys.  The Pro is approximately $4x7$\,inches whereas the Xpress is about $4x4$\,inches.
+
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.9\linewidth]{images/shuttle.png}
@@ -609,30 +691,33 @@ Directions for using the ShuttlePROv2 and the ShuttleXpress with Cinelerra are d
 
 \noindent The vendor supplied \textit{string} device names for the shuttles are currently:
 
+{\small
 \vspace{1ex} \texttt{/dev/input/by-id/usb-Contour\_Design\_ShuttlePRO\_v2-event-if00}
  
  \texttt{/dev/input/by-id/usb-Contour\_Design\_ShuttleXpress-event-if00}
  
  \texttt{/dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00}
+ }
 
 \vspace{1ex}
 \noindent Only 1 necessary initial setup is required due to permission settings for non-root usage. As root, just copy a file that provides the necessary permissions to use the shuttle, then reboot,  Example copy:
 
 \begin{lstlisting}[language=Bash]
-  sudo cp {cindat_path}/doc/99-ShuttlePRO.rules   /etc/udev/rules.d/
+$sudo cp {cindat_path}/doc/99-ShuttlePRO.rules /etc/udev/rules.d/
 \end{lstlisting}
 
 \noindent then the next time after you reboot, the permissions should be correct. This file only needs to contain one of the following lines depending on which shuttle version you have/use, but all will be in the file.
-
-\begin{lstlisting}[language=Bash]
-ATTRS{name}=="Contour Design ShuttlePro" MODE="0644"		# for  newer PRO model \\
-ATTRS{name}=="Contour Design ShuttlePRO v2" MODE="0644"	# for older PRO model \\
-ATTRS{name}=="Contour Design ShuttleXpress" MODE="0644"	# for the Xpress model \\
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0020", MODE="0666" \\
+\begin{lstlisting}[language=Bash,basicstyle=\footnotesize]
+# for  newer PRO model 
+ATTRS{name}=="Contour Design ShuttlePro" MODE="0644"		
+# for older PRO model 
+ATTRS{name}=="Contour Design ShuttlePRO v2" MODE="0644"	
+# for the Xpress model 
+ATTRS{name}=="Contour Design ShuttleXpress" MODE="0644"	
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0020", MODE="0666" 
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0030", MODE="0666"
 \end{lstlisting}
-
-\noindent If you swap your shuttle, for example upgrade from an Xpress to a PROv2, just stop Cin, unplug the original shuttle, plug in the replacement shuttle, and restart Cin.  If you start the cinelerra program and the shuttle does not function as before, stop cinelerra and then simply unplug it and plug it in again.  There are a couple of reasons why it may stop functioning.  One is because cinelerra was not stopped with the usual Quit command and the shuttle was improperly shut down when there was a crash.  The other possibility is that a static discharge occurred in the area.
+If you swap your shuttle, for example upgrade from an Xpress to a PROv2, just stop Cin, unplug the original shuttle, plug in the replacement shuttle, and restart Cin.  If you start the cinelerra program and the shuttle does not function as before, stop cinelerra and then simply unplug it and plug it in again.  There are a couple of reasons why it may stop functioning.  One is because cinelerra was not stopped with the usual Quit command and the shuttle was improperly shut down when there was a crash.  The other possibility is that a static discharge occurred in the area.
 
 A default shuttlerc file is automatically used when a shuttle device is plugged in when Cin is started. This file sets up the key bindings for Cinelerra to use. You can override any default settings by having a local file in your \texttt{\$HOME} directory, named \texttt{.shuttlerc} to reflect your personal preferences.
 
@@ -650,42 +735,43 @@ Next are a few actual examples from the default \texttt{{cindat\_path}/shuttlerc
 \noindent The next brackets represent sections. Default, Resources, Load windows all use the same key values.
 
 \begin{lstlisting}[language=Bash]
-[Default] \\
-[Resources] \\
-[Load] \\
-K5 XK_Home \\
-K6 XK_Button_1	# same as mouse button 1 \\
-K7 XK_Button_2	# same operation as mouse button 2 \\
-K8 XK_Button_3 \\
-K9 XK_End \\
-JL XK_Scroll_Up	# for example, in the Load menu, use scroll up to get to the next file name \\
+[Default] 
+[Resources] 
+[Load] 
+K5 XK_Home 
+K6 XK_Button_1	# same as mouse button 1 
+K7 XK_Button_2	# same operation as mouse button 2
+K8 XK_Button_3 
+K9 XK_End 
+# for example, in the Load menu, use scroll up to get to the next file name 
+JL XK_Scroll_Up	
 JR XK_Scroll_Down
 \end{lstlisting}
 
 \noindent Cinlerra with brackets around it next, is the section with some key definitions for the main window.
 
 \begin{lstlisting}[language=Bash]
-[Cinelerra] \\
+[Cinelerra] 
 
-# Most useful functions have to be on K5-K9 because Xpress only has 5 keys \\
-K5 XK_Home  	# Beginning \\
-K6 XK_KP_6 	# Reverse, or if playing Stop \\
-K7 XK_KP_0  	# Stop \\
-K8 XK_KP_3   	# Play, or if playing Stop \\
-K9 XK_End       	# End \\
-... \\
-S-7 REV_16     	# Next 6 are reverse keys \\
-S-6 REV_8      	#  the number on the end represents speed\\
-S-5 REV_4      	#  number can be decimal up to 64 \\
-S-4 REV_2      	#  2 means 2x or double speed \\
-S-3 REV_1 \\
-S-2 REV_0.5    	#  0.5 represents 1/2 speed \\
-S-1 XK_KP_0    	# Because the Shuttle does not generate S0, have to use S-1 \\
-S0  XK_KP_0   	# Hardware does not generate S0 \\
-S1  XK_KP_0   	# Because the Shuttle does not generate S0, have to use S1 \\
-S2  FWD_0.5 \\
-S3  FWD_1 \\
-... \\
+# Most useful functions have to be on K5-K9 because Xpress only has 5 keys 
+K5 XK_Home      # Beginning 
+K6 XK_KP_6      # Reverse, or if playing Stop 
+K7 XK_KP_0      # Stop 
+K8 XK_KP_3      # Play, or if playing Stop 
+K9 XK_End       # End 
+... 
+S-7 REV_16     	# Next 6 are reverse keys 
+S-6 REV_8      	#  the number on the end represents speed
+S-5 REV_4      	#  number can be decimal up to 64 
+S-4 REV_2      	#  2 means 2x or double speed 
+S-3 REV_1 
+S-2 REV_0.5    	#  0.5 represents 1/2 speed 
+S-1 XK_KP_0    	# Because the Shuttle does not generate S0, have to use S-1 
+S0  XK_KP_0   	# Hardware does not generate S0 
+S1  XK_KP_0   	# Because the Shuttle does not generate S0, have to use S1 
+S2  FWD_0.5 
+S3  FWD_1 
+... 
 \end{lstlisting}
 
 \noindent An explanation for the above REV and FWD key symbol values is necessary to facilitate user preferences.  Obviously REV stands for reverse and FWD for forward.  You can set any speed up to and including 64x (that is, 64 times the normal speed) on any of the S keys.  First in the line is the key name such as S-3 and then the key direction of FWD or REV followed by the symbol for underscore (\_) and then the numerical value to use.  For example, if you want the 5\textsuperscript{th} forward position, S5, to play 10$ \frac{1}{2}$ times faster, you would use the statement \texttt{S5 FWD\_10.5}.  Integer or decimal numbers are legal.
@@ -693,8 +779,9 @@ S3  FWD_1 \\
 For the Viewer, you may want keys defined to do a Splice or an Overwrite so define differently.  Note that assignments that contain single character letters must be enclosed in quotes.
 
 \begin{lstlisting}[language=Bash]
-[Viewer] \\
-K2 "v"         # Splice - Viewer only; may be defined differently than Composer or Cinelerra \\
+[Viewer] 
+# Splice - Viewer only; may be defined differently than Composer or Cinelerra 
+K2 "v"         
 K4 "b"         # Overwrite
 \end{lstlisting}
 
@@ -706,12 +793,12 @@ K10 Alt-XK_Left  	# Go to previous edit \\
 K13 Ctrl-XK_Right 	# Go to next label
 \end{lstlisting}
 
-\noindent For sequences of one or more \textit{printable} characters, you can just enclose them in double quotes.  For example in the \texttt{[Composer]} section, to go into or out of fullscreen mode, automatically start playing and put a label there, you could define a key like this:  K7 “f l” - that is printable character f, a space, and printable character l.  
+\noindent For sequences of one or more \textit{printable} characters, you can just enclose them in double quotes.  For example in the \texttt{[Composer]} section, to go into or out of fullscreen mode, automatically start playing and put a label there, you could define a key like this:  K7 “f~l” - that is printable character f, a space, and printable character l.  
 
 After modifying \texttt{.shuttlerc}, the next time you use the shuttle, your changes will automatically take affect without even having to stop and restart Cin.  However, the first thing to try if problems is to stop cinelerra, unplug the shuttle, wait a few seconds, plug it in again, and then restart cin.  If for some reason, the shuttle keys still do not work after that, you may have an incorrect setup and you will have to correct that first.  For example, if you define S5 twice within the Cinelerra setup, it will fail.  It is suggested that if you make changes, you should initially uncomment DEBUG in the \texttt{.shuttlerc} file and start up cinelerra from a terminal window so that you can make sure it is working and has no output errors.  An error might look like:
 
 \begin{lstlisting}[language=Bash]
-dupl key name: [Cinelerra]K1 \\
+dupl key name: [Cinelerra]K1 
 shuttle config err file: /root/.shuttlerc, line:37
 \end{lstlisting}
 
@@ -720,37 +807,37 @@ shuttle config err file: /root/.shuttlerc, line:37
 Any time you are having trouble with your shuttle, you can copy the default \texttt{shuttlerc} file from \texttt{{cindat\_path}/shuttlerc} to your local \texttt{.shuttlerc} file, and edit that to\ switch to DEBUG mode by removing the \# comment from the DEBUG line.  But you will have to have started Cin from a terminal window to see the key values. The first time you use the shuttle or after you change the file, the current assignments will show in the terminal window so will look something like:
 
 \begin{lstlisting}[language=Bash]
-[Cinelerra] # 1 \\
-K5[D]: XK_KP_0/U \\
+[Cinelerra] # 1 
+K5[D]: XK_KP_0/U 
 K5[U]: XK_KP_0/U 
 \end{lstlisting}
 
 \noindent When you are in DEBUG mode and are just working away, what you will see is something like this:
 
 \begin{lstlisting}[language=Bash]
-key: 0058 1 \\
+key: 0058 1 
 key: 0055 0
 \end{lstlisting}
 
 or:
 
 \begin{lstlisting}[language=Bash]
-shuttle:  00 00 00 00 00 \\
+shuttle:  00 00 00 00 00 
 key: XK_Home 0
 \end{lstlisting}
 
 \noindent When you change the focus from one window to another, you will see something like this:
 
 \begin{lstlisting}[language=Bash]
-new focus: 04c00137 \\
-new translation: Viewer \\
+new focus: 04c00137 
+new translation: Viewer 
 key: 0059 1
 \end{lstlisting}
 
 \noindent You can also set an environment variable to temporarily use an alternative shuttle configuration file for testing as in:
 
 \begin{lstlisting}[language=Bash]
-export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test 
+$ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test 
 \end{lstlisting}
 
 \noindent The shuttle wheel occasionally will not \textit{stop} after you have wheeled it to play forward.  This is a documented known problem from the original code so you just have to joggle it a little in the other direction and then it will stop.  S0 does not always generate a signal to do a stop and that is why S1 and S-1 have to be used to relay the stop instead.  Also, if you have a fullscreen Composer or Viewer up and the regular one also, the fullscreen takes precedence.
@@ -761,8 +848,8 @@ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test
 In order to see if you hardware was recognized by the operating system, keyin:
 
 \begin{lstlisting}[language=Bash]
-lsusb -v -d 0b33:0030		# for the Shuttle Pro or PROv2 \\
-lsusb -v -d 0b33:0020		# for the Shuttle Xpress
+$ lsusb -v -d 0b33:0030		# for the Shuttle Pro or PROv2 \\
+$ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
 \end{lstlisting}
 
 
@@ -775,15 +862,17 @@ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
     \item From a terminal window as an ordinary user keyin:  lsusb  (the first character is a lower case L ---for
     list).  You will see something like the following depending on which usb device you have the
     ShuttlePro plugged into:
-    
-    \texttt{Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2}
+\begin{lstlisting}[language=Bash]
+Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2
+\end{lstlisting}
     \item To make sure you have usbmon installed keyin:
-    
-    \texttt{sudo modprobe usbmon}
+\begin{lstlisting}[language=Bash]
+$ sudo modprobe usbmon
+\end{lstlisting}
     \item Next keyin the following:
-    
-    \texttt{sudo od -tx1 /dev/usbmon3} 
-    
+\begin{lstlisting}[language=Bash]
+$ sudo od -tx1 /dev/usbmon3
+\end{lstlisting}
     where the last 3 is the same \# as the Bus in above.  If it lists \texttt{Bus 002}, then use \texttt{/dev/usbmon2} instead.
     \item Now with focus in that same terminal window, press any shuttle key just to see what happens and
     should see about 12 lines similar to these below ---a new set every time you press a single key or the
@@ -792,18 +881,18 @@ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
     isolate your shuttle by temporarily unplugging unnecessary devices on the same bus or plug the 
     shuttle into a different usb port that has fewer devices.
     \begin{lstlisting}[language=Bash]
-       0000000 80 70 99 75 53 8c ff ff 43 01 81 02 03 00 2d 00 \\
-       0000020 4e 61 5c 5c 00 00 00 00 8d 2c 06 00 00 00 00 00 \\
-       0000040 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 \\
-       0000060 01 ff 00 00 00 80 70 99 75 53 8c ff ff 53 01 81 \\
-       0000100 02 03 00 2d 3c 4e 61 5c 5c 00 00 00 00 b1 2c 06 \\
-       0000120 00 8d ff ff ff 05 00 00 00 00 00 00 00 00 00 00 \\
-       0000140 00 00 00 00 00 80 70 99 75 53 8c ff ff 43 01 81 \\
-       0000160 02 03 00 2d 00 4e 61 5c 5c 00 00 00 00 3d d7 09 \\
-       0000200 00 00 00 00 00 05 00 00 00 05 00 00 00 00 00 00 \\
-       0000220 00 00 00 00 00 00 ff 00 00 00 80 70 99 75 53 8c \\
-       0000240 ff ff 53 01 81 02 03 00 2d 3c 4e 61 5c 5c 00 00 \\
-       0000260 00 00 64 d7 09 00 8d ff ff ff 05 00 00 00 00 00
+0000000 80 70 99 75 53 8c ff ff 43 01 81 02 03 00 2d 00 
+0000020 4e 61 5c 5c 00 00 00 00 8d 2c 06 00 00 00 00 00 
+0000040 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 
+0000060 01 ff 00 00 00 80 70 99 75 53 8c ff ff 53 01 81 
+0000100 02 03 00 2d 3c 4e 61 5c 5c 00 00 00 00 b1 2c 06 
+0000120 00 8d ff ff ff 05 00 00 00 00 00 00 00 00 00 00 
+0000140 00 00 00 00 00 80 70 99 75 53 8c ff ff 43 01 81 
+0000160 02 03 00 2d 00 4e 61 5c 5c 00 00 00 00 3d d7 09 
+0000200 00 00 00 00 00 05 00 00 00 05 00 00 00 00 00 00 
+0000220 00 00 00 00 00 00 ff 00 00 00 80 70 99 75 53 8c 
+0000240 ff ff 53 01 81 02 03 00 2d 3c 4e 61 5c 5c 00 00 
+0000260 00 00 64 d7 09 00 8d ff ff ff 05 00 00 00 00 00
     \end{lstlisting}
     \item Next press the key that you want to verify is functioning --- if no new lines show up, then the key is
     non-functional so there is a hardware problem.  If you get output, then perhaps there is a problem
@@ -817,38 +906,41 @@ Another method for testing to make sure your model of the Shuttle does not have 
     \item Locate the shudmp.C program in your Cinelerra directory.
     \item Compile that with the command:  \texttt{c++ shdmp.C -o shudmp}
     \item Make the file executable with the command:  \texttt{chmod +x shudmp}
-    \item \texttt{sudo ./shdmp /dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00   \# substitute your shuttle}
+    \item Execute:
+    \begin{lstlisting}[language=Bash]
+$ sudo ./shdmp /dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00 # substitute your shuttle
+    \end{lstlisting}
 \end{enumerate}
 
 \noindent Then press your shuttle key that is having problems and check the results.  They should look like:
 
-\begin{lstlisting}[language=Bash]
-Example for K7: \\
-event: (4, 4, 0x90007)		#The last number, 7, is the expected Key number. \\
-event: (1, 262, 0x1) \\
-event: (0, 0, 0x0) \\
-event: (4, 4, 0x90007) \\
-event: (1, 262, 0x0) \\
-event: (0, 0, 0x0) \\
-
-Example for K15: \\
-event: (4, 4, 0x9000f)		#The last number f is 15 in octal and is the expected Key. \\
-event: (1, 270, 0x1) \\
-event: (0, 0, 0x0) \\
-event: (4, 4, 0x9000f) \\
-event: (1, 270, 0x0) \\
+    \begin{lstlisting}[language=Bash, caption={Example for K7}]
+event: (4, 4, 0x90007)		#The last number, 7, is the expected Key number. 
+event: (1, 262, 0x1) 
+event: (0, 0, 0x0) 
+event: (4, 4, 0x90007) 
+event: (1, 262, 0x0) 
+event: (0, 0, 0x0) 
+\end{lstlisting}
+    \begin{lstlisting}[language=Bash, caption={Example for K15}]
+Example for K15: 
+event: (4, 4, 0x9000f)		#The last number f is 15 in octal and is the expected Key. 
+event: (1, 270, 0x1) 
+event: (0, 0, 0x0) 
+event: (4, 4, 0x9000f) 
+event: (1, 270, 0x0) 
 event: (0, 0, 0x0)
 \end{lstlisting}
 
 \noindent When done, you will have to Ctrl-C to get out of the program.
 
 \paragraph{Note 4} For developers, it is also possible to do the following for further in depth testing:
-
-\begin{enumerate}
-    \item \texttt{ls /sys/kernel/debug/hid   \# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006}
-    \item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc”    \# substitute your own numerical value}
-    \item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events”  \# press keys to see the results}
-\end{enumerate}
+    \begin{lstlisting}[language=Bash]
+# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006
+$ ls /sys/kernel/debug/hid   
+$ cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc” # substitute your own numerical value
+$ cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events” # press keys to see the results
+    \end{lstlisting}
 
 \subsection{Shuttle key default arrangement for Cinelerra / Composer / Viewer:}%
 \label{sub:shuttle_key_default_cinelerra}
@@ -857,14 +949,14 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress:
 
 \vspace{1ex} \textbf{ShuttlePROv2:}
 
-\begin{figure}[t]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\linewidth]{images/shuttle-prov2.png}
 \end{figure}
 
 \vspace{1ex} \textbf{ShuttleXpress:}
 
-\begin{figure}[b]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\linewidth]{images/xpress.png}
 \end{figure}

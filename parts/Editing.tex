@@ -1,9 +1,16 @@
 \chapter{Editing}%
 \label{cha:editing}
 
-Editing comprises both time and track space.  The timeline consists of the time certain media appear on the track going left to right and a set of tracks from the top to the bottom.  There are 2 methods of timeline editing --- drag and drop editing, also called \textit{arrow mode}, and cut and paste editing or \textit{I-beam mode}.  Cut and Paste is the default editing mode.  An additional, but not often considered editing method is called \textit{two-screen editing} where the Viewer is used to view media and then the desired media is transferred to the timeline.
+Editing comprises both time and track space.  The timeline consists of the time certain media appear on the track going left to right and a set of tracks from the top to the bottom.  There are 2 methods of timeline editing --- drag and drop editing, also called \textit{arrow mode}, and cut and paste editing or \textit{I-beam mode}.  Cut and Paste is the default editing mode.  An additional, but not often considered editing method is called \textit{two-screen editing} where the Viewer is used to view media and then the desired clip from the media is transferred to the timeline.
 
-The timeline is where all editing decisions are made.  This is a stack of tracks in the center of the main window.  It can be scrolled up, down, left and right with the scrollbars on the right and bottom.  It can also be scrolled up and down with a mouse wheel, or left and right while holding down the Ctrl key and using the mouse wheel.
+The timeline is where all editing decisions are made (figure~\ref{fig:timeline}).  This is a stack of tracks in the center of the main window.  It can be scrolled up, down, left and right with the scrollbars on the right and bottom.  It can also be scrolled up and down with a mouse wheel, or left and right while holding down the Ctrl key and using the mouse wheel.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/timeline.png}
+    \caption{Timeline editing session using the upcoming Cinfinity theme.}
+    \label{fig:timeline}
+\end{figure}
 
 The active region is the range of time which is affected by editing commands on the timeline.  The active region is determined first by the presence of in/out points on the timeline.  If those do not exist the highlighted region is used.  If no highlighted region exists, the insertion point is used as the start of the active region.  Some commands treat all the space to the right of the insertion point as active while others treat the active length as 0 if no end point for the active region is defined.
 
@@ -21,6 +28,9 @@ On the left of the timeline is a region known as the patchbay.  The patchbay ena
     \item[Expander] which is a down arrow on the right side, is for viewing more options on the patchbay and for viewing the effects represented on the track.   You can just click on the expander to expand or collapse the patchbay and the track.  If it is pointing sideways, the track is collapsed.  If it is pointing down, the track is expanded.  Existing effects appear below the media for the track.
 \end{description}
 
+\noindent Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay01}).  If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click 
+on the toggle to enable/disable the feature.
+
 \begin{wrapfigure}[17]{O}{0.4\linewidth}
     \vspace{-2ex}
     \centering
@@ -29,11 +39,7 @@ On the left of the timeline is a region known as the patchbay.  The patchbay ena
     \label{fig:patchbay}
 \end{wrapfigure}
 
-Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay}).
 
-
-
-If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click on the toggle to enable/disable the feature.
 
 Several mouse operations speed up the configuration of several tracks at a time. Click on an attribute and drag the cursor across adjacent tracks to copy the same attribute to those tracks.  Hold down Shift while clicking a track's attribute to enable the attribute in the current track and toggle the attribute in all the other tracks. Or you can:
 
@@ -50,11 +56,11 @@ The \textit{attributes} are described here next.
     \item[Arm Track] determines whether the track is armed or not.  Only the armed tracks are affected by editing operations. Make sure you have enough armed destination tracks when you paste or splice material or some tracks in the material will get left out.  In addition to restricting editing operations, the armed tracks in combination with the active region determine where material is inserted when loading files.  If the files are loaded with one of the insertion strategies which do not delete the existing project, the armed  tracks will be used as destination tracks.
     \item[Gang Fader] cause the fader to track the movement of whatever other fader you are adjusting by dragging either the fader or the curve on the track.  It doesn't affect the editing made with menu controls.  A fader is only ganged if the arm track is also on.  This is often used to adjust audio levels on all the tracks simultaneously.  Gang also causes Nudge parameters to synchronize across all the ganged tracks.
     \item[Draw Media] determines if picons or waveforms are drawn on the asset in the track.  You may want to disable this if you know that the media/format takes a long time to draw on the timeline.  By default it is set to on in order to see picons on the timeline.
-    \item[Don’t send to output] , more commonly called \textit{mute}, causes the output to be thrown away once the track is completely rendered. This happens whether or not \textit{Play track} is on.  For example if you mute all the video tracks, the rendered media file will have a blank video track.  Mute track is represented on the timeline with a line that has the default color of blue.  Use the pulldown View $\rightarrow$ Mute to have the line displayed.  It is a keyframable attribute, but Mute track keyframing is a toggle and it has only the two values of on or off. If a track is part of a shared track effect, the output of the track with the shared track effect is overlaid on the final output even though it is routed back to another track (the shared track).  Mute track is used to keep the track with the shared track effect from overlapping the output of the source track (the shared track) where the shared track effect is not present.
-    \item[Fader slider] fade values are represented on the timeline with a white curve that is keyframable.  All tracks have a fader, but the units of each fader depend on whether it is audio or video.  Audio fade values are in dB. They represent relative levels, where 0 is the unaltered original sound level, -40 is silence, -80 the minimum value set by default.  You can move fader and keyframes down to -80 but the parameter's curve won't go below -40.  For your convenience you can set a different fade range with the curve zoom.  Audio fader’s main purpose is to \textit{fade out} sound or to lower the sound level smoothly to silence, or \textit{fade in} to make sounds appear gradually instead of suddenly.  Video fade values are the percentage of opacity of the image in normal overlay mode, the percentage of the layer that is mixed into the render pipeline in the other overlay modes.
+    \item[Don’t send to output] , more commonly called \textit{mute}, causes the output to be thrown away once the track is completely rendered. This happens whether or not \textit{Play track} is on.  For example if you mute all the video tracks, the rendered media file will have a blank video track.  Mute track is represented on the timeline with a line that has the default color of pink/orange.  Use the pulldown View $\rightarrow$ Mute to have the line displayed.  It is a keyframable attribute, but Mute track keyframing is a toggle and it has only the two values of on or off. If a track is part of a shared track effect, the output of the track with the shared track effect is overlaid on the final output even though it is routed back to another track (the shared track).  Mute track is used to keep the track with the shared track effect from overlapping the output of the source track (the shared track) where the shared track effect is not present.
+    \item[Fader slider] fade values are represented on the timeline with a pink curve that is keyframable.  All tracks have a fader, but the units of each fader depend on whether it is audio or video.  Audio fade values are in dB. They represent relative levels, where 0 is the unaltered original sound level, -40 is silence, -80 the minimum value set by default.  You can move fader and keyframes down to -80 but the parameter's curve won't go below -40.  For your convenience you can set a different fade range with the curve zoom.  Audio fader’s main purpose is to \textit{fade out} sound or to lower the sound level smoothly to silence, or \textit{fade in} to make sounds appear gradually instead of suddenly.  Video fade values are the percentage of opacity of the image in normal overlay mode, the percentage of the layer that is mixed into the render pipeline in the other overlay modes.
     Click and drag the fader to fade the track in and out.  If it is ganged to other tracks of the same media type, with the arm option enabled, the other faders should follow.  Hold down the Shift key and drag a fader to center it on the original source value (0 for audio, 100 for video).
     \item[mixer] in the expanded patchbay for that track designate the multi-camera mixer mode.
-    \item[Overlay mode] in the expanded patchbay is used for porter-duff operations and is full explained in the section on Overlay Modes.
+    \item[Overlay mode] in the expanded patchbay is used for porter-duff operations and is full explained in Overlay Modes \ref{cha:???}.
     \item[Nudge] is in the expanded patchbay.  The nudge value is the amount the track is shifted left or right during playback. The track is not displayed shifted on the timeline, but it is shifted when it is played back. This is useful for synchronizing audio with video, creating fake stereo, or compensating for an effect which shifts time, all without altering any edits (figure~\ref{fig:overlay}).
     
     \begin{figure}[htpb]
@@ -75,7 +81,7 @@ Several convenience functions are provided for automatically setting the panning
 
     \begin{description}
         \item[Audio$\rightarrow$Map 1:1] This maps every track to its own channel and wraps around when all the channels are allocated. It is most useful for making 2 tracks with 2 channels map to stereo and for making 6 tracks with 6 channels map to a 6 channel sound card.
-        \item[Audio$\rightarrow$Map 5.1:2] This maps 6 tracks to 2 channels. The project should have 2 channels when using this function. Go to Settings $\rightarrow$ Format to set the output channels to 2. This is most useful for down-mixing 5.1 audio to stereo.
+        \item[Audio$\rightarrow$Map 5.1:2] This maps 6 tracks to 2 channels. The project should have 2 channels when using this function. Go to Settings $\rightarrow$ Format to set the output channels to 2. This is most useful for down-mixing 5.1 audio to to stereo (for more information refer to Configuration, Settings and Preferences chapter 15.1).
     \end{description}
 
 \paragraph{Standard audio mappings} Although Cinelerra lets you map any audio track to any speaker, there are standard mappings you should use to ensure the media can be played back elsewhere. Also, most audio encoders require the audio tracks to be mapped to standard speaker numbers or they will not work.
@@ -116,6 +122,8 @@ Now to start your 2 screen editing, in the viewer window, define a clip from the
     \item Set the starting point with the In pointer button.  You will see a left hand bracket on the timebar.
     \item Move your cursor to the ending point of the clip you want to use.
     \item Set the ending point with the Out pointer right hand bracket.
+    \item You will see a colored bar inside the brackets for easier viewing.
+    \item Drag the In/Out point with the mouse to conveniently change their position.
 \end{enumerate}
 
 \noindent These In/Out points define a clip.  You can now use this in a couple of different ways.
@@ -130,6 +138,7 @@ To overwrite exactly on a precise region of the timeline:
 \begin{enumerate} [noitemsep]
     \item Arm only tracks to change.
     \item Define the destination region on the timeline with [ and ], the In and Out points.
+    \item You can achieve maximum precision by setting the active region in the zoom panel.
     \item Define the clip you want to use in the viewer with [ and ], the In and Out points.
     \item Overwrite from Viewer to the timeline.
 \end{enumerate}
@@ -144,7 +153,7 @@ If the destination region is longer than the clip defined in the viewer, the des
 \section{Cut and Paste Editing}%
 \label{sec:cut_paste_editing}
 
-This is the more traditional method of editing and therefore is the default.  To enable the cut and paste editing mode on the timeline, select the I-beam toggle on the control bar at the top of the main program window. You can copy edits in the same track, copy from different tracks in the same instance, start a second instance of Cinelerra and copy from one instance to the other or load a media file into the Viewer and copy from there.
+This is the more traditional method of editing in Cinelerra and therefore is the default.  To enable the cut and paste editing mode on the timeline, select the I-beam toggle on the control bar at the top of the main program window. You can copy edits in the same track, copy from different tracks in the same instance, start a second instance of Cinelerra and copy from one instance to the other or load a media file into the Viewer and copy from there.
 
 To start editing, load some files onto the timeline.  Select a region of the timeline by click dragging on it and select the cut button to cut it. Move the insertion point to another point in the timeline and select the paste button.  Assuming no In/Out points are defined on the timeline this performs a cut and paste operation.
 
@@ -196,7 +205,7 @@ pasted one after the other, keeping the same order they have on the stack.
 \end{wrapfigure}
 
  A \textit{cut} uses a non-empty selection region, where the \textit{blade cut} or \textit{split} has no duration in the selection, just a hairline.  As usual the use of cut when a selection is set, deletes/cuts the highlighted area.  In the case where an In point or an Out point exists on the timeline, the clip is split at the location of the In/Out point since it has priority over the cursor location.  A blade cut simply splits the edit into two edits.  In order to have the video and audio aligned, it works best to have Settings $\rightarrow$ Align cursor on frames.  When a blade cut occurs, the edges are created as \textit{hard edges}.  These are edges that cannot be deleted by track optimizations.
-
+Cinelerra has built-in optimization on the timeline.  So that whenever two parts on the timeline are sequential frames, it automatically optimizes by making them into 1 item.  So if you are cutting, dragging, editing, or whatever and somehow frame \# 40 ends up right next to frame \# 41, it optimizes them together.  This optimization affects many areas throughout the program code.
 When you do a blade cut/split, all armed tracks will be included in the cut and green-colored triangles will show on the bottom of the track on both the left and the right side of the cut.  This is a \textit{hard edge} marker toggle, as opposed to the soft edge designation for an ordinary edit.  The \textit{hard edge} marker can be toggled off/on if so desired.  In order to not interfere with the usual drag handles, only a few pixels are used for the toggle so you have to be sure you have the cursor right over the hard edge triangle  --- when in position, it will be obvious because you can see an arrow pointing to the corner.  Use Shift-left mouse button 1 to toggle off/on the hard edge marker on all tracks simultaneously.
 
 \section{Drag and Drop Editing}%
@@ -251,7 +260,8 @@ The \textit{edits} popup is activated on a track and a red and yellow colored re
 \begin{center}
     \begin{tabular}{l p{12.9cm}}
         \toprule
-        \textbf{Key} & \textbf{Operations} \\ \hline
+        \textbf{Key} & \textbf{Operations} \\
+        \midrule
         Drag & Hold down the Ctrl key while dragging to move a single edit elsewhere. \\
         Left mouse button & Selects and highlights the edit under the cursor with a red selection box. Left mouse button also will toggle that clip selection off if it is on. \\
         \bottomrule
@@ -482,102 +492,63 @@ A description of the fundamental/common terminology for choices follows.
     \item[Edge Left / Right] moves the edge of the clips.
     \item[No effect] no changes are made.  You might want to use this choice to prevent accidental movements.
 \end{description}
-The next two tables displays the options and results with the Key Table here first.
+The next table displays the options and results with the Key Table here first.
 
-\vspace{1ex} 
-\noindent s = src media start\\
-p = proj position \\
-l = length \\
-c = cut distance \\
-rest == p+=c: for rest of clips \\
-01 = flags edits\_moved, rest\_moved
+\begin{lstlisting}[language=bash]
+    s = src media start\\
+    p = proj position \\
+    l = length \\
+    c = cut distance \\
+    rest == p+=c: for rest of clips \\
+    01 = flags edits_moved, rest_moved
+\end{lstlisting}
 
 
-\paragraph{Cinelerra-GG:}
+\begin{longtable}{c c c c c}
+    \toprule
+    & & \textbf{Drag Left} & \textbf{Drag Right} & \\
+    \midrule
+    \endhead
+    \multicolumn{2}{c}{\textit{curr s += c, l -= c; + rest}} & $\leftarrow$ & $\rightarrow$ & \textit{rest} \\
+    abc12345xyz & \textbf{Ripple} left edge 11 $\rightarrow$ & abc012345xyz & abc2345xyz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{curr l += c; + rest}} & $\leftarrow$ & $\rightarrow$ & \textit{rest} \\
+    abc12345xyz & \textbf{Ripple} right edge 01 $\rightarrow$ & abc1234xyz & abc123456xyz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{prev l += c; curr ps+= c, l -= c}} & $\leftarrow$ & $\rightarrow$ & \\
+    abc12345xyz & \textbf{Roll} left edge 00 $\rightarrow$ & ab012345xyz & abcd2345xyz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{curr l += c; next ps+= c, l -= c}} & $\leftarrow$ & $\rightarrow$ & \\
+    abc12345xyz & \textbf{Roll} right edge 00 $\rightarrow$ & abc1234wxyz & abc123456yz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{s -= c}} & $\leftarrow$ & $\rightarrow$ & \\
+    abc12345xyz & \textbf{Slip} left edge 10 $\rightarrow$ & abc23456xyz & abc01234xyz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{s -= c}} & $\leftarrow$ & $\rightarrow$ & \\
+    abc12345xyz & \textbf{Slip} right edge 10 $\rightarrow$ & abc23456xyz & abc01234xyz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{prev l += c; curr p+= c; next ps += c, l -= c}} & $\leftarrow$ & $\rightarrow$ & \\
+    abc12345xyz & \textbf{Slide} left edge 10 $\rightarrow$ & ab012345wxyz & abcd12345yz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{prev l += c; curr p+= c; next ps += c, l -= c}} & $\leftarrow$ & $\rightarrow$ & \\
+    abc12345xyz & \textbf{Slide} right edge 10 $\rightarrow$ & ab12345wxyz & abcd12345yz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{curr s -+= c, l += c; + rest}} & $\leftarrow$ & $\rightarrow$ & \textit{rest} \\
+    abc12345xyz & \textbf{Edge} left edge 11 $\rightarrow$ & abc2345xyz & abc0123456xyz & \\
+    \midrule
+    \multicolumn{2}{c}{\textit{curr l -+= c; + rest}} & $\leftarrow$ & $\rightarrow$ & \textit{rest} \\
+    abc12345xyz & \textbf{Edge} right edge 01 $\rightarrow$ & abc1234xyz & abc123456xyz & \\
+    \bottomrule
+\end{longtable}
 
-{\small
-\begin{verbatim}
-                                   drag left       drag right
-curr s+=c,l-=c; +rest                 <               >     ... rest
-+-------------+    all left      +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|012345|xyz++abc|2345|xyz+
-+-------------+            11    +-------------+ +-------------+
-curr l+=c; +rest                          <               >  ... rest
-+-------------+  ripple right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
-+-------------+            01    +-------------+ +-------------+
+Next, a more immediate and colorful view shows these trimming options ((figure~\ref{fig:trim-color})).
 
-prev l+=c; curr ps+=c,l-=c            <              >
-+-------------+    roll left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +ab|012345|xyz+ +abcd|2345|xyz+
-+-------------+            00    +-------------+ +-------------+
-|curr l+=c; next ps+=c,l-=c                <               >
-+-------------+    roll right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|wxyz+ +abc|123456|yz+
-+-------------+            00    +-------------+ +-------------+
-
-s-=c                                  <              >
-+-------------+    slip left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|23456|xyz+ +abc|01234|xyz+
-+-------------+            10    +-------------+ +-------------+
-s-=c                                      <               >
-+-------------+    slip right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|23456|xyz+ +abc|01234|xyz+
-+-------------+            10    +-------------+ +-------------+
-
-prev l+=c; curr p+=c; next ps+=c,l-=c <              >
-+-------------+   slide left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +ab|12345|wxyz+ +abcd|12345|yz+
-+-------------+            10    +-------------+ +-------------+
-prev l+=c; curr p+=c; next ps+=c,l-=c     <               >
-+-------------+   slide right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +ab|12345|wxyz+ +abcd|12345|yz+
-+-------------+            10    +-------------+ +-------------+
-
-curr s-=c,l+=c; +rest                 <               >      ... rest
-+-------------+    edge left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|2345|xyz+  +abc|012345|xyz+
-+-------------+            11    +-------------+ +-------------+
-curr l+=c; +rest                          <               >  ... rest
-+-------------+    edge right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
-+-------------+            01    +-------------+ +-------------+
-\end{verbatim}
-}
-
-\paragraph{Cinelerra-HV/CV:}
-
-{\small
-\begin{verbatim}
-                                   drag left       drag right
-curr s+=c,l-=c; next p-=c; +rest      <               >     ... rest
-+-------------+    all left      +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|012345|xyz++abc|2345|xyz+
-+-------------+            11    +-------------+ +-------------+
-curr l+=c; +rest                           <              >  ... rest
-+-------------+    all right     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
-+-------------+            01    +-------------+ +-------------+
-
-prev l+=c; curr ps+=c,l-=c            <               >
-+-------------+    one left      +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +ab|012345|xyz+ +abcd|2345|xyz+
-+-------------+            00    +-------------+ +-------------+
-curr l+=c; next ps+=c,l-=c                 <              >
-+-------------+    one right     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|wxyz+ +abc|123456|yz+
-+-------------+            00    +-------------+ +-------------+
-
-s+=c                                  <               >
-+-------------+    src left      +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|01234|xyz+ +abc|23456|xyz+
-+-------------+            10    +-------------+ +-------------+
-s+=c                                       <              >
-+-------------+    src right     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|01234|xyz+ +abc|23456|xyz+
-+-------------+            10    +-------------+ +-------------+
-\end{verbatim}
-}
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/trim-color.png}
+    \caption{The 5 types of Trim: note the different lengths of the results.}
+    \label{fig:trim-color}
+\end{figure}
 
 \paragraph{How to do a J-cut or L-cut} A J-cut is a split edit film editing technique in which the audio from a following scene overlaps the picture from the preceding scene, so that the audio portion of the later scene starts playing before its picture as a lead-in to the visual cut.  An L-cut is a different split edit film editing technique in which the audio from preceding scene overlaps the picture from the following scene, so that the audio cuts after the picture, and continues playing over the beginning of the next scene (figure~\ref{fig:j-cut}). To do either a J-cut or an L-cut, you first shorten the first or second video a little.  Then you block the audio tracks from changing by disarming the appropriate tracks.  Finally use \textit{One Edit (roll)} the cutting edge off the videos.  Moving to the right creates a J-cut and moving to the left creates an L-cut.
 \begin{figure}[htpb]
@@ -633,9 +604,9 @@ They look like tags and the letter E on the menu bar and are oriented forward/ba
 Instead of using the edit panel buttons, you can more easily use the following keyboard shortcuts to perform the same functions:
 \begin{center}
     \begin{tabular}{l l l}
-        \toprule 
-        snap\_right\_edit &	ctrl+alt+ '.' \\
-        snap\_left\_edit &	ctrl+alt+ ',' \\
+        \toprule
+        snap\_right\_edit &	ctrl+alt+ '.' & \\
+        snap\_left\_edit &	ctrl+alt+ ',' & \\
         snap\_right\_label &	ctrl+alt +shift '.' &  shift+period is the > sign on US keyboards \\
         snap\_left\_label & 	ctrl+alt +shift',' &  shift+comma is the < sign on US keyboards \\
         \bottomrule
@@ -664,7 +635,7 @@ It is somewhat important to note that nested assets and nested clips will have i
 \subsection{Copy/Paste clips/medias across Multiple Instances}%
 \label{sub:copy_paste_multiple_instances}
 
-It is easy to copy/paste clips/media within a single instance of cinelerra or across multiple instances.  The reason this works is because there are hidden X cut butters and these are used to transmit EDL from 1 instance to another.
+It is easy to copy/paste clips/media within a single instance of cinelerra or across multiple instances.  The reason this works is because there are hidden X cut buffers and these are used to transmit EDL from 1 instance to another.
 
 \noindent Steps to copy from a source timeline and paste to a target timeline:
 
@@ -788,7 +759,7 @@ K4 "b"         # Overwrite
 \noindent To change any key value to an alternative value, just edit the file and make the changes.  Besides just keys and alphabetic letters of numbers, you can also use any cinelerra value that contains the combination with Shift, Alt, and Ctrl.  For keys that are not printable characters, you can look up the symbol name to use for a specific operation in the file called: \texttt{/usr/include/X11/keysymdef.h} .
 \noindent Some examples:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=bash]
 K10 Alt-XK_Left  	# Go to previous edit \\
 K13 Ctrl-XK_Right 	# Go to next label
 \end{lstlisting}
@@ -845,7 +816,7 @@ $ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test
 \subsection{Troubleshooting auxilliary information}%
 \label{sub:troubleshooting_auxilliary_information}
 
-In order to see if you hardware was recognized by the operating system, keyin:
+In order to see if you hardware was recognized by the operating system, key in:
 
 \begin{lstlisting}[language=Bash]
 $ lsusb -v -d 0b33:0030		# for the Shuttle Pro or PROv2 \\
@@ -859,17 +830,17 @@ $ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
 
 
 \begin{enumerate}
-    \item From a terminal window as an ordinary user keyin:  lsusb  (the first character is a lower case L ---for
+    \item From a terminal window as an ordinary user key in:  lsusb  (the first character is a lower case L ---for
     list).  You will see something like the following depending on which usb device you have the
     ShuttlePro plugged into:
 \begin{lstlisting}[language=Bash]
 Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2
 \end{lstlisting}
-    \item To make sure you have usbmon installed keyin:
+    \item To make sure you have usbmon installed key in:
 \begin{lstlisting}[language=Bash]
 $ sudo modprobe usbmon
 \end{lstlisting}
-    \item Next keyin the following:
+    \item Next key in the following:
 \begin{lstlisting}[language=Bash]
 $ sudo od -tx1 /dev/usbmon3
 \end{lstlisting}
@@ -945,18 +916,22 @@ $ cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events” # press keys to see
 \subsection{Shuttle key default arrangement for Cinelerra / Composer / Viewer:}%
 \label{sub:shuttle_key_default_cinelerra}
 
-The following is the default setting for the ShuttlePROv2 and ShuttleXpress:
+The following is the default setting for the ShuttlePROv2 and ShuttleXpress (table~\ref{tab:shuttleprov2} and table 2):
 
 \vspace{1ex} \textbf{ShuttlePROv2:}
 
-\begin{figure}[H]
+\begin{table}
+    \caption{ShuttlePROv2 key default arrangement for Cinelerra / Composer / Viewer}
+    \label{tab:shuttleprov2}
     \centering
-    \includegraphics[width=1.0\linewidth]{images/shuttle-prov2.png}
-\end{figure}
+    \begin{tabular}{c c c c c c c c}       
+        \toprule
+        & K1 & & K2 & & K3 & & K4 \\
+        & Label & & Future use & & Future use & & Clip \\
+        &       & & Splice (viewer) & & Copy & & Overwrite (viewer) \\
+        \midrule
+        
+    \end{tabular}
+\end{table}
 
-\vspace{1ex} \textbf{ShuttleXpress:}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\linewidth]{images/xpress.png}
-\end{figure}

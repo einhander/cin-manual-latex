@@ -197,12 +197,13 @@ pasted one after the other, keeping the same order they have on the stack.
 
 \paragraph{Split --- blade cut and hard edges:} You can cut the tracks into 2 pieces on the timeline by putting the hairline cursor on the place you want to do a cut and then using the character “x” or the scissors tool (figure~\ref{fig:cut}). 
 
-\begin{wrapfigure}[16]{O}{0.3\textwidth}
+\begin{wrapfigure}[16]{O}{0.3\linewidth}
+    \vspace{-1ex}
     \centering
     \includegraphics[width=0.9\linewidth]{images/cut.png}
     \caption{Blade cut}
     \label{fig:cut}
-\end{wrapfloat}
+\end{wrapfigure}
 
  A \textit{cut} uses a non-empty selection region, where the \textit{blade cut} or \textit{split} has no duration in the selection, just a hairline.  As usual the use of cut when a selection is set, deletes/cuts the highlighted area.  In the case where an In point or an Out point exists on the timeline, the clip is split at the location of the In/Out point since it has priority over the cursor location.  A blade cut simply splits the edit into two edits.  In order to have the video and audio aligned, it works best to have Settings $\rightarrow$ Align cursor on frames.  When a blade cut occurs, the edges are created as \textit{hard edges}.  These are edges that cannot be deleted by track optimizations.
 Cinelerra has built-in optimization on the timeline.  So that whenever two parts on the timeline are sequential frames, it automatically optimizes by making them into 1 item.  So if you are cutting, dragging, editing, or whatever and somehow frame \# 40 ends up right next to frame \# 41, it optimizes them together.  This optimization affects many areas throughout the program code.
@@ -590,13 +591,11 @@ Now to use this feature, create a track with edits that have trims on the left a
 
 \paragraph{Cutting/Snapping edits} cuts from an edit handle to the insert point. 
 There are Edit Panel buttons which normally are used to move to the previous or next edit handle/label.
-
-\begin{wrapfigure}[8]{O}{0.3\textwidth}
-    \vspace{-2ex}
+\begin{wrapfigure}[5]{r}{0.2\linewidth}
+    \vspace{-1ex}
     \centering
-    \includegraphics[width=0.99\linewidth]{images/snap.png}
+    \includegraphics[width=0.7\linewidth]{images/snap.png}
 \end{wrapfigure}
-
 They look like tags and the letter E on the menu bar and are oriented forward/backward.  These same buttons can be used to \textit{cut} from the insert pointer to the previous or next edit/label when the \texttt{ctrl+alt} keys are both pressed when the buttons are used.  They \textit{snap} off the media instead of doing the standard re-positioning.  This is useful to minimize the number of operations necessary to cut between edits/labels.
 
 Instead of using the edit panel buttons, you can more easily use the following keyboard shortcuts to perform the same functions:
@@ -916,19 +915,73 @@ event: (0, 0, 0x0)
 
 The following is the default setting for the ShuttlePROv2 and ShuttleXpress (table~\ref{tab:shuttleprov2} and table~\ref{tab:xpress}):
 
+\begin{landscape}   
+    \begin{table}[htpb]
+        \centering
+        \caption{\textbf{ShuttlePROv2 key default arrangement for Cinelerra / Composer / Viewer}}
+        \label{tab:shuttleprov2}
+        \begin{tabular}{c c c c c c c}       
+            \toprule
+            K1 & K2 & & K3 & K4 & & \\
+            Label & Future use & & Future use & Clip & & \\
+                  & Splice (viewer) & & Copy  & Overwrite (viewer) & & \\
+                  \midrule
+            K5 & K6 & K7 & K8 & K9 & & \\
+            Home & Reverse & Stop & Play & End & & \\
+                 &         & Fullscreen & & & & \\
+                 &         & (viewer / compositor) & & & & \\
+                 \midrule
+            Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
+            \midrule
+            \multicolumn{7}{c}{Shuttle Outer Wheel} \\
+            \multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
+            S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
+            S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
+            \midrule
+            K14	& & Jog Left & (Inner Wheel) & Jog Right & & K15 \\ 
+            Toggle In & & Frame reverse & & Frame forward & & Toggle Out \\
+                      & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\
+                      \midrule
+                      & & K10  & &  K11 & & \\
+                      & & Previous Edit & & Next Edit & & \\
+                      & & Future Use(Viewer) & & Future Use(Viewer) & & \\
+                      \midrule
+                      & & K12  & &  K13 & & \\
+                      & & Previous Edit & & Next Edit & & \\
+                      & & Previous Label & & Next label & & \\
+                      \bottomrule
+        \end{tabular}
+    \end{table}
+\end{landscape}
 
-\begin{table}
-    \caption{ShuttlePROv2 key default arrangement for Cinelerra / Composer / Viewer}
-    \label{tab:shuttleprov2}
-    \centering
-    \begin{tabular}{c c c c c c c c}       
-        \toprule
-        & K1 & & K2 & & K3 & & K4 \\
-        & Label & & Future use & & Future use & & Clip \\
-        &       & & Splice (viewer) & & Copy & & Overwrite (viewer) \\
+\begin{landscape}   
+    \begin{table}[htpb]
+        \centering
+    \caption{\textbf{ShuttleXpress key default arrangement for Cinelerra / Composer / Viewer}}
+    \label{tab:xpress}
+    \begin{tabular}{c c c c c c c}       
+        \toprule        
+        K5 & K6 & K7 & K8 & K9 & & \\
+        Home & Reverse & Stop & Play & End & & \\
+        &         & Fullscreen & & & & \\
+        &         & (viewer / compositor) & & & & \\
         \midrule
-        
+        Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
+        \midrule
+        \multicolumn{7}{c}{Shuttle Outer Wheel} \\
+        \multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
+        S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
+        S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
+        \midrule
+        & & Jog Left & (Inner Wheel) & Jog Right & & \\ 
+        & & Frame reverse & & Frame forward & & \\
+        & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\  
+        \bottomrule      
     \end{tabular}
-\end{table}
-
+    \end{table}
+    \centering        
+    
+    
+    
+\end{landscape}
 

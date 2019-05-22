@@ -321,7 +321,7 @@ divided by the number of packages to portion out the work (if not labels).  If s
         \end{lstlisting}
         where \texttt{<path>} is the storage host directory, and \texttt{<ip-addr>} is the network address of the storage host.        
         Because all of the computers must have the same directory path, create that same directory path with the same uid/gid/permissions on each storage client computer ahead of time.
-        \item To make this permanent across reboots on the client nodes, add the following line to /etc/fstab: 
+        \item To make this permanent across reboots on the client nodes, add the following line to \texttt{/etc/fstab}: 
         \begin{lstlisting}[language=bash]
         {masternode}:/nfsshare /mnt nfs defaults 0 0
         \end{lstlisting}
@@ -352,7 +352,11 @@ divided by the number of packages to portion out the work (if not labels).  If s
         \item Check the \texttt{Use render farm} option.  By default, once you enable the option of Render Farm, rendering is usually done using the render farm.  Batch rendering can be done locally, or farmed.
         \item Add the hostname or the IP address of each of the client nodes in the Hostname textbox and the port
         number that you want to use in the Port textbox.  You can make sure a port number is not already in
-        use by keying in on the command line:  \texttt{netstat -n -l -4 --protocol inet}.  Next, click on the \texttt{Add Nodes}
+        use by keying in on the command line:
+        \begin{lstlisting}[language=bash]
+        netstat -n -l -4 --protocol inet
+        \end{lstlisting}
+        Next, click on the \texttt{Add Nodes}
         button and then you will see that host appear in the Nodes list box to the right.  The \texttt{X} in the first
         column of the nodes box denotes that the node is active.  To review the \textit{standard} port allocations,
         check the \texttt{/etc/services} file.
@@ -521,7 +525,7 @@ There are several special parameters that can be used in the ffmpeg options file
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.\linewidth]{images/yuv420.png}
+    \includegraphics[width=0.6\linewidth]{images/yuv420.png}
     \caption{Render \& Video Preset menus displaying Pixel choices}
     \label{fig:yuv420}
 \end{figure}

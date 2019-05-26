@@ -48,7 +48,6 @@
 \graphicspath{{images/}}            % path to images
 \usepackage{tikz}                   % drawing package
 \usepackage{nameref}                % use \nameref{} to set reference to chapter neme.
-\input{common/settings.tex}
 
 %----------------------------------------------------------------------
 \usepackage{listings}               % include code 
@@ -98,8 +97,12 @@
 } 
 \usepackage{wrapfig}                % Wrapping figures
 
-\usepackage{enumitem}
-\usepackage[colorinlistoftodos,textsize=tiny]{todonotes}
-\setlength{\marginparwidth}{1.6cm}
+\usepackage{enumitem}               % custom lists
 
+\usepackage[colorinlistoftodos,textsize=tiny]{todonotes}    % todo package
+\setlength{\marginparwidth}{1.6cm}                          % fix left margin for todo
 
+\usepackage[intoc]{nomencl}                         % glossary package
+\makenomenclature                                           % make glossary
+
+\input{common/settings.tex}

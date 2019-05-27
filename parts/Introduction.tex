@@ -10,11 +10,11 @@ The author of the original Cinelerra, Adam Williams, as well as many different p
 The software and this manual were merged in from various sources and each person is to be thanked and commended for their efforts. 
 Numerous software modifications were made by William Morrow. 
 These are all under GPLv2+ license. 
-Refer to: \url{https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html}
+Refer to: {\small\url{https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html}}
 
 
 \textbf{This is a copy of the header from the original source code.}
-\begin{lstlisting}[numbers=none]
+\begin{lstlisting}[numbers=none,basicstyle=\footnotesize]
 /*
 * CINELERRA
 * Copyright (C) 1997-2012 Adam Williams <broadcast at earthling dot net>
@@ -160,20 +160,20 @@ And which chapters are important for beginning to learn to use Cinelerra-GG. At 
         Besides how to Load and Save files, there is also information on using raw camera formats. 
         Helpful hints on working with image sequences, such as a bunch of pictures from your camera all loaded at once, is a time saver.
 
-    \item[Chapter 6] Editing.
+    \item[Chapter \ref{cha:editing}] \nameref{cha:editing}.
 
         New and occasional users will find it necessary to read this chapter. However, you can decide which editing mode you prefer and concentrate on reading that section. 
         Even seasoned users will want to read this chapter in order to take advantage of features that have been newly implemented or may be less familiar due to infrequent usage. 
         Anyone who wants the editing capabilities that comes with use of the Shuttle Jog Wheel, will initially need to read that section to become familiar with its usage.
 
-    \item[Chapter 7] Rendering.
+    \item[Chapter \ref{cha:rendering}] \nameref{cha:rendering}.
 
         Minimally most users will need to read the section on single file rendering to get started; since after all the whole purpose of using an NLE is to create your own media. 
         The end of this chapter includes some helpful specific rendering scenarios which could prove quite useful. 
         You might also want to consider using batch rendering and background rendering for performance reasons. 
         And, of course, render farm usage to take advantage of multiple computers can be a real boost.
 
-    \item[Chapter 8] Keyframes.
+    \item[Chapter \ref{cha:keyframes}] \nameref{cha:keyframes}.
 
         This is a more advanced topic but extremely useful to know. 
         Keyframes are data values that have been associated to the timeline that affect the media presentation. 
@@ -259,10 +259,9 @@ In summary, “must” reads for a new user would be these chapters or sections:
 \begin{itemize}
     \item Chapter \ref{cha:the_4_windows} \nameref{cha:the_4_windows}.
     \item Chapter \ref{cha:load_save_and_the_EDL} \nameref{cha:load_save_and_the_EDL}.
-    \item Chapter 6 - Editing; read all sections except emphasize only either Cut\&Paste or Drag\&Drop
-
-    \item editing to suit your purpose and then skim the editing mode that is not your preference as some operations work in either mode. Skip the Shuttle section unless you have this jog wheel in hand.
-    \item Chapter 7 – Rendering; minimally read the “single file rendering” section.
+    \item Chapter \ref{cha:editing} \nameref{cha:editing}; read all sections except emphasize only either \nameref{sec:cut_paste_editing} or \nameref{sec:drag_drop_editing} to suit your purpose and then skim the editing mode that is not your preference as some operations work in either mode. 
+        Skip the \nameref{sec:shuttle_jog_wheels_editing} section unless you have this jog wheel in hand.
+    \item Chapter \ref{cha:rendering} \nameref{cha:rendering}; minimally read the \nameref{sec:single_file_rendering} section.
     \item Chapter 10 – Effect Plugins; read the section on “how to use plugins”.
     \item Chapter 11 – Transition Plugins
     \item Chapter 16 – Configuration, Settings and Preferences; read at least the first couple of paragraphs.

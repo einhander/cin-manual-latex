@@ -7,7 +7,11 @@ positioning the insertion point at the beginning of a track and unsetting all in
 \section{Single File Rendering}%
 \label{sec:single_file_rendering}
 
+<<<<<<< HEAD
 \noindent Use the File pulldown and select Render to start the render dialog (figure~\ref{fig:render}).  Then choose the desired parameters.
+=======
+Use the File pulldown and select Render to start the render dialog (figure~\ref{fig:render}).  Then choose the desired parameters.
+>>>>>>> einhander
 
 \begin{figure}[htpb]
     \centering
@@ -88,8 +92,12 @@ The description of each of the columns in the batch list are as follows:
     \item[EDL:] the path and filename of the source EDL for the batch job.
     \item[Elapsed:] the amount of time taken to render the batch if finished.  If field is empty, it did not run.
 \end{description}
+<<<<<<< HEAD
 
 \noindent To start rendering from the first enabled batch, hit \texttt{Start}.  Once rendering, the main window shows the progress of the batch. After each batch finishes, the elapsed column in the batch list is updated and the next batch is rendered until all the enabled batches are finished.  The currently rendering batch is always highlighted red.  To stop rendering before the batches are finished without closing the batch render dialog, hit \texttt{Stop}.  To stop rendering before the batches are finished and close the batch render dialog, hit \texttt{Close}.  Or you can exit the batch render dialog whether or not anything is being rendered, by hitting \texttt{Close}.
+=======
+To start rendering from the first enabled batch, hit \texttt{Start}.  Once rendering, the main window shows the progress of the batch. After each batch finishes, the elapsed column in the batch list is updated and the next batch is rendered until all the enabled batches are finished.  The currently rendering batch is always highlighted red.  To stop rendering before the batches are finished without closing the batch render dialog, hit \texttt{Stop}.  To stop rendering before the batches are finished and close the batch render dialog, hit \texttt{Close}.  Or you can exit the batch render dialog whether or not anything is being rendered, by hitting \texttt{Close}.
+>>>>>>> einhander
 
 You can automate Cinelerra batch renders from other programs.  In the batch render dialog, once you have created your list of batch render jobs, you can click the button \texttt{Save Jobs} and choose a file to save your batch render list to.  Once you have created this file, you can start up a batch render without needing to interact with the Cinelerra user interface.  From a shell prompt, from a script, or other program, execute:
 
@@ -143,7 +151,13 @@ The \texttt{Save to EDL Path} and \texttt{Use Current EDL} buttons can be valuab
     run them more than once, it is beneficial to save the jobs for later use so you easily run them again.
     \item[Load Jobs] reload a previous set of saved jobs.  This can come in handy if you did not have the
     time to render them when you originally set them up, if you need to rerun, or if you got interrupted.
+<<<<<<< HEAD
     \item[warn if jobs/session mismatched] After you set up your render and press Start, the
+=======
+    \item[warn if jobs/session mismatched] 
+        \todo{First char should be capitalised}%
+        After you set up your render and press Start, the
+>>>>>>> einhander
     program checks to see if the current EDL session matches your Batch Render job.  If the EDL has
     been changed since the batch job was created, it warns you so that you have the opportunity to 
     \textit{Save to EDL} path to record those changes.  Otherwise, you can dismiss that warning box, disable 
@@ -205,6 +219,7 @@ The following steps are just a guideline to start your render farm.  It is assum
     \begin{itemize}
         \item check the \texttt{Use render farm} box;
         \item in the Hostname box, keyin your hostname or ip address such as $192.168.1.12$ or \texttt{localhost};
+<<<<<<< HEAD
         \item enter in a port number such as $401-405$ or $1025$ and click on \texttt{Add Nodes};
         \item you will see something like the following in the Nodes listbox to the right:
         \begin{lstlisting}[language=bash]
@@ -217,11 +232,26 @@ The following steps are just a guideline to start your render farm.  It is assum
             X		localhost		406	    0.0
             X		localhost		407	    0.0
         \end{lstlisting}
+=======
+        \item enter in a port number such as $401-405$ (only a root user can use privileged ports) or $1025$  and click on \texttt{Add Nodes};
+        \item you will see something like the following in the Nodes listbox to the right:
+            \begin{tabular}{lllc}
+                On & Hostname     & Port & Framerate \\\midrule
+                X  & 192.168.1.12 & 401  & 0.0       \\
+                X  & 192.168.1.12 & 402  & 0.0       \\
+                X  & 192.168.1.12 & 403  & 0.0       \\
+                X  & 192.168.1.12 & 404  & 0.0       \\
+                X  & 192.168.1.12 & 405  & 0.0       \\
+                X  & localhost    & 406  & 0.0       \\
+                X  & localhost    & 407  & 0.0       \\
+            \end{tabular}
+>>>>>>> einhander
         \item set the Total number of jobs to create;
         \item click OK on the bottom of the Preferences window.
     \end{itemize}
     \item On the client computers ($192.168.1.12$), start 5 background cinelerra tasks via:
     \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         cd /{path_to_cinelerra}
         cin -d 401
         cin -d 402
@@ -233,6 +263,19 @@ The following steps are just a guideline to start your render farm.  It is assum
     cd /{path_to_cinelerra}
     cin -d 406
     cin -d 407
+=======
+$ cd /{path_to_cinelerra}
+$ cin -d 401
+$ cin -d 402 
+...
+$ cin -d 405
+    \end{lstlisting}
+    \item On the master node (localhost), start the 2 background cinelerra tasks via:
+    \begin{lstlisting}[language=bash]
+$ cd /{path_to_cinelerra}
+$ cin -d 406
+$ cin -d 407
+>>>>>>> einhander
     \end{lstlisting}
     \item When your video is ready, setup a render job via \texttt{File $\rightarrow$  Render} or \texttt{File $\rightarrow$  Batch Render} and check \texttt{OK}.
     \item The results will be in the shared file path / filename that you selected in the render menu with the
@@ -294,11 +337,16 @@ divided by the number of packages to portion out the work (if not labels).  If s
         \item On each of the computers, install the nfs software if not already installed.  For example, on Debian 9
         you will need to run: (be sure to check/verify before using any command line):
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
             apt-get install nfs-kernel-server
+=======
+$ apt-get install nfs-kernel-server
+>>>>>>> einhander
         \end{lstlisting}
         \item On the computer that contains the disk storage to be shared, define the network filesystem.  For
         example to export \texttt{/tmp}, edit the \texttt{/etc/exports} file to add the following line:
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         /tmp 192.168.1.0/24(rw,fsid=1,no_root_squash,sync,no_subtree_check)
         \end{lstlisting}
         \item Next reset the exported nfs directories using: 
@@ -308,29 +356,56 @@ divided by the number of packages to portion out the work (if not labels).  If s
         and you may have to start or restart nfs: 
         \begin{lstlisting}[language=bash]
         systemctl restart nfs
+=======
+192.168.1.0/24(rw,fsid=1,no_root_squash,sync,no_subtree_check)
+        \end{lstlisting}
+        \item Next reset the exported nfs directories using: 
+        \begin{lstlisting}[language=bash]
+$ exportfs -ra
+        \end{lstlisting} 
+        and you may have to start or restart nfs: 
+        \begin{lstlisting}[language=bash]
+$ systemctl restart nfs
+>>>>>>> einhander
         \end{lstlisting}
         \item Each of the render farm computers must mount the exported nfs target path.  To see the exports
         which are visible from a client, login as root to the client machine and keyin:
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         showmount -e <ip-addr>  #using the ip address of the storage host
+=======
+$ showmount -e <ip-addr>  #using the ip address of the storage host
+>>>>>>> einhander
         \end{lstlisting}
         \item to access the host disk storage from the other computers in the render farm, mount the nfs export on
         the corresponding target path: (be sure to check/verify before using any command line):
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         mount -t nfs <ip-addr>:/<path>  <path>
+=======
+$ mount -t nfs <ip-addr>:/<path>  <path>
+>>>>>>> einhander
         \end{lstlisting}
         where \texttt{<path>} is the storage host directory, and \texttt{<ip-addr>} is the network address of the storage host.        
         Because all of the computers must have the same directory path, create that same directory path with the same uid/gid/permissions on each storage client computer ahead of time.
         \item To make this permanent across reboots on the client nodes, add the following line to \texttt{/etc/fstab}: 
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         {masternode}:/nfsshare /mnt nfs defaults 0 0
+=======
+{masternode}:/nfsshare /mnt nfs defaults 0 0
+>>>>>>> einhander
         \end{lstlisting}
         You can make this permanent on the disk storage host BUT the command lines shown, which were
         correct in January 2018 on Fedora, may be different for your operating system or in the future.  In
         addition if your network is not up, there may be numerous problems.  If you make a mistake, your
         system may not boot.  To make permanent, add the following line to \texttt{/etc/fstab}:
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         192.168.1.12:/tmp /tmp nfs rw,async,hard,intr,noexec,noauto 0 0
+=======
+192.168.1.12:/tmp /tmp nfs rw,async,hard,intr,noexec,noauto 0 0
+>>>>>>> einhander
         \end{lstlisting}
         You will still have to mount the above manually because of the \textit{noauto} parameter but you won’t
         have to remember all of the other necessary parameters.  Depending on your expertise level, you can
@@ -338,7 +413,11 @@ divided by the number of packages to portion out the work (if not labels).  If s
         
         Later, to remove access to the storage host filesystem:        
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         umount <path>
+=======
+$ umount <path>
+>>>>>>> einhander
         \end{lstlisting}
         
         Be aware that you may have to adjust any security or firewalls you have in place.  \textit{Most firewalls will require extra rules to allow nfs access}.  Many have built-in configurations for this. 
@@ -354,7 +433,11 @@ divided by the number of packages to portion out the work (if not labels).  If s
         number that you want to use in the Port textbox.  You can make sure a port number is not already in
         use by keying in on the command line:
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         netstat -n -l -4 --protocol inet
+=======
+$ netstat -n -l -4 --protocol inet
+>>>>>>> einhander
         \end{lstlisting}
         Next, click on the \texttt{Add Nodes}
         button and then you will see that host appear in the Nodes list box to the right.  The \texttt{X} in the first
@@ -367,6 +450,7 @@ divided by the number of packages to portion out the work (if not labels).  If s
     \item[Create Workflow] While working on the master computer, it is recommended that you keep all the resources being used on the same shared disk.  Load your video/audio piece and do your editing and preparation.  Add any desired plugins, such as a Title, to fine-tune your work.  You want to make sure your video is ready to be rendered into the final product.
     \item[Start the Client Nodes] To start up the client nodes run Cinelerra from the command line on each of the client computers using the following command:
     \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
     /{cinelerra_pathname}/cin -d [port #]   ;   \#for example /mnt1/bin/cinelerra -d 401
     \end{lstlisting}
     This starts cinelerra in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
@@ -381,6 +465,22 @@ divided by the number of packages to portion out the work (if not labels).  If s
     A quick way to start a sequence of clients is to use:
     \begin{lstlisting}[language=bash]
     or n in `seq 1501 1505`; do cin -d $n; done
+=======
+/{cinelerra_pathname}/cin -d [port #]   ;   \#for example /mnt1/bin/cinelerra -d 401
+    \end{lstlisting}
+    This starts cinelerra in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
+    \begin{lstlisting}[language=bash]
+RenderFarmClient::main_loop: client started
+RenderFarmClient::main_loop: Session started from 127.0.0.1
+    \end{lstlisting}
+    As it completes its jobs, you will should see:
+    \begin{lstlisting}[language=bash]
+RenderFarmClientThread::run: Session finished
+    \end{lstlisting}
+    A quick way to start a sequence of clients is to use:
+    \begin{lstlisting}[language=bash]
+or n in `seq 1501 1505`; do cin -d $n; done
+>>>>>>> einhander
     \end{lstlisting}
     \item[Render Using Render Farm] After you have followed the preceding steps, you are ready to use the render farm.  Click on File $\rightarrow$ Render\dots which opens the render dialog.  The most important point here is to use for \texttt{the Output path / Select a file to render to} a path/file name that is on the shared volume that is also mounted on the clients.  Click on \texttt{OK} to render. The cinelerra program divides the timeline into the number of jobs specified by the user.  These jobs are then dispatched to the various nodes depending upon the load balance. The first segment will always render on the master node and the other segments will be farmed out to the render nodes.  Batch Rendering, as well as BD/DVD rendering, may use the render farm.  Each line in the batchbay can enable/disable the render farm.  Typically, video can be rendered into many file segments and concatenated, but normally audio is rendered as one monolithic file (not farmed).
     
@@ -412,7 +512,11 @@ These steps are for quickly setting up render farm with the least amount of addi
     \end{itemize}
     \item On each buddy client, create a job for each port:    
     \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
     /{cinelerra_pathname}/cin -d port#
+=======
+/{cinelerra_pathname}/cin -d port#
+>>>>>>> einhander
     \end{lstlisting}
     \item On the master, bring up the render menu and name the output files, for example \texttt{/tmp/myoutput.mp4}.
     \item The client nodes output results will be on their local \texttt{/tmp} filesystems so you will have to again use
@@ -472,14 +576,22 @@ This means that you can make project related configurations that do not impact t
     in the Nodes listbox.  Check the \texttt{X} to disable it which sets \texttt{On} to \texttt{Off}.
     \item A red message in the lower left hand corner of the main timeline that reads \textit{Failed to start render
     farm} often means that the client cinelerra programs were not started up.
+<<<<<<< HEAD
     \item A message of \texttt{RenderFarmWatchdog::run 1 killing server thread \#address\#} means that the client did
+=======
+    \item A message of \texttt{RenderFarmWatchdog::run 1 killing server thread \\ \#address\#} means that the client did
+>>>>>>> einhander
     not respond in time.  You can adjust the timer in Settings $\rightarrow$ Preferences, Performance tab.
     \item When you get the message \texttt{RenderFarmClient::main\_loop: bind port 400: Address already in use}, use a different port.
     \item A message of \texttt{RenderFarmServerThread::open\_client: unknown host abcompany} means that the
     hostname of abcompany is not in \texttt{/etc/hosts} so you will have to add it or use the ip address instead.
     \item There are numerous error messages associated with file \texttt{open/close/status} or problems with the file
     that should be dealt with according to what is printed out.
+<<<<<<< HEAD
     \item Other illustrative messages may be shown such as: \texttt{RenderFarmClientThread::run: Session finished}.
+=======
+    \item Other illustrative messages may be shown such as: \texttt{RenderFarmClientThread:: run: Session finished}.
+>>>>>>> einhander
 \end{itemize}
 
 \paragraph{Warnings}
@@ -590,15 +702,24 @@ ffmpeg -i input -c:v libx264 -b:v 2600k -pass 2 -c:a aac -b:a 128k output.mp4
         \item Set the bitrate to $2600000$ ($2600k$ as in ffmpeg example above).
         \item Add the following 2 lines after the first line:
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         flags +pass1
         passlogfile /tmp/{temporary log file name}.log
+=======
+flags +pass1
+passlogfile /tmp/{temporary log file name}.log
+>>>>>>> einhander
         \end{lstlisting}
         Click checkmark \texttt{OK}.
     \end{itemize}    
     \item Click on \texttt{New} to create the second pass job.  You will see this second job in the listbox below.
      Use the Video wrench and change pass1 to pass2 as follows.
         \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
         flags +pass2
+=======
+flags +pass2
+>>>>>>> einhander
         \end{lstlisting}
     \item Click checkmark \texttt{OK}.
     \item Click on the \texttt{Start} box and watch it go!
@@ -615,14 +736,23 @@ If you need to re-render this, the Batch Render will still be set up but you hav
 \begin{description}
     \item[x265:] add this line:
     \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
      x265-params=pass=1:stats=/tmp/{temporary log file name}.log
+=======
+x265-params=pass=1:stats=/tmp/{temporary log file name}.log
+>>>>>>> einhander
     \end{lstlisting}      
     at the time this document was written, you should see in the output:  \texttt{stats-read=2}
     
     \item[libvpx-vp9, xvid, and huffyuv:]
     \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
     cin_stats_filename /tmp/{temporary log file name}.log
     flags +pass1 (or flags +pass2 for the second pass)
+=======
+cin_stats_filename /tmp/{temporary log file name}.log
+flags +pass1 (or flags +pass2 for the second pass)
+>>>>>>> einhander
     \end{lstlisting} 
     \noindent \textit{NOTE:} for vp9, the best Pixels is \texttt{gbrp}   
 \end{description}
@@ -635,7 +765,11 @@ You can pipe a video to any command line on the computer, such as ffmpeg.  This 
 \begin{enumerate}
     \item on a terminal window create a named pipe file, for example:
     \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
     mknod /tmp/piper.yuv p
+=======
+mknod /tmp/piper.yuv p
+>>>>>>> einhander
     \end{lstlisting}
     load your video and do your editing
     \item set up your Render (\texttt{Shift-R}), you can choose a raw format such as \textit{yuv} or \textit{rgb}
@@ -644,7 +778,11 @@ You can pipe a video to any command line on the computer, such as ffmpeg.  This 
     \item click for \texttt{OK} on the green checkmark.(the cinelerra gui will look like it is hanging while waiting for a command line to use the pipe.)
     \item on the terminal window, keyin your command, for example:
     \begin{lstlisting}[language=bash]
+<<<<<<< HEAD
     /mnt0/build5/cinelerra-5.1/thirdparty/ffmpeg-3.4.1/ffmpeg -f rawvideo -pixel_format yuv420p \ -video_size 1280x720 -framerate 30000/1001 -i /tmp/piper.yuv /tmp/pys.mov
+=======
+/mnt0/build5/cinelerra-5.1/thirdparty/ffmpeg-3.4.1/ffmpeg -f rawvideo -pixel_format yuv420p \ -video_size 1280x720 -framerate 30000/1001 -i /tmp/piper.yuv /tmp/pys.mov
+>>>>>>> einhander
     \end{lstlisting}
 \end{enumerate}
 

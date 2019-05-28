@@ -23,6 +23,7 @@ In the following editing sections, references to common operations are scattered
 
 On the left of the timeline is a region known as the patchbay.  The patchbay enables features specific to each track as described next.
 
+
 \begin{description}
     \item[Textbox] for naming the track.  The default names will usually be Video \#, Audio \#, or Mixer \# if using the multi-camera/mixer operations.  A \# will be designated for subsequent tracks as in 1, 2, 3 and so on.
     \item[Expander] which is a down arrow on the right side, is for viewing more options on the patchbay and for viewing the effects represented on the track.   You can just click on the expander to expand or collapse the patchbay and the track.  If it is pointing sideways, the track is collapsed.  If it is pointing down, the track is expanded.  Existing effects appear below the media for the track.
@@ -31,14 +32,13 @@ On the left of the timeline is a region known as the patchbay.  The patchbay ena
 \noindent Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay01}).  If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click 
 on the toggle to enable/disable the feature.
 
-\begin{wrapfigure}[17]{O}{0.4\linewidth}
+\begin{wrapfigure}[15]{O}{0.3\linewidth}
     \vspace{-2ex}
     \centering
     \includegraphics[width=0.79\linewidth]{images/patchbay01.png}
     \caption{Patchbay}
-    \label{fig:patchbay}
+    \label{fig:patchbay01}
 \end{wrapfigure}
-
 
 
 Several mouse operations speed up the configuration of several tracks at a time. Click on an attribute and drag the cursor across adjacent tracks to copy the same attribute to those tracks.  Hold down Shift while clicking a track's attribute to enable the attribute in the current track and toggle the attribute in all the other tracks. Or you can:
@@ -54,6 +54,9 @@ The \textit{attributes} are described here next.
 \begin{description}
     \item[Play Track] determines whether the track is rendered or not. If it is off, the track is not rendered.  For example if you turn it off in all the video tracks, the rendered media file will have only audio tracks.  If the track is chained to any other tracks by a shared track effect, the other tracks perform all the effects in this shared track, regardless of play status of the shared track that in this particular case affects the media output but not fade and effects.
     \item[Arm Track] determines whether the track is armed or not.  Only the armed tracks are affected by editing operations. Make sure you have enough armed destination tracks when you paste or splice material or some tracks in the material will get left out.  In addition to restricting editing operations, the armed tracks in combination with the active region determine where material is inserted when loading files.  If the files are loaded with one of the insertion strategies which do not delete the existing project, the armed  tracks will be used as destination tracks.
+\end{description}
+
+\begin{description}
     \item[Gang Fader] cause the fader to track the movement of whatever other fader you are adjusting by dragging either the fader or the curve on the track.  It doesn't affect the editing made with menu controls.  A fader is only ganged if the arm track is also on.  This is often used to adjust audio levels on all the tracks simultaneously.  Gang also causes Nudge parameters to synchronize across all the ganged tracks.
     \item[Draw Media] determines if picons or waveforms are drawn on the asset in the track.  You may want to disable this if you know that the media/format takes a long time to draw on the timeline.  By default it is set to on in order to see picons on the timeline.
     \item[Don’t send to output] , more commonly called \textit{mute}, causes the output to be thrown away once the track is completely rendered. This happens whether or not \textit{Play track} is on.  For example if you mute all the video tracks, the rendered media file will have a blank video track.  Mute track is represented on the timeline with a line that has the default color of pink/orange.  Use the pulldown View $\rightarrow$ Mute to have the line displayed.  It is a keyframable attribute, but Mute track keyframing is a toggle and it has only the two values of on or off. If a track is part of a shared track effect, the output of the track with the shared track effect is overlaid on the final output even though it is routed back to another track (the shared track).  Mute track is used to keep the track with the shared track effect from overlapping the output of the source track (the shared track) where the shared track effect is not present.

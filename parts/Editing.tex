@@ -28,12 +28,9 @@ On the left of the timeline is a region known as the patchbay.  The patchbay ena
     \item[Expander] which is a down arrow on the right side, is for viewing more options on the patchbay and for viewing the effects represented on the track.   You can just click on the expander to expand or collapse the patchbay and the track.  If it is pointing sideways, the track is collapsed.  If it is pointing down, the track is expanded.  Existing effects appear below the media for the track.
 \end{description}
 
-<<<<<<< HEAD
-=======
 \noindent Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay01}).  If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click 
 on the toggle to enable/disable the feature.
 
->>>>>>> einhander
 \begin{wrapfigure}[17]{O}{0.4\linewidth}
     \vspace{-2ex}
     \centering
@@ -42,15 +39,7 @@ on the toggle to enable/disable the feature.
     \label{fig:patchbay}
 \end{wrapfigure}
 
-<<<<<<< HEAD
-Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay}).
 
-
-
-If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click on the toggle to enable/disable the feature.
-=======
-
->>>>>>> einhander
 
 Several mouse operations speed up the configuration of several tracks at a time. Click on an attribute and drag the cursor across adjacent tracks to copy the same attribute to those tracks.  Hold down Shift while clicking a track's attribute to enable the attribute in the current track and toggle the attribute in all the other tracks. Or you can:
 
@@ -208,12 +197,8 @@ pasted one after the other, keeping the same order they have on the stack.
 
 \paragraph{Split --- blade cut and hard edges:} You can cut the tracks into 2 pieces on the timeline by putting the hairline cursor on the place you want to do a cut and then using the character “x” or the scissors tool (figure~\ref{fig:cut}). 
 
-<<<<<<< HEAD
-\begin{wrapfigure}[16]{O}{0.3\textwidth}
-=======
 \begin{wrapfigure}[16]{O}{0.3\linewidth}
     \vspace{-1ex}
->>>>>>> einhander
     \centering
     \includegraphics[width=0.9\linewidth]{images/cut.png}
     \caption{Blade cut}
@@ -379,17 +364,9 @@ Explanation of how to use Inter-View mode will be described here next.
 
 \begin{itemize}
     \item Do your editing as usual on the timeline until you are ready to see what is used or unused.
-<<<<<<< HEAD
-    \item Make sure you are in Preview mode in the Resources window; you enable this mode using the menu
-        \textit{Full play} to the left of the word Search \quad
-        \includegraphics[height=\baselineskip]{images/fullplay.png}.
-    \item Middle mouse click on a thumbnail in the Resources window and a popup occurs of that media with a
-        white colored bar at the top and a red colored bar at the bottom with black sections.
-=======
     \item Make sure you are in any of the Preview modes in the Resources window; you enable the mode using the pulldown to the left of the word Search.  The option looks like this
     \quad \includegraphics[height=\baselineskip]{images/fullplay.png}.   \item Middle mouse click on a thumbnail in the Resources window and a popup occurs of that media with a
     white colored bar at the top and a red colored bar at the bottom with black sections.
->>>>>>> einhander
 \end{itemize}
 
 The red/white bars represent the presence and the black sections represent the absence of where that media is used on the timeline.  To get to a bigger representation, use the “f” key for a full screen.  Now
@@ -514,67 +491,6 @@ A description of the fundamental/common terminology for choices follows.
     \item[Edge Left / Right] moves the edge of the clips.
     \item[No effect] no changes are made.  You might want to use this choice to prevent accidental movements.
 \end{description}
-<<<<<<< HEAD
-The next two tables displays the options and results with the Key Table here first.
-
-\vspace{1ex} 
-\noindent s = src media start\\
-p = proj position \\
-l = length \\
-c = cut distance \\
-rest == p+=c: for rest of clips \\
-01 = flags edits\_moved, rest\_moved
-
-{\small
-\begin{verbatim}
-                                   drag left       drag right
-curr s+=c,l-=c; +rest                 <               >     ... rest
-+-------------+    all left      +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|012345|xyz++abc|2345|xyz+
-+-------------+            11    +-------------+ +-------------+
-curr l+=c; +rest                          <               >  ... rest
-+-------------+  ripple right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
-+-------------+            01    +-------------+ +-------------+
-
-prev l+=c; curr ps+=c,l-=c            <              >
-+-------------+    roll left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +ab|012345|xyz+ +abcd|2345|xyz+
-+-------------+            00    +-------------+ +-------------+
-|curr l+=c; next ps+=c,l-=c                <               >
-+-------------+    roll right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|wxyz+ +abc|123456|yz+
-+-------------+            00    +-------------+ +-------------+
-
-s-=c                                  <              >
-+-------------+    slip left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|23456|xyz+ +abc|01234|xyz+
-+-------------+            10    +-------------+ +-------------+
-s-=c                                      <               >
-+-------------+    slip right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|23456|xyz+ +abc|01234|xyz+
-+-------------+            10    +-------------+ +-------------+
-
-prev l+=c; curr p+=c; next ps+=c,l-=c <              >
-+-------------+   slide left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +ab|12345|wxyz+ +abcd|12345|yz+
-+-------------+            10    +-------------+ +-------------+
-prev l+=c; curr p+=c; next ps+=c,l-=c     <               >
-+-------------+   slide right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +ab|12345|wxyz+ +abcd|12345|yz+
-+-------------+            10    +-------------+ +-------------+
-
-curr s-=c,l+=c; +rest                 <               >      ... rest
-+-------------+    edge left     +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|2345|xyz+  +abc|012345|xyz+
-+-------------+            11    +-------------+ +-------------+
-curr l+=c; +rest                          <               >  ... rest
-+-------------+    edge right    +-------------+ +-------------+
-+abc|12345|xyz+ ---------------> +abc|1234|xyz+  +abc|123456|xyz+
-+-------------+            01    +-------------+ +-------------+
-\end{verbatim}
-}
-=======
 The next table displays the options and results with the Key Table here first.
 
 \begin{lstlisting}[language=bash]
@@ -632,7 +548,6 @@ Next, a more immediate and colorful view shows these trimming options ((figure~\
     \caption{The 5 types of Trim: note the different lengths of the results.}
     \label{fig:trim-color}
 \end{figure}
->>>>>>> einhander
 
 \paragraph{How to do a J-cut or L-cut} A J-cut is a split edit film editing technique in which the audio from a following scene overlaps the picture from the preceding scene, so that the audio portion of the later scene starts playing before its picture as a lead-in to the visual cut.  An L-cut is a different split edit film editing technique in which the audio from preceding scene overlaps the picture from the following scene, so that the audio cuts after the picture, and continues playing over the beginning of the next scene (figure~\ref{fig:j-cut}). To do either a J-cut or an L-cut, you first shorten the first or second video a little.  Then you block the audio tracks from changing by disarming the appropriate tracks.  Finally use \textit{One Edit (roll)} the cutting edge off the videos.  Moving to the right creates a J-cut and moving to the left creates an L-cut.
 \begin{figure}[htpb]
@@ -676,34 +591,19 @@ Now to use this feature, create a track with edits that have trims on the left a
 
 \paragraph{Cutting/Snapping edits} cuts from an edit handle to the insert point. 
 There are Edit Panel buttons which normally are used to move to the previous or next edit handle/label.
-<<<<<<< HEAD
-
-\begin{wrapfigure}[8]{O}{0.3\textwidth}
-    \vspace{-2ex}
-    \centering
-    \includegraphics[width=0.99\linewidth]{images/snap.png}
-=======
 \begin{wrapfigure}[5]{r}{0.2\linewidth}
     \vspace{-1ex}
     \centering
     \includegraphics[width=0.7\linewidth]{images/snap.png}
->>>>>>> einhander
 \end{wrapfigure}
-
 They look like tags and the letter E on the menu bar and are oriented forward/backward.  These same buttons can be used to \textit{cut} from the insert pointer to the previous or next edit/label when the \texttt{ctrl+alt} keys are both pressed when the buttons are used.  They \textit{snap} off the media instead of doing the standard re-positioning.  This is useful to minimize the number of operations necessary to cut between edits/labels.
 
 Instead of using the edit panel buttons, you can more easily use the following keyboard shortcuts to perform the same functions:
 \begin{center}
     \begin{tabular}{l l l}
-<<<<<<< HEAD
-        \toprule 
-        snap\_right\_edit &	ctrl+alt+ '.' \\
-        snap\_left\_edit &	ctrl+alt+ ',' \\
-=======
         \toprule
         snap\_right\_edit &	ctrl+alt+ '.' & \\
         snap\_left\_edit &	ctrl+alt+ ',' & \\
->>>>>>> einhander
         snap\_right\_label &	ctrl+alt +shift '.' &  shift+period is the > sign on US keyboards \\
         snap\_left\_label & 	ctrl+alt +shift',' &  shift+comma is the < sign on US keyboards \\
         \bottomrule
@@ -933,19 +833,11 @@ $ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
 \begin{lstlisting}[language=Bash]
 Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2
 \end{lstlisting}
-<<<<<<< HEAD
-    \item To make sure you have usbmon installed keyin:
-\begin{lstlisting}[language=Bash]
-$ sudo modprobe usbmon
-\end{lstlisting}
-    \item Next keyin the following:
-=======
     \item To make sure you have usbmon installed key in:
 \begin{lstlisting}[language=Bash]
 $ sudo modprobe usbmon
 \end{lstlisting}
     \item Next key in the following:
->>>>>>> einhander
 \begin{lstlisting}[language=Bash]
 $ sudo od -tx1 /dev/usbmon3
 \end{lstlisting}
@@ -1010,15 +902,6 @@ event: (0, 0, 0x0)
 
 \noindent When done, you will have to Ctrl-C to get out of the program.
 
-<<<<<<< HEAD
-\paragraph{Note 4} For developers, it is also possible to do the following for further in depth testing:
-    \begin{lstlisting}[language=Bash]
-# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006
-$ ls /sys/kernel/debug/hid   
-$ cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc” # substitute your own numerical value
-$ cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events” # press keys to see the results
-    \end{lstlisting}
-=======
 \paragraph{Note 4} For developers, if you have a pre-UEFI Secure Boot kernel it is also possible to do the following for further in depth testing:
 
 \begin{enumerate}
@@ -1026,23 +909,11 @@ $ cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events” # press keys to see
     \item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc”    \# substitute your own numerical value}
     \item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events”  \# press keys to see the results}
 \end{enumerate}
->>>>>>> einhander
 
 \subsection{Shuttle key default arrangement for Cinelerra / Composer / Viewer:}%
 \label{sub:shuttle_key_default_cinelerra}
 
-<<<<<<< HEAD
-The following is the default setting for the ShuttlePROv2 and ShuttleXpress:
-
-\vspace{1ex} \textbf{ShuttlePROv2:}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\linewidth]{images/shuttle-prov2.png}
-\end{figure}
-=======
 The following is the default setting for the ShuttlePROv2 and ShuttleXpress (table~\ref{tab:shuttleprov2} and table~\ref{tab:xpress}):
->>>>>>> einhander
 
 \begin{landscape}   
     \begin{table}[htpb]
@@ -1114,10 +985,3 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress (tab
 
 \end{landscape}
 
-<<<<<<< HEAD
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\linewidth]{images/xpress.png}
-\end{figure}
-=======
->>>>>>> einhander

@@ -231,16 +231,16 @@ clips onto the timeline.
 
 Cinelerra fills out the audio and video tracks below the dragging cursor with data from the file. This affects what tracks you should create initially and which track to drag the media onto. To drag and drop a file on the Program window, you need to create on the timeline the same set of tracks as your media file.
 
-When you drag your chosen media from the media folder to the timeline, your mouse pointer will drag a thumbnail and, once over the timeline, the outline of a white rectangle, as big as the edit you are going to have appears.  Drag the media to the desired position of an empty track of the timeline and drop it.  If there are other edits on that track, when you move the white outline over an edit, you will see a bow tie symbol $\rhd\lhd$ appearing at edit boundaries. If you drop the media there, the new edit will start from the edit boundary indicated by the center of the bow tie $\rhd\lhd$.
+When you drag your chosen media from the media folder to the timeline, your mouse pointer will drag a thumbnail and, once over the timeline, the outline of a white rectangle, as big as the edit you are going to have appears.  Drag the media to the desired position of an empty track of the timeline and drop it.  If there are other edits on that track, when you move the white outline over an edit, you will see a bow tie symbol $\bowtie$ appearing at edit boundaries. If you drop the media there, the new edit will start from the edit boundary indicated by the center of the bow tie $\bowtie$.
 
 Since the mouse pointer is in the middle of the white outline, when this rectangle is bigger than the visible part of the timeline, it is quite cumbersome to precisely insert it for long media. Lengthening the duration visible in the timeline by changing the sample zoom in the zoom panel will reduce the size of the white rectangle, making a precise insertion possible.
 
 \noindent When you drag and drop edits within the timeline:
 
 \begin{itemize}
-    \item If you drop an edit when bow ties $\rhd\lhd$ are shown, that edit will be cut and pasted starting at the edit
-    boundary indicated by the center of the bow tie $\rhd\lhd$.  Following edits on the same track will move.
-    \item If you drop an edit when there are no bow ties $\rhd\lhd$ shown, the original edit will be muted and pasted
+    \item If you drop an edit when bow ties $\bowtie$ are shown, that edit will be cut and pasted starting at the edit
+    boundary indicated by the center of the bow tie $\bowtie$.  Following edits on the same track will move.
+    \item If you drop an edit when there are no bow ties $\bowtie$ shown, the original edit will be muted and pasted
     where you dropped it. No edits will move. A silence will appear in place of the original edit.
     \item If you have more armed tracks on the timeline than in the asset you are dragging, only the following
     edits of the tracks affected by the drag and drop operation will move to the right. This will cause loss
@@ -355,7 +355,8 @@ This feature provides the following capabilities:
     \item You can see which parts of that particular media are already used so you do not reuse that same 
     piece again.
 \end{itemize}
-Figure~\ref{fig:inter-view01} shows an example of the Inter-View mode mapping preview mini-window..
+Figure~\ref{fig:inter-view01} shows an example of the Inter-View mode mapping preview mini-window.
+
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.8\linewidth]{images/inter-view01.png}

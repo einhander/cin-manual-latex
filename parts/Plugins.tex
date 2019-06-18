@@ -129,18 +129,18 @@ In order to prevent the shared track from mixing the same data as the original t
 Note that using this is directly changing a keyframe object so you will only want to modify parameters you are familiar with. Most of the data is obvious and safe to change.
 
 A Presets button on the plugin bar to the left of the Controls and On/Off button allows for quick access to this feature. The symbol resembles a gear (figure~\ref{fig:preset02}).
-    \todo{I can't to remedy}%
+    %\todo{I can't to remedy}%
 
 \begin{figure}[htpb]
     \centering    
     \begin{tikzpicture}[scale=1, transform shape]
     \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/preset02.png}};
     \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Green) {A user preset Green};
-    \node [yshift=-101mm, xshift=-1cm,anchor=east] at (img1.north west) (Textbox) {Textbox to type in the title for the chosen preset or name for a new preset.};
-    \node [yshift=-110mm, xshift=-1cm,anchor=east] at (img1.north west) (Save) {Use the Delete, Save or Apply button for operation.};    
+    \node [yshift=-101mm, xshift=-1cm,anchor=south east,text width=10em, inner ysep=-3mm] at (img1.north west) (Textbox) {Textbox to type in the title for the chosen preset or name for a new preset.};
+    \node [yshift=-110mm, xshift=-1cm,anchor=north east,text width=10em,inner ysep=-3mm] at (img1.north west) (Save) {Use the Delete, Save or Apply button for operation.};    
     \draw [->, line width=1mm] (Green) edge  ([yshift=-20mm] img1.north west);
-    \draw [->, line width=1mm] (Textbox) edge  ([yshift=-101mm] img1.north west);
-    \draw [->, line width=1mm] (Save) edge    ([yshift=-110mm] img1.north west);   
+    \draw [->, line width=1mm] (Textbox.south east) --  ([yshift=-101mm] img1.north west);
+    \draw [->, line width=1mm] (Save.north east) --    ([yshift=-110mm] img1.north west);   
     \end{tikzpicture}    
     \caption{Screencast shows 4 Factory presets as preceded by an *.}
     \label{fig:preset02}

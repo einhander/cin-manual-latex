@@ -1,7 +1,7 @@
 \chapter{Plugins}%
 \label{cha:plugins}
 
-There are realtime effects --- these are the most useful and probably all you will ever need - and rendered effects. The rendered effects are discussed separately in the Rendered Effects \todo{internal link 1}% 
+There are realtime effects --- these are the most useful and probably all you will ever need --- and rendered effects. The rendered effects are discussed separately in the Rendered Effects \todo{internal link 1}% 
 section. Effect plugins modify the track when played, according to how they are set, with no permanent storage of the output except when the project is rendered. There are many Plugins in Cinelerra-GG Infinity which are actually quite easy to use just by experimenting with them. The plugins are shown and selected from the \textit{Resources window} (figure~\ref{fig:video-plugins}). They are described in more detail later.
 
 \begin{figure}[htpb]
@@ -571,7 +571,7 @@ Ladspa effects are supported in realtime and rendered mode for audio. These audi
 export LADSPA_PATH=/usr/lib/ladspa
 \end{lstlisting}
 
-\section{Audio LV2 / Calf Plugins\protect\footnote{Optional Feature - OS dependent}}%
+\section[Audio LV2 / Calf Plugins]{Audio LV2 / Calf Plugins\protect\footnote{Optional Feature - OS dependent}}%
 \label{sec:audio_lv2_calf_plugins}
 
 LV2 is an open standard for audio plugins using a simple interface with extensions which add functionality to support audio software. These plugins were written by external developers and provide additional audio effects to Cinelerra audio without having to change Cinelerra every time. Because the LV2 plugins are separate from Cinelerra-GG Infinity, if one fails or does not perform as expected, cinelerra should stay running and you will have to contact the programmers responsible for that plugin for a fix.
@@ -647,7 +647,7 @@ For example:
     \label{fig:calf02}
 \end{figure}
 
-\section{Video Effects - Native\protect\footnote{credit to Andrea Paz for reviewing and numerous plugin descriptions and figures}}%
+\section[Video Effects --- Native]{Video Effects --- Native\protect\footnote{credit to Andrea Paz for reviewing and numerous plugin descriptions and figures}}%
 \label{sec:video_effects_native}
 
 \subsection{1080 to 480}%

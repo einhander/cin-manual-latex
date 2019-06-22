@@ -1467,9 +1467,25 @@ Curves are used by introducing \textit{control points} simply with the left mous
 
 Curves are generally adjusted by introducing several control points, some to be kept fixed (as anchors) to prevent curve modification beyond them, and others to be dragged to make the desired correction. The power of the curves lies in being able to circumscribe a small interval at will and intervene only on this without involving the remaining parts of the frame. The precision with which you can work is such that you can almost arrive at a secondary color correction.
 
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/ex-bezier.png}
+    \caption{Gain Up/Down; clamp; S-Shaped curve and Luma Key}
+    \label{fig:ex-bezier}
+\end{figure}
+
 The most used type of modification is to create a \textit{S curve}. There can be a lot of shapes that use the S curve; the simplest is to create a control point in the shadows, one in the midtones (anchors) and one in the highlights. Moving the highlight point upwards and the shadow point downwards increases the contrast, making the image sharper and improving the color rendering. With the type of \textit{linear} curve you can make hard adjustments, similar to the result of the use of \texttt{Color 3 Way}, even if this acts on the color wheel (Hue) while the curves act on individual RGB channels.
 
 The \textit{Polynomial} and \textit{Bézier} types introduce \textit{control handles} that allow for more sophisticated and smoother adjustments. The quality of the result is much better, but they require more experience for their optimal use. Extending the handles away from the control point increases the \textit{radius} of the curve at that point. By varying the angle of the handles we change the \textit{tangent} and thus the curvature of the curve below. The difference between Polynomial and Bézier lies in the underlying mathematics, but for practical purposes the use is similar.
+
+Some examples of the use of curves to demonstrate the variety of possible interventions (figure~\ref{fig:ex-bezier}):
+
+\begin{itemize}
+    \item Scale the image values by increasing the white point or decreasing the white point (gain up and gain down). You can decide the scaling value with the formula: $(Input \div Output) = Scale Factor$
+    \item Limit a value beyond a certain point of brightness (clamp to the value $0.587$ in the figure).
+    \item S-shaped curve to increase contrast without changing the black and white point (i.e. without \textit{clipping}).
+    \item Make a real \textit{Luma Key} by bringing a certain value of gray to $100\%$ (white) and lowering everything else to $0\%$ (black). The slope of the two sides indicates how much we want to fade the edges of the matte obtained.
+\end{itemize}
 
 \subsection{HolographicTV}%
 \label{sub:holographictv}

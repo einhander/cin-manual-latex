@@ -2710,7 +2710,7 @@ cin/plugins/opencv/stylizeobj.plugin
     for example for arch:
 \end{enumerate}    
     \url{https://cinelerra-gg.org/download/tars/cinelerra-5.1-arch-{date}-x86_64-static.txz}
-    \todo{How make a new line into the link?}
+    %\todo{How make a new line into the link?}
 \begin{enumerate}[resume]
     \item create a temporary directory on your computer;
     \item \texttt{cd} that-directory;
@@ -2896,7 +2896,7 @@ Figure~\ref{fig:stylize} show the images after adding the 6 various styles.
     \label{fig:stylize}
 \end{figure}
 
-\section{FFmpeg Audio and Video Plugins\protect\footnote{credit to WPfilmmaker for the Ffmpeg info description lines taken from his contributed pdf}}%
+\section[FFmpeg Audio and Video Plugins]{FFmpeg Audio and Video Plugins\protect\footnote{credit to WPfilmmaker for the Ffmpeg info description lines taken from his contributed pdf}}%
 \label{sec:ffmpeg_audio_video_plugins}
 
 Cinelerra GG Infinity currently comes with more than $140$ of the video plugins and $55$ of the audio plugins developed by the FFmpeg project \url{www.ffmpeg.org}. These plugins do not have a GUI with buttons like the rest of plugins, therefore to change settings it is necessary to change the variables by hand by highlighting the \textit{option}, typing a value in the \textit{Range} box, and then hitting the \textit{Apply} button. Many of these plugins provide tooltips at the bottom right corner of the window when the option is highlighted. A \textit{slider} bar and a \textit{dial} for numerical values can be used to easily vary the values which take effect immediately.
@@ -3146,7 +3146,7 @@ frequency which most ikely correspond to edges.\\
 \textbf{F\_yuvtestsrc:} Generate YUV test pattern.\\
 \textbf{F\_zoompan:} Applies Zoom \& Pan effect.
 
-\section{Rendered Effects\protect\footnote{This capability is going to be deleted in the future unless receive notification of need to keep}}%
+\section[Rendered Effects]{Rendered Effects\protect\footnote{This capability is going to be deleted in the future unless receive notification of need to keep}}%
 \label{sec:rendered_effects}
 
 Besides the Realtime effects, as has been described in the previous sections, another type of effect is performed on a section of the track and the result stored somewhere before it is played back. The result is usually pasted into the track to replace the original data. The rendered effects are not listed in the resources window but instead are accessed through the \texttt{Audio$\rightarrow$ Render effect and Video$\rightarrow$ Render effect} menu options. Each of these menu options brings up a dialog for the rendered effect. In the Select an effect dialog is a list of all the realtime and all the rendered effects. The difference here is that the realtime effects are rendered to disk and not applied under the track. Rendered effects apply to only one type of track, either audio or video. If no tracks of the type exist, an error pops up.

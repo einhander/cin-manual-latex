@@ -900,7 +900,7 @@ Use the effect along with keyframing to brighten a long shot that is dark at the
 
 Makes your video burn where there are small light colored patches of video. This came from \url{https://effectv.com}.
 
-\subsection{C41\protect\footnote{credit Florent Delannoy, original program code author, and Edouard Chalaron}}%
+\subsection[C41]{C41\protect\footnote{credit Florent Delannoy, original program code author, and Edouard Chalaron}}%
 \label{sub:c41}
 
 The C41 plugin takes a $16\,bit C41$ digital intermediate negative film as input and outputs a positive image. It became necessary because $C-41$ negatives can fade or color-shift over time which was a problem early on. It is still important today because there is a large amount of documentaries, video clips, and other media out there that was shot on super $16$ film. This works for RGB-float, RGB, and also YUV variations.
@@ -980,7 +980,7 @@ If the lightness or hue is within a certain \texttt{threshold} it is erased. Inc
 
 Normally threshold is very low when using a high slope. The two parameters tend to be exclusive because slope fills in extra threshold. The slope tries to soften the edges of the chroma key but it does not work well for compressed sources. A popular softening technique is to use a maximum slope and chain a blur effect below the chroma key effect to blur just the alpha.
 
-\subsection{Chroma Key (HSV)\protect\footnote{Credit for Plugin by Jerome Cornet http://jcornet.free.fr/linux/chromakey.html}}%
+\subsection[Chroma Key (HSV)]{Chroma Key (HSV)\protect\footnote{Credit for Plugin by Jerome Cornet http://jcornet.free.fr/linux/chromakey.html}}%
 \label{sub:chroma_key_hsv}
 
 Chroma Key (HSV) (figure~\ref{fig:chroma-key-hsv}) replaces a color with another color or transparency using HSV variables; it is frequently used to remove a color from a video to composite with another image. This process is generally referred to as green screen or blue screen process (because of the color that is keyed out). More information: \url{http://en.wikipedia.org/wiki/Chromakey}
@@ -1190,7 +1190,7 @@ Figure~\ref{fig:descratch} shows a before and after DeScratch scenario. With \te
 
 This is used to decrease the frame rate of a video. Changing the frame rate means eliminating a frame for any given number of frames ($1 in N$); but if frames that are important for visual continuity are deleted, temporal artifacts arise: flickering, slowdowns, accelerations, etc. The Decimate filter maintains a higher quality because it first eliminates duplicate frames or frames that are most similar, thus limiting the appearance of artifacts. It is often used after the \texttt{Invert Telecine} plugin to make the video more smooth.
 
-One use of the decimate effect can be applied to a DVD to convert the $29.97\,fps$ video to the $23.97\,fps$ film rate, but the effect can take any input rate and convert it to any lower output rate. The output rate of decimate is the project frame rate. The input rate is set in the decimate user interface. To convert $29.97\,fps$ progressive video to $23.97\,fps$ film, apply a decimate effect to the track. Set the decimate input rate to $29.97$ and the project rate to $23.97$.
+One use of the decimate effect can be applied to a DVD to convert the 29.97\,\emph{fps} video to the 23.97\,\emph{fps} film rate, but the effect can take any input rate and convert it to any lower output rate. The output rate of decimate is the project frame rate. The input rate is set in the decimate user interface. To convert 29.97\,\emph{fps} progressive video to 23.97\,\emph{fps} film, apply a decimate effect to the track. Set the decimate input rate to 29.97 and the project rate to 23.97.
 
 Keep in mind that every effect layered before decimate, processes video at the decimate input rate and every effect layered after decimate, processes video at the project frame rate. Computationally intensive effects should come below decimate.
 
@@ -1492,7 +1492,9 @@ Some examples of the use of curves to demonstrate the variety of possible interv
 \subsection{HolographicTV}%
 \label{sub:holographictv}
 
-Incoming objects are projected like holovision seen in the movie Stars Wars as in R2-D2's video message projector of the Princess Leia. You need a movie or background image and above it a track containing the figure on which to apply the effect. This must have a transparent background. There are no configuration parameters; it only has to be applied to the upper track (figure~\ref{fig:holographictv}). This effect originated from \url{https://effectv.com}.
+Incoming objects are projected like holovision seen in the movie Stars Wars as in R2-D2's video message projector of the Princess Leia. You need a movie or background image and above it a track containing the figure on which to apply the effect. This must have a transparent background. There are no configuration parameters; it only has to be applied to the upper track (figure~\ref{fig:holographictv}). 
+
+This effect originated from \url{https://effectv.com}.
 
 \begin{figure}[htpb]
     \centering
@@ -1527,9 +1529,15 @@ The practical use of \texttt{Interpolate Video} is a little different than the t
 \subsection{Inverse Telecine}%
 \label{sub:inverse_telecine}
 
-This is the most effective deinterlacing tool when the footage is a video transfer of a film. This can be used to solve the problem, i.e., undo the damage caused by making film into a TV broadcast. That process came about because film is at $24\,fps$ while TV is at $29.97\,fps$ and fields are at $60$. So the film was converted from 24 fps to $60\,fps$. Roughly speaking, converting every $4$ frames into $5$ frames plus a slight slow down in speed. Then the $60\,fps$ was down-sampled to $30\,fps$ by extracting odd and even lines and interlacing the lines. This process is referred to as \textit{three-two pull down} ($3:2$ pull down) in filmmaking and television production for the post production process of transferring film to video.
+This is the most effective deinterlacing tool when the footage is a video transfer of a film. This can be used to solve the problem, i.e., undo the damage caused by making film into a TV broadcast. 
+That process came about because film is at 24\,\emph{fps} while TV is at 29.97\,\emph{fps} and fields are at 60. 
+So the film was converted from 24\,\emph{fps} to 60\,\emph{fps}. 
+Roughly speaking, converting every 4 frames into 5 frames plus a slight slow down in speed. 
+Then the 60\,\emph{fps} was down-sampled to 30\,\emph{fps} by extracting odd and even lines and interlacing the lines. 
+This process is referred to as \textit{three-two pull down} ($3:2$ pull down) in filmmaking and television production for the post production process of transferring film to video.
 The three-two pull down is where the telecine adds a third video field (a half frame) to every second video frame, but the untrained eye cannot see the addition of this extra video field.
-The \texttt{IVTC} effect is primarily a way to convert \textit{interlaced} video to \textit{progressive} video. It reverses the effect of three patterns of interlacing. In the next lines \texttt{A}, \texttt{B}, and \texttt{C} represent fields.
+The \texttt{IVTC} effect is primarily a way to convert \textit{interlaced} video to \textit{progressive} video. 
+It reverses the effect of three patterns of interlacing. In the next lines \texttt{A}, \texttt{B}, and \texttt{C} represent fields.
 
 \texttt{A AB BC CD D}
  
@@ -2225,8 +2233,8 @@ Inside the time average effect is an accumulation buffer and a divisor. A number
 \label{sub:timefront}
 
 Space-temporal warping enables time to flow differently at different locations in the video (figure~\ref{fig:timefront}).
-\begin{wrapfigure}[12]{O}{0.3\linewidth} 
-    \vspace{-4ex}
+\begin{wrapfigure}[13]{O}{0.3\linewidth} 
+    \vspace{-2ex}
     \includegraphics[width=0.8\linewidth]{images/timefront.png}
     \caption{Temporal bands for Timefront}
     \label{fig:timefront}

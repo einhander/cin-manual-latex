@@ -4,11 +4,13 @@
 *.idx
 *.log
 *.toc
+*.tdo
 *.ist
 *.acn
 *.acr
 *.alg
 *.bbl
+*.tdo
 *.blg
 *.dvi
 *.glg

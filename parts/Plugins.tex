@@ -1,8 +1,9 @@
 \chapter{Plugins}%
 \label{cha:plugins}
 
-There are realtime effects --- these are the most useful and probably all you will ever need --- and rendered effects. The rendered effects are discussed separately in the Rendered Effects \todo{internal link 1}% 
-section. Effect plugins modify the track when played, according to how they are set, with no permanent storage of the output except when the project is rendered. There are many Plugins in Cinelerra-GG Infinity which are actually quite easy to use just by experimenting with them. The plugins are shown and selected from the \textit{Resources window} (figure~\ref{fig:video-plugins}). They are described in more detail later.
+There are realtime effects --- these are the most useful and probably all you will ever need --- and rendered effects. 
+The rendered effects are discussed separately in the \nameref{sec:rendered_effects}  section. 
+Effect plugins modify the track when played, according to how they are set, with no permanent storage of the output except when the project is rendered. There are many Plugins in Cinelerra-GG Infinity which are actually quite easy to use just by experimenting with them. The plugins are shown and selected from the \textit{Resources window} (figure~\ref{fig:video-plugins}). They are described in more detail later.
 
 \begin{figure}[htpb]
     \centering
@@ -59,8 +60,7 @@ Besides the magnifying glass, for Show Controls, on the effect colored bar benea
     \includegraphics[width=0.7\linewidth]{images/button-options.png} 
 \end{wrapfigure}
 
-The rightmost knob is used to \texttt{Turn Off/Turn On} the effect where the default is On. This is useful to easily see that the plugin is doing what you expect. The leftmost symbol that looks like a gear is for \textit{Preset Edit} and its usage is described in the section Saved Plugin Presets.
-    \todo{internal link 2}%
+The rightmost knob is used to \texttt{Turn Off/Turn On} the effect where the default is On. This is useful to easily see that the plugin is doing what you expect. The leftmost symbol that looks like a gear is for \textit{Preset Edit} and its usage is described in the section \nameref{sec:saved_plugin_preset}.
 
 \section{Editing Effects}%
 \label{sec:editing_effects}
@@ -343,7 +343,8 @@ This converts the input to \textit{rgb} before xxxxxx runs, and so it too is slo
 \label{sub:audioscope}
 
 Convert input audio to video output representing the audio power spectrum. Shows
- \todo{It's OK to use Subsection every plugin?}%
+% Yes
+ %\todo{It's OK to use Subsection every plugin?}%
 you the sound wave.
 
 \subsection{Compressor}%
@@ -1789,7 +1790,7 @@ This effect makes video tracks appears as a painting. It can be controlled by \t
 \label{sub:overlay}
 
 This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the chapter on Overlay Modes
-\todo{internal link 3}
+\todo{Link to Overlay Modes chapter}
 --- PorterDuff.
 
 The \texttt{overlay} plugin enables the use of this Overlayer device in the middle of any plugin stack, opening endless filtering and processing possibilities. It is only useful as a \textit{shared plugin} (i.e. a multitrack plugin). To use the overlay plugin:

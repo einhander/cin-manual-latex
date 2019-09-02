@@ -71,7 +71,7 @@ If you want to render many projects to media files without having to constantly 
 
 The first thing to do when preparing to do batch rendering is to create one or more Cinelerra projects to be rendered and save them as a normal project, such as \texttt{ProjectA.xml}.  The batch renderer requires a separate project file for every batch to be rendered.  You can use the same Cinelerra project file if you are rendering to different output files, as in an example where you might be creating the same output video in different file formats.
 
-To create a project file which can be used in batch render, set up your project and define the region to be rendered either by highlighting it, setting in/out points around it, or positioning the insertion point before it. Then save the project as usual to your project.xml file. Define as many projects as needed this way.  The batch renderer takes the active region from the EDL file for rendering.
+To create a project file which can be used in batch render, set up your project and define the region to be rendered either by highlighting it, setting in/out points around it, or positioning the insertion point before it. Then save the project as usual to your project.xml file. Define as many projects as needed this way.  The batch renderer takes the active region from the EDL file for rendering. If we have not set active regions, it is better to bring the insertion point to the beginning of the timeline to avoid possible problems with the rendering.
 
 With all the Cinelerra xml project files prepared with active regions, go to \texttt{File $\rightarrow$ Batch Render}. This brings up the batch render dialog. The interface for batch rendering is more complex than for single file rendering.  A list of batches must be defined before starting a batch rendering operation.  The table of batches appears on the bottom of the batch render dialog and is called \textit{Batches to render}.  Above this are the configuration parameters for a single batch; a batch is simply a pairing of a project file with a choice of output file and render settings.
 
@@ -616,11 +616,88 @@ x265-params=pass=1:stats=/tmp/{temporary log file name}.log
     
     \item[libvpx-vp9, xvid, and huffyuv:]
     \begin{lstlisting}[language=bash]
-cin_stats_filename /tmp/{temporary log file name}.log
-flags +pass1 (or flags +pass2 for the second pass)
-    \end{lstlisting} 
-    \noindent \textit{NOTE:} for vp9, the best Pixels is \texttt{gbrp}   
+    cin_stats_filename /tmp/{temporary log file name}.log
+    flags +pass1 (or flags +pass2 for the second pass)
+    \end{lstlisting}    
 \end{description}
+
+\noindent \textit{NOTE:} for vp9, the best Pixels is \texttt{gbrp}
+
+\subsection{Use case: High Efficiency Video Coding (HEVC)}%
+\label{sub:use_case_hevc}
+
+An example of video profile based on CRF, a quality-controlled
+variable bitrate, instead of fixed quality scale (ABR).
+HEVC (H.265) was developed as a successor to AVC (H.264) to more
+efficiently compress the future large amounts of data from 2/4/8k
+videos.
+In comparison to AVC, an average saving of around 30 percent can be
+assumed for the same quality.
+Because HEVC is not bound to any size format, it is suitable for
+virtually any image size.
+
+The following example is HD and FullHD oriented and produces a
+picture quality similar to the Blu-ray with some limitations.
+As container Matroska (.mkv) is used, but also mp4 and others are
+possible.
+
+\vspace{2ex} \begin{lstlisting}[language=Bash]
+matroska libx265
+
+# CRF 16 creates a balanced compromise
+# between quality and file size. 
+crf=16
+
+# Preset changes encoding speed and generally
+# degrades the overall result. Medium (default)
+# always fits.
+preset=medium
+
+# Additional parameters that are passed on to the codec.
+# me=star improves the search for very fast
+# movements, but slows down the encoding.
+#x265-params=me=star
+
+# Keyint does FFmpeg automatically, otherwise
+# the setting must match the frame rate.
+#keyint\_min=25
+
+# Profile does FFmpeg automatically.
+#profile=high
+
+# Source sRBG and retention of color space.
+# 720/1080=bt709 if no profile set. Useful
+# for formats smaller than 720 if no lossy
+# conversion is desired.
+colorspace=bt709
+color_trc=bt709
+color_primaries=bt709
+
+# Output in 10 bit, prevents 8-bit step formation
+pixel_format=yuv420p
+\end{lstlisting}
+
+\noindent \textit{NOTE:}
+
+A CRF of 16 delivers satisfactory results in most cases. However, if
+the video material is really \emph{grainy}, a CRF~16 can lead to unwanted large files.  In this case, a trial export of perhaps one minute should be performed. The resulting bit rate can be used to correct the CRF to 17,\,18,\,19\ldots --- remember, a CRF of 0 means lossless, the higher the number the stronger the lossy compression. The approximate calculation of the final file size can be extrapolated from the sample export.
+
+The color space information must be used explicitly so that it can
+be included in the video. Cinelerra\,GG or FFmpeg does not write it
+by itself. Without this information the players (e.\,g.\ \href{https://mpv.io/}{mpv}) stick to the dimensions of the video and take the assumed color model from a table. With videos in the dimensions from 720 to 1080 this is bt709. For smaller dimensions, e.\,g.\ DVD, bt601 is assumed and for 4k and above it is bt2020. Normally this is not a problem, but if you want to export a FullHD without color loss to a smaller size like 576 for example, you have to inform the encoder as well as the decoder of the player. This also applies if the videos are to be loaded on video platforms, where they are then converted into videos of different sizes. It is a security measure to prevent false colors, such as the color profiles in digital photos and the copies made from them.
+
+The HEVC tuning has not been considered here, because it is is
+rarely used and requires background knowledge.
+
+Further links:
+\begin{itemize}
+    \item \href{http://x265.readthedocs.org/en/default/}{x265
+        Documentation}
+    \item \href{http://x265.readthedocs.org/en/latest/cli.html}{x265
+        Command Line Options}
+    \item \href{http://x265.readthedocs.org/en/latest/presets.html}{x265
+        Presets/Tuning}
+\end{itemize}
 
 \subsection{Piping Video to a Command Line}%
 \label{sub:piping_video_command_line}

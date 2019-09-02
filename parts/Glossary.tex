@@ -30,11 +30,13 @@
 
 \nomenclature{\textbf{Clip}}{a short segment of media which was usually part of a longer recording.  A section of a project consisting of a set of timeline selected edits treated as an independent object.}
 
+\nomenclature{\textbf{Clipping}}{to set a data value above an threshold to be equal to that threshold.}
+
 \nomenclature{\textbf{Codec}}{contraction of \textbf{co}der and \textbf{dec}oder; used to generally compress media and decompress to reproduce it. Results are a trade-off between bitrate and quality.}
 
-\nomenclature{\textbf{Color correction}}{minimizing error between the image and the original object.  Or, another common meaning is: to make the color perception more pleasing.}
+\nomenclature{\textbf{Color correction}}{minimizing error between the image and the original object. Corrects exposure and color dominants. There is the primary CC, which covers the entire frame; and the secondary CC, which isolates and intervenes only on specific parts of the frame.}
 
-\nomenclature{\textbf{Color grading}}{the process of adjusting color balance making it consistent in every scene. Often used with the same meaning as color correction.}
+\nomenclature{\textbf{Color grading}}{Correct the color and contrast of a shot to personalize it and make it more nicer or communicative. An example is the Teal \& Orange, which is widely used in Hollywood movies.}
 
 \nomenclature{\textbf{Color model}}{an abstract mathematical model describing the way colors can be represented as an ordered list of numbers, typically as three values or color components (for example, RGB).}
 
@@ -140,6 +142,8 @@
 
 \nomenclature{\textbf{Picons}}{miniature images, also called thumbnails, of the video. In the Resources Window they represent the first frame of the asset. On the Timeline they imitate a physical film and are derived from the video data in the media file.}
 
+\nomenclature{\textbf{Pillarbox}}{blacks bars on the top and bottom and/or left and right side of the frame. They are due to a smaller frame size than the one set in the project.}
+
 \nomenclature{\textbf{Pixel}}{the smallest independent unit of a digital image; a minute area of illumination on a display screen, one of many from which an image is composed.  Word was invented from picture element.  In the 3D world, this is call a voxel.}
 
 \nomenclature{\textbf{Plugin}}{program fragment that is loaded on demand as in “plugged in”.  In Cinelerra, these are often called “effects” and are used to provide a specific function on demand.}
@@ -232,7 +236,81 @@
 
 \nomenclature{\textbf{XML}}{the language Cinelerra EDLs are written in. Extensible Markup Language (XML) is a general-purpose language that combines text and extra information about the text and allows users to make modifications. It creates a text representation of a data object that is designed to be relatively human-legible.}
 
-\nomenclature{\textbf{YUV}}{contracted name for YCrCb, which stands for the Y luminance, Complement Red, and Complement Blue.  Colors are stored as absolute luma representation and the difference signal between luma and chroma complement components.  This color model is used by PAL and NTSC standards. Y stands for the luma component and U and V are the chroma components. U and V are actually color difference components (respectively R-Y and B-Y). In fact YUV signals are created from an original RGB source. The weighted values of R, G, and B are added together to produce a single Y signal, representing the overall luma. The U signal is then created by subtracting the Y from the blue signal of the original RGB, and then scaling; V is created by subtracting the Y from the red, and then scaling by a different factor. Previous black-and-white systems used only luma (Y) information and color information (U and V) was added so that a black-and-white receiver would still be able to display a color picture as a normal black and white picture.}
+\nomenclature{\textbf{YUV}}{is a color model which splits luma from chroma, similarly to human sight.. Colors are stored as absolute luma representation and the difference signal between luma and chroma complement components.  This color model is used by PAL and NTSC standards. Y stands for the luma component and U and V are the chroma components. U and V are actually color difference components (respectively R-Y and B-Y). In fact YUV signals are created from an original RGB source. The weighted values of R, G, and B are added together to produce a single Y signal, representing the overall luma. The U signal is then created by subtracting the Y from the blue signal of the original RGB, and then scaling; V is created by subtracting the Y from the red, and then scaling by a different factor. Previous black-and-white systems used only luma (Y) information and color information (U and V) was added so that a black-and-white receiver would still be able to display a color picture as a normal black and white picture.}
+
+\nomenclature{\textbf{8 / 10-bit images}}{images that were sampled at 8 or 10 bits per channel. The tone range for each channel is from 0 to 255 for 8-bit and from 0 to 1023 for 10-bit.}
+
+\nomenclature{\textbf{Algorithm}}{set of instructions, typically to solve a class of problems or perform a computation.}
+
+\nomenclature{\textbf{Aliasing}}{incorrect sampling of a video or audio signal that leads to unwanted artifacts because it cannot distinguish values too close. There is Temporal Aliasing (audio) and Spatial Aliasing (video).}
+
+\nomenclature{\textbf{B-spline}}{(basis spline) polynomial curves characterized by nodes and control points to obtain smooth curves.}
+
+\nomenclature{\textbf{Banding}}{Incorrect display of a color gradient, due to a narrow tonal range, which leads to the appearance of color bands instead of fading tones.}
+
+\nomenclature{\textbf{Bayer array}}{is a color filter array upon a sensor to get an RGB image. The filter pattern is 50\% green, 25\% red and 25\% blue.}
+    
+\nomenclature{\textbf{Bicubic filter}}{is a mathematical interpolation to resample an image. It produces a smoother result than the nearest-neighbor or the bilinear filter.}
+
+\nomenclature{\textbf{Bilinear filter}}{is a mathematical interpolation to resample an image.  It produces a smoother result than the nearest-neighbor.}
+
+\nomenclature{\textbf{Bit depth}}{Quantization of an audio or video signal. Color depth is the number of bits used for each color component of a single pixel. Audio bit depth is the number of bits of information in each sample.}
+    
+\nomenclature{\textbf{Black point}}{the part of the image with the darkest value that can be displayed on a device. At the limit is 0 (pure black).}
+
+\nomenclature{\textbf{Color space}}{organization of the colors of a color model, limited to the gamut of a particular device. Examples are sRGB and rec 709.}
+
+\nomenclature{\textbf{Color timing}}{the process of adjusting color balance making it consistent in every scene. We also talk about color matching scene to scene or shot matching.}
+
+\nomenclature{\textbf{Composite}}{the combination of two or more video layers to obtain a single composition.}
+
+\nomenclature{\textbf{Contrast}}{is the difference in luminance of parts or elements of an image that makes them distinguishable. The greater the difference, the greater the contrast. It is the horizontal range shown by the histogram or the vertical range shown by the waveform.}
+
+\nomenclature{\textbf{Denoise}}{is the process of removing digital noise from a video. The three main types are based on statistical methods, transform wavelets and temporal averaging.}
+
+\nomenclature{\textbf{DeSpill}}{process to remove background color contamination from the edges of the subject in foreground, during a chroma key.}
+
+\nomenclature{\textbf{Digital Intermediate (DI)}}{Over time it has taken on different meanings. For Cinelerra GG is meant as the creation of a high quality file that during the various stages of editing and color correction keeps as much information as possible. Being little or uncompressed its manipulation is also faster and more efficient.}
+
+\nomenclature{\textbf{Dynamic range}}{is the ratio between the largest and smallest values (luminance) that an image can assume. The larger the size, the better we can distinguish details in the dark and light parts.}
+
+\nomenclature{\textbf{Exposure}}{the exposure is the amount of light per unit area reaching an image sensor, as determined by shutter speed, lens aperture and scene luminance.}
+
+\nomenclature{\textbf{Floating point}}{real numbers with decimals. They allow for greater precision in calculations than integers, but they require more processing power.}
+
+\nomenclature{\textbf{Gamut}}{In color reproduction, the gamut is a certain complete subset of colors. The larger the gamut of a device (associated with a color space) the more colors can be displayed.}
+
+\nomenclature{\textbf{HDR images}}{are images that have a dynamic range larger than that of the sensor used. They are created directly with a rendering or with the merge of several images at low dynamic range. They require the use of floating points.}
+
+\nomenclature{\textbf{HDTV}}{(high definition TV) standard characterized by a 16:9 aspect ratio, various frames rates and scan modes and with a resolution of at least 1080.}
+
+\nomenclature{\textbf{Lanczos}}{algorithm for high quality resampling video signal. It is also used in case of upsampling, weak point of other similar filters.}
+
+\nomenclature{\textbf{Letterbox}}{blacks bars on the top and bottom side of the frame. They are due to a smaller frame size than the one set in the project (see also Pillarbox).}
+
+\nomenclature{\textbf{LUT, 3D LUT}}{(LookUp Table) used to map one color space to another. Cinelerra GG uses them through ffmpeg filters. There are downloadable collections or there are specific ones provided by hardware manufacturers.}
+
+\nomenclature{\textbf{Nearest neighbor}}{is the simplest method of resampling an image. It is fast and resources saving, but produces less smooth results.}
+
+\nomenclature{\textbf{Panning}}{in video technology, panning refers to the horizontal scrolling of an image wider than the display. In Cinelerra it is done (together with other camera movements) with the camera tool.}
+
+\nomenclature{\textbf{Pillarbox}}{blacks bars on the left and right side of the frame. They are due to a smaller frame size than the one set in the project (see also Letterbox).}
+
+\nomenclature{\textbf{Rec 709}}{(BT.709 or ITU 709) is the standard color space of high-definition television, having 16:9 aspect ratio, scan modes and frame rate of HDTV. It can decode at 8 or 10 bits per channel. The gamut is the same as for sRGB from which it differs for the 2.4 gamma.}
+
+\nomenclature{\textbf{Retiming}}{is the change of the speed of a edit by interpolating the original frames to a new in between frame.}
+
+\nomenclature{\textbf{sRGB}}{is an RGB color space used on monitors, printers, and the Internet. It can decode at 8 or 10 bits per channel. The gamut is the same as for Rec 709 from which it differs for the 2.2 gamma.}
+
+\nomenclature{\textbf{Subsampling}}{is the practice of encoding Y’CbCr images by implementing less resolution for chroma information than for luma information. Depending on the amount of information deleted we have: 4:4:4 (lossless); 4:2:2 (HDTV); 4:2:0 (DVD, smartphone) or 4:1:1.}
+
+\nomenclature{\textbf{Timecode}}{is a sequence of numeric codes generated at regular intervals by a timing synchronization system and recorded into audio and/or video tracks. It is used for synchronization audio and video clips.}
+
+\nomenclature{\textbf{White point}}{is the clearest part of an image that can be displayed on a device; at the limit is 1.0 value (pure white).}
+
+\nomenclature{\textbf{YCbCr}}{is a color space based on the YUV color model, widely used in broadcast productions. It separates the luma part (Y) from the chroma part (Cb and Cr).}
+
+
 
 
 

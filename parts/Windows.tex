@@ -578,10 +578,10 @@ Once some video files are on the timeline, the compositor window is a good place
 \label{sub:camera_and_projector}
 
 In the compositor window, two of the more important functions are the adjust camera automation and the adjust projector automation which control operation of the camera and projector. 
-Cinelerra's compositing routines use a "temporary", a frame of video in memory where all graphics processing is performed. 
-Inside Cinelerra's compositing pipeline, the camera determines where in the source video the "temporary" is copied from. 
-The projector determines where in the output the "temporary" is copied to. 
-Each track has a different "temporary" which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms.
+Cinelerra's compositing routines use a \textit{temporary}, a frame of video in memory where all graphics processing is performed. 
+Inside Cinelerra's compositing pipeline, the camera determines where in the source video the \textit{temporary} is copied from. 
+The projector determines where in the output the \textit{temporary} is copied to. 
+Each track has a different \textit{temporary} which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms.
 
 In compositing, each frame can be digitally altered using various options, such as a color correction plugin (figure~\ref{fig:camera_and_projector}). 
 Once the image has been transformed, the finished image is then projected to the compositor thus creating a modified version of the original.
@@ -598,32 +598,20 @@ Even if the track is completely transparent, it is still the affected track.
 If multiple video tracks exist, the easiest way to select one track for editing is to Shift-click on the record icon of the track. 
 This solos the track.
 
-The purpose of the projector is to place the contents of the "temporary" into the project's output. 
+The purpose of the projector is to place the contents of the \textit{temporary} into the project's output. 
 The intent of the projector is to composite several sources from the various tracks into one final output track. 
 The projector alignment frame is identical to the camera's viewport, except that it guides where on the output canvas to put the contents of each temporary.
 
 \subsubsection*{Compositing projector controls}%
 \label{ssub:compositing_projector_controls}
 
-When the projector button is enabled in the compositor window, you are in projector editing mode. 
-A guide box appears in the video window. 
-Dragging anywhere in the video window causes the guide box to move along with the video. 
-Shift-dragging anywhere in the video window causes the guide box to shrink and grow along with the video. Once you have positioned the video with the projector, you may want to work with adjusting the camera automation.
-
-\subsubsection*{Compositing camera controls}%
-\label{ssub:compositing_camera_controls}
-
-Select the camera button to enable camera editing mode. 
-In this mode, the guide box shows where the camera position is in relation to past and future camera positions but not where it is in relation to the source video. 
-Dragging the camera box in the compositor window does not move the box but instead moves the location of the video inside the box. 
-The viewport is a window on the camera that frames the area of source video to be scanned. 
-The viewport is represented as a red frame with diagonal cross bars.
+When the projector button is enabled in the compositor window, you are in projector editing mode. A guide box appears in the video window. The red box indicates the size of the frame that will be sent to the Ouput. You can drag the box with LMB, moving the frame in x and y as you like. Even when moving along the z-axis (i.e. the zoom, with SHIFT+Drag) the red box faithfully follows the movement and size of the frame. Once you have positioned the video with the projector, you may want to work with adjusting the camera automation.
 
 \subsubsection*{Viewport sizes}%
 \label{ssub:viewport_sizes}
 
-The size of the viewport is defined by the size of the current track. 
-A smaller viewport (640x400) captures a smaller area. 
+The viewport is a window on the camera that frames the area of source video to be scanned.
+The initial size of the viewport is defined by the size of the current track. A smaller viewport (640x400) captures a smaller area. 
 A larger viewport (800x200) captures an area larger than the source video and fills the empty spaces with blanks. 
 Once we have our viewport defined, we still need to place the camera right above the area of source video we are interested on. To control the location of the camera:
 
@@ -633,14 +621,14 @@ Once we have our viewport defined, we still need to place the camera right above
     \item  Drag over the display window.
 \end{enumerate}
 
-When we drag over the viewport in the compositor window, the way it looks is as if you “move the camera with the mouse”.  The viewport also moves with it.
+When we drag over the viewport in the compositor window, the way it looks is as if you \textit{move the camera with the mouse}.  The viewport also moves with it.
 
-In the compositing window, there is a popup menu of options for the camera and projector. Right click over the video portion of the compositing window to bring up the menu.
+\subsubsection*{Compositing camera controls}%
+\label{ssub:compositing_camera_controls}
 
-\begin{description}
-    \item[Reset Camera] causes the camera to return to the center position.	
-	\item[Reset Projector] causes the projector to return to the center.
-\end{description}
+Select the camera button to enable camera editing mode. 
+In this mode, the guide box shows where the camera position is in relation to past and future camera positions but not where it is in relation to the source video. 
+The green box is the Viewport; at the beginning it coincides with the size of the source frame. If we move the viewport by dragging it with LMB (moving it in x/y), the green box remains fixed to the original size but the frame is moved to the new position.  A yellow frame will appear along the edges of the frame to indicate the displacement with respect to the green box; this behavior differs from that seen for the Projector. Even if we act on the z-axis (SHIFT + Drag, equivalent to the zoom), the frame narrows or widens, moving behind the yellow frame.
 
 \subsubsection*{The camera and projector tool window}%
 \label{ssub:the_camera_and_projector_tool_window}
@@ -663,7 +651,7 @@ A popular justification operation is upper left projection after image reduction
 This is used when reducing the size of video with aspect ratio adjustment.  
 In the last figure you see the choices for justification as the red stripe in the 6 boxes in the order of left, center horizontal, right, top, center vertical, and bottom.
 
-The translation effect allows simultaneous aspect ratio conversion and reduction but is easier to use if the reduced video is put in the upper left of the “temporary” instead of in the center. 
+The translation effect allows simultaneous aspect ratio conversion and reduction but is easier to use if the reduced video is put in the upper left of the \textit{temporary} instead of in the center. 
 The track size is set to the original size of the video and the camera is centered. 
 The output size is set to the reduced size of the video. 
 Without any effects, this produces just the cropped center portion of the video in the output.
@@ -671,7 +659,27 @@ Without any effects, this produces just the cropped center portion of the video 
 The translation effect is dropped onto the video track. The input dimensions of the translation effect are set to the original size and the output dimensions are set to the reduced size. 
 To put the reduced video in the center subsection that the projector shows would require offsetting out x and out y by a complicated calculation. 
 Instead, we leave out x and out y at 0 and use the projector's tool window. 
-By selecting left justify and top justify, the projector displays the reduced image from the top left corner of the “temporary” in the center of the output.
+By selecting left justify and top justify, the projector displays the reduced image from the top left corner of the \textit{temporary} in the center of the output.
+
+\subsubsection*{Reset to Default}%
+\label{ssub:reset_default}
+
+In the compositing window, there is a popup menu of options for the camera and projector. Right click over the video portion of the compositing window to bring up the menu:
+
+\texttt{Reset Camera}: causes the camera to return to the center position.
+    	
+\texttt{Reset Projector}: causes the projector to return to the center.
+
+\subsubsection*{Use Case: Interaction Between Camera And Projector \protect\footnote{Example provided by Sam. The relative video is located at: \url{https://streamable.com/iq08i}}}%
+\label{ssub:use_case_interaction_camera_projector}
+
+\begin{enumerate}
+    \item Start by shrinking the projector to "z=0,500" ($\frac{1}{4}$ of the original frame).
+    \item The next step is to switch to the camera and note that the green box has assumed the size of the projector, i.e. the red box. The value of z of the camera is always equal to $1,000$ (default) but the frame is $\frac{1}{4}$ of the original frame, i.e. it has the size of the projector that has $z=0,500$. This is the current viewport size.
+    \item You enlarge the room bringing $z=2,000$. You can see that the dimensions of the viewport (green box) do not change, remaining the same as those of the projector. However, the frame has been enlarged and this variation is indicated by the enlargement of the yellow box. Let's remember that this follows the changes made with the camera tool.
+    \item We can drag the room so that we can center the frame to our liking. . The movement of the yellow box shows well the variation compared to the green box.
+    \item Finally, if we want, we can switch to the projector tool to move the output frame to the position we want with respect to the size of the source. Of course, we can also work on the z, which in the example is at $z=0.500$, if we have decided to change the size of the output.
+\end{enumerate}
 
 \subsection{Masks}%
 \label{sub:masks}
@@ -708,9 +716,9 @@ There are 8 possible masks per track. Each mask is defined separately, although 
         Shift-drag activates bezier handles to create curves between mask points.       
 
     \item  Finally once you have a mask, the mask can be translated in one piece by Alt-dragging the mask.
-        The effect of the mask is always on.  
-        Ctrl-Alt-drag translates an entire mask to a new location on the
-        screen.
+    The effect of the mask is always on.  
+    Ctrl-Alt-drag translates an entire mask to a new location on the
+    screen.
 \end{enumerate}
 
 The masks have many more parameters which could not be represented with video overlays. 
@@ -724,40 +732,161 @@ Selecting the question mark when the mask toggle is highlighted brings up the ma
     \label{fig:mask_window}
 \end{figure}
 
-The mode of the mask determines if the mask removes data or makes data visible. 
-If the mode is \emph{Subtract alpha}, the mask causes video to disappear. 
-If the mode is \emph{Multiply alpha}, the mask causes video to appear and everything outside the mask to disappear.
+Masking has been greatly improved compared to the original tool.  Detailed description is provided here.  Note that the Mask window is separated into various sections to make it easier to locate the area of interest.
 
-The \emph{Value of the mask}, set by a slider bar, determines how extreme the subtraction or addition is. 
-In the subtractive mode, higher values subtract more alpha. 
-In the additive mode, higher values make the region in the mask brighter while the region outside the mask is always hidden.
+\subsubsection*{Masks on Track section}%
+\label{ssub:masks_track_section}
 
-The \emph{Mask number} determines which one of the 8 possible masks we are editing. 
-Each track has 8 possible masks. 
-When you click-drag in the compositor window, you are only editing one of the masks. 
-Change the value of mask number to cause another mask to be edited. 
-The previous mask is still active but only the curve overlay for the currently selected mask is visible. 
-When multiple masks are used, their effects are OR-ed together. 
-Every mask in a single track uses the same value and mode.
+The \texttt{Track}: textbox displays the different video tracks for your session which will be initially set to the first armed video track or will be left blank if there are no armed tracks.  A pulldown to the right of the box brings up the names of all of the video tracks allowing you to change to which track the masking applies.  You can also just use the tumbler to easily mouse up/down to get to the desired track. In the pulldown list, any track that has red colored text is disarmed so that you can not change it.  A track that contains masks has yellow colored text for easy identification.  Only when there are no masks on the track, do you have the default text color. This textbox is display only and you can not type into it.
 
-The edges of a mask are hard by default but this rarely is desired. 
-The \emph{Feather} parameter determines how many pixels to feather the mask. 
-This creates softer edges but takes longer to render. 
+The \texttt{Solo} button in the Masks on Track section of the Mask window is very handy when working with masks on different tracks.  It displays only that track so that you only see the track you choose, as well as the tracks behind it to show the mask part.  The Solo button is just a convenience to prevent having to mouse over to the patchbay.
 
-Two checkbox options are \emph{Apply mask} before plugins and \emph{Disable OpenGL masking}.  
-Note that the OpenGL mask renderer is of low quality and only suitable as a preview for initial work. 
-For fine-tuning of masks (with large feather values) \emph{OpenGL masking} should be switched off so that the software renderer is used instead.
+\subsubsection*{Masks section}%
+\label{ssub:masks_section}
 
-Finally, there are parameters which affect one point on the current mask instead of the whole mask. 
-These are \emph{Delete}, \emph{X}, and \emph{Y}. 
-The active point is defined as the last point dragged in the compositor window. 
-Any point can be activated merely by Ctrl-clicking near it without moving the pointer. 
-Once a point is activated, \emph{Delete} deletes it and \emph{X}, \emph{Y} allow repositioning by numeric entry.
+The \texttt{Mask}: textbox will show you the mask numbers of $0-7$ or the 8 ascii character name that you have used to designate each mask number.  There is a pulldown on the right side to easily switch to another mask. 
+
+The \texttt{Delete} button is used to delete the mask number/name that is selected. The symbol to the right with tooltip of \texttt{Delete all masks} can be used to delete all of the current video track masks.
+
+The \texttt{Select}: row of checkboxes is used to indicate which mask is currently displayed for that video track in the Compositor.  Numbers that are colored yellow are active masks for that track.  A tumbler to the right allows for quickly changing the mask number displayed.
+
+The \texttt{Enable} row of masks makes it so you can enable all or none of the masks, making it possible to look at no masks or at one mask without interference from the other masks. The symbol that looks like an \texttt{eye} can be used to easily check all or none as the tooltip \textit{Show/Hide mask states}.
+
+\subsubsection*{Preset Shapes section}%
+\label{ssub:preset_shape_section}
+
+There are 4 shapes that are automatically available for usage as masks – \texttt{square}, \texttt{circle}, \texttt{triangle}, and \texttt{oval}.  In addition, the next 3 symbols in this section are for the purpose of loading, saving, and deleting your own customized shapes.  The first symbol, \texttt{Load} preset, will bring up a list of your previously saved presets.  Clicking on \texttt{Save} preset brings up a popup window allowing you to provide a name used to identify the preset you want to save, along with a pulldown to see the names of your other saved presets.   Clicking on \texttt{Delete} preset also brings up a textbox with a pulldown to choose which one to delete.  There is a file, called \texttt{mask\_rc}, in \texttt{\$HOME/.bcast5} that records your custom masks.  
+
+When you click \texttt{Load} preset, keep in mind that it will write the mask number that you have selected so if you already have a mask at that location, it will write over it – just UNDO to revert to the previous if you made this mistake.
+
+\subsubsection*{Position \& Scale section}%
+\label{ssub:position_scale_section}
+
+\texttt{Center} mask button allows for quickly centering a mask on the video track. 
+\texttt{Normalize} mask button makes it easy to normalize the size of the mask based on the scale of the video. 
+The next 3 symbols concern the direction to \textit{drag translate} a mask using the \texttt{Alt+Left Mouse Button} thus making it easy to preserve the current $X$ or $Y$ value when desirable.
+
+\texttt{xlate/scale x}	- drag translate constrained in the X direction
+
+\texttt{xlate/scale y}	- drag translate constrained in the Y direction
+
+\texttt{xlate/scale x/y}	- drag translate in both directions; this is the default and after using the other 2 options, you should reset to this to avoid future confusion while dragging.
+
+\subsubsection*{Fade \& Feather section}%
+\label{ssub:fade_feather_section}
+
+The \texttt{Fade}: textbox is used to type in a fade value; the tumbler to the right of the textbox allows you to increase or decrease that number; and the slider bar makes it quick to adjust the fade value.  The fader goes from $-100$ on the left to $+100$ on the right for negative to positive.  Default value is $+100$. The fade slider includes a sticky point at 0 so that it is easy to get to 0 without going too far or not quite far enough - that way you don’t have to keep jiggling to get there. 
+
+In addition there is a \texttt{Gang fader} symbol to allow for having all of the masks fade in unison. The symbol is surrounded by a gold colored background when it is in effect.  If you have multiple masks with different modes, a decision had to be made on what value to use – it uses the maximum transparency value of the background to determine the operations results.  To understand how this works, here is a summary:
+
+Note1: The area outside the mask is referred to as the background.
+
+Note2: The operational result is based on the maximum transparency value of that background.
+
+\paragraph{Case 1, Positive Fade:} When the fade for all of the masks is positive, affecting the area inside of the mask, all of the
+background colors are at a transparency value of zero. So the largest transparency value is 0,and all masks are drawn with opaque backgrounds, depicted as one would expect.
+
+\paragraph{Case 2, Negative Fade:} When the program computes the background color for any number of masks that includes negative
+mask(s), it uses the largest transparency number as the determining factor for the background. Only 1 of the masks can be largest, and wins for the background transparency result.
+
+\vspace{3ex}\texttt{Feather}: works in a similar manner to a \textit{gradient Fade} aligned on the mask boundary but is a logical function instead of a mathematical function so will be faster.  The \texttt{Gang feather} symbol also works in a similar fashion and is surrounded by a gold colored background when it is in effect.
+
+\subsubsection*{Mask Points section}%
+\label{ssub:masks_points_section}
+
+This section is used to change to a different mask number and manipulate the masks you have created.
+
+The \texttt{Point}: textbox provides the ability to change which point number for the current mask that you want to work on.  It has a tumbler to allow for quickly switching the point number.  The \texttt{X:} and \texttt{Y:} boxes below reflect the current values and allow for modifying the $X/Y$ coordinates and these too have tumblers. The \texttt{Delete} button will allow for deleting the selected point number.
+
+The next 6 symbols in 2 columns represent \texttt{Smooth} and \texttt{Linear} buttons.  Smooth buttons use an algorithm based on the previous point and the next point to create a curved line. The smoothing operation takes three points, A, B, C, and arranges the slope at B to be AC as it moves to the next point for that mask.
+
+\texttt{smooth point}	$\rightarrow$ smooth a single point.
+
+\texttt{smooth curve}	$\rightarrow$ smooth all points on a mask edge curve.
+
+\texttt{smooth all} 	$\rightarrow$ smooth all active masks.
+
+Linear buttons of \texttt{linear point}, \texttt{linear curve}, and \texttt{linear all}, perform the inverse of the smooth functions.
+The control point vectors on the bezier endpoints are set to zero magnitude.
+
+In addition there is a \texttt{Markers} and a \texttt{Boundary} checkbox which come in handy to turn off the display of the points and the outline of the mask.  Turning off \texttt{Markers} is very useful when you have a lot of control points that clutter the display and make it more difficult to see the actual mask.  A helpful feature is available by disabling \texttt{Markers} and enabling \texttt{Boundary} which results in all masks being displayed in the viewer; for example you can then see mask 0, mask 1 \dots at the same time.
+
+A \texttt{gang} symbol on the right hand side of this section, tooltip of \textit{Gang points}, is another useful feature that makes it easy to drag a mask to an exact coordinate using the \texttt{X} or \texttt{Y} textbox for numerical input or the associated tumblers.  This works like the \texttt{Alt+LMB drag} translate but provides the ability to be precise.
+
+\subsubsection*{Pivot Point section}%
+\label{ssub:pivot_point_section}
+
+The \texttt{X:} and \texttt{Y:} coordinates mark the value of the current \textit{Pivot Point} used for rotation, scaling, and translation.  You can either directly key in numerical values or use the tumblers to change the values as long as the \texttt{Focus} checkbox is checked.
+
+The \texttt{Focus} checkbox is used in case you want to set a different point in the Compositor for pivoting instead.  And the \texttt{Gang} symbol for rotate/scale/translate means that these operations will be performed on all points of the enabled masks.  The gang symbol is surrounded by a gold colored background when it is in effect.  When performing a rotate operation on a mask with the mouse wheel, \textit{acceleration} is in effect – this means the faster you wheel, the more space is covered so that you do not have to wheel dozens of time to make a full rotation.  Then when you wheel around slower, you can fine tune the result.
+
+\subsubsection*{Other sections}%
+\label{ssub:other_sections}
+
+Finally there are the \texttt{Apply masks before plugins} and \texttt{Disable OpenGL masking} self-explanatory checkboxes.
+
+Note: Not all OpenGL software can support the current masking methods.  If your opengl implementation does not support \textit{Shader Version 4.}3 or has trouble with this (it is relatively new to opengl at the time this was implemented), then this checkbox will allow you to use the software masking to avoid any potential issues.  Normally, a OpenGL is probed for the shader version and will automatically use the software implementation if required.
+
+The \texttt{Help} checkbox can be enabled in order to see a list of the keys used to perform various operations.  If you use Masking infrequently, these are a valuable reminder to which key combinations to use.  Currently they are as follows:
+
+\vspace{2ex}
+\begin{tabular}{ l  l }
+    \hline			
+    Shift+LMB & move an end point \\
+    Ctrl+LMB & move a control point \\
+    Alt+LMB & to drag translate the mask \\
+    Shift+MMB & set Pivot Point at pointer \\
+    Wheel & rotate around Pivot Point \\
+    Ctrl+Shift+Wheel & scale around Pivot Point \\
+    Ctrl+Wheel & rotate/scale around pointer \\
+    \hline  
+\end{tabular}
+
+\vspace{2ex} Note:For some desktop window managers, certain keys may already be in use by the operating system, so you will either have to redefine them in your desktop or use different key combinations.  For example, at least some desktops used with \textit{UbuntuStudio 16.04} and \textit{Arch} field the \texttt{Alt} key, thus requiring alternative key combinations to be needed.  Below are some of these alternatives.
+
+\vspace{2ex}
+\begin{tabular}{ l p{11cm}}
+    \hline			
+    LMB & move/create an end point (to move the end point the pointer must be above the point) \\
+    Shift+LMB & move an end point (the pointer may be near the point, not above it) \\
+    Ctrl+LMB & move/create a control point \\
+    Alt+Ctrl+LMB & to drag translate the mask \\
+    Shift+Key Delete & to delete the mask \\
+    Shift+MMB & Set Pivot Point at pointer \\
+    Alt+Wheel & zoom in/out the screen (also available in Ubuntu16 but does not exist in all distros) \\
+    \hline  
+\end{tabular}
+
+\vspace{2ex}
+Focus checkbox = unchecked:
+
+\vspace{2ex}
+\begin{tabular}{ l  l }
+    \hline			
+    Wheel & rotate around Pivot Point \\
+    Shift+Wheel & scale around Pivot Point \\
+    Ctrl+Wheel & rotate around pointer \\
+    Ctrl+Shift+Wheel & scale around pointer \\
+    
+    \hline  
+\end{tabular}
+
+\vspace{2ex}
+Focus checkbox = checked:
+
+\vspace{2ex}
+\begin{tabular}{ l  l }
+    \hline			
+    Wheel & rotate around Pivot Point (“Custom focus point”) \\
+    Shift+Wheel & scale around Pivot Point (“Custom focus point”) \\       
+    \hline  
+\end{tabular}
+
+\vspace{2ex}
+Note: in order to be able to rotate/scale around pointer, the Focus checkbox must be unchecked.
 
 \subsection{Cropping}%
 \label{sub:cropping}
-
-
 
 Cropping reduces the visible picture area of the whole project. It changes the values of the output dimensions (width and height in pixels) and the X, Y values of the projector in a single operation. Since it changes project settings it affects all the tracks for their entire duration and it is not keyframable. 
 
@@ -774,8 +903,7 @@ Cropping reduces the visible picture area of the whole project. It changes the v
     \item Click-drag anywhere in the video to start a new rectangle.
     \item Click-drag over any corner of the rectangle to reposition the corner.
     \item Alt-click in the cropping rectangle to translate the rectangle to any position without resizing it.
-    \item The crop control dialog allows text entry of the top left coordinates (X1,Y1) and bottom right coordinates (X2,Y2) that define the crop rectangle. 
-        When the rectangle is positioned, hit the \emph{Do it} button in the crop control dialog to execute the cropping operation: the portion of the image outside  the rectangle will be cut off and the projector will make the output fit the canvas.
+    \item The crop control dialog allows text entry of the top left coordinates (X1,Y1) and bottom right coordinates (X2,Y2) that define the crop rectangle. When the rectangle is positioned, hit the \emph{Do it} button in the crop control dialog to execute the cropping operation: the portion of the image outside  the rectangle will be cut off and the projector will make the output fit the canvas.
     \item The Set Format window will show the new project Width and Height values.
     \item The projector tool window will show the new X, Y values.
     \item Track size will remain unchanged.

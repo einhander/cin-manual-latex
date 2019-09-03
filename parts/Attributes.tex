@@ -106,7 +106,7 @@ Explanation of the various fields is described next.
         if this option is checked, the Set Format dialog always recalculates the Aspect ratio setting based upon the given Canvas size. This ensures pixels are always square.
 
     \item[Color model:]
-        the project will be stored in the color model video that is selected in the dropdown.  
+        the internal color space of Cinelerra GG is X11 sRGB without color profile. Cinelerra always switches to sRGB when applying filters or using the compositing engine. Different case for decoding/playback or encoding/output; the project will be stored in the color model video that is selected in the dropdown.  
         Color model is important for video playback because video has the disadvantage of being slow compared to audio.  
         Video is stored on disk in one colormodel, usually a YUV derivative. 
         When played back, Cinelerra decompresses it from the file format directly into the format of the output device. 
@@ -122,7 +122,7 @@ Explanation of the various fields is described next.
             \item[RGB-Float]
                 Allocates a 32\,bit float for the R, G, and B channels and no alpha. This is used  for high dynamic range processing with no transparency.
             \item[RGBA-Float]
-                This adds a 32\,bit float for alpha to RGB-Float. It is used for high dynamic range processing with transparency.\\
+                This adds a 32\,bit float for alpha to RGB-Float. It is used for high dynamic range processing with transparency. Or when we don't want to lose data during workflow, for example in color correction, key extraction and motion tracking. \\
             \item[YUV-8 bit]
                 Allocates 8\,bits for Y, U, and V. This is used for low dynamic range operations in which the media is compressed in the YUV color space. Most compressed media is in YUV and this derivative allows video to be processed fast with the least color degradation.
             \item[YUVA-8 bit]

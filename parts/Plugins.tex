@@ -1151,7 +1151,7 @@ Figure~\ref{fig:descratch01} shows a list of the parameter descriptions:
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/descratch02.png}
+    \includegraphics[width=0.6\linewidth]{images/descratch02.png}
     \caption{Various parameters of DeScratch}
     \label{fig:descratch02}
 \end{figure}
@@ -1240,7 +1240,7 @@ Pixels which are different between the background and action track are treated a
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.8\linewidth]{images/diff-key.png}
-    \caption{Control window of the DeNoise plugin}
+    \caption{Difference key and its problematic output}
     \label{fig:diff-key}
 \end{figure}
 
@@ -1659,16 +1659,16 @@ The Samples box at the top is most often the only parameter that you may want to
 
 The \texttt{motion tracker} is almost a complete application in itself. The motion tracker tracks two types of motion: \textit{translation} and \textit{rotation}. It can track both simultaneously or one only. It can do $\frac{1}{4}$ pixel tracking or single pixel tracking. It can stabilize motion or cause one track to follow the motion of another track. Although the motion tracker is applied as a realtime effect, it usually must be rendered to see useful results. The effect takes a long time to precisely detect motion so it is very slow.
 
-Motion tracker works by using one region of the frame as the region to track. It compares this region between $2$ frames to calculate the motion. This region can be defined anywhere on the screen. Once the motion between $2$ frames has been calculated, a number of things can be done with that \textit{motion vector}. It can be scaled by a user value and clamped to a maximum range. It can be thrown away or accumulated with all the motion vectors leading up to the current position.
+Motion tracker works by using one region of the frame as the region to track (Match Box). It compares this region between $2$ frames to calculate the motion. This region can be defined anywhere on the screen. Once the motion between $2$ frames has been calculated, a number of things can be done with that \textit{motion vector}. It can be scaled by a user value and clamped to a maximum range. It can be thrown away or accumulated with all the motion vectors leading up to the current position.
 
-To save time the motion result can be saved for later reuse, recalled from a previous calculation, or discarded. The motion tracker has a notion of $2$ tracks, the \textit{master} layer and the \textit{target} layer. The master layer is where the comparison between $2$ frames takes place. The target layer is where motion is applied either to track or compensate for the motion in the master layer.
+To save time the motion result can be saved in a file for later reuse, recalled from a previous calculation, or discarded. The motion tracker has a notion of $2$ tracks, the \textit{master} layer and the \textit{target} layer. The master layer is where the comparison between $2$ frames takes place. The target layer is where motion is applied either to track or compensate for the motion in the master layer.
 
 Motion tracking parameters:
 
 \begin{description}
     \item[Track translation] Enables translation operations. The motion tracker tracks $X$ and $Y$ motion in the master layer and adjusts $X$ and $Y$ motion in the target layer.
     
-    \item[Translation block size] For the translation operations, a block is compared to a number of neighboring blocks to find the one with the least difference. The size of the block to search for is given by this parameter.
+    \item[Translation block size] For the translation operations, a block is compared to a number of neighboring blocks to find the one with the least difference. The size of the Match Box to search for is given by this parameter.
     \item[Translation search radius] The size of the area to scan for the translation block.
     \item[Translation search steps] Ideally the search operation would compare the translation block with every other pixel in the translation search radius. To speed this operation up, a subset of the total positions is searched. Then the search area is narrowed and re-scanned by the same number of search steps until the motion is known to $\frac{1}{4}$ pixel accuracy.
     \item[Block X, Y] These coordinates determine the center of the translation block based on percentages of the width and height of the image. The center of the block should be part of the image which is visible at all times.
@@ -1679,8 +1679,8 @@ Motion tracking parameters:
     \item[Rotation search radius] This is the maximum angle of rotation from the starting frame the rotation scanner can detect. The rotation scan is from this angle counterclockwise to this angle clockwise. Thus the rotation search radius is half the total range scanned.
     \item[Rotation search steps] Ideally every possible angle would be tested to get the rotation. To speed up the rotation search, the rotation search radius is divided into a finite number of angles and only those angles compared to the starting frame. Then the search radius is narrowed and an equal number of angles is compared in the smaller radius until the highest possible accuracy is achieved. Normally you need one search step for every degree scanned. Since the rotation scanner scans the rotation search radius in two directions, you need two steps for every degree in the search radius to search the complete range.
     \item[Draw vectors] When translation is enabled, $2$ boxes are drawn on the frame. One box represents the translation block. Another box outside the translation block represents the extent of the translation search radius. In the center of these boxes is an arrow showing the translation between the $2$ master frames. When rotation is enabled, a single box the size of the rotation block is drawn rotated by the amount of rotation detected.
-    \item[Track single frame] When this option is used the motion between a single starting frame and the frame currently under the insertion point is calculated. The starting frame is specified in the Frame number box. The motion calculated this way is taken as the absolute motion vector. The absolute motion vector for each frame replaces the absolute motion vector for the previous frame. Settling speed has no effect on it since it does not contain any previous motion vectors. Playback can start anywhere on the timeline since there is no dependence on previous results.
-    \item[Track previous frame] Causes only the motion between the previous frame and the current frame to be calculated. This is added to an absolute motion vector to get the new motion from the start of the sequence to the current position. After every frame processed this way, the block position is shifted to always cover the same region of the image. Playback must be started from the start of the motion effect in order to accumulate all the necessary motion vectors.
+    \item[Track single frame] When this option is used the motion between a single starting frame and the frame currently under the insertion point is calculated. The starting frame is specified in the Frame number box. The motion calculated this way is taken as the absolute motion vector. The absolute motion vector for each frame replaces the absolute motion vector for the previous frame. Settling speed has no effect on it since it does not contain any previous motion vectors. Playback can start anywhere on the timeline since there is no dependence on previous results. We talk about \textit{Keep shape} and it is the most precise way to calculate the motion vector; but it only works well when the object to be traced does not change along the clip, remaining identical in shape, size and without rotation.
+    \item[Track previous frame] Causes only the motion between the previous frame and the current frame to be calculated (\textit{Follow shape}). This is added to an absolute motion vector to get the new motion from the start of the sequence to the current position. After every frame processed this way, the block position is shifted to always cover the same region of the image. Playback must be started from the start of the motion effect in order to accumulate all the necessary motion vectors. This method is less precise because you have error propagation between frames. However, it is essential when the object changes shape or size or rotates.
     \item[Previous frame same block] This is useful for stabilizing jerky camcorder footage. In this mode the motion between the previous frame and the current frame is calculated. Instead of adjusting the block position to reflect the new location of the image, like Track Previous Frame does, the block position is unchanged between each frame. Thus a new region is compared for each frame.
     \item[Master layer] This determines the track which supplies the starting frame and ending frame for the motion calculation. If it is Bottom the bottom track of all the tracks sharing this effect is the master layer. The top track of all the tracks is the target layer.
     \item[Calculation] This determines whether to calculate the motion at all and whether to save it to disk. If it is \textit{Don't Calculate} the motion calculation is skipped. If it is \textit{Recalculate} the motion calculation is performed every time each frame is rendered. If it is \textit{Save} the motion calculation is always performed but a copy is also saved. If it is \textit{Load}, the motion calculation is loaded from a previous save calculation. If there is no previous save calculation on disk, a new motion calculation is performed.
@@ -1692,11 +1692,11 @@ Motion tracking parameters:
 
 Since it is a very slow effect, there is a method to applying the motion tracker to get the most out of it. First disable playback for the track to do motion tracking on. Then drop the effect on a region of video with some motion to track. Then rewind the insertion point to the start of the region. \texttt{Set Action$\rightarrow$ Do Nothing}; \texttt{Set Calculation$\rightarrow$ Don't calculate}; Enable \texttt{Draw vectors}. Then enable playback of the track to see the motion tracking areas.
 
-Enable which of translation motion or rotation motion vectors you want to track. By watching the compositor window and adjusting the \texttt{Block x,y} settings, center the block on the part of the image you want to track. Then set \texttt{search radius}, \texttt{block size}, and \texttt{block coordinates} for translation and rotation.
+Enable which of translation motion or rotation motion vectors you want to track. By watching the compositor window and adjusting the \texttt{Block x,y} settings, center the block on the part of the image you want to track. It is advisable to choose elements that have evident edges in the $x$ and $y$ directions because the calculations are made on these coordinates. Then set \texttt{search radius}, \texttt{block size} and \texttt{block coordinates} for translation and rotation.
 
 Once this is configured, set the calculation to \texttt{Save coords} and do test runs through the sequence to see if the motion tracker works and to save the motion vectors. Next, disable playback for the track, disable \texttt{Draw vectors}, set the motion action to perform on the target layer and change the calculation to \texttt{Load coords}. Finally enable playback for the track.
 
-When using a single starting frame to calculate the motion of a sequence, the starting frame should be a single frame with the least motion to any of the other frames. This is rarely frame $0$. Usually it is a frame near the middle of the sequence. This way the search radius need only reach halfway to the full extent of the motion in the sequence.
+When using a single starting frame to calculate the motion of a sequence (Keep Shape), the starting frame should be a single frame with the least motion to any of the other frames. This is rarely frame $0$. Usually it is a frame near the middle of the sequence. This way the search radius need only reach halfway to the full extent of the motion in the sequence.
 
 If the motion tracker is used on a render farm, Save coords and previous frame mode will not work. The results of the save coords operation are saved to the hard drives on the render nodes, not the master node. Future rendering operations on these nodes will process different frames and read the wrong coordinates from the node filesystems. The fact that render nodes only visualize a portion of the timeline also prevents previous frame from working since it depends on calculating an absolute motion vector starting on frame $0$.
 
@@ -1707,15 +1707,37 @@ The method described above is \textit{two-pass motion tracking}. One pass is use
 
 The slower method is to calculate the motion vectors and apply them simultaneously. This method can use one track as the motion vector calculation track and another track as the target track for motion vector actions. This is useful for long sequences where some error is acceptable.
 
+\subsubsection*{Pre-processing the shot}
+\label{ssub:pre_processing_shot}
+
+\begin{enumerate}
+    \item The motion plugin uses \textit{luminance} to do its own calculations, so we can edit the clip to enhance contrast and make it easier to calculate motion vectors. You can even create a copy of the monochrome clip and optimize it for the plugin. It lengthens the time but minimizes errors. The saved file can then be used for the original clip.
+    \item  Correct lens distortion, especially if the object to be tracked moves to the edges of the frame.
+    \item Study the entire shot well: if necessary, divide it into many edits, each with its own Motion plugin. For example, if the object to be tracked leaves the frame or is covered by some other element or changes in shape, size or rotation. You can try to use the \textit{Offset Tracking} technique described below.
+\end{enumerate}
+
 \subsubsection*{Using blur to improve motion tracking}
 \label{ssub:blur_improve_motion_tracking}
 
-With extremely noisy or interlaced footage, applying a blur effect before the motion tracking can improve accuracy. Either save the motion vectors in a tracking pass and disable the blur for the action pass or apply the blur just to the master layer.
+With extremely noisy or interlaced footage, applying a blur effect before the motion tracking can improve accuracy. Either save the motion vectors in a tracking pass and disable the blur for the action pass or apply the blur just to the master layer. You can even use a copy of the track formed only by the channels of Red + Green, because the channel of Blue is the noisiest. Another trick is to enlarge the Match Box to minimize the effect of noise.
 
 \subsubsection*{Using histogram to improve motion tracking}
 \label{ssub:histogram_improve_motion_tracking}
 
-A histogram is almost always applied before motion tracking to clamp out noise in the darker pixels. Either save the motion vectors in a tracking pass and disable the histogram for the action pass or apply the histogram just to the master layer.
+A histogram is almost always applied before motion tracking to clamp out noise in the darker pixels. Either save the motion vectors in a tracking pass and disable the histogram for the action pass or apply the histogram just to the master layer. Finally, you can use the histogram to increase contrast.
+
+\subsubsection*{Possible sources of errors}
+\label{ssub:possible_sources_errors}
+
+\begin{description}
+    \item[Search radius too small:] the traced object moves too fast with respect to the size of the search box set.
+    \item[Search radius too large:] The search box is so large that it also collects other similar items in the frame.
+    \item[Occlusions:] the traced object is temporarily hidden by some other element. \textit{Offset tracking} or splitting of the video into several homogeneous clips is required.
+    \item[Focus change:] you may get errors if the object changes its focus. The video must be divided into several homogeneous clips.
+    \item[Motion Blur:] blurs the object making the calculation of the motion vector less precise. Very little can be done.
+    \item[Shape change:] you can use \textit{Track previous frame} or the subdivision of the video in more homogeneous clips.
+    \item[Lighting change:] Contrast change can produce errors. \textit{Track previous frame} or color correction can be used to return to the initial illumination.
+\end{description}
 
 \subsubsection*{Tracking stabilization in action}
 \label{ssub:tracking_stabilization_action}
@@ -1752,10 +1774,13 @@ C - has only object2 visible
     \item Set keyframe at C to add offsets that were calculated at B.
 \end{enumerate}
 
-\subsubsection*{Tip}
-\label{ssub:tip}
+\subsubsection*{Tips}
+\label{ssub:tips}
 
-The motion vector is a text file located in \texttt{/tmp}. We can open it with a plain editor and modify the wrong $X\,Y$ coordinates, i.e. those that deviate from the linearity, to correct the errors that always happen when we perform a motion tracking (jumps). It can be a long and tedious job, but it leads to good results.
+\begin{enumerate}
+    \item The motion vector is a text file located in \texttt{/tmp}. We can open it with a plain editor and modify the wrong $X\,Y$ coordinates, i.e. those that deviate from the linearity, to correct the errors that always happen when we perform a motion tracking (jumps). It can be a long and tedious job, but it leads to good results.
+    \item You can try tracking using reverse playback of the track. Sometimes it may lead to a better calculation.
+\end{enumerate}
 
 \subsection{Motion 2 Point}%
 \label{sub:motion_2_point}
@@ -1805,7 +1830,7 @@ The \texttt{overlay} plugin enables the use of this Overlayer device in the midd
 \subsection{Perspective}%
 \label{sub:perspective}
 
-The \texttt{perspective} plugin allows you to change the perspective of an object and is used to make objects appear as if they are fading into the distance. Basically, you can get a different view. A transformation is used which preserves points, lines, and planes as well as ratios of distances between points lying on a straight line.
+The \texttt{perspective} plugin (aka Corner Pinning) allows you to change the perspective of an object and is used to make objects appear as if they are fading into the distance. Basically, you can get a different view. A transformation is used which preserves points, lines, and planes as well as ratios of distances between points lying on a straight line.
 
 In (figure~\ref{fig:perspective}) you can see that there are four options for the endpoints used for the edges.
 

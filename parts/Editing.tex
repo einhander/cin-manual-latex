@@ -114,7 +114,7 @@ The \textbf{Audio} and \textbf{Video pulldowns} each contain an option to add a 
 \section{Two Screen Editing}%
 \label{sec:two_screen_editing}
 
-This is a fast way to construct a program out of movie files. The idea consists of viewing a movie file in one window and viewing the program in another window. Subsections of the movie file are defined in the viewer window and transferred to the end of the program in the program window.  Two screen editing can be done simply by using keyboard shortcuts.  To get familiar with which keys to use, move the mouse pointer over the transport panel and a tooltip appears, showing what key is bound to that button.
+This is a fast way to construct a program out of movie files (in other programs is called \textit{three points editing}). The idea consists of viewing a movie file in one window and viewing the program in another window. Subsections of the movie file are defined in the viewer window and transferred to the end of the program in the program window.  Two screen editing can be done simply by using keyboard shortcuts.  To get familiar with which keys to use, move the mouse pointer over the transport panel and a tooltip appears, showing what key is bound to that button.
 
 To begin a two screen editing session, load your media resources by using the main menu \textbf{File pulldown} and choose \textit{Load files}; make sure the insertion mode is set to \textit{Create new resources only}.  This insertion strategy is to ensure that the timeline stays unchanged while new resources are brought in. Go to the Resources window and select the Media folder. The newly loaded resources will appear. Double click on a resource or drag it from the media side of the window over to the Viewer window.
 
@@ -153,6 +153,27 @@ If the destination region is longer than the clip defined in the viewer, the des
 \paragraph{Clip} The clip icon, or shortcut letter “i”, generates a new clip for the resource window containing the affected region but does not change the timeline.  Every clip has an optional/default title and description.
 
 \paragraph{Copy} The copy icon, or shortcut letter “c”, copies the selection into the copy buffer.
+
+\subsection{Use Case – Working with Sequences}
+\label{sub:use_case_working_sequences}
+
+\textit{From the Viewer to the Timeline with the sequences imported 
+in a Master Project.}
+
+A convenient methodology for working on a Master project along with 1 or more previously saved Sub projects or \textit{sequences} use case is described here.  A sequence is an edited assembly of audio and video clips generally consisting of a series of videos that relate to the same activity. This use case explains how to work this way and some things you need to be aware of.
+
+\begin{enumerate}
+    \item First load your Master project, which you worked on and saved earlier as an \texttt{.xml} file, using an Insertion strategy of \textit{Replace current project}.  Generally this Master project consists of media with any of the attributes of clips, autos, possibly keyframes, and effects.  You will see your project on the main timeline and the Media files that are part of this Master project will be displayed in the Resources window in the Media folder.
+    \item Previously you may have also saved a Sub project, which will now be referred to as a Sequence, as an \texttt{.xml} file that may contain any of the same such things: media, clips, autos, keyframes, effects.  Second you will want to load the Sequence using an Insertion strategy of \textit{Create new resources only}.  When you do the load, this Sequence will show as a file in the Resources window in the Clips folder.  The actual media will show in the Media folder.
+    \item Now Drag and Drop the Sub project from the Clips folder to the Viewer.
+    \item Set In and Out Pointers in the Viewer to the region of interest in the Sub project and in the Timeline of the Main window of your Master project, move the cursor position to where you would like to insert this In/Out section.
+    \item Click on the \textit{Splice (v)} button in the Viewer to insert this section into the Master project timeline.  All of the attributes of the selected Sub project section will now be inserted in the main timeline to include the autos, keyframes, effects, and labels.
+    \item Alternatively, if you click on the \textit{Overwrite (b)} button in the Viewer, you can see the Sub project In/Out section in the timeline, but without its autos, effects, keyframes, etc.  If in the timeline there were some autos, effects, and keyframes in that Master project, they will be in effect for the new section.   
+\end{enumerate}
+
+You can see the advantages of using Splice versus Overwrite to either insert (splice) with all of the attributes of a specific section of your Sequence or to overwrite without the attributes to allow for the smooth operation on the timeline by retaining the timeline’s attributes at that point.
+
+NOTE: for correct operation of this use case, you should have the same (or more) number of tracks in the Master project as you do in the Sequence.  To avoid having to know how many tracks you need, you can use the Nest feature as described in the Nesting section (\ref{sub:nesting}).
 
 \section{Cut and Paste Editing}%
 \label{sec:cut_paste_editing}
@@ -299,8 +320,8 @@ The copy/paste behavior respects the armed/disarmed tracks state.  A paste of au
 
 Attaching transitions to multiple selected edits via the Video or Audio pulldowns is also available.  The new transitions are attached at the start of the edits, and will replace any existing attached transitions.
 
-\subsection{Copy/Paste Behavior}%
-\label{sub:copy_paste_behavior}
+\subsection{Grouping edits}%
+\label{sub:grouping_edits}
 
 Cinelerra recognizes as a group, the edits of different armed tracks that have aligned beginnings, regardless of whether they have the same source or aligned ends.  You can drag these edits around on the timeline to construct your movie by rearranging scenes. If more than one track is armed, Cinelerra will drag any edits which start on the same positions the edit the mouse pointer is currently over. \\
 Another method of Grouping of edits is performed as follows:
@@ -633,6 +654,18 @@ It is somewhat important to note that nested assets and nested clips will have i
     \caption{Nested clips in Timeline and Resources window}
     \label{fig:nesting}
 \end{figure}
+
+\paragraph{Usage Examples of Nested Clips}
+
+\begin{description}
+    \item[Example 1:] You want to make a flashback/rewind at the end of your videothat represents a quick summary of the entire video in black and white. Onhe timeline, you have 60 seconds of edits with clips, cuts, zoom in, zoomout and any other edits. Now you want to get this 60 seconds "compressed"to 10 seconds, play in reverse, and in black and white at the end of your
+    video.    
+    You would copy the 60 seconds in a clip, nest the clip in the Clip folderof the Resources window and drag it to the timeline. You will see only aclean clip without all of the edits that were used to create it becausenesting display a clip without having to actually use the Render menu.
+    Now you can add a Reverse effect, Color3way plugin for black and white, anduse the Speed auto to get the 60 seconds down to only 10 seconds.
+    \item[Example 2:] You are working on a complex project with a team in a separatelocation. You create some sub projects, i.e. sequences, that you or theteam will use in the Master project to merge the sequences in the rightorder and to make the final color correction steps.
+\end{description}
+
+In each of the examples you can see the benefit of nesting to create cleanlooking timelines because of the automatic rendering capability of nesting.
 
 \subsection{Copy/Paste clips/medias across Multiple Instances}%
 \label{sub:copy_paste_multiple_instances}

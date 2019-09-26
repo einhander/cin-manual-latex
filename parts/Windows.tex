@@ -581,7 +581,14 @@ In the compositor window, two of the more important functions are the adjust cam
 Cinelerra's compositing routines use a \textit{temporary}, a frame of video in memory where all graphics processing is performed. 
 Inside Cinelerra's compositing pipeline, the camera determines where in the source video the \textit{temporary} is copied from. 
 The projector determines where in the output the \textit{temporary} is copied to. 
-Each track has a different \textit{temporary} which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms.
+Each track has a different \textit{temporary} which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms (figure~\ref{fig:temporary-01}).
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/temporary-01.pdf}
+    \caption{Compositing pipeline}
+    \label{fig:temporary-01}
+\end{figure}
 
 In compositing, each frame can be digitally altered using various options, such as a color correction plugin (figure~\ref{fig:camera_and_projector}). 
 Once the image has been transformed, the finished image is then projected to the compositor thus creating a modified version of the original.
@@ -589,7 +596,7 @@ Once the image has been transformed, the finished image is then projected to the
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.8\linewidth]{images/camera_and_projector.png}
-    \caption{Camera and Projector}
+    \caption{Color balance on Temporary}
     \label{fig:camera_and_projector}
 \end{figure}
 
@@ -598,7 +605,14 @@ Even if the track is completely transparent, it is still the affected track.
 If multiple video tracks exist, the easiest way to select one track for editing is to Shift-click on the record icon of the track. 
 This solos the track.
 
-The purpose of the projector is to place the contents of the \textit{temporary} into the project's output. 
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/temporary-02.pdf}
+    \caption{How Projector and Temporary work}
+    \label{fig:temporary-02}
+\end{figure}
+
+The purpose of the projector is to place the contents of the \textit{temporary} into the project's output (figure~\ref{fig:temporary-02}). 
 The intent of the projector is to composite several sources from the various tracks into one final output track. 
 The projector alignment frame is identical to the camera's viewport, except that it guides where on the output canvas to put the contents of each temporary.
 

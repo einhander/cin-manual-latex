@@ -580,8 +580,8 @@ Once some video files are on the timeline, the compositor window is a good place
 In the compositor window, two of the more important functions are the adjust camera automation and the adjust projector automation which control operation of the camera and projector. 
 Cinelerra's compositing routines use a \textit{temporary}, a frame of video in memory where all graphics processing is performed. 
 Inside Cinelerra's compositing pipeline, the camera determines where in the source video the \textit{temporary} is copied from. 
-The projector determines where in the output the \textit{temporary} is copied to. 
-Each track has a different \textit{temporary} which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms (figure~\ref{fig:temporary-01}).
+The projector determines where in the output the \textit{temporary} is copied to (figure~\ref{fig:temporary-01}). 
+Each track has a different \textit{temporary} which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms.
 
 \begin{figure}[htpb]
     \centering
@@ -605,14 +605,7 @@ Even if the track is completely transparent, it is still the affected track.
 If multiple video tracks exist, the easiest way to select one track for editing is to Shift-click on the record icon of the track. 
 This solos the track.
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.6\linewidth]{images/temporary-02.pdf}
-    \caption{How Projector and Temporary work}
-    \label{fig:temporary-02}
-\end{figure}
-
-The purpose of the projector is to place the contents of the \textit{temporary} into the project's output (figure~\ref{fig:temporary-02}). 
+The purpose of the projector is to place the contents of the \textit{temporary} into the project's output.  
 The intent of the projector is to composite several sources from the various tracks into one final output track. 
 The projector alignment frame is identical to the camera's viewport, except that it guides where on the output canvas to put the contents of each temporary.
 
@@ -648,11 +641,11 @@ The green box is the Viewport; at the beginning it coincides with the size of th
 \label{ssub:the_camera_and_projector_tool_window}
 
 The camera and projector have shortcut operations that do not appear in the popup menu and are not represented in video overlays. 
-These are accessed in the \emph{Show tool info} window. 
-Most operations in the Compositor window have a tool window which is enabled by activating the question mark icon.
+These are accessed in the \emph{Show tool info} window . 
+Most operations in the Compositor window have a tool window which is enabled by activating the question mark icon (figure~\ref{fig:camera_tool}).
 
 \begin{wrapfigure}[12]{O}{0.3\linewidth} 
-	\vspace{-4ex}
+	\vspace{-2ex}
     \includegraphics[width=0.9\linewidth]{images/camera_tool.png}
     \caption{Camera and Projector tool}
     \label{fig:camera_tool}
@@ -707,7 +700,15 @@ Removal of boom microphones and airplanes are a common kind of mask uses.
 
 The order of the compositing pipeline affects what can be done with masks. Mainly, masks are performed on the temporary after effects and before the projector. This means multiple tracks can be bounced to a masked track and projected with the same mask.
 
-The compositing pipeline graph has a masking stage. 
+The compositing pipeline graph has a masking stage (figure~\ref{fig:temporary-02}).
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/temporary-02.pdf}
+    \caption{compositing pipeline with mask}
+    \label{fig:temporary-02}
+\end{figure}
+
 There are 8 possible masks per track. Each mask is defined separately, although they each perform the same operation, whether it is addition or subtraction.
 
 \subsubsection*{Compositing pipeline with masks}%

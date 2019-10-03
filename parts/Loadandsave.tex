@@ -62,13 +62,17 @@ An image sequence is a series of ordered still pictures; for example a bunch of 
 
 File lists formats can be utilized in some way for the following list of types of \textit{Sequence files}  The first line of the sequence list file identifies the list codec.
 
-\vspace*{1ex}
-\begin{tabular}{l l l l}
-PNGLIST = *.png	&	PPMLIST = *.ppm	&	TGALIST = *.tga	  &  TIFFLIST = *.tiff \\
-EXALIST = *.exa	&	CR2LIST = *.cr2	&	JPEGLIST = *.jpg	&    GIFLIST = *.gif
-\end{tabular}
+%\vspace*{1ex}
 
-\vspace*{1ex} 
+
+\begin{center}
+    \begin{tabular}{l l l l}
+    PNGLIST = *.png	&	PPMLIST = *.ppm	&	TGALIST = *.tga	  &  TIFFLIST = *.tiff \\
+    EXALIST = *.exa	&	CR2LIST = *.cr2	&	JPEGLIST = *.jpg	&    GIFLIST = *.gif
+    \end{tabular}
+\end{center}
+
+%\vspace*{1ex} 
 Using the example of jpeg’s, the jpeg list sequence file type is the easiest and fastest way to access a sequence of jpg images as a single asset.  First build a jpeglist sequence file and name it something like jpeglist.sh.  There is an example script of how to do this in the Auxiliary Programs section of the Appendix.  Once the jpeglist.sh file is built you can then run it similar to this line:
 
 \begin{lstlisting}[language=bash]

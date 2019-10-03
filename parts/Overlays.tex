@@ -1,6 +1,5 @@
 \chapter{Overlays}%
 \label{cha:overlays}
-\todo{same wrong border for title's number}
 
 The purpose of the Overlay Modes is to control the foreground and background stacking and use blending to reshape image object boundaries.  It normally makes use of a binary type alpha blending system for all in or all out.  To use the available operations in Cinelerra GG, follow these steps:
 
@@ -126,7 +125,7 @@ Each line describes a pair with the left one for alpha and the right one for chr
     \item[SCREEN:] $[Sa + Da - Sa \times Da, Sc + Dc - (Sc \times Dc)]$ (same as OR)
     \item[BURN:] $[Sa + Da - Sa \times Da, Sc \times (1 - Da) + Dc \times (1 - Sa) + Sc \leqslant 0 \parallel Sc \times Da + Dc \times Sa \leqslant Sa \times Da \quad ? \quad	0 : (Sc \times Da + Dc \times Sa - Sa \times Da) \times Sa/Sc]$
     \item[DODGE:] $[Sa + Da - Sa \times Da, Sc \times (1 - Da) + Dc \times (1 - Sa) + Sa \leqslant Sc \parallel Sc \times Da + Dc \times Sa \geqslant Sa \times Da \quad ? \quad	Sa \times Da : Dc \times Sa / (1 - Sc/Sa)]$
-    \item[DIFFERENCE:] $[Sa + Da - Sa \times Da,  Sc \times (1 - Da) + Dc \times (1 - Sa) + abs{(Sc \times Da - Dc \times Sa)}]$
+    \item[DIFFERENCE:]~\\ $[Sa + Da - Sa \times Da,  Sc \times (1 - Da) + Dc \times (1 - Sa) + abs{(Sc \times Da - Dc \times Sa)}]$
     \item[HARDLIGHT:] $[Sa + Da - Sa \times Da, Sc \times (1 - Da) + Dc \times (1 - Sa) + 2 \times Sc < Sa \quad ? \quad 2 \times Sc \times Dc : Sa \times Da - 	2 \times (Da - Dc) \times (Sa - Sc)]$
     \item[SOFTLIGHT:] $[Sa + Da - Sa \times Da, Sc \times (1 - Da) + Dc \times (1 - Sa) + Da > 0 \quad ? \quad (Dc \times Sa + 2 \times Sc \times (Da - 	Dc))/Da : 0]$
 \end{description}

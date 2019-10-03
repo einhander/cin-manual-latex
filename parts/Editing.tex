@@ -63,8 +63,7 @@ The \textit{attributes} are described here next.
     \item[Fader slider] fade values are represented on the timeline with a pink curve that is keyframable.  All tracks have a fader, but the units of each fader depend on whether it is audio or video.  Audio fade values are in dB. They represent relative levels, where 0 is the unaltered original sound level, -40 is silence, -80 the minimum value set by default.  You can move fader and keyframes down to -80 but the parameter's curve won't go below -40.  For your convenience you can set a different fade range with the curve zoom.  Audio fader’s main purpose is to \textit{fade out} sound or to lower the sound level smoothly to silence, or \textit{fade in} to make sounds appear gradually instead of suddenly.  Video fade values are the percentage of opacity of the image in normal overlay mode, the percentage of the layer that is mixed into the render pipeline in the other overlay modes.
     Click and drag the fader to fade the track in and out.  If it is ganged to other tracks of the same media type, with the arm option enabled, the other faders should follow.  Hold down the Shift key and drag a fader to center it on the original source value (0 for audio, 100 for video).
     \item[mixer] in the expanded patchbay for that track designate the multi-camera mixer mode.
-    \item[Overlay mode] in the expanded patchbay is used for porter-duff operations and is full explained in Overlay Modes \nameref{cha:???}.
-        \todo{Link to Overlay Modes chapter}%
+    \item[Overlay mode] in the expanded patchbay is used for porter-duff operations and is full explained in \nameref{cha:overlays} chapter.
     \item[Nudge] is in the expanded patchbay.  The nudge value is the amount the track is shifted left or right during playback. The track is not displayed shifted on the timeline, but it is shifted when it is played back. This is useful for synchronizing audio with video, creating fake stereo, or compensating for an effect which shifts time, all without altering any edits (figure~\ref{fig:overlay}).
     
     \begin{figure}[htpb]
@@ -942,11 +941,16 @@ event: (0, 0, 0x0)
 
 \paragraph{Note 4} For developers, if you have a pre-UEFI Secure Boot kernel it is also possible to do the following for further in depth testing:
 
-\begin{enumerate}
-    \item \texttt{ls /sys/kernel/debug/hid   \# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006}
-    \item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc”    \# substitute your own numerical value}
-    \item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events”  \# press keys to see the results}
-\end{enumerate}
+    \begin{lstlisting}[language=Bash]
+ls /sys/kernel/debug/hid   \# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006
+cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc"  # substitute your own numerical value
+cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/events"  # press keys to see the results
+    \end{lstlisting}
+%\begin{enumerate}
+    %\item \texttt{ls /sys/kernel/debug/hid   \# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006}
+    %\item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc”    \# substitute your own numerical value}
+    %\item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events”  \# press keys to see the results}
+%\end{enumerate}
 
 \subsection{Shuttle key default arrangement for Cinelerra / Composer / Viewer:}%
 \label{sub:shuttle_key_default_cinelerra}

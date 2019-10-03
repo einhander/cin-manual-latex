@@ -144,7 +144,7 @@ In the single-user build, the target directory is always “cin”.
 Because this is also the developer build, constant names are used throughout.  
 However, you can rename files after the install is complete.
 
-f your distro/operating system has issues with the default install to \texttt{/usr/local}, you might have to change the location to /usr for a system build.  Then you will have to use:
+If your operating system has issues with the default install to \texttt{/usr/local}, you might have to change the location to \texttt{/usr} for a system build.  Then you will have to use:
 \begin{lstlisting}[language=bash]
 $ ./configure --prefix=/usr
 \end{lstlisting}
@@ -159,7 +159,7 @@ The application name can be set during installation, but defaults to cin so that
 $ ./configure --with-exec-name=cinelerra
 \end{lstlisting}
 
-The home configuration directory can also be set, but defaults to \texttt{\$\$HOME/.bcast5}.  
+The home configuration directory can also be set, but default location is \texttt{\$HOME/.bcast5}.  
 For example:
 
 \begin{lstlisting}[language=bash]
@@ -237,7 +237,7 @@ The "yes" means force build and “auto” means probe and use the system versio
 To get your customized build to work, you need to change the probe options for the conflicting libraries from "yes" to "auto", or even rework the \texttt{configure.ac} script.  
 There may be several libraries which need special treatment.
 
-An example of a problem you might encounter with your customized installation is with “\texttt{a52dec}” which has probes \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
+An example of a problem you might encounter with your customized installation is with “\texttt{a52dec}” which has probes line \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
 In this case, \texttt{djbfft} is only built because \texttt{a52dec} is built, so if your system has \texttt{a52dec}, set \texttt{a52dec} to auto and see if that problem is solved by retrying the build with:  
 \begin{lstlisting}[language=bash]
 $ ./confgure --with-single-user –enable-a52dec=auto .
@@ -245,7 +245,7 @@ $ ./confgure --with-single-user –enable-a52dec=auto .
 
 With persistence, you can get results, but it may take several tries to stabilize the build.  
 If you need help, email the "\texttt{log}" and "\texttt{config.log}", which is usually sufficient to determine why a build failed.
-\vspace{5ex}
+%\vspace{5ex}
 
 If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational.
 
@@ -391,7 +391,7 @@ The names of the build scripts are:  arch.bld ,  bsd.bld , deb.bld , and rpm.bld
 These scripts are in the “blds” subdirectory.  
 The bsd.bld should be used with the bsd.patch file in that same directory.
 
-The reason that Cin Infinity traditionally uses thirdparty builds (bundled builds) is because there are a lot of different distros with varying levels of ffmpeg and other needed thirdparty libraries.  
+The reason that Cin Infinity traditionally uses thirdparty builds (bundled builds)\todo{hanging line} is because there are a lot of different distros with varying levels of ffmpeg and other needed thirdparty libraries.  
 However, some users prefer using their current system baseline without another/different copy of ffmpeg.  
 With different levels of the user’s libraries, uncertainty, potential instability, and unknown issues may come up while running Cinelerra and this will make it, for all practical purposes, impossible to diagnose and debug problems or crashes.  
 There may be no help in these cases.  You are encouraged to report any errors which potentially originate from Cin Infinity, but if the data indicates alternate library sources, please report the problems to the appropriate maintainers.

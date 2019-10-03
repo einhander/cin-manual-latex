@@ -67,7 +67,7 @@ The rightmost knob is used to \texttt{Turn Off/Turn On} the effect where the def
 
 Many operations exist for manipulating effects once they are on the timeline. Because mixing effects and media is quite complex, the methods used in editing effects are not as concise as cutting and pasting. Some of the editing happens by dragging in/out points, some of the editing happens through popup menus, and some of it happens by dragging effects.
 
-When enabled, which is the default, and you edit tracks, the effects follow the editing decisions. If you cut from a track, the effect shrinks. If you drag edit in/out points, the effect changes length. This behavior can be disabled by selecting \texttt{Settings$\rightarrow$ Preferences$\rightarrow$ Interface tab$\rightarrow$ Editing section} (figure~\ref{fig:editing-effects}).
+When enabled, which is the default, and you edit tracks, the effects follow the editing decisions. If you cut from a track, the effect shrinks. If you drag edit in/out points, the effect changes length. This behavior can be disabled by selecting \texttt{Settings$\rightarrow$ Preferences$\rightarrow$ Interface tab$\rightarrow$ Editing section}, see figure~\ref{fig:editing-effects}.
 
 \begin{figure}[htpb]
     \centering
@@ -119,10 +119,10 @@ In order to prevent the shared track from mixing the same data as the original t
 \section{Saved Plugin Presets}%
 \label{sec:saved_plugin_preset}
 
-\textit{Presets} and \textit{Factory Presets} for Plugin settings are now combined with the Preset Keyframe Parameters allowing you to choose, apply, delete, and edit your own Presets which can then be easily saved in the file \texttt{\$HOME/.bcast5/Cinelerra\_presets}. In addition to your own saved presets, there are automatically available Factory presets for some plugins, for example the Lens video plugin. The Factory presets are preceded by an asterisk (*) and can not be modified permanently.
+\textit{Presets} and \textit{Factory Presets} for Plugin settings are now combined with the Preset Keyframe Parameters allowing you to choose, apply, delete, and edit your own Presets which can then be easily saved in the file \texttt{\$HOME/.bcast5/Cinelerra\_\\presets}. In addition to your own saved presets, there are automatically available Factory presets for some plugins, for example the Lens video plugin. The Factory presets are preceded by an asterisk (*) and can not be modified permanently.
 
-\begin{wrapfigure}[3]{r}{0.3\linewidth}
-    \vspace{-4ex}
+\begin{wrapfigure}[4]{r}{0.3\linewidth}
+    \vspace{-2ex}
     \centering
     \includegraphics[width=0.7\linewidth]{images/preset.png} 
 \end{wrapfigure}
@@ -188,7 +188,9 @@ For most User installs, the \texttt{<plugin\_name>.png} file will be located at:
 
 For some System installs, the files might be located at:
 
-\texttt{/usr/lib/cin/plugins/picon/cinfinity} (or cinfinity2, original or smoother) (ubuntu distros)
+\texttt{/usr/lib/cin/plugins/picon/cinfinity} (or cinfinity2, original or
+\todo{raphrase to avoid boarder break}
+smoo\-ther) (ubuntu distros)
 
 \texttt{/usr/lib64/cin/plugins/picon/cinfinity} (or cinfinity2, original or smoother) (Leap distro)
 
@@ -226,7 +228,8 @@ Keep in mind these points for newly created plugin icons:
     \item If there is currently no theme-specific \texttt{.png} files present, it may be necessary to first create the theme directory in \texttt{<cinlib\_path>plugins} as \texttt{<theme\_name>} in order to put the \texttt{.png} files in that subdirectory.
     \item Make sure that the \textit{ownership} and file \textit{permissions} match the existing directory and files.
     \item All ffmpeg icons must begin with \texttt{ff\_<plugin\_name>.png} (Resources window title will still be \texttt{F\_\dots})
-    \item For ladspa, check in the \texttt{<cin\_config>} directory (\texttt{\$HOME/.bcast5} normally) and look for the text file \texttt{\$HOME/.bcast5/ladspa\_plugins\dots} for the names of the ladspa libraries which correspond to plugin names where the needed name is the basename of the \texttt{.so} file. For example \texttt{phasers\_1217.so} would need to have a \texttt{phasers\_1217.png} file. There may be multiple plugins in a single “so” file which means that you can only have 1 icon to represent all of the plugins in that file; again as in phasers.
+    \item For ladspa, check in the \texttt{<cin\_config>} directory (\texttt{\$HOME/.bcast5} normally) and look for the text file \texttt{\$HOME/.bcast5/ladspa\_plugins\dots} for the names of the ladspa libraries which correspond to plugin names where the needed name is the basename of the \texttt{.so} file. 
+        For example \texttt{pha\-sers\_1217.so} would need to have a \texttt{phasers\_1217.png} file. There may be multiple plugins in a single “so” file which means that you can only have 1 icon to represent all of the plugins in that file; again as in phasers.
     \item Once you have placed the .png file in the correct spot, you will have to restart Cinelerra to test it.
     \item To submit your .png file for inclusion into Cinelerra-GG Infinity for all to enjoy, it is best to upload it to any datafilehost and notify the community via email with any informative documentation.
 \end{itemize}
@@ -283,7 +286,9 @@ Highlight the set you want to turn on and a check mark appears to show it is act
 \subsection{Expanders for Plugin Subtrees in the Resources Window}%
 \label{sub:expanders_plugin_subtrees}
 
-To accentuate a set of common plugins, there are \textit{expander} arrows on the left side of the Resources window. You will see these expanders only when in \textit{Display text} mode, not \textit{icon} mode. Cinelerra’s default setup is in the file \texttt{\$CIN\_DAT/expanders.txt} but if the user wants their own specific setup and if the file in \texttt{\$HOME/.bcast5/expanders.txt} exists, it will take precedence. If there are recommendations for other relevant categories, they can be added. The subtree structure is applicable to any of the \textit{Video Effects/Transitions} or \textit{Audio Effects/Transitions}. You can not sort once an expansion is in effect (figure~\ref{fig:expander}).
+To accentuate a set of common plugins, there are \textit{expander} arrows on the left side of the Resources window. You will see these expanders only when in \textit{Display text} mode, not \textit{icon} mode. 
+Cinelerra’s default setup is in the file \texttt{\$CIN\_DAT/expan\-ders.txt} but if the user wants their own specific setup and if the file in \texttt{\$HOME/.\\bcast5/expanders.txt} exists, it will take precedence. 
+If there are recommendations for other relevant categories, they can be added. The subtree structure is applicable to any of the \textit{Video Effects/Transitions} or \textit{Audio Effects/Transitions}. You can not sort once an expansion is in effect (figure~\ref{fig:expander}).
 
 The \texttt{expanders.txt} file has very specific requirements. The most specific is that there are no blanks --- you must use tabs only. A \# (pound sign) can be used in column 1 to indicate a comment. Here is a short example:
 
@@ -595,15 +600,15 @@ You can specify a certain set of LV2 plugins to use by setting \texttt{LV2\_PATH
 export LV2_PATH=/tmp/j/balance.lv2/usr/local/lib/lv2/:/usr/local/lv2
 \end{lstlisting}
 
-If there is no default \texttt{LV2\_PATH} set automatically, the value will be \texttt{\$CIN\_DAT/lv2}, which is a placeholder only so that no lv2 plugins will be loaded. When there is no system \texttt{LV2\_PATH} set it is important to note, that if you do want lv2 plugins loaded, you must set the correct path in:
+If there is no default \texttt{LV2\_PATH} set automatically, the value will be \texttt{\$CIN\_DAT/\\lv2}, which is a placeholder only so that no lv2 plugins will be loaded. When there is no system \texttt{LV2\_PATH} set it is important to note, that if you do want lv2 plugins loaded, you must set the correct path in:
 
-\texttt{Settings$\rightarrow$Preferences$\rightarrow$Interface tab$\rightarrow$ Default LV2$\rightarrow$ directory \\
+\texttt{Settings$\rightarrow$Preferences$\rightarrow$Interface tab$\rightarrow$ Default LV2$\rightarrow$ direc\-tory 
     path name}
 
 When you change this field, cin will automatically restart and load the newly specified lv2 plugins. If when switching \texttt{LV2\_PATH} or if the lv2 audio plugins are not displayed/usable in the Resources window, you can execute a reload via:
 
-\texttt{Settings$\rightarrow$  Preferences$\rightarrow$ Interface tab$\rightarrow$ Reload plugin index} \\
-or else before you bring up cinelerra, delete \texttt{\$HOME/.bcast5/Cinelerra\_plugins} so that the plugins get properly reloaded.
+\texttt{Settings$\rightarrow$  Preferences$\rightarrow$ Interface tab$\rightarrow$ Reload plugin in\-dex} 
+or else before you bring up cinelerra, delete \texttt{\$HOME/.bcast5/Cinelerra\_\\plugins} so that the plugins get properly reloaded.
 
 There are some lv2 plugins that display a \textit{glitzy} UI (User Interface); for example the \textit{Calf plugins}. For these LV2 plugins, if you want that to automatically come up without having to click on the UI button on the simplified UI interface, there is a flag to enable that. It is at:
 
@@ -860,7 +865,7 @@ This case uses stacked BlueBanana plugins working like \textit{chroma-key} filte
         \item Add 2 BlueBanana plugins on the first track. Turn off all checkboxes in both plugins.
         \item On the top plugin, use the top pane to create a selection mask, using \texttt{Mark Selected Areas}.
         \item Turn off top plugin \texttt{Mark Selected Areas}, and disable the top plugin via the plugin title bar on/off.
-        \item Create another selection using the second plugin's mask, using \texttt{Mark Selected Areas}.
+        \item Create another selection using the second plugin's mask, using \texttt{Mark Selec\-ted Areas}.
         \item Turn on the top plugin. Make sure both plugins \texttt{Mark Selected Areas} is off.
         \item Check \texttt{Mask Selection} and \texttt{Filter Active} in both.
         \item Check \texttt{Combine Selection} on second BlueBanana to see the final results.
@@ -1004,7 +1009,7 @@ Here we assume that we have a good video, filmed on green (or blue) screen that 
 
 As in any other effect, add it to the timeline in the main window. You can tweak each parameter in order to improve the keying.
 
-Start with \texttt{Hue Tolerance} at $10\%$, \texttt{Min Brightness} at $0$, \texttt{Max brightness} at $100\%$, \texttt{Saturation offset} at $0$, \texttt{Min Saturation} at $0$, \texttt{In Slope} at $0$, \texttt{Out Slope} at $0$, \texttt{Alpha Offset} at $0$ (that’s mid-way through), \texttt{Spill Threshold} at $0$, \texttt{Spill Compensation} at $100\%$. At any time, you can check what the Mask looks like by clicking on \texttt{Show Mask}. This will output a black and white image of the mask (\textit{matte}).
+Start with \texttt{Hue Tolerance} at $10\%$, \texttt{Min Bright\-ness} at $0$, \texttt{Max bright\-ness} at $100\%$, \texttt{Saturation offset} at $0$, \texttt{Min Saturation} at $0$, \texttt{In Slope} at $0$, \texttt{Out Slope} at $0$, \texttt{Alpha Offset} at $0$ (that’s mid-way through), \texttt{Spill Threshold} at $0$, \texttt{Spill Compensation} at $100\%$. At any time, you can check what the Mask looks like by clicking on \texttt{Show Mask}. This will output a black and white image of the mask (\textit{matte}).
 
 \begin{description}
     \item[Key color:] Select the key color (green, blue, etc) using the color wheel or the color picker. Remember, only the Hue matters, not Saturation or Value. To use the color picker, click on the \texttt{color picker} icon in the Compositor window, then click on the color you want in the Compositor window. Finally  in the Chromakey (HSV) parameters window, click on \texttt{Use Color Picker}.
@@ -1814,16 +1819,14 @@ This effect makes video tracks appears as a painting. It can be controlled by \t
 \subsection{Overlay}%
 \label{sub:overlay}
 
-This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the chapter on Overlay Modes
-\todo{Link to Overlay Modes chapter}
---- PorterDuff.
+This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the on \nameref{cha:overlays} chapter  --- PorterDuff.
 
 The \texttt{overlay} plugin enables the use of this Overlayer device in the middle of any plugin stack, opening endless filtering and processing possibilities. It is only useful as a \textit{shared plugin} (i.e. a multitrack plugin). To use the overlay plugin:
 
 \begin{enumerate}
     \item Add the effect to Track A.
     \item Choose \textit{attach effect} from the context menu of another track (Track B).
-    \item Choose Track A:Overlay as a shared plugin.
+    \item Choose Track A: Overlay as a shared plugin.
     \item Manipulate the plugin parameters in Track A.
 \end{enumerate}
 
@@ -2324,7 +2327,7 @@ If the video is displayed on a consumer TV, the outer border is going to be crop
 \begin{description}
     \item[Drag] initial default checkbox is \texttt{off} so that the Title plugin will work as it always has.
     \begin{description}
-        \item[Anchors] When you turn on the Drag feature, nine different anchors/handles will appear on compositor window. The \textit{middle anchor} allows you to drag your title wherever you want in the compositor window ($X, Y coordinates$). The other 8 handles, drawn as arrows in each corner and in the middle of each side, let you change the size of the drag area box so that your title is within that area if it fits and as it is directed.
+        \item[Anchors] When you turn on the Drag feature, nine different anchors/handles will appear on compositor window. The \textit{middle anchor} allows you to drag your title wherever you want in the compositor window ($X, Y$ coordinates). The other 8 handles, drawn as arrows in each corner and in the middle of each side, let you change the size of the drag area box so that your title is within that area if it fits and as it is directed.
         \item[W/H] the values in these 2 boxes specify the size of the drag area box measured in pixels as shown in the compositor window. You can set these manually and if you can't see the location of your box or find your handles, set them to zero because $0$ sets it to the same as the width/height of the media.
         The Drag effect ignores all boundaries, including the \textit{Title Safe Region} of the Compositor so that if you drag your titles off the screen, it will look like they disappeared completely. Reset X and Y to reasonable values to have it reappear. The Title \textit{text}, \textit{background}, and \textit{pngs} are applied on a single layer so that they will drag together as an entity. All of the Title capabilities work in conjunction with dragging so if you want to justify the title, you can still use the \textit{Left/Center/Right/Top/Mid/Bottom} within the drag area. Be sure to turn off Drag when rendering or the box will show in the video; keep in mind that drag bars do not appear until there is some text in the text box and you can not actually drag until the Title window controls are available.
     \end{description}
@@ -2416,7 +2419,9 @@ Figure~\ref{fig:title03}.
 \begin{description}
     \item[Background] in this box you can keyin the name of a file of the type that cinelerra accepts and use that file as a background for your Title characters. This will be seen in the compositor window on top of the video that is loaded in the main track canvas. Besides typing in the filename, you must also check the checkbox. This makes it easy to turn it \texttt{on} and \texttt{off} to see what it looks like. Next to the background box is a \texttt{Loop} checkbox. If the background file takes less time than the main track canvas video to run, you can turn on the loop checkbox so that it runs over and over again to match the time size of your video.
     \item[Stroker] to add \textit{pen strokes} to the text letters, adjust the stroke width numerically. This looks particularly nice on certain fonts and with a negative adjustment of the \texttt{Drop shadow}.
-    \item[Unicode Insertion] if you want to enter a special character like the mathematical \textit{summation} symbol, you can use the unicode equivalent to do so. \texttt{Ctrl-Shift-U} followed by $2022$ and a carriage return is an example of the bullet. Refer to section 40.11 for details.
+    \item[Unicode Insertion] if you want to enter a special character like the mathematical \textit{summation} symbol, you can use the unicode equivalent to do so. Press \texttt{Ctrl-Shift-U} followed by $2022$ and a carriage return is an example of the bullet. Refer to section 40.11
+        \todo{lost link}
+        for details.
     \item[Popup Helper] put your cursor where you want to add an attribute, then right mouse will bring up a list of the available attributes for you to choose, along with a submenu to choose from. The program will insert that attribute for you and all you have to add is a value when required! (see figure~\ref{fig:title02}).
 \end{description}
 
@@ -2464,7 +2469,8 @@ export BC_FONT_PATH=/usr/share/fonts
 
 The current set of fonts in cinelerra's directory will be automatically included and will be the default set if this environment variable is not set. Keep in mind that if you add a lot of fonts, it will considerably slow down the startup every time you bring up the Title plugin. 
 
-If you want to only have a limited number of fonts set up, you can manipulate the cinelerra directory directly at \texttt{<cinelerra\_install\_path> /bin/plugins/fonts}. Here you will find the default set of fonts that come with the install. Copy any other fonts you would like to include here with read permission, delete any fonts you do not want to have, then execute \texttt{mkfontscale} which creates the file \texttt{fonts.scale} that cinelerra will read. However, the next time you install a new version of cinelerra GG, your changes will be written over so you will have to make sure to save them elsewhere and then re-establish. 
+If you want to only have a limited number of fonts set up, you can manipulate the cinelerra directory directly at \texttt{<cinelerra\_install\_path> /bin/plug\-ins/fonts}. 
+Here you will find the default set of fonts that come with the install. Copy any other fonts you would like to include here with read permission, delete any fonts you do not want to have, then execute \texttt{mkfontscale} which creates the file \texttt{fonts.scale} that cinelerra will read. However, the next time you install a new version of cinelerra GG, your changes will be written over so you will have to make sure to save them elsewhere and then re-establish. 
 
 If you have problems with a specific font or set of fonts, there is a debug option available to determine which font is an issue. When starting cinelerra, you should set up the variable:
 
@@ -2570,7 +2576,7 @@ The Waveform scope helps correct image light levels for contrast range or for co
     \item Precise adjustments can be made by measuring the values on the waveform with the crosshair (by click with \texttt{LMB}, and reading numeric values on top left of the window) and reporting these numbers in the effects window (\textit{Histogram Bézier/Curves}, for example).
 \end{enumerate}
 
-For instance, if you are looking for maximum contrast range, adjust the \texttt{Brightness/Contrast} levels to align the darkest point on the scope with the $0\%$ level and the brightest portion with $100\%$. Anything above $100\%$ is over saturated. Limits which may be highlighted with checkbox controls.
+For instance, if you are looking for maximum contrast range, adjust the \texttt{Bright\-ness/Contrast} levels to align the darkest point on the scope with the $0\%$ level and the brightest portion with $100\%$. Anything above $100\%$ is over saturated. Limits which may be highlighted with checkbox controls.
 
 \subsubsection*{HDTV or sRGB (ITU-R BT.709)}%
 \label{ssub:hdtv_srgb_bt709}
@@ -2735,8 +2741,9 @@ cin/plugins/opencv/stylizeobj.plugin
     \item download the corresponding distro static tarball;
     for example for arch:
 \end{enumerate}    
+
     \url{https://cinelerra-gg.org/download/tars/cinelerra-5.1-arch-{date}-x86_64-static.txz}
-    %\todo{How make a new line into the link?}
+    
 \begin{enumerate}[resume]
     \item create a temporary directory on your computer;
     \item \texttt{cd} that-directory;
@@ -2837,7 +2844,7 @@ Once the replacement corners are calculated, the replacement object is overlayed
 The following steps were used to set up the example in figure~\ref{fig:findobj}.
 
 \begin{enumerate}
-    \item For best results, set \textit{Play every frame} in \texttt{Settings$\rightarrow$ Preferences$\rightarrow$ Playback A}.
+    \item For best results, set \textit{Play every frame} in \texttt{Settings$\rightarrow$ Preferences$\rightarrow$ Play\-back A}.
     \item Load 3 tracks of png/jpg files – this is one of the more useful working cases:
     \begin{itemize}
         \item $1^{st}$ track should be the \textit{scene}; that is the output

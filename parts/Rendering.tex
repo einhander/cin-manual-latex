@@ -33,7 +33,9 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 \begin{description}
     \item[Wrench:] select the \textit{wrench} next to each toggle to set compression parameters.  If the file format can not store audio or video the compression parameters will be blank.  If \textit{Render audio tracks} or \textit{Render video tracks} is selected and the file format does not support it, trying to render will result in an error message.
     \item[Create new file at each label] the option causes a new file to be created when every label in the timeline is encountered – a separate file for each.  This is useful for dividing long audio recordings into individual tracks.  When using the Render Farm (described later), \textit{Create new file at each label} causes one render farm job to be created at every label instead of using the internal load balancing algorithm to space jobs.   If the filename given in the render dialog has a 2 digit number in it, the 2 digit number is overwritten with a different incremental number for every output file. If no 2 digit number is given, Cinelerra automatically concatenates a number to the end of the given filename for every output file.
-    For example, in the filename \texttt{/movies/track01.wav} the $01$ would be overwritten for every output file. The filename \texttt{/movies/track.wav}; however, would become \texttt{/movies/track.wav001} and so on.  Filename regeneration is only used when either render farm mode is active or creating new files for every label is active.
+    For example, in the filename \texttt{/movies/track01.wav} the $01$ would be overwritten for every output file. 
+    The filename \texttt{/movies/track.wav}; however, eventually would become \texttt{/movies/track.wav001} and so on.  
+    Filename regeneration is only used when either render farm mode is active or creating new files for every label is active.
     \item[Render range:] choices are \textit{Project}, \textit{Selection}, \textit{In/Out points}, and \textit{One Frame} for single images like Tiff.  For these images, Render range will have \textit{One Frame} automatically checked and all of the others ghosted since nothing else makes sense (figure~\ref{fig:render02}).  This makes it easy to set the insertion point where you want the 1 frame to be rendered rather than having to precisely zoom in to set the in/out pointers.  Note that whichever Render range is checked, remains checked so that if \textit{One Frame} gets automatically checked, the next time you render it will still be checked and you will have to select a different one if desired.  That is why you should always check the settings.
 \end{description}
 
@@ -196,11 +198,12 @@ Cinelerra can distribute the rendering tasks over the network to the other compu
 The following steps are just a guideline to start your render farm.  It is assumed that you already have the master and client nodes communication, shared filesystem, permissions and usernames synched.
 
 \begin{enumerate}
-    \item On the master computer, use \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Performance tab} to set up a Render Farm:
+    \item On the master computer, use \texttt{Settings} $\rightarrow$ \texttt{Preferences} $\rightarrow$ \texttt{Performance} \texttt{tab} to set up a Render Farm:
     \begin{itemize}
         \item check the \texttt{Use render farm} box;
-        \item in the Hostname box, keyin your hostname or ip address such as $192.168.1.12$ or \texttt{localhost};
-        \item enter in a port number such as $401-405$ (only a root user can use privileged ports) or $1025$  and click on \texttt{Add Nodes};
+        \item in the \texttt{Hostname} box, keyin your hostname or ip address such as \\
+            192.168.1.12 or \texttt{localhost};
+        \item enter in a port number such as 401--405 (only a root user can use privileged ports) or $1025$  and click on \texttt{Add Nodes};
         \item you will see something like the following in the Nodes listbox to the right:
             \begin{tabular}{lllc}
                 On & Hostname     & Port & Framerate \\\midrule
@@ -267,7 +270,7 @@ Below we describe the Performance tab for configuring a render farm (figure~\ref
     \item[Reset rates] sets the framerate for all the nodes to $0$.  Frame rates are used to scale job sizes based on CPU speed of the node.  Frame rates are calculated only when render farm is enabled.
 \end{description}
 
-Framerates can really affect how the Render Farm works.  The first time you use the render farm all of the rates are displayed as $0$ in the \texttt{Settings $\rightarrow$ Preferences}, Performance tab in the Nodes box.  As rendering occurs, all of the nodes send back framerate values to the master node and the preferences page is updated with these values.  A rate accumulates based on speed.  Once all nodes have a rate of non-zero, the program gives out less work to lower rated nodes in an effort to make the total time for the render to be almost constant.
+Framerates can really affect how the Render Farm works.  The first time you use the render farm all of the rates are displayed as $0$ in the \texttt{Settings $\rightarrow$ Prefe\-rences}, Performance tab in the Nodes box.  As rendering occurs, all of the nodes send back framerate values to the master node and the preferences page is updated with these values.  A rate accumulates based on speed.  Once all nodes have a rate of non-zero, the program gives out less work to lower rated nodes in an effort to make the total time for the render to be almost constant.
 Initially, when the framerate scaling values are zero, the program just uses package length --- render size 
 divided by the number of packages to portion out the work (if not labels).  If something goes wrong or the rates become suspect, then all of the rest of the work will be dumped into the last job.  When this happens, you really should \texttt{reset rates} for the next render farm session to restart with a good balance.
 
@@ -421,15 +424,13 @@ These steps are for quickly setting up render farm with the least amount of addi
 
 Because index files speed up displaying the video you may want to share these files with the clients on a shared filesystem.  There is a configuration option available in \texttt{Settings $\rightarrow$ Preferences}, the Interface tab, that sets up in your preferences the location of the index files which you can put on a shared disk.
 Screencast below shows part of the Preferences menu where you can change the index files setup (figure~\ref{fig:index}).
-
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.8\linewidth]{images/index.png}
     \caption{Index file setup for your preferred configuration for Render Farm sharing or anything}
     \label{fig:index}
 \end{figure}
-
-\noindent Or, one of the convenient features of cin5 is the redirection of the path via \texttt{CIN\_CONFIG} as in:
+ Or, one of the convenient features of cin5 is the redirection of the path via \texttt{CIN\_CONFIG} as in:
 \begin{lstlisting}[language=bash]
 CIN_CONFIG=/<shared_file_pathname>/<filename_such_as_.bcast5> /<cinelerra_pathname>/cin
 \end{lstlisting}
@@ -603,18 +604,20 @@ flags +pass2
 
 If you need to re-render this, the Batch Render will still be set up but you have to click on the \texttt{Enabled} column in the listbox to re-enable the jobs to run which puts an X there.  Click Start again. You can reuse batch job using the \texttt{save jobs} and \texttt{load jobs} buttons in the batch render dialog.
 
-\paragraph{Render shortcuts for webm, h264, h265} are available by using the option files that are already set up for this purpose.  Use the render menu as usual, with ffmpeg/mp4, choose h264 or h265 \texttt{pass1of2\_h26x} for the video and \texttt{passes1and2\_h26x} for the audio; with ffmpeg/webm, choose \texttt{pass1of2\_vp9}.  When that is finished, you will have to use the render menu again and this time for video, choose \texttt{pass2of2\_h26x} or \texttt{pass2of2\_vp9}.  The logfile is hard coded in the options file so will write over any currently existing logfile if you do not change it before you start the render.
+\paragraph{Render shortcuts for webm, h264, h265} are available by using the option files that are already set up for this purpose.  Use the render menu as usual, with ffmpeg/mp4, choose h264 or h265 \texttt{pass1of2\_h26x} for the video and \texttt{passes1and\-2\_h26x} for the audio; 
+with ffmpeg/webm, choose \texttt{pass1of2\_vp9}.  When that is finished, you will have to use the render menu again and this time for video, choose \texttt{pass2of2\_h26x} or \texttt{pass2of2\_vp9}.  The logfile is hard coded in the options file so will write over any currently existing logfile if you do not change it before you start the render.
 
-\paragraph{Requirements for some other libraries} (used instead of \texttt{flags +pass1} \& \texttt{passlogfile}):
+\paragraph{Requirements for some other libraries} ~\\ (used instead of \texttt{flags +pass1} \& \texttt{passlogfile}):
 
 \begin{description}
     \item[x265:] add this line:
     \begin{lstlisting}[language=bash]
 x265-params=pass=1:stats=/tmp/{temporary log file name}.log
     \end{lstlisting}      
-    at the time this document was written, you should see in the output:  \texttt{stats-read=2}
+    at the time this document was written, you should see in the output: \\  \texttt{stats-read=2}
     
-    \item[libvpx-vp9, xvid, and huffyuv:]
+    \item[libvpx-vp9, xvid, and huffyuv:]~
+
     \begin{lstlisting}[language=bash]
     cin_stats_filename /tmp/{temporary log file name}.log
     flags +pass1 (or flags +pass2 for the second pass)

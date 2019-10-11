@@ -400,7 +400,7 @@ This section contains helpful hints, how to initially check the results, and som
 
 For blu-ray creation, \texttt{cd /workpath/bd\_date-time} directory and look for similar files:
 
-\texttt{bd.jobs	\qquad	bd.m2ts	\qquad   bd.sh	\qquad	bd.udfs	\qquad    bd.xml}
+\texttt{bd.jobs	\quad	bd.m2ts	\quad   bd.sh	\quad	bd.udfs	\quad    bd.xml}
 
 \texttt{udfs} directory which is used as a loopback mount point
 
@@ -408,7 +408,7 @@ Note that the size of \textit{bd.udfs} should be larger than \texttt{bd.m2ts} be
 
 For DVD creation, \texttt{cd /workpath/dvd\_date-time} directory and look for similar files:
 
-\texttt{dvd.ac3 \qquad	dvd.jobs \qquad	dvd.m2v	\qquad dvd.mpg \qquad	dvd.sh	\qquad	dvd.xml}
+\texttt{dvd.ac3 \quad	dvd.jobs \quad	dvd.m2v	\quad dvd.mpg \quad	dvd.sh	\quad	dvd.xml}
 \texttt{iso} directory with VIDEO\_TS and AUDIO\_TS subdirectories of non-zero size.
 
 Note that there will be no files in the actual AUDIO\_TS directory.
@@ -430,7 +430,7 @@ Note that there will be no files in the actual AUDIO\_TS directory.
 \label{ssub:checklist_troubleshooting}
 
 \begin{itemize}
-    \item Are you logged in as root?  This is required in order to loopback mount files for bluray and to write media on \texttt{/dev/hardware}.  See section 8.3.5 \todo{What are you referring to?} for a workaround for normal user mode.
+    \item Are you logged in as root?  This is required in order to loopback mount files for bluray and to write media on \texttt{/dev/hardware}.  See section 13.7 \todo{internal reference}for a workaround for normal user mode.
     \item Did you startup cinelerra from a terminal window so you can see informative messages?
     \item Is udftools installed for BD and dvdauthor installed for SD?
     \item Do you have loopback not enabled for bluray?  At least temporarily, disable automount via:
@@ -627,7 +627,7 @@ The basic idea is to use playlist-0 as a menu or directions to use the bluray pl
     Total size = File0 size in bytes / 2048 + 4094  “+”   File1 size in bytes / 2048 + 4094  “+” ...
     \end{lstlisting}
     Now create the image file via:   \texttt{mkudffs image <Total size>}  where image or udfs is the image name.
-    \item Loop mount the disk image (refer to Sections 8.3.4 and 8.3.5 \todo{idem as above}).
+    \item Loop mount the disk image (refer to Section 13.7\todo{idem as above}).
     \item Then actually write your multiple bd.m2ts type files onto the \textit{image} where \texttt{<cin\_path>} is the location of the cinelerra binary \textit{bdwrite} file and \texttt{<path>} is your directory path.  Below is a single line that wrapped around with 4 Titles.
     \begin{lstlisting}[language=bash]
     <cin_path>/bin/bdwrite image /<path>menu_titles.m2ts --- /<path>/bd1.m2ts -- /<path>/bd2.m2ts -- /<path>/bd3.m2ts -- /<path>bd4.m2ts

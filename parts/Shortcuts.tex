@@ -1,0 +1,653 @@
+\chapter{Shortcuts}%
+\label{cha:shortcuts}
+
+Almost every Cinellerra GG Infinity commands has its own keyboard and mouse shortcuts. Below we list them all organized by windows and type.
+
+\section{Main window }%
+\label{sec:main_window}
+
+The Main window (also called the program window) consists of pulldown menus, buttons and keys.
+
+\subsection{Main menu pulldowns}%
+\label{sub:main_menu_pulldowns}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}                     
+        \toprule
+        \multirow{2}*{\textcolor{red}{MAIN}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Pulldowns) & ITEMS & SHORTCUTS & DESCRIPTION\\        
+        \midrule
+        \endhead        
+        
+        \textcolor{blue}{File} & New & n & Create new project \\        
+             & Load files\dots & o & Load file(s)\\                          
+             & -- load tool & Ctrl-a & Selects all files \\             
+             & -- load tool & Ctrl-z & Deselects any highlighted files \\             
+             & Save & s & Save project \\             
+             & Save As\dots & Shift-S & Save a project for easy moving \\             
+             & Export Project & Alt-s & Save a project for easy moving \\             
+             & Record\dots & r & Open record window \\             
+             & Scan\dots & Ctrl-Alt-s & Open dvb scan window \\             
+             & SubTitle\dots & Alt-y & Open subtitle script window \\             
+             & Render\dots & Shift-R & Open render window \\             
+             & Export EDL\dots & Shift-E & Open export EDL window \\             
+             & Batch Render\dots & Shift-B & Open batch render window \\             
+             & BD Render\dots & Ctrl-d & Open create bluray disk window \\             
+             & DVD Render\dots & Shift-D & Open create dvd disk window \\             
+             & Quit & q & Quit the program \\             
+             & Dump EDL &  & Write current EDL to stdout \\             
+             & Dump Plugins &  & Write defined Plugins to stdout \\             
+             & Load Backup &  & Load auto-backup file “backup.xml" \\             
+             & Save Backup & b & Save auto-backup file “backup.xml" \\
+             \midrule             
+         \textcolor{blue}{Edit} & Undo clear & z & Undo from history previous operation \\             
+             & Redo & Shift-Z & Redo from history next opration \\             
+             & Cut & x & Copy selection to cut buffer and delete \\             
+             & Split & x & Split edit into 2 sections at hairline cursor \\             
+             & Paste & v & Insert selection from cut buffer \\             
+             & Clear & Del & Delete selection \\             
+             & Paste Silence & Shift-Space & Paste empty edit at selection or frame if none \\             
+             & Mute Selection & m & Replace selection with empty edit \\             
+             & Trim Selection &  & Replace track with selection \\             
+             & Select All & a & Toggle select all/none \\             
+             & Shuffle Edits &  & Randomly reorder track edits \\             
+             & Reverse Edits &  & Reverse track edits \\             
+             & Edit Length\dots &  & Change selected track given duration \\             
+             & Align Edits &  & Change selected corresp. track edits to start/end same \\             
+             & Trans. Length\dots &  & Change selected track transitions to given duration \\             
+             & Detach trans. &  & Remove selected track transitions \\             
+             & Clear labels &  & Delete selected timeline label markers \\             
+             & Cut ads &  & Remove selected region, add to commercial trking db \\             
+             & paste subttl & y & Replace selected subtitle edit text w/ subtitle script text \\
+             \midrule
+         \textcolor{blue}{Keyframes} & Cut Keyframes & Shift-X & Copy selected keyframes to cut buffer and delete \\             
+             & Copy Keyframes & Shift-C & Copy selected keyframes to cut buffer \\             
+             & Paste Keyframes & Shift-V & Paste keyframes in cut buffer \\             
+             & Clear Keyframes & Shift-Del & Delete selected keyframes \\             
+             & Change to linear &  & Change keyframe auto curves to piecewise linear \\             
+             & Change to smooth &  & Change selected keyframes auto curves to bezier \\             
+             & Create curve type &  & Set new keyframe type: smooth,linear,tangent,disjoint \\             
+             & Copy default key & Alt-c & Copy default keyframe to clipboard \\             
+             & Paste default key & Alt-v & Paste clipboard keyframe into default keyframe \\
+             \midrule
+         \textcolor{blue}{Audio} & Add track & t & Append new empty audio track \\             
+             & Default Trans. & u & Insert default audio transition at selected edit boundary \\             
+             & Map $1:1$ &  & Setup audio mixing output = input \\             
+             & Map $5.1:2$ &  & Setup audio mixing stereo = $5.1$ \\             
+             & Attach Trans. &  & Open audio transition select for insert at edit boundary \\             
+             & Attach Effect\dots &  & Open audio selection menu for insert at edit boundary \\             
+             & Render Effect\dots &  & Open audio render select to render from select as pcm \\
+             \midrule            
+          \textcolor{blue}{Video} & Add track & Shift-T & Append new empty video track \\             
+             & Default Trans. & Shift-U & Insert default video transition at selected edit boundary \\                         
+             & Attach Trans. &  & Open video transition select for insert at edit boundary \\             
+             & Attach Effect\dots &  & Open video effect selection for insert at edit boundary \\             
+             & Render Effect\dots &  & Open video render select to render from select as pcm \\
+             \midrule
+          \textcolor{blue}{Tracks} & Move tracks up & Shift-Up & Circulate tracks up \\             
+             & Move trks down & Shift-Down & Circulate tracks down \\             
+             & Delete tracks &  & Delete all tracks \\             
+             & Delete last track & d & Delete last track \\             
+             & Concatenate trks &  & Concatenate tracks together \\             
+             & Append to Proj.	 & Shift-N & Add set of tracks \\             
+             & add Subttl & Shift-Y & Add subtitle track \\             
+             \midrule
+          \textcolor{blue}{Settings} & Format\dots & Shift-F & Open render format setup menu \\             
+             & Preferences\dots & Shift-P & Open preferences setup menu \\             
+             & Proxy Settings & Alt-r & Bring up Proxy settings window \\             
+             & Align cursor\dots & Ctrl-a & Align cursor on frames \\             
+             & -- Edit labels &  & Toggle labels follow edits \\             
+             & -- Edit effects &  & Toggle plugins follow edits \\             
+             & -- Keyfrs fol. edits &  & Toggle keyframes follow edits \\             
+             & -- Typeless keyfrs &  & Toggle typeless keyframes mode \\             
+             & Save settings & Ctrl-s & Save Cinelerra\_rc \\             
+             & Loop Playback & Shift-L & Set loop playback region to selection/all \\             
+             & Set bkg render & Shift-G & Toggle background rendering \\
+             \midrule
+          \textcolor{blue}{View} & -- Show assets & 0 & Toggle show asset data \\             
+             & -- Show titles & 1 & Toggle show asset title \\             
+             & -- Show trans. & 2 & Toggle show transition effects \\             
+             & -- Fade & 3 & Toggle show fade auto curves \\             
+             & -- Mute & 4 & Toggle show mute auto curves \\             
+             & -- Overlay Mode & 5 & Toggle show mode auto curves \\             
+             & -- Pan & 6 & Toggle show pan auto curves \\             
+             & -- Plugin Autos & 7 & Toggle show plugin keyframes \\             
+             & -- Mask & 8 & Toggle show mask auto keyframes \\             
+             & -- Speed & 9 & Toggle show speed auto curves \\             
+             & -- Camera X & Ctrl-Shift-X & Toggle show camera X auto curves \\             
+             & -- Camera Y & Ctrl-Shift-Y & Toggle show camera Y auto curves \\             
+             & -- Camera Z & Ctrl-Shift-Z & Toggle show camera Z auto curves \\             
+             & -- Projector X & Alt-Shift-X & Toggle show projector X auto curves \\             
+             & -- Projector Y & Alt-Shift-Y & Toggle show projector Y auto curves \\             
+             & -- Projector Z & Alt-Shift-Z & Toggle show projector Z auto curves \\
+             \midrule
+          \textcolor{blue}{Window} & -- Show Viewer &  & Toggle show view window \\             
+             & -- Show Resrs. &  & Toggle show resources window \\             
+             & -- Show Compos. &  & Toggle show compositor window \\             
+             & -- Show Overlays &  & Toggle show auto overlay window \\             
+             & -- Show Levels &  & Toggle show audio levels window \\             
+             & -- Split X pane & Ctrl-1 & Toggle $\frac{1}{2}$ horiz track timeline window panes \\             
+             & -- Split Y pane & Ctrl-2 & Toggle $\frac{1}{2}$ vert track timeline window panes \\             
+             & Mixer Viewer & Shift-M & Bring up a Mixer Viewer window \\             
+             & Tile mixers & Alt-t & Tile mixer windows to original position/size \\             
+             & Default Positions & Ctrl-p & Reset window positions/size to defaults \\             
+             & Tile Left &  & Set window positions/sizes to tile left screen \\             
+             & Tile Right &  & Set window positions/size to tile right screen \\
+             \midrule
+           \textcolor{blue}{\_.\_} & shell cmds & Top rt. Corner & Run scripts (setup in interface preferences) \\
+                     
+             \bottomrule  
+    \end{longtable}
+\end{center}
+
+\subsection{Main menu buttons}%
+\label{sub:main_menu_buttons}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}p{2cm} l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{MAIN}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Buttons) & ITEMS & SHORTCUTS & DESCRIPTION\\        
+        \midrule
+        \endhead        
+        
+        \textcolor{blue}{Transport} & Rewind & home & Jump to beginning \\        
+        & Fast reverse & KP + / Alt-p & Double speed reverse play \\        
+        & Normal reverse & KP 6 / Alt-o & Normal speed reverse play \\        
+        & Frame reverse & KP 4 / Alt-u & Render previous frame \\        
+        & Stop & KP 0 / Alt-m & Stop playback \\        
+        & Frame forward & KP 1 / Alt-j & Render next frame \\        
+        & Normal forward & KP 3 / Alt-l & Normal speed forward play \\        
+        & Fast forward & KP Enter/A-; & Double speed forward play \\        
+        & Jump to end & end & Jump to end \\        
+        & (No button) & KP 5 / Alt-i & Slow speed reverse play \\        
+        & (No button) & KP 2 / Alt-k & Slow speed forward play \\        
+        & (No button) & Shift-KP 1 & Render next frame and audio \\        
+        & (No button) & Shift-KP 2 & Slow speed forward play without audio \\        
+        & (No button) & Shift-KP 3 & Normal speed forward play without audio \\        
+        & (No button) & Shift-KP 4 & Render previous frame and audio \\        
+        & (No button) & Shift-KP 5 & Slow speed reverse play without audio \\        
+        & (No button) & Shift-KP 6 & Normal speed reverse play without audio \\        
+        &  & Ctrl-KP\# & If [ ] set, “KP 2,3,5,6,+,enter” between in/out \\        
+        &  & +Shift w/Alt & Shift with Alt+x above, adds/removes audio \\        
+        &  & +Shift w/Ctrl & Loops play, all or between In/Out \\
+        \midrule
+        \textcolor{blue}{Edit Modes} & Auto Gen. Keys & j & Generate keyframes while tweeking \\        
+        & Lock Labels &  & Lock labels from moving \\
+        \midrule
+        \textcolor{blue}{Edit Operations} & In point & '[' or ‘<’ & Toggle In point timeline marker \\        
+        & Out point & ']' or ‘>’ & Toggle Out point timeline marker \\        
+        &  & Ctrl-t & Clear both In and Out pointers \\        
+        & To clip & i & Copy selection and create clip \\        
+        & Split & x & Split edit into 2 sections at hairline cursor \\        
+        & Cut & x & Copy selection to cut buffer and delete \\        
+        & Copy & c & Copy selection to cut buffer \\        
+        & Paste & v & Insert selection from cut buffer \\        
+        & Toggle label & l & Toggle label at current position \\        
+        & Previous label & Ctrl $\leftarrow$ & Move to label before cursor \\        
+        & Next label & Ctrl $\rightarrow$ & Move to label after cursor \\        
+        & Next label select & Ctrl-Shift $\rightarrow$ & Select from cursor to next label \\        
+        & Prev label select & Ctrl-Shift $\leftarrow$ & Select from cursor to previous label \\        
+        & Next keyframe & k & Move to next keyframe \\        
+        & Previous keyframe & Ctrl-k & Move to previous keyframe \\        
+        & Next keyframe select & Shift-K & Select from cursor to next keyframe \\        
+        & Previous keyfr select & Ctrl-Shift-K & Select from cursor to previous keyframe \\        
+        & Previous edit & Alt $\leftarrow$ & Move to previous edit \\        
+        & Next edit & Alt $\rightarrow$ & Move to next edit \\        
+        & Cut left label & Ctl-alt-shift-'<' & Cut from insert pointer to previous label \\        
+        & Cut right label & Ctl-alt-shift -'>' & Cut from insert pointer to next label \\        
+        & Cut previous edit & Ctrl-alt- ',' & Cut from insert pointer to previous edit \\        
+        & Cut next edit & Ctrl-alt- '.' & Cut from insert pointer to next edit \\        
+        & Fit & f & Fit time displayed to selection \\        
+        & Auto Fit & Alt-f' & Fit the max/min range of all automation types \\        
+        & Auto Fit & Ctrl-alt-f & Fit the max/min range of current automation types \\        
+        & Undo & z & Undo from history previous operation \\        
+        & Redo & Shift-Z & Redo from history next operation \\        
+        & Manual Goto & g & Jump to time selected by popup \\
+        \midrule
+        \textcolor{blue}{Drag/Drop Edits} & Clear Selec & Ctrl-Shift-A & Delselect all selected edits \\        
+        & Copy & Ctrl-c & Copy selected edits into copy buffer \\        
+        & Cut & Ctrl-x & Delete selected edits/put in buffer/collapse \\        
+        & Mute & Ctrl-m & Delete selected edits/put in buffer/insert space \\        
+        & Copy Pack & Ctrl-Shift-C & Copy selected edits and pack together \\        
+        & Cut Pack & Ctrl-z & Delete selected edits/put in buffer/collapse \\        
+        & Mute Pack & Ctrl-Shift-M & Delete selected edits/put in buffer/insert space \\        
+        & Paste & Ctrl-v & Paste (splice) buffer at insertion point or reticle \\        
+        & Overwrite & Ctrl-b & Paste (overwrite) buffer at insertion pt/reticle \\        
+        &  & Ctrl / LMB & Toggles selected of group/edit \\        
+        &  & LMB & If “Clear before toggle”, only select this edit/group \\        
+        &  & LMB & If not “Clear before toggle”, toggle edit/group \\        
+        &  & Double click & Only select this edit/group \\        
+        &  & Double click-Ctrl & Selects column and highlights \\        
+        & LMB & Shift & Group/ungroup selected edits/group \\        
+        & LMB & Ctrl + Drag & Column drag \\        
+        & LMB & Drag & Clip drag \\        
+        & LMB & Drag & Drag unselected edit under cursor \\
+        \midrule
+        \textcolor{blue}{FFMpeg probes early/late} & FFMPEG early & Top rt. Corner & Run ffmpeg open probes first / last \\
+        
+        
+        \bottomrule  
+    \end{longtable}
+\end{center}
+
+\subsection{Main menu Keys}%
+\label{sub:main_menu_keys}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{MAIN}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Key) & KEY & QUALIFIER & DESCRIPTION\\        
+        \midrule
+        \endhead        
+        
+        \textcolor{blue}{Key} & e & & Toggle editing mode: from cut\&paste or drag\&drop \\        
+        & 1 through 9 &  & Toggle auto mode settings as in main menu shortcuts \\        
+        & 1 through 8 & Alt & Select asset pgm $1-8$; reset format (remove other trks) \\        
+        & $\leftarrow$ (left arrow) &  & Scroll window timeline display left (not insertion pt) \\        
+        & $\leftarrow$ (left arrow) & Ctrl & Move cursor to label left of cursor (main shortcuts) \\        
+        & $\leftarrow$ (left arrow) & Alt & Move cursor to edit boundary left of cursor position \\        
+        & $\leftarrow$ (left arrow) & Shift-ctrl & Move cursor to label left of cursor, expand selection \\        
+        & $\leftarrow$ (left arrow) & Shift-alt & Move cursor to edit boundary left of cursor\&expand \\        
+        & $\rightarrow$ (right arrow) &  & Scroll window timeline display right (not insertion pt) \\        
+        & $\rightarrow$ (right arrow) & Ctrl & Move cursor to label right of cursor (main shortcuts) \\        
+        & $\rightarrow$ (right arrow) & Alt & Move cursor to edit boundary right of cursor position \\        
+        & $\rightarrow$ (right arrow) & Shift-ctrl & Move cursor to label right of cursor, expand selection \\        
+        & $\rightarrow$ (right arrow) & Shift-alt & Move cursor to edit boundary right of cursor\&expand \\        
+        & , (comma) &  & Scroll window timeline display left (not insertion pt) \\        
+        & , (comma) & Ctrl & Move cursor to label left of cursor (main shortcuts) \\        
+        & , (comma) & Alt & Decrease auto curve limits (zoombar selected curve) \\        
+        & . (period) &  & Scroll window timeline display right (not insertion pt) \\        
+        & . (period) & Ctrl & Move cursor to label right of cursor (main shortcuts) \\        
+        & . (period) & Alt & Move cursor to edit boundary right of cursor position \\        
+        & $\uparrow$ (up arrow) &  & Increase timeline duration (zoom out timeline) \\        
+        & $\uparrow$ (up arrow) & Ctrl & Increase audio sample waveform scale \\        
+        & $\uparrow$ (up arrow) & Alt & Increase auto curve limits (zoombar selected curve) \\        
+        & $\uparrow$ (up arrow) & Ctrl-alt & Increase all auto curve limits \\        
+        & $\downarrow$ (down arrow) &  & Decrease timeline duration (zoom in timeline) \\        
+        & $\downarrow$ (down arrow) & Ctrl & Decrease audio sample waveform scale \\        
+        & $\downarrow$ (down arrow) & Alt & Decrease auto curve limits (zoombar selected curve) \\        
+        & $\downarrow$ (down arrow) & Ctrl-alt & Decrease all auto curve limits \\        
+        & PGUP (page up) &  & Scroll current track vertical window pane up \\        
+        & Mouse wheel & UP & Scroll current track vertical window pane up \\        
+        & PGUP (page up) & Ctrl & Increase track scale geometry (zoom in track data) \\        
+        & PGDN (page down) &  & Scroll current track vertical window pane down \\        
+        & Mouse wheel & Down & Scroll current track vertical window pane down \\        
+        & PGDN (page down) & Ctrl & Decrease track scale geometry (zoom out track data) \\        
+        & Home &  & Move insertion point to beginning of timeline \\        
+        & End &  & Move insertion point to end of timeline \\        
+        & Mouse wheel & Shift + up & Zoom out view without resizing the window \\        
+        & Mouse wheel & Shift + down & Zoom in view without resizing the window \\        
+        & Mouse wheel & Ctrl + up & Move left on the timeline without resize \\        
+        & Mouse wheel & Ctrl + down & Move right on the timeline without resize \\        
+        &  & Ctrl + down & Move right on the timeline without resize \\        
+        &  & Shift+click & Over edit causes highlight section to extend to cursor \\        
+        &  & Shift+click & Over boundary of effect, trims only that effect \\        
+        &  & Shift+click & Over Hard Edge of Blade Cut, toggles marker \\        
+        & Toggle single trk & Tab & Toggle single track arming status \\        
+        & Toggle other trks & Shift-tab & Toggle all of the other tracks arming status \\        
+        &  & Double click & On plugin title bar, selects that area \\        
+        &  & Double click & On an edit, selects that area \\        
+        &  & Double click & On subtitle track, displays text in Line text \\        
+        &  & Double click & On fade/speed, synch video/audio ganged \\        
+        &  & Shift & While dragging auto, turns of gang \\        
+        &  & Double MMB & On fade/speed, select keyframe position \\        
+        & U &  & Paste the last Video transition \\        
+        & u &  & Paste the last Audio transition \\        
+        & r & Ctrl & Proxy quick switch \\        
+        & F1 & Shift & Toggle on/off all XYZ of camera \\        
+        & F2 & Shift & Toggle on/off all XYZ of projector \\        
+        & F1 & Ctrl+Shift & Use window layout \#1 \\        
+        & F2 & Ctrl+Shift & Use window layout \#2 \\        
+        & F3 & Ctrl+Shift & Use window layout \#3 \\        
+        & F4 & Ctrl+Shift & Use window layout \#4 \\
+        \midrule
+        \textcolor{blue}{Timebar} & LMB & Ctrl & Changes to the next time format \\        
+        & MMB & Ctrl & Change to the previous time format \\        
+        & LMB &  & Moves cursor position on the timeline \\        
+        & Click label & Hold LMB & Drag label to elsewhere \\        
+        & Click In/Out & Hold LMB & Drag In/Out pointer elsewhere \\
+        \midrule
+        \textcolor{blue}{Patchbay} & Shift/Move & Hold LMB & On Fade slider bar, sets gain to $100\%$ or $0db$ \\
+        
+        \bottomrule  
+    \end{longtable}
+\end{center}
+
+\section{Compositor window }%
+\label{sec:compositor_window}
+
+\subsection{Compositor buttons }%
+\label{ssec:compositor_buttons}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{COMPOSITOR}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Buttons) & ITEMS & SHORTCUTS & DESCRIPTION\\        
+        \midrule
+        \endhead   
+                      
+        \textcolor{blue}{Tools} & Protect video & F1 & Disable changes to the compositor output \\        
+        & Zoom view & F2 & Zoom in view without resizing the window \\        
+        & Edit mask & F3 & Brings up the mask editing tool \\        
+        & + Edit mask & Shift-drag pt. & Hold down shift+left mouse to drag a point \\        
+        & + Edit mask & Ctrl-drag pt. & Hold down Ctrl+left mouse to move control pointers \\        
+        & + Edit mask & Alt-drag mask & Hold down Alt+left mouse to translate mask \\                
+        & + Delete mask & Shift + Del & Hold down Shift + click Delete button to delete mask \\        
+        & Ruler & F4 & Brings up the ruler for usage \\        
+        & + ruler hotkey & Ctrl & Lock ruler to nearest 45 degree angle \\        
+        & + ruler hotkey & Alt & Translate the ruler \\        
+        & Adjust camera & F5 & Brings up the camera editing tool \\        
+        & Adjust projector & F6 & Brings up the projector editing tool \\        
+        & Crop layer/outpt & F7 & Crop a layer or output \\        
+        & + crop tool & Click-drag & In video, starts a new rectangle \\        
+        &  + crop tool & Click-drag & Over rectangle to reposition \\        
+        &  + crop tool & Alt-click & In cropping rectangle to translate \\         
+        & Get color & F8 & Detects color at current spot \& stores temporary \\        
+        & Show tool info & F9 & Works with editing/cropping buttons \\        
+        & Show safe regs. & F10 & Draws safe regions in the video output \\        
+        &  & p & Turn on/off Click to Play \\         
+        &  & Shift+w/Ctrl & With transport btn. loops play; all or with [] \\
+        \midrule
+        \textcolor{blue}{Transport} & (plus 3 below) &  & Same as in Main window \\
+        \midrule
+        \textcolor{blue}{Edit} & (plus 3 below) &  & Same as in Main window \\        
+        
+        \bottomrule  
+    \end{longtable}
+\end{center}
+
+\subsection{Compositor keys }%
+\label{ssec:compositor_keys}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{COMPOSITOR}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (keys) & KEY & QUALIFIER & DESCRIPTION\\
+        \midrule        
+        \endhead   
+        
+        \textcolor{blue}{Keypresses} & Mid. click+drag &  & If zoom in, pans the view \\        
+        & RMB &  & Brings up zoom\%/auto;reset cam/proj;hide ctrls \\        
+        & LMB Zoom &  & Zooms in \\        
+        & LMB Zoom & Ctrl & Zooms out \\        
+        & LMB Zoom & Shift-alt & Zooms out  \\        
+        & '+' or ‘=’ &  & Zooms in video output \\        
+        & '-' &  & Zooms out video output \\        
+        & f &  & Toggle on/off fullscreen \\        
+        & F11 &  & Reset camera \\        
+        & F10 &  & Reset projector \\        
+        & Click label & Hold LMB & Drag label to elsewhere \\        
+        & Click In/Out & Hold LMB & Drag In/Out elsewhere \\
+        \midrule
+        \textcolor{blue}{Timebar} & LMB & Ctrl & Changes to the next time format \\        
+        & MMB & Ctrl & Change to the previous time format \\        
+        & LMB &  & Moves cursor position on the timeline \\        
+        & Click label & Hold LMB & Drag label to elsewhere \\        
+        &  & Hold LMB & Drag In/Out pointer elsewhere \\        
+        &  & Hold LMB & Preview region drag on blue-colored bar \\        
+        \midrule        
+        \textcolor{blue}{Transport} &  & LMB & Only Protect enabled, start/stop forward play \\
+        \midrule
+        \textcolor{blue}{Edit} &  & MMB & Only Protect enabled, start/stop play reverse \\        
+        &  & Middlewheel & Only Protect enabled, plays forw/rev 1 frame \\        
+        &  & p & Turns on/off Click to Play button \\
+        
+        \bottomrule  
+    \end{longtable}
+\end{center}
+
+\section{Viewer window }%
+\label{sec:viewer_window}
+
+\subsection{Viewer buttons }%
+\label{ssec:viewer_buttons}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{VIEWER}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Buttons) & ITEMS & SHORTCUTS & DESCRIPTION\\
+        \midrule        
+        \endhead   
+        
+        \textcolor{blue}{Transport} & Rewind & home & Jump to beginning \\        
+        & Fast reverse & 'KP +' /Alt-p & Toggle double speed reverse play \\        
+        & Normal reverse & 'KP 6' / Alt-o & Toggle normal speed reverse play \\        
+        & Frame reverse & 'KP 4' / Alt-u & Render previous frame \\        
+        & Stop & 'KP 0' / Alt-m & Stop playback \\        
+        & Frame forward & 'KP 1' / Alt-j & Render next frame \\        
+        & Normal forward & 'KP 3' / Alt-l & Toggle normal speed forward play \\        
+        & Fast forward & 'KP Enter'/A-; & Toggle double speed forward play \\        
+        & Jump to end & end & Jump to end \\        
+        & (No button) & 'KP 5' / Alt-i & Toggle slow speed reverse play \\        
+        & (No button) & 'KP 2' / Alt-k & Toggle slow speed forward play \\        
+        &  & 'KP\#-Shift’ & Shift added to KP \#, adds or subtracts audio \\        
+        &  & 'Ctrl-KP\#’ & If [ ] set, “KP2,3,5,6,+,enter” play between ptrs. \\        
+        &  & + Shift w/Alt & Shift with Alt+x above, adds/remove audio \\        
+        &  & + Shift w/Ctrl & Loops play; all or between In/Out \\        
+        &  & Left click & Start or stop play forward \\        
+        &  & Middle click & Start or stop play reverse \\        
+        &  & Middle wheel & Play forward or reverse 1 frame \\        
+        &  & p & Turns on/off Click to Play button \\
+        \midrule
+        \textcolor{blue}{Edit} & In point & '[' or ‘<’ & Toggle In point timeline marker\\        
+        & Out point & ']' or ‘>’ & Toggle Out point timeline marker \\        
+        &  & Ctrl-t & Clear both In and Out pointers \\        
+        & Splice & v & Create splice \\        
+        & Overwrite & b & Overwrite \\        
+        & To clip & i & Copy selection and create clip \\        
+        & Copy & c & Copy selection to cut buffer \\        
+        & Splice & 'v' + Shift & Create splice of the entire clip \\        
+        & Overwrite & 'b' + Shift & Overwrite using the entire clip \\        
+        & To clip & 'i' + Shift & Copy all and create clip \\        
+        & Copy & 'c' + Shift & Copy entire clip to cut buffer \\        
+        & Show meters &  & Toggle show meters \\        
+        & Toggle label & l & Toggle label at current position \\        
+        & Previous label & 'Ctrl $\leftarrow$' & Move to label before cursor \\        
+        & Next label & 'Ctrl $\rightarrow$' & Move to label after cursor \\        
+        & Manual Goto & g & Jump to time selected by popup \\
+        \midrule
+        \textcolor{blue}{Mixer} &  & Double click & On mixer window, pastes into timeline\\        
+        
+        \bottomrule  
+    \end{longtable}
+\end{center}      
+
+\subsection{Viewer Keys }%
+\label{ssec:viewer_keys}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{VIEWER}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Key) & KEY & QUALIFIER & DESCRIPTION\\
+        \midrule        
+        \endhead   
+        
+        \textcolor{blue}{Keypresses} & Right click &  & Brings up fullscreen/zoom/close menu \\
+        \midrule        
+        \textcolor{blue}{Timebar} & LMB &  & Moves cursor position on the timeline \\        
+        & Double click &  & If between labels, selects that section \\        
+        & Click label & Hold LMB & Drag label to elsewhere \\        
+        & Click In/Out & Hold LMB & Drag In/Out pointer elsewhere \\        
+        & Fat arrow end & Hold LMB & Preview region drag on blue-colored bar \\        
+        
+        \bottomrule  
+    \end{longtable}
+\end{center} 
+
+\section{Resources window Keys }%
+\label{sec:resources_window_keys}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{RESOURCES}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Key) & KEY & QUALIFIER & DESCRIPTION\\
+        \midrule        
+        \endhead   
+        
+        \textcolor{blue}{Keypresses} & Drag Mouse & Shift & Hold down Shift and drag to move text icon \\                
+        &  & Double click & Draw vicons off- loads media in Viewer \\        
+        &  & Single click & Draw vicons on- bigger thumbnail plays or stops \\        
+        &  & Middle click & Draw on -- brings up Inter-View modeling \\        
+        &  & Wheel move & Draw on – increase/decrease preview size \\        
+        &  & Mouse over & Draw on – instantly brings up thumbnail \\        
+        & v &  & Switch to next Display option \\        
+        & o &  & Opens Load files\dots menu \\        
+        & - load tool & Ctrl-a & Selects all files \\        
+        & - load tool & Ctrl-z & Deselects any highlighted files \\        
+        & DEL key &  & Resources/Media, deletes highlighted from project \\        
+        & DEL key & Shift & Resources/Media, deletes highlighted from disk + OK \\        
+        & DEL key & Ctrl+Shift & Resources/plugin, deletes highlighted from disk + OK \\
+        
+        
+        \bottomrule  
+    \end{longtable}
+\end{center} 
+
+\section{Other windows }%
+\label{sec:other_windows}
+
+\subsection{Other Buttons }%
+\label{ssec:other_buttons}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{OTHER}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Buttons) & ITEMS & SHORTCUTS & DESCRIPTION\\
+        \midrule        
+        \endhead   
+        
+        \textcolor{blue}{An Event} &  & Double click & On mixer window, pastes into timeline \\
+        \midrule
+        \textcolor{blue}{Record} & Start/pause & space bar & Start and pause recording of current batch \\        
+        & Label & l & Toggle label at current position \\        
+        &  & Double click & On channel in window, pops edit ch window \\
+        \midrule
+        \textcolor{blue}{Channels} & Select &  & Select a channel \\        
+        & Add\dots &  & Add another channel \\        
+        & Edit\dots &  & Edit the wording associated with the channel \\        
+        & Move up &  & Move the channel up in the selection \\        
+        & Move down &  & Move the channel down in the selection \\        
+        & Sort &  & Sort all of the channels numerically \\        
+        & Scan &  & Scan the available channels \\        
+        & Delete &  & Delete the selected channel \\        
+        & Picture\dots &  & Select the device picture \\        
+        &  & Double click & In Find window, cursor moves to hilite program \\        
+        &  & Double click & On batchbay line, selects and loads ch info \\
+        \midrule
+        \textcolor{blue}{Remote} & MENU &  & Toggle remote control state (grabs/ungrabs keys) \\        
+        & KPTV &  & Open or close the record window \\        
+        & KPBOOK &  & Start/stop dvb channel scan \\        
+        & KPHAND &  & Quit cinelerra program \\
+        \midrule
+        \textcolor{blue}{Commercial} &  & Shift-A & Edit commercial\\        
+                
+        \bottomrule  
+    \end{longtable}
+\end{center}
+
+\subsection{Other Keys }%
+\label{ssec:other_keys}
+
+\begin{center}
+    \small 
+    \begin{longtable}{ >{\bfseries}c l c p{6cm}}             
+        \toprule
+        \multirow{2}*{\textcolor{red}{OTHER}} & 01/19/2019 & update & \\
+        \noalign{\smallskip}
+        \cline{2-4}
+        \noalign{\smallskip}
+        (Key) & KEY & QUALIFIER & DESCRIPTION\\
+        \midrule        
+        \endhead   
+        
+        \textcolor{blue}{Most windows} & ESC &  & Cancels operation if no one grabs first \\                
+        & ENTER &  & Cancels operation if no one grabs first \\
+        \midrule
+        \textcolor{blue}{Overlays} & LMB & Shift & Turns off all else, or reverts to previous state \\
+        \midrule
+        \textcolor{blue}{Textboxes} & Tab &  & Move cursor to the next textbox \\
+        & Tab & Shift & Move cursor to the previous textbox \\        
+        & Esc &  & Cancels any active suggestions \\        
+        & Left arrow & with ibeam & Backs up 1 character \\        
+        & Left arrow & Ctrl & Backs up to beginning of word/next word \\        
+        & Left arrow & Shift & Selects/Deselects previous character highlight \\        
+        & Left arrow & Ctrl-Shift & Selects/Deselects previous word highlight \\        
+        & Right arrow & with ibeam & Moves forward 1 character \\        
+        & Right arrow & Ctrl & Moves to beginning of next word \\        
+        & Right arrow & Shift & Adds selection highlight to the next character \\        
+        & Right arrow & Ctrl-Shift & Expands highlight to the next word \\        
+        & Up arrow &  & Move up to next line, same position \\        
+        & Down arrow &  & Move down to next line, same position \\        
+        & Up arrow & Shift & Selects/Deselects up to the previous line X-coord \\        
+        & Down arrow & Shift & Select/Deselect down 1 line from the X-coord \\        
+        & PGUP (page up) &  & Goes to the beginning of the page \\        
+        & Pgdn (page down) &  & Goes to the end of the page \\        
+        & PGUP (page up) & Shift & Highlights selection above Ibeam to page start \\        
+        & Pgdn (page down) & Shift & Highlights selection below Ibeam to page end \\        
+        & End &  & Cancels selection and goes to end of line \\        
+        & End & Shift & Selects to end of line \\        
+        & Home &  & Goes to the beginning of the line \\        
+        & Home & Shift & Highlights from ibeam to beginning of line \\        
+        & Backspace &  & Deletes the character in back of the ibeam \\        
+        & Delete &  & Deletes the next character \\        
+        & Ctrl-c & (also+’Shift’) & Copies selection to the 2nd cut buffer \\        
+        & Ctrl-v & (also+’Shift’) & Pastes selection from the 2nd cut buffer \\        
+        & Ctrl-x & (also+’Shift’) & Copies selection to 2nd cut buffer and delete \\        
+        &  & Double click & On word in textbox, highlites that word \\        
+        &  & Double click & On highlighted Probe order, enables/disables \\        
+        &  & Triple click & In subtitle script text, loads line into line text \\
+        \midrule
+        \textcolor{blue}{Unicode} & Ctrl-U & Shift & Go into Unicode enter mode \\        
+        & Enter &  & Fires the Unicode \\        
+        & Esc &  & Cancels Unicode state \\        
+        & Backspace &  & Deletes previous character \\        
+        & A-F, 0-9 &  & Enters the hex code \\        
+        
+        \bottomrule  
+    \end{longtable}
+\end{center}
+

@@ -624,7 +624,7 @@ The basic idea is to use playlist-0 as a menu or directions to use the bluray pl
     \item Use BD Create to render your short Title video.
     \item Next is the most complicated part which is to run \texttt{mkudffs} with a sufficient amount of disk space to hold all of the \texttt{bd.m2ts} files \textit{plus a little more!}  To calculate this, you can record the sizes from having run BD Create mkudffs.  This number is displayed on the terminal screen when using the command line interface each time and add them together.  Or recalculate the size of each bd.m2ts using the formula below and adding them all together.  This is the number of blocks used to make a bluray image space for bdwrite to use.  For many files, this could require a huge amount of space, so check first.
     \begin{lstlisting}[language=bash]
-    Total size = File0 size in bytes / 2048 + 4094  “+”   File1 size in bytes / 2048 + 4094  “+” ...
+    Total size = File0 size in bytes / 2048 + 4094  "+"   File1 size in bytes / 2048 + 4094  "+" ...
     \end{lstlisting}
     Now create the image file via:   \texttt{mkudffs image <Total size>}  where image or udfs is the image name.
     \item Loop mount the disk image (refer to Section 13.7\todo{idem as above}).

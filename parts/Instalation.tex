@@ -21,7 +21,7 @@ The majority of the files are installed in the standard system paths, but some c
 The single user build allows for running completely out of a local user directory so it doesn't affect the system.
 
 We recommend the single-user version when possible.  
-It makes it very easy to install a new version without having to delete the older version in case you want it for backup – once you are happy with the new version, all you have to do is delete the entire old directory path.  
+It makes it very easy to install a new version without having to delete the older version in case you want it for backup - once you are happy with the new version, all you have to do is delete the entire old directory path.  
 Also, if you install a new Operating System version and if you have Cinelerra on separate disk space that is preserved, you won't have to reinstall Cinelerra.  
 In addition for purposes of having the ability to interrupt or to see any possible error messages, if you start the application from a terminal window command line you will have more control to catch problems.  
 However, the system builds can be useful in a university lab setting where there are possibly multiple users, or multiple versions.
@@ -132,12 +132,12 @@ These procedures and the Cinelerra-GG Infinity software have all been run as “
 To see the full list of features use:	 
 
 \begin{lstlisting}[language=bash]
-$ ./configure –help
+$ ./configure -help
 \end{lstlisting}
 The default build is a system build which uses:    
 
 \begin{lstlisting}[language=bash]
-$ ./configure –without-single-user
+$ ./configure -without-single-user
 \end{lstlisting}
 
 In the single-user build, the target directory is always “cin”.  
@@ -163,7 +163,7 @@ The home configuration directory can also be set, but default location is \textt
 For example:
 
 \begin{lstlisting}[language=bash]
-$ ./configure –with-config-dir=/myusername/.bcast5
+$ ./configure -with-config-dir=/myusername/.bcast5
 \end{lstlisting}
 
 NOTE:  when you specify parameters to the configure program, it will create a make file as a consequence.  
@@ -240,7 +240,7 @@ There may be several libraries which need special treatment.
 An example of a problem you might encounter with your customized installation is with “\texttt{a52dec}” which has probes line \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
 In this case, \texttt{djbfft} is only built because \texttt{a52dec} is built, so if your system has \texttt{a52dec}, set \texttt{a52dec} to auto and see if that problem is solved by retrying the build with:  
 \begin{lstlisting}[language=bash]
-$ ./confgure --with-single-user –enable-a52dec=auto .
+$ ./confgure --with-single-user -enable-a52dec=auto .
 \end{lstlisting}
 
 With persistence, you can get results, but it may take several tries to stabilize the build.  
@@ -376,7 +376,7 @@ $ ./bld.sh
 Then, to run as a developer in the debugger:
 
 \begin{lstlisting}[language=bash]
-$ CFLAGS=”-O2 -ggdb” make -j8 rebuild_all
+$ CFLAGS="-O2 -ggdb" make -j8 rebuild_all
 $ cd cinelerra
 $ gdb ./ci
 \end{lstlisting}
@@ -447,12 +447,12 @@ If repository problems, usually you can manually do an install by using:
   wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.deb
   and install it manually, for example: dpkg -i cin_5.1.{substitute_filename}.deb
 
-# GENTOO – courtesy Dominque Michel
+# GENTOO - courtesy Dominque Michel
 # There is an ebuild package at this time as of 01/03/2019 at:
 #    https://svnweb.tuxfamily.org/listing.php?repname=proaudio%2Fproaudio&path=
 #    %2Ftrunk%2Foverlays%2Fproaudio%2Fmedia-video%2Fcinelerra%2F&#ab000caf7024d83112f42a7e8285f2f29
 
-# FREEBSD – courtesy Yuri
+# FREEBSD - courtesy Yuri
 # There is a port available at: https://www.freshports.org/multimedia/cinelerra-gg/
 # To use this port: cd /usr/ports/multimedia/cinelerra-gg && make install clean
 #   and then install this precompiled package via: pkg install cinelerra-gg

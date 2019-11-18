@@ -2484,8 +2484,8 @@ Then start cinelerra from a terminal window to see the fonts being loaded and pr
 
 \vspace{1ex}
 \begin{lstlisting}[language=bash]
-export BC_FONT_PATH=:	 (the : “colon” removes all automatic system and cinelerra fonts)
-export BC_FONT_PATH=:/usr/share/fonts (remove all fonts and then add /usr/shar/fonts)
+export BC_FONT_PATH=:   #(the : "colon" removes all automatic system and cinelerra fonts)
+export BC_FONT_PATH=:/usr/share/fonts #(remove all fonts and then add /usr/shar/fonts)
 \end{lstlisting}
 
 One last item of information about fonts that may lead to some confusion. The checkbox for Bold and Italic will occasionally be ghosted out if no bold or italic version of the selected font is available. This is no guarantee, but currently as good as it can get due to inconsistency in the creation of fonts. It is mostly just a hint. If boxes are checkmarked, but ghosted, you can not uncheck until you change to a font that does not ghost out the boxes. If you use the popup helper with the boxes checked, and attempt to keyin a font that does not have the bold/italic attribute as checked, the font will be considered illegal.
@@ -2692,7 +2692,7 @@ Because of the build size of opencv, it is not normally included in the thirdpar
 To build findobject and the other plugins using opencv, access the src using git:
 
 \begin{lstlisting}[language=bash]
-git clone –depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5
+git clone -depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5
 \end{lstlisting}
 
 then configure the build, but add the \texttt{- -with-opencv} configure parameter.

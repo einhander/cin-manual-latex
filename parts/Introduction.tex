@@ -3,19 +3,29 @@
 \addcontentsline{toc}{chapter}{Introduction}
 
 Cinelerra is a software program NLE, Non-Linear Editor, that provides a way to edit, record, and play audio or video media. 
-It can also be used to retouch photos.
+It can also be used to transcode media from one format to another or to correct and retouch photos. Cinelerra 
+currently runs on many Linux operating system distributions.
 
-This manual covers Cinelerra-GG Infinity version. 
-The author of the original Cinelerra, Adam Williams, as well as many different people worked on Cinelerra over the years. 
-The software and this manual were merged in from various sources and each person is to be thanked and commended for their efforts. 
-Numerous software modifications were made by William Morrow. 
-These are all under GPLv2+ license. 
+This manual covers the Cinelerra-GG Infinity version. 
+Information contained in this manual is a description of the Cinelerra-GG program usage and was obtained from
+various sources to include different communication channels, emails, common knowledge, and write-ups as new features were added.  
+The author of the original Cinelerra program, Adam Williams, as well as many different people have modified
+ the Cinelerra source code over the years. 
+William Morrow merged all of the known changes, whenever possible, into this Cinelerra-GG version and for several years has been adding numerous features, updates, and fixes. 
+All of these software contributions are appreciated and each individual is thanked and commended for their efforts.
+The Cinelerra software is under GPLv2+ license. 
 Refer to: {\small\url{https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html}}
 
+As for this manual, the GNU Free Documentation License (GNU FDL or simply GFDL) is a copyleft
+license for free documentation, designed by the Free Software Foundation (FSF) for the GNU
+Project. It is similar to the GNU General Public License, giving readers the rights to copy,
+redistribute, and modify (except for "invariant sections") a work and requires all copies and derivatives to be available under the same license.
+The GFDL was designed for manuals, textbooks, other reference and instructional materials, and documentation which often accompanies GNU software.
+Refer to: {\small\url{https://en.wikipedia.org/wiki/GNU_Free_Documentation_License}}
 
 \textbf{This is a copy of the header from the original source code.}
 \begin{lstlisting}[numbers=none,basicstyle=\footnotesize]
-/*
+*
 * CINELERRA
 * Copyright (C) 1997-2012 Adam Williams <broadcast at earthling dot net>
 *
@@ -34,21 +44,6 @@ Refer to: {\small\url{https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalo
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston
 \end{lstlisting}
 
-\textbf{This is a copy of the information in the Cinelerra-CV manual.}
-
-Copyright c 2003, 2004, 2005, 2006 Adam Williams - Heroine Virtual Ltd.
-Copyright c 2003, 2004, 2005, 2006, 2007 Cinelerra CV Team.
-
-This manual is free; you can redistribute it and/or modify it under the terms of the GNU General
-Public License as published by the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This document is distributed in the hope that it will be useful, but WITHOUT ANY WAR-
-RANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program;
-if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, U
 
 \section*{Cinelerra Overview}%
 \label{sec:cinelerra_overview}
@@ -69,14 +64,14 @@ The GG version of Cinelerra has been improved for \emph{stability}, \emph{modern
     \item[Modernization] ~\\
         Artistic creativity has been applied to modernize the Cinelerra-GG plugin icons for video and audio to even include the ffmpeg plugins. 
         The Cinfinity set of plugin icons come in square or roundish versions --- your choice. 
-        In keeping up with the current expectation of users for a certain “look and feel”, a very modern Neophyte theme recent addition provides an alternative to the already existing 9 themes. 
-        These 10 themes give the user the choice to get the look they like best for their own eyes.
-    \item[Cerrent and up-to-date] ~\\
+        In keeping up with the current expectation of users for a certain “look and feel”, 2 very modern recent theme additions, Cakewalk and Neophyte, provide alternatives to the already existing 9 themes. 
+        These 11 themes give the user the choice to get the look they like best for their own eyes.
+    \item[Current and up-to-date] ~\\
         For today’s software, included thirdparty libraries are kept up to date in a timely manner and effort is made to always used a relatively recent version of FFmpeg, if not the latest. 
         This is a big deal because there is a whole set of separate programmers continuously working diligently to cover all of the old and newly created formats. 
         Thus Cinelerra programmers can be dedicated to working solely on Cinelerra rather than just trying to keep up with many formats.
     \item[FFmpeg usage integration]~\\
-        By using FFmpegwith Cinelerra there is the advantage that users can directly convert videos via pre- and post-processing, without the need for command lines to be executed manually before or afterwards.
+        By using FFmpeg with Cinelerra, there is the advantage that users can directly convert videos via pre- and post-processing, without the need for command lines to be executed manually before or afterwards.
     \item[Import and Export formats] ~\\
         Listed here are only a few of the supported Import and Export formats:
         \begin{itemize}
@@ -85,7 +80,7 @@ The GG version of Cinelerra has been improved for \emph{stability}, \emph{modern
                 mp4, mkv, mpeg, mov, m2ts, mp3, dvd, ogg, theora, prores, tiff, webm, flac, opus, vorbis,
                 quicktime (div, dnxhd, jpeg, mjpeg, mp4, rle, v308, v410), h264 \& h265 usage, avc, hevc,
                 and recently released AV1 and WebP
-            \item raw image format for over 700 supported cameras, courtesy Dave Coffin DCraw
+            \item raw image format for over 700 supported cameras, courtesy Dave Coffin's DCraw
         \end{itemize}
         \item[Standard Features] ~\\
             \begin{itemize}
@@ -95,7 +90,7 @@ The GG version of Cinelerra has been improved for \emph{stability}, \emph{modern
                 \item Undo and Redo capability for many editing functions.
                 \item Drag handle functionality for Ripple, Roll, Slip, Slide, Edge, and No Effect.
                 \item Dynamic Keyframe support with curve, toggle, automatic, compositor, and editing capabilities.
-                \item Proxy editing support to speed up editing for large formatted files or slower computers.
+                \item Proxy editing support to speed up editing for large formatted files on slower computers.
                 \item Compositor window with masking, zooming, cropping, projector and camera capabilities.
                 \item Viewing window for quickly viewing/playing audio, video, clips, or proxies.
                 \item Resources window with Media, Proxy, Clips, Video and Audio Effects/Transitions.
@@ -120,6 +115,7 @@ The GG version of Cinelerra has been improved for \emph{stability}, \emph{modern
                 \item OpenGL support as well as Direct X11 speedup.
                 \item Advanced Trim Features and Grouping.
                 \item Asset and Title colors selection including Alpha slider adjustment.
+                \item Scaling preference for any monitor size and HiDPI to support 4K monitors.
             \end{itemize}
             \item[Innovative New Features] ~\\
                 \begin{itemize}

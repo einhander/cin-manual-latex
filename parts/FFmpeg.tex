@@ -6,14 +6,21 @@ Cinelerra-GG uses ffmpeg for decoding and encoding media, thus there are many op
 \section{FFmpeg Early Probe Explanation}%
 \label{sec:ffmpeg_early_probe_explanation}
 
-When you open media, a series of libraries and codec functions are used to \textit{probe} the data, to see if it can determine the type of file format and codec parameters needed to correctly decode the file.  If ffmpeg probes early --- \texttt{Try FFMpeg first} is in effect for the button --- it will usually find some way to try to decode just about any contemporary media file.  But there are some times that the built in codecs are actually a better choice.  A lot of this may fall into the category of personal preference.  For example, some may prefer the mpeg library in the cinelerra code over the ffmpeg code because it has more decoding capability and seems to be more robust when the media is damaged.  In that case you will want the FF button to read \texttt{Try FFMpeg last} in the upper right hand corner of the main window.
+When you open media, a series of libraries and codec functions are used to \textit{probe} the data, to see if it can determine the type of file format and codec parameters needed to correctly decode the file.  If ffmpeg probes early --- \texttt{Try FFMpeg first} is in effect for the FF button --- it will usually find some way to try to decode just about any contemporary media file.  But there are some times that the built in codecs are actually a better choice.  A lot of this may fall into the category of personal preference.  For example, some may prefer the mpeg library in the Cinelerra code over the ffmpeg code because it has more decoding capability and seems to be more robust when the media is damaged.  In that case you will want the FF button to read \texttt{Try FFMpeg last}.
 
-So, if ffmpeg probes early, you will never get to use the built in libraries, and if you want to skip over buggy old libraries, use ffmpeg early probe enabled so that the newest code will be tried first.
+To summarize, if ffmpeg probes early, you will never get to use the built in libraries, and if you want to skip over buggy old libraries, use ffmpeg early probe enabled so that the newest code will be tried first.
+The FF button is located in the upper right hand corner of the main window.
 
-When the icon is red, ffmpeg probes early is enabled and you will see it reads \textit{Currently: Try FFMpeg first} when moving over the FF button in the upper right hand corner of the screen.  When the icon is black, ffmpeg probes early is disabled so that ffmpeg probes late and it reads \textit{Currently: Try FFMpeg last}.  The initial default state of the icon is on, that is, ffmpeg probes first.  This is the original code behavior before ffmpeg code was added.  Suggestion is to leave it on except in a few special cases where it may be better to have early probes disabled.  When you mouse over the main menu ff toggle button, the text displays ffmpeg's \textit{Currently} set position and \textit{Click to} change it.
-The ffmpeg early probe state is saved between sessions and is also affected by choices made in Probe Order (in another section). It is important to note that the various file indexes may need to be rebuilt if you change which codec is being used to decode the file.  There is a warning popup to remind you when you change the default ffmpeg early probe state (unless you have checked the box to no longer show you the warning).  You can easily rebuild the index for a specific media file by going to the Resources window, right mouse click on that media, and choose \texttt{Rebuild Index} from the popup choices.
+When the icon is red, ffmpeg probes early is enabled and you will see it reads
+ \textit{Currently: Try FFMpeg first} when moving over the FF button in the upper 
+right hand corner of the screen.  When the icon is black, ffmpeg probes early is disabled so that 
+ffmpeg probes late and it reads \textit{Currently: Try FFMpeg last}.  The initial default state of 
+the icon is on, that is, ffmpeg probes first. Suggestion is to leave it on except in a few special 
+cases where it may be better to have early probes disabled.  When you mouse over the main menu FF 
+toggle button, the text displays ffmpeg's \textit{Currently} set position.  Just left mouse click to change to the other setting.
+The ffmpeg early probe state is saved between sessions and is also affected by choices made in Probe Order (refer to section 4 - Probe Order when Loading Media). It is important to note that the various file indexes may need to be rebuilt if you change which codec is being used to decode the file.  There is a warning popup to remind you when you change the default ffmpeg early probe state (unless you have checked the box to no longer show the warning).  You can easily rebuild the index for a specific media file by going to the Resources window, right mouse click on that media, and choose \texttt{Rebuild Index} from the popup choices.
 
-Figure~\ref{fig:ff} show (1) reddish colored FF in upper right hand corner of main window indicating
+Figure~\ref{fig:ff} shows (1) reddish colored FF in upper right hand corner of main window indicating
 that ffmpeg early probes is enabled; (2) \textit{Try FFMpeg last}  indicator message for ffmpeg early probes enabled (note that the color is different because you highlighted the icon); and (3) black colored FF indicates ffmpeg will be used last and you are changing the behavior so that Cinelerra warns you accordingly.
 
 \begin{figure}[htpb]
@@ -26,7 +33,8 @@ that ffmpeg early probes is enabled; (2) \textit{Try FFMpeg last}  indicator mes
 \section{How to Create FFmpeg Options Files}%
 \label{sec:create_ffmpeg_options_files}
 
-This section describes how the FFMpeg options files work for decoding and encoding and goes into great detail.  It will make more sense if you look at cinelerra's ffmpeg config directory and the cinelerra menus at the same time.  It is meant to include everything necessary for complete understanding.  You will be able to personalize your own options files without knowing all of the information included below if you know the basics.  The word encoding is used interchangeably with the word rendering.
+This section describes how the FFmpeg options files work for decoding and encoding and goes into great detail.  It will make more sense if you look at Cinelerra's ffmpeg config directory and the Cinelerra menus at the same time.  
+It is meant to include everything necessary for complete understanding.  You will be able to personalize your own options files without knowing all of the information included below if you know the basics.  The word encoding is used interchangeably with the word rendering.
 The possible combinations for ffmpeg options files are literally combinatorial --- that is a lot (factorial!).  The allowed media file format / codec choices are much more flexible than you might realize.  When the ffmpeg design was initially added, some parameter files which describe the choices which the program uses had to be created.  There are way too many to enumerate in the deliverable Cinelerra package.  Some quite detailed information for how ffmpeg options work is given here and hopefully, enough basics for simple understanding.  It may all seem complicated at first, but will become obvious.
 
 \subsection{File naming convention}%
@@ -52,7 +60,7 @@ In the ffmpeg configuration directory there are a series of options files used w
 
 \paragraph{Decoder options:} Normally, only \texttt{ffmpeg.opts} and \texttt{decode.opts} are used when reading/decoding files, but may be specialized if a \texttt{<path>/media.opts} exists for a given \texttt{<path>/media.ext} file.  For example, if you want to only fail on fatal errors and to always use the video filter, edgedetect, when working with your media file \texttt{dreaming.y4m}, then create a file \texttt{dreaming.opts} in the same directory with the contents of \texttt{loglevel=fatal} on the first line and \texttt{video\_filter=edgedetect} on the next.  These specialized settings will override the defaults.  The fatal loglevel is especially handy for lesser quality media.
 
-\paragraph{Encoder Options:} Within the audio /video subdirectories of the first level ffmpeg directory, the \texttt{typ.ext} files are for encoder (rendering) setups.
+\paragraph{Encoder Options:} Within the audio/video subdirectories of the first level ffmpeg directory, the \texttt{typ.ext} files are for encoder (rendering) setups.
 
 \begin{center}
     \begin{longtable}{l p{23em}}
@@ -100,11 +108,11 @@ Only one equals sign is allowed and it is just for readability.  There may be an
 (or)	bitrate = 5000000
 \end{lstlisting}
 
-There are 4 special id's recognized by cinelerra which cause special processing.  They are:
+There are 4 special id's recognized by Cinelerra which cause special processing.  They are:
 
 \begin{description}
     \item[duration] overrides the probe duration when opening media for decoding
-    \item[video\_filter] adds an video stream filter, eg. edgedetect,\dots at the stream level
+    \item[video\_filter] adds a video stream filter, eg. edgedetect,\dots at the stream level
     \item[audio\_filter] adds an audio stream filter, eg. echo,\dots at the stream level
     \item[loglevel] sets the library logging level, as quiet, panic, \dots verbose, debug
 \end{description}
@@ -125,7 +133,7 @@ scan_all_pmts=1
 threads=auto
 \end{lstlisting}
 
-The encoder options you see in the cinelerra menus depend on the files in these directories, \textsc{NOT THE CODE}.  If you add files, you will get to use more variety.
+The encoder options you see in the Cinelerra menus depend on the files in these directories, \textsc{NOT THE CODE}.  If you add files, you will get to use more variety.
 
 In the \textit{cinelerra} directory, which contains the ffmpeg configuration folder, there are the choices the program uses.  When you open an ffmpeg format popup dialog, the listbox contains all of the codec types which are identified by the file.ext extensions.  Decoding has only a few options, since the ffmpeg file probes determine most of the options by looking at the media being opened, but encoding media requires a lot of setup.  Below are some of the folders and files used to determine the configurations used by ffmpeg to decode and encode files.
 
@@ -133,7 +141,7 @@ These extensions create audio / video media classes:
 
 \texttt{dvd \quad  m2ts \quad  mkv \quad  mp3 \quad  mp4 \quad  mpeg  \quad qt \quad  pro}
 
-which become the choices in the render pulldown menu
+which become the choices in the render pulldown menu.
 
 So if you want to create a \textit{mov} codec class, add two new files to the ffmpeg configuration directory:
 
@@ -156,7 +164,7 @@ bitrate 4000000
 
 This will code an \texttt{mp4} formatted file using the \texttt{lib264} codec encoder.
 
-For audio and video together, the mux format must agree between the aud.mov and vid.mov files when they are to be used together.  The stream muxer must be the same for the all the streams in the file being written.
+For audio and video together, the mux format must agree between the aud.mov and vid.mov files when they are to be used together.  The stream muxer must be the same for all the streams in the file being written.
 for example:
 
 \begin{lstlisting}[language=bash]
@@ -196,33 +204,25 @@ loglevel=verbose
 
 sometimes that will be enough to see what has caused a failure, or even catch unexpected results.
 
-Now there is an \textsc{EXCEPTION} to all of the above because of a conflict between ffmpeg and the x264 person making the detection of default ffmpeg settings terminate with an error.  If you get this error, you must workaround this termination by including parameters that don't match $5$ or more of the normal expected values.  So you just have to change a few parameters to avoid the probe detection.  Here is an example where you will notice the \texttt{x264opts} line tweaking values to throw off the detection/error termination code.
+There is an \textsc{EXCEPTION} to all of the above because of a conflict between ffmpeg and the x264 person making the detection of default ffmpeg settings terminate with an error.  If you get this error, you must workaround this termination by including parameters that don't match $5$ or more of the normal expected values.  So you just have to change a few parameters to avoid the probe detection.  Here is an example where you will notice the \texttt{x264-params} line tweaking values to throw off the detection/error termination code.
 
 \begin{lstlisting}[language=bash]
 # <path>/ffmpegvideo/test.mp4
 mp4 libx264
 preset=slow
-x264opts keyint=25:min-keyint=4:qpmin=3:qpmax=33:qp_step=4:merange=8
+x264-params keyint=25:min-keyint=4:qpmin=3:qpmax=33:qp_step=4:merange=8
 crf 20
-\end{lstlisting}
-
-Another \textsc{EXCEPTION} is for some forms of aac, which is the reason bitstream filters were added.
-If you think that you are in this situation, use:
-
-\begin{lstlisting}[language=bash]
-# <path>/ffmpeg/audio/test.mp4
-mp4 libfdk_aac
 \end{lstlisting}
 
 For more examples, look around the ffmpeg directory for examples which may be close to what you are trying to use, and see if the parameters look usable. 
 
 This is quite complicated, but that is because ffmpeg has a lot of parameters and history.  Good results are not that hard to create.  Initially you should mostly use the defaults.  If you send any new options files to \url{cin@lists.cinelerra-gg.org }, it will be given consideration to being added to the baseline for future deliverables.
 
-To get a listing of the current ffmpeg supported formats and codecs that can be made to work with cinelerra, provided there are option files added, run the following commands.  This should be done from the <build>directory substituting the location of <build> where you have installed cinelerra on your system and the ffmpeg may be a different version than $4.1.1$ as used below.  Then look at the output created in \texttt{/tmp/ff-formats.txt} and \texttt{codecs.txt}.
+To get a listing of the current ffmpeg supported formats and codecs that can be made to work with Cinelerra, provided there are option files added, run the following commands.  This should be done from the <build>directory substituting the location of <build> where you have installed Cinelerra on your system and the ffmpeg may be a different version than $4.2$ as used below.  Then look at the output created in \texttt{/tmp/ff-formats.txt} and \texttt{codecs.txt}.
 
 \begin{lstlisting}[language=bash]
-/<build>/cinelerra-5.1/thirdparty/ffmpeg-4.1.1/ffmpeg -formats > /tmp/ff-formats.txt
-/<build>/cinelerra-5.1/thirdparty/ffmpeg-4.1.1/ffmpeg -codecs > /tmp/ff-codecs.txt
+/<build>/cinelerra-5.1/thirdparty/ffmpeg-4.2/ffmpeg -formats > /tmp/ff-formats.txt
+/<build>/cinelerra-5.1/thirdparty/ffmpeg-4.2/ffmpeg -codecs > /tmp/ff-codecs.txt
 \end{lstlisting}
 
 \subsection{Complete Options File Example}%
@@ -246,18 +246,18 @@ Add the file named \texttt{./ffmpeg/audio/pro.dfl} which contains the following 
 acc256k.pro
 \end{lstlisting}
 
-Add the file named \texttt{./ffmpeg/video/med422p10.pro} which contains the following lines:
+Add the file named \texttt{./ffmpeg/video/prores.pro} which contains the following lines:
 
 \begin{lstlisting}[language=bash]
 mov prores
-preset medium
-cin_pix_fmt yuv422p10le
+profile=2
+# lines of comments
 \end{lstlisting}
 
 Add the file named \texttt{./ffmpeg/video/pro.dfl} which contains the following lines:
 
 \begin{lstlisting}[language=bash]
-med422p10.pro
+prores.pro
 \end{lstlisting}
 
 Then to use and to get 10 bit depth and preserve depth from decode to encode:
@@ -266,7 +266,7 @@ Then to use and to get 10 bit depth and preserve depth from decode to encode:
     \item load media
     \item use settings$\rightarrow$format to set the frame rate, sample rate/channels, aspect ratio, 
     color model = rgb\_float or rgba\_float if blending
-    \item press \texttt{Shift-R} and select FFMpeg format type \texttt{pro}
+    \item press \texttt{Shift-R} and select FFmpeg format type \texttt{pro}
     \item select target path
     \item check \texttt{OK}, and watch for messages in the terminal window
 \end{enumerate}
@@ -274,13 +274,13 @@ Then to use and to get 10 bit depth and preserve depth from decode to encode:
 \subsection{Viewing \& Modifying FFmpeg Format Options inside Cinelerra}%
 \label{sub:viewing_modifying_ffmpeg_cinelerra}
 
-There are thousands of options for using ffmpeg.  Now it is possible to \textit{view} the available options for a particular video and audio choice by using the \textit{wrench icon} and then clicking on the \textit{view} box.  Ffmpeg has to be the selected file format for this feature to be visible.  It makes it a lot easier since only the applicable options show up as opposed to everything that ffmpeg can do.  These options are just \textit{Hints} and some may be missing due to the way that ffmpeg options are coded --- Cinelerra shows the option data ffmpeg has exposed.
+There are thousands of options for using ffmpeg.  Now it is possible to \textit{view} the available options for a particular video and audio choice by using the \textit{wrench icon} and then clicking on the \textit{view} box.  FFmpeg has to be the selected file format for this feature to be visible.  It makes it a lot easier since only the applicable options show up as opposed to everything that ffmpeg can do.  These options are just \textit{Hints} and some may be missing due to the way that ffmpeg options are coded --- Cinelerra shows the option data ffmpeg has exposed.
 
-As an example, instead of reading the entire 264 library information, you only have to look at the shown available options.  Both the video and the audio are browsable. The options visible in the \textit{Audio/Video Preset} textbox are the final values which are used when rendering once you have checked \texttt{OK}.  For assistance in choosing the options you want, use the view popup to see the objects that go with the selected format tool, highlight the option, modify the parameter value in the box at the top of the \textit{Options} window based on what you want, and then click apply.  Updates modify parameter values or new parameters will be appended at the bottom.  Note that when you highlight an option, a tooltip will show up when available in the lower right hand corner which describes the option.  Also note that the Format and Codec types are shown on the top line of the Options window.
+As an example, instead of reading the entire 264 library information, you only have to look at the shown available options.  Both the video and the audio are browsable. The options visible in the \textit{Audio/Video Preset} textbox are the final values which are used when rendering once you have checked \texttt{OK}.  For assistance in choosing the options you want, use the view popup to see the objects that go with the selected format tool, highlight the option, modify the parameter value in the box at the top of the \textit{Options} window based on what you want, and then click apply.  Updated parameter values or new parameters will be appended at the bottom.  Note that when you highlight an option, a tooltip will show up when available in the lower right hand corner which describes the option.  Also note that the Format and Codec types are shown on the top line of the Options window.
 
-Parameters exist in 3 layers: ffmpeg, codec, and an interface layer.  You can apply parameters to each layer.  The top 2 layers are accessed with the Kind popup menu. The ffmpeg layer is topmost, and is selected as Kind: ffmpeg.  It can specify many of the more common parameters, such as the bitrate, quality, and so on.  The middle layer is selected as Kind: codec.  These options can specialize your choices, and frequently includes presets and profiles useful for coding well known parameter sets, like \texttt{profile=high422}, \texttt{preset=medium}, or \texttt{tune=film}, etc.   The interface layer may or may not be available.  It is usually accessible only by an \textit{opts} parameter, like \texttt{x264opts=key=value:key=value:\dots}  These options are passed directly to the low level codec library.
+Parameters exist in 3 layers: ffmpeg, codec, and an interface layer.  You can apply parameters to each layer.  The top 2 layers are accessed with the Kind popup menu. The ffmpeg layer is topmost, and is selected as Kind: ffmpeg.  It can specify many of the more common parameters, such as the bitrate, quality, and so on.  The middle layer is selected as Kind: codec.  These options can specialize your choices, and frequently includes presets and profiles useful for coding well known parameter sets, like \texttt{profile=high422}, \texttt{preset=medium}, or \texttt{tune=film}, etc.   The interface layer may or may not be available.  It is usually accessible only by an \textit{opts} parameter, like \texttt{x264-params key=value:key=value:\dots}  These options are passed directly to the low level codec library.
 
-Figure~\ref{fig:video-preset} show \textit{ffmpeg} video for as the Kind. Note the x264opts in the Video Preset window immediately below.
+Figure~\ref{fig:video-preset} shows \textit{ffmpeg} video as the Kind. Note the x264opts (should actually be x264-params now) in the Video Preset window immediately below.
 
 \begin{figure}[htpb]
     \centering
@@ -289,7 +289,7 @@ Figure~\ref{fig:video-preset} show \textit{ffmpeg} video for as the Kind. Note t
     \label{fig:video-preset}
 \end{figure}
 
-Figure~\ref{fig:audio-preset02} show \textit{ffmpeg} video for as the Kind. Note the yellow tooltip in the lower right hand corner describing the highlighted option.  Also note the allowed \textit{Range} values above the box provided for keyins.
+Figure~\ref{fig:audio-preset02} shows \textit{ffmpeg} video for the Kind. Note the yellow tooltip in the lower right hand corner describing the highlighted option.  Also note the allowed \textit{Range} values above the box provided for keyins.
 
 \begin{figure}[htpb]
     \centering
@@ -301,7 +301,7 @@ Figure~\ref{fig:audio-preset02} show \textit{ffmpeg} video for as the Kind. Note
 \section{The FFmpeg Image2 Streams}%
 \label{sec:ffmpeg_image2_streams}
 
-Another feature gained from using ffmpeg in cinelerra takes advantage of what is being referred to as the \textit{\%d trick}.  This trick uses the ffmpeg muxer image2 and a filename template to create a series of image files of a given kind.  A specific example is described below.
+Another feature gained from using ffmpeg in Cinelerra takes advantage of what is being referred to as the \textit{\%d trick}.  This trick uses the ffmpeg muxer image2 and a filename template to create a series of image files of a given type.  A specific example is described below.
 
 To encode a series of $48$ bit tiff output image files, add a file to the cinelerra data ffmpeg/video subdirectory as in:
 
@@ -343,8 +343,8 @@ duration=90.25
 \label{sec:ffmpeg_items_note}
 
 \begin{description}
-    \item[Quality Option when rendering:] Ffmpeg responds variably to the quality option in the render option but seems to respond well to bitrate. The subranges used by quality even seem to vary somewhat depending on how old the codec is. Some use $0$ to $35$, some use $0$ to $500$ or so.  The quality is supposed to cause the codec to output data until the noise level is below a limit determined by the quality setting. Your specific results may vary.
-    \item[Previous Changes when rendering:] With ffmpeg there are 2 cases that the defaults will be used.  The first time when you have nothing set up and any other time when you reset the render File Format in the Render Menu.  Otherwise with ffmpeg if you change a video compression type for the render (for example \texttt{h264.mp4} to \texttt{h265.mp4}), the settings will be from the previous session settings.
+    \item[Quality Option when rendering:] FFmpeg responds variably to the quality option in the render option but seems to respond well to bitrate. The subranges used by quality even seem to vary somewhat depending on how old the codec is. Some use $0$ to $35$, some use $0$ to $500$ or so.  The quality is supposed to cause the codec to output data until the noise level is below a limit determined by the quality setting. Your specific results may vary.
+    \item[Previous Changes when rendering:] With ffmpeg there are 2 cases that the defaults will be used.  The first time when you have nothing set up and any other time when you reset the render File Format in the Render Menu.  Otherwise with ffmpeg, if you change a video compression type for the render (for example \texttt{h264.mp4} to \texttt{h265.mp4}), the settings will be from the previous session settings.
     \item[Outstanding Issues with ffmpeg:] There are some problems that need to be addressed by the ffmpeg developer group that adversely affect Cinelerra.  These are stated below with the hopes that that group will fix them as time permits.
     \begin{itemize}
         \item Make all the default parameters operational.  When they are not, the Cinelerra plugins can't be initialized since the initial state of the filter is not operational.  If that is not possible, then provide a set of nominal parameters for each plugin, so that they can be used as the plugins initial default state.

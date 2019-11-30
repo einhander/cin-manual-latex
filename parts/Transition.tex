@@ -1,7 +1,8 @@
 \chapter{Transition Plugins}%
 \label{cha:transition_plugin}
 
-When one edit ends and another edit begins, the default behavior is to have the first edit's output immediately become the output of the second edit when played back. Transitions are a way for the first edit’s output to become the second edit’s output with different variations. The audio and video transitions are listed in the Resources window as figure~\ref{fig:transition}.
+When playing a section of media where one edit ends and another edit begins on the timeline,
+the usual result is that the first edit's output immediately is followed by the second edit.  Transitions provide a better method whereby the first edit’s output becomes the second edit’s output.  There are several different audio and video transitions listed in the Resources window as figure~\ref{fig:transition}.
 
 \begin{figure}[htpb]
     \centering
@@ -11,23 +12,45 @@ When one edit ends and another edit begins, the default behavior is to have the 
 \end{figure}
 
 Note the colored bar above the \textit{Shape Wipe} transition.
+This bar near the transition symbol shows the position and the length of the transition.
 
-Transitions may only apply to the matching track type. Transitions under audio transitions can only apply to audio tracks. Transitions under video transitions can only apply to video tracks.
+Transitions only apply to the matching track type; that is audio transitions only apply to audio tracks
+and video transitions only apply to video tracks.
 
 An example usage of a transition follows:
 \begin{enumerate}
-    \item Load a single video file and cut away a section from the center or make a blade cut so that you make two edits out of a single file. Make sure the edit boundary between the two edits is visible on the timeline.
-    \item Go to the \textit{Resources window} and click on the \texttt{Video transitions} folder. Drag a transition from the transition list onto the second video edit on the timeline. A colored box highlights over where the transition will appear. Releasing over the $2^{nd}$ edit applies the transition between the $1^{st}$ and $2^{nd}$ edit.
+    \item Load a single video file and delete a sizable section from within the video which will result in two edits of that file. Now you should see the edit boundary between the two edits on the timeline.
+    \item Move to the \textit{Resources window} and click on the \texttt{Video transitions} folder. Choose a transition by highlighting it and then drag and drop it on the second video edit on the timeline. A colored box shows where the transition will appear and when you release the mouse the $2^{nd}$ edit applies the transition between the $1^{st}$ and $2^{nd}$ edit.
+The beginning of the edit will be covered by the transition, if the insertion point or the In point is over an edit.
 \end{enumerate}
-Once the transition is in place, it can be edited similarly to a plugin. Move the \textit{pointer} over the transition and \texttt{right click} to bring up the transition menu. The show option brings up specific parameters for the transition in question if any. The \texttt{length} option adjusts the length of the transition in seconds. The \texttt{detach} option removes the transition from the timeline. If the insertion point or the In point is over an edit, the beginning of the edit is covered by the transition.
+Some Transitions have parameters that can be modified. To see these, move the \textit{pointer} over the transition and \texttt{right click} which brings up a menu. A \texttt{Show} option will pop up a window if there are parameters that you can change to different values. 
+An \texttt{On} option makes it possible to turn off the transition so that it will not be in effect in case you want to only enable it under certain conditions.  The default value for this will be checked On.
+A \texttt{Length} option lets you adjust the length in seconds of the time that the transition will be in play.  Values modified in the Show or Length will be saved for use the next time that transition is used until changed again. 
+The \texttt{Detach} option deletes the transition from the timeline. When you drag and drop a different transition on top of an existing transition on the timeline, it replaces the previous one.
 
-Dragging and dropping transitions from the Resource window to the Program window can be tedious so there are shortcuts to solve this issue. Once you drag a transition from the Resources window, the \texttt{U} and \texttt{u} keys will paste the same transition. The U key pastes the last video transition and the u key pastes the last audio transition on all the recordable tracks. Another easy way to add the same transition to multiple edits is to get into \texttt{Arrow mode} (Drag and Drop editing), select the edits you would like to add the transition to and use the Video or Audio pulldown to \texttt{Attach transition}. Choose which transition you would like and click the checkmark \texttt{OK}. You can also set your default transition at any time by doing so in the Attach transition popup box – highlight your choice, and then at the bottom, click on the button \texttt{Set Default Transition}. You will see that name appear.
+There are some shortcuts to alleviate the dragging and dropping of transitions when you want to do a lot of them in various places on the timeline. After you have established the parameter values for a transition that you have dragged from the Resources window, you can use \texttt{U} and \texttt{u} keys to paste the same transition;
+the \texttt{U} key pastes the last video transition while the \texttt{u} key pastes the last audio transition on all recordable tracks. 
+Alternatively, you can add the same transition to multiple edits when in \texttt{Arrow mode} (Drag and Drop editing), by selecting edits to add the transition to and use the Video/Audio pulldown to \texttt{Attach transition}. Select the desired transition and then click the checkmark \texttt{OK}. You can set a default transition in the Attach transition popup box – by highlighting your choice, then click on the button \texttt{Set Default Transition}, and you will see that transition become the new default.
 
-Transitions make two edits overlap for a certain amount of time. Cinelerra does not move edits during transitions. Instead it uses spare frames from the source file to lengthen the first edit enough to make it overlap the second edit for the duration of the transition. The exact point in time when the transition takes effect is the beginning of the second edit. The transition lasts a set amount of time into the second edit. For example, if you set a duration of 1 second for a dissolve transition, it will not start at the last 0.5 second of the first edit and continue 0.5 second into the second edit. In fact, it will start exactly at the beginning of the second edit and last for 1 second into that second edit. On the timeline a colored bar over the transition symbol visually represents the position and the duration of the transition.
-The most important consequence of this behavior is that the first asset needs to have enough spare data after the end boundary to fill the transition into the second edit. Spare data duration should be equal or greater than the length of the transition effect set in the Length parameter of the transition popup menu.
-If the last frame shown on the timeline is the last frame of the source file, Cinelerra will lengthen the first edit using the last frame only, with the unpleasant result of having the first edit freezing into the transition.
+The way that transitions work is that two edits overlap for some length of time and no edits are actually moved during the transitions.
+Instead extra frames from the source file will be used to lengthen the first edit enough to make it overlap the second edit for the length of the transition. The transition takes effect exactly at the beginning of the second edit and lasts for the specific length of time you set into the second edit. 
+What this means is that if you set a duration of 2 seconds for a flash transition, it will not start at the last 1 second of the first edit and continue 1 second into the second edit. Instead the transition will start exactly at the beginning of the second edit and last for 2 seconds into that second edit. 
+This is why it is necessary that the first edit needs to have extra data after the end boundary to provide enough fill for the transition length into the second edit.
+In the case where the last frame on the timeline is the last frame of the source, Cinelerra will lengthen the first edit using only that last frame.  The result will not be what you want because the first edit will freeze into the transition.
 
-It should be noted that when playing transitions from the timeline to a hardware accelerated video device, the hardware acceleration will usually be turned \textit{off} momentarily during the transition and \textit{on} after the transition, in order to render the transition. Using an un-accelerated video device for the entire timeline normally removes the disturbance.
+When playing transitions, software rendering is used.  This means that if you are using hardware, as with the video driver set to OpenGL, hardware acceleration will usually be turned \textit{off} during the transition and \textit{on} after the transition. Consequently, you may notice small anomalies while playing this section but you can avoid this by switching to using X11 video driver instead or just ignore it because when you create your final render that is always done in software only.
+    
+When “Info on” is enabled via the right mouse button over an empty space in the Resources window (or the shortcut of the letter “i” is used), a short description will be provided in the lower right hand corner of that window for the current transition that the mouse is on.
+
+Once you have dragged and dropped a transition to the timeline, right mouse click on the transition and a pop-up menu will appear which provides an opportunity to make some changes.  These are described next for all video and audio transitions. 
+
+\begin{description}
+    \item[Show] If available, clicking on this will pop up a transition specific menu.
+    \item[On] Toggle on/off the transition effect so that you can see what it looks like when played. Ordinarily this will be checked to indicate it is On.
+    \item[Transition length] When you click on Length, a pop-up menu will come up.  Set the length in seconds, frames, samples, \textit{H:M:S:frm} or \textit{H:M:S.xxx} for the transition to complete either by typing a value into the text box or using the tumbler arrows.  In addition you can use the mouse wheel to change the length in real time. You will see the colored bar get longer or shorter as you change the length. 
+There is a down arrow next to the Seconds box allowing for changing to the other dimensions of frames, samples, etc.  The mathematics is automatically done for you to convert it to seconds if not already in that dimension.
+    \item[Detach] Remove the transition from the timeline.
+\end{description}
 
 \section{Audio Transitions}%
 \label{sec:audio_transition}
@@ -40,15 +63,6 @@ Creates a smooth transition from one audio source edit to another. The crossfade
 \section{Video Transitions}%
 \label{sec:video_transition}
 
-In order to use a transition that you have dragged to the timeline, first right mouse click on the transition icon in the timeline. A menu will pop-up with the following controls:
-
-\begin{description}
-    \item[Show] Pops up the transition specific menu if available (not available on the dissolve transition).
-    \item[On] Toggle on/off the transition effect.
-    \item[Transition length] Set the length in seconds, frames, samples, \textit{H:M:S:frm} or \textit{H:M:S.xxx} for the transition to complete.  In addition you can use the mouse wheel to change the length in real time.
-    \item[Detach] Remove the transition from the timeline.
-\end{description}
-
 \subsection*{BandSlide}%
 \label{sub:bandslide}
 
@@ -59,7 +73,12 @@ Bands slide across video and you see the image slide.
 
 Bands wipe across the video and you see the mask slides.
 
-\subsection{Flash}%
+\subsection*{Dissolve}%
+\label{sub:dissolve}
+
+A soft dissolve where the In segment becomes more transparent while the Out segment begins to gradually show in its place until fully there.
+
+\subsection*{Flash}%
 \label{sub:flash}
 
 The video flashes when transitioning between segments.
@@ -72,11 +91,22 @@ Video switches segments via a small rectangular view that gradually grows to ful
 \subsection*{Shape Wipe}%
 \label{sub:shape_wipe}
 
-Wipe a specific shape across the video. Currently available shapes are: \textit{burst}, \textit{circle}, \textit{clock}, \textit{heart}, \textit{specks}, \textit{spiral}, \textit{tile2x2h}, and \textit{tile2x2v}. 
+Wipe a specific shape across the video. Currently available shapes are: \textit{burst}, \textit{Butterfly},
+ \textit{circle}, \textit{Circle-h\_01}, \textit{Circle-h\_02}, \textit{Circle-v\_01}, \textit{Circle-v\_02},
+ \textit{clock}, \textit{Clouds\_01}, \textit{Clouds\_02}, \textit{Cross-Iris\_01}, \textit{Cross\_01},
+\textit{Diagonal-Curve}, \textit{Diagonal-Linear}, \textit{Diamond-Iris\_01}, \textit{Diamond\_01},
+ \textit{Diamond\_02}, \textit{Diamond\_03}, \textit{Double-Door-h}, \textit{Double-Door-v}, \textit{Gravity},
+\textit{heart}, \textit{Linear-h}, \textit{Linear-v}, \textit{Plasma\_01}, 
+ \textit{specks}, \textit{spiral}, \textit{tile2x2h}, \textit{tile2x2v}, \textit{Venetian-Blinds-h-x05},
+ \textit{Venetian-Blinds-h-x10}, \textit{Venetian-Blinds-v-x05}, and \textit{Venetian-Blinds-v-x10}. 
 
-You can add your own images to the Shape Wipe transition and there are some free ones available to download such as at \url{assistcg.com}.
+The menu for Shape Wipe that popups when you click on \textit{Show} has several possible choices.  First, the \textit{Shape} allows for choosing from the list of shapes as outlined previously either by typing in the textbox, using the down arrow, or clicking on the tumbler down/up arrows.
+Next, there is a \textit{Feather} textbox with tumbler arrows or a slider bar to easily change the blending amount.  A reset button is conveniently located to the right of the slider bar.  There is a checkbox to \textit{Preserve shape aspect ratio} and a \textit{Direction} of \textit{White to Black} or \textit{Black to White}.
 
-To include new images in the Shape Wipe Transition, simply copy the file \texttt{{shape}.png} to your location of cinelerra in the subdirectory \texttt{plugins/shapes}.
+You can add your own images to the Shape Wipe transition and there are some free ones available to download such as under the Video$\rightarrow$Transitions pulldown at \url{assistcg.com}.
+
+To include new images in the Shape Wipe Transition, simply copy the file \texttt{{shape}.png} to the
+ subdirectory \texttt{plugins/shapes} in your cinelerra directory path.
 
 \subsection*{Slide}%
 \label{sub:slide}

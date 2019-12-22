@@ -430,7 +430,7 @@ Note that there will be no files in the actual AUDIO\_TS directory.
 \label{ssub:checklist_troubleshooting}
 
 \begin{itemize}
-    \item Are you logged in as root?  This is required in order to loopback mount files for bluray and to write media on \texttt{/dev/hardware}.  See section 13.7 \todo{internal reference}for a workaround for normal user mode.
+    \item Are you logged in as root?  This is required in order to loopback mount files for bluray and to write media on \texttt{/dev/hardware}.  See section \hyperref[sec:bluray_workaround_mount_umount]{13.7} for a workaround for normal user mode.
     \item Did you startup cinelerra from a terminal window so you can see informative messages?
     \item Is udftools installed for BD and dvdauthor installed for SD?
     \item Do you have loopback not enabled for bluray?  At least temporarily, disable automount via:
@@ -627,7 +627,7 @@ The basic idea is to use playlist-0 as a menu or directions to use the bluray pl
     Total size = File0 size in bytes / 2048 + 4094  "+"   File1 size in bytes / 2048 + 4094  "+" ...
     \end{lstlisting}
     Now create the image file via:   \texttt{mkudffs image <Total size>}  where image or udfs is the image name.
-    \item Loop mount the disk image (refer to Section 13.7\todo{idem as above}).
+    \item Loop mount the disk image (refer to Section \hyperref[sec:bluray_workaround_mount_umount]{13.7}).
     \item Then actually write your multiple bd.m2ts type files onto the \textit{image} where \texttt{<cin\_path>} is the location of the cinelerra binary \textit{bdwrite} file and \texttt{<path>} is your directory path.  Below is a single line that wrapped around with 4 Titles.
     \begin{lstlisting}[language=bash]
     <cin_path>/bin/bdwrite image /<path>menu_titles.m2ts --- /<path>/bd1.m2ts -- /<path>/bd2.m2ts -- /<path>/bd3.m2ts -- /<path>bd4.m2ts

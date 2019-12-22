@@ -21,7 +21,7 @@ Access the Record function via \texttt{File} $\rightarrow$ \texttt{Record}\dots 
 \end{tabular}
 
 \vspace{2ex}
-The media file will be written using the format and codec specified in the \texttt{Settings $\rightarrow$ Preferences $\rightarrow$  Recording tab}, which you will need to set up first.  See the Settings/Preferences \todo{reference to section} section for parameters. Only ffmpeg can record both audio and video simultaneously, and some ffmpeg formats require too much cpu to do a realtime compression.  A setting which is more likely to be usable (requires less cpu/memory for realtime encoding) is \texttt{ffmpeg /qt/mp4.qt} with bitrates like $audio/256000$ \& $video/6000000$.
+The media file will be written using the format and codec specified in the \texttt{Settings $\rightarrow$ Preferences $\rightarrow$  Recording tab}, which you will need to set up first.  See the \hyperref[sec:recording]{Settings/Preferences} section for parameters. Only ffmpeg can record both audio and video simultaneously, and some ffmpeg formats require too much cpu to do a realtime compression.  A setting which is more likely to be usable (requires less cpu/memory for realtime encoding) is \texttt{ffmpeg /qt/mp4.qt} with bitrates like $audio/256000$ \& $video/6000000$.
 
 \section{Record Web Media in real-time}%
 \label{sec:record_web_media_rt}
@@ -648,7 +648,7 @@ command line from a window of \\
     \item Next press \texttt{play} on your media hardware device.  If on the \textit{Video In} side window you see only noise, then S-Video or something else was an incorrect choice and you will have to perform some tests to find correct choices.
 \end{itemize}
 
-There are many more parameters that you may want to vary in the Recording menu or for more details on various items, please refer to the section \textit{Record Web Media in real-time} \todo{reference to previous section}.  The \textit{Transport} buttons are well defined there also.
+There are many more parameters that you may want to vary in the Recording menu or for more details on various items, please refer to the section \hyperref[sec:record_web_media_rt]{Record Web Media in real-time}. The \textit{Transport} buttons are well defined there also.
 
 \textit{Step 4}: When the media has finished playing, use the \texttt{Stop} icon on the Recording menu – the fourth icon next to the \textit{Transport} label - to stop the recording (figure~\ref{fig:vhs02}).
 

@@ -4,7 +4,7 @@
 \label{sec:How_to_build}
 
 These are generic build instructions for building Cinelerra-GG Infinity.  
-Known to work on ubuntu, mint, suse/leap, fedora, debian, centos, arch, and slackware.  
+Known to work on Ubuntu, Mint, Suse/Leap, Fedora, Debian, Centos, Arch, and Slackware.  
 It has not been tested on every single possible distro yet so you might expect to have to make some minor changes.  
 Patches have been created to build on FreeBSD through the work of another programmer and a Gentoo version is being maintained elsewhere by another programmer.
 
@@ -51,13 +51,13 @@ These differences make it possible to have several different versions installed 
 
 \begin{enumerate}
     \item 
-        You need at least 2.5\,GB of disk storage to operate a build + you need to have “\texttt{git}” installed.
+        You need about 6.0 \,GB of disk storage to operate a build + you need to have “\texttt{git}” installed.
     \item  Obviously in order to install into the system, you must run as \textbf{root}.
-    \item  The "\texttt{git}" step has to download many files (approx 100\,MB) so allow time.
+    \item  The "\texttt{git}" step has to download many files (approx 130\,MB) so allow time.  When decompressed this will expand to about 530 MB.
     \item  Run the following commands (this takes awhile):
 
         \begin{lstlisting}[language=bash]
-$ cd /<build_path>/           # this is where you need the 2.5GB of disk space
+$ cd /<build_path>/           # this is where you need the 6.0GB of disk space
 $ git clone --depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5 
 $ cd cinelerra5/cinelerra-5.1 # toplevel directory
         \end{lstlisting}
@@ -66,7 +66,7 @@ $ cd cinelerra5/cinelerra-5.1 # toplevel directory
         So on the very first build you should run:
 
         \begin{lstlisting}[language=bash]
-$ ./blds/bld_prepare.sh <os> # where <os> represents the Operating System of centos, fedora, suse, leap, ubuntu, debian.
+$ ./blds/bld_prepare.sh <os> # where <os> represents the Operating System of Centos, Fedora, Suse, Leap, Ubuntu, Debian.
 $ ./autogen.sh
 $ ./configure --prefix=/usr  # optional parameters can be added here
 $ make 2>&1 | tee log        # make and log the build
@@ -84,17 +84,17 @@ $ /<build_path>/cinelerra5/cinelerra-5.1/log
         \begin{lstlisting}[language=bash]
    $  make install
         \end{lstlisting}
-    \item  If it all worked, you are all setup. Just click on the cinelerra desktop icon.
+    \item  If it all worked, you are all setup. Just click on the Cinelerra desktop icon.
 \end{enumerate}
 
 \paragraph{To do a single-user build,} read the \texttt{README} that is at the top level after you get the source.
 \begin{enumerate}
-    \item  You need at least 2.5\,GB of disk storage to operate a build + you need to have  “\texttt{git}” installed.
+    \item  You need at least 6\,GB of disk storage to operate a build + you need to have  “\texttt{git}” installed.
     \item  Recommend you build and run as \textbf{root}, just to avoid permission issues initially.
-    \item  The "\texttt{git}" step has to download many files (approx 100\,MB) so allow time.
+    \item  The "\texttt{git}" step has to download many files (approx 130\,MB) so allow time.
     \item  Run the following commands (this takes awhile):
         \begin{lstlisting}[language=bash]
-$ cd /<build_path>/           # this is where you need the 2.5GB of disk space
+$ cd /<build_path>/           # this is where you need the 6GB of disk space
 $ git clone --depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5 
 $ cd cinelerra5/cinelerra-5.1 # toplevel directory
         \end{lstlisting}
@@ -189,7 +189,7 @@ $ export FFMPEG_EXTRA_CFG=" --disable-vdpau"
 \subsection{Notes about Building from Git in your Customized Environment}%
 \label{sub:notes_about_building_from_git_in_your_customized_environment}
 
-Getting a build to work in a custom environment is not easy.  If you have already installed libraries which are normally in the thirdparty build, getting them to be recognized means you have to install the "devel" version so the header files which match the library interfaces exist.  Below is the list of thirdparty builds, but this list may have changed over time:
+Getting a build to work in a custom environment is not easy.  If you have already installed libraries which are normally in the thirdparty build, getting them to be recognized means you have to install the "devel" version so the header files which match the library interfaces exist.  Below is the list of thirdparty builds, but this list may have changed over time.
 % It's list of Table?
 
 \begin{table}[htpb]
@@ -264,7 +264,7 @@ If you want to avoid downloading the software every time an update is available 
 The repo is a directory where you first do a “\texttt{git clone}”.  
 For the initial git clone, setup a local area for the repository storage, referred to as \texttt{<repo\_path>}.  
 The “\texttt{git clone}” creates a repo named "\texttt{cin5}" in the \texttt{/<repo\_path>/} directory.  
-This accesses over 300\,MB of repo data, so the device has to have at least that available.  
+This accesses about 530\,MB of repo data, so the device has to have at least that available.  
 The repo path is always a perfect clone of the main repo.
 
 \paragraph{Setting up the initial clone}%
@@ -363,7 +363,7 @@ $ git checkout master
 \label{sub:debuggable_single_user_build}
 
 
-To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead /tmp substituted with a permanent disk path if you want to keep it.
+To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead /tmp should be substituted with a permanent disk path if you want to keep it.
 
 \begin{lstlisting}
 $ git clone ...
@@ -402,14 +402,14 @@ For example, unless special options were set up by you, the LV2 audio plugins wi
 Nor will the codec libzmpeg, the file codec ac3, or DVD creation.  
 The old school file classes will all work, but some of the formats that come with ffmpeg may not because of the way that ffmpeg was installed on your operating system.  
 That is because the Cinelerra ffmpeg is a known static build and is usually the latest stable/released version.  
-In the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating;  You can always run “ffmpeg -formats” and “ffmpeg -codecs” to see what is available on your system.
+In the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating; you can always run “ffmpeg -formats” and “ffmpeg -codecs” to see what is available on your system.
 
 
 \section{Download Already Built Cinelerra-GG}%
 \label{sec:download_already_built_cinelerra_gg}
 
-If you prefer to not have to take the time to build Cinelerra-GG Infinity yourself, there are pre-built dynamic or static binaries for various versions of ubuntu, mint, suse, fedora, debian, centos, arch, and slackware linux as well as Gentoo and FreeBSD.  
-There are also 32-bit i686 ubuntu, debian, and slackware versions available.  
+If you prefer to not have to take the time to build Cinelerra-GG Infinity yourself, there are pre-built dynamic or static binaries for various versions of Ubuntu, Mint, Suse, Fedora, Debian, Centos, Arch, and Slackware linux as well as Gentoo and FreeBSD.  
+There are also 32-bit i686 Ubuntu, Debian, and Slackware versions available.  
 These are updated on a fairly regular basis as long as significant code changes have been made.  
 They are in subdirectories of:
 
@@ -513,11 +513,13 @@ apt upgrade cin
 apt install software-properties-common apt-transport-https
 apt-add-repository https://cinelerra-gg.org/download/pkgs/debian8
 OR apt-add-repository https://cinelerra-gg.org/download/pkgs/debian9
+OR apt-add-repository https://cinelerra-gg.org/download/pkgs/debian10
 # VIP - for the first install, the above line adds cinelerra to /etc/apt/sources.list but...
-# Debian stretch and jessie are more strict for licensing so you will have to edit
+# Debian stretch/jessie/buster are more strict for licensing so you will have to edit
 #  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
 # For example for debian8: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian8 jessie main
 # For example for debian9: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian9 stretch main
+# For example for debian10: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian10 buster main
 apt update
 apt install cin
 #to update a previous install

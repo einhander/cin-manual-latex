@@ -551,13 +551,25 @@ upgradepkg /tmp/cin...    # name you used in the above line
 ##removepkg cin
 
 # ARCH linux
+#  (A loosely defined list of packages that you should install first is listed in this file:
+#   https://www.cinelerra-gg.org/download/pkgs/README.arch   )
 # first edit the file /etc/pacman.conf, to include the following:
 [cingg]
 SigLevel = Optional TrustAll
 Server = https://cinelerra-gg.org/download/pkgs/arch
 # end of cingg
-pacman -Sy
+#
+# next run from a window the following 2 commands;
+pacman -Syu
 pacman -S cin
+# NOTE: the first line above updates your Arch system to the current rolling release and the second
+#  line updates Cinelerra-GG based on the rolling release that was in effect on the last day of the month.
+#  Please complete the 2 steps above in order, one right after the other to avoid risk of a partial upgrade.
+#  Due to the unpredictability of when Arch libraries are updated, performing an install of Cinelerra at
+#  any time other than shortly after the last day of the month when the new build package is created,
+#  could lead to library incompatibilities.  In that case, please consider using the Arch static tar file
+#  for installation instead.
+#to remove a previous install
 ##pacman -R cin
 \end{lstlisting}
 

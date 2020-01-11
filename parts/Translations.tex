@@ -1,0 +1,98 @@
+\chapter{Translations}%
+\label{cha:translations}
+
+There are several \textit{po} files for various languages to make Cinelerra more usable for non-English countries.  A program, \texttt{xlat.C}, assists in providing several variations of text files that can be used in order to allow anyone to help make meaningful translations.  All of the \textit{po} files are located in Cinelerra’s \texttt{/po} subdirectory. There are 3 different ways to proceed described below.
+
+Because Cinelerra frequently is changin, it is a good idea to start by building a new \texttt{cin.po} file which contains the latest messages/words in English to be translated, along with a comment line of the routine name and line number.  To create this, run the following line from a window:
+
+\begin{lstlisting}[language=bash]
+/{your cinelerra directory}/po/xlat.sh > /tmp/cin.po
+\end{lstlisting}
+
+\begin{description}
+	\item[Method 1]  use the freely-available \textit{poedit} program to provide translations to the current \texttt{x.po} where x is your language such as fr.po, de.po, ru.po, etc.  The drawback to this is that x.po files are not recreated monthly so they do not have all of the newest phrases included.
+	\item[Method 2] using \textit{msgmerge} is probably the simplest method for user translation.
+\end{description}
+
+To use the msgmerge command after creating a new cin.po as suggested previously:
+
+\begin{lstlisting}[language=bash]
+/{your cinelerra directory}/po/xlat.sh > /tmp/cin.po # use /tmp as a temporary place
+cp /{your cinelerra directory}/po/x.po /tmp/x.po     # substitute your language for x
+msgmerge -U /tmp/x.po /tmp/cin.po                    # x.po will be overwritten to include updates
+\end{lstlisting}
+
+Then use any editor or poedit to provide messages/words translations in the new x.po file.
+
+\begin{description}
+	\item[Method 3 ] using \textit{xlat.C} program is the most versatile with a variety of features.  When a non-existent language translation is first set up, you would want to use this methodology to get started.
+\end{description}
+
+To use the xlat.C program, first compile it with “c++ xlat.C”.  You can see the usage help here:
+
+\begin{lstlisting}[language=bash]
+	./a.out 
+list csv    ./a.out csv < data.csv > data.po
+list po     ./a.out po < data.po > data.csv
+list po     ./a.out dups < data.po
+list po     ./a.out nodups < data.po
+get strings ./a.out key  < xgettext.po
+gen xlation ./a.out xlat   xgettext.po xlat.csv
+gen xlation ./a.out xlat - text,xlat ... < xgettext.po
+\end{lstlisting}
+
+This program has 6 commands where the desired command is the first parameter to a.out.:
+
+\begin{enumerate}
+	\item \textit{csv} = comma separated value file; to recreate a po from a csv file.
+	\item \textit{po}  = convert po to csv data;  for example, what you need to convert ru.po to ru.csv.
+	You can even open the resulting *.csv in LibrOffice and update the \textit{key $\rightarrow$ value} replacements
+	(fields separated by "," only and check quoted fields as text during import).  These results can
+	be \textit{Saved As} a csv file, and then used by xlat.C to reformulate a \texttt{po}.
+	\item \textit{dups} = list only key/value items where either the \textit{key=value} or \textit{value=" "}.
+	\item \textit{nodups} = list only key/value items where \textit{key$\ne$value} and \textit{value$\ne$" "}.
+	\item \textit{key} = list cin.po key set.
+	\item \textit{xlat} = overlay translation.  This is the most important use and is described next.
+\end{enumerate}
+
+The xlat command line parameters specify a new cin.po template, usually created with xlat.sh, and a list of key/value files which are used to build a mapping for the desired translation.  The mapping files are added to the mapping in the order they appear on the command line, and any existing key is replaced with the newest definition; so typically the newest key/value data is last in the command parameters.  Once the mapping is built the first parameter, the new po template, is scanned and the keys it contains are used to find the latest mapping in the key/value files.  The new value replaces the existing value in the template.  For example, to overlay a new map onto an existing po:
+
+\begin{lstlisting}[language=bash]
+c++ xlat.C
+./a.out po < xx.po > /tmp/xx.csv
+./a.out po < new.po > /tnp/new.csv
+./a.out xlat xx.po /tmp/xx.csv /tmp/new.csv > /tmp/new.po
+\end{lstlisting}
+
+The first run preserves the existing mapping of xx.po, the second creates new mappings from new.po, and the third merges the original and new mappings to create a po with new included/overriding xx.po.
+
+\paragraph{NOTE:} some words and abbreviations can lead to ambiguous language translations.  Therefore, the usage of C\_ and D\_ in the program code was added to represent Contextual and Definitional exceptions to the usual \_ and N\_ .  You will see the following:
+
+\vspace{2ex} \texttt{C\_(“msgstr”)}  is translated to \texttt{D\_(“qual\#msgstr”)} by \textit{xlat.sh}, and invokes gettext with \texttt{msgid = “qual\#msgstr”}
+
+\vspace{2ex} When no \textit{po} translation is supplied, the qual\# is removed, and only the default \textit{msgstr} text is displayed.   If a \textit{po} translation is defined for the current locale, then the translated\texttt{ msgid = “qual\#msgstr”} is used to access the translated msgstr.
+
+\vspace{2ex} \noindent The default MSGQUAL is the basename of the C source file.  For the file \texttt{src\_file.C}, the default MSGQUAL is:
+
+\vspace{2ex} \texttt{\# define MSGQUAL “src\_file”}
+
+\vspace{2ex} \noindent It is used to define the qualifier needed to transform:
+
+\vspace{2ex} \texttt{C\_(“str”)} to \texttt{D\_(“src\_file\#str”)}
+
+\vspace{2ex} \noindent The resulting xlat.sh'd source is scanned by xgettext to create the initial cin.po.  In other words:
+
+\vspace{2ex} \_(s) does normal international text translation as always -
+
+\vspace{2ex} \noindent The msgid line is: msgid “s”
+
+\vspace{2ex} \texttt{C\_(s)} makes it appear as if you used \texttt{D\_(“src\_file\#” s)} -
+
+\vspace{2ex} \noindent The msgid line is:\texttt{ msgid “src\_file\#s”}
+If it does not translate, the default msgtext is \texttt{“s”}, not \texttt{“src\_file\#s”}
+
+\vspace{2ex} \texttt{D\_(qual\#s)} tries to look up \texttt{\_(qual\#s)} -
+
+\vspace{2ex} \noindent This msgid line is: \texttt{msgid “qual\#s”},
+If it does not translate, the default msgtext is \texttt{“s”}, not \texttt{“qual\#s”}
+

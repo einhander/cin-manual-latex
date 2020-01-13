@@ -366,6 +366,47 @@ The original (older) method of dragging while in Arrow mode, lets you just left 
 \end{itemize}
 This last section on Dragging, outlines the difference between \textit{column selection} and \textit{marking selection}.  Column selection is available to make it easy to still be able to do some dragging in I-beam mode whereas Marking selection makes it easy to drag clips together that are not columnated.
 
+\subsection{Selection Methods}%
+\label{sub:selection_method}
+
+Concerning \textit{Selection} methods, the following information is partially pertinent to all editing, but is most important to keep in mind when using Drag and Drop Editing.
+
+Originally, there was the column oriented timeline drag selection which can be seen
+in 1 of 3 ways: 
+
+\begin{enumerate}
+    \item  a highlighted vertical column
+    \item  the colored line region between the [ in and ] out marker labels
+    \item  a single flashing line
+\end{enumerate}
+
+The selection priority works like this. When the highlighted vertical drag column is in use (1), it has the highest precedence and is used
+as the selection.  When the column is a single line (2), then the fall back
+selection is the [in/out] marker region, if they are set.  When they
+are not set, and the cursor is flashing, then the selection start=end
+and the selection is empty, but it does have a position on the
+timeline which can be used for editing.  This is input for the
+vertical style cut/paste drag/drop editing.
+
+More recently, in addition to the column oriented timeline drag selection, there is now \textit{group} 
+capabilities which have various \textit{edit} selections.  These are
+created in the Drag and Drop editing mode by clicking edits to toggle
+select/deselection.  These groups are input to a different (more modern) set
+of cut/paste/overwrite drag/drop editing.  You can see this set of
+operations when you click on an edit with the middle mouse
+button, and are also available using the shortcuts shown. They are more like text
+editor commands to include \texttt{ctrl+x=cut}, \texttt{ctrl+c=copy}, \texttt{ctrl+v=paste}, and so on $\dots$
+The keyboard Delete key is not hooked to these operations, and is hooked to the
+original editing methods.
+
+In this "group" mode, if there are In/Out markers set, they enter the selection priority queue
+between the column selection and the cursor only. You can see the In/Out markers selected
+region colored line across the timebar (slightly underneath where the time, samples or frames show
+) on the main timeline 
+extending between the [ and ].  This means that when
+the highlighted cursor selection is empty, the In/Out selection will be used.
+
+
 \section{Inter-View Mode / Identifying Source Targets Editing}%
 \label{sec:inter-view_identifying_source_target_editing}
 
@@ -408,19 +449,89 @@ you can operate the following buttons to display what you need to see and to mov
     is updated with that start position.
 \end{itemize}
 
+\pagebreak
 Figure~\ref{fig:inter-view02} displays Inter-View window and its relation to the timeline, viewer, and compositor.
-\begin{figure}[htpb]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.9\linewidth]{images/inter-view02.png}
     \caption{Inter-View mode and the timeline}
     \label{fig:inter-view02}
 \end{figure}
+
 The Inter-View mode works for Media, Proxy, and User Bins.  When the preview window has only black bars on the top and bottom, it means that this particular media is not loaded in the timeline.  So when you are in Proxy, meaning that the Proxy files are loaded on the timeline, there will be only black bars for the corresponding Media file UNLESS there is an audio track associated with the video.  Because audio tracks are not proxied, they will show for Media but not for Proxy.
 
 \section{Some Specific Editing Tools}%
 \label{sec:specific_editing_tools}
 
 This section covers some more detailed editing tools and scenarios for edit management.
+
+\subsection{Editing EDLs within a Project}%
+\label{sub:edit-edls}
+
+To edit EDL that is included with your project as Clips, Nested Clips, Referenced File, or Xml you can use the option "Open EDL" 
+in the Resources window for the highlighted media.  Then with a simple button click you can return to your main 
+timeline project.  For example, if you have a nested clip that originally had several plugins added to it before
+it was nested, you can edit those plugin parameter values. Previously to make any changes to these types of EDL
+you had to remake the whole clip from scratch.
+
+Here is how this works. In the Clip or Media folder or on a timeline EDL edit, the option "Open EDL" for the highlighted clip or nested clip is available so that when you choose this option, that EDL will be brought up on the timeline superseding the current EDL that exists on the timeline.  Now, once the clip is open on the timeline, you can edit it however you want. The previous timeline EDL is "pushed onto a stack" so it can be recalled by "popping the stack" with a click of the left mouse button in the upper right hand corner of the timeline to the left of the "shell cmds" icon.  Initially this button displays a 0 to indicate your initial timeline/project.  Then this button will read 1 if you choose "Open EDL" and then back to 0 and your original timeline with the left mouse click.  You can go several levels deep so instead of 1, it could be 2, 3, ... but this requires some thought to avoid potential confusion.  
+\\
+
+An example of a typical set of steps to follow is:
+
+\begin{enumerate}
+   \item Load your media using insertion strategy of "Replace current project".  There will be \# 0 in the
+    upper right hand corner of the main menu with the tooltip of "Close EDL".
+   \item Highlight a selection on the timeline and press the "To clip" icon and click the green checkmark OK. 
+   \item In the Resources window, open the Clip folder and you will see that Clip 1 is present.
+   \item Highlight Clip1 and right mouse the item to bring up available options and select "Open EDL".
+   \item Now you will see the timeline change from the original media to just the clip content and the \# in the
+    upper right hand corner will change from 0 to 1.
+   \item Add a visible effect, like AgingTV to the timeline.
+   \item Click on the \# 1 in the main menu bar to see he timeline restored to the original media.
+   \item Drag the clip from the Resources Clip folder to the timeline and you will see the AgingTV effect.
+\end{enumerate}
+
+You can follow the same steps as above by first using the option "Nest to media" in the Clip folder which nests the clip and moves it out of the Clip folder to the Media folder.  Then use "Open EDL" on the Nested EDL in the media folder.  When you Open EDL and edit the changes, those changes will take affect on any and all occurrences of that nested clip on the current and/or original timeline. The option to unnest that clip and put that back into the Clip folder is the option "EDL to clip".  The nested clip is still in the Media folder.  It will now have a name of the next available Clip \# but the comment contains the previous name so you can tell where it came from.
+
+Instead of using the \# number on the main menu to close the current EDL, both the Media and Clip folders have "Close EDL" options with the left mouse button. Clicking on the \# number is quick and easy but for infrequent usage it is not obvious, whereas if you use "Open EDL" you see "Close EDL" right below that and so it is very obvious.  In addition in the case of where you have opened a EDL, and you no longer see that clip in the folder, the right mouse button where no media is highlighted will also display the Close EDL option.
+
+\pagebreak 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/editing-img001.png}
+    \caption{Once you have an an Open EDL, there are 2 ways to close it.}
+    \label{fig:timeline}
+\end{figure}
+\relax
+
+In addition to the "Open EDL" option in the Resources menu, this option is available on the timeline when the cursor is on an EDL-type edit.
+To get to this option, click on the middle mouse button on that edit.  If it is not EDL, the option will not be shown.  In summary:
+
+\begin{center}
+    \small
+    \begin{tabular}{l l}
+        \toprule
+
+	Media folder of Resources window & Open EDL for Nested or Referenced EDLs \\
+	Clip folder of Resources window	& Open EDL for clips \\
+	Track timeline & Open EDL for Nested or Referenced EDLs \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+
+An aside - when nesting and unnesting clips to take advantage of this feature, names of the media can lead to some confusion.  For example, if you nest a clip, the new name in the Media folder is the word "Nested" followed by an underscore with the date and timestamp, another underscore, and then the clip name.  Then when you unnest this Media folder clip via the "EDL to clip" option, the name will be changed in the Clip folder to the next available Clip \#.  However the comment field will reflect the nested clip name from which it was derived.  To avoid confusion you can easily change the name for these clips in either the Clip or Media folder because they are not real files at this point. To do so, highlight the clip name in Resources, click on Info and type in a new name.
+
+For additional safety, the "Open EDL" feature includes additional backup capabilities. Automatically Cinelerra saves a backup when certain changes are made or you can always use the shortcut "b" to do one yourself, although keep in mind it will be overwritten whenever Cinelerra wants to do another backup.  Now there is a shortcut for the backup shortcut "b" so you can keep your hand on the mouse instead of the keyboard.  Just click on the \# in the upper right hand corner of the main window.  If \# is at 0, it backs up to backup.xml, if at 1, it backs up to backup1.xml and so on ... up to backup9.xml.
+
+When "Open EDL" is invoked, the current EDL and current undo stack are both "pushed", and the active session EDL is replaced with the target clip/nested edl.  A new undo stack is created, and the active backup.xml file name is decorated with the stack level.  So, backup.xml is backup1.xml when your edits are at stack level 1, backup2.xml at stack level 2, and so on.  This means that if you "load backup" at stack level 1, the session will reload from history at stack level 1, not the main session.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/lenght.png}
+    \caption{Edit Length window}
+    \label{fig:lenght}
+\end{figure}
 
 \subsection{Edit Length}%
 \label{sub:edit-lenght}
@@ -646,7 +757,12 @@ The EDL session and the rendered output are visually equivalent.  Nested assets 
 
 It is somewhat important to note that nested assets and nested clips will have index files automatically created.  These index files can start to clutter up your \texttt{\$HOME/.bcast5} directory with files named \texttt{Nested\_\#\#\#.idx} and you may want to periodically delete any index files which are no longer in use.
 
-\paragraph{Nested Clips} It is also possible to create \textit{clips} and convert them to \textit{nested edl}.  This is done by first creating a clip using the standard cut, clipboard, paste, and/or edit panel buttons.  Now, using the resources \textit{clip} folder, select a clip to be nested, and use the right mouse button to select a clip.  This activates the clip popup menu.  Select the \textit{Nest} menu item, and the clip will be converted to a \textit{Nested: Clip}. Conversely, you can select a \textit{Nested: Clip}, use the \textit{UnNest} menu item, and the clip will be reverted to a \textit{Clip}.  This works similarly to the group / un-group editing features of many graphic design editing programs, but in this case the groups are rendered compositions.  They can not be proxied (figure~\ref{fig:nesting}).
+\paragraph{Nested Clips} It is also possible to create \textit{clips} and convert them to \textit{nested edl}.  This is done by first creating a clip using the standard cut, clipboard, paste, and/or edit panel buttons.  Now, using the resources \textit{clip} folder, select a clip to be nested, and use the right mouse button to select a clip.  This activates the clip popup menu.  Select the \textit{Nest to media} menu item, and the clip will be converted to a \textit{Nested: Clip}. Conversely, you can select a \textit{Nested: Clip}, use the \textit{EDL to clip} menu item, and the clip will be reverted to a \textit{Clip}.  This works similarly to the group / un-group editing features of many graphic design editing programs, but in this case the groups are rendered compositions (figure~\ref{fig:nesting}).
+
+Nested clips can be proxied and when they are, the resulting files
+are placed in the user's \$HOME/Videos directory by default.  This can be modified by changing
+
+Settings $\rightarrow$ Preferences $\rightarrow$ Interface tab, Nested Proxy Path.
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.9\linewidth]{images/nesting.png}

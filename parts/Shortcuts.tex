@@ -37,7 +37,7 @@ The Main window (also called the program window) consists of pulldown menus, but
              & Export EDL\dots & Shift-E & Open export EDL window \\             
              & Batch Render\dots & Shift-B & Open batch render window \\             
              & BD Render\dots & Ctrl-d & Open create bluray disk window \\             
-             & DVD Render\dots & Shift-D & Open create dvd disk window \\             
+             & DVD Render\dots & Alt-D & Open create dvd disk window \\             
              & Quit & q & Quit the program \\             
              & Dump EDL &  & Write current EDL to stdout \\             
              & Dump Plugins &  & Write defined Plugins to stdout \\             
@@ -92,6 +92,7 @@ The Main window (also called the program window) consists of pulldown menus, but
              & Move trks down & Shift-Down & Circulate tracks down \\             
              & Delete tracks &  & Delete all tracks \\             
              & Delete last track & d & Delete last track \\             
+             & Delete first track & Shift-D & Delete first track \\             
              & Concatenate trks &  & Concatenate tracks together \\             
              & Append to Proj.	 & Shift-N & Add set of tracks \\             
              & add Subttl & Shift-Y & Add subtitle track \\             
@@ -99,6 +100,7 @@ The Main window (also called the program window) consists of pulldown menus, but
           \textcolor{blue}{Settings} & Format\dots & Shift-F & Open render format setup menu \\             
              & Preferences\dots & Shift-P & Open preferences setup menu \\             
              & Proxy Settings & Alt-r & Bring up Proxy settings window \\             
+             & Transcode & Alt-e & Bring up the Transcode menu \\             
              & Align cursor\dots & Ctrl-a & Align cursor on frames \\             
              & -- Edit labels &  & Toggle labels follow edits \\             
              & -- Edit effects &  & Toggle plugins follow edits \\             
@@ -217,6 +219,7 @@ The Main window (also called the program window) consists of pulldown menus, but
         & Copy & Ctrl-c & Copy selected edits into copy buffer \\        
         & Cut & Ctrl-x & Delete selected edits/put in buffer/collapse \\        
         & Mute & Ctrl-m & Delete selected edits/put in buffer/insert space \\        
+        & Mute & Backspace & Delete selected edits/put in buffer/insert space \\        
         & Copy Pack & Ctrl-Shift-C & Copy selected edits and pack together \\        
         & Cut Pack & Ctrl-z & Delete selected edits/put in buffer/collapse \\        
         & Mute Pack & Ctrl-Shift-M & Delete selected edits/put in buffer/insert space \\        
@@ -351,6 +354,10 @@ The Main window (also called the program window) consists of pulldown menus, but
         & + Edit mask & Shift-drag pt. & Hold down shift+left mouse to drag a point \\        
         & + Edit mask & Ctrl-drag pt. & Hold down Ctrl+left mouse to move control pointers \\        
         & + Edit mask & Alt-drag mask & Hold down Alt+left mouse to translate mask \\                
+        & + Edit point & Shift-set pivot & Hold down Shift+middle mouse to set Pivot point \\              
+        & + Rotate mask & Wheel-rotate & Wheel middle mouse to rotate around Pivot \\                
+        & + Scale mask & Shift+Wheel & Hold down Shift+Wheel mouse to scale around pivot \\                
+        & + Rotate/Scale & Ctrl+Wheel & Hold down Ctrl+Wheel to rotate/scale around pointer\\              
         & + Delete mask & Shift + Del & Hold down Shift + click Delete button to delete mask \\        
         & Ruler & F4 & Brings up the ruler for usage \\        
         & + ruler hotkey & Ctrl & Lock ruler to nearest 45 degree angle \\        
@@ -390,16 +397,25 @@ The Main window (also called the program window) consists of pulldown menus, but
         \midrule        
         \endhead   
         
-        \textcolor{blue}{Keypresses} & Mid. click+drag &  & If zoom in, pans the view \\        
+        \textcolor{blue}{Keypresses} & Mid. click+drag &  & Pans the view/moves the image \\        
+        & Middle mouse & Shift & Returns to Auto zoom \\        
         & RMB &  & Brings up zoom\%/auto;reset cam/proj;hide ctrls \\        
         & LMB Zoom &  & Zooms in \\        
+        & Mouse wheel up &  & Zooms in \\        
         & LMB Zoom & Ctrl & Zooms out \\        
+        & Mouse wheel dn &  & Zooms out \\        
         & LMB Zoom & Shift-alt & Zooms out  \\        
         & '+' or ‘=’ &  & Zooms in video output \\        
         & '-' &  & Zooms out video output \\        
         & f &  & Toggle on/off fullscreen \\        
         & F11 &  & Reset camera \\        
-        & F10 &  & Reset projector \\        
+        & F12 &  & Reset projector \\        
+        & LMB & Shift & Camera enabled - vertical motion zooms in/out\\        
+        & LMB & Shift & Projector enabled - vertical motion zooms in/out\\        
+        & F1 & Ctrl+Shift & Use window layout \#1 \\        
+        & F2 & Ctrl+Shift & Use window layout \#2 \\        
+        & F3 & Ctrl+Shift & Use window layout \#3 \\        
+        & F4 & Ctrl+Shift & Use window layout \#4 \\        
         & Click label & Hold LMB & Drag label to elsewhere \\        
         & Click In/Out & Hold LMB & Drag In/Out elsewhere \\
         \midrule
@@ -497,6 +513,10 @@ The Main window (also called the program window) consists of pulldown menus, but
         \endhead   
         
         \textcolor{blue}{Keypresses} & Right click &  & Brings up fullscreen/zoom/close menu \\
+        & F1 & Ctrl+Shift & Use window layout \#1 \\        
+        & F2 & Ctrl+Shift & Use window layout \#2 \\        
+        & F3 & Ctrl+Shift & Use window layout \#3 \\        
+        & F4 & Ctrl+Shift & Use window layout \#4 \\
         \midrule        
         \textcolor{blue}{Timebar} & LMB &  & Moves cursor position on the timeline \\        
         & Double click &  & If between labels, selects that section \\        
@@ -530,12 +550,17 @@ The Main window (also called the program window) consists of pulldown menus, but
         &  & Wheel move & Draw on – increase/decrease preview size \\        
         &  & Mouse over & Draw on – instantly brings up thumbnail \\        
         & v &  & Switch to next Display option \\        
+        & i &  & Switch on/off info for effects \\        
         & o &  & Opens Load files\dots menu \\        
         & - load tool & Ctrl-a & Selects all files \\        
         & - load tool & Ctrl-z & Deselects any highlighted files \\        
         & DEL key &  & Resources/Media, deletes highlighted from project \\        
         & DEL key & Shift & Resources/Media, deletes highlighted from disk + OK \\        
         & DEL key & Ctrl+Shift & Resources/plugin, deletes highlighted from disk + OK \\
+        & F1 & Ctrl+Shift & Use window layout \#1 \\        
+        & F2 & Ctrl+Shift & Use window layout \#2 \\        
+        & F3 & Ctrl+Shift & Use window layout \#3 \\        
+        & F4 & Ctrl+Shift & Use window layout \#4 \\
         
         
         \bottomrule  

@@ -42,14 +42,14 @@ Currently only the most common codecs, such as MPEG-1, MPEG-2, MPEG-4, and H.264
 	then, to run from the Cinelerra installed directory, key in:
 \end{enumerate}
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 CIN_HW_DEV=vdpau ./cin	# for computers with Nvidia and some other graphics cards
 CIN_HW_DEV=vaapi ./cin	# mostly for computers with Intel or AMD specific graphics hardware
 \end{lstlisting}
 
 If you find that the environment variable setting is advantageous for your CinGG usage and you want to always use it, you can add it to your \texttt{\$HOME} directory \texttt{.profile} file which takes effect every time you log in.  The line you would add would look something like this:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 export CIN_HW_DEV=vdpau
 or
 export CIN_HW_DEV=vaapi
@@ -119,13 +119,13 @@ Using the GPU is going to react differently depending on your hardware, software
 
 The situation may arise where you have enabled hardware acceleration and after loading several files for a project, you find that a file had some kind of error resulting in a black video instead of an image or you see an error message pop up which states something like \textit{Error retrieving data from GPU to CPU} or \textit{err: Unknown error occurred}. Because the \texttt{CIN\_HW\_DEV} environment variable is either all or none, ordinarily in order to correct the non-working video you would have to turn off hardware acceleration for the entire project/session.  However, there is a way to continue working on your project without having to reload all of your files. You still use the environment variable and it will be effective for all of the formats it is able to handle, but you make an exception for any of the files that erred out. To do this you simply create a file in the same directory with the same name as the erring file with the different extension of .opts. The contents of this .opts file would just be the one line of:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 cin_hw_dev=none
 \end{lstlisting}
 
 Conversely, if you have a bunch of files in your project, like dnxhd format, that are not hardware accelerated, but you have an accompanying large file of type .mp4 for which you would like the hardware acceleration, you can leave the \texttt{CIN\_HW\_DEV} variable unset (that is, do not use it) and just create an .opts file containing the line:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 cin_hw_dev=vdpau
 \end{lstlisting}
 
@@ -138,7 +138,7 @@ It is important to note that if using the .opts file to override the default \te
 
 Probably the easiest way to tell if hardware acceleration is working, is just to look at the messages in the window from where you started Cin (not available if start using the application icon).  For example load a png, dnxhd, or some other non-supported format file and you will see messages similar to those below.  The line \textit{HW device init failed, using SW decode} indicates that the vdpau/vaapi HW (hardware) decode is not available so will use SW (software) decode instead.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 Failed to get HW surface format.
 HW device init failed, using SW decode.
 file:/tmp/media/aer_zypr.mp4
@@ -158,7 +158,7 @@ HEVC with NVIDIA, VDPAU driver is buggy, skipping
 
 If you would like to see more information on what is occurring, you can modify in the Cinelerra ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \texttt{loglevel =fatal} to \texttt{loglevel =verbose} and restarting Cinelerra.  Then you will see messages in the startup window like:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 [AVHWDeviceContext @ 0x7fc9540be940] Successfully created a VDPAU device 
 (NVIDIA VDPAU Driver Shared Library 390.116 Sun Jan 27 06:28:58 PST 2019) on X11 display :0
 [h264 @ 0x7fc950159380] Reinit context to 1920x1088, pix_fmt: vdpau
@@ -225,7 +225,7 @@ Older graphics cards or non-performing graphics cards will probably bring only a
 
 And, you can see what your specific hardware and software might support by running either \texttt{vainfo} or \texttt{vdpauinfo} from the command line.  Partial examples of each are shown below.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 # vainfo
 vainfo: VA-API version: 1.4 (libva 2.4.0)
 vainfo: Driver version: Intel i965 driver for Intel(R) Broadwell - 2.4.0.pre1 (2.3.0-11-g881e67a)
@@ -243,7 +243,7 @@ VAProfileVC1Simple
 VAProfileVP8Version0_3 
 \end{lstlisting}
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 # vdpauinfo
 display: :0   screen: 0
 API version: 1
@@ -287,7 +287,7 @@ There are currently 4 options files available in the Render menu already set up 
 
 Other option files can be added as needed for your specific hardware if it is known to work for you, such as VP8 and VP9.  An example of the included Cinelerra’s \texttt{ffmpeg/video/h264\_vaapi.mp4} file (figure~\ref{fig:render-vaapi}):
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 mp4 h264_vaapi
 cin_hw_dev=vaapi
 profile=high
@@ -347,7 +347,7 @@ Of note in this test, 388\% CPU usage with only 4 cores shows that there is prob
 
 There is one last potentially significant graphics speedup when using the X11-OpenGL driver for users with Nvidia graphics boards who are seeing frames/sec achieved lower than what the video format is set to.  You may want to disable \textit{sync to vblank} (an option for OpenGL) in NVIDIA X Server Settings for the proprietary drivers.  This could increase your frames per second on playback.
 
-\subsection{effects (OpenCL, Cuda)}%
+\subsection{Effects (OpenCL, Cuda)}%
 \label{sub:effects_opencl_cuda}
 
 CUDA® is a parallel computing platform / programming model developed by Nvidia that provides big increases in computing performance through use of the GPU. It was first introduced in about 2006 for applications in computationally intense fields such as astronomy, biology, chemistry, and physics.
@@ -430,7 +430,7 @@ There is also a convenient \texttt{Beep on done} checkbox included so that you c
 
 A good choice for proxy settings with 1080p source video is:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 Scale Factor: 	1/4
 Use Scaler:	unchecked
 File Format:	FFMPEG - mpeg
@@ -443,7 +443,7 @@ Pixels:		yuv420p
 
 If you get errors for some videos, such as those with strange variable bit rate or some types of files made on a smartphone, a usually reliable alternative is to change the following parameters:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 File Format:	FFMPEG - mov
 Video Preset:
 Compression:	mov.mov
@@ -498,7 +498,7 @@ This section is a handy guide for describing various kinds of software computer 
 	\item[Keyboard grabs, Server grabs, and Deadlocks:] A grab is an X-server state where all events are forced to just one window event stream.  This forces the user to respond to the dialog.  Things seems to be working, but no keypresses do anything useful. The system clock and other programs will still be working.  The network will work for remote logins. Grabs can be canceled if the \texttt{/etc/X11/xorg.conf} X config contains special setup as shown below:
 \end{description}
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 Section "ServerFlags"
 	Option      "HandleSpecialKeys" "Always"
 	Option      "AllowDeactivateGrabs" "True"
@@ -516,7 +516,7 @@ EndSection
 
 or to \texttt{\$HOME/.xinitrc}, add:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 #  xkb terminate/grab actions disabled in xorg.conf, use:	
 setxkbmap -option "grab:break_actions"
 setxkbmap -option "terminate:ctrl_alt_bksp"
@@ -528,7 +528,7 @@ Modal forms (always on top, and usually ptr/kbd grab) dialog boxes can lock a sy
 
 \begin{description}
 	\item[Window Manager issues:] The \textit{desktop} window manager can intercept and modify all kinds of user input.  Mostly, this is a good thing, but can be a nuisance.  If user keypresses can be programmed to trigger actions, then they may be useful to send \texttt{KILL} or \texttt{INTR} to an app that seems to be holding X's attention.  For example:
-	\begin{lstlisting}[language=bash]
+	\begin{lstlisting}[language=bash,numbers=none]
 	killall -INTR cinelerra,
 	killall -9 cinelerra,	
 	killall X,
@@ -616,7 +616,7 @@ The picture quality on analog TV is not always good but you can modify parameter
 
 First, when capturing the video, capture it in the highest resolution possible. For Europeans this would be $720\times576$ and for North Americans, $720\times480$. Do not adjust the brightness or contrast in the recording monitor, but you might want to max out the color. Capture the video using MJPEG or uncompressed Component Video if possible; if not possible, then capture it using JPEG preferably or RGB if that is all that will work.  Now on the timeline use Settings $\rightarrow$ Format to set a YUV colorspace, drop a \textit{Downsample} effect on the footage and set it as follows:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 Horizontal:					2
 Horizontal offset: 	0
 Vertical:						2
@@ -668,7 +668,7 @@ This entire procedure could be implemented in one non-realtime effect, but the p
 
 If you photograph a lot of haze instead of blue sky, these horizon shots will usually need more depth. You can use the \texttt{gradient} effect to improve your video. Drop the gradient effect on hazy tracks and set the following parameters:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 Angle: 				0
 Inner radius: 0
 Outer radius: 40
@@ -693,7 +693,7 @@ It is important to set the $0\%$ alpha color to blue even though it is $0\%$ alp
 	\item Highlight Audio 1 Compressor and hit \texttt{Attach}.
 	\item Click the Audio 1 Compressor's magnifying glass to bring up the compressor GUI.
 	\item Set the following parameters:
-	\begin{lstlisting}[language=bash]
+	\begin{lstlisting}[language=bash,numbers=none]
 	Reaction secs: -0.1
 	Decay secs: 0.1
 	Trigger Type: Total

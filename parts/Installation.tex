@@ -5,7 +5,8 @@
 
 These are generic build instructions for building Cinelerra-GG Infinity.  
 Known to work on Ubuntu, Mint, Suse/Leap, Fedora, Debian, Centos, Arch, and Slackware.  
-It has not been tested on every single possible distro yet so you might expect to have to make some minor changes.  
+It has not been tested on every single possible distro yet so you might expect to have to make some minor changes.
+
 Patches have been created to build on FreeBSD through the work of another programmer and a Gentoo version is being maintained elsewhere by another programmer.
 
 Alternatively, there are some pre-built dynamic or static binaries which are updated on a fairly regular basis (as long as code changes have been made) available at the link below.
@@ -30,15 +31,6 @@ There are two notable differences between “standard” views of Cinelerra and 
 Both of these can be configured during installation.  
 These differences make it possible to have several different versions installed without having them “walk” on each other. 
 
-
-
-
-
-
-
-
-
-
 \begin{enumerate}
     \item 
         application name can be set during installation and defaults to: “\texttt{cin}”
@@ -56,7 +48,7 @@ These differences make it possible to have several different versions installed 
     \item  The "\texttt{git}" step has to download many files (approx 130\,MB) so allow time.  When decompressed this will expand to about 530 MB.
     \item  Run the following commands (this takes awhile):
 
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ cd /<build_path>/           # this is where you need the 6.0GB of disk space
 $ git clone --depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5 
 $ cd cinelerra5/cinelerra-5.1 # toplevel directory
@@ -65,23 +57,23 @@ $ cd cinelerra5/cinelerra-5.1 # toplevel directory
         NOTE: if your system has never had Cinelerra-GG Infinity installed, you will have to make sure you have all of the compilers and libraries necessary.  
         So on the very first build you should run:
 
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ ./blds/bld_prepare.sh <os> # where <os> represents the Operating System of Centos, Fedora, Suse, Leap, Ubuntu, Debian.
 $ ./autogen.sh
 $ ./configure --prefix=/usr  # optional parameters can be added here
 $ make 2>&1 | tee log        # make and log the build
         \end{lstlisting}
     \item  Check for obvious build errors:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ grep "\*\*\*.*error" -ai log
         \end{lstlisting}
         If this reports errors and you need assistance or you think improvements can be made to the build s,
         email the log which is listed below to \url{cin@lists.cinelerra-gg.org:}
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ /<build_path>/cinelerra5/cinelerra-5.1/log
         \end{lstlisting}
     \item  If there are no build errors, finally just run:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
    $  make install
         \end{lstlisting}
     \item  If it all worked, you are all setup. Just click on the Cinelerra desktop icon.
@@ -93,7 +85,7 @@ $ /<build_path>/cinelerra5/cinelerra-5.1/log
     \item  Recommend you build and run as \textbf{root}, just to avoid permission issues initially.
     \item  The "\texttt{git}" step has to download many files (approx 130\,MB) so allow time.
     \item  Run the following commands (this takes awhile):
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ cd /<build_path>/           # this is where you need the 6GB of disk space
 $ git clone --depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5 
 $ cd cinelerra5/cinelerra-5.1 # toplevel directory
@@ -103,7 +95,7 @@ $ cd cinelerra5/cinelerra-5.1 # toplevel directory
 NOTE: if your system has never had Cinelerra-GG Infinity installed, you will have to make sure all
 the compilers and libraries necessary are installed. So on the very first build you should run as \textbf{root}:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./blds/bld_prepare.sh <os>     # where <os> represents the Operating System of centos, fedora, suse, leap, ubuntu, debian.
 $ ./autogen.sh
 $ ./configure --with-single-user # the “with-single-user” parameter makes it so
@@ -114,7 +106,7 @@ $ make install
 Then just start the application by keying in: ./cin in the bin subdirectory OR add a desktop icon by
 using the appropriate directory to copy the files to, run as \textbf{root}, and edit to correct the directory path.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ cd /cinelerra_directory_path
 $ cp -a image/cin.{svg,xpm} /usr/share/pixmaps/.
 $ cp -a image/cin.desktop /usr/share/applications/cin.desktop
@@ -131,12 +123,12 @@ These procedures and the Cinelerra-GG Infinity software have all been run as “
 
 To see the full list of features use:	 
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./configure -help
 \end{lstlisting}
 The default build is a system build which uses:    
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./configure -without-single-user
 \end{lstlisting}
 
@@ -145,24 +137,24 @@ Because this is also the developer build, constant names are used throughout.
 However, you can rename files after the install is complete.
 
 If your operating system has issues with the default install to \texttt{/usr/local}, you might have to change the location to \texttt{/usr} for a system build.  Then you will have to use:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./configure --prefix=/usr
 \end{lstlisting}
 
 If you wish to change the default directory for a system build you will have to add the destination directory path on the “\texttt{make install}” line.  For example:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ make install DESTDIR=<your selected target directory path>
 \end{lstlisting}
 
 The application name can be set during installation, but defaults to cin so that the GG/Infinity build can coexist with other Cinelerra builds if necessary.  To override the default cin name, use:	
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./configure --with-exec-name=cinelerra
 \end{lstlisting}
 
 The home configuration directory can also be set, but default location is \texttt{\$HOME/.bcast5}.  
 For example:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./configure -with-config-dir=/myusername/.bcast5
 \end{lstlisting}
 
@@ -173,7 +165,7 @@ That is, you will need \$\$ (2 dollar signs) to represent a single dollar sign.
 It may be necessary on some distros which have missing or incomplete up-to-date libraries, to build cinelerra without Ladspa.  
 To do so, use:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./configure --prefix=/usr --without-ladspa-build
 \end{lstlisting}
 
@@ -181,7 +173,7 @@ Note that the with-ladspa-dir is the ladspa search path, and exists even if the 
 
 Note for 32-bit 14.2 Slackware, Debian, Gentoo, Arch, FreeBSD, before running the configure, you will need to set up the following:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ export ac_cv_header_xmmintrin_h=no
 $ export FFMPEG_EXTRA_CFG=" --disable-vdpau"
 \end{lstlisting}
@@ -239,7 +231,7 @@ There may be several libraries which need special treatment.
 
 An example of a problem you might encounter with your customized installation is with “\texttt{a52dec}” which has probes line \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
 In this case, \texttt{djbfft} is only built because \texttt{a52dec} is built, so if your system has \texttt{a52dec}, set \texttt{a52dec} to auto and see if that problem is solved by retrying the build with:  
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ ./confgure --with-single-user -enable-a52dec=auto .
 \end{lstlisting}
 
@@ -249,7 +241,7 @@ If you need help, email the "\texttt{log}" and "\texttt{config.log}", which is u
 
 If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ export FFMPEG_EXTRA_CFG=" --enable-libfdk-aac --enable-nonfree"
 $ export EXTRA_LIBS=" -lfdk-aac"
 $ for f in `grep -lw aac cinelerra-5.1/ffmpeg/audio/*`; do
@@ -271,7 +263,7 @@ The repo path is always a perfect clone of the main repo.
 \label{par:setting_up_the_initial_clone}
 add “\texttt{ -\,- depth 1}” before cin5 which is faster/smaller, but has no history.
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 $ cd /<repo\_path>/
 $ git clone "git://git.cinelerra-gg.org/goodguy/cinelerra" cin5
 
@@ -287,7 +279,7 @@ Checking connectivity... done.
 \paragraph{Update an existing repo}%
 \label{par:update_an_existing_repo}
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
  $ cd /<repo home>/cin5
  $ git pull
 \end{lstlisting}
@@ -296,7 +288,7 @@ Checking connectivity... done.
 \label{par:useful_git_commands}
 
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cin5
 $ git pull         # pull remote changes to the local version
 $ git status       # shows changed files
@@ -309,7 +301,7 @@ $ git clean -i     # interactive clean, use answer 1 to "clean"
 \label{sub:how_to_build_from_a_previous_git_version}
 
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ cd /<path>/cin5_repo
 $ git log
 $ git checkout <version>
@@ -320,7 +312,7 @@ The “git log” command produces a log file with hash values for commit keys. 
 Next is displayed sample output:
 
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 delete stray line in last checkin
 
 commit 4a90ef3ae46465c0634f81916b79e279e4bd9961
@@ -336,7 +328,7 @@ Date: Sat Feb 17 18:09:22 2018 -0700
 
 For the “git checkout <version>, you would then keyin the line below for the following results:
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 $ git checkout f87479bd556ea7db4afdd02297fc00977412b873
 
 Note: checking out 'f87479bd556ea7db4afdd02297fc00977412b873'.
@@ -354,7 +346,7 @@ Note: checking out 'f87479bd556ea7db4afdd02297fc00977412b873'.
 \end{lstlisting}
 
 Later to get the repo back to current, use:    
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 $ git checkout master
 \end{lstlisting}
 
@@ -365,7 +357,7 @@ $ git checkout master
 
 To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead /tmp should be substituted with a permanent disk path if you want to keep it.
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 $ git clone ...
 $ cp -a /path/cinelerra-5.1 /tmp/.
 $ cd /tmp/cinelerra-5.1
@@ -375,7 +367,7 @@ $ ./bld.sh
 
 Then, to run as a developer in the debugger:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ CFLAGS="-O2 -ggdb" make -j8 rebuild_all
 $ cd cinelerra
 $ gdb ./ci
@@ -421,7 +413,7 @@ The “\textbf{tars}” directory contains single-user static builds for differe
 This is the recommended usage of Cinelerra-GG because all of the files will exist in a single directory.  
 To install the single user builds, download the designated tarball from the ./tars subdirectory and unpack as indicated below:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ cd /path
 $ mkdir cin
 $ cd cin
@@ -437,7 +429,7 @@ There is a README.pkgs file in the “pkgs” directory with instructions so you
 
 %TODO point to real READ.pkgs
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 Depending on the distro, use the instructions below and select the appropriate 
 setup operations to install, update or remove cinelerr-gg infinity.  (03/04/2019)
 To upgrade, refresh repo, then replace "install" with "update", or whatever.

@@ -451,7 +451,7 @@ you can operate the following buttons to display what you need to see and to mov
 
 \pagebreak
 Figure~\ref{fig:inter-view02} displays Inter-View window and its relation to the timeline, viewer, and compositor.
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.9\linewidth]{images/inter-view02.png}
     \caption{Inter-View mode and the timeline}
@@ -501,7 +501,7 @@ Instead of using the \# number on the main menu to close the current EDL, both t
     \centering
     \includegraphics[width=0.8\linewidth]{images/editing-img001.png}
     \caption{Once you have an an Open EDL, there are 2 ways to close it.}
-    \label{fig:timeline}
+    \label{fig:open_edl}
 \end{figure}
 \relax
 
@@ -526,12 +526,14 @@ For additional safety, the "Open EDL" feature includes additional backup capabil
 
 When "Open EDL" is invoked, the current EDL and current undo stack are both "pushed", and the active session EDL is replaced with the target clip/nested edl.  A new undo stack is created, and the active backup.xml file name is decorated with the stack level.  So, backup.xml is backup1.xml when your edits are at stack level 1, backup2.xml at stack level 2, and so on.  This means that if you "load backup" at stack level 1, the session will reload from history at stack level 1, not the main session.
 
+\begin{comment}
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.6\linewidth]{images/lenght.png}
     \caption{Edit Length window}
     \label{fig:lenght}
 \end{figure}
+\end{comment}
 
 \subsection{Edit Length}%
 \label{sub:edit-lenght}
@@ -629,7 +631,7 @@ A description of the fundamental/common terminology for choices follows.
 \end{description}
 The next table displays the options and results with the Key Table here first.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
     s = src media start\\
     p = proj position \\
     l = length \\
@@ -835,12 +837,12 @@ Directions for using the ShuttlePROv2 and the ShuttleXpress with Cinelerra are d
 \vspace{1ex}
 \noindent Only 1 necessary initial setup is required due to permission settings for non-root usage. As root, just copy a file that provides the necessary permissions to use the shuttle, then reboot,  Example copy:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 $sudo cp {cindat_path}/doc/99-ShuttlePRO.rules /etc/udev/rules.d/
 \end{lstlisting}
 
 \noindent then the next time after you reboot, the permissions should be correct. This file only needs to contain one of the following lines depending on which shuttle version you have/use, but all will be in the file.
-\begin{lstlisting}[language=Bash,basicstyle=\footnotesize]
+\begin{lstlisting}[language=Bash,,numbers=none,basicstyle=\footnotesize]
 # for  newer PRO model 
 ATTRS{name}=="Contour Design ShuttlePro" MODE="0644"		
 # for older PRO model 
@@ -867,7 +869,7 @@ Next are a few actual examples from the default \texttt{{cindat\_path}/shuttlerc
 
 \noindent The next brackets represent sections. Default, Resources, Load windows all use the same key values.
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 [Default] 
 [Resources] 
 [Load] 
@@ -883,7 +885,7 @@ JR XK_Scroll_Down
 
 \noindent Cinlerra with brackets around it next, is the section with some key definitions for the main window.
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 [Cinelerra] 
 
 # Most useful functions have to be on K5-K9 because Xpress only has 5 keys 
@@ -911,7 +913,7 @@ S3  FWD_1
 
 For the Viewer, you may want keys defined to do a Splice or an Overwrite so define differently.  Note that assignments that contain single character letters must be enclosed in quotes.
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 [Viewer] 
 # Splice - Viewer only; may be defined differently than Composer or Cinelerra 
 K2 "v"         
@@ -921,7 +923,7 @@ K4 "b"         # Overwrite
 \noindent To change any key value to an alternative value, just edit the file and make the changes.  Besides just keys and alphabetic letters of numbers, you can also use any cinelerra value that contains the combination with Shift, Alt, and Ctrl.  For keys that are not printable characters, you can look up the symbol name to use for a specific operation in the file called: \texttt{/usr/include/X11/keysymdef.h} .
 \noindent Some examples:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 K10 Alt-XK_Left  	# Go to previous edit \\
 K13 Ctrl-XK_Right 	# Go to next label
 \end{lstlisting}
@@ -930,7 +932,7 @@ K13 Ctrl-XK_Right 	# Go to next label
 
 After modifying \texttt{.shuttlerc}, the next time you use the shuttle, your changes will automatically take affect without even having to stop and restart Cin.  However, the first thing to try if problems is to stop cinelerra, unplug the shuttle, wait a few seconds, plug it in again, and then restart cin.  If for some reason, the shuttle keys still do not work after that, you may have an incorrect setup and you will have to correct that first.  For example, if you define S5 twice within the Cinelerra setup, it will fail.  It is suggested that if you make changes, you should initially uncomment DEBUG in the \texttt{.shuttlerc} file and start up cinelerra from a terminal window so that you can make sure it is working and has no output errors.  An error might look like:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 dupl key name: [Cinelerra]K1 
 shuttle config err file: /root/.shuttlerc, line:37
 \end{lstlisting}
@@ -939,7 +941,7 @@ shuttle config err file: /root/.shuttlerc, line:37
 
 Any time you are having trouble with your shuttle, you can copy the default \texttt{shuttlerc} file from \texttt{{cindat\_path}/shuttlerc} to your local \texttt{.shuttlerc} file, and edit that to\ switch to DEBUG mode by removing the \# comment from the DEBUG line.  But you will have to have started Cin from a terminal window to see the key values. The first time you use the shuttle or after you change the file, the current assignments will show in the terminal window so will look something like:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 [Cinelerra] # 1 
 K5[D]: XK_KP_0/U 
 K5[U]: XK_KP_0/U 
@@ -947,21 +949,21 @@ K5[U]: XK_KP_0/U
 
 \noindent When you are in DEBUG mode and are just working away, what you will see is something like this:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 key: 0058 1 
 key: 0055 0
 \end{lstlisting}
 
 or:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 shuttle:  00 00 00 00 00 
 key: XK_Home 0
 \end{lstlisting}
 
 \noindent When you change the focus from one window to another, you will see something like this:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 new focus: 04c00137 
 new translation: Viewer 
 key: 0059 1
@@ -969,7 +971,7 @@ key: 0059 1
 
 \noindent You can also set an environment variable to temporarily use an alternative shuttle configuration file for testing as in:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 $ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test 
 \end{lstlisting}
 
@@ -980,7 +982,7 @@ $ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test
 
 In order to see if you hardware was recognized by the operating system, key in:
 
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 $ lsusb -v -d 0b33:0030		# for the Shuttle Pro or PROv2 \\
 $ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
 \end{lstlisting}
@@ -995,15 +997,15 @@ $ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
     \item From a terminal window as an ordinary user key in:  lsusb  (the first character is a lower case L ---for
     list).  You will see something like the following depending on which usb device you have the
     ShuttlePro plugged into:
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2
 \end{lstlisting}
     \item To make sure you have usbmon installed key in:
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 $ sudo modprobe usbmon
 \end{lstlisting}
     \item Next key in the following:
-\begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 $ sudo od -tx1 /dev/usbmon3
 \end{lstlisting}
     where the last 3 is the same \# as the Bus in above.  If it lists \texttt{Bus 002}, then use \texttt{/dev/usbmon2} instead.
@@ -1013,7 +1015,7 @@ $ sudo od -tx1 /dev/usbmon3
     have multiple devices on the same bus, you will get responses from any and all of them.  Attempt to
     isolate your shuttle by temporarily unplugging unnecessary devices on the same bus or plug the 
     shuttle into a different usb port that has fewer devices.
-    \begin{lstlisting}[language=Bash]
+    \begin{lstlisting}[language=Bash,numbers=none]
 0000000 80 70 99 75 53 8c ff ff 43 01 81 02 03 00 2d 00 
 0000020 4e 61 5c 5c 00 00 00 00 8d 2c 06 00 00 00 00 00 
 0000040 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 
@@ -1040,14 +1042,14 @@ Another method for testing to make sure your model of the Shuttle does not have 
     \item Compile that with the command:  \texttt{c++ shdmp.C -o shudmp}
     \item Make the file executable with the command:  \texttt{chmod +x shudmp}
     \item Execute:
-    \begin{lstlisting}[language=Bash]
+    \begin{lstlisting}[language=Bash,numbers=none]
 $ sudo ./shdmp /dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00 # substitute your shuttle
     \end{lstlisting}
 \end{enumerate}
 
 \noindent Then press your shuttle key that is having problems and check the results.  They should look like:
 
-    \begin{lstlisting}[language=Bash, caption={Example for K7}]
+\begin{lstlisting}[language=Bash,numbers=none,caption={Example for K7}]
 event: (4, 4, 0x90007)		#The last number, 7, is the expected Key number. 
 event: (1, 262, 0x1) 
 event: (0, 0, 0x0) 
@@ -1055,7 +1057,8 @@ event: (4, 4, 0x90007)
 event: (1, 262, 0x0) 
 event: (0, 0, 0x0) 
 \end{lstlisting}
-    \begin{lstlisting}[language=Bash, caption={Example for K15}]
+
+\begin{lstlisting}[language=Bash,numbers=none,caption={Example for K15}]
 Example for K15: 
 event: (4, 4, 0x9000f)		#The last number f is 15 in octal and is the expected Key. 
 event: (1, 270, 0x1) 
@@ -1069,11 +1072,11 @@ event: (0, 0, 0x0)
 
 \paragraph{Note 4} For developers, if you have a pre-UEFI Secure Boot kernel it is also possible to do the following for further in depth testing:
 
-    \begin{lstlisting}[language=Bash]
+\begin{lstlisting}[language=Bash,numbers=none]
 ls /sys/kernel/debug/hid   \# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006
 cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc"  # substitute your own numerical value
 cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/events"  # press keys to see the results
-    \end{lstlisting}
+\end{lstlisting}
 %\begin{enumerate}
     %\item \texttt{ls /sys/kernel/debug/hid   \# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006}
     %\item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc”    \# substitute your own numerical value}
@@ -1085,73 +1088,67 @@ cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/events"  # press keys to see the 
 
 The following is the default setting for the ShuttlePROv2 and ShuttleXpress (table~\ref{tab:shuttleprov2} and table~\ref{tab:xpress}):
 
-\begin{landscape}   
-    \begin{table}[htpb]
-        \centering
-        \caption{ShuttlePROv2 key default arrangement for Cinelerra / Composer / Viewer}
-        \label{tab:shuttleprov2}
-        \begin{tabular}{c c c c c c c}       
-            \toprule
-            K1 & K2 & & K3 & K4 & & \\
-            Label & Future use & & Future use & Clip & & \\
-                  & Splice (viewer) & & Copy  & Overwrite (viewer) & & \\
-                  \midrule
-            K5 & K6 & K7 & K8 & K9 & & \\
-            Home & Reverse & Stop & Play & End & & \\
-                 &         & Fullscreen & & & & \\
-                 &         & (viewer / compositor) & & & & \\
-                 \midrule
-            Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
-            \midrule
-            \multicolumn{7}{c}{Shuttle Outer Wheel} \\
-            \multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
-            S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
-            S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
-            \midrule
-            K14	& & Jog Left & (Inner Wheel) & Jog Right & & K15 \\ 
-            Toggle In & & Frame reverse & & Frame forward & & Toggle Out \\
-                      & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\
-                      \midrule
-                      & & K10  & &  K11 & & \\
-                      & & Previous Edit & & Next Edit & & \\
-                      & & Future Use(Viewer) & & Future Use(Viewer) & & \\
-                      \midrule
-                      & & K12  & &  K13 & & \\
-                      & & Previous Edit & & Next Edit & & \\
-                      & & Previous Label & & Next label & & \\
-                      \bottomrule
-        \end{tabular}
-    \end{table}
-\end{landscape}
+\begin{table}[ht]
+	\caption{ShuttlePROv2 key default arrangement for Cinelerra / Composer / Viewer}
+	\label{tab:shuttleprov2}
+    % Tell table to adjust font to fix on the page using \resize
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{c c c c c c c}       
+		\toprule
+		K1 & K2 & & K3 & K4 & & \\
+		Label & Future use & & Future use & Clip & & \\
+			  & Splice (viewer) & & Copy  & Overwrite (viewer) & & \\
+			  \midrule
+		K5 & K6 & K7 & K8 & K9 & & \\
+		Home & Reverse & Stop & Play & End & & \\
+			 &         & Fullscreen & & & & \\
+			 &         & (viewer / compositor) & & & & \\
+			 \midrule
+		Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
+		\midrule
+		\multicolumn{7}{c}{Shuttle Outer Wheel} \\
+		\multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
+		S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
+		S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
+		\midrule
+		K14	& & Jog Left & (Inner Wheel) & Jog Right & & K15 \\ 
+		Toggle In & & Frame reverse & & Frame forward & & Toggle Out \\
+				  & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\
+				  \midrule
+				  & & K10  & &  K11 & & \\
+				  & & Previous Edit & & Next Edit & & \\
+				  & & Future Use(Viewer) & & Future Use(Viewer) & & \\
+				  \midrule
+				  & & K12  & &  K13 & & \\
+				  & & Previous Edit & & Next Edit & & \\
+				  & & Previous Label & & Next label & & \\
+				  \bottomrule
+	\end{tabular}}
+\end{table}
 
-\begin{landscape}   
-    \begin{table}[htpb]
-        \centering
-        \caption{ShuttleXpress key default arrangement for Cinelerra / Composer / Viewer}
-        \label{tab:xpress}
-        \begin{tabular}{c c c c c c c}       
-            \toprule        
-            K5 & K6 & K7 & K8 & K9 & & \\
-            Home & Reverse & Stop & Play & End & & \\
-                 &         & Fullscreen & & & & \\
-                 &         & (viewer / compositor) & & & & \\
-                 \midrule
-            Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
-            \midrule
-            \multicolumn{7}{c}{Shuttle Outer Wheel} \\
-            \multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
-            S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
-            S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
-            \midrule
-                     & & Jog Left & (Inner Wheel) & Jog Right & & \\ 
-                     & & Frame reverse & & Frame forward & & \\
-                     & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\  
-                     \bottomrule      
-        \end{tabular}
-    \end{table}
-    \centering        
-
-
-
-\end{landscape}
+\begin{table}[ht]
+	\caption{ShuttleXpress key default arrangement for Cinelerra / Composer / Viewer}
+	\label{tab:xpress}
+    % Tell table to adjust font to fix on the page using \resize
+    \resizebox{\textwidth}{!}{%
+	\begin{tabular}{c c c c c c c}       
+		\toprule        
+		K5 & K6 & K7 & K8 & K9 & & \\
+		Home & Reverse & Stop & Play & End & & \\
+			 &         & Fullscreen & & & & \\
+			 &         & (viewer / compositor) & & & & \\
+			 \midrule
+		Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
+		\midrule
+		\multicolumn{7}{c}{Shuttle Outer Wheel} \\
+		\multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
+		S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
+		S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
+		\midrule
+				 & & Jog Left & (Inner Wheel) & Jog Right & & \\ 
+				 & & Frame reverse & & Frame forward & & \\
+				 & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\  
+				 \bottomrule      
+	\end{tabular}}
+\end{table}
 

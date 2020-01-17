@@ -94,7 +94,7 @@ To start rendering from the first enabled batch, hit \texttt{Start}.  Once rende
 
 You can automate Cinelerra batch renders from other programs.  In the batch render dialog, once you have created your list of batch render jobs, you can click the button \texttt{Save Jobs} and choose a file to save your batch render list to.  Once you have created this file, you can start up a batch render without needing to interact with the Cinelerra user interface.  From a shell prompt, from a script, or other program, execute:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
     {path_to_cinelerra} -r batchjob.xml
 \end{lstlisting}
 substituting  your actual filename for \texttt{batchjob.xml}.  When invoked with these parameters, Cinelerra will start up and perform the rendering jobs in that list, without creating its usual windows.
@@ -108,7 +108,7 @@ To perform rendering from the command line, first run Cinelerra in graphical mod
 
 On the command line run:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 cinelerra -r
 \end{lstlisting}
 
@@ -219,7 +219,7 @@ The following steps are just a guideline to start your render farm.  It is assum
         \item click OK on the bottom of the Preferences window.
     \end{itemize}
     \item On the client computers ($192.168.1.12$), start 5 background cinelerra tasks via:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 $ cd /{path_to_cinelerra}
 $ cin -d 401
 $ cin -d 402 
@@ -227,7 +227,7 @@ $ cin -d 402
 $ cin -d 405
     \end{lstlisting}
     \item On the master node (localhost), start the 2 background cinelerra tasks via:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 $ cd /{path_to_cinelerra}
 $ cin -d 406
 $ cin -d 407
@@ -274,7 +274,7 @@ Framerates can really affect how the Render Farm works.  The first time you use 
 Initially, when the framerate scaling values are zero, the program just uses package length --- render size 
 divided by the number of packages to portion out the work (if not labels).  If something goes wrong or the rates become suspect, then all of the rest of the work will be dumped into the last job.  When this happens, you really should \texttt{reset rates} for the next render farm session to restart with a good balance.
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
     {cinelerra pathname} -h     #displays some of the options.
 \end{lstlisting}
 
@@ -291,43 +291,43 @@ divided by the number of packages to portion out the work (if not labels).  If s
     \begin{enumerate}
         \item On each of the computers, install the nfs software if not already installed.  For example, on Debian 9
         you will need to run: (be sure to check/verify before using any command line):
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ apt-get install nfs-kernel-server
         \end{lstlisting}
         \item On the computer that contains the disk storage to be shared, define the network filesystem.  For
         example to export \texttt{/tmp}, edit the \texttt{/etc/exports} file to add the following line:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 192.168.1.0/24(rw,fsid=1,no_root_squash,sync,no_subtree_check)
         \end{lstlisting}
         \item Next reset the exported nfs directories using: 
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ exportfs -ra
         \end{lstlisting} 
         and you may have to start or restart nfs: 
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ systemctl restart nfs
         \end{lstlisting}
         \item Each of the render farm computers must mount the exported nfs target path.  To see the exports
         which are visible from a client, login as root to the client machine and keyin:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ showmount -e <ip-addr>  #using the ip address of the storage host
         \end{lstlisting}
         \item to access the host disk storage from the other computers in the render farm, mount the nfs export on
         the corresponding target path: (be sure to check/verify before using any command line):
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ mount -t nfs <ip-addr>:/<path>  <path>
         \end{lstlisting}
         where \texttt{<path>} is the storage host directory, and \texttt{<ip-addr>} is the network address of the storage host.        
         Because all of the computers must have the same directory path, create that same directory path with the same uid/gid/permissions on each storage client computer ahead of time.
         \item To make this permanent across reboots on the client nodes, add the following line to \texttt{/etc/fstab}: 
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 {masternode}:/nfsshare /mnt nfs defaults 0 0
         \end{lstlisting}
         You can make this permanent on the disk storage host BUT the command lines shown, which were
         correct in January 2018 on Fedora, may be different for your operating system or in the future.  In
         addition if your network is not up, there may be numerous problems.  If you make a mistake, your
         system may not boot.  To make permanent, add the following line to \texttt{/etc/fstab}:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 192.168.1.12:/tmp /tmp nfs rw,async,hard,intr,noexec,noauto 0 0
         \end{lstlisting}
         You will still have to mount the above manually because of the \textit{noauto} parameter but you won’t
@@ -335,7 +335,7 @@ $ mount -t nfs <ip-addr>:/<path>  <path>
         change that.
         
         Later, to remove access to the storage host filesystem:        
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ umount <path>
         \end{lstlisting}
         
@@ -351,7 +351,7 @@ $ umount <path>
         \item Add the hostname or the IP address of each of the client nodes in the Hostname textbox and the port
         number that you want to use in the Port textbox.  You can make sure a port number is not already in
         use by keying in on the command line:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 $ netstat -n -l -4 --protocol inet
         \end{lstlisting}
         Next, click on the \texttt{Add Nodes}
@@ -364,20 +364,20 @@ $ netstat -n -l -4 --protocol inet
     \end{enumerate}
     \item[Create Workflow] While working on the master computer, it is recommended that you keep all the resources being used on the same shared disk.  Load your video/audio piece and do your editing and preparation.  Add any desired plugins, such as a Title, to fine-tune your work.  You want to make sure your video is ready to be rendered into the final product.
     \item[Start the Client Nodes] To start up the client nodes run Cinelerra from the command line on each of the client computers using the following command:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 /{cinelerra_pathname}/cin -d [port #]   ;   \#for example /mnt1/bin/cinelerra -d 401
     \end{lstlisting}
     This starts cinelerra in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 RenderFarmClient::main_loop: client started
 RenderFarmClient::main_loop: Session started from 127.0.0.1
     \end{lstlisting}
     As it completes its jobs, you will should see:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 RenderFarmClientThread::run: Session finished
     \end{lstlisting}
     A quick way to start a sequence of clients is to use:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 or n in `seq 1501 1505`; do cin -d $n; done
     \end{lstlisting}
     \item[Render Using Render Farm] After you have followed the preceding steps, you are ready to use the render farm.  Click on File $\rightarrow$ Render\dots which opens the render dialog.  The most important point here is to use for \texttt{the Output path / Select a file to render to} a path/file name that is on the shared volume that is also mounted on the clients.  Click on \texttt{OK} to render. The cinelerra program divides the timeline into the number of jobs specified by the user.  These jobs are then dispatched to the various nodes depending upon the load balance. The first segment will always render on the master node and the other segments will be farmed out to the render nodes.  Batch Rendering, as well as BD/DVD rendering, may use the render farm.  Each line in the batchbay can enable/disable the render farm.  Typically, video can be rendered into many file segments and concatenated, but normally audio is rendered as one monolithic file (not farmed).
@@ -409,7 +409,7 @@ These steps are for quickly setting up render farm with the least amount of addi
         \item check \texttt{OK}
     \end{itemize}
     \item On each buddy client, create a job for each port:    
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 /{cinelerra_pathname}/cin -d port#
     \end{lstlisting}
     \item On the master, bring up the render menu and name the output files, for example \texttt{/tmp/myoutput.mp4}.
@@ -431,7 +431,7 @@ Screencast below shows part of the Preferences menu where you can change the ind
     \label{fig:index}
 \end{figure}
  Or, one of the convenient features of cin5 is the redirection of the path via \texttt{CIN\_CONFIG} as in:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 CIN_CONFIG=/<shared_file_pathname>/<filename_such_as_.bcast5> /<cinelerra_pathname>/cin
 \end{lstlisting}
 This means that you can make project related configurations that do not impact the default \texttt{\$HOME} config.  You can either export your default \texttt{\$HOME} config or the \texttt{CIN\_CONFIG} config to use on the render farm.
@@ -565,7 +565,7 @@ In Cinelerra for two-pass, you need to run ffmpeg twice, with the same settings,
 
 This 2 line ffmpeg 2-pass operation can be functionally duplicated in Cinelerra in the steps below them:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 ffmpeg -y -i input -c:v libx264 -b:v 2600k -pass 1 -c:a aac -b:a 128k -f mp4 /dev/null && \
 ffmpeg -i input -c:v libx264 -b:v 2600k -pass 2 -c:a aac -b:a 128k output.mp4
 \end{lstlisting}
@@ -585,7 +585,7 @@ ffmpeg -i input -c:v libx264 -b:v 2600k -pass 2 -c:a aac -b:a 128k output.mp4
         \item Set the Video Compression to h264.mp4 (as seen in the example).
         \item Set the bitrate to $2600000$ ($2600k$ as in ffmpeg example above).
         \item Add the following 2 lines after the first line:
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 flags +pass1
 passlogfile /tmp/{temporary log file name}.log
         \end{lstlisting}
@@ -593,7 +593,7 @@ passlogfile /tmp/{temporary log file name}.log
     \end{itemize}    
     \item Click on \texttt{New} to create the second pass job.  You will see this second job in the listbox below.
      Use the Video wrench and change pass1 to pass2 as follows.
-        \begin{lstlisting}[language=bash]
+        \begin{lstlisting}[language=bash,numbers=none]
 flags +pass2
         \end{lstlisting}
     \item Click checkmark \texttt{OK}.
@@ -611,14 +611,14 @@ with ffmpeg/webm, choose \texttt{pass1of2\_vp9}.  When that is finished, you wil
 
 \begin{description}
     \item[x265:] add this line:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 x265-params=pass=1:stats=/tmp/{temporary log file name}.log
     \end{lstlisting}      
     at the time this document was written, you should see in the output: \\  \texttt{stats-read=2}
     
     \item[libvpx-vp9, xvid, and huffyuv:]~
 
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
     cin_stats_filename /tmp/{temporary log file name}.log
     flags +pass1 (or flags +pass2 for the second pass)
     \end{lstlisting}    
@@ -644,7 +644,7 @@ picture quality similar to the Blu-ray with some limitations.
 As container Matroska (.mkv) is used, but also mp4 and others are
 possible.
 
-\vspace{2ex} \begin{lstlisting}[language=Bash]
+\vspace{2ex} \begin{lstlisting}[language=bash,numbers=none]
 matroska libx265
 
 # CRF 16 creates a balanced compromise
@@ -709,7 +709,7 @@ You can pipe a video to any command line on the computer, such as ffmpeg.  This 
 
 \begin{enumerate}
     \item on a terminal window create a named pipe file, for example:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 mknod /tmp/piper.yuv p
     \end{lstlisting}
     load your video and do your editing
@@ -718,13 +718,13 @@ mknod /tmp/piper.yuv p
     \item for \texttt{Insertion Strategy}, you will want to make sure to select \textit{insert nothing}
     \item click for \texttt{OK} on the green checkmark.(the cinelerra gui will look like it is hanging while waiting for a command line to use the pipe.)
     \item on the terminal window, keyin your command, for example:
-    \begin{lstlisting}[language=bash]
+    \begin{lstlisting}[language=bash,numbers=none]
 /mnt0/build5/cinelerra-5.1/thirdparty/ffmpeg-3.4.1/ffmpeg -f rawvideo -pixel_format yuv420p \ -video_size 1280x720 -framerate 30000/1001 -i /tmp/piper.yuv /tmp/pys.mov
     \end{lstlisting}
 \end{enumerate}
 
 A slightly different option can be used instead that may be more familiar to some.  In the render menu after choosing the File Format of \textit{ffmpeg}, use the pulldown to choose \textit{y4m} as the file type.  This choice results in putting a header on the rendered output with some pertinent information that can be used for ffmpeg processing thus alleviating the requirement for \textit{pixel\_format}, \textit{video\_size}, and \textit{framerate} on the ffmpeg command line.  In this case the format is \texttt{yuv4mpegpipe} instead of \texttt{rawvideo}.  An example command line would look as follows (assuming the created pipe is called \texttt{piper.y4m}):
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 ffmpeg -f yuv4mpegpipe -i /tmp/piper.y4m -vcodec libx264 /tmp/test.mp4
 \end{lstlisting}
 

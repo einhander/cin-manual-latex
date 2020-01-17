@@ -75,7 +75,7 @@ File lists formats can be utilized in some way for the following list of types o
 %\vspace*{1ex} 
 Using the example of jpeg’s, the jpeg list sequence file type is the easiest and fastest way to access a sequence of jpg images as a single asset.  First build a jpeglist sequence file and name it something like jpeglist.sh.  There is an example script of how to do this in the Auxiliary Programs section of the Appendix.  Once the jpeglist.sh file is built you can then run it similar to this line:
 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash,numbers=none]
 $ jpeglist.sh   /<path>/file.jpg   /<path>/DSC*.jpg
 \end{lstlisting}
 
@@ -83,7 +83,7 @@ $ jpeglist.sh   /<path>/file.jpg   /<path>/DSC*.jpg
 
 An example output file from running this script residing in the directory where \texttt{DSC*.jpg} files exist is shown below.   To use this, turn off ffmpeg probes first, and open \texttt{timelapse.jpg} using File ~$\rightarrow$ ~Load files.
 
-\begin{lstlisting}[language=bash,caption={Example: timelapse.jpg},captionpos=t]
+\begin{lstlisting}[language=bash,numbers=none,caption={Example: timelapse.jpg},captionpos=t]
 JPEGLIST
 # First line is always JPEGLIST
 # Frame rate:
@@ -111,6 +111,7 @@ Image2file format is an alternative method to open an image sequence via ffmpeg.
 
 \begin{lstlisting}[
 language=bash,
+numbers=none,
 caption={Example DSC0\%04d.opts},
 captionpos=t]
 loglevel=verbose

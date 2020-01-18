@@ -11,10 +11,9 @@ Patches have been created to build on FreeBSD through the work of another progra
 
 Alternatively, there are some pre-built dynamic or static binaries which are updated on a fairly regular basis (as long as code changes have been made) available at the link below.
 
-
-\url{
-https://cinelerra-gg.org/download/
-}
+\begin{center}
+	{\small \url{https://cinelerra-gg.org/download/}}
+\end{center}
 
 There are 2 kinds of builds, the default system-build and a single-user build.  
 A system build has results which are installed to the system. 
@@ -22,20 +21,20 @@ The majority of the files are installed in the standard system paths, but some c
 The single user build allows for running completely out of a local user directory so it doesn't affect the system.
 
 We recommend the single-user version when possible.  
-It makes it very easy to install a new version without having to delete the older version in case you want it for backup - once you are happy with the new version, all you have to do is delete the entire old directory path.  
+It makes it very easy to install a new version without having to delete the older version in case you want it for backup -- once you are happy with the new version, all you have to do is delete the entire old directory path.  
 Also, if you install a new Operating System version and if you have Cinelerra on separate disk space that is preserved, you won't have to reinstall Cinelerra.  
 In addition for purposes of having the ability to interrupt or to see any possible error messages, if you start the application from a terminal window command line you will have more control to catch problems.  
 However, the system builds can be useful in a university lab setting where there are possibly multiple users, or multiple versions.
 
-There are two notable differences between “standard” views of Cinelerra and this implementation for the system builds.  
+There are two notable differences between \textit{standard} views of Cinelerra and this implementation for the system builds.  
 Both of these can be configured during installation.  
-These differences make it possible to have several different versions installed without having them “walk” on each other. 
+These differences make it possible to have several different versions installed without having them \textit{walk} on each other. 
 
 \begin{enumerate}
     \item 
-        application name can be set during installation and defaults to: “\texttt{cin}”
+        application name can be set during installation and defaults to: \texttt{cin}
     \item 
-        the home configuration directory can also be set and defaults to:\\ “\texttt{\$HOME/.bcast5}”
+        the home configuration directory can also be set and defaults to:\\ \texttt{\$HOME/.bcast5}
 \end{enumerate}
 
 \paragraph{To do a system build,} you should read the \texttt{README} that is at the top level after you get the source.
@@ -43,9 +42,9 @@ These differences make it possible to have several different versions installed 
 
 \begin{enumerate}
     \item 
-        You need about 6.0 \,GB of disk storage to operate a build + you need to have “\texttt{git}” installed.
+        You need about 6.0 \,GB of disk storage to operate a build + you need to have \textit{git} installed.
     \item  Obviously in order to install into the system, you must run as \textbf{root}.
-    \item  The "\texttt{git}" step has to download many files (approx 130\,MB) so allow time.  When decompressed this will expand to about 530 MB.
+    \item  The \textit{git:} step has to download many files (approx 130\,MB) so allow time.  When decompressed this will expand to about 530 MB.
     \item  Run the following commands (this takes awhile):
 
         \begin{lstlisting}[language=bash,numbers=none]
@@ -63,12 +62,13 @@ $ ./autogen.sh
 $ ./configure --prefix=/usr  # optional parameters can be added here
 $ make 2>&1 | tee log        # make and log the build
         \end{lstlisting}
+        \texttt{bld\_prepare.sh} does not work for Arch Linux, so we have to install the dependencies manually. \texttt{README.arch}, which contains the list of dependencies, can be found at: {\small \url{https://cinelerra-gg.org/download/pkgs/README.arch}}
     \item  Check for obvious build errors:
         \begin{lstlisting}[language=bash,numbers=none]
 $ grep "\*\*\*.*error" -ai log
         \end{lstlisting}
-        If this reports errors and you need assistance or you think improvements can be made to the build s,
-        email the log which is listed below to \url{cin@lists.cinelerra-gg.org:}
+        If this reports errors and you need assistance or you think improvements can be made to the builds,
+        email the log which is listed below to {\small \url{cin@lists.cinelerra-gg.org:}}
         \begin{lstlisting}[language=bash,numbers=none]
 $ /<build_path>/cinelerra5/cinelerra-5.1/log
         \end{lstlisting}
@@ -83,7 +83,7 @@ $ /<build_path>/cinelerra5/cinelerra-5.1/log
 \begin{enumerate}
     \item  You need at least 6\,GB of disk storage to operate a build + you need to have  “\texttt{git}” installed.
     \item  Recommend you build and run as \textbf{root}, just to avoid permission issues initially.
-    \item  The "\texttt{git}" step has to download many files (approx 130\,MB) so allow time.
+    \item  The \textit{git} step has to download many files (approx 130\,MB) so allow time.
     \item  Run the following commands (this takes awhile):
         \begin{lstlisting}[language=bash,numbers=none]
 $ cd /<build_path>/           # this is where you need the 6GB of disk space
@@ -103,7 +103,7 @@ $ make 2>&1 | tee log            # make and log build (check for errors before p
 $ make install
 \end{lstlisting}
 
-Then just start the application by keying in: ./cin in the bin subdirectory OR add a desktop icon by
+Then just start the application by keying in: \texttt{./cin} in the bin subdirectory OR add a desktop icon by
 using the appropriate directory to copy the files to, run as \textbf{root}, and edit to correct the directory path.
 
 \begin{lstlisting}[language=bash,numbers=none]
@@ -111,7 +111,7 @@ $ cd /cinelerra_directory_path
 $ cp -a image/cin.{svg,xpm} /usr/share/pixmaps/.
 $ cp -a image/cin.desktop /usr/share/applications/cin.desktop
 \end{lstlisting}
-Change the “Exec=cin” line to be “Exec=<your\_directory\_path>/bin/cin”
+Change the \texttt{Exec=cin} line to be \texttt{Exec=<your\_directory\_path>/bin/cin}
 
 The preceding directions for doing a single-user build has been meticulously followed to build and run
 on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{bld\_prepare.sh} and creating the desktop icon.
@@ -119,7 +119,7 @@ on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{
 \subsection{Notable Options and Caveats}%
 \label{sub:notable_options_and_caveats}
 
-These procedures and the Cinelerra-GG Infinity software have all been run as “\textbf{root}” on various home laptops and desktops. This provides the best chance to ensure all works correctly and also allows for handling errors, other problems and potential crashes with the most success.  Included in this section are some of the build variations easily available for normal builds.
+These procedures and the Cinelerra-GG Infinity software have all been run as \textbf{root} on various home laptops and desktops. This provides the best chance to ensure all works correctly and also allows for handling errors, other problems and potential crashes with the most success.  Included in this section are some of the build variations easily available for normal builds.
 
 To see the full list of features use:	 
 
@@ -132,7 +132,7 @@ The default build is a system build which uses:
 $ ./configure -without-single-user
 \end{lstlisting}
 
-In the single-user build, the target directory is always “cin”.  
+In the single-user build, the target directory is always \texttt{cin}.  
 Because this is also the developer build, constant names are used throughout.  
 However, you can rename files after the install is complete.
 
@@ -141,12 +141,12 @@ If your operating system has issues with the default install to \texttt{/usr/loc
 $ ./configure --prefix=/usr
 \end{lstlisting}
 
-If you wish to change the default directory for a system build you will have to add the destination directory path on the “\texttt{make install}” line.  For example:
+If you wish to change the default directory for a system build you will have to add the destination directory path on the \texttt{make install} line.  For example:
 \begin{lstlisting}[language=bash,numbers=none]
 $ make install DESTDIR=<your selected target directory path>
 \end{lstlisting}
 
-The application name can be set during installation, but defaults to cin so that the GG/Infinity build can coexist with other Cinelerra builds if necessary.  To override the default cin name, use:	
+The application name can be set during installation, but defaults to cin so that the GG/Infinity build can coexist with other Cinelerra builds if necessary.  To override the default \texttt{cin} name, use:	
 \begin{lstlisting}[language=bash,numbers=none]
 $ ./configure --with-exec-name=cinelerra
 \end{lstlisting}
@@ -181,7 +181,7 @@ $ export FFMPEG_EXTRA_CFG=" --disable-vdpau"
 \subsection{Notes about Building from Git in your Customized Environment}%
 \label{sub:notes_about_building_from_git_in_your_customized_environment}
 
-Getting a build to work in a custom environment is not easy.  If you have already installed libraries which are normally in the thirdparty build, getting them to be recognized means you have to install the "devel" version so the header files which match the library interfaces exist.  Below is the list of thirdparty builds, but this list may have changed over time.
+Getting a build to work in a custom environment is not easy.  If you have already installed libraries which are normally in the thirdparty build, getting them to be recognized means you have to install the \textit{devel} version so the header files which match the library interfaces exist.  Below is the list of thirdparty builds, but this list may have changed over time.
 % It's list of Table?
 
 \begin{table}[htpb]
@@ -225,18 +225,18 @@ Getting a build to work in a custom environment is not easy.  If you have alread
 \end{table}
 
 
-The "yes" means force build and “auto” means probe and use the system version if the build operation is not static.  
-To get your customized build to work, you need to change the probe options for the conflicting libraries from "yes" to "auto", or even rework the \texttt{configure.ac} script.  
+The \textit{yes} means force build and \textit{auto} means probe and use the system version if the build operation is not static.  
+To get your customized build to work, you need to change the probe options for the conflicting libraries from \textit{yes} to \textit{auto}, or even rework the \texttt{configure.ac} script.  
 There may be several libraries which need special treatment.
 
-An example of a problem you might encounter with your customized installation is with “\texttt{a52dec}” which has probes line \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
+An example of a problem you might encounter with your customized installation is with \texttt{a52dec} which has probes line \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
 In this case, \texttt{djbfft} is only built because \texttt{a52dec} is built, so if your system has \texttt{a52dec}, set \texttt{a52dec} to auto and see if that problem is solved by retrying the build with:  
 \begin{lstlisting}[language=bash,numbers=none]
 $ ./confgure --with-single-user -enable-a52dec=auto .
 \end{lstlisting}
 
 With persistence, you can get results, but it may take several tries to stabilize the build.  
-If you need help, email the "\texttt{log}" and "\texttt{config.log}", which is usually sufficient to determine why a build failed.
+If you need help, email the \texttt{log} and \texttt{config.log}, which is usually sufficient to determine why a build failed.
 %\vspace{5ex}
 
 If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational.
@@ -253,15 +253,15 @@ $ done
 \label{sub:cloning_the_repository_for_faster_updates}
 
 If you want to avoid downloading the software every time an update is available you need to create a local "repository" or repo.  
-The repo is a directory where you first do a “\texttt{git clone}”.  
+The repo is a directory where you first do a \texttt{git clone}.  
 For the initial git clone, setup a local area for the repository storage, referred to as \texttt{<repo\_path>}.  
-The “\texttt{git clone}” creates a repo named "\texttt{cin5}" in the \texttt{/<repo\_path>/} directory.  
+The \texttt{git clone} creates a repo named \texttt{cin5} in the \texttt{/<repo\_path>/} directory.  
 This accesses about 530\,MB of repo data, so the device has to have at least that available.  
 The repo path is always a perfect clone of the main repo.
 
 \paragraph{Setting up the initial clone}%
 \label{par:setting_up_the_initial_clone}
-add “\texttt{ -\,- depth 1}” before cin5 which is faster/smaller, but has no history.
+add "\texttt{ -{}-depth 1}" before \texttt{cin5} which is faster/smaller, but has no history.
 
 \begin{lstlisting}[numbers=none]
 $ cd /<repo\_path>/
@@ -308,7 +308,7 @@ $ git checkout <version>
 \end{lstlisting}
 
 
-The “git log” command produces a log file with hash values for commit keys.  The hash ids are the commit names to use when you use git checkout.  
+The \texttt{git log} command produces a log file with hash values for commit keys.  The hash ids are the commit names to use when you use git checkout.  
 Next is displayed sample output:
 
 
@@ -326,7 +326,7 @@ Author: Good Guy <good1.2guy@gmail.com>
 Date: Sat Feb 17 18:09:22 2018 -0700
 \end{lstlisting}
 
-For the “git checkout <version>, you would then keyin the line below for the following results:
+For the\texttt{ git checkout <version>}, you would then keyin the line below for the following results:
 
 \begin{lstlisting}[numbers=none]
 $ git checkout f87479bd556ea7db4afdd02297fc00977412b873
@@ -355,7 +355,7 @@ $ git checkout master
 \label{sub:debuggable_single_user_build}
 
 
-To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead /tmp should be substituted with a permanent disk path if you want to keep it.
+To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead \texttt{/tmp} should be substituted with a permanent disk path if you want to keep it.
 
 \begin{lstlisting}[numbers=none]
 $ git clone ...
@@ -379,11 +379,11 @@ $ gdb ./ci
 
 There are some generic build scripts included in the Cinelerra-GG GIT repository for users who want to do unbundled builds with ffmpeg already available on their system.  
 This has been tested on Arch, Ubuntu 18, FreeBSD, and Leap 15 (rpm) at the time this was documented.  
-The names of the build scripts are:  arch.bld ,  bsd.bld , deb.bld , and rpm.bld .  
-These scripts are in the “blds” subdirectory.  
-The bsd.bld should be used with the bsd.patch file in that same directory.
+The names of the build scripts are:  \texttt{arch.bld} ,  \texttt{bsd.bld} , \texttt{deb.bld} , and \texttt{rpm.bld}.  
+These scripts are in the \texttt{blds} subdirectory.  
+The \texttt{bsd.bld} should be used with the \texttt{bsd.patch} file in that same directory.
 
-The reason that Cin Infinity traditionally uses thirdparty builds (bundled builds)\todo{hanging line} is because there are a lot of different distros with varying levels of ffmpeg and other needed thirdparty libraries.  
+The reason that Cin Infinity traditionally uses thirdparty builds (bundled builds) is because there are a lot of different distros with varying levels of ffmpeg and other needed thirdparty libraries.  
 However, some users prefer using their current system baseline without another/different copy of ffmpeg.  
 With different levels of the user’s libraries, uncertainty, potential instability, and unknown issues may come up while running Cinelerra and this will make it, for all practical purposes, impossible to diagnose and debug problems or crashes.  
 There may be no help in these cases.  You are encouraged to report any errors which potentially originate from Cin Infinity, but if the data indicates alternate library sources, please report the problems to the appropriate maintainers.
@@ -394,7 +394,7 @@ For example, unless special options were set up by you, the LV2 audio plugins wi
 Nor will the codec libzmpeg, the file codec ac3, or DVD creation.  
 The old school file classes will all work, but some of the formats that come with ffmpeg may not because of the way that ffmpeg was installed on your operating system.  
 That is because the Cinelerra ffmpeg is a known static build and is usually the latest stable/released version.  
-In the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating; you can always run “ffmpeg -formats” and “ffmpeg -codecs” to see what is available on your system.
+In the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating; you can always run \texttt{ffmpeg -formats} and \texttt{ffmpeg -codecs} to see what is available on your system.
 
 
 \section{Download Already Built Cinelerra-GG}%
@@ -405,13 +405,13 @@ There are also 32-bit i686 Ubuntu, Debian, and Slackware versions available.
 These are updated on a fairly regular basis as long as significant code changes have been made.  
 They are in subdirectories of:
 
-\url{https://cinelerra-gg.org/download/tars}
+{\small \url{https://cinelerra-gg.org/download/tars}
+	
+	\url{https://cinelerra-gg.org/download/pkgs}}
 
-\url{https://cinelerra-gg.org/download/pkgs}
-
-The “\textbf{tars}” directory contains single-user static builds for different distros.  
+The \textbf{tars} directory contains single-user static builds for different distros.  
 This is the recommended usage of Cinelerra-GG because all of the files will exist in a single directory.  
-To install the single user builds, download the designated tarball from the ./tars subdirectory and unpack as indicated below:
+To install the single user builds, download the designated tarball from the \texttt{./tars} subdirectory and unpack as indicated below:
 
 \begin{lstlisting}[language=bash,numbers=none]
 $ cd /path
@@ -422,12 +422,10 @@ $ tar -xJf /src/path/cinelerra-5.1-*.txz    # for the *, substitute your distro 
 
 Do NOT download the LEAP 10-bit version unless you use h265 (it can't render 8-bit h265).
 
-The “\textbf{pkgs}” directory contains the standard packaged application for various distros.  
+The \textbf{pkgs} directory contains the standard packaged application for various distros.  
 This will install a dynamic system version for users who prefer to have the binaries in the system area and for multi-user systems.  
-In addition, performing the package install checks the md5sum in the file md5sum.txt to ensure the channel correctly transmits the package.  
-There is a README.pkgs file in the “pkgs” directory with instructions so you can “cut and paste” and avoid typos; it is also shown next.
-
-%TODO point to real READ.pkgs
+In addition, performing the package install checks the md5sum in the file \texttt{md5sum.txt} to ensure the channel correctly transmits the package.  
+There is a {\small \href{https://cinelerra-gg.org/download/pkgs/README.pkgs}{README.pkgs}} file in the \texttt{pkgs} directory with instructions so you can \textit{ cut and paste} and avoid typos; it is also shown next.
 
 \begin{lstlisting}[numbers=none]
 Depending on the distro, use the instructions below and select the appropriate 
@@ -570,17 +568,21 @@ pacman -S cin
 
 There are also some special complete distribution systems available that include Cinelerra-GG for audio and video production capabilities.
 
-AV Linux is a downloadable/installable shared snapshot ISO image based on Debian. 
+\textbf{AV Linux} is a downloadable/installable shared snapshot ISO image based on Debian. 
 It provides the user an easy method to get an Audio and Video production workstation without the hassle of trying to find and install all of the usual components themselves. 
 Of course, it includes Cinelerra-GG!  
 It is at:
 
-\url{http://www.bandshed.net/avlinux/}
+\begin{center}
+	{\small \url{http://www.bandshed.net/avlinux/}}
+\end{center}
 
-Bodhi Linux is a free and open source distribution that comes with a curated list of open source software for digital artists who work with audio, video, includes Cinelerra GG, games, graphics, animations, physical computing, etc.  
+\textbf{Bodhi Linux} is a free and open source distribution that comes with a curated list of open source software for digital artists who work with audio, video, includes Cinelerra GG, games, graphics, animations, physical computing, etc.  
 It is at:
 
-\url{https://gitlab.com/giuseppetorre/bodhilinuxmedia}	
+\begin{center}
+	{\small \url{https://gitlab.com/giuseppetorre/bodhilinuxmedia}}
+\end{center}	
 
 \section{Cinx and a “Bit” of Confusion}%
 \label{sec:cinx_and_a_bit_of_confusion}
@@ -591,7 +593,7 @@ The third-party library used for x265 must be specially compiled with \texttt{--
 This build will not be able to output 8-bit depth which means you have to retain the Cin version also.  
 Whatever build ffmpeg is linked to will determine what bit depth it can output.  
 This is why there have to be separate builds.  
-If you install both packages, Cin and CinX, you may get “file conflicts of same file name” --- just continue.
+If you install both packages, Cin and CinX, you may get \textit{file conflicts of same file name} --- just continue.
 
 Keep in mind that the regular 8-bit version works on 8-bit bytes --- the standard word size for computers, but the 10-bit version has to use 2 words to contain all 10 bits so you can expect rendering to be as much as twice as slow.  
 There is also a 12-bit version for consideration but currently the results are simply the same as 10-bit with padding to make 12-bit so it is of no value.

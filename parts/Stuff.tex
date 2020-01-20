@@ -97,29 +97,33 @@ A color indicator that shows in the main track canvas timeline and the composito
 Figure~\ref{fig:cursor01} using the default \textit{playing} method where the frame in the compositor is the one that was just played; in this case play was in the forward direction.  Note that the insertion pointer in the main track canvas shows 01:20 but the compositor show 01:19 so you know what you last saw.  Also, the cursor/cursor tops in both windows is red.
 
 \begin{figure}[htpb]
-    \centering
-    %\includegraphics[width=0.8\linewidth]{name.ext}
-    \begin{tikzpicture}[scale=1, transform shape]
-    \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/cursor01.png}};    
-    \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {Red cursor in Compositor};
-    \node [yshift=-26mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {red cursor in Timeline};    
-    \end{tikzpicture}    
-    \caption{"Default" mode with red cursors}
-    \label{fig:cursor01}
+	\centering
+	%\includegraphics[width=0.8\linewidth]{name.ext}
+	\begin{tikzpicture}[scale=1, transform shape]
+	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/cursor01.png}};    
+	\node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {Red cursor in Compositor};
+	\node [yshift=-26mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {red cursor in Timeline};
+	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-20mm] img1.north west);
+	\draw [->, line width=1mm] (Timeline) edge  ([yshift=-26mm] img1.north west);   
+	\end{tikzpicture}    
+	\caption{"Default" mode with red cursors}
+	\label{fig:cursor01}
 \end{figure}
 
 Figure~\ref{fig:cursor02} using the \textit{Always show next frame} method where the frame in the compositor is the same one that would have shown with a seek; in this case play was in the forward direction.  Note that the insertion pointer in the main track canvas shows 01:20 and the compositor shows 01:20.  Also, the cursor/cursor tops in both windows is white.
 
 \begin{figure}[htpb]
-    \centering
-    %\includegraphics[width=0.8\linewidth]{name.ext}
-    \begin{tikzpicture}[scale=1, transform shape]
-    \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/cursor02.png}};    
-    \node [yshift=-21mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {White cursor in Compositor};
-    \node [yshift=-27mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {White cursor in Timeline};    
-    \end{tikzpicture}    
-    \caption{"Always show next frame" mode with white cursors}
-    \label{fig:cursor02}
+	\centering
+	%\includegraphics[width=0.8\linewidth]{name.ext}
+	\begin{tikzpicture}[scale=1, transform shape]
+	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/cursor02.png}};    
+	\node [yshift=-21mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {White cursor in Compositor};
+	\node [yshift=-27mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {White cursor in Timeline};
+	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-21mm] img1.north west);
+	\draw [->, line width=1mm] (Timeline) edge  ([yshift=-27mm] img1.north west);    
+	\end{tikzpicture}    
+	\caption{"Always show next frame" mode with white cursors}
+	\label{fig:cursor02}
 \end{figure}
 
 \subsection{Seeking Issues}%

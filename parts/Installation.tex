@@ -68,7 +68,7 @@ $ make 2>&1 | tee log        # make and log the build
 $ grep "\*\*\*.*error" -ai log
         \end{lstlisting}
         If this reports errors and you need assistance or you think improvements can be made to the builds,
-        email the log which is listed below to {\small \url{cin@lists.cinelerra-gg.org:}}
+        email the log which is listed below to: \href{mailto:cin@lists.cinelerra-gg.org}{cin@lists.cinelerra-gg.org}
         \begin{lstlisting}[language=bash,numbers=none]
 $ /<build_path>/cinelerra5/cinelerra-5.1/log
         \end{lstlisting}
@@ -486,11 +486,14 @@ apt update
 apt upgrade cin
 ##apt remove cin
 
-# MINT should use the same procedure as Ubuntu, but: 
-# Note: apt-add-repository did not work for me, I had to use the gui version:
-#  System_OR_Administration->Software Sources->Additional Repositories->Add a new repository
+# MINT should use the same procedure as Ubuntu, but apt-add-repository does not seem to work,
+#  so use the GUI UpdateManager as follows:
+#  Administration->Software Sources->Additional Repositories->Add a new repository
+#    (Note instead of Administration, some versions of Mint GUI UpdateManager might be System)
 #  For Mint18,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint18 xenial main
-#  For Mint19,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint19 bionic main 
+#  For Mint19,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint19 bionic main
+# IMPORTANT NOTE: if you get an error when doing the above, you will have to manually add the above line
+#    by editing the file:   /etc/apt/sources.list.d/additional-repositories.list
 apt update
 apt install cin
 #to update a previous install

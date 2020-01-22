@@ -41,7 +41,7 @@ What is an MPEG file?  A very common file format is MPEG because it works with m
 \subsection{Working with Still Images}%
 \label{sub:working_with_still_images}
 
-Still images are played from 1 to any number of times, over and over; they have no duration. You can load still images on video tracks just like you do for any video file. When loaded on the track, use the down arrow on the timeline so you can see the single frame. To extend the length of the image, drag its boundaries just as you would do with regular video media. You can drag the boundaries of a still image as much as you want. Images in Cinelerra have the ability to be dragged to an infinite length. Alternatively, you can define the initial length of the loaded images. The parameter is set in the Images section of the Settings $\rightarrow$ ~Preferences $\rightarrow$ ~Recording window.
+Still images are played from 1 to any number of times, over and over; they have no duration. You can load still images on video tracks just like you do for any video file. When loaded on the track, use the down arrow on the timeline so you can see the single frame. To extend the length of the image, drag its boundaries just as you would do with regular video media. You can drag the boundaries of a still image as much as you want. Images in Cinelerra have the ability to be dragged to an infinite length. Alternatively, you can define the initial length of the loaded images. The parameter is set in the Images section of the \texttt{Settings $\rightarrow$ ~Preferences $\rightarrow$ ~Recording} window.
 
 Unless your original material comes from a digital source using its best resolution (like a digital camera), the first thing you might have to do before you can use it is to somehow capture the assets into a usable digital medium. For old photos, paper maps, drawings or diagrams, you can scan them into a file format like PNG, TIF, TGA or JPG files by using a digital scanner.
 
@@ -73,15 +73,17 @@ File lists formats can be utilized in some way for the following list of types o
 \end{center}
 
 %\vspace*{1ex} 
-Using the example of jpeg’s, the jpeg list sequence file type is the easiest and fastest way to access a sequence of jpg images as a single asset.  First build a jpeglist sequence file and name it something like jpeglist.sh.  There is an example script of how to do this in the Auxiliary Programs section of the Appendix.  Once the jpeglist.sh file is built you can then run it similar to this line:
+Using the example of jpeg’s, the jpeg list sequence file type is the easiest and fastest way to access a sequence of jpg images as a single asset.  First build a jpeglist sequence file and name it something like jpeglist.sh.  There is an example script of how to do this in the Auxiliary Programs section of the Appendix (\ref{sec:Image Sequence Creation}).  Once the jpeglist.sh file is built you can then run it similar to this line:
 
 \begin{lstlisting}[language=bash,numbers=none]
 $ jpeglist.sh   /<path>/file.jpg   /<path>/DSC*.jpg
 \end{lstlisting}
 
-\vspace*{1ex} \noindent If <path> is the same on both outfile and infiles, then file.jpg is created in the same directory as infiles, the directory contains the entire asset, and the file list uses relative paths; otherwise the file list contains absolute paths.   Since this creates outfile list as a single asset, the memory demand and access time is much lower.  When you load the outfile in cinelerra, you will need to set \textit{Try ffmpeg last} since ffmpeg does not work with jpeglist sequence files.
+\vspace*{1ex} \noindent If <\texttt{path}> is the same on both outfile and infiles, then file.jpg is created in the same directory as infiles, the directory contains the entire asset, and the file list uses relative paths; otherwise the file list contains absolute paths.   Since this creates outfile list as a single asset, the memory demand and access time is much lower.  When you load the outfile in cinelerra, you will need to set \textit{Try ffmpeg last} since ffmpeg does not work with jpeglist sequence files.
 
-An example output file from running this script residing in the directory where \texttt{DSC*.jpg} files exist is shown below.   To use this, turn off ffmpeg probes first, and open \texttt{timelapse.jpg} using File ~$\rightarrow$ ~Load files.
+An example output file from running this script residing in the directory where \texttt{DSC*.jpg} files exist is shown below.
+
+To use this, turn off ffmpeg probes first, and open \texttt{timelapse.jpg} using File ~$\rightarrow$ ~Load files.
 
 \begin{lstlisting}[language=bash,numbers=none,caption={Example: timelapse.jpg},captionpos=t]
 JPEGLIST
@@ -132,11 +134,11 @@ This will access the media using ffmpeg which is slower so be patient.
 
 \textit{Warning: Expert Usage only.}  Raw digital camera images are a special kind of image file that Cinelerra can load. Dcraw, as used by Cinelerra, is Dave Coffin’s open-source computer program which reads many raw-image formats typically produced by high-end digital cameras.  Currently almost 700 of the types of cameras it recognizes are listed at:
 
-\vspace*{1ex} \url{https://www.cybercom.net/~dcoffin/dcraw/}
+\hspace{4em}	{\small \url{https://www.cybercom.net/~dcoffin/dcraw/}}
 
-\vspace*{1ex} \noindent For example, included is the Canon Powershot SX60 (newly available in August, 2014).  Because ffmpeg tries to load \textit{any and every} file if \textit{Try Ffmpeg first} is enabled. it will make an attempt to load Raw Camera files first before any other file driver gets the chance.  In addition, there is the possibility that dcraw could conflict with the standard TIFF format, since it might be seen as format type \textit{tiff-pipe}.  Therefore it is necessary to specifically enable CR2 and either move it to the top or disable \textit{FFMPEG\_Early} and enable \textit{FFMPEG\_late} in the \textit{Probe Order} as described in another section.  These changed settings will be retained across cinelerra sessions in .bcast5.  Raw Camera mode is most likely going to be used by expert camera users.
+For example, included is the Canon Powershot SX60 (newly available in August, 2014).  Because ffmpeg tries to load \textit{any and every} file if \textit{Try Ffmpeg first} is enabled. it will make an attempt to load Raw Camera files first before any other file driver gets the chance.  In addition, there is the possibility that dcraw could conflict with the standard TIFF format, since it might be seen as format type \textit{tiff-pipe}.  Therefore it is necessary to specifically enable CR2 and either move it to the top or disable \textit{FFMPEG\_Early} and enable \textit{FFMPEG\_late} in the \textit{Probe Order} as described in another sections (\ref{sub:probe_order_loading_media} and \ref{sec:ffmpeg_early_probe_explanation}).  These changed settings will be retained across cinelerra sessions in .\texttt{bcast5}.  Raw Camera mode is most likely going to be used by expert camera users.
 
-The first screenshot in figure~\ref{fig:raw} as in ~Settings $\rightarrow$ ~Preferences $\rightarrow$ ~Playback A Tab, shows the default checked settings of \textit{Interpolate CR2 images} and \textit{White balance CR2 images} which display the raw images in a way that you expect.  However, you may want to uncheck them to ensure that no program manipulation has modified your images so that you can add plugins or make your own modifications.  Unchecked indicates that the images are as closest as possible to unadulterated raw.
+The first screenshot in figure~\ref{fig:raw} as in \texttt{Settings $\rightarrow$ ~Preferences $\rightarrow$ ~Playback A} Tab, shows the default checked settings of \textit{Interpolate CR2 images} and \textit{White balance CR2 images} which display the raw images in a way that you expect.  However, you may want to uncheck them to ensure that no program manipulation has modified your images so that you can add plugins or make your own modifications.  Unchecked indicates that the images are as closest as possible to unadulterated raw.
 
 The second screenshot showing CR2 for Raw Camera highlighed/enabled in the Preferences Probes’ screen.
 
@@ -187,7 +189,7 @@ All data that you work with in Cinelerra is acquired either by loading from disk
        \item [Replace current project:] all tracks in the current project are deleted and a set of new tracks are created to match the source file.  Project attributes are only changed when loading XML. If multiple files are selected for loading, Cinelerra adds a set of new tracks for each file. New resources are created in the Resources Window, replacing the current ones.
        \item [Replace current project and concatenate tracks: ] same as replace current project, except that if multiple files are selected, Cinelerra will concatenate the tracks of each file, inserting different source files in the same set of tracks, one after another, in alphanumeric order, starting at 0. New resources are created in the Resources Window, replacing the current ones.  Files go across the timeline.
     \end{description}
-    For ffmpeg and mpeg files, when the Insertion strategy methodology in the File $\rightarrow$ Load files pulldown is chosen to be either \textit{Replace current project} or \textit{Replace current project and concatenate tracks}, the basic session format parameters are reinitialized to match new media.  This selects the default asset and determines its width, height, and video length, frame rate, calculates the colormodel, and assumes square pixels to make an intelligent guess about aspect ratio for video.  For audio, the sample rate, audio length, and channel count (mono, stereo, or 5.1) are reinitialized.  In addition the \textit{Track Size} will be computed and is reinitialized to match the new loaded media.  When using \textit{replace} type insertion strategy, the new asset list is the only media in use so that this update saves the user from immediately needing to change the session format to match the only possibility.
+    For ffmpeg and mpeg files, when the Insertion strategy methodology in the \texttt{File $\rightarrow$ Load files} pulldown is chosen to be either \textit{Replace current project} or \textit{Replace current project and concatenate tracks}, the basic session format parameters are reinitialized to match new media.  This selects the default asset and determines its width, height, and video length, frame rate, calculates the colormodel, and assumes square pixels to make an intelligent guess about aspect ratio for video.  For audio, the sample rate, audio length, and channel count (mono, stereo, or 5.1) are reinitialized.  In addition the \textit{Track Size} will be computed and is reinitialized to match the new loaded media.  When using \textit{replace} type insertion strategy, the new asset list is the only media in use so that this update saves the user from immediately needing to change the session format to match the only possibility.
     \begin{description}
         \item[Append in new tracks:] the current project is not deleted and new tracks are created for the source, one set of tracks for each file. New resources are created in the Resources Window.  Files go down tracks.
         \item[Concatenate to existing tracks:]  the current project is not deleted and new files are concatenated to the existing armed tracks, inserted in the same set of tracks of the current project, one after another, in     alphanumeric order, starting at the end of the tracks. If the current project has more tracks than the source, the source file will be inserted in the first set of armed tracks. If no tracks are armed, no files will be inserted. New resources are created in the Resources Window.
@@ -213,7 +215,7 @@ This behavior is available in most listboxes.   It is an especially useful metho
     \item[Loading the backup] There is one special XML file on disk at all times. 
 
         After every editing operation, Cinelerra saves the current project to a backup in  \texttt{\$HOME/.bcast/backup.xml}. 
-        In the event of a crash, the first thing you should do after restarting Cinelerra is select File $\rightarrow$ Load backup in order to load the backup. 
+        In the event of a crash, the first thing you should do after restarting Cinelerra is select \texttt{File $\rightarrow$ Load backup} in order to load the backup. 
         This will start Cinelerra at the point in your editing operations directly before the program crashed. 
         It is important after a crash to restart Cinelerra without performing any editing operations as you will overwrite the backup. 
         Note that the backup.xml file is always a single file which means that when you are working with two instances of Cinelerra open at the same time, they use the same backup file. 
@@ -235,7 +237,7 @@ When you use the File pulldown to load files, you can do a sort within a sort wh
 \subsection{Size Numeric Format Displayed in File Load}%
 \label{sub:size_numeric_format_displayed_file_load}
 
-There are several icon buttons at the top on the right hand side of the Load window.  Each has a tooltip to explain what it is for.  You can see these in the previous figure.  One is for File size format.  There are 4 numerical representation variations for reporting the file size in the File $\rightarrow$ Load pulldown.    You can see the options in the Load window to the right of the top line that read \textit{Select files to loads} (figure~\ref{fig:load-size}):
+There are several icon buttons at the top on the right hand side of the Load window.  Each has a tooltip to explain what it is for.  You can see these in the previous figure.  One is for File size format.  There are 4 numerical representation variations for reporting the file size in the \texttt{File $\rightarrow$ Load} pulldown.    You can see the options in the Load window to the right of the top line that read \textit{Select files to loads} (figure~\ref{fig:load-size}):
 
 \begin{description}
     \item[0] this is the default and current behavior and shows bytes the same as the \textit{ls -l} command.
@@ -255,7 +257,7 @@ There are several icon buttons at the top on the right hand side of the Load win
 \subsection{Probe Order when Loading Media}%
 \label{sub:probe_order_loading_media}
 
-Why is this mentioned here?  So many programs have been written whose functionalities overlap and you may want to ensure that the one you wish to use is actually used.  Over time which one matches first may vary.  Ffmpeg is so generic that if your setting is \textit{Try ffmpeg first} it will almost certainly get used and it leaves little chance that other methods will even get a chance.  Some of the codec file drivers can open a variety of media, and some of the more common methods may have more than one file driver which could be useful to decode your media file, for example Tiff.  For expert specialized usage, when you want to guarantee that a certain method is used, you can change the \textit{probe order}.  Use the pulldown Settings $\rightarrow$ Preferences to get to the Interface tab where you will see a box in the Operation section on the left side called \textit{Probe Order}.  Click on the box and use the up/down/enabled boxes to change the order of the item you have highlighted (figure~\ref{fig:probe}).
+Why is this mentioned here?  So many programs have been written whose functionalities overlap and you may want to ensure that the one you wish to use is actually used.  Over time which one matches first may vary.  Ffmpeg is so generic that if your setting is \textit{Try ffmpeg first} it will almost certainly get used and it leaves little chance that other methods will even get a chance.  Some of the codec file drivers can open a variety of media, and some of the more common methods may have more than one file driver which could be useful to decode your media file, for example Tiff.  For expert specialized usage, when you want to guarantee that a certain method is used, you can change the \textit{probe order}.  Use the pulldown \texttt{Settings $\rightarrow$ Preferences} to get to the Interface tab where you will see a box in the Operation section on the left side called \textit{Probe Order}.  Click on the box and use the up/down/enabled boxes to change the order of the item you have highlighted (figure~\ref{fig:probe}).
 
 \begin{description} [noitemsep]
     \item[Up] move the item up 1 (if the item is currently on the top, it will be moved to the bottom)
@@ -275,7 +277,7 @@ The default setup is set to duplicate the past expected behavior with the except
 Screencast show the first few probe items.  Note that the up arrow on the left, signifies \textit{enabled}.
 Scrolling down shows the next 2 pages of possible drivers for a total of 18.
 
-The order change will not take effect until you click on the checkmark in both the Probes window and the Preferences window.  When you click on the FF button, which is in the upper right-hand corner of the main page to change \textit{Try FFMpeg first/last}, enabling of FFMPEG\_Late or FFMPEG\_Early will be toggled automatically in Probes to match that choice but does NOT change its position in the table. Be sure to only click on the FF button without the Preference/Probes window up to avoid unexpected results.  It is also recommended to leave FFMPEG\_Early/FFMPEG\_Late close to the top/bottom positions.  There is one case where you may want to disable all of the probes if you want to force PCM --- Pulse Code Modulator.  This code is always run when all other probes fail.
+The order change will not take effect until you click on the checkmark in both the Probes window and the Preferences window.  When you click on the FF button, which is in the upper right-hand corner of the main page to change \textit{Try FFMpeg first/last}, enabling of FFMPEG\_Late or FFMPEG\_Early will be toggled automatically in Probes to match that choice but does NOT change its position in the table. Be sure to only click on the FF button without the Preference/Probes window up to avoid unexpected results.  It is also recommended to leave FFMPEG\_Early/FFMPEG\_Late close to the top/bottom positions.  There is one case where you may want to disable all of the probes if you want to force PCM -- Pulse Code Modulator.  This code is always run when all other probes fail.
 
 \subsection{Program Selection Support after Load}%
 \label{sub:program_selection_support_load}
@@ -300,12 +302,12 @@ You can save your work as a project, which is what is loaded in Cinelerra now, o
 \subsection{Saving Project Files}%
 \label{sub:saving_project_files}
 
-Saving  XML files is useful to save the current state of Cinelerra before quitting an editing session. Cinelerra saves projects as XML files. There are a few options you can use to save your work via the File pulldown menu: Save, Save as\dots, Export project, Save backup.  You can either overwrite an existing file or enter a new filename. Cinelerra automatically concatenates .xml to the filename if no .xml extension is given.
+Saving  XML files is useful to save the current state of Cinelerra before quitting an editing session. Cinelerra saves projects as XML files. There are a few options you can use to save your work via the File pulldown menu: \textit{Save}, \textit{Save as\dots}, \textit{Export project}, \textit{Save backup}.  You can either overwrite an existing file or enter a new filename. Cinelerra automatically concatenates .xml to the filename if no .xml extension is given.
 
 When Cinelerra saves a file, it saves the EDL of the current project but does not save any media, instead just pointers to the original media files. For each media file, the XML file stores either an absolute path or just the relative path. If the media is in the same directory as the XML file, a relative path is saved. If it is in a different directory, an absolute path is saved.
 
 You have to be careful when moving files around to avoid breaking the media linkages. You can keep the media and the XML file in the same directory forever and freely move the whole directory, since relative paths are saved. Alternatively you can save the XML file in a different directory than the media but then you can't move the media. In this case you can freely move your XML file around, since absolute paths are saved. If you saved your XML file in the same directory as your media but you would like to move location, you can change the paths from relative to absolute by going
-to File $\rightarrow$ Save as... and entering the new location. Similarly if you saved your project outside your media directory but you would like to move your media to another location, you can change the paths from absolute to relative by going to File $\rightarrow$ Save as\dots and saving your XML file in the same directory as the media.
+to \texttt{File $\rightarrow$ Save as}$\dots$ and entering the new location. Similarly if you saved your project outside your media directory but you would like to move your media to another location, you can change the paths from absolute to relative by going to File $\rightarrow$ Save as\dots and saving your XML file in the same directory as the media.
 
 You can also repair broken media linkage by editing the XML file in a text editor. For every media you moved, search for the old path and replace it with the new one. You should make a backup copy of your XML file before editing. You can also replace the path of every asset whose source file you moved also within the program, by entering the new location in the Asset info window. To open this window, right click on the asset in the Resources window and choose Info\dots in the popup menu. Directly type the path in the first field of the dialog or click on the magnifier on the right to browse your files. Operating
 from the GUI is convenient only when a very small number of changes is needed.
@@ -352,16 +354,16 @@ Originally, the easiest way to maintain a project for moving to another computer
 
 In an effort to minimize loss of work due to user, hardware, or software issues, cinelerra has some automatic backup capabilities.
 
-Cinelerra automatically saves every \textit{editing operation} to the current project on disk continuously to a file named \texttt{\$HOME/.bcast5/backup.xml}.  In the unlikely event of a crash, when you restart cinelerra, you should select File $\rightarrow$ Load backup in order to continue with the operations that were recorded before the crash.  If you have more than 1 instance of Cinelerra running, only the last editing operation made in whichever instance it was last made, will overwrite the backup. 
+Cinelerra automatically saves every \textit{editing operation} to the current project on disk continuously to a file named \texttt{\$HOME/.bcast5/backup.xml}.  In the unlikely event of a crash, when you restart cinelerra, you should select \texttt{File $\rightarrow$ Load backup} in order to continue with the operations that were recorded before the crash.  If you have more than 1 instance of Cinelerra running, only the last editing operation made in whichever instance it was last made, will overwrite the backup. 
 
-There is still 1 more backup that may save you.  If for some reason you forgot to use \textit{Load backup} immediately when restarting, you have a second chance to use File $\rightarrow$ Load and select \texttt{\$HOME/.bcast5/backup.prev} as long as you only loaded a different file and have performed no editing operations.  This same file is also used by multiple instances of cinelerra.
+There is still 1 more backup that may save you.  If for some reason you forgot to use \textit{Load backup} immediately when restarting, you have a second chance to use \texttt{File $\rightarrow$ Load} and select \texttt{\$HOME/.bcast5/backup.prev} as long as you only loaded a different file and have performed no editing operations.  This same file is also used by multiple instances of cinelerra.
 
 \textbf{Perpetual session} is very useful for working on a project over many days so you can just quit before shutting down and the next time you start up Cinelerra you will be right back where you left off.  
 You will retain all of your undo’s and redo’s.  
-The binary file name is \texttt{\$HOME/.bcast5/perpetual.dat} and as long as Settings $\rightarrow$ Preferences, the Appearance tab has the Flag \textit{Perpetual session} set this capability takes effect.  
-It is very important to understand that this is not the same as the continuously editing- operation-updated backup.xml file.  
+The binary file name is \texttt{\$HOME/.bcast5/perpetual.dat} and as long as \texttt{Settings $\rightarrow$ Preferences}, the Appearance tab has the Flag \textit{Perpetual session} set this capability takes effect.  
+It is very important to understand that this is not the same as the continuously editing- operation-updated \texttt{backup.xml} file.  
 The perpetual.dat file is \textit{only} updated when you Quit cinelerra in the normal manner.  
-Which means if you interrupt the program, or kill it, or there is a segv or system crash, the perpetual.dat file will only reflect the state of your project from when you last started cinelerra and none of the editing/undo’s/redo’s you executed during the current session which was not ended normally.
+Which means if you interrupt the program, or kill it, or there is a segv or system crash, the \texttt{perpetual.dat} file will only reflect the state of your project from when you last started cinelerra and none of the editing/undo’s/redo’s you executed during the current session which was not ended normally.
 \vspace{1ex}
 
 Some notes to keep in mind about Perpetual session are:
@@ -371,9 +373,9 @@ Some notes to keep in mind about Perpetual session are:
     \item takes disk space in \texttt{.bcast5} area and this could get really big
     \item after you complete a project, it is advisable to turn off the Perpetual session flag before quitting so
     that when you start a new project, you can start with a fresh perpetual.dat by turning the flag on or
-    after stopping cinelerra, delete the current \$HOME/.bcast5/perpetual.dat file
+    after stopping cinelerra, delete the current \texttt{\$HOME/.bcast5/perpetual.dat} file
     \item only session data is backed up (not program feature setup)
     \item the files backup.xml and backup.prev will operate the same as before so that if there is a crash, you
-    will want to use File $\rightarrow$ Load backup in order to continue where you were interrupted.
+    will want to use \texttt{File $\rightarrow$ Load backup} in order to continue where you were interrupted.
 \end{itemize}
 

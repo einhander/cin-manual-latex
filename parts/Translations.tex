@@ -3,14 +3,14 @@
 
 There are several \textit{po} files for various languages to make Cinelerra more usable for non-English countries.  A program, \texttt{xlat.C}, assists in providing several variations of text files that can be used in order to allow anyone to help make meaningful translations.  All of the \textit{po} files are located in Cinelerra’s \texttt{/po} subdirectory. There are 3 different ways to proceed described below.
 
-Because Cinelerra frequently is changin, it is a good idea to start by building a new \texttt{cin.po} file which contains the latest messages/words in English to be translated, along with a comment line of the routine name and line number.  To create this, run the following line from a window:
+Because Cinelerra frequently is changing, it is a good idea to start by building a new \texttt{cin.po} file which contains the latest messages/words in English to be translated, along with a comment line of the routine name and line number.  To create this, run the following line from a window:
 
 \begin{lstlisting}[language=bash,numbers=none]
 /{your cinelerra directory}/po/xlat.sh > /tmp/cin.po
 \end{lstlisting}
 
 \begin{description}
-	\item[Method 1]  use the freely-available \textit{poedit} program to provide translations to the current \texttt{x.po} where x is your language such as fr.po, de.po, ru.po, etc.  The drawback to this is that x.po files are not recreated monthly so they do not have all of the newest phrases included.
+	\item[Method 1]  use the freely-available \textit{poedit} program to provide translations to the current \texttt{xx.po} where xx is your language such as fr.po, de.po, ru.po, etc.  The drawback to this is that xx.po files are not recreated monthly so they do not have all of the newest phrases included.
 	\item[Method 2] using \textit{msgmerge} is probably the simplest method for user translation.
 \end{description}
 
@@ -18,11 +18,11 @@ To use the msgmerge command after creating a new cin.po as suggested previously:
 
 \begin{lstlisting}[language=bash,numbers=none]
 /{your cinelerra directory}/po/xlat.sh > /tmp/cin.po # use /tmp as a temporary place
-cp /{your cinelerra directory}/po/x.po /tmp/x.po     # substitute your language for x
-msgmerge -U /tmp/x.po /tmp/cin.po                    # x.po will be overwritten to include updates
+cp /{your cinelerra directory}/po/xx.po /tmp/xx.po     # substitute your language for x
+msgmerge -U /tmp/xx.po /tmp/cin.po                    # xx.po will be overwritten to include updates
 \end{lstlisting}
 
-Then use any editor or poedit to provide messages/words translations in the new x.po file.
+Then use any editor or poedit to provide messages/words translations in the new xx.po file.
 
 \begin{description}
 	\item[Method 3 ] using \textit{xlat.C} program is the most versatile with a variety of features.  When a non-existent language translation is first set up, you would want to use this methodology to get started.
@@ -55,16 +55,17 @@ This program has 6 commands where the desired command is the first parameter to 
 	\item \textit{xlat} = overlay translation.  This is the most important use and is described next.
 \end{enumerate}
 
-The xlat command line parameters specify a new cin.po template, usually created with xlat.sh, and a list of key/value files which are used to build a mapping for the desired translation.  The mapping files are added to the mapping in the order they appear on the command line, and any existing key is replaced with the newest definition; so typically the newest key/value data is last in the command parameters.  Once the mapping is built the first parameter, the new po template, is scanned and the keys it contains are used to find the latest mapping in the key/value files.  The new value replaces the existing value in the template.  For example, to overlay a new map onto an existing po:
+The xlat command line parameters specify a new cin.po template, usually created with xlat.sh, and a list of key/value files which are used to build a mapping for the desired translation.  The mapping files are added to the mapping in the order they appear on the command line, and any existing key is replaced with the newest definition; so typically the newest key/value data is last in the command parameters.  
+Once the mapping is built, the first parameter which is the new po template is scanned and the keys it contains are used to find the latest mapping in the key/value files.  The new value replaces the existing value in the template.  For example, to overlay a new map onto an existing po using the Spanish es.po file and where cin.po represents the latest english words:
 
 \begin{lstlisting}[language=bash,numbers=none]
 c++ xlat.C
-./a.out po < xx.po > /tmp/xx.csv
-./a.out po < new.po > /tnp/new.csv
-./a.out xlat xx.po /tmp/xx.csv /tmp/new.csv > /tmp/new.po
+./a.out po < es.po > /tmp/es.csv
+./a.out po < cin.po > /tmp/cin.csv
+./a.out xlat cin.po /tmp/es.csv > /tmp/new_es.po
 \end{lstlisting}
 
-The first run preserves the existing mapping of xx.po, the second creates new mappings from new.po, and the third merges the original and new mappings to create a po with new included/overriding xx.po.
+The first run preserves the existing mapping of es.po, the second creates new mappings from cin.po, and the third merges the original and new mappings to create a po with new included/overriding es.po.
 
 \paragraph{NOTE:} some words and abbreviations can lead to ambiguous language translations.  Therefore, the usage of C\_ and D\_ in the program code was added to represent Contextual and Definitional exceptions to the usual \_ and N\_ .  You will see the following:
 

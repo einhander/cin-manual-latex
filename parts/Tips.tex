@@ -1,19 +1,19 @@
 \chapter{Performance and other Tips}%
 \label{cha:performance_tips}
 
-Performance and usability of Cinelerra are directly related to the software and video format being used in conjunction with your computer system hardware -- the number of CPUs and its speed, I/O bus speed, graphics card, and amount of available memory. A basic, less powerful system will be sufficient for users working with audio only or lower resolution video formats.  Higher end computers will be needed when playing and working with higher resolution formats, like 1080p, 1440p and 2160p. Adding effects and several tracks of audio will require more cpu, memory, and various other resources to read, decode and play video. 
+Performance of Cinelerra is related to the software and video format being used in conjunction with your computer system hardware -- the number of CPUs and its speed, I/O bus speed, graphics card, and amount of available memory. A basic, less powerful system will be sufficient for users working with audio only or lower resolution video formats.  Higher end computers will be needed when playing and working with higher resolution formats, like 1080p or 4k. Adding effects and multiple tracks will require more cpu, memory, and various other resources to 
+perform at an acceptable level.
 
-Perhaps the easiest method for determining if your performance could be improved is to look at the numerical value displayed as \textit{Framerate achieved}.  Good performance means that when \texttt{Play every frame} is set in:
+Perhaps the easiest method for determining if your performance could be improved is to look at the numerical value displayed as \textit{Framerate achieved}.  Good performance means that when \texttt{Play every frame} is set 
+in \texttt{Settings $\rightarrow$ Preferences, Playback A tab}, the frames/second (frames per second or fps) in playback might be almost always at the maximum rate of your project setting and/or video frame rate. You can check this in \texttt{Settings $\rightarrow$ Preferences, Playback A}, by watching \textit{Framerate achieved} while playing forward.  A higher number is better, up to the format frame rate of the video.
 
-\texttt{Settings $\rightarrow$ Preferences, Playback A tab}, the frames/second (frames per second or fps) in playback might be almost always at the maximum rate of your project setting and/or video frame rate. You can check this in \texttt{Settings $\rightarrow$ Preferences, Playback A}, by watching \textit{Framerate achieved} while playing forward.  A higher number is better, up to the format frame rate of the video.
-
-Some hardware considerations are listed here:
+Some computer hardware factors to consider for better performance are listed here:
 \begin{itemize}
 	\item Multi-core and more SMP processors greatly improve Cinelerra speed by making use of threads.
 	\item A large amount of free memory available can help speed up operations by avoiding unnecessary disk
-	swaps and keeping material easily accessible.
-	\item Video editing can be quite I/O intensive. If you are going to produce long pieces in uncompressed or
-	larger resolution formats, you should have plenty of fast access disk space.
+	swaps and keeping videos easily accessible in memory.
+	\item Video editing is almost always I/O intensive. To create longer running videos at high resolution
+	you will want to have a lot of disk space available on fast access disks.
 	\item Cinelerra benefits from OpenGL hardware acceleration. A good graphics card is worthwhile to have.
 	\item Multiple monitors really come in handy to increase productivity as you can see more information and
 	in bigger windows so you do not have to keep moving windows around.
@@ -29,7 +29,8 @@ VDPAU, Video Decode and Presentation API for Unix, is an open source library to 
 
 VA-API, Video Acceleration API, is an open source library which provides both hardware accelerated video encoding and decoding for use mostly with Intel (and AMD) graphics boards. 
 
-Currently only the most common codecs, such as MPEG-1, MPEG-2, MPEG-4, and H.264/MPEG-4, are accelerated/optimized by the graphics card to play these particular video formats efficiently. The other formats are not optimized so you will see no performance improvement since the CPU will handle them as before, just as if no hardware acceleration was activated. There are many different graphics cards and computer systems setup, so you will have to test which specific settings work best for you.  So far this has been tested at least with Nvidia, Radeon, and Broadwell graphics boards on some AMD and Intel computers; depending on the graphics card, two to ten times higher processing speeds can be achieved.  However, most graphic operations are single-threaded and may be slower as opposed to multiple CPUs, which frequently multi-thread many operations simultaneously.
+Currently only the most common codecs, such as MPEG-1, MPEG-2, MPEG-4, and H.264 /MPEG-4, are accelerated/optimized by the graphics card to play these particular video formats efficiently. The other formats are not optimized so you will see no performance improvement since the CPU will handle them as before, just as if no hardware acceleration was activated. There are many different graphics cards and computer systems setup, so you will have to test which specific settings work best for you.  So far this has been tested at least with Nvidia, Radeon, and Broadwell graphics boards on some AMD and Intel computers; depending on the graphics card, two to ten times higher processing speeds can be achieved.  However, most graphic operations are single-threaded so that 
+performing the operations in the hardware may actually be slower than in software making use of multiple CPUs, which frequently multi-thread many operations simultaneously.
 
 \subsection{GPU hardware decoding}%
 \label{sub:gpu_hardware_decoding}
@@ -47,7 +48,7 @@ CIN_HW_DEV=vdpau ./cin	# for computers with Nvidia and some other graphics cards
 CIN_HW_DEV=vaapi ./cin	# mostly for computers with Intel or AMD specific graphics hardware
 \end{lstlisting}
 
-If you find that the environment variable setting is advantageous for your CinGG usage and you want to always use it, you can add it to your \texttt{\$HOME} directory \texttt{.profile} file which takes effect every time you log in.  The line you would add would look something like this:
+If you find that the environment variable setting is advantageous for your CinGG usage and you want to always use it, you can add it in your \texttt{\$HOME} directory \texttt{.profile} file which takes effect every time you log in.  The line you would add would look something like this:
 
 \begin{lstlisting}[language=bash,numbers=none]
 export CIN_HW_DEV=vdpau
@@ -57,9 +58,10 @@ export CIN_HW_DEV=vaapi
 
 It might be more difficult to analyze problems as a result of using the GPU because of the wide variation in hardware.  When you do not set the \texttt{CIN\_HW\_DEV} environment variable, the code will work exactly as before since this feature is self-contained.
 
-In addition to the environment variable,  there is a \texttt{Settings $\rightarrow$ Preferences, Performance tab, Use HW device} flag with a pulldown to set up \textit{none, vdpau, vaapi,} or \textit{cuda}.  To ensure it takes effect, it is best to set it the way you want, quit out of Cinelerra and then restart.  Its current purpose is for flexibility, but there is a possibility that it might eventually take the place of \texttt{CIN\_HW\_DEV} -- both are not needed.
+There is also a \texttt{Settings $\rightarrow$ Preferences, Performance tab, Use HW device} flag
+with a pulldown to set up \textit{none, vdpau, vaapi,} or \textit{cuda}.  To ensure it takes effect, it is best to set it the way you want, quit out of Cinelerra and then restart.  Its current purpose is for flexibility, but there is a possibility that it might eventually take the place of \texttt{CIN\_HW\_DEV} -- both are not needed.
 
--- Precedence of the decode hardware acceleration settings are:
+Precedence of the decode hardware acceleration settings are:
 
 -- \texttt{yourfile.opts} is checked first so is of the highest priority; special .opts usage is described below
 
@@ -93,7 +95,7 @@ Due to variations in user’s computer hardware configuration, it is often sugge
 \label{ssub:possible_improvements_differences}
 
 \begin{enumerate}
-	\item The Frames Per Second (FPS) in playback might be mostly at the maximum rate.  You can check
+	\item The Frames Per Second (FPS) in playback might usually be at the maximum rate.  You can check
 	this in \texttt{Settings $\rightarrow$ Preferences, Playback A}, looking at \texttt{Framerate achieved}; the higher, the better.
 	\item Percent of the CPU used should be less, thus saving more CPU for other operations.
 	\item Some users get the the impression that playing seems smoother.
@@ -122,8 +124,8 @@ The situation may arise where you have enabled hardware acceleration and after l
 \begin{lstlisting}[language=bash,numbers=none]
 cin_hw_dev=none
 \end{lstlisting}
-
 Conversely, if you have a bunch of files in your project, like dnxhd format, that are not hardware accelerated, but you have an accompanying large file of type .mp4 for which you would like the hardware acceleration, you can leave the \texttt{CIN\_HW\_DEV} variable unset (that is, do not use it) and just create an .opts file containing the line:
+
 
 \begin{lstlisting}[language=bash,numbers=none]
 cin_hw_dev=vdpau
@@ -192,7 +194,8 @@ Some mixed preliminary results that have been reported are provided below.
 	\end{tabular}
 \end{center}
 
-\noindent Best is the least amount of CPU usage. Note that in this case, using X11-OpenGL is better
+\noindent Best is the least amount of CPU usage. Note that in this Case 1, using the X11-OpenGL video driver is  
+better than using the X11 video driver.
 
 \subsubsection*{Case 2:}%
 \label{ssub:case_2}
@@ -217,11 +220,12 @@ Some mixed preliminary results that have been reported are provided below.
 	\end{tabular}
 \end{center}
 
-\noindent Best is the least amount of CPU usage. Note that in this case, using X11 is better
+\noindent Best is the least amount of CPU usage. Note that in this Case 2, using the X11 video driver is better
+than using the X11-OpenGL video driver.
 
 Older graphics cards or non-performing graphics cards will probably bring only a small amount of improvement or no speed advantage at all.  You can check to see if vdpau is implemented for your specific Nvidia board at:
 
-\url{https://download.nvidia.com/XFree86/Linux-x86_64/304.137/README/supportedchips.html}
+\small \url{https://download.nvidia.com/XFree86/Linux-x86_64/304.137/README/supportedchips.html}
 
 And, you can see what your specific hardware and software might support by running either \texttt{vainfo} or \texttt{vdpauinfo} from the command line.  Partial examples of each are shown below.
 
@@ -284,8 +288,8 @@ There are currently 4 options files available in the Render menu already set up 
 	\item[mjpeg\_vaapi.mp4] error message of \textit{open failed with mjpeg\_vaapi$\dots$} on above computer
 	\item[hevc\_vaapi.mp4] error message of \textit{open failed with hevc\_vaapi$\dots$} on above computer
 \end{description}
-
 Other option files can be added as needed for your specific hardware if it is known to work for you, such as VP8 and VP9.  An example of the included Cinelerra’s \texttt{ffmpeg/video/h264\_vaapi.mp4} file (figure~\ref{fig:render-vaapi}):
+
 
 \begin{lstlisting}[language=bash,numbers=none]
 mp4 h264_vaapi
@@ -303,8 +307,7 @@ profile=high
 According to an online wiki, hardware encoders usually create output of lower quality than some software encoders like x264, but are much faster and use less CPU. Keep this in mind as you might want to set a higher bitrate to get output of similar visual quality.
 
 Results of a particular test case performed on a Intel, 4-core computer, with Broadwell Graphics using an mp4 input video/audio file with dimensions of
-
-$1440x1080 / 29.97fps$ is shown next (note, filename is \texttt{tutorial.mp4}).  This may very well be a \textit{best case} scenario!  But clearly, at least on this computer with only 4 cores, the hardware acceleration seems to be quite advantageous.  A comparison of the 2 output files using \texttt{ydiff} (as described in Appendix C in the manual) shows no obvious defects.
+$1440x1080 / 29.97fps$ is shown next (note, filename is \texttt{tutorial.mp4}).  This may very well be a \textit{best case} scenario!  But clearly, at least on this computer with only 4 cores, the hardware acceleration seems to be quite advantageous.  A comparison of the 2 output files using \texttt{ydiff} shows no obvious defects.
 
 \begin{center}
 	\begin{tabular}{l|cccc}
@@ -404,12 +407,23 @@ With the X11 video driver choice, large format files such as 4K, will playback f
 \texttt{Settings $\rightarrow$ Preferences, tab Playback A}, set video driver to X11 and uncheck \texttt{use direct X11 render if possible}.
 
 
-\section{Proxy Settings}%
+\section{Proxy Settings and Transcode}%
 \label{sec:proxy_settings}
 
-Working with videos that have large image geometry can greatly impede editing.  Instead you can substitute \textit{proxies} which will create smaller video image files from the original file that can then be edited more quickly.   When you are done working on this smaller scale, you will need to bring up the Proxy settings menu again, and change the Scale factor back to the Original size so that all of your edits/work take affect on that original higher quality video on the timeline.  You can not nest clips while in a proxied state; you will get the error \textit{Nesting not allowed when proxy scale $\ne$ 1}.
+Working with videos that have large image geometry can greatly impede editing.  Instead you can substitute \textit{proxies} which will create smaller video image files from the original file that can then be edited more quickly.   When you are done working on this smaller scale, you will need to bring up the Proxy settings menu again, and change the Scale factor back to the Original size so that all of your edits/work take affect on that original higher quality video on the timeline.  
 
-To use this feature, select \texttt{Settings $\rightarrow$ Proxy settings} and change the Scale factor from Original size to your downsized choice.  You can choose ffmpeg as the File Format and a choice of various codecs associated with that.  A good choice is the default of \texttt{mpeg} which can usually be quite fast.  In addition, to modify values for that codec, click on the wrench icon.  When you have completed your choices, just click \texttt{OK}, and then the video tracks will be rendered. This may take some time, but previous proxy renders will be reused.  The proxy videos will be added to your assets in a separate Proxy folder, and the video track edits will use the proxies.   Proxy downsizing renders all loaded tracks, but only work on the $1^{st}$ video layer of any multi-layer media.  Rendered proxy media is saved in the same directory as the original media.  As usual, you can delete proxy files from the project or disk in the Resources window if you no longer want to retain them.
+To use this feature, select \texttt{Settings $\rightarrow$ Proxy settings} and change the Scale factor from Original size to your downsized choice.  You can choose ffmpeg as the File Format and a choice of various codecs associated with that.  A good choice is the default of \texttt{mpeg} which can usually be quite fast.  In addition, to modify values for that codec, click on the wrench icon.  When you have completed your choices, just click \texttt{OK}, and then the video tracks will be rendered. This may take some time, but previous proxy renders will be reused.  
+The proxy videos will be added to your assets in a separate Proxy folder, and the video track edits will use the proxies.
+The assets in both the Media folder and Proxy folder will look proxied when dragged to the Viewer although the scale may be different.
+Proxy downsizing renders all loaded tracks, but only work on the $1^{st}$ video layer of any multi-layer media.  Rendered proxy media is saved in the same directory as the original media.
+However, if you proxy your session, the clips do not get proxied to the Proxy folder, but if you Drag and Drop the clip from the Clip folder to the Viewer or the Timeline, you will see that it too is proxied.  
+As usual, you can delete proxy files from the project or disk in the Resources window if you no longer want to retain them.
+And you can save your project either as proxied or not.
+
+You can also nest clips while in a proxied state, but you can not drag the proxied nested clips
+to the viewer or the timeline.
+If you create proxies for Nested clips they will be saved in \$HOME/Videos unless you modify that in
+\texttt{Settings $\rightarrow$ Preferences, Interface tab}, Nested Proxy Path. 
 
 There are two ways that the proxy files can be used, with or without input scaling. When the proxy is done without rescaling, the Mask, Camera and Projector automations are re-scaled accordingly. In this situation, the entire project will be re-sized so that the session is in the resized geometry.  Not all plugins are useful when the project is rescaled, because the keyframe data must be in the original geometry.  In this case, you can use the rescaler, by enabling \texttt{Use scaler (FFMPEG only)}. This has the added advantage that the project size does not change and the proxy media is down-scaled as usual and up-scaled on read-in, which means the project editing is done in full scale.   Since decoding is done on smaller video, there is a time savings, but all rendering is done full scale.  The main reason for using \textit{scaler} is that it does not change the image coordinate data, so that automation and plugin parameters will be in the original project geometry.   This is not as fast as the first option, but is a performance gain, and may be needed if you are using plugins that need coordinate data such as the Title plugin.  As noted, the scaler only works on ffmpeg video formats.
 
@@ -426,7 +440,7 @@ In the case of the scaler checkbox, it will retain that setting for ease of use.
 	\label{fig:proxy-02}
 \end{figure}
 
-There is also a convenient \texttt{Beep on done} checkbox included so that you can work on other tasks until there is an audible notify of completion.
+There is also a convenient \texttt{Beep on done volume} dial included so that you can work on other tasks until there is an audible notify of completion.  The default volume is set to 0 for no audible notify.
 
 A good choice for proxy settings with 1080p source video is:
 
@@ -456,6 +470,26 @@ Checking the \texttt{Auto proxy/scale media loads} results in any additional med
 If you get error messages when creating proxies, check the Video wrench settings.  These usually default to values that are expected to work correctly for the \textit{File Format} and codec you selected but they can be changed and may result in errors.  If you get an error message of \textit{check\_frame\_rate failed} followed by \textit{Error making proxy} in the popup Errors window, do just that and check the Frame rate value by going to the Resources window, Media folder, and use the right mouse button for the Info option for that specific media in question.  You can change the frame rate in this window to a more codec acceptable value.  Different codecs may have different legal values.
 
 More specific information on which plugins need to use scaler is provided here next.  If the keyframe data uses coordinate data that is absolute, then the scaler should be used.  If the data is normalized (like always $0-100\%$) then the proxy can be done without the scaler.  The session geometry format, shown in \texttt{Settings $\rightarrow$ Format} as width x height, is changed if the scaler is not used to cause all of the data to be in the reduced format.  If this affects the plugin operation, then scaler should be used.  Examples of plugins that need the scaler are: Title, AutoScale, Scale, ScaleRatio, and Translate.  Most others are safe to use without scaling.
+
+ This makes its so that you can save your project
+either as proxied or not.
+
+\textbf{Transcode}, an option under the Settings pulldown right next to the Proxy settings option, is a type of full resolution \textbf{1:1 Proxy}.
+The process of transcoding works directly from the resource; it is independent of the timeline. 
+All of the loaded asset media will be converted, that is, rendered in the selected format and loaded onto the timeline. 
+Menu choices besides the usual File Format and File Type include: Tag suffix (to add to media filename), Remove originals from project, Into Nested Proxy directory
+ (an option to have the file saved here instead of the location of the original media), and Beep on done volume.
+
+The settings of the project have an effect, for example the dimensions are taken into account. The resulting files are also larger than if they were created directly with ffmpeg.
+Transcode works for videos with or without audio and even single frame files, like png's.
+If you have a video file that also contains audio, and you convert only the video, the original audio will stay on the timeline if do not check "Remove originals from project". Or vice versa if audio converted and not video.
+Multiple stream media will only transcode the first stream (this would be like the TV channel recordings in the United States).
+You will get an error message if you already have a transcoded file in the selected format with the same suffix name and try to transcode it again with a different selection made - you will have to delete that file first. An example would be
+an already converted file that has both video and audio and now you request video only. 
+
+The BIGGEST gain from using this is if you have media that is not "seekable", that is, you can play it from the beginning 
+but can not move to another spot and have the audio or video play correctly. A video file with no keyframes makes seeking 
+next to impossible, but then a Transcode generally adds these keyframes. 
 
 \section{Some Settings Parameter Values}%
 \label{sec:settings_parameter_values}

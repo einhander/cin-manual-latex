@@ -1,7 +1,7 @@
 \chapter{Editing}%
 \label{cha:editing}
 
-Editing comprises both time and track space.  The timeline consists of the time certain media appear on the track going left to right and a set of tracks from the top to the bottom.  There are 2 methods of timeline editing --- drag and drop editing, also called \textit{arrow mode}, and cut and paste editing or \textit{I-beam mode}.  Cut and Paste is the default editing mode.  An additional, but not often considered editing method is called \textit{two-screen editing} where the Viewer is used to view media and then the desired clip from the media is transferred to the timeline.
+Editing comprises both time and track space.  The timeline consists of the time certain media appear on the track going left to right and a set of tracks from the top to the bottom.  There are 2 methods of timeline editing -- drag and drop editing, also called \textit{arrow mode}, and cut and paste editing or \textit{I-beam mode}.  Cut and Paste is the default editing mode.  An additional, but not often considered editing method is called \textit{two-screen editing} where the Viewer is used to view media and then the desired clip from the media is transferred to the timeline.
 
 The timeline is where all editing decisions are made (figure~\ref{fig:timeline}).  This is a stack of tracks in the center of the main window.  It can be scrolled up, down, left and right with the scrollbars on the right and bottom.  It can also be scrolled up and down with a mouse wheel, or left and right while holding down the Ctrl key and using the mouse wheel.
 
@@ -59,7 +59,7 @@ The \textit{attributes} are described here next.
 \begin{description}
     \item[Gang Fader] cause the fader to track the movement of whatever other fader you are adjusting by dragging either the fader or the curve on the track.  It doesn't affect the editing made with menu controls.  A fader is only ganged if the arm track is also on.  This is often used to adjust audio levels on all the tracks simultaneously.  Gang also causes Nudge parameters to synchronize across all the ganged tracks.
     \item[Draw Media] determines if picons or waveforms are drawn on the asset in the track.  You may want to disable this if you know that the media/format takes a long time to draw on the timeline.  By default it is set to on in order to see picons on the timeline.
-    \item[Don’t send to output] , more commonly called \textit{mute}, causes the output to be thrown away once the track is completely rendered. This happens whether or not \textit{Play track} is on.  For example if you mute all the video tracks, the rendered media file will have a blank video track.  Mute track is represented on the timeline with a line that has the default color of pink/orange.  Use the pulldown View $\rightarrow$ Mute to have the line displayed.  It is a keyframable attribute, but Mute track keyframing is a toggle and it has only the two values of on or off. If a track is part of a shared track effect, the output of the track with the shared track effect is overlaid on the final output even though it is routed back to another track (the shared track).  Mute track is used to keep the track with the shared track effect from overlapping the output of the source track (the shared track) where the shared track effect is not present.
+    \item[Don’t send to output] , more commonly called \textit{mute}, causes the output to be thrown away once the track is completely rendered. This happens whether or not \textit{Play track} is on.  For example if you mute all the video tracks, the rendered media file will have a blank video track.  Mute track is represented on the timeline with a line that has the default color of pink/orange.  Use the pulldown \texttt{View $\rightarrow$ Mute} to have the line displayed.  It is a keyframable attribute, but Mute track keyframing is a toggle and it has only the two values of on or off. If a track is part of a shared track effect, the output of the track with the shared track effect is overlaid on the final output even though it is routed back to another track (the shared track).  Mute track is used to keep the track with the shared track effect from overlapping the output of the source track (the shared track) where the shared track effect is not present.
     \item[Fader slider] fade values are represented on the timeline with a pink curve that is keyframable.  All tracks have a fader, but the units of each fader depend on whether it is audio or video.  Audio fade values are in dB. They represent relative levels, where 0 is the unaltered original sound level, -40 is silence, -80 the minimum value set by default.  You can move fader and keyframes down to -80 but the parameter's curve won't go below -40.  For your convenience you can set a different fade range with the curve zoom.  Audio fader’s main purpose is to \textit{fade out} sound or to lower the sound level smoothly to silence, or \textit{fade in} to make sounds appear gradually instead of suddenly.  Video fade values are the percentage of opacity of the image in normal overlay mode, the percentage of the layer that is mixed into the render pipeline in the other overlay modes.
     Click and drag the fader to fade the track in and out.  If it is ganged to other tracks of the same media type, with the arm option enabled, the other faders should follow.  Hold down the Shift key and drag a fader to center it on the original source value (0 for audio, 100 for video).
     \item[mixer] in the expanded patchbay for that track designate the multi-camera mixer mode.
@@ -84,7 +84,7 @@ Several convenience functions are provided for automatically setting the panning
 
     \begin{description}
         \item[Audio$\rightarrow$Map 1:1] This maps every track to its own channel and wraps around when all the channels are allocated. It is most useful for making 2 tracks with 2 channels map to stereo and for making 6 tracks with 6 channels map to a 6 channel sound card.
-        \item[Audio$\rightarrow$Map 5.1:2] This maps 6 tracks to 2 channels. The project should have 2 channels when using this function. Go to Settings $\rightarrow$ Format to set the output channels to 2. This is most useful for down-mixing 5.1 audio to to stereo (for more information refer to Configuration, Settings and Preferences chapter 15.1).
+        \item[Audio$\rightarrow$Map 5.1:2] This maps 6 tracks to 2 channels. The project should have 2 channels when using this function. Go to \texttt{Settings $\rightarrow$ Format} to set the output channels to 2. This is most useful for down-mixing 5.1 audio to to stereo (for more information refer to Configuration, Settings and Preferences section \ref{sub:audio_out_section}).
     \end{description}
 
 \paragraph{Standard audio mappings} Although Cinelerra lets you map any audio track to any speaker, there are standard mappings you should use to ensure the media can be played back elsewhere. Also, most audio encoders require the audio tracks to be mapped to standard speaker numbers or they will not work.
@@ -131,10 +131,10 @@ Now to start your 2 screen editing, in the viewer window, define a clip from the
 
 \noindent These In/Out points define a clip.  You can now use this in a couple of different ways.
 
-\paragraph{Splice} The splice icon, or shortcut letter “v”, inserts the selected area in the timeline after the insertion point.  After the splice has taken effect, the insertion point moves to the end of the edit ready to be used as the next splice location. This way you can continuously build up the program by splicing.
+\paragraph{Splice} The splice icon, or shortcut letter “\texttt{v}”, inserts the selected area in the timeline after the insertion point.  After the splice has taken effect, the insertion point moves to the end of the edit ready to be used as the next splice location. This way you can continuously build up the program by splicing.
 If an In point or an Out point exists on the timeline the clip is inserted after the In point or after the Out point. If both In and Out points are set on the timeline, the clip is inserted after the In point. If there are edits after your chosen splice location on the timeline, they will be moved to the right.
 
-\paragraph{Overwrite} The overwrite icon, or shortcut letter “b”, overwrites the region of the timeline after the insertion point with the clip. If an In point or an Out point exists on the timeline the clip is overwritten after the In point or after the Out point. If both In and Out points are set on the timeline, the clip is inserted after the In point. If a region is highlighted or both In and Out points exist they limit the region of the overwriting and the clip may therefore be shortened. Here is a detailed explanation to take advantage of this method.
+\paragraph{Overwrite} The overwrite icon, or shortcut letter “\texttt{b}”, overwrites the region of the timeline after the insertion point with the clip. If an In point or an Out point exists on the timeline the clip is overwritten after the In point or after the Out point. If both In and Out points are set on the timeline, the clip is inserted after the In point. If a region is highlighted or both In and Out points exist they limit the region of the overwriting and the clip may therefore be shortened. Here is a detailed explanation to take advantage of this method.
 
 To overwrite exactly on a precise region of the timeline:
 
@@ -149,9 +149,9 @@ To overwrite exactly on a precise region of the timeline:
 If the destination region is shorter than the clip defined in the viewer, the portion of the clip longer than the destination region won't be inserted and on the timeline the following edits won't move.
 If the destination region is longer than the clip defined in the viewer, the destination region will shrink and on the timeline the following edits will move to the left.
 
-\paragraph{Clip} The clip icon, or shortcut letter “i”, generates a new clip for the resource window containing the affected region but does not change the timeline.  Every clip has an optional/default title and description.
+\paragraph{Clip} The clip icon, or shortcut letter “\texttt{i}”, generates a new clip for the resource window containing the affected region but does not change the timeline.  Every clip has an optional/default title and description.
 
-\paragraph{Copy} The copy icon, or shortcut letter “c”, copies the selection into the copy buffer.
+\paragraph{Copy} The copy icon, or shortcut letter “\texttt{c}”, copies the selection into the copy buffer.
 
 \subsection{Use Case – Working with Sequences}
 \label{sub:use_case_working_sequences}
@@ -202,11 +202,11 @@ In Cut and Paste editing mode you can \textit{edit labels} as well. By enabling 
 
 Using labels and In/Out points are useful in editing audio.  You can set In/Out points for the source region of the source waveform and set labels for the destination region of the destination waveform. Perform a cut, clear the In/Out points, select the region between the labels, and perform a paste.
 
-\paragraph{In / Out Points} The In and Out bracket placement is explained here to illustrate their usage.  Because of the shape of the markers"[" and "]" you may assume that they are inclusive --- that everything placed in between would be included in the clip, such as in the case of being transferred to the timeline from the Viewer.  In reality, one of the two markers will not include the frame that was visible at the time the marker was affixed. Depending on whether the \textit{Always show next frame} option is used or not, it is the In or Out marker that will not be inclusive. 
+\paragraph{In / Out Points} The In and Out bracket placement is explained here to illustrate their usage.  Because of the shape of the markers [ and ] you may assume that they are inclusive -- that everything placed in between would be included in the clip, such as in the case of being transferred to the timeline from the Viewer.  In reality, one of the two markers will not include the frame that was visible at the time the marker was affixed. Depending on whether the \textit{Always show next frame} option is used or not, it is the In or Out marker that will not be inclusive. 
 
 To obtain a clip on the timeline exactly as you saw in the Viewer, you must necessarily move the In mark back from the beginning before the first desired frame or move the Out mark forward after the last desired frame, depending on the \textit{Always show next frame} setting. 
 
-Some of the confusion can be attributed to the fact that the Viewer shows frames, while the markers determine spaces, i.e. times, that are not visible between frames. You have to think of each frame as being delimited by two spaces - one preceding and one following.  The In mark is always placed before the displayed frame and the Out mark is always placed after the displayed frame, while taking into account in its calculations whether the \textit{Always show next frame }option is used or not. If you just remember that the reference of the markers is in the middle of the icon, you will avoid confusion.
+Some of the confusion can be attributed to the fact that the Viewer shows frames, while the markers determine spaces, i.e. times, that are not visible between frames. You have to think of each frame as being delimited by two spaces -- one preceding and one following.  The In mark is always placed before the displayed frame and the Out mark is always placed after the displayed frame, while taking into account in its calculations whether the \textit{Always show next frame }option is used or not. If you just remember that the reference of the markers is in the middle of the icon, you will avoid confusion.
 
 \paragraph{Overwrite} To perform overwriting within the timeline paste on a selected region (highlighted or
 between In/Out points). The selected region will be overwritten. If the clip pasted from the clipboard
@@ -229,9 +229,9 @@ pasted one after the other, keeping the same order they have on the stack.
     \label{fig:cut}
 \end{wrapfigure}
 
- A \textit{cut} uses a non-empty selection region, where the \textit{blade cut} or \textit{split} has no duration in the selection, just a hairline.  As usual the use of cut when a selection is set, deletes/cuts the highlighted area.  In the case where an In point or an Out point exists on the timeline, the clip is split at the location of the In/Out point since it has priority over the cursor location.  A blade cut simply splits the edit into two edits.  In order to have the video and audio aligned, it works best to have Settings $\rightarrow$ Align cursor on frames.  When a blade cut occurs, the edges are created as \textit{hard edges}.  These are edges that cannot be deleted by track optimizations.
+ A \textit{cut} uses a non-empty selection region, where the \textit{blade cut} or \textit{split} has no duration in the selection, just a hairline.  As usual the use of cut when a selection is set, deletes/cuts the highlighted area.  In the case where an In point or an Out point exists on the timeline, the clip is split at the location of the In/Out point since it has priority over the cursor location.  A blade cut simply splits the edit into two edits.  In order to have the video and audio aligned, it works best to have \texttt{Settings $\rightarrow$ Align cursor on frames}.  When a blade cut occurs, the edges are created as \textit{hard edges}.  These are edges that cannot be deleted by track optimizations.
 Cinelerra has built-in optimization on the timeline.  So that whenever two parts on the timeline are sequential frames, it automatically optimizes by making them into 1 item.  So if you are cutting, dragging, editing, or whatever and somehow frame \# 40 ends up right next to frame \# 41, it optimizes them together.  This optimization affects many areas throughout the program code.
-When you do a blade cut/split, all armed tracks will be included in the cut and green-colored triangles will show on the bottom of the track on both the left and the right side of the cut.  This is a \textit{hard edge} marker toggle, as opposed to the soft edge designation for an ordinary edit.  The \textit{hard edge} marker can be toggled off/on if so desired.  In order to not interfere with the usual drag handles, only a few pixels are used for the toggle so you have to be sure you have the cursor right over the hard edge triangle  --- when in position, it will be obvious because you can see an arrow pointing to the corner.  Use Shift-left mouse button 1 to toggle off/on the hard edge marker on all tracks simultaneously.
+When you do a blade cut/split, all armed tracks will be included in the cut and green-colored triangles will show on the bottom of the track on both the left and the right side of the cut.  This is a \textit{hard edge} marker toggle, as opposed to the soft edge designation for an ordinary edit.  The \textit{hard edge} marker can be toggled off/on if so desired.  In order to not interfere with the usual drag handles, only a few pixels are used for the toggle so you have to be sure you have the cursor right over the hard edge triangle  -- when in position, it will be obvious because you can see an arrow pointing to the corner.  Use Shift-left mouse button 1 to toggle off/on the hard edge marker on all tracks simultaneously.
 
 \section{Drag and Drop Editing}%
 \label{sec:drag_drop_editing}
@@ -276,7 +276,7 @@ In/Out points can be used to perform Cut and Paste operations in Drag and Drop m
 \subsection{Copy/Paste Behavior}%
 \label{sub:copy_paste_behavior}
 
-There are many options for moving, copying, pasting, inserting, and deleting selected \textit{edits}, more commonly referred to by the user as \textit{clips}, when in the Drag and Drop (arrow) editing mode.  This makes it easier to avoid constantly having to disarm/arm tracks.  To create a selection move the cursor over the clip and just click the left mouse button; remove a selection by left mouse button click again.  This will mark your selection with a colored border which contains some red.  The easiest way to initially use the various modes is to click on the middle mouse button when your cursor is over a track and a popup displays the modes and shortcuts.  However, for those users who prefer the addition of the Ctrl key to add multiple selections as is commonly done for listbox operations, there is a preference in Settings $\rightarrow$ Preferences $\rightarrow$ Appearance tab, called \textit{Clears before toggle} that changes the behavior.
+There are many options for moving, copying, pasting, inserting, and deleting selected \textit{edits}, more commonly referred to by the user as \textit{clips}, when in the Drag and Drop (arrow) editing mode.  This makes it easier to avoid constantly having to disarm/arm tracks.  To create a selection move the cursor over the clip and just click the left mouse button; remove a selection by left mouse button click again.  This will mark your selection with a colored border which contains some red.  The easiest way to initially use the various modes is to click on the middle mouse button when your cursor is over a track and a popup displays the modes and shortcuts.  However, for those users who prefer the addition of the Ctrl key to add multiple selections as is commonly done for listbox operations, there is a preference in \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Appearance} tab, called \textit{Clears before toggle} that changes the behavior.
 
 When an edit is marked as selected, it can be cut/copied into the paste clip buffer.  The constructed clip buffer will begin with the leftmost edit and end with the rightmost edit.  The edits may contain media, or be silence, or skipped if they are not selected.  The clip tracks are copied from the first track with an active edit selection to the last track with an active edit selection.  A clip track can be completely empty if no selection was made on the track.  The word \textit{packed} means that the silent edits and empty tracks are not included in the copy to the clip buffer, and all of the elements are packed together, no gaps.  Packing a clip buffer makes it easier to move \textit{blobs} of data around.  Once the edits have moved and have a relative relationship applied, an unpacked clip buffer allows the media to be copied with the relative positions of the edits preserved.
 
@@ -352,12 +352,17 @@ The color of the created groups are not muted and are assigned by Group Id going
 \subsection{Dragging Groups}%
 \label{sub:dragging_groups}
 
-Dragging while in \textit{Drop and Drag editing mode} (arrow mode) is really easy.  Just select the clip or clips you want to drag using the left mouse button, then put your cursor over one of them and drag while holding down the left mouse button.  Keyframes, autos, labels, and plugins will also be dragged.   Dragging honors armed/disarmed tracks.  When you drag there will be 3 possible colors as defined:
+Dragging while in \textit{Drop and Drag editing mode} (arrow mode) is really easy.  Just select the clip or clips you want to drag using the left mouse button, then put your cursor over one of them and drag while holding down the left mouse button.  Keyframes, autos, labels, and plugins will also be dragged.   Dragging honors armed/disarmed tracks.  When you drag there will be some possible colors as defined; depends on how the edges of edits and groups interact:
 \begin{itemize}
-    \item Red color means can not drop here because it will not fit in the space.
-    \item Green color means OK to drop in that position.
+    \item Green color means OK to drop in that position as it will fit.
     \item Yellow color means you can drop here and when you do it will be exactly next to that existing edit.
+    \item Blue color means it overlaps something and this includes overlapping itself.
+    \item Red color means can not drop here because it will not fit in the space.
+    \item Orange color means the track types do not match so it can not be dropped here.
 \end{itemize}
+
+Remember: With the SHIFT key on, it will always \textit{overwrite}. Without the SHIFT key enabled, it always \textit{inserts} only.
+
 The original (older) method of dragging while in Arrow mode, lets you just left mouse click on a single clip or aligned clips and just drag.  This older method of dragging does not move any of its effects with it at this time.  There will only be a white outline while dragging and it will let you drop only if it fits.  You can also perform some dragging and grouping while in the \textit{Cut and Paste editing mode} (ibeam mode) by taking advantage of the Ctrl button in conjunction with the left mouse button.
 \begin{itemize}
     \item Double click selects a column so you can move, for example, the audio and video together by holding
@@ -399,7 +404,7 @@ editor commands to include \texttt{ctrl+x=cut}, \texttt{ctrl+c=copy}, \texttt{ct
 The keyboard Delete key is not hooked to these operations, and is hooked to the
 original editing methods.
 
-In this "group" mode, if there are In/Out markers set, they enter the selection priority queue
+In this \textit{group} mode, if there are In/Out markers set, they enter the selection priority queue
 between the column selection and the cursor only. You can see the In/Out markers selected
 region colored line across the timebar (slightly underneath where the time, samples or frames show
 ) on the main timeline 
@@ -435,11 +440,11 @@ Explanation of how to use Inter-View mode will be described here next.
     white colored bar at the top and a red colored bar at the bottom with black sections.
 \end{itemize}
 
-The red/white bars represent the presence and the black sections represent the absence of where that media is used on the timeline.  To get to a bigger representation, use the “f” key for a full screen.  Now
+The red/white bars represent the presence and the black sections represent the absence of where that media is used on the timeline.  To get to a bigger representation, use the “\texttt{f}” key for a full screen.  Now
 you can operate the following buttons to display what you need to see and to move around.  It is important to note that \textit{locked tracks} will not be represented.  This makes it easy to ignore the audio track segments if you want so there is less confusion in the display.
 \begin{itemize}
     \item Clicking on the top white or black spaces in the top time bar loads the Viewer with the source media,
-    and sets the In/Out "[" and "]" pointers to be the selection of that edit.
+    and sets the In/Out [ and ] pointers to be the selection of that edit.
     \item Click on a location in the bottom red or black bar, and the main cursor and composer will re-position
     to the corresponding location on the session timeline.
     \item Dragging on the red/black bar will correspondingly update the position in the timeline and composer.
@@ -468,23 +473,21 @@ This section covers some more detailed editing tools and scenarios for edit mana
 \subsection{Editing EDLs within a Project}%
 \label{sub:edit-edls}
 
-To edit EDL that is included with your project as Clips, Nested Clips, Referenced File, or Xml you can use the option "Open EDL" 
-in the Resources window for the highlighted media.  Then with a simple button click you can return to your main 
-timeline project.  For example, if you have a nested clip that originally had several plugins added to it before
+To edit EDL that is included with your project as Clips, Nested Clips, Referenced File, or Xml you can use the option \textit{Open EDL} in the Resources window for the highlighted media.  Then with a simple button click you can return to your main timeline project.  For example, if you have a nested clip that originally had several plugins added to it before
 it was nested, you can edit those plugin parameter values. Previously to make any changes to these types of EDL
 you had to remake the whole clip from scratch.
 
-Here is how this works. In the Clip or Media folder or on a timeline EDL edit, the option "Open EDL" for the highlighted clip or nested clip is available so that when you choose this option, that EDL will be brought up on the timeline superseding the current EDL that exists on the timeline.  Now, once the clip is open on the timeline, you can edit it however you want. The previous timeline EDL is "pushed onto a stack" so it can be recalled by "popping the stack" with a click of the left mouse button in the upper right hand corner of the timeline to the left of the "shell cmds" icon.  Initially this button displays a 0 to indicate your initial timeline/project.  Then this button will read 1 if you choose "Open EDL" and then back to 0 and your original timeline with the left mouse click.  You can go several levels deep so instead of 1, it could be 2, 3, ... but this requires some thought to avoid potential confusion.  
+Here is how this works. In the Clip or Media folder or on a timeline EDL edit, the option \textit{Open EDL} for the highlighted clip or nested clip is available so that when you choose this option, that EDL will be brought up on the timeline superseding the current EDL that exists on the timeline.  Now, once the clip is open on the timeline, you can edit it however you want. The previous timeline EDL is \textit{pushed onto a stack} so it can be recalled by \textit{popping the stack} with a click of the left mouse button in the upper right hand corner of the timeline to the left of the \textit{shell cmds} icon.  Initially this button displays a 0 to indicate your initial timeline/project.  Then this button will read 1 if you choose \textit{Open EDL} and then back to 0 and your original timeline with the left mouse click.  You can go several levels deep so instead of 1, it could be 2, 3, $\dots$ but this requires some thought to avoid potential confusion.  
 \\
 
 An example of a typical set of steps to follow is:
 
 \begin{enumerate}
-   \item Load your media using insertion strategy of "Replace current project".  There will be \# 0 in the
-    upper right hand corner of the main menu with the tooltip of "Close EDL".
-   \item Highlight a selection on the timeline and press the "To clip" icon and click the green checkmark OK. 
+   \item Load your media using insertion strategy of \textit{Replace current project}.  There will be \# 0 in the
+    upper right hand corner of the main menu with the tooltip of \textit{Close EDL}.
+   \item Highlight a selection on the timeline and press the \textit{To clip} icon and click the green checkmark OK. 
    \item In the Resources window, open the Clip folder and you will see that Clip 1 is present.
-   \item Highlight Clip1 and right mouse the item to bring up available options and select "Open EDL".
+   \item Highlight Clip1 and right mouse the item to bring up available options and select \textit{Open EDL}.
    \item Now you will see the timeline change from the original media to just the clip content and the \# in the
     upper right hand corner will change from 0 to 1.
    \item Add a visible effect, like AgingTV to the timeline.
@@ -492,9 +495,9 @@ An example of a typical set of steps to follow is:
    \item Drag the clip from the Resources Clip folder to the timeline and you will see the AgingTV effect.
 \end{enumerate}
 
-You can follow the same steps as above by first using the option "Nest to media" in the Clip folder which nests the clip and moves it out of the Clip folder to the Media folder.  Then use "Open EDL" on the Nested EDL in the media folder.  When you Open EDL and edit the changes, those changes will take affect on any and all occurrences of that nested clip on the current and/or original timeline. The option to unnest that clip and put that back into the Clip folder is the option "EDL to clip".  The nested clip is still in the Media folder.  It will now have a name of the next available Clip \# but the comment contains the previous name so you can tell where it came from.
+You can follow the same steps as above by first using the option \textit{Nest to media} in the Clip folder which nests the clip and moves it out of the Clip folder to the Media folder.  Then use \textit{Open EDL} on the Nested EDL in the media folder.  When you Open EDL and edit the changes, those changes will take affect on any and all occurrences of that nested clip on the current and/or original timeline. The option to unnest that clip and put that back into the Clip folder is the option \textit{EDL to clip}.  The nested clip is still in the Media folder.  It will now have a name of the next available Clip \# but the comment contains the previous name so you can tell where it came from.
 
-Instead of using the \# number on the main menu to close the current EDL, both the Media and Clip folders have "Close EDL" options with the left mouse button. Clicking on the \# number is quick and easy but for infrequent usage it is not obvious, whereas if you use "Open EDL" you see "Close EDL" right below that and so it is very obvious.  In addition in the case of where you have opened a EDL, and you no longer see that clip in the folder, the right mouse button where no media is highlighted will also display the Close EDL option.
+Instead of using the \# number on the main menu to close the current EDL, both the Media and Clip folders have \textit{Close EDL} options with the left mouse button. Clicking on the \# number is quick and easy but for infrequent usage it is not obvious, whereas if you use \textit{Open EDL} you see \textit{Close EDL} right below that and so it is very obvious.  In addition in the case of where you have opened a EDL, and you no longer see that clip in the folder, the right mouse button where no media is highlighted will also display the Close EDL option.
 
 \pagebreak 
 \begin{figure}[h]
@@ -505,8 +508,7 @@ Instead of using the \# number on the main menu to close the current EDL, both t
 \end{figure}
 \relax
 
-In addition to the "Open EDL" option in the Resources menu, this option is available on the timeline when the cursor is on an EDL-type edit.
-To get to this option, click on the middle mouse button on that edit.  If it is not EDL, the option will not be shown.  In summary:
+In addition to the \textit{Open EDL} option in the Resources menu, this option is available on the timeline when the cursor is on an EDL-type edit. To get to this option, click on the middle mouse button on that edit.  If it is not EDL, the option will not be shown.  In summary:
 
 \begin{center}
     \small
@@ -520,11 +522,11 @@ To get to this option, click on the middle mouse button on that edit.  If it is 
     \end{tabular}
 \end{center}
 
-An aside - when nesting and unnesting clips to take advantage of this feature, names of the media can lead to some confusion.  For example, if you nest a clip, the new name in the Media folder is the word "Nested" followed by an underscore with the date and timestamp, another underscore, and then the clip name.  Then when you unnest this Media folder clip via the "EDL to clip" option, the name will be changed in the Clip folder to the next available Clip \#.  However the comment field will reflect the nested clip name from which it was derived.  To avoid confusion you can easily change the name for these clips in either the Clip or Media folder because they are not real files at this point. To do so, highlight the clip name in Resources, click on Info and type in a new name.
+An aside -- when nesting and unnesting clips to take advantage of this feature, names of the media can lead to some confusion.  For example, if you nest a clip, the new name in the Media folder is the word \textit{Nested} followed by an underscore with the date and timestamp, another underscore, and then the clip name.  Then when you unnest this Media folder clip via the \textit{EDL to clip} option, the name will be changed in the Clip folder to the next available Clip \#.  However the comment field will reflect the nested clip name from which it was derived.  To avoid confusion you can easily change the name for these clips in either the Clip or Media folder because they are not real files at this point. To do so, highlight the clip name in Resources, click on Info and type in a new name.
 
-For additional safety, the "Open EDL" feature includes additional backup capabilities. Automatically Cinelerra saves a backup when certain changes are made or you can always use the shortcut "b" to do one yourself, although keep in mind it will be overwritten whenever Cinelerra wants to do another backup.  Now there is a shortcut for the backup shortcut "b" so you can keep your hand on the mouse instead of the keyboard.  Just click on the \# in the upper right hand corner of the main window.  If \# is at 0, it backs up to backup.xml, if at 1, it backs up to backup1.xml and so on ... up to backup9.xml.
+For additional safety, the \textit{Open EDL} feature includes additional backup capabilities. Automatically Cinelerra saves a backup when certain changes are made or you can always use the shortcut "b" to do one yourself, although keep in mind it will be overwritten whenever Cinelerra wants to do another backup.  Now there is a shortcut for the backup shortcut "b" so you can keep your hand on the mouse instead of the keyboard.  Just click on the \# in the upper right hand corner of the main window.  If \# is at 0, it backs up to backup.xml, if at 1, it backs up to \texttt{backup1.xml} and so on $\dots$ up to \texttt{backup9.xml}.
 
-When "Open EDL" is invoked, the current EDL and current undo stack are both "pushed", and the active session EDL is replaced with the target clip/nested edl.  A new undo stack is created, and the active backup.xml file name is decorated with the stack level.  So, backup.xml is backup1.xml when your edits are at stack level 1, backup2.xml at stack level 2, and so on.  This means that if you "load backup" at stack level 1, the session will reload from history at stack level 1, not the main session.
+When \textit{Open EDL} is invoked, the current EDL and current undo stack are both \textit{pushed}, and the active session EDL is replaced with the target clip/nested edl.  A new undo stack is created, and the active \texttt{backup.xml} file name is decorated with the stack level.  So, \texttt{backup.xml} is \texttt{backup1.xml} when your edits are at stack level 1, \texttt{backup2.xml} at stack level 2, and so on.  This means that if you \textit{load backup} at stack level 1, the session will reload from history at stack level 1, not the main session.
 
 \begin{comment}
 \begin{figure}[htpb]
@@ -538,7 +540,7 @@ When "Open EDL" is invoked, the current EDL and current undo stack are both "pus
 \subsection{Edit Length}%
 \label{sub:edit-lenght}
 
-To set the length of an edit in the timeline, select the region which contains the edit to be modified. Now select the menu bar Edit $\rightarrow$ Edit Length\dots menu item to activate the \textit{edit length} popup (figure~\ref{fig:lenght}).  The duration of the edit can be reset by entering the desired edit length in seconds.  Pressing OK will change all of the selected edits (in armed tracks) to the specified length.
+To set the length of an edit in the timeline, select the region which contains the edit to be modified. Now select the menu bar \texttt{Edit $\rightarrow$ Edit Length}\dots menu item to activate the \textit{edit length} popup (figure~\ref{fig:lenght}).  The duration of the edit can be reset by entering the desired edit length in seconds.  Pressing OK will change all of the selected edits (in armed tracks) to the specified length.
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.6\linewidth]{images/lenght.png}
@@ -550,7 +552,7 @@ To set the length of an edit in the timeline, select the region which contains t
 \label{sub:align_edits}
 
 When loading media, a common problem is that the various audio/video tracks do not always have exactly the same lengths. For example, you might load audio/video recordings from your camera and be dismayed to see that the audio for each segment is a half second longer than the video. If you load a large set of media clips by concatenation, the audio and video will be more skewed as more media is loaded. Align Edits makes it possible to adjust the edits so the audio and/or video align by adjusting 
-the edits so that the track lengths are consistent. To use this feature, load all of the desired media and select a region which contains all of the edits to be aligned in the timeline. Now select the menu bar Edit $\rightarrow$ Align Edits menu item to operate the change. The topmost armed track is used as a template reference, and the rest of the tracks are either cut or padded to align the edit boundaries.  Besides aligning audio with the video, you can also align video with the audio if the first armed track is audio. \\
+the edits so that the track lengths are consistent. To use this feature, load all of the desired media and select a region which contains all of the edits to be aligned in the timeline. Now select the menu bar \texttt{Edit $\rightarrow$ Align Edits} menu item to operate the change. The topmost armed track is used as a template reference, and the rest of the tracks are either cut or padded to align the edit boundaries.  Besides aligning audio with the video, you can also align video with the audio if the first armed track is audio. \\
 The code performs the following algorithm:
 \begin{itemize}
     \item Use the first armed track as the master track (it must contain data).
@@ -560,7 +562,7 @@ The code performs the following algorithm:
 The start time sequence of media and silence edits along the master track are collected as the target 
 alignment boundaries. All armed tracks after the master track are modified so that if the next edit edge 
 is too soon, it adds silence; if it is too late, edits are shortened or deleted past the point of the next target
-alignment boundary time.  Align Edits works best if there are an equal number of Video and Audio sections.  Also, it is better to use cuts instead of adding silence ---if there are silence edits together, the algorithm will combine the silence edits into a single edit and results may not be as desired.
+alignment boundary time.  Align Edits works best if there are an equal number of Video and Audio sections.  Also, it is better to use cuts instead of adding silence -- if there are silence edits together, the algorithm will combine the silence edits into a single edit and results may not be as desired.
 
 The first two screenshots in figure~\ref{fig:align} show the Before, the Highlighted Edits to be manipulated, and the After results for the Align Edits. The third screenshot \textit{adds silence} in the second section as noted in red letters.
 \begin{figure}[htpb]
@@ -573,7 +575,7 @@ The first two screenshots in figure~\ref{fig:align} show the Before, the Highlig
 \subsection{Reverse Edits}%
 \label{sub:reverse_edits}
 
-The Reverse Edits can be useful to change the order of 2 edits in the case where you would like to put a \textit{teaser} section that occurred in the middle of a movie at the beginning instead, that is, reversed positions.  To operate, highlight completely the edit areas you would like reversed and then use the pulldown Edit $\rightarrow$ Reverse Edits.
+The Reverse Edits can be useful to change the order of 2 edits in the case where you would like to put a \textit{teaser} section that occurred in the middle of a movie at the beginning instead, that is, reversed positions.  To operate, highlight completely the edit areas you would like reversed and then use the pulldown \texttt{Edit $\rightarrow$ Reverse Edits}.
 
 Figure~\ref{fig:reverse01} shows the selected / highlighted area to which Edits will be applied.  Note the first edit is 00002, followed by 00003, 00004, and 00005 in that order.
 \begin{figure}[htpb]
@@ -594,7 +596,7 @@ Figure~\ref{fig:reverse02} shows the results of executing \textit{Reverse Edits}
 \subsection{Shuffle Edits}%
 \label{sub:shuffle_edits}
  
-The file pulldown Edit $\rightarrow$ Shuffle Edits will randomly exchange the location of the edits.  This feature can be used to change the order of the music like you would do from your MP4 player where you have a playlist of your favorite music.  Or perhaps you are creating an advertisement background, you can randomly change it, thus the viewer sees a different order of scenes each time shown.
+The file pulldown \texttt{Edit $\rightarrow$ Shuffle Edits} will randomly exchange the location of the edits.  This feature can be used to change the order of the music like you would do from your MP4 player where you have a playlist of your favorite music.  Or perhaps you are creating an advertisement background, you can randomly change it, thus the viewer sees a different order of scenes each time shown.
 
 Figure~\ref{fig:shuffle} illustrating Shuffle Edits of the highlighted area of the first screenshot on the page.  Note the permutation of the fragments resulting in 00003 now being first, then 00005, 00002, and 00004 last.
 \begin{figure}[htpb]
@@ -613,7 +615,7 @@ The effect of each drag operation not only depends on the behavior button but wh
 
 For all file formats, other than still images, the extent of the trimming operation is limited to the source file length. Attempting to drag the start of the edit beyond the start of the source, limits it to the source start. In all trimming operations, all edits which start on the same position as the cursor when the drag operation begins are affected. You have to disarm tracks in order to prevent edits from being affected.
 
-You have 6 different choices of which mouse button to use for specific types of editing while using the drag handle.  You change the drag handle mouse effects by using the Settings $\rightarrow$ Preferences  $\rightarrow$ Interface tab and modifying the Editing section as shown in the next figure~\ref{fig:trim}. The drag handle affects not only the clip you are working on but also frequently the entire duration of all clips on the timeline.\\
+You have 6 different choices of which mouse button to use for specific types of editing while using the drag handle.  You change the drag handle mouse effects by using the \texttt{Settings $\rightarrow$ Preferences  $\rightarrow$ Interface} tab and modifying the Editing section as shown in the next figure~\ref{fig:trim}. The drag handle affects not only the clip you are working on but also frequently the entire duration of all clips on the timeline.\\
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.6\linewidth]{images/trim.png}
@@ -678,7 +680,7 @@ The next table displays the options and results with the Key Table here first.
     \bottomrule
 \end{longtable}
 
-Next, a more immediate and colorful view shows these trimming options ((figure~\ref{fig:trim-color})).
+Next, a more immediate and colorful view shows these trimming options (figure~\ref{fig:trim-color}).
 
 \begin{figure}[htpb]
     \centering
@@ -700,7 +702,7 @@ Next, a more immediate and colorful view shows these trimming options ((figure~\
 
 The Trim Feature using the drag handle provides some good ways to view your video while editing.  The playback position in the compositor is updated live and the view in the compositor can be split so that in the left half of the compositor you can see the last frame of the left clip and in the right half the first frame of the right clip.  Dragging edits can not be extended past the beginning or the end.
 
-First familiarize yourself with button operation; check your setup by executing the following step.  In the Settings $\rightarrow$ Preferences $\rightarrow$ Interface tab, Editing section, clicking on the edit boundaries can be set for Button 1, 2, 3 as one of the following:
+First familiarize yourself with button operation; check your setup by executing the following step.  In the \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface} tab, Editing section, clicking on the edit boundaries can be set for Button 1, 2, 3 as one of the following:
 
 \textit{Ripple}; \textit{Roll}; \textit{Slip}; \textit{Slide}; \textit{Edge} or \textit{No effect}
 
@@ -734,7 +736,7 @@ There are Edit Panel buttons which normally are used to move to the previous or 
     \centering
     \includegraphics[width=0.7\linewidth]{images/snap.png}
 \end{wrapfigure}
-They look like tags and the letter E on the menu bar and are oriented forward/backward.  These same buttons can be used to \textit{cut} from the insert pointer to the previous or next edit/label when the \texttt{ctrl+alt} keys are both pressed when the buttons are used.  They \textit{snap} off the media instead of doing the standard re-positioning.  This is useful to minimize the number of operations necessary to cut between edits/labels.
+They look like tags and the letter E on the menu bar and are oriented forward/backward.  These same buttons can be used to \textit{cut} from the insert pointer to the previous or next edit/label when the ctrl+alt keys are both pressed when the buttons are used.  They \textit{snap} off the media instead of doing the standard re-positioning.  This is useful to minimize the number of operations necessary to cut between edits/labels.
 
 Instead of using the edit panel buttons, you can more easily use the following keyboard shortcuts to perform the same functions:
 \begin{center}
@@ -748,14 +750,14 @@ Instead of using the edit panel buttons, you can more easily use the following k
     \end{tabular}
 \end{center}
 
-\paragraph{Drag Snapping} if you hold down the \texttt{Ctrl + Alt} keys while dragging using the mouse, once the clip gets near to an edit, a label, an in/out pointer or the start/end of the timeline, the dragged clip will snap next to that marker.  The 2 will now be exactly aligned with no gap and no overlap.  As you drag the clip close to one of the markers, when they are within a short distance they start to stick and stay that way until you move further away from that distance.  Also, the line will turn color from green to yellow while in the sticky phase.
+\paragraph{Drag Snapping} if you hold down the Ctrl + Alt keys while dragging using the mouse, once the clip gets near to an edit, a label, an in/out pointer or the start/end of the timeline, the dragged clip will snap next to that marker.  The 2 will now be exactly aligned with no gap and no overlap.  As you drag the clip close to one of the markers, when they are within a short distance they start to stick and stay that way until you move further away from that distance.  Also, the line will turn color from green to yellow while in the sticky phase.
 
 \subsection{Nesting}%
 \label{sub:nesting}
 
 \paragraph{Nested Assets} A nested asset is an EDL session that embeds an existing EDL session, all tracks, all plugins, editing, and effects into a media object that appears as one audio/video media object, no plugins, editing, or effects.  It is as if the existing EDL was rendered, and loaded in its place.  This has several interesting side effects.  First, you don’t have to render the entire media file to see any portion.  Second, it requires no rendering compute time or storage.  Third, it changes the precedence of the composer so that you get more control over the projection and automation, so that the results can be sent into another rendering step, not simply part of the current stack.  It groups the plugin stack in much the same way that an arithmetic expression is grouped by parenthesis.
 
-The EDL session and the rendered output are visually equivalent.  Nested assets allow for complex grouping and stacking of effects, and makes media access much more flexible.  This feature can be used recursively, that is, any number of sessions may be stacked and referenced as an asset, as long as all of the rendering resources are available.  Nested assets are added to the timeline by using the pulldown File $\rightarrow$ Load files\dots on the main menu and selecting the \textit{Insertion strategy} of \textit{Nest asset}. The file will be pasted into the timeline over the current selection or at the insertion point.
+The EDL session and the rendered output are visually equivalent.  Nested assets allow for complex grouping and stacking of effects, and makes media access much more flexible.  This feature can be used recursively, that is, any number of sessions may be stacked and referenced as an asset, as long as all of the rendering resources are available.  Nested assets are added to the timeline by using the pulldown \texttt{File $\rightarrow$ Load files}\dots on the main menu and selecting the \textit{Insertion strategy} of \textit{Nest asset}. The file will be pasted into the timeline over the current selection or at the insertion point.
 
 It is somewhat important to note that nested assets and nested clips will have index files automatically created.  These index files can start to clutter up your \texttt{\$HOME/.bcast5} directory with files named \texttt{Nested\_\#\#\#.idx} and you may want to periodically delete any index files which are no longer in use.
 
@@ -764,7 +766,7 @@ It is somewhat important to note that nested assets and nested clips will have i
 Nested clips can be proxied and when they are, the resulting files
 are placed in the user's \$HOME/Videos directory by default.  This can be modified by changing
 
-Settings $\rightarrow$ Preferences $\rightarrow$ Interface tab, Nested Proxy Path.
+\texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface} tab, Nested Proxy Path.
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.9\linewidth]{images/nesting.png}
@@ -778,7 +780,7 @@ Settings $\rightarrow$ Preferences $\rightarrow$ Interface tab, Nested Proxy Pat
     \item[Example 1:] You want to make a flashback/rewind at the end of your video
 that represents a quick summary of the entire video in black and white. On
 he timeline, you have 60 seconds of edits with clips, cuts, zoom in, zoom
-out and any other edits. Now you want to get this 60 seconds "compressed"
+out and any other edits. Now you want to get this 60 seconds \textit{compressed}
 to 10 seconds, play in reverse, and in black and white at the end of your
     video.    
     You would copy the 60 seconds in a clip, nest the clip in the Clip folder
@@ -810,12 +812,12 @@ It is easy to copy/paste clips/media within a single instance of cinelerra or ac
     \item use the Paste icon (shortcut v) to paste the clip to that other instance selection target
 \end{enumerate}
 
-\section[ShuttlePROv2 and ShuttleXpress Jog Wheels for Editing]{ShuttlePROv2 and ShuttleXpress Jog Wheels for Editing\protect\footnote{credit Eric Messick --- \url{FixedImagePhoto.com/contact}}}%
+\section[ShuttlePROv2 and ShuttleXpress Jog Wheels for Editing]{ShuttlePROv2 and ShuttleXpress Jog Wheels for Editing\protect\footnote{credit Eric Messick}}%
 \label{sec:shuttle_jog_wheels_editing}
 
 
 The ShuttlePROv2 and ShuttleXpress are affordable jog wheels which can be useful for working with Cin, especially if you do a lot of playing forward/backward, fast/slow/normal, and single frames (figure~\ref{fig:shuttle}).
-Directions for using the ShuttlePROv2 and the ShuttleXpress with Cinelerra are described next. These devices work by sending keystrokes used in Cin, corresponding to the shuttle action, to the keyboard buffer. The shuttle has been fully integrated into the Cinelerra code so that after the one initial setup, no further intervention is required.  The multi-speed outer wheel works the same and has the same number of S positions on both shuttles but the shuttle Xpress has only 5 keys.  Since the majority of user operations will most likely be with the use of the 2 wheels, the slightly smaller Xpress could be a better choice with its 5 easy to reach keys.  The Pro is approximately $4x7$\,inches whereas the Xpress is about $4x4$\,inches.
+Directions for using the ShuttlePROv2 and the ShuttleXpress with Cinelerra are described next. These devices work by sending keystrokes used in Cin, corresponding to the shuttle action, to the keyboard buffer. The shuttle has been fully integrated into the Cinelerra code so that after the one initial setup, no further intervention is required.  The multi-speed outer wheel works the same and has the same number of S positions on both shuttles but the shuttle Xpress has only 5 keys.  Since the majority of user operations will most likely be with the use of the 2 wheels, the slightly smaller Xpress could be a better choice with its 5 easy to reach keys.  The Pro is approximately $4\times7$\,inches whereas the Xpress is about $4\times4$\,inches.
 
 \begin{figure}[htpb]
     \centering
@@ -859,7 +861,7 @@ A default shuttlerc file is automatically used when a shuttle device is plugged 
 \subsection{How to Modify the Default Key Settings}%
 \label{sub:modify_default_key_settings}
 
-Detailed information on how to modify your local .shuttlerc file is described next, but if you need help you can request more information in the forum at \url{https://cinelerra-gg.org}. In the \texttt{shuttlerc} file, a \# always represents a comment and blank lines are ignored.  The first thing you must do is copy the system supplied \texttt{shuttlerc} file to your \texttt{\$HOME} directory and rename it as \texttt{.shuttlerc} (with a period). 
+Detailed information on how to modify your local .shuttlerc file is described next, but if you need help you can request more information in the forum at {\small \url{https://cinelerra-gg.org}}. In the \texttt{shuttlerc} file, a \# always represents a comment and blank lines are ignored.  The first thing you must do is copy the system supplied \texttt{shuttlerc} file to your \texttt{\$HOME} directory and rename it as \texttt{.shuttlerc} (with a period). 
 
 The \texttt{shuttlerc} file has sections that in the case of Cinelerra, represent different windows allowing you to set the keys, K1-K15 for the Pro and K5-K9 for the Xpress, the shuttle wheel positions of S0/S1/S-1 for stop, S2 through S7 for wheeling to the right, and S-7 through S-2 for wheeling to the left for reverse.  Then there is JR to jog right (clockwise) and JL to jog left (counter-clockwise) for the inner smaller wheel for single frame movement.  See the key arrangement on a later page for location of the keys for each of the two different shuttles.
 
@@ -909,7 +911,7 @@ S3  FWD_1
 ... 
 \end{lstlisting}
 
-\noindent An explanation for the above REV and FWD key symbol values is necessary to facilitate user preferences.  Obviously REV stands for reverse and FWD for forward.  You can set any speed up to and including 64x (that is, 64 times the normal speed) on any of the S keys.  First in the line is the key name such as S-3 and then the key direction of FWD or REV followed by the symbol for underscore (\_) and then the numerical value to use.  For example, if you want the 5\textsuperscript{th} forward position, S5, to play 10$ \frac{1}{2}$ times faster, you would use the statement \texttt{S5 FWD\_10.5}.  Integer or decimal numbers are legal.
+\noindent An explanation for the above REV and FWD key symbol values is necessary to facilitate user preferences.  Obviously REV stands for reverse and FWD for forward.  You can set any speed up to and including 64x (that is, 64 times the normal speed) on any of the S keys.  First in the line is the key name such as S-3 and then the key direction of FWD or REV followed by the symbol for underscore (\_) and then the numerical value to use.  For example, if you want the $5^{th}$ forward position, S5, to play 10$\frac{1}{2}$ times faster, you would use the statement \texttt{S5 FWD\_10.5}.  Integer or decimal numbers are legal.
 
 For the Viewer, you may want keys defined to do a Splice or an Overwrite so define differently.  Note that assignments that contain single character letters must be enclosed in quotes.
 

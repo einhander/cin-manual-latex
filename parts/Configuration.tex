@@ -2,16 +2,16 @@
 \chapter{Configuration, Settings and Preferences}%
 \label{cha:configuration_settings_preferences}
 
-The user's default settings, preferences, and other helpful files are retained across sessions in a hidden file, called .bcast5, in the user’s \texttt{\$HOME} directory. Initially when cinelerra is launched there is an empty project and there are program default settings, and from then on the \texttt{.bcast5} directory will contain the settings that were set when quitting.  If you need to revert to the default settings, delete the \texttt{.bcast5} directory contents and restart Cinelerra.  Or you may want to rename it temporarily if you think you might want it back later.
-Although the location defaults to \texttt{\$HOME/.bcast5}, you can use the \texttt{CIN\_CONFIG} variable to override this location.  For example:  \texttt{export CIN\_CONFIG=/tmp/.bcast5}  will use a temporary setup for testing purposes.  It is also useful for multiple users sharing the same home directory who would like to have different configuration/preferences settings data.  And if you are experiencing inexplicable errors or crashes in cinelerra, they may be due to a problem with \texttt{.bcast5} in which case taking it out of the picture  can at least eliminate this as the cause.
-
-Several ways exist to change Cinelerra’s operational characteristics.  A lot of variations can be made to  settings and preferences by using the \textit{Settings} pulldown from the main window and choosing \textit{Preferences} (figure~\ref{fig:settings}).
-
 \begin{figure}[htpb]
     \centering \includegraphics[width=0.9\linewidth]{images/settings.png}
-    \caption{Settings$\rightarrow$Preferences window with Interface tab displayed}
+    \caption{Settings of default Preferences with the Appearance tab selected}
     \label{fig:settings}
 \end{figure}
+
+The user's default settings, preferences, and other helpful files are retained across sessions in a hidden file, called .bcast5, in the user’s \texttt{\$HOME} directory. Initially when Cinelerra is launched there is an empty project and there are program default settings, and from then on the \texttt{.bcast5} directory will contain the settings that were set when quitting.  If you need to revert to the default settings, delete the \texttt{.bcast5} directory contents and restart Cinelerra.  Or you may want to rename it temporarily if you think you might want it back later.
+Although the location defaults to \texttt{\$HOME/.bcast5}, you can use the \texttt{CIN\_CONFIG} variable to override this location.  For example:  \texttt{export CIN\_CONFIG=/tmp/.bcast5}  will use a temporary setup for testing purposes.  It is also useful for multiple users sharing the same home directory who would like to have different configuration/preferences settings data.  And if you are experiencing inexplicable errors or crashes in Cinelerra, they may be due to a problem with \texttt{.bcast5} in which case taking it out of the picture  can at least eliminate this as the cause.
+
+Several ways exist to change Cinelerra’s operational characteristics.  A lot of variations can be made to  settings and preferences by using the \textit{Settings} pulldown from the main window and choosing \textit{Preferences}.
 
 \section{Playback A / Playback B}%
 \label{sec:playback_a_b}
@@ -147,7 +147,7 @@ The main focus of the performance section is rendering parameters not available 
     \item[Cache size] to speed up rendering, several assets are kept open simultaneously. This determines how     many are kept open. A number too large may exhaust your memory rapidly. A number too small may result in slow playback as assets need to be reopened more frequently.
     \item[Seconds to preroll renders] some effects need a certain amount of time to settle in. Checking this option sets a number of seconds to render without writing to disk before the selected region is rendered. When using the render farm, you will sometimes need to preroll to get seamless transitions between the     jobs. Every job in a render farm is prerolled by this value. This does not affect background rendering because background rendering uses a different preroll value.
     \item[Force single processor use] Cinelerra tries to use all processors on the system by default, but sometimes you will only want to use one processor, like in a render farm client. This forces only one processor to be used.  The operating system usually uses the second processor for disk access. The value of this parameter is used in render farm clients.
-    \item[Project SMP cpus ] to restrict the number of processors utilized, change the count number.  This number will be used for the plugin per load balance operation cpu limit, which uses smp-cpus to stripe your data. It does not affect the number of cpus used in any other cinelerra operation besides plugins. On large cpu systems, it can come in handy to downgrade the number of cpus used for some plugins; otherwise it uses all of the processors and splits up the program into too many pieces which may add
+    \item[Project SMP cpus ] to restrict the number of processors utilized, change the count number.  This number will be used for the plugin per load balance operation cpu limit, which uses smp-cpus to stripe your data. It does not affect the number of cpus used in any other Cinelerra operation besides plugins. On large cpu systems, it can come in handy to downgrade the number of cpus used for some plugins; otherwise it uses all of the processors and splits up the program into too many pieces which may add
     considerable overhead in high cpu count systems.
 \end{description}
 
@@ -185,7 +185,7 @@ In the Render Farm Section are many options that are explained in detail in the 
 
 \begin{description}
     \item[Probe Order] clicking on this box brings up a popup allowing you to change the probe order usually for media that is raw camera output but it is also helpful if you want to ensure that a specific driver is used for certain media; for example you may want \texttt{tiff} files to be read natively instead of by ffmpeg.
-    \item[trap sigSEGV] always enable this so that if cinelerra crashes, a dump will be generated for analysis.
+    \item[trap sigSEGV] always enable this so that if Cinelerra crashes, a dump will be generated for analysis.
     \item[trap sigINT] always enable this so that you can use \texttt{Ctrl-c} to interrupt the program if it appears to be hanging.  This will often generate some useful information for analysis.
     \item[Use yuv420p dvd interlace format] for DVD media this option maintains the interlacing in Chroma sample addressing, which ordinarily would be deleted because the upsampling of interlaced chroma fields is normally done using a progressive algorithm.  With this mode enabled, the MPEG decoder uses a different algorithm for interlaced frames so that the $4:2:0$ format chroma interlacing is preserved.
     \item[Min / Max DB for meter] \textit{Min DB} is useful because some sound sources have a lower noise threshold than others. Everything below the noise threshold is meaningless. This option sets the meters to clip below a certain level.  \textit{Max DB} sets the maximum sound level represented by the sound meters. This value is presented merely to show how far over the limit a sound wave is. No matter what this value is, no sound card can play sound over 0 dB.
@@ -193,9 +193,10 @@ In the Render Farm Section are many options that are explained in detail in the 
     \item[Auto start lv2 gui] some lv2 plugins display a \textit{glitzy} UI (User Interface); for example the Calf plugins.  For these LV2 plugins, if you want that to automatically come up without having to click on the UI button on the simplified ui interface, this is the flag to enable that.
     \item[Android Remote Control] check this to enable using an android device as a remote control for broradcast TV.
     \item[Port] default port 23432 is used for the android remote control.
-    \item[Pin] default PIN cinelerra is used for the android remote control.
+    \item[Pin] default PIN Cinelerra is used for the android remote control.
     \item[Shell Commands] this button brings up the controls for setting up your own shell commands or editing previously set up commands.  See the section on Menu Bar Shell Commands for information.
     \item[Reload plugin index] execute this reload command when you have modified plugins and want to make sure your changes take effect.
+    \item[Nested Proxy Path] designates the default directory path for Nested Proxy files.
     \item[Default LV2\_Path] when there is no system \texttt{LV2\_PATH} set, if you want lv2 plugins loaded, you must set the correct directory path name here. When you change this field, cin will automatically restart and load the newly specified lv2 plugins.
 \end{description}
 
@@ -250,10 +251,32 @@ To change a \textit{Theme} in the main window pulldown, select:
 
 \texttt{Settings $\rightarrow$ Preferences};
 
-then in Preferences window, click on the \texttt{Appearance} tab. In the Editing section in the lower left hand corner,	click on the \texttt{down arrow} next to Theme to see your choices. Click on your desired choice from the list given. Check \texttt{OK}, cinelerra will automatically shutdown and restart.
+then in Preferences window, click on the \texttt{Appearance} tab. In the Editing section in the lower left hand corner,	click on the \texttt{down arrow} next to Theme to see your choices. Click on your desired choice from the list given. Check \texttt{OK}, Cinelerra will automatically shutdown and restart.
 
 \begin{description}
     \item[Plugin Icons] here are currently 4 choices for different plugin icons to include the old original.
+    \item[Layout Scale] allows for setting up scaling 
+for your 4K monitors or any monitor where you would like the text and icons to be just a little bigger or a lot bigger. This scale setting is automatically saved across sessions. 
+When first using Cinelerra, or if \textit{Layout Scale} has never been set, the initial value is 0.0.
+This means an automatic probe of the biggest monitor in use will be used for the setting. The advantage of this is that "new users" with a 4K monitor will not immediately be discouraged with too small text/icons.
+Leaving it at 0 instead of 1 is what most people will do and is probably preferable so that if you move to a different monitor with different dimensions/resolution, it will automatically probe. 
+If a user wants to prevent the automatic scaling, \textit{Layout Scale} should be set to 1.0 to avoid the smaller characters that might result due to the probe of a non-1080p monitor.
+
+For testing or when you are using a different sized monitor and want to ensure the expected
+size for larger text/fonts before you start the application from a window, you can keyin:
+\begin{lstlisting}[language=bash,numbers=none]
+        BC_SCALE=2.0 {your Cinelerra path}/bin/cin
+\end{lstlisting}
+The scaling size would only be in effect for that run of Cinelerra.  This is particularly
+useful in the case where the user makes a mistake in setting the \textit{Layout Scale} and Cinelerra becomes unusable. 
+Then the environment variable, BC\_SCALE, can be used to overcome the bad setting so that you can get back into
+Cinelerra and fix the scaling parameter.  For example, if you 
+accidentally set \textit{Layout Scale} to 112.6, keyin the following 
+and then when you get back into Cinelerra, fix \textit{Layout Scale} value in Preferences.  
+\begin{lstlisting}[language=bash,numbers=none]
+        BC_SCALE=1.0 {your Cinelerra path}/bin/cin
+\end{lstlisting}
+
     \item[View thumbnail size] you can increase or decrease the thumbnail size -- larger size uses more cpu.
     \item[Vicon quality]  increase the quality used for thumbnails to get more clarity of pixels -- this will use
     more memory.
@@ -289,7 +312,7 @@ Various representations of time are given so that you can select the most conven
 This section contains many useful options to cater to the various preferences of individual users.
 
 \begin{description}
-    \item[Show tip of the day] if checked, a tip will be displayed in a popup box when start up cinelerra.
+    \item[Show tip of the day] if checked, a tip will be displayed in a popup box when start up Cinelerra.
     \item[Autocolor assets] to make it visually easier to see your clips on the timeline that are from the same media file, you can have them automatically colored. Use of this feature requires additional memory and cpu on every timeline redraw, therefore smaller computers may not want this checked on.
     \item[ffmpeg probe warns rebuild indexes] this warning is very important for switching from using ffmpeg to using native formats, such as in the case of MPEG, so that you are reminded to \textit{rebuild indexes}.  If you do not rebuild the indexes, seeking on the timeline back and forth could very well be problematic, meaning it might not go to the right place.  Notification about rebuilding the indexes will appear by default as shown in the figure~\ref{fig:ff_probe} when you click on the FF icon in the main timeline in the upper right hand corner.  Once you click on \texttt{Don’t show this warning again} you will no longer be warned and this flag will no longer be enabled.
     \begin{figure}[htpb]
@@ -300,7 +323,7 @@ This section contains many useful options to cater to the various preferences of
     \item[EDL version warns if mismatched] in the case of a Batch Render, it is often helpful to be warned if the EDL has been changed so that you are aware that what is going to be rendered is different than your current EDL session.
     \item[Create Bluray warns if not root] if checked and you are not logged in as root, you will get an error message in order to avoid doing a lot of work and then failing out because root is required for automount and to write on DVD hardware.
     \item[Popups activate on button up] this is the default but if unchecked, popups activate on button down.
-    \item[Set Input Focus when window entered] this is checked on by default because on some operating system distros, when you move your mouse to a different window, nothing happens and you are left wondering why you can not enter information.  When checked this causes the input focus to shift to any cinelerra window when the cursor enters an exposed region of the window which eliminates the need to switch input focus by tabbing. 
+    \item[Set Input Focus when window entered] this is checked on by default because on some operating system distros, when you move your mouse to a different window, nothing happens and you are left wondering why you can not enter information.  When checked this causes the input focus to shift to any Cinelerra window when the cursor enters an exposed region of the window which eliminates the need to switch input focus by tabbing. 
     \item[Click to activate text focus] Click to activate text focus
     \item [Click to deactivate text focus] if checked, you will have to click to deactivate text focus.
     \item[Always show next frame] in this mode the insertion pointer reflects the same as the Compositor so that for playing forward, the result is what looks like 1 was added to the frame displayed in the Compositor window.  This is fully explained in another section (\hyperref[sub:playing_seeking]{17.2.1}).
@@ -357,6 +380,8 @@ export CIN_CONFIG=/tmp/.bcast5   #use a temporary setup for testing purposes.
     \item[{\small BC\_FONT\_PATH=<colon-separated-search-path-for-fonts>}]  to add additional font sets for the \textit{Title}
     plugin or to remove all fonts set to : \texttt{(colon)}.  An example: \texttt{export BC\_FONT\_PATH=/usr/share/fonts}.
     \item[{\small BC\_FONT\_DEBUG=1}] debug for determining which font is causing problems.  0 for no debug.
+    \item[{\small BC\_SCALE=1.2}] for setting up scaling for your monitor where you would like the text and icons to be bigger where 1.2 is a \# chosen accordingly; in this case the text and fonts will be 1.2 times the
+normal size of 1. Refer to the previous Appearance section, \textit{Layout Scale} for more details.
     \item[{\small LADSPA\_PATH}] specify an alternate set of ladspa plugins or include the default with the use of a colon separated list of directories to search for LADSPA plugins. This is always used first and if it does not
     exist, then the value for \texttt{CIN\_LADSPA} becomes \texttt{LADSPA\_PATH}.
     \item[{\small LV2\_PATH}] specify a certain set of LV2 plugins to use.  Separate multiple paths with colons.

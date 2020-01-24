@@ -58,7 +58,7 @@ In order to be reasonably fast to use, you will most likely want to prepare them
 \subsubsection{Filelist format}%
 \label{ssub:filelist_format}
 
-An image sequence is a series of ordered still pictures; for example a bunch of camera shots, frames of an animated scene, or series of frame shots. These can be loaded as multiple files. For timelapse sequences, as the size of camera images increases to 70 megabytes and beyond, and more images can be stored on a memory stick, more cache, memory, and system resources (such as file descriptors) are used by cinelerra to load the images when you use the \textit{concatenate tracks} or \textit{paste at insertion point} strategies.  It is very time consuming and resource consuming when each of the image files is loaded and concatenated as edits, and it also plays super poorly.  Here is an alternative to the usual \textit{load}.  This technique may also be useful for just a bunch of pictures.
+An image sequence is a series of ordered still pictures; for example a bunch of camera shots, frames of an animated scene, or series of frame shots. These can be loaded as multiple files. For timelapse sequences, as the size of camera images increases to 70 megabytes and beyond, and more images can be stored on a memory stick, more cache, memory, and system resources (such as file descriptors) are used by Cinelerra to load the images when you use the \textit{concatenate tracks} or \textit{paste at insertion point} strategies.  It is very time consuming and resource consuming when each of the image files is loaded and concatenated as edits, and it also plays super poorly.  Here is an alternative to the usual \textit{load}.  This technique may also be useful for just a bunch of pictures.
 
 File lists formats can be utilized in some way for the following list of types of \textit{Sequence files}  The first line of the sequence list file identifies the list codec.
 
@@ -79,7 +79,7 @@ Using the example of jpeg’s, the jpeg list sequence file type is the easiest a
 $ jpeglist.sh   /<path>/file.jpg   /<path>/DSC*.jpg
 \end{lstlisting}
 
-\vspace*{1ex} \noindent If <\texttt{path}> is the same on both outfile and infiles, then file.jpg is created in the same directory as infiles, the directory contains the entire asset, and the file list uses relative paths; otherwise the file list contains absolute paths.   Since this creates outfile list as a single asset, the memory demand and access time is much lower.  When you load the outfile in cinelerra, you will need to set \textit{Try ffmpeg last} since ffmpeg does not work with jpeglist sequence files.
+\vspace*{1ex} \noindent If <\texttt{path}> is the same on both outfile and infiles, then file.jpg is created in the same directory as infiles, the directory contains the entire asset, and the file list uses relative paths; otherwise the file list contains absolute paths.   Since this creates outfile list as a single asset, the memory demand and access time is much lower.  When you load the outfile in Cinelerra, you will need to set \textit{Try ffmpeg last} since ffmpeg does not work with jpeglist sequence files.
 
 An example output file from running this script residing in the directory where \texttt{DSC*.jpg} files exist is shown below.
 
@@ -136,7 +136,7 @@ This will access the media using ffmpeg which is slower so be patient.
 
 \hspace{4em}	{\small \url{https://www.cybercom.net/~dcoffin/dcraw/}}
 
-For example, included is the Canon Powershot SX60 (newly available in August, 2014).  Because ffmpeg tries to load \textit{any and every} file if \textit{Try Ffmpeg first} is enabled. it will make an attempt to load Raw Camera files first before any other file driver gets the chance.  In addition, there is the possibility that dcraw could conflict with the standard TIFF format, since it might be seen as format type \textit{tiff-pipe}.  Therefore it is necessary to specifically enable CR2 and either move it to the top or disable \textit{FFMPEG\_Early} and enable \textit{FFMPEG\_late} in the \textit{Probe Order} as described in another sections (\ref{sub:probe_order_loading_media} and \ref{sec:ffmpeg_early_probe_explanation}).  These changed settings will be retained across cinelerra sessions in .\texttt{bcast5}.  Raw Camera mode is most likely going to be used by expert camera users.
+For example, included is the Canon Powershot SX60 (newly available in August, 2014).  Because ffmpeg tries to load \textit{any and every} file if \textit{Try Ffmpeg first} is enabled. it will make an attempt to load Raw Camera files first before any other file driver gets the chance.  In addition, there is the possibility that dcraw could conflict with the standard TIFF format, since it might be seen as format type \textit{tiff-pipe}.  Therefore it is necessary to specifically enable CR2 and either move it to the top or disable \textit{FFMPEG\_Early} and enable \textit{FFMPEG\_late} in the \textit{Probe Order} as described in another section (\ref{sub:probe_order_loading_media} and \ref{sec:ffmpeg_early_probe_explanation}).  These changed settings will be retained across Cinelerra sessions in .\texttt{bcast5}.  Raw Camera mode is most likely going to be used by expert camera users.
 
 The first screenshot in figure~\ref{fig:raw} as in \texttt{Settings $\rightarrow$ ~Preferences $\rightarrow$ ~Playback A} Tab, shows the default checked settings of \textit{Interpolate CR2 images} and \textit{White balance CR2 images} which display the raw images in a way that you expect.  However, you may want to uncheck them to ensure that no program manipulation has modified your images so that you can add plugins or make your own modifications.  Unchecked indicates that the images are as closest as possible to unadulterated raw.
 
@@ -352,18 +352,18 @@ Originally, the easiest way to maintain a project for moving to another computer
 \subsection{Information about Backups and Perpetual Session}%
 \label{sub:information_backups_perpetual_session}
 
-In an effort to minimize loss of work due to user, hardware, or software issues, cinelerra has some automatic backup capabilities.
+In an effort to minimize loss of work due to user, hardware, or software issues, Cinelerra has some automatic backup capabilities.
 
-Cinelerra automatically saves every \textit{editing operation} to the current project on disk continuously to a file named \texttt{\$HOME/.bcast5/backup.xml}.  In the unlikely event of a crash, when you restart cinelerra, you should select \texttt{File $\rightarrow$ Load backup} in order to continue with the operations that were recorded before the crash.  If you have more than 1 instance of Cinelerra running, only the last editing operation made in whichever instance it was last made, will overwrite the backup. 
+Cinelerra automatically saves every \textit{editing operation} to the current project on disk continuously to a file named \texttt{\$HOME/.bcast5/backup.xml}.  In the unlikely event of a crash, when you restart Cinelerra, you should select \texttt{File $\rightarrow$ Load backup} in order to continue with the operations that were recorded before the crash.  If you have more than 1 instance of Cinelerra running, only the last editing operation made in whichever instance it was last made, will overwrite the backup. 
 
-There is still 1 more backup that may save you.  If for some reason you forgot to use \textit{Load backup} immediately when restarting, you have a second chance to use \texttt{File $\rightarrow$ Load} and select \texttt{\$HOME/.bcast5/backup.prev} as long as you only loaded a different file and have performed no editing operations.  This same file is also used by multiple instances of cinelerra.
+There is still 1 more backup that may save you.  If for some reason you forgot to use \textit{Load backup} immediately when restarting, you have a second chance to use \texttt{File $\rightarrow$ Load} and select \texttt{\$HOME/.bcast5/backup.prev} as long as you only loaded a different file and have performed no editing operations.  This same file is also used by multiple instances of Cinelerra.
 
 \textbf{Perpetual session} is very useful for working on a project over many days so you can just quit before shutting down and the next time you start up Cinelerra you will be right back where you left off.  
 You will retain all of your undo’s and redo’s.  
 The binary file name is \texttt{\$HOME/.bcast5/perpetual.dat} and as long as \texttt{Settings $\rightarrow$ Preferences}, the Appearance tab has the Flag \textit{Perpetual session} set this capability takes effect.  
 It is very important to understand that this is not the same as the continuously editing- operation-updated \texttt{backup.xml} file.  
-The perpetual.dat file is \textit{only} updated when you Quit cinelerra in the normal manner.  
-Which means if you interrupt the program, or kill it, or there is a segv or system crash, the \texttt{perpetual.dat} file will only reflect the state of your project from when you last started cinelerra and none of the editing/undo’s/redo’s you executed during the current session which was not ended normally.
+The perpetual.dat file is \textit{only} updated when you Quit Cinelerra in the normal manner.  
+Which means if you interrupt the program, or kill it, or there is a segv or system crash, the \texttt{perpetual.dat} file will only reflect the state of your project from when you last started Cinelerra, and none of the editing/undo’s/redo’s you executed during the current session which was not ended normally.
 \vspace{1ex}
 
 Some notes to keep in mind about Perpetual session are:
@@ -373,9 +373,10 @@ Some notes to keep in mind about Perpetual session are:
     \item takes disk space in \texttt{.bcast5} area and this could get really big
     \item after you complete a project, it is advisable to turn off the Perpetual session flag before quitting so
     that when you start a new project, you can start with a fresh perpetual.dat by turning the flag on or
-    after stopping cinelerra, delete the current \texttt{\$HOME/.bcast5/perpetual.dat} file
+    after stopping Cinelerra, delete the current \texttt{\$HOME/.bcast5/perpetual.dat} file
     \item only session data is backed up (not program feature setup)
     \item the files backup.xml and backup.prev will operate the same as before so that if there is a crash, you
     will want to use \texttt{File $\rightarrow$ Load backup} in order to continue where you were interrupted.
+    \item to start Cinelerra without using your Perpetual session data even if enabled, use your\_cinelerra\_path\texttt{/cin/bin -S}
 \end{itemize}
 

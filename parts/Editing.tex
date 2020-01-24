@@ -801,7 +801,7 @@ looking timelines because of the automatic rendering capability of nesting.
 \subsection{Copy/Paste clips/medias across Multiple Instances}%
 \label{sub:copy_paste_multiple_instances}
 
-It is easy to copy/paste clips/media within a single instance of cinelerra or across multiple instances.  The reason this works is because there are hidden X cut buffers and these are used to transmit EDL from 1 instance to another.
+It is easy to copy/paste clips/media within a single instance of Cinelerra or across multiple instances.  The reason this works is because there are hidden X cut buffers and these are used to transmit EDL from 1 instance to another.
 
 \noindent Steps to copy from a source timeline and paste to a target timeline:
 
@@ -854,7 +854,7 @@ ATTRS{name}=="Contour Design ShuttleXpress" MODE="0644"
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0020", MODE="0666" 
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0030", MODE="0666"
 \end{lstlisting}
-If you swap your shuttle, for example upgrade from an Xpress to a PROv2, just stop Cin, unplug the original shuttle, plug in the replacement shuttle, and restart Cin.  If you start the cinelerra program and the shuttle does not function as before, stop cinelerra and then simply unplug it and plug it in again.  There are a couple of reasons why it may stop functioning.  One is because cinelerra was not stopped with the usual Quit command and the shuttle was improperly shut down when there was a crash.  The other possibility is that a static discharge occurred in the area.
+If you swap your shuttle, for example upgrade from an Xpress to a PROv2, just stop Cin, unplug the original shuttle, plug in the replacement shuttle, and restart Cin.  If you start the Cinelerra program and the shuttle does not function as before, stop Cinelerra and then simply unplug it and plug it in again.  There are a couple of reasons why it may stop functioning.  One is because Cinelerra was not stopped with the usual Quit command and the shuttle was improperly shut down when there was a crash.  The other possibility is that a static discharge occurred in the area.
 
 A default shuttlerc file is automatically used when a shuttle device is plugged in when Cin is started. This file sets up the key bindings for Cinelerra to use. You can override any default settings by having a local file in your \texttt{\$HOME} directory, named \texttt{.shuttlerc} to reflect your personal preferences.
 
@@ -922,7 +922,7 @@ K2 "v"
 K4 "b"         # Overwrite
 \end{lstlisting}
 
-\noindent To change any key value to an alternative value, just edit the file and make the changes.  Besides just keys and alphabetic letters of numbers, you can also use any cinelerra value that contains the combination with Shift, Alt, and Ctrl.  For keys that are not printable characters, you can look up the symbol name to use for a specific operation in the file called: \texttt{/usr/include/X11/keysymdef.h} .
+\noindent To change any key value to an alternative value, just edit the file and make the changes.  Besides just keys and alphabetic letters of numbers, you can also use any Cinelerra value that contains the combination with Shift, Alt, and Ctrl.  For keys that are not printable characters, you can look up the symbol name to use for a specific operation in the file called: \texttt{/usr/include/X11/keysymdef.h} .
 \noindent Some examples:
 
 \begin{lstlisting}[language=bash,numbers=none]
@@ -932,7 +932,7 @@ K13 Ctrl-XK_Right 	# Go to next label
 
 \noindent For sequences of one or more \textit{printable} characters, you can just enclose them in double quotes.  For example in the \texttt{[Composer]} section, to go into or out of fullscreen mode, automatically start playing and put a label there, you could define a key like this:  K7 “f~l” - that is printable character f, a space, and printable character l.  
 
-After modifying \texttt{.shuttlerc}, the next time you use the shuttle, your changes will automatically take affect without even having to stop and restart Cin.  However, the first thing to try if problems is to stop cinelerra, unplug the shuttle, wait a few seconds, plug it in again, and then restart cin.  If for some reason, the shuttle keys still do not work after that, you may have an incorrect setup and you will have to correct that first.  For example, if you define S5 twice within the Cinelerra setup, it will fail.  It is suggested that if you make changes, you should initially uncomment DEBUG in the \texttt{.shuttlerc} file and start up cinelerra from a terminal window so that you can make sure it is working and has no output errors.  An error might look like:
+After modifying \texttt{.shuttlerc}, the next time you use the shuttle, your changes will automatically take affect without even having to stop and restart Cin.  However, the first thing to try if problems is to stop Cinelerra, unplug the shuttle, wait a few seconds, plug it in again, and then restart cin.  If for some reason, the shuttle keys still do not work after that, you may have an incorrect setup and you will have to correct that first.  For example, if you define S5 twice within the Cinelerra setup, it will fail.  It is suggested that if you make changes, you should initially uncomment DEBUG in the \texttt{.shuttlerc} file and start up Cinelerra from a terminal window so that you can make sure it is working and has no output errors.  An error might look like:
 
 \begin{lstlisting}[language=Bash,numbers=none]
 dupl key name: [Cinelerra]K1 
@@ -1062,7 +1062,7 @@ event: (0, 0, 0x0)
 
 \begin{lstlisting}[language=Bash,numbers=none,caption={Example for K15}]
 Example for K15: 
-event: (4, 4, 0x9000f)		#The last number f is 15 in octal and is the expected Key. 
+event: (4, 4, 0x9000f)		#The last number f is 15 in hexadecimal and is the expected Key. 
 event: (1, 270, 0x1) 
 event: (0, 0, 0x0) 
 event: (4, 4, 0x9000f) 

@@ -95,7 +95,7 @@ In \texttt{typ.ext} encoder parameter files, the first line is defined as:
 
 where the | represents piping the codec data through the bitstream filter. The rest of the lines in the file should look as follows:
 
-\begin{lstlisting}[language=bash,numbers=none]]
+\begin{lstlisting}[language=bash,numbers=none]
       # in column one is a comment
       id1   value1
 (or)	id2 = value2
@@ -103,7 +103,7 @@ where the | represents piping the codec data through the bitstream filter. The r
 
 Only one equals sign is allowed and it is just for readability.  There may be any number of id/value pair lines in a media definition, including zero. A typical line might be:
 
-\begin{lstlisting}[language=bash,numbers=none]]
+\begin{lstlisting}[language=bash,numbers=none]
       bitrate 4000000
 (or)	bitrate = 5000000
 \end{lstlisting}
@@ -135,7 +135,7 @@ threads=auto
 
 The encoder options you see in the Cinelerra menus depend on the files in these directories, \textsc{NOT THE CODE}.  If you add files, you will get to use more variety.
 
-In the \textit{cinelerra} directory, which contains the ffmpeg configuration folder, there are the choices the program uses.  When you open an ffmpeg format popup dialog, the listbox contains all of the codec types which are identified by the \texttt{file.ext} extensions.  Decoding has only a few options, since the ffmpeg file probes determine most of the options by looking at the media being opened, but encoding media requires a lot of setup.  Below are some of the folders and files used to determine the configurations used by ffmpeg to decode and encode files.
+In the \textit{Cinelerra} directory, which contains the ffmpeg configuration folder, there are the choices the program uses.  When you open an ffmpeg format popup dialog, the listbox contains all of the codec types which are identified by the \texttt{file.ext} extensions.  Decoding has only a few options, since the ffmpeg file probes determine most of the options by looking at the media being opened, but encoding media requires a lot of setup.  Below are some of the folders and files used to determine the configurations used by ffmpeg to decode and encode files.
 
 These extensions create audio / video media classes:
 
@@ -221,7 +221,7 @@ If you send any new options files to \href{mailto:cin@lists.cinelerra-gg.org}{ci
 
 To get a listing of the current ffmpeg supported formats and codecs that can be made to work with Cinelerra, provided there are option files added, run the following commands.  This should be done from the \texttt{<build>} directory substituting the location of \texttt{<build>} where you have installed Cinelerra on your system and the ffmpeg may be a different version than $4.2$ as used below.  Then look at the output created in \texttt{/tmp/ff-formats.txt} and \texttt{codecs.txt}.
 
-\begin{lstlisting}[language=bash,numbers=none]]
+\begin{lstlisting}[language=bash,numbers=none]
 /<build>/cinelerra-5.1/thirdparty/ffmpeg-4.2/ffmpeg -formats > /tmp/ff-formats.txt
 /<build>/cinelerra-5.1/thirdparty/ffmpeg-4.2/ffmpeg -codecs > /tmp/ff-codecs.txt
 \end{lstlisting}
@@ -233,7 +233,7 @@ For illustrative purposes, here is an example of the options files that need to 
 
 Add the file named  \texttt{./ffmpeg/audio/acc256k.pro} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]]
+\begin{lstlisting}[language=bash,numbers=none]
 mov aac
 strict -2
 b 256000
@@ -243,13 +243,13 @@ b 256000
 
 Add the file named \texttt{./ffmpeg/audio/pro.dfl} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]]
+\begin{lstlisting}[language=bash,numbers=none]
 acc256k.pro
 \end{lstlisting}
 
 Add the file named \texttt{./ffmpeg/video/prores.pro} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]]
+\begin{lstlisting}[language=bash,numbers=none]
 mov prores
 profile=2
 # lines of comments
@@ -257,7 +257,7 @@ profile=2
 
 Add the file named \texttt{./ffmpeg/video/pro.dfl} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]]
+\begin{lstlisting}[language=bash,numbers=none]
 prores.pro
 \end{lstlisting}
 
@@ -304,7 +304,7 @@ Figure~\ref{fig:audio-preset02} shows \textit{ffmpeg} video for the Kind. Note t
 
 Another feature gained from using ffmpeg in Cinelerra takes advantage of what is being referred to as the \textit{\%d trick}.  This trick uses the ffmpeg muxer image2 and a filename template to create a series of image files of a given type.  A specific example is described below.
 
-To encode a series of $48$\,bit tiff output image files, add a file to the cinelerra data ffmpeg/video subdirectory as in:
+To encode a series of $48$\,bit tiff output image files, add a file to the Cinelerra data ffmpeg/video subdirectory as in:
 
 \begin{lstlisting}[language=bash,numbers=none]
 # \dots/ffmpeg/video/tiff.dfl

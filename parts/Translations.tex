@@ -3,10 +3,11 @@
 
 There are several \textit{po} files for various languages to make Cinelerra more usable for non-English countries.  A program, \texttt{xlat.C}, assists in providing several variations of text files that can be used in order to allow anyone to help make meaningful translations.  All of the \textit{po} files are located in Cinelerra’s \texttt{/po} subdirectory. There are 3 different ways to proceed described below.
 
-Because Cinelerra frequently is changing, it is a good idea to start by building a new \texttt{cin.po} file which contains the latest messages/words in English to be translated, along with a comment line of the routine name and line number.  To create this, run the following line from a window:
+Because Cinelerra frequently is changing, it is a good idea to start by building a new \texttt{cin.po} file which contains the latest messages/words in English to be translated, along with a comment line of the routine name and line number.  To create this, run the following lines from a window:
 
 \begin{lstlisting}[language=bash,numbers=none]
-/{your cinelerra directory}/po/xlat.sh > /tmp/cin.po
+cd /{your top level cinelerra directory}
+./po/xlat.sh > /tmp/cin.po
 \end{lstlisting}
 
 \begin{description}
@@ -17,7 +18,8 @@ Because Cinelerra frequently is changing, it is a good idea to start by building
 To use the msgmerge command after creating a new cin.po as suggested previously:
 
 \begin{lstlisting}[language=bash,numbers=none]
-/{your cinelerra directory}/po/xlat.sh > /tmp/cin.po # use /tmp as a temporary place
+cd /{your top level cinelerra directory}
+./po/xlat.sh > /tmp/cin.po			       # use /tmp as a temporary place
 cp /{your cinelerra directory}/po/xx.po /tmp/xx.po     # substitute your language for x
 msgmerge -U /tmp/xx.po /tmp/cin.po                    # xx.po will be overwritten to include updates
 \end{lstlisting}

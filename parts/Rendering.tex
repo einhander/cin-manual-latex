@@ -216,7 +216,7 @@ The following steps are just a guideline to start your render farm.  It is assum
         \item set the Total number of jobs to create;
         \item click OK on the bottom of the Preferences window.
     \end{itemize}
-    \item On the client computers ($192.168.1.12$), start 5 background cinelerra tasks via:
+    \item On the client computers ($192.168.1.12$), start 5 background Cinelerra tasks via:
     \begin{lstlisting}[language=bash,numbers=none]
 $ cd /{path_to_cinelerra}
 $ cin -d 401
@@ -224,7 +224,7 @@ $ cin -d 402
 ...
 $ cin -d 405
     \end{lstlisting}
-    \item On the master node (localhost), start the 2 background cinelerra tasks via:
+    \item On the master node (localhost), start the 2 background Cinelerra tasks via:
     \begin{lstlisting}[language=bash,numbers=none]
 $ cd /{path_to_cinelerra}
 $ cin -d 406
@@ -339,7 +339,7 @@ $ umount <path>
         
         Be aware that you may have to adjust any security or firewalls you have in place.  \textit{Most firewalls will require extra rules to allow nfs access}.  Many have built-in configurations for this. 
     \end{enumerate}
-    \item[Configure Rendering on Master Node] There is 1 master node which is running the Cinelerra gui and where the video will be edited and the command given to start up the rendering.  Any number of client computers can be run from the command line only, so they can be headless since no X or any graphical libraries are needed.  Of course, the cinelerra software must be installed on each of the client computers.
+    \item[Configure Rendering on Master Node] There is 1 master node which is running the Cinelerra gui and where the video will be edited and the command given to start up the rendering.  Any number of client computers can be run from the command line only, so they can be headless since no X or any graphical libraries are needed.  Of course, the Cinelerra software must be installed on each of the client computers.
     \begin{enumerate}
         \item Assuming you already have Cinelerra installed on the master node, start Cinelerra by clicking on the
         icon or by typing the following command on the terminal screen:  \texttt{/{cinelerra\_path}/cin}.
@@ -365,7 +365,7 @@ $ netstat -n -l -4 --protocol inet
     \begin{lstlisting}[language=bash,numbers=none]
 /{cinelerra_pathname}/cin -d [port #]   ;   \#for example /mnt1/bin/cinelerra -d 401
     \end{lstlisting}
-    This starts cinelerra in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
+    This starts Cinelerra in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
     \begin{lstlisting}[language=bash,numbers=none]
 RenderFarmClient::main_loop: client started
 RenderFarmClient::main_loop: Session started from 127.0.0.1
@@ -378,7 +378,7 @@ RenderFarmClientThread::run: Session finished
     \begin{lstlisting}[language=bash,numbers=none]
 or n in `seq 1501 1505`; do cin -d $n; done
     \end{lstlisting}
-    \item[Render Using Render Farm] After you have followed the preceding steps, you are ready to use the render farm.  Click on \texttt{File $\rightarrow$ Render}\dots which opens the render dialog.  The most important point here is to use for \textit{the Output path / Select a file to render to} a path/file name that is on the shared volume that is also mounted on the clients.  Click on OK to render. The cinelerra program divides the timeline into the number of jobs specified by the user.  These jobs are then dispatched to the various nodes depending upon the load balance. The first segment will always render on the master node and the other segments will be farmed out to the render nodes.  Batch Rendering, as well as BD/DVD rendering, may use the render farm.  Each line in the batchbay can enable/disable the render farm.  Typically, video can be rendered into many file segments and concatenated, but normally audio is rendered as one monolithic file (not farmed).
+    \item[Render Using Render Farm] After you have followed the preceding steps, you are ready to use the render farm.  Click on \texttt{File $\rightarrow$ Render}\dots which opens the render dialog.  The most important point here is to use for \textit{the Output path / Select a file to render to} a path/file name that is on the shared volume that is also mounted on the clients.  Click on OK to render. The Cinelerra program divides the timeline into the number of jobs specified by the user.  These jobs are then dispatched to the various nodes depending upon the load balance. The first segment will always render on the master node and the other segments will be farmed out to the render nodes.  Batch Rendering, as well as BD/DVD rendering, may use the render farm.  Each line in the batchbay can enable/disable the render farm.  Typically, video can be rendered into many file segments and concatenated, but normally audio is rendered as one monolithic file (not farmed).
     
     Another performance feature which can use the Render Farm is \textit{Background Rendering}.  This is also enabled on the \texttt{Preferences $\rightarrow$ Performances} tab.  The background render function generates a set of image files by pre-rendering the timeline data on the fly.  As the timeline is update by editing, the image data is re-rendered to a \textit{background render} storage path.  The Render Farm will be used for this operation if it is enabled at the same time as the \textit{background render} feature.
     \item[Assemble the Output Files] Once all of the computer jobs are complete, you can put the output files together by using the shell script, \textit{RenderMux} (from the menubar \textit{scripts} button just above FF), if the files were rendered using ffmpeg, or you can load these by creating a new track and specifying concatenate to existing tracks in the load dialog in the correct numerical order.  File types which support direct copy can be concatenated into a single file by rendering to the same file format with render farm disabled as long as the track dimensions, output dimensions, and asset dimensions are equal.
@@ -465,7 +465,7 @@ This means that you can make project related configurations that do not impact t
     \item If one of the client computers is unavailable, check to see if there is an \texttt{X} to the left of the \texttt{nodename}
     in the Nodes listbox.  Check the \texttt{X} to disable it which sets ON to OFF.
     \item A red message in the lower left hand corner of the main timeline that reads \textit{Failed to start render
-    farm} often means that the client cinelerra programs were not started up.
+    farm} often means that the client Cinelerra programs were not started up.
     \item A message of \texttt{RenderFarmWatchdog::run 1 killing server thread \\ \#address\#} means that the client did
     not respond in time.  You can adjust the timer in \texttt{Settings $\rightarrow$ Preferences, Performance} tab.
     \item When you get the message \texttt{RenderFarmClient::main\_loop: bind port 400: Address already in use}, use a different port.
@@ -714,7 +714,7 @@ mknod /tmp/piper.yuv p
     \item set up your Render (\texttt{Shift-R}), you can choose a raw format such as \textit{yuv} or \textit{rgb}
     \item for the filename \textit{Select a file to render to}, use the named pipe as created in step 1 (\texttt{/tmp/piper.yuv})
     \item for \textit{Insertion Strategy}, you will want to make sure to select \textit{insert nothing}
-    \item click for OK on the green checkmark.(the cinelerra gui will look like it is hanging while waiting for a command line to use the pipe.)
+    \item click for OK on the green checkmark.(the Cinelerra gui will look like it is hanging while waiting for a command line to use the pipe.)
     \item on the terminal window, keyin your command, for example:
     \begin{lstlisting}[language=bash,numbers=none]
 /mnt0/build5/cinelerra-5.1/thirdparty/ffmpeg-3.4.1/ffmpeg -f rawvideo -pixel_format yuv420p \ -video_size 1280x720 -framerate 30000/1001 -i /tmp/piper.yuv /tmp/pys.mov

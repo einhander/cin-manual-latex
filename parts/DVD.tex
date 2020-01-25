@@ -8,7 +8,7 @@ Some preliminary information follows.  For NTSC, SD media is almost always $720\
 Frames per seconds is usually $29.97$ for NTSC and $25$ fps for PAL.  The standard SD dvd generally uses the MPEG-2 program stream with a filename extension of \texttt{m2v}.  BD blu-ray media is not normally interlaced, but you can leave it interlaced.  Blu-ray uses the MPEG transport stream which contains 1 or more program streams with a default filename extension of \texttt{m2ts}.
 
 Requirements for creating DVDs is the hardware device to write the media on and, obviously, the blank media for either BD or SD.  When generating SD media, you will have to install \textit{dvdauthor} and for BD media, install \textit{udftools} if they are not on your system.  Also, keep in mind that to mount filesystems for creating files and to burn DVDs, you will have to be root since you have to have privileges, unless special permissions have been provided for a non-root user.  It is also highly recommended to
-run the cinelerra startup from a terminal window, instead of the icon, in order to see informative messages of how to actually write the output (at prompt: keyin \texttt{<install\_directory\_path/bin/cin}).
+run the Cinelerra startup from a terminal window, instead of the icon, in order to see informative messages of how to actually write the output (at prompt: keyin \texttt{<install\_directory\_path/bin/cin}).
 
 A warning here -- writing blu-ray BDs and  regular SDs can take a large amount of clock time.  Keep in mind that a blu-ray can contain 25 hours of viewing, so would take multiple hours to just write one.
 
@@ -50,7 +50,7 @@ A quick set of basic steps to create DVDs is immediately below and usually just 
 
 Any problems encountered will require that you read more information in this section to include specific details, helpful hints, and problem resolution.
 
-\paragraph{Details and specific explanations} to create blu-ray or regular DVD are provided here.  It is very advantageous to startup cinelerra from the command line prompt instead of the icon.  Also, please be root or your hard work will be lost when the automount is issued and fails for bluray udfs mounting.
+\paragraph{Details and specific explanations} to create blu-ray or regular DVD are provided here.  It is very advantageous to startup Cinelerra from the command line prompt instead of the icon.  Also, please be root or your hard work will be lost when the automount is issued and fails for bluray udfs mounting.
 
 The general design of the DVD/blu-ray generation operations is to first render media using batch rendering and then terminate Cinelerra to start a script which creates the target device filesystem data.  These scripts are the \texttt{dvd.sh} and \texttt{bd.sh} scripts written into the target directory.  For DVD, the general plan is to write a directory \texttt{<target>/iso} with the dvd filesystem via \textit{dvdauthor} and then generate an iso9660 filesystem and write it to a dvd via \textit{growisofs}.  
 
@@ -254,7 +254,7 @@ Figure~\ref{fig:dvd-batch03} shows the availability of 4:2 :2 for a Batch Render
     \label{fig:dvd-batch03}
 \end{figure}
 
-Figure~\ref{fig:dvd-batch04} shows the availability of 10-bit high quality 4:2 :2 for a Batch Render seen by clicking on wrench icon.  You need specially compiled cinelerra in order to use the x265 10-bit as opposed to 8-bit.
+Figure~\ref{fig:dvd-batch04} shows the availability of 10-bit high quality 4:2 :2 for a Batch Render seen by clicking on wrench icon.  You need specially compiled Cinelerra in order to use the x265 10-bit as opposed to 8-bit.
 
 \begin{figure}[htpb]
     \centering
@@ -266,7 +266,7 @@ Figure~\ref{fig:dvd-batch04} shows the availability of 10-bit high quality 4:2 :
 \section{Output Terminal Messages from Creating DVDs}%
 \label{sec:output_terminal_messages_dvd}
 
-Below are examples of what the batch jobs generate and you will see on the terminal screen if you started the cinelerra program in the recommended manner from a terminal window.  It is just informational but will let you know if errors.  In looking at any of the output, you can safely ignore the errors that read \texttt{Unsupported codec with id 100357 for input stream 0} -- this comes from \textit{nav-data} (navigation data).  The first 2 examples are seen from running the batch jobs; the last 2 are from the single line execution which records the media output to the DVD hardware.
+Below are examples of what the batch jobs generate and you will see on the terminal screen if you started the Cinelerra program in the recommended manner from a terminal window.  It is just informational but will let you know if errors.  In looking at any of the output, you can safely ignore the errors that read \texttt{Unsupported codec with id 100357 for input stream 0} -- this comes from \textit{nav-data} (navigation data).  The first 2 examples are seen from running the batch jobs; the last 2 are from the single line execution which records the media output to the DVD hardware.
 
 \subsubsection*{SD Example: Partial Output during Cinelerra run}
 \label{ssub:sd_example_partial_output}
@@ -431,7 +431,7 @@ Note that there will be no files in the actual AUDIO\_TS directory.
 
 \begin{itemize}
     \item Are you logged in as root?  This is required in order to loopback mount files for bluray and to write media on \texttt{/dev/hardware}.  See section \hyperref[sec:bluray_workaround_mount_umount]{13.7} for a workaround for normal user mode.
-    \item Did you startup cinelerra from a terminal window so you can see informative messages?
+    \item Did you startup Cinelerra from a terminal window so you can see informative messages?
     \item Is udftools installed for BD and dvdauthor installed for SD?
     \item Do you have loopback not enabled for bluray?  At least temporarily, disable automount via:
     \begin{lstlisting}[language=bash,numbers=none]
@@ -566,14 +566,14 @@ For some time, DVD manufacturers have been employing  a variety of measures to m
 
 An MTS file is a video file saved in the high-definition (HD) MPEG Transport Stream video format, commonly called \textit{AVCHD}.  It contains HD video compatible with Blu-ray disc format and is based on the MPEG-2 transport stream.   MTS files are often used by Sony, Panasonic, Canon and other HD camcorders.  Legal input for Video --- MPEG1VIDEO, MPEG2VIDEO, H264; Audio --- MP1, MP2, AC3, AC3PLUS, DTS, TRUHD. 
 
-For creating a blu-ray disc, if you have HDV MPEG-2 media that is in blu-ray format, you can save the original quality of your work, rather than rendering it to another format.  Follow the steps below directly instead of going through cinelerra.  It has been tested on 10 different MTS files.
+For creating a blu-ray disc, if you have HDV MPEG-2 media that is in blu-ray format, you can save the original quality of your work, rather than rendering it to another format.  Follow the steps below directly instead of going through Cinelerra.  It has been tested on 10 different MTS files.
 
 \begin{lstlisting}[language=bash,numbers=none]
 du -sb /yourHDVfile.MTS		# Determine the size of your file in bytes.
 blocks=((size-in-bytes/2048 + 4096))	# Convert bytes into blocks + a little more.	
 mkudffs /tmp/newfilename.udfs blocks	# Create a file with that \# of blocks + some extra.
 mount -o loop /tmp/newfilename.udfs /mntX          # Use a mount point like mntX that is not in use.
-/<cinelerra_installed_path>/bin/bdwrite /mntX /tmp/yourHDVfile.MTS   # Substitute cinelerra path.
+/<cinelerra_installed_path>/bin/bdwrite /mntX /tmp/yourHDVfile.MTS   # Substitute Cinelerra path.
 umount /mntX				# You must unmount the udfs filesystem
 growisofs -Z /dev/bd=/tmp/newfilename.udfs   # Replace /dev/bd with your bluray hardware device.
 OR  dd if=/tmp/newfilename.udfs of=/dev/bd bs=2048000   # if using rewritable blu-ray; replace bd.
@@ -582,7 +582,7 @@ OR  dd if=/tmp/newfilename.udfs of=/dev/bd bs=2048000   # if using rewritable bl
 \section{Blu-ray Workaround for Mount/Umount}%
 \label{sec:bluray_workaround_mount_umount}
 
-Creating BD images to be written to media requires usage of \textit{mount} and \textit{umount} which typically can only be done by the root user due to security.  If you want to avoid running cinelerra as root, you can implement a workaround by adding a line in \texttt{/etc/fstab} (must be root to edit the file initially) and by creating a directory in your home area, called \texttt{bluray}.  You only have to do this once unless you upgrade the Operating System and it wipes out the line in \texttt{/etc/fsta}b.  Now the cinelerra program will automatically do the mount and umount for you each time you execute BD Render and you can run as an ordinary user.
+Creating BD images to be written to media requires usage of \textit{mount} and \textit{umount} which typically can only be done by the root user due to security.  If you want to avoid running Cinelerra as root, you can implement a workaround by adding a line in \texttt{/etc/fstab} (must be root to edit the file initially) and by creating a directory in your home area, called \texttt{bluray}.  You only have to do this once unless you upgrade the Operating System and it wipes out the line in \texttt{/etc/fsta}b.  Now the Cinelerra program will automatically do the mount and umount for you each time you execute BD Render and you can run as an ordinary user.
 
 The line to add to \texttt{/etc/fstab} will look something like the following, assuming your username is \textit{name} and your groupid may be \textit{users} or \textit{name}.  If you do an \texttt{ls -l} in your home directory, the $3^{rd}$ and $4^{th}$ fields shown will be your uid or name and gid or groupid which you must substitute in the line below.
 
@@ -590,12 +590,12 @@ The line to add to \texttt{/etc/fstab} will look something like the following, a
 /home/name/image  /home/name/bluray  udf noauto,loop,rw,user,uid=name,gid=groupid 0 0
 \end{lstlisting}
 
-Also, be sure to do a \texttt{mkdir bluray} in your \texttt{/home/name} directory as this is a requirement (owned by you; uid=gid=name).  When the actual image to be written to disc media is created, it will first d any current \texttt{/home/name/image} file.  Warning – make sure you do not already have a file called \textit{image} that you want to save as it will be automatically deleted every time you initiate a BD Render.  So you will want to burn a bluray disc after cinelerra creates the \textit{image} since it will written over on the next rendition.  The actual writing to your bluray burner (something like \texttt{/dev/sr0}) is done outside of cinelerra at a terminal prompt and requires root privilege usually.  You can either use \textit{sudo} for 1 line or create user wheel group to get around this.
+Also, be sure to do a \texttt{mkdir bluray} in your \texttt{/home/name} directory as this is a requirement (owned by you; uid=gid=name).  When the actual image to be written to disc media is created, it will first d any current \texttt{/home/name/image} file.  Warning – make sure you do not already have a file called \textit{image} that you want to save as it will be automatically deleted every time you initiate a BD Render.  So you will want to burn a bluray disc after Cinelerra creates the \textit{image} since it will written over on the next rendition.  The actual writing to your bluray burner (something like \texttt{/dev/sr0}) is done outside of Cinelerra at a terminal prompt and requires root privilege usually.  You can either use \textit{sudo} for 1 line or create user wheel group to get around this.
 
 \section{Blu-ray from Multiple Cinelerra Output}%
 \label{sec:bluray_multiple_cinelerra_output}
 
-Writing prepared multiple cinelerra output files, \texttt{bd.m2ts}, to a single bluray disc is relatively easy to do but is not done automatically.  You can render all of the desired files via the Create BD menu, save each individual \texttt{bd.m2ts} file with a unique name, construct a Menu Title that reflects the contents of each of these files, then manually use a few commands to create a udfs file to be written to BD.
+Writing prepared multiple Cinelerra output files, \texttt{bd.m2ts}, to a single bluray disc is relatively easy to do but is not done automatically.  You can render all of the desired files via the Create BD menu, save each individual \texttt{bd.m2ts} file with a unique name, construct a Menu Title that reflects the contents of each of these files, then manually use a few commands to create a udfs file to be written to BD.
 
 Usage of the final preparation taken from the bdwrite program comments:
 
@@ -620,7 +620,7 @@ The basic idea is to use playlist-0 as a menu or directions to use the bluray pl
 
 \begin{enumerate}
     \item Create all of the \texttt{bd.m2ts} files that you want to put on the Bluray.
-    \item Using cinelerra, design your Title page using a few seconds of video and the \textit{Title} plugin.
+    \item Using Cinelerra, design your Title page using a few seconds of video and the \textit{Title} plugin.
     \item Use BD Create to render your short Title video.
     \item Next is the most complicated part which is to run \texttt{mkudffs} with a sufficient amount of disk space to hold all of the \texttt{bd.m2ts} files \textit{plus a little more!}  To calculate this, you can record the sizes from having run BD Create mkudffs.  This number is displayed on the terminal screen when using the command line interface each time and add them together.  Or recalculate the size of each bd.m2ts using the formula below and adding them all together.  This is the number of blocks used to make a bluray image space for bdwrite to use.  For many files, this could require a huge amount of space, so check first.
     \begin{lstlisting}[language=bash,numbers=none]
@@ -628,7 +628,7 @@ The basic idea is to use playlist-0 as a menu or directions to use the bluray pl
     \end{lstlisting}
     Now create the image file via:   \texttt{mkudffs image <Total size>}  where image or udfs is the image name.
     \item Loop mount the disk image (refer to Section \hyperref[sec:bluray_workaround_mount_umount]{13.7}).
-    \item Then actually write your multiple bd.m2ts type files onto the \textit{image} where \texttt{<cin\_path>} is the location of the cinelerra binary \textit{bdwrite} file and \texttt{<path>} is your directory path.  Below is a single line that wrapped around with 4 Titles.
+    \item Then actually write your multiple bd.m2ts type files onto the \textit{image} where \texttt{<cin\_path>} is the location of the Cinelerra binary \textit{bdwrite} file and \texttt{<path>} is your directory path.  Below is a single line that wrapped around with 4 Titles.
     \begin{lstlisting}[language=bash,numbers=none]
     <cin_path>/bin/bdwrite image /<path>menu_titles.m2ts --- /<path>/bd1.m2ts -- /<path>/bd2.m2ts -- /<path>/bd3.m2ts -- /<path>bd4.m2ts
     \end{lstlisting}

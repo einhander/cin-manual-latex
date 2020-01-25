@@ -32,20 +32,20 @@ To use a text selection, create a drag selection in textboxes by pressing and ho
 \subsubsection*{2. Media cut and paste operations}%
 \label{ssub:media_cut_paste_operations}
 
-To create a media selection, highlight a region on the cinelerra media timeline, then use the main menubar or compositor/viewer edit panel to operate the clip cut, copy, or copy-keyframe menu buttons.  This selection can then be pasted to a target selection on the timeline using the main menubar or compositor/viewer edit panel to operate the clip paste or paste-keyframe operation.  Also, by using the resource window you can select the \textit{Clips} folder and right mouse the resources list box, then use the \texttt{Paste Clip} menu item to paste the selection to a named clip.  Additionally, these methods work between running instances of cinelerra, which means you can move media clips between the cinelerra program instances.  The clip data is also copied to the secondary clipboard buffer.  This makes it possible to examine the clip content directly if so desired.
+To create a media selection, highlight a region on the Cinelerra media timeline, then use the main menubar or compositor/viewer edit panel to operate the clip cut, copy, or copy-keyframe menu buttons.  This selection can then be pasted to a target selection on the timeline using the main menubar or compositor/viewer edit panel to operate the clip paste or paste-keyframe operation.  Also, by using the resource window you can select the \textit{Clips} folder and right mouse the resources list box, then use the \texttt{Paste Clip} menu item to paste the selection to a named clip.  Additionally, these methods work between running instances of Cinelerra, which means you can move media clips between the Cinelerra program instances.  The clip data is also copied to the secondary clipboard buffer.  This makes it possible to examine the clip content directly if so desired.
 
 \subsubsection*{3. The older cut\_buffer method}%
 \label{ssub:older_cut_buffer_method}
 
 \begin{itemize}
-    \item For text, if there is an active selection when a window closes, it uses \texttt{cut\_buffer0}.  Normally when a paste is performed, the target window \textit{notifies} the selection owner to \textit{send it now} when you do a paste, but if the window has closed there is no source window, so no pasting.  Some programs, like cinelerra, use \texttt{cut\_buffer0} as a fallback.  This makes it possible to paste data from a closed window.
+    \item For text, if there is an active selection when a window closes, it uses \texttt{cut\_buffer0}.  Normally when a paste is performed, the target window \textit{notifies} the selection owner to \textit{send it now} when you do a paste, but if the window has closed there is no source window, so no pasting.  Some programs, like Cinelerra, use \texttt{cut\_buffer0} as a fallback.  This makes it possible to paste data from a closed window.
     \item To move media clip, data \texttt{cut\_buffer2} is used because it does not require the selection owner interface, and works simply and reliably.  This buffer is not normally in use by other programs.
 \end{itemize}
 
 \subsection*{Final note}%
 \label{sub:final_note}
 
-When a text selection is set, the selected text is redrawn using selected-highlight color when the textbox loses focus.  This convenience feature shows the active text selection as you move the pointer to the new target window.  When a new selection is set anywhere else on your screen, the current text selection will be redrawn using the inactive-highlight color as the textbox loses selection ownership.  In most cinelerra themes, the drag selection text-highlight color is BLUE ($\#0000FF$), the selected-highlight color is SLBLUE ($\#6040C0$) -- really sort of purple, and the inactive-highlight color is MEGREY ($\#AFAFAF$).
+When a text selection is set, the selected text is redrawn using selected-highlight color when the textbox loses focus.  This convenience feature shows the active text selection as you move the pointer to the new target window.  When a new selection is set anywhere else on your screen, the current text selection will be redrawn using the inactive-highlight color as the textbox loses selection ownership.  In most Cinelerra themes, the drag selection text-highlight color is BLUE ($\#0000FF$), the selected-highlight color is SLBLUE ($\#6040C0$) -- really sort of purple, and the inactive-highlight color is MEGREY ($\#AFAFAF$).
 
 \section{Playing is Different than Seeking/Positioning!}%
 \label{sec:playing_seeking_positioning}
@@ -163,7 +163,7 @@ There is now program code to look for RGB versus YUV color model mismatches.  Yo
 \section{Simple Animation (Festival)}%
 \label{sec:simple_animation_festival}
 
-This functionality was added to cinelerra by the original author to create simple animation.  The file type for this animation is \textit{Scene}.
+This functionality was added to Cinelerra by the original author to create simple animation.  The file type for this animation is \textit{Scene}.
 
 To get started making a simple animated movie copy from the directory: \texttt{<cin\_path>/cinelerra/tests} the \texttt{text2movie} and \texttt{text2movie.xml}.  You can see what this does via \texttt{File $\rightarrow$ Load\dots $\rightarrow$ text2movie.xml}.  The file text2movie acts like a normal asset, except changes to it are immediately reflected on the timeline without reloading and the length is infinite.  You can just edit the text2movie file to change the script.  If the length of the movie increases, drag the right edit handle to extend the edit or use the pulldown \texttt{Edit $\rightarrow$ edit length}. There is one audio channel created for every character.  The frame rate, sample rate, frame size, and camera angles are fixed.  To see these values, right click on the asset and look at the \textit{Asset info}.
 

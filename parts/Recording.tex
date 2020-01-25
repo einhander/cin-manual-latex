@@ -29,7 +29,7 @@ The media file will be written using the format and codec specified in the \text
 Below describes the necessary steps for recording freely available media from the internet for your own personal use.  You have to be on a system using pulseaudio, such as ubuntu, fedora, centos.
 
 \begin{enumerate}
-    \item Start cinelerra and select \texttt{Settings $\rightarrow$ Preferences $\rightarrow$  Recording} From a terminal (with a wide text window) run: \texttt{pactl list}. You will see all of the audio sources and sinks on your system. Identify the source associated with the normal output your system uses. Example: \texttt{Source $\#1$}. Locate the source which monitors your normal audio output.  For example: \texttt{front stereo}.        
+    \item Start Cinelerra and select \texttt{Settings $\rightarrow$ Preferences $\rightarrow$  Recording} From a terminal (with a wide text window) run: \texttt{pactl list}. You will see all of the audio sources and sinks on your system. Identify the source associated with the normal output your system uses. Example: \texttt{Source $\#1$}. Locate the source which monitors your normal audio output.  For example: \texttt{front stereo}.        
     \item Choose a \textit{File Format} and \textit{File Type} (for example: \texttt{FFMPEG \& qt}).
     \begin{itemize}
         \item Check \texttt{Record audio tracks}.
@@ -195,7 +195,7 @@ There is a lot of detailed explanation below to be thorough, but an overview is 
 Listed below are the steps for the initial DVB setup.  Setup will be preserved until you make changes.
 
 \begin{enumerate}
-    \item Start cinelerra, and click \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Recording}
+    \item Start Cinelerra, and click \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Recording}
     \item Select \textit{File Format} checkbox: \texttt{Realtime TOC} (Table of Contents)
     \begin{itemize}
         \item It is not necessary to set File Format at this point as it will automatically be set later.
@@ -369,7 +369,7 @@ To watch on a large TV screen or monitor which you have connected, you will have
 \subsection{Dual Screen Mode}%
 \label{sub:dual_screen_mode}
 
-Dual screen mode is useful for displaying cinelerra video/project on a large screen digital Television set or for watching a previously recorded broadcast TV program via Cinelerra.  The physical configuration results in one screen (an \textit{Xwindow}) on one monitor and the other screen on the other monitor or TV screen.  Before the mode is usable for Cinelerra, X has to be configured in \textit{dual screen mode} --- that is, you must first split the configuration into 2 displays to operate Dual Screen Mode.  On some systems, you may be able to get to the dual screen mode by using \textit{Xinerama} allowing for use of 2 physical displays to act as 1 virtual display.
+Dual screen mode is useful for displaying Cinelerra video/project on a large screen digital Television set or for watching a previously recorded broadcast TV program via Cinelerra.  The physical configuration results in one screen (an \textit{Xwindow}) on one monitor and the other screen on the other monitor or TV screen.  Before the mode is usable for Cinelerra, X has to be configured in \textit{dual screen mode} --- that is, you must first split the configuration into 2 displays to operate Dual Screen Mode.  On some systems, you may be able to get to the dual screen mode by using \textit{Xinerama} allowing for use of 2 physical displays to act as 1 virtual display.
 
 The main menu pulldown, \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Playback A} and \texttt{B} Tabs, must be properly configured in order to take advantage of the Dual Screen Mode capability.
 
@@ -383,7 +383,7 @@ In the main menu Window pulldown there are \textit{Tile left} and \textit{Tile r
 
 Since Dual Screen Mode is most widely used for either a demonstration or watching TV, you will want to take advantage of Remote Control mode as described in a following section.  In the camera shots below, note the square red box that shows up in the upper left hand corner of the Viewer window (arrow pointing to it but it looks more orange than red) which denotes that the Application/Menu key was used to get into Remote Control mode.
 
-Figure~\ref{fig:two-monitors01} shows 2 monitors (could just as well be a big-screen TV for the second monitor) with Tile left where all of the cinelerra windows are on the left most monitor.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
+Figure~\ref{fig:two-monitors01} shows 2 monitors (could just as well be a big-screen TV for the second monitor) with Tile left where all of the Cinelerra windows are on the left most monitor.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
 
 \begin{figure}[htpb]
     \centering
@@ -392,7 +392,7 @@ Figure~\ref{fig:two-monitors01} shows 2 monitors (could just as well be a big-sc
     \label{fig:two-monitors01}
 \end{figure}
 
-Figure~\ref{fig:two-monitors02} shows 2 monitors with Tile right (b key) where all of the cinelerra windows are on the right monitor.  The left monitor shows the Suse distro logo and a couple of xterm type windows.
+Figure~\ref{fig:two-monitors02} shows 2 monitors with Tile right (b key) where all of the Cinelerra windows are on the right monitor.  The left monitor shows the Suse distro logo and a couple of xterm type windows.
 
 \begin{figure}[htpb]
     \centering
@@ -410,7 +410,7 @@ Figure~\ref{fig:two-monitors03} shows 2 monitors with Compositor window on the 2
     \label{fig:two-monitors03}
 \end{figure}
 
-Figure~\ref{fig:two-monitors04} shows 2 monitors with Compositor window on the 2nd monitor in FULLSCREEN mode so that no cinelerra borders are visible to distract from the picture.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
+Figure~\ref{fig:two-monitors04} shows 2 monitors with Compositor window on the 2nd monitor in FULLSCREEN mode so that no Cinelerra borders are visible to distract from the picture.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
 
 \begin{figure}[htpb]
     \centering
@@ -430,10 +430,12 @@ Figure~\ref{fig:two-monitors04} shows 2 monitors with Compositor window on the 2
 \end{wrapfigure}
 
 Cinelerra DVB recording/playback can now easily be done in “couch potato” mode using a remote control.  This comes in handy when you want to playback on a big TV screen for multiple person viewing. You can use the Application/Menu key on the keyboard to toggle between standard Cinelerra usage or a Dispatcher methodology through use of a remote control, an Android programmed device such as a tablet, or keyboard. The Application/Menu key on most keyboards is between the Alt and Ctrl keys on the right hand side bottom and depicts a menu on it either with or without a pointer (see image below).  An ati-x10 Remote Control device (figure~\ref{fig:remote01}) is currently working with Cinelerra and other remote controls may work but have never been tried.  The red/orange box on the top left main screen of Cinelerra  indicates Dispatcher Method access is activated which allows for keyboard grab which routes all key strokes until toggled off.  Below are the currently defined operations.
+\newline
 
 Remote Control Keys (Application/Menu key toggle for ati-x10 remote)
 
-\begin{tabular}{lc p{10cm}}
+% Should find something so that the last column width automatically adapts to margin/font/pagesize.
+\begin{tabular}{lc p{12cm}}
     up arrow&=&forward 1 minute\\
     
     down arrow&=&forward single frame\\
@@ -472,7 +474,7 @@ Remote Control Keys (Application/Menu key toggle for ati-x10 remote)
     
     book key&=&toggles channel scan (always available)\\
     
-    hand key&=&terminates cinelerra (always available)\\    
+    hand key&=&terminates Cinelerra (always available)\\    
 \end{tabular}
 
 \noindent Plus usual Transport keys:
@@ -502,11 +504,11 @@ is used to get into remote control mode, even if there is no remote control hard
 \subsection{Android Remote Control for DVB}%
 \label{sub:android_remote_control_dvb}
 
-Cinelerra GG Infinity has android remote interface code (figure~\ref{fig:remote02}). Any device, such as a tablet or a phone, can be used as long as it is running the Android operating system. Programming an Android Remote Control for DVB is a bit complicated at first, but becomes pretty simple after a bit.
+Cinelerra GG Infinity has Android remote interface code (figure~\ref{fig:remote02}). Any device, such as a tablet or a phone, can be used as long as it is running the Android operating system. Programming an Android Remote Control for DVB is a bit complicated at first, but becomes pretty simple after a bit.
 
 \begin{enumerate}
-    \item The Android Remote Control requires you to download and install the android \textit{CineRmt} app package (apk). To install it simply download it (any way you can) to your phone or tablet and click it to install, if it doesn't run automatically.
-    \item You should be able to open Settings You should be able to open  Settings→Preferences→Interface  tab.  And see Android Remote Control in the Operation section. Enable it using the checkbox. The default port 23432 and default PIN cinelerra are OK. \texttt{Preferences $\rightarrow$ Interface}  tab.  And see Android Remote Control in the Operation section. Enable it using the checkbox. The default port $23432$ and default PIN cinelerra are OK.
+    \item The Android Remote Control requires you to download and install the Android \textit{CineRmt} app package (apk). To install it simply download it (any way you can) to your phone or tablet and click it to install, if it doesn't run automatically.
+    \item In Cinelerra, open \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface} tab, and enable \texttt{Android Remote Control} in the Operation section using the checkbox. The default port $23432$ and default PIN value \texttt{cinelerra} are OK.
     \item After you install the new phone/tablet app in step 1, start it up from your apps menu.
 \end{enumerate}
 
@@ -567,7 +569,7 @@ Currently, to activate the commercial database (db) methods you must do the foll
 cd <cin-path>/bin
 mkdir /cinelerra              #yes, currently only in the / filesystem
 ./cin_db /cinelerra/media.db  #to create a new empty commercial     capture database
-export BC_USE_COMMERCIALS=1   #in the command shell that is starting cinelerra
+export BC_USE_COMMERCIALS=1   #in the command shell that is starting Cinelerra
 \end{lstlisting}
 
 This activates the gui tools and database access.  As of yet, all of the requisite permission changes

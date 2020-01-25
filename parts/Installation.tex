@@ -162,7 +162,7 @@ NOTE:  when you specify parameters to the configure program, it will create a ma
 Since in a make file, the \$ is a special character, it must be escaped so in order to represent a \$ as part of an input parameter, it has to be stuttered.  
 That is, you will need \$\$ (2 dollar signs) to represent a single dollar sign. 
 
-It may be necessary on some distros which have missing or incomplete up-to-date libraries, to build cinelerra without Ladspa.  
+It may be necessary on some distros which have missing or incomplete up-to-date libraries, to build Cinelerra without Ladspa.  
 To do so, use:
 
 \begin{lstlisting}[language=bash,numbers=none]
@@ -470,13 +470,13 @@ yum install cinelerra
 apt install software-properties-common apt-transport-https
 apt-add-repository https://cinelerra-gg.org/download/pkgs/ub14
 # UBUNTU 16/17/18 note - This has been known to work, but things change quickly:
-# VIP - for the first install, the above line adds cinelerra to /etc/apt/sources.list but...
+# VIP - for the first install, the above line adds Cinelerra to /etc/apt/sources.list but...
 # Version 16/17/18 of Ubuntu are more strict for licensing so you will have to edit
 #  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
 # For example the line should be: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub16 xenial main
 #   Or for ub17: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub17 zesty main
 #   Or for ub18: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub18 bionic main
-# Also, on the install you will get an error message that you can either ignore as cinelerra
+# Also, on the install you will get an error message that you can either ignore as Cinelerra
 #  will run anyway, or else (the first time only) on the commnand line keyin: 
 #  echo > /etc/sysctl.d/50-cin.conf "kernel.shmmax=0x7fffffff"
 apt update

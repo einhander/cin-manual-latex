@@ -528,6 +528,60 @@ For additional safety, the \textit{Open EDL} feature includes additional backup 
 
 When \textit{Open EDL} is invoked, the current EDL and current undo stack are both \textit{pushed}, and the active session EDL is replaced with the target clip/nested edl.  A new undo stack is created, and the active \texttt{backup.xml} file name is decorated with the stack level.  So, \texttt{backup.xml} is \texttt{backup1.xml} when your edits are at stack level 1, \texttt{backup2.xml} at stack level 2, and so on.  This means that if you \textit{load backup} at stack level 1, the session will reload from history at stack level 1, not the main session.
 
+\subsection{Editing with File by Reference}%
+\label{sub:file-reference}
+
+It is sometimes handy to have EDL assets not as a copy, but as a reference that is
+automatically updated into your project.  Suppose you have several short videos that at
+the end have the same credits which include the current year such as 2019.  But now it 
+is 2020 and all of the videos would have to be individually updated with the new date.
+By including a \textit{Referenced File} as the EDL file type when you create each of the videos, 
+you can just change the one credits xml file and the next time you load one of the 
+videos and render it, it will now automatically have the updated information. 
+
+The purpose of this feature is to be able to rework a smaller section of a global 
+master project at any time, which can be done by an "assistant" and then this work 
+is automatically reflected in the global master project.  It is for \textbf{advanced usage only}.
+
+Up until the addition of this feature, Cinelerra has always used copies and no 
+direct reference in order to ensure original data is never compromised.  In the 
+usual case, subprojects as xmls are copied into a master project where subprojects 
+had been inserted, so that if you change something in a subproject or delete a subproject,
+it would have no affect on the master project.  But now with \textit{File by Reference}, any
+project that uses a referenced file will automatically include any changes made to the
+referenced file when loaded.  At the same time, if you use the EDL file NOT as a
+referenced file in a project since it is then just a copy, it will not be updated. 
+Because of this difference, the user needs to be very aware of what using this feature 
+could do.
+
+\textbf{Use with extreme caution}.  However, there are several built-in safety features 
+and a warning that should never be turned off even though it gives you the option to do so.
+These include:
+
+\begin{enumerate}
+    \item When the \texttt{File, Load files}
+menu is opened, the EDL strategy will always be set to just EDL as default.  Although, if you use Apply and leave the Load Menu open, it will stay changed to what you selected until it is re-opened.
+    \item  When an EDL is opened as \textit{Reference}, the color of that file name in the Resources Media folder is different in order to serve as a reminder that it is special.
+    \item A warning message is displayed in a popup window when you load a \textit{File by Reference}
+ that reads “Other projects can change this project and this can become a broken link”.  
+Although you can check the warning box to never see this warning again, you would be well advised to not do so.  It is a great reminder of consequences and you will not want to be 
+cavalier about the warning.  Instead just use the X to dismiss the warning.
+\end{enumerate}
+
+Here is a step by step example of how you can use \textit{File by Reference}:
+\begin{enumerate}
+    \item Start up Cinelerra and use the Title plugin to create a new credits file.  Save as credits.xml.
+    \item Start a New project and then load an existing master project to the timeline.
+    \item  Load the credits file you created in step 1 with a Load Strategy of Create Resources Only and with
+     EDL Strategy as \textit{Reference}.
+    \item  Note the color change in the credits.xml filename and the reference comment in the Resources
+     Media folder.
+    \item Drag the credits file to an empty spot on the timeline.  Save this new master project and quit.
+    \item Start Cinelerra up again.  Load credits.xml and make a change to the Title and save again.
+    \item Exit Cinelerra; restart Cinelerra; load your master project and now you will automatically see on the
+     timeline the changes you just made in the previous step.
+\end{enumerate}
+
 \begin{comment}
 \begin{figure}[htpb]
     \centering

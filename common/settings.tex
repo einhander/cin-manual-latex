@@ -10,7 +10,18 @@
 
 \setsecnumdepth{subsubsection} 		% section numeration depth
 
+% Redefine Chapters and Sections
+% https://tex.stackexchange.com/questions/476735/change-chapter-and-section-color-memoir-class
+\usepackage{xcolor}
+% define colors
+\definecolor{chaptercolour}{RGB}{23,85,142}
+\definecolor{sectioncolour}{RGB}{23,85,142}
+\definecolor{subsectioncolour}{RGB}{23,85,142}
+%\definecolor{subsubsectioncolour}{RGB}{23,85,142}
 
+\setparaheadstyle{\Large\bfseries\color{sectioncolour}}%
+\setsecheadstyle{\Large\bfseries\color{sectioncolour}}% Set \section style
+\setsubsecheadstyle{\large\bfseries\color{subsectioncolour}}% Set \subsection style
 
 %\pagestyle{plain}
 %\pagenumbering{roman}

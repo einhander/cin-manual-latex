@@ -195,3 +195,8 @@ Keyframes can be shifted around and moved between tracks on the timeline using s
 An often used, keyframe editing operation is replication of some curve from one track to the other to make a stereo pair.  The first step is to solo the source track's record patch by Shift-clicking on the \textit{arm track} icon in the patchbay.  Then either set In/Out points or highlight the desired region of keyframes.  Go to \texttt{keyframes $\rightarrow$ copy keyframes} to copy them to the clipboard.  Solo the destination track's record patch by Shift-clicking on it and go to \texttt{keyframes $\rightarrow$ paste keyframes} to paste the clipboard.  Another common application for keyframe modification is to highlight a region on the timeline which contains multiple keyframes that you want to modify.  Then when you adjust a parameter or set of parameters, the change will be applied to all keyframes within the selection instead of a new keyframe being created.  This only works when the keyframe stores multiple parameters and only for mask and effect keyframes.  Other types of keyframes are generated as usual.
 
 And there is an easy way to delete keyframes besides selecting a region and using \texttt{keyframes $\rightarrow$ clear keyframes}. Click-drag a keyframe before its preceding keyframe or after its following keyframe on the track.  This is the only way you can simultaneously delete keyframes on ganged tracks.
+
+\section{Allow Keyframes Spanning}%
+\label{sec:allow_keyframes_spanning}
+
+When you create a drag selection and you modify a value in a plugin then everything in the selection gets modified the same.  It use the previous keyframe and if there is no previous keyframe, then the default keyframe in your \texttt{\$HOME/.bcast5} definitions is used.

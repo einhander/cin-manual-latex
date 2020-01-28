@@ -20,17 +20,17 @@ and video transitions only apply to video tracks.
 An example usage of a transition follows:
 \begin{enumerate}
     \item Load a single video file and delete a sizable section from within the video which will result in two edits of that file. Now you should see the edit boundary between the two edits on the timeline.
-    \item Move to the \textit{Resources window} and click on the \texttt{Video transitions} folder. Choose a transition by highlighting it and then drag and drop it on the second video edit on the timeline. A colored box shows where the transition will appear and when you release the mouse the $2^{nd}$ edit applies the transition between the $1^{st}$ and $2^{nd}$ edit.
+    \item Move to the \textit{Resources window} and click on the \textit{Video transitions} folder. Choose a transition by highlighting it and then drag and drop it on the second video edit on the timeline. A colored box shows where the transition will appear and when you release the mouse the $2^{nd}$ edit applies the transition between the $1^{st}$ and $2^{nd}$ edit.
 The beginning of the edit will be covered by the transition, if the insertion point or the In point is over an edit.
 \end{enumerate}
-Some Transitions have parameters that can be modified. To see these, move the \textit{pointer} over the transition and \texttt{right click} which brings up a menu. A \texttt{Show} option will pop up a window if there are parameters that you can change to different values. 
-An \texttt{On} option makes it possible to turn off the transition so that it will not be in effect in case you want to only enable it under certain conditions.  The default value for this will be checked On.
-A \texttt{Length} option lets you adjust the length in seconds of the time that the transition will be in play.  Values modified in the Show or Length will be saved for use the next time that transition is used until changed again. 
-The \texttt{Detach} option deletes the transition from the timeline. When you drag and drop a different transition on top of an existing transition on the timeline, it replaces the previous one.
+Some Transitions have parameters that can be modified. To see these, move the pointer over the transition and right click which brings up a menu. A \texttt{Show} option will pop up a window if there are parameters that you can change to different values. 
+An \textit{On} option makes it possible to turn off the transition so that it will not be in effect in case you want to only enable it under certain conditions.  The default value for this will be checked On.
+A \textit{Length} option lets you adjust the length in seconds of the time that the transition will be in play.  Values modified in the Show or Length will be saved for use the next time that transition is used until changed again. 
+The \textit{Detach} option deletes the transition from the timeline. When you drag and drop a different transition on top of an existing transition on the timeline, it replaces the previous one.
 
-There are some shortcuts to alleviate the dragging and dropping of transitions when you want to do a lot of them in various places on the timeline. After you have established the parameter values for a transition that you have dragged from the Resources window, you can use \texttt{U} and \texttt{u} keys to paste the same transition;
-the \texttt{U} key pastes the last video transition while the \texttt{u} key pastes the last audio transition on all recordable tracks. 
-Alternatively, you can add the same transition to multiple edits when in \texttt{Arrow mode} (Drag and Drop editing), by selecting edits to add the transition to and use the Video/Audio pulldown to \texttt{Attach transition}. Select the desired transition and then click the checkmark \texttt{OK}. You can set a default transition in the Attach transition popup box – by highlighting your choice, then click on the button \texttt{Set Default Transition}, and you will see that transition become the new default.
+There are some shortcuts to alleviate the dragging and dropping of transitions when you want to do a lot of them in various places on the timeline. After you have established the parameter values for a transition that you have dragged from the Resources window, you can use "U" and "u" keys to paste the same transition;
+the "U" key pastes the last video transition while the "u" key pastes the last audio transition on all recordable tracks. 
+Alternatively, you can add the same transition to multiple edits when in \textit{Arrow mode} (Drag and Drop editing), by selecting edits to add the transition to and use the Video/Audio pulldown to \textit{Attach transition}. Select the desired transition and then click the checkmark OK. You can set a default transition in the Attach transition popup box -- by highlighting your choice, then click on the button \textit{Set Default Transition}, and you will see that transition become the new default.
 
 The way that transitions work is that two edits overlap for some length of time and no edits are actually moved during the transitions.
 Instead extra frames from the source file will be used to lengthen the first edit enough to make it overlap the second edit for the length of the transition. The transition takes effect exactly at the beginning of the second edit and lasts for the specific length of time you set into the second edit. 
@@ -40,7 +40,7 @@ In the case where the last frame on the timeline is the last frame of the source
 
 When playing transitions, software rendering is used.  This means that if you are using hardware, as with the video driver set to OpenGL, hardware acceleration will usually be turned \textit{off} during the transition and \textit{on} after the transition. Consequently, you may notice small anomalies while playing this section but you can avoid this by switching to using X11 video driver instead or just ignore it because when you create your final render that is always done in software only.
     
-When “Info on” is enabled via the right mouse button over an empty space in the Resources window (or the shortcut of the letter “i” is used), a short description will be provided in the lower right hand corner of that window for the current transition that the mouse is on.
+When \textit{Info on} is enabled via the right mouse button over an empty space in the Resources window (or the shortcut of the letter “i” is used), a short description will be provided in the lower right hand corner of that window for the current transition that the mouse is on.
 
 Once you have dragged and dropped a transition to the timeline, right mouse click on the transition and a pop-up menu will appear which provides an opportunity to make some changes.  These are described next for all video and audio transitions. 
 
@@ -98,12 +98,12 @@ Wipe a specific shape across the video. Currently available shapes are: \textit{
  \textit{Diamond\_02}, \textit{Diamond\_03}, \textit{Double-Door-h}, \textit{Double-Door-v}, \textit{Gravity},
 \textit{heart}, \textit{Linear-h}, \textit{Linear-v}, \textit{Plasma\_01}, 
  \textit{specks}, \textit{spiral}, \textit{tile2x2h}, \textit{tile2x2v}, \textit{Venetian-Blinds-h-x05},
- \textit{Venetian-Blinds-h-x10}, \textit{Venetian-Blinds-v-x05}, and \textit{Venetian-Blinds-v-x10}. 
+ \textit{Venetian-Blinds-h-x10}, \textit{Venetian-Blinds-v-x05}, and \textit{Venetian-Blinds-v-x10}\protect\footnote{many shapes by Igor Beg}. 
 
 The menu for Shape Wipe that popups when you click on \textit{Show} has several possible choices.  First, the \textit{Shape} allows for choosing from the list of shapes as outlined previously either by typing in the textbox, using the down arrow, or clicking on the tumbler down/up arrows.
 Next, there is a \textit{Feather} textbox with tumbler arrows or a slider bar to easily change the blending amount.  A reset button is conveniently located to the right of the slider bar.  There is a checkbox to \textit{Preserve shape aspect ratio} and a \textit{Direction} of \textit{White to Black} or \textit{Black to White}.
 
-You can add your own images to the Shape Wipe transition and there are some free ones available to download such as under the Video$\rightarrow$Transitions pulldown at \url{assistcg.com}.
+You can add your own images to the Shape Wipe transition and there are some free ones available to download such as under the \texttt{Video $\rightarrow$ Transitions} pulldown at {\small \url{assistcg.com}}.
 
 To include new images in the Shape Wipe Transition, simply copy the file \texttt{{shape}.png} to the
  subdirectory \texttt{plugins/shapes} in your Cinelerra directory path.
@@ -111,7 +111,7 @@ To include new images in the Shape Wipe Transition, simply copy the file \texttt
 \subsection*{Slide}%
 \label{sub:slide}
 
-Image slides into view; you can set \texttt{Left/Right/In/Out}.
+Image slides into view; you can set Left/Right/In/Out.
 
 \subsection*{Wipe}%
 \label{sub:wipe}

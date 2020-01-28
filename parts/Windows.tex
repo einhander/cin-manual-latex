@@ -693,7 +693,7 @@ In the compositing window, there is a popup menu of options for the camera and p
     \item Start by shrinking the projector to $z=0,500$ ($\frac{1}{4}$ of the original frame).
     \item The next step is to switch to the camera and note that the green box has assumed the size of the projector, i.e. the red box. The value of $z$ of the camera is always equal to $1,000$ (default) but the frame is $\frac{1}{4}$ of the original frame, i.e. it has the size of the projector that has $z=0,500$. This is the current viewport size.
     \item You enlarge the room bringing $z=2,000$. You can see that the dimensions of the viewport (green box) do not change, remaining the same as those of the projector. However, the frame has been enlarged and this variation is indicated by the enlargement of the yellow box. Let's remember that this follows the changes made with the camera tool.
-    \item We can drag the room so that we can center the frame to our liking. . The movement of the yellow box shows well the variation compared to the green box.
+    \item We can drag the room so that we can center the frame to our liking. The movement of the yellow box shows well the variation compared to the green box.
     \item Finally, if we want, we can switch to the projector tool to move the output frame to the position we want with respect to the size of the source. Of course, we can also work on the $z$, which in the example is at $z=0.500$, if we have decided to change the size of the output.
 \end{enumerate}
 
@@ -1201,6 +1201,8 @@ For Clips, \emph{Nest} and \emph{UnNest} as described elsewhere are available.
 
 The asset \emph{Info} window also can be used to display detailed information about the selected/highlighted media file -- available for any loaded media of type mpeg or ffmpeg.  
 This is extremely helpful in determining what type of media it is, size, resolution, format, and type/number of audio streams.  It is especially useful for multiple program streams.  You can have the info window popped on several of your assets simultaneously.
+
+\textit{Asset's interlacing}  is the type of interlacing the asset has: If the file is (H)DV type, recognition and configuration is done automatically. All other media types will be set unknown. So we have to manually set the interlacing \protect\footnote{From Igor ubuntu's mail}.
 
 Figure~\ref{fig:info_asset_details} shows the \textit{Detail} box to click on the left side and a simple, typical output in the Asset Detail window on the right side.  Also, note the highlighted media in the Resources window.
 

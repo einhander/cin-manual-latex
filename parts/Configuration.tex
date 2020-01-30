@@ -36,6 +36,7 @@ The audio drivers are used for both recording and playback. The Audio Out settin
         \item[\textit{OSS}] was one of the first Linux sound drivers and has an open source implementation with many sound cards supported.
         \item[\textit{OSS Envy24}] is the commercial version of OSS with a variant for $24 bit 96 KHz$ sound cards. This variant required changes to the way the sound drivers were used and so needed a different driver.
         \item[\textit{Raw 1394, DV 1394, IEC 61883}] are older audio drivers used by camcorders and not much else.
+        \item[Pulseaudio] Extends the functionality of ALSA. It is a more modern and highly supported driver.
     \end{description}
     \item[Device] with the down arrow, you can see the device choices on your computer.
     \item[Bits] 8, 16 or 24 Bit Linear are the current choices for the number of bits of precision Cinelerra should set the device for. The meaning of the number of bits can be misleading. Some sound drivers need to be set to 32 bits to perform 24 bit playback and will not play anything when set to 24 bits. Other sound drivers need to be set to 24 bits for 24 bit playback.
@@ -50,7 +51,7 @@ The video drivers are used for video playback in the compositor and the viewer. 
 \begin{description}
     \item[Play every frame] this causes every frame of video to be displayed even if it means that the playback of the video tracks fall behind. Most likely you will want this enabled because, after all, in order to edit you want to see each frame.  However, if you are just watching a big video, you can switch to not play every frame so that you can at least not be distracted by slowness.
     \item[Framerate achieved] the number of frames per second being displayed during playback. This is updated during playback only.  The goal is to get as close to the frame rate as possible, even if Play every frame is not enabled.
-    \item[Scaling equation] Enlarge / Reduce -- this algorithm is used when video playback involves scaling or translation. This does not affect $1:1$ playback.  Choices available are:
+    \item[Scaling equation] Enlarge / Reduce -- this algorithm is used when video playback involves scaling or translation (only X11 video driver). This does not affect $1:1$ playback.  Choices available are:
     \begin{description}
         \item[\textit{Nearest Neighbor / Nearest Neighbor}] low quality output with fast playback. Often produces jagged edges and uneven motion.
         \item[\textit{Bicubic / Bicubic}] Bicubic interpolation is used for both enlarging and reducing, enlarging blurs slightly but does not show stair step artifacts.
@@ -58,7 +59,7 @@ The video drivers are used for video playback in the compositor and the viewer. 
         \item[\textit{Bilinear / Bilinear}] when slight enlargement is needed, a bilinear enlargement looks better than a bicubic enlargement.  Bilinear uses less CPU than either Bicubic or Lanczos.
         \item[\textit{Lanczos / Lanczos}] is not necessarily a general purpose upscaler, but is intended for low resolution sources. However many people like the sharpening effects.  More quality from Lanczos does take more CPU.
     \end{description}
-    \item[DVD subtitle to display] DVD IFO files usually contain subtitle tracks. These must be decoded with the MPEG decoder. Select Enable subtitles to enable subtitle decoding. There are usually multiple  subtitle tracks indexed by number and starting from 0. Enter the index number of the subtitle track to be decoded in the \textit{DVD Subtitle to display} text box or use the tumbler to increase the index value. Go to the asset corresponding to the MPEG file in the \texttt{Resources} window and right click. Click on \texttt{Info}. The number of subtitle tracks is shown at the bottom.
+    \item[DVD subtitle to display] DVD IFO files usually contain subtitle tracks. These must be decoded with the MPEG decoder. Select Enable subtitles to enable subtitle decoding. There are usually multiple  subtitle tracks indexed by number and starting from 0. Enter the index number of the subtitle track to be decoded in the \textit{DVD Subtitle to display} text box or use the tumbler to increase the index value. Go to the asset corresponding to the MPEG file in the \textit{Resources} window and right click. Click on \textit{Info}. The number of subtitle tracks is shown at the bottom.
     \item[Enable subtitles/captioning] for broadcast TV ??
     \item[Label cells] ??
     \item[TOC Program No] Table of Contents program number used in DVB ??
@@ -78,7 +79,7 @@ The video drivers are used for video playback in the compositor and the viewer. 
 \section{Recording}%
 \label{sec:recording}
 
-The parameters here expedite the \texttt{File $\rightarrow$ Record\dots} function by allowing the user to pre-configure the file format and the hardware used for recording, since the hardware generally determines the supported file format. Once set, the file format is applied to all recordings.
+The parameters here expedite the \texttt{File $\rightarrow$ Record}\dots function by allowing the user to pre-configure the file format and the hardware used for recording, since the hardware generally determines the supported file format. Once set, the file format is applied to all recordings.
 
 \subsection{File Format section}%
 \label{sub:file_format_section}
@@ -86,7 +87,7 @@ The parameters here expedite the \texttt{File $\rightarrow$ Record\dots} functio
 \begin{description}
     \item[File Format] this determines the output file format for recordings. It depends heavily on the type of driver used. The menu selections are the same as those of the rendering interface.
     \item[Record audio tracks] toggle must be enabled to record audio.
-    \item[Record video tracks] toggle must be enabled to record video. The wrench button left of both the audio and video tracks toggle, opens a configuration dialog in order to set the compression scheme (codec) for each audio and video output stream. The audio and video is wrapped in a container format defined by the \texttt{File Format} menu. Different wrappers may record audio only, video only, or both.  Some video drivers can only record to a certain container. If the video driver is changed, the file format may be updated to give the supported output. If you change the file format to an unsupported format, it may not work with the video driver.
+    \item[Record video tracks] toggle must be enabled to record video. The wrench button left of both the audio and video tracks toggle, opens a configuration dialog in order to set the compression scheme (codec) for each audio and video output stream. The audio and video is wrapped in a container format defined by the \textit{File Format} menu. Different wrappers may record audio only, video only, or both.  Some video drivers can only record to a certain container. If the video driver is changed, the file format may be updated to give the supported output. If you change the file format to an unsupported format, it may not work with the video driver.
     \item[Realtime TOC] setup for DVB recording to automatically generate a Table of Contents. This will scan the stream data \textit{on the fly} on its way to being written while the asset is being captured. ??
 \end{description}
 
@@ -166,7 +167,7 @@ The main focus of the performance section is rendering parameters not available 
 \subsection{Render Farm section}%
 \label{sub:render_farm_section}
 
-In the Render Farm Section are many options that are explained in detail in the \hyperref[sec:render_farm_usage]{Rendering} chapter of this manual.  Just make sure if you do not intend to use a render farm, that \texttt{Use render farm} is not checked.
+In the Render Farm Section are many options that are explained in detail in the \hyperref[sec:render_farm_usage]{Rendering} chapter of this manual.  Just make sure if you do not intend to use a render farm, that \textit{Use render farm} is not checked.
 
 \section{Interface}%
 \label{sec:interface}
@@ -184,12 +185,12 @@ In the Render Farm Section are many options that are explained in detail in the 
 \label{sub:operation_section}
 
 \begin{description}
-    \item[Probe Order] clicking on this box brings up a popup allowing you to change the probe order usually for media that is raw camera output but it is also helpful if you want to ensure that a specific driver is used for certain media; for example you may want \texttt{tiff} files to be read natively instead of by ffmpeg.
+    \item[Probe Order] clicking on this box brings up a popup allowing you to change the probe order usually for media that is raw camera output but it is also helpful if you want to ensure that a specific driver is used for certain media; for example you may want \textit{tiff} files to be read natively instead of by ffmpeg.
     \item[trap sigSEGV] always enable this so that if Cinelerra crashes, a dump will be generated for analysis.
-    \item[trap sigINT] always enable this so that you can use \texttt{Ctrl-c} to interrupt the program if it appears to be hanging.  This will often generate some useful information for analysis.
-    \item[Use yuv420p dvd interlace format] for DVD media this option maintains the interlacing in Chroma sample addressing, which ordinarily would be deleted because the upsampling of interlaced chroma fields is normally done using a progressive algorithm.  With this mode enabled, the MPEG decoder uses a different algorithm for interlaced frames so that the $4:2:0$ format chroma interlacing is preserved.
+    \item[trap sigINT] always enable this so that you can use Ctrl-c to interrupt the program if it appears to be hanging.  This will often generate some useful information for analysis.
+    \item[Use yuv420p dvd interlace format] for DVD media this option maintains the interlacing in Chroma sample addressing, which ordinarily would be deleted because the upsampling of interlaced chroma fields is normally done using a progressive algorithm.  With this mode enabled, the MPEG decoder uses a different algorithm for interlaced frames so that the 4:2:0 format chroma interlacing is preserved.
     \item[Min / Max DB for meter] \textit{Min DB} is useful because some sound sources have a lower noise threshold than others. Everything below the noise threshold is meaningless. This option sets the meters to clip below a certain level.  \textit{Max DB} sets the maximum sound level represented by the sound meters. This value is presented merely to show how far over the limit a sound wave is. No matter what this value is, no sound card can play sound over 0 dB.
-    \item[Import images with a duration of \# seconds] when you load single images, like \texttt{png} or \texttt{jpeg}, automatically load for \# number of seconds.  This makes it easier to see an image on the timeline.  If you just want the single frames, uncheck this option.
+    \item[Import images with a duration of \# seconds] when you load single images, like \textit{png} or \textit{jpeg}, automatically load for \# number of seconds.  This makes it easier to see an image on the timeline.  If you just want the single frames, uncheck this option.
     \item[Auto start lv2 gui] some lv2 plugins display a \textit{glitzy} UI (User Interface); for example the Calf plugins.  For these LV2 plugins, if you want that to automatically come up without having to click on the UI button on the simplified ui interface, this is the flag to enable that.
     \item[Android Remote Control] check this to enable using an android device as a remote control for broradcast TV.
     \item[Port] default port 23432 is used for the android remote control.
@@ -251,7 +252,7 @@ To change a \textit{Theme} in the main window pulldown, select:
 
 \texttt{Settings $\rightarrow$ Preferences};
 
-then in Preferences window, click on the \texttt{Appearance} tab. In the Editing section in the lower left hand corner,	click on the \texttt{down arrow} next to Theme to see your choices. Click on your desired choice from the list given. Check \texttt{OK}, Cinelerra will automatically shutdown and restart.
+then in Preferences window, click on the \textit{Appearance} tab. In the Editing section in the lower left hand corner,	click on the \textit{down arrow} next to Theme to see your choices. Click on your desired choice from the list given. Check OK, Cinelerra will automatically shutdown and restart.
 
 \begin{description}
     \item[Plugin Icons] here are currently 4 choices for different plugin icons to include the old original.
@@ -287,7 +288,7 @@ and then when you get back into Cinelerra, fix \textit{Layout Scale} value in Pr
 \subsection{Time Format section}%
 \label{sub:time_format_section}
 
-Various representations of time are given so that you can select the most convenient one for you. The time representation can also be changed by \texttt{Ctrl-clicking} on the timebar in the main window.
+Various representations of time are given so that you can select the most convenient one for you. The time representation can also be changed by Ctrl-clicking on the timebar in the main window.
 
 \begin{itemize}[noitemsep]
     \item Hours : Minutes : Seconds : xxx
@@ -301,7 +302,7 @@ Various representations of time are given so that you can select the most conven
 \label{sub:color_section}
 
 \begin{description}
-    \item[Highlighting Inversion color] modify the selection area color; default is \texttt{ffffff} which is white. When you make a selection, that area becomes an inverse image which by default becomes a whitish color.  You can set it to a different color by modifying the hex value in the box next to \texttt{Highlight inversion color}.   Keep in mind that if you set the value to a low value, you will not be able to see the outlined selected area (for example the hex value \texttt{f} is not readily visible and leads to confusion).  A leading 0 or blank is not allowed and will be automatically changed to \texttt{ffffff}.
+    \item[Highlighting Inversion color] modify the selection area color; default is \textit{ffffff} which is white. When you make a selection, that area becomes an inverse image which by default becomes a whitish color.  You can set it to a different color by modifying the hex value in the box next to \textit{Highlight inversion color}.   Keep in mind that if you set the value to a low value, you will not be able to see the outlined selected area (for example the hex value "f" is not readily visible and leads to confusion).  A leading 0 or blank is not allowed and will be automatically changed to \textit{ffffff}.
     \item[YUV color space] default is \textit{BT601}; others \textit{BT709} (high definition), \textit{BT2020} (ultra high definition).
     \item[YUV color range] JPEG [$0-255$] and MPEG [$16-235$]
 \end{description}
@@ -314,7 +315,7 @@ This section contains many useful options to cater to the various preferences of
 \begin{description}
     \item[Show tip of the day] if checked, a tip will be displayed in a popup box when start up Cinelerra.
     \item[Autocolor assets] to make it visually easier to see your clips on the timeline that are from the same media file, you can have them automatically colored. Use of this feature requires additional memory and cpu on every timeline redraw, therefore smaller computers may not want this checked on.
-    \item[ffmpeg probe warns rebuild indexes] this warning is very important for switching from using ffmpeg to using native formats, such as in the case of MPEG, so that you are reminded to \textit{rebuild indexes}.  If you do not rebuild the indexes, seeking on the timeline back and forth could very well be problematic, meaning it might not go to the right place.  Notification about rebuilding the indexes will appear by default as shown in the figure~\ref{fig:ff_probe} when you click on the FF icon in the main timeline in the upper right hand corner.  Once you click on \texttt{Don’t show this warning again} you will no longer be warned and this flag will no longer be enabled.
+    \item[ffmpeg probe warns rebuild indexes] this warning is very important for switching from using ffmpeg to using native formats, such as in the case of MPEG, so that you are reminded to \textit{rebuild indexes}.  If you do not rebuild the indexes, seeking on the timeline back and forth could very well be problematic, meaning it might not go to the right place.  Notification about rebuilding the indexes will appear by default as shown in the figure~\ref{fig:ff_probe} when you click on the FF icon in the main timeline in the upper right hand corner.  Once you click on \textit{Don’t show this warning again} you will no longer be warned and this flag will no longer be enabled.
     \begin{figure}[htpb]
         \centering \includegraphics[width=0.7\linewidth]{images/ff_probe.png}
         \caption{Default warning when you click on FF icon in main window}
@@ -331,7 +332,7 @@ This section contains many useful options to cater to the various preferences of
     \item[Perpetual session] is very useful for working on a project over many days so you can just quit before
     shutting down and the next time you start up Cinelerra you will be right back where you left off. You
     will retain all of your undo's and redo's.
-    \item[Clears before toggle] when using copy/paste in drag and drop mode some users prefer to resort to the addition of the \texttt{Ctrl} key for adding multiple selections.  By checking this flag, the user retains usage as is commonly done for listbox operations.
+    \item[Clears before toggle] when using copy/paste in drag and drop mode some users prefer to resort to the addition of the Ctrl key for adding multiple selections.  By checking this flag, the user retains usage as is commonly done for listbox operations.
     \item[Timeline Rectify Audio] for displaying rectified audio on the timeline instead of a standard audio waveform, check this flag.  The waveform is cut on the zero line, thus making the silent areas more visible and the waveform is stretched more over the entire height of the audio track, which improves the visibility of certain areas. This only affects the timeline and not any other audio waveform displays.
 \end{description}
 
@@ -345,7 +346,7 @@ This section gives you information about the Cinelerra program and version you a
 
 Environment variables are global variables in the shell which all applications can read. They are set with a command like \texttt{set VARIABLE=value} or \texttt{export VARIABLE=value}. Environment variables can be viewed with a command like \texttt{env}.   The values set can be removed with \texttt{unset VARIABLE}.
 
-The following exported variables can be set to customize your environment.  The \texttt{CIN\_CONFIG} variable could be extremely useful for testing purposes or for multiple users sharing the same home directory who would like different default preference settings.
+The following exported variables can be set to customize your environment. \\ The \texttt{CIN\_CONFIG} variable could be extremely useful for testing purposes or for multiple users sharing the same home directory who would like different default preference settings.
 
 \begin{description}
     \item[{\small CIN\_BROWSER}] name of browser to use by \textit{Shell Cmds} options

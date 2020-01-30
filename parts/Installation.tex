@@ -492,8 +492,9 @@ apt upgrade cin
 #    (Note instead of Administration, some versions of Mint GUI UpdateManager might be System)
 #  For Mint18,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint18 xenial main
 #  For Mint19,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint19 bionic main
-# IMPORTANT NOTE: if you get an error when doing the above, you will have to manually add the above line
-#    by editing the file:   /etc/apt/sources.list.d/additional-repositories.list
+# IMPORTANT NOTE: if you get "malformed input" error, you will have to create a file
+#    by typing the command: sudo touch /etc/apt/sources.list.d/additional-repositories.list
+#    then wait 10 minutes or so and try using the Gui Update Manager again.
 apt update
 apt install cin
 #to update a previous install

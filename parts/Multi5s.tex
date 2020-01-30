@@ -8,13 +8,13 @@ This chapter is simply a conglomeration of multiple usage possibilities.
 
 Use the Mixer Viewer to see multiple media playing simultaneously in re-sizable mini-viewers.  This can be used in various ways and is useful to edit videos shot by multiple cameras from different viewpoints that were simultaneously recorded in order to create a single good video.  Everything will have to be initially synced so you can decide which one of the camera angles is best suited at any time. 
 
-The number of cameras/mixers you can have is generally limited to the available resources on your computer.  Currently, the number of File Descriptors available in the OS limits cameras to about 50.  If you have many \textit{mixer viewers} you will probably want to use proxy mode whenever possible.  Also, in the \texttt{Settings $\rightarrow$ Playback A} tab \textit{Video Out} section, uncheck \texttt{play every frame} and choosing a Video Driver of \texttt{X11} with \texttt{use direct X11 render if possible} checked, will provide better performance.
+The number of cameras/mixers you can have is generally limited to the available resources on your computer.  Currently, the number of File Descriptors available in the OS limits cameras to about 50.  If you have many \textit{mixer viewers} you will probably want to use proxy mode whenever possible.  Also, in the \texttt{Settings $\rightarrow$ Playback A} tab \textit{Video Out} section, uncheck \textit{play every frame} and choosing a Video Driver of \textit{X11} with \textit{use direct X11 render if possible} checked, will provide better performance.
 
 Figure~\ref{fig:multicam01} shows 9 media sources in the left corner, the composed video in the right corner, the timeline with the top video track with pieces of the 9 overwrites, and the choice in Resources of Mixed.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/multicam01.png}
+    \includegraphics[width=1.0\linewidth]{images/multicam01.png}
     \caption{Using Mixer capability in Cin for multiple cameras}
     \label{fig:multicam01}
 \end{figure}
@@ -24,10 +24,10 @@ Figure~\ref{fig:multicam01} shows 9 media sources in the left corner, the compos
 
 \begin{enumerate}
     \item This method assumes all of your media or cameras are aligned the way you want them already.
-    \item From the \textit{File} pulldown, create a \texttt{New project} with the desired format for Audio and Video output (or you can just use the default).
+    \item From the \textit{File} pulldown, create a \textit{New project} with the desired format for Audio and Video output (or you can just use the default).
     \item \texttt{File $\rightarrow$ Load} the media files you want to work with using \textit{Create new resources only}.
     \item In the Resources window, with  the Media folder, highlight the list of media you want to \textit{Mix}. This is done using a ctrl or shift mouse button press as you would in a standard listbox selection.
-    \item Right click the mouse on the media selection and choose \texttt{open mixers}. This opens multiple mixer viewer windows, one for each media item that was highlighted.  You can
+    \item Right click the mouse on the media selection and choose \textit{open mixers}. This opens multiple mixer viewer windows, one for each media item that was highlighted.  You can
     do them 1 at a time instead.  This also adds the source media tracks to the main window.
     \item Now use the timeline to play and you will see all viewers/cameras playing.  Stop when you get to the
     end of the \textit{good} camera playback.
@@ -49,7 +49,7 @@ Figure~\ref{fig:multicam01} shows 9 media sources in the left corner, the compos
     \item Only middle mouse drag handle operations should be used normally.
     \item Other drags will displace the media source/destination timeline correspondence.
     \item To re-tile the mixer windows after you have resized and moved them around, you can use the Window
-    pulldown of \texttt{Tile mixers} or the shortcut of \texttt{Alt-t}.
+    pulldown of \textit{Tile mixers} or the shortcut of Alt-t.
 \end{itemize}
 
 \subsubsection*{But, I want to use only the first set of audio tracks\dots}%
@@ -89,11 +89,11 @@ To create a list of mixer viewers:
 
 \begin{enumerate}
     \item Setup the session \texttt{settings $\rightarrow$ format}, width, height, frame rate, color model, aspect ratio.
-    \item Create dst tracks using the a/v track pulldowns (or use shortcuts \texttt{‘t’} / \texttt{‘T’}),  armed and playable.
+    \item Create dst tracks using the a/v track pulldowns (or use shortcuts "t" / "T"),  armed and playable.
     \item Append src tracks using \texttt{file $\rightarrow$ open $\rightarrow$ append tracks}, or the resource window using pasting.
     \item Using the track patchbay, disarm editing and disable playback of the audio/video src tracks.
     \item Using the track patchbay, mark the new tracks as \textit{mixer} source to be added to the viewer.
-    \item Create a mixer viewer using the main menu pulldown, or the shift "\texttt{M}” shortcut.
+    \item Create a mixer viewer using the main menu pulldown, or the shift "M” shortcut.
     \item Repeat steps $3-6$ for each mixer viewer needed for the session editing.
 \end{enumerate}
 
@@ -109,11 +109,11 @@ The mixer viewer configuration is saved with the session data.  When a saved ses
 The best way to use proxy with your multiple cameras is to follow the steps below:
 
 \begin{enumerate}
-    \item Load media with insertion strategy of \texttt{create resources only}.
+    \item Load media with insertion strategy of \textit{create resources only}.
     \item Highlight the media in the Resources window and right click on this to choose \textit{open mixers}.
-    \item Use the \textit{Settings} pulldown and choose  \texttt{Proxy settings\dots} to bring up the proxy menu.
-    \item Choose the size and other options you want and click the checkmark \texttt{OK}. If you choose the option \texttt{Beep when done} you will hear a short beep if all media is already proxied or a longer beep when all proxies have been created.
-    \item When your editing is complete, use \textit{Settings} pulldown and proxy to \texttt{original size}.
+    \item Use the \texttt{Settings $\rightarrow$ Proxy settings}\dots to bring up the proxy menu.
+    \item Choose the size and other options you want and click the checkmark OK. If you choose the option \textit{Beep when done} you will hear a short beep if all media is already proxied or a longer beep when all proxies have been created.
+    \item When your editing is complete, use \textit{Settings} pulldown and proxy to \textit{original size}.
 \end{enumerate}
 
 Instead of Open Mixers, you can Insert Mixers with new tracks at the timeline insertion point.
@@ -123,7 +123,7 @@ Instead of Open Mixers, you can Insert Mixers with new tracks at the timeline in
 
 Multi-camera footage of a single event can have various shots starting and ending at different times. So when the footage start times are different, you can use the mixer audio to synchronize the clips on the timeline. The program algorithm attempts to find and align automatically the waveforms of the media.
 
-Synchronizing multiple camera videos based on audio tracks can be done with Cinelerra-GG easily enough with the Window pulldown Mixers… → Align mixers option.  Align mixers brings up a window displaying your mixers, the currently selected Master Track, and a list of all of the Audio Tracks (figure~\ref{fig:mixer-align01}).  There is a limit of 32 audio tracks per each mixer (that should be enough!)
+Synchronizing multiple camera videos based on audio tracks can be done with Cinelerra-GG easily enough with the \texttt{Window $\rightarrow$ Mixers$\dots$ $\rightarrow$  Align mixers} option.  Align mixers brings up a window displaying your mixers, the currently selected Master Track, and a list of all of the Audio Tracks (figure~\ref{fig:mixer-align01}).  There is a limit of 32 audio tracks per each mixer (that should be enough!)
 
 \begin{figure}[htpb]
     \centering
@@ -132,7 +132,7 @@ Synchronizing multiple camera videos based on audio tracks can be done with Cine
     \label{fig:mixer-align01}
 \end{figure}
 
-Two different methods of aligning the audio for mixers are available. They are most easily referred to by the button that is pressed --- \texttt{Match} and \texttt{Match All}. There are also 2 methods of activating the alignment --- \texttt{Apply} and \texttt{Move}.  
+Two different methods of aligning the audio for mixers are available. They are most easily referred to by the button that is pressed -- \textit{Match} and \textit{Match All}. There are also 2 methods of activating the alignment -- \textit{Apply} and \textit{Move}.  
 
 \textit{Match} consists usually of the next set of steps to take advantage of this feature:
 
@@ -142,24 +142,24 @@ Two different methods of aligning the audio for mixers are available. They are m
     \item Right mouse button on one of the media and click on Open Mixers; all mixer windows come up.
     \item Provide a small target audio pattern on the Master Track for syncing by marking with the In/Out points ([ and ]).
     \item Make a selection on the timeline in which to look for the pattern. Left mouse click, then drag select and highlight a search time domain.
-    \item Use the Window pulldown, \texttt{Mixers\dots $\rightarrow$ Align mixers} to bring up its dialog window.
-    \item Highlight in the first listbox, the Mixer number you want to align. Click on \texttt{Match}. This will take a few seconds so watch the rendering time percentage on the lower right hand side zoom panel. The buttons will be ghosted out until finished. Now note the changed values in the Audio Tracks listbox.
-    \item If you are satisfied with the calculated Nudge values -- that is they are very close to $1.0$ -- in the Audio Tracks listbox and the audio track selected as the Master Track in the Master Track listbox, hit the \texttt{Apply} button.
+    \item Use the \texttt{Window $\rightarrow$ Mixers$\dots$ $\rightarrow$  Align mixers} to bring up its dialog window.
+    \item Highlight in the first listbox, the Mixer number you want to align. Click on \textit{Match}. This will take a few seconds so watch the rendering time percentage on the lower right hand side zoom panel. The buttons will be ghosted out until finished. Now note the changed values in the Audio Tracks listbox.
+    \item If you are satisfied with the calculated Nudge values -- that is they are very close to $1.0$ -- in the Audio Tracks listbox and the audio track selected as the Master Track in the Master Track listbox, hit the \textit{Apply} button.
     \item If you plan on performing more alignment tasks, click on Checkpoint so you can go back to a previous step in case you make a mistake.
-    \item Last, click on the \texttt{OK green} checkmark or to cancel click on the \texttt{red X}.  Or just close the gui.
+    \item Last, click on the OK green checkmark or to cancel click on the red X.  Or just close the gui.
 \end{enumerate}
 
 \paragraph{Reset} is used to start over with the current session data, not an undo.  This means you can use the match repeatedly to refine alignments.  All of the Audio Tracks listbox values will be reset.
 
 \paragraph{Checkpoint} provides a method to create checkpoints that save the current state.  This is especially helpful while learning or doing more complicated operations where you might make a mistake or do not like the results and need to get back to a previous state.
 
-\paragraph{Undo} is used to put the media back to a previous state on the timeline.  If you choose \textit{start over} the session will reload with the original, before any changes were applied.  You can also go back to any of your previous checkpoints that you created earlier which are listed there, such as \texttt{chkpt 1}.
+\paragraph{Undo} is used to put the media back to a previous state on the timeline.  If you choose \textit{start over} the session will reload with the original, before any changes were applied.  You can also go back to any of your previous checkpoints that you created earlier which are listed there, such as \textit{chkpt 1}.
 
 \paragraph{Match All}is used when you have several mixers, instead of only picking 1 to match, it picks the best match for EACH of the mixer tracks based on a single master track. So when you hit Apply, each track might move differently. You do not set In/Out points but you have to make a selection within which to match.
 
 \paragraph{Apply} button will apply the nudges that were generated during the Match or Match All execution (figure~\ref{fig:mixer-align02}).
 
-\paragraph{Move} is very handy when you are using mixers, if you have an edit somewhere that you need to fix specifically without moving any of the other track pieces. In this case you have to select a section (like you do a group, but do not make a group), generate a match, and then you can just \textit{Move} that set only - everything else stays where it is at its current location (figure~\ref{fig:mixer-align03}).
+\paragraph{Move} is very handy when you are using mixers, if you have an edit somewhere that you need to fix specifically without moving any of the other track pieces. In this case you have to select a section (like you do a group, but do not make a group), generate a match, and then you can just \textit{Move} that set only -- everything else stays where it is at its current location (figure~\ref{fig:mixer-align03}).
 
 \begin{figure}[htpb]
     \centering
@@ -188,10 +188,10 @@ More detailed information follows about how this all works and the information i
 
 The corresponding input position is determined by track input correlation.
 
-The letter \textit{R} in the Audio Tracks listbox represents the correlation value.  "R=1.0" designates that if both the pattern and the matching section were in the highlighted area, they are completely correlated -- this is a good self-test to check.
+The letter "R" in the Audio Tracks listbox represents the correlation value.  $R=1.0$ designates that if both the pattern and the matching section were in the highlighted area, they are completely correlated -- this is a good self-test to check.
 $Nudge=0.0$ means just that.
 
-The header \textit{pos} stands for the timeline position. When the \texttt{Apply} button is pressed, only the Mixers listbox is relevant at that time.
+The header \textit{pos} stands for the timeline position. When the \textit{Apply} button is pressed, only the Mixers listbox is relevant at that time.
 
 The Mixer with the master track generally does not move, everything else will be lined up (figure~\ref{fig:mixer-align04}).
 
@@ -208,8 +208,8 @@ The Mixer with the master track generally does not move, everything else will be
     \item Highlight the Mixer to use in the Mixer listbox.
     \item Highlight the Master Track you want to use in the Master Track listbox.
     \item On the timeline, mark your selection on the Master Track.
-    \item Click on the \texttt{Match All} button.
-    \item Note the nudge values to see if they make sense, and if so, press \texttt{Apply}.
+    \item Click on the \textit{Match All} button.
+    \item Note the nudge values to see if they make sense, and if so, press \textit{Apply}.
 \end{enumerate}
 
 \textit{Match} option basic steps (just for comparison with Match All):
@@ -218,14 +218,14 @@ The Mixer with the master track generally does not move, everything else will be
     \item Set the In/Out points [ ] of the target.
     \item On the timeline, mark your selection.
     \item Click on the \texttt{Match} button.
-    \item Note the nudge values to see if they make sense, then press \texttt{Apply} (or \texttt{Move} when doing a group).
+    \item Note the nudge values to see if they make sense, then press \textit{Apply} (or \textit{Move} when doing a group).
 \end{enumerate}
 
 \subsection{Recover Mixer Windows}%
 \label{sub:recover_mixer_windows}
 
-\begin{wrapfigure}[18]{O}{1em + 0.3\textwidth} 
-    \vspace{-6ex}
+\begin{wrapfigure}[16]{O}{1em + 0.3\textwidth} 
+    \vspace{-1ex}
     \centering
     \includegraphics[width=0.3\textwidth]{images/mixer-patchbay01.png}
     \caption{Mixer  patchbay}
@@ -234,13 +234,16 @@ The Mixer with the master track generally does not move, everything else will be
 
 It is a hazard that you might accidentally \textit{undo} (\texttt{z}) too far and lose your mixer windows.  Here are the steps to recover.  It is recommended that you make a backup of your project before performing the recovery steps just in case there are other problems.
 
-In the patchbay box to the left of the main timeline, there is a right pointing arrow on the right side.  This is called the \textit{Expander} (figure~\ref{fig:mixer-patchbay01}).  When you click on each expander, another line appears below that expander arrow and the timeline track height is slightly increased.  If you \texttt{Shift-click} on a single expander, the patchbay will expand for all of the tracks.
+In the patchbay box to the left of the main timeline, there is a right pointing arrow on the right side.  This is called the \textit{Expander} (figure~\ref{fig:mixer-patchbay01}).  When you click on each expander, another line appears below that expander arrow and the timeline track height is slightly increased.  If you Shift-click on a single expander, the patchbay will expand for all of the tracks.
 
 \begin{enumerate}
-    \item Expand all of the patchbay lines, either one by one, or Shift-click on one to do them all. This is so you can see the \textit{mixer} right pointing arrow on the second expanded line.
-    \item Use the Window pulldown and choose \textit{Mixer Viewer} to bring up a new mixer window.  Now you will be making an association between the mixer viewer and the track’s video.
+    \item Expand all of the patchbay lines, either one by one, or Shift-click on one to do them all. This is so you can see the \textit{mixer} right pointing arrow on the second expanded line.    
+\end{enumerate}
+
+\begin{enumerate}[resume]
+	\item Use the Window pulldown and choose \textit{Mixer Viewer} to bring up a new mixer window.  Now you will be making an association between the mixer viewer and the track’s video.
     \item Click on the new mixer window to make sure it is highlighted with a white border. This designates it as the \textit{in use} mixer viewer.
-    \item Set your play to the beginning of the video using the \texttt{Home} key or \texttt{Home} transport button.
+    \item Set your play to the beginning of the video using the \textit{Home} key or \textit{Home} transport button.
     \item In the patchbay for a video track click on the \textit{mixer} arrow on the expanded $2^{nd}$ line which is a right facing arrow.  Now the arrow will point up.  If there are audio tracks with that video, click on each of its audio tracks \textit{mixer} arrow until they point up also.
     \item Next move your insertion pointer on the timeline where there is video.  Some of the time this just helps so that the new mixer viewer window gets redrawn and you can see that the images appear; but the image may not appear until the program does a redraw later.  Now the mixer viewer should be
     correctly associated.  Note if you have large video, give it some time to update.  You may have to click on the mixer viewer window if the image does not show.  You can always start over with that mixer if you encountered any problems.
@@ -254,13 +257,13 @@ Sometimes the association does not stick initially.  If not, highlight the mixer
 \section{Multi-Pane Support}%
 \label{sec:multipane_support}
 
-The main Cinelerra edit window holds the Track Canvas which can be divided into 4 panes of track data: 1 or 2 vertical panes and/or 1 or 2 horizontal panes.  To split the track, use the Window pulldown, and then click on \texttt{Split X} or \texttt{Split Y} depending on how you wish to split the track.  Alternatively, the canvas pane types can be changed using keys \texttt{<Ctrl-1>} for toggle split horizontal or \texttt{<Ctrl-2>} for toggle split vertical.  Or the track can be split into panes by using the \texttt{+ widget} in the lower right hand corner of the track canvas.  Once the track has been divided, you can use the + widget shortcut or the drag bars to change the size of the panes.
+The main Cinelerra edit window holds the Track Canvas which can be divided into 4 panes of track data: 1 or 2 vertical panes and/or 1 or 2 horizontal panes.  To split the track, use the Window pulldown, and then click on \textit{Split X} or \textit{Split Y} depending on how you wish to split the track.  Alternatively, the canvas pane types can be changed using keys \textit{<Ctrl-1>} for toggle split horizontal or \textit{<Ctrl-2>} for toggle split vertical.  Or the track can be split into panes by using the \textit{+ widget} in the lower right hand corner of the track canvas.  Once the track has been divided, you can use the + widget shortcut or the drag bars to change the size of the panes.
 
-Multi-Pane, or split screen, allows you to look at the first part of a movie at the same time as a part that is a long ways away on the timeline which would have been off the screen.  By having multiple panes, you can see the 2 parts you want to look at simultaneously and drag/drop easily between the 2.  Also, the \textit{X pane split} is extremely convenient for laptop users and computer monitors with small screens since it can be used with horizontal scrolling with the \texttt{mouse wheel + Ctrl}.  The \textit{Y-pane split} makes it easy to see 2 simultaneous drag and drop zones when you have lots of tracks (figure~\ref{fig:multi-pane01}).
+Multi-Pane, or split screen, allows you to look at the first part of a movie at the same time as a part that is a long ways away on the timeline which would have been off the screen.  By having multiple panes, you can see the 2 parts you want to look at simultaneously and drag/drop easily between the 2.  Also, the \textit{X pane split} is extremely convenient for laptop users and computer monitors with small screens since it can be used with horizontal scrolling with the mouse wheel + Ctrl.  The \textit{Y-pane split} makes it easy to see 2 simultaneous drag and drop zones when you have lots of tracks (figure~\ref{fig:multi-pane01}).
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/multi-pane01.png}
+    \includegraphics[width=1.0\linewidth]{images/multi-pane01.png}
     \caption{Shown are 4 panes that have split the main track canvas for some editing scenarios}
     \label{fig:multi-pane01}
 \end{figure}
@@ -270,16 +273,16 @@ Multi-Pane, or split screen, allows you to look at the first part of a movie at 
 
 Cinelerra-GG supports 2 separate preferences for the playback configuration.  Cinelerra can be operated in a single or dual screen configuration, both by using Xinerama or dual screen configuration of X windows.  It will take some setup using Xconfig to make this work.
 
-The \texttt{Settings $\rightarrow$ Preferences} menu has \textit{Playback A and Playback B} tabs.  The target display and audio device configuration can be separate, to support up to 2 display and/or audio device stations.  The active configuration displays an asterisk (*) in its selection tab and the selected tab will be made active when \texttt{OK} is pressed.  For example: you may have a dual screen monitor system with the left screen showing the Cinelerra main window and the right screen showing the composer.  Another setup might use a monitor for the left screen and an HDTV as the right screen displaying the composer.  When a playback configuration is selected, the audio/video device configuration is switched to the playback selection.  The active playback setup can be changed through use of the menu pulldown of \texttt{Settings $\rightarrow$ Preferences} or via the remote control menu selection (see the section Remote Control for DVB for more detail). 
+The \texttt{Settings $\rightarrow$ Preferences} menu has \textit{Playback A and Playback B} tabs.  The target display and audio device configuration can be separate, to support up to 2 display and/or audio device stations.  The active configuration displays an asterisk (*) in its selection tab and the selected tab will be made active when OK is pressed.  For example: you may have a dual screen monitor system with the left screen showing the Cinelerra main window and the right screen showing the composer.  Another setup might use a monitor for the left screen and an HDTV as the right screen displaying the composer.  When a playback configuration is selected, the audio/video device configuration is switched to the playback selection.  The active playback setup can be changed through use of the menu pulldown of \texttt{Settings $\rightarrow$ Preferences} or via the remote control menu selection (see the section Remote Control for DVB for more detail). 
 
 \subsubsection*{Yes, you can watch TV on Cinelerra instead of Cinelerra on TV.}%
 \label{ssub:watch_tv_on_cinelerra}
 
-Figure~\ref{fig:multi-screen01} shows partial window of \textit{*Playback A} selected and the second tab for \textit{Playback B}.  Note that on the bottom right of the window, \texttt{Default B Display:} is set to $:0.1$, representing the setting for Screen 1.  On the unseen \textit{Playback A} window, the \texttt{Default A Display:} will be set to $:0.0$ meaning for Screen 0.  Otherwise, the default would be nothing there or just <empty>.
+Figure~\ref{fig:multi-screen01} shows partial window of \textit{*Playback A} selected and the second tab for \textit{Playback B}.  Note that on the bottom right of the window, \textit{Default B Display:} is set to $:0.1$, representing the setting for Screen 1.  On the unseen \textit{Playback A} window, the \textit{Default A Display:} will be set to $:0.0$ meaning for Screen 0.  Otherwise, the default would be nothing there or just <empty>.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/multi-screen01.png}
+    \includegraphics[width=0.9\linewidth]{images/multi-screen01.png}
     \caption{Multi-screen Playback example useful for watching Cinelerra run on the \textit{big screen}}
     \label{fig:multi-screen01}
 \end{figure}
@@ -287,17 +290,17 @@ Figure~\ref{fig:multi-screen01} shows partial window of \textit{*Playback A} sel
 \section{Multi-Session}%
 \label{sec:multi_session}
 
-You can run as many sessions of Cinelerra as your computer resources allow.  However, if you are using the same \texttt{\$HOME/.bcast5}, changes you make for one may impact the others. You can always create and rename a new .bcast5 from:
-\texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface $\rightarrow$ Index files: $\rightarrow$ Index files go here:}
+You can run as many sessions of Cinelerra as your computer resources allow.  However, if you are using the same \texttt{\$HOME/.bcast5}, changes you make for one may impact the others. You can always create and rename a new \texttt{.bcast5} from:\\
+\texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface $\rightarrow$ Index files:} and press \textit{Index files go here}
 
 \section{Multi-Viewer Window Support}%
 \label{sec:multi_viewer_window_support}
 
-You can create as many Viewer windows as you want in Cinelerra.  These are handy for users who are adept at working with a lot of different clips simultaneously.  By bringing up multiple Viewer windows, each clip can be edited in its own area, making it easy to see all of the separate pieces.  After you have loaded some media files, to start another Viewer window, right click on one of the pieces of media in the Resources window.  This brings up a menu of several options, one of which is \texttt{view in new window}.  Choose this option and that media will come up in a new Viewer window for you to work (figure~\ref{fig:multi-view01}).
+You can create as many Viewer windows as you want in Cinelerra.  These are handy for users who are adept at working with a lot of different clips simultaneously.  By bringing up multiple Viewer windows, each clip can be edited in its own area, making it easy to see all of the separate pieces.  After you have loaded some media files, to start another Viewer window, right click on one of the pieces of media in the Resources window.  This brings up a menu of several options, one of which is \textit{view in new window}.  Choose this option and that media will come up in a new Viewer window for you to work (figure~\ref{fig:multi-view01}).
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/multi-view01.png}
+    \includegraphics[width=0.9\linewidth]{images/multi-view01.png}
     \caption{Shown here are 3 Viewer windows and the \textit{View in new window} popup}
     \label{fig:multi-view01}
 \end{figure}

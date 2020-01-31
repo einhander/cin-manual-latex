@@ -567,6 +567,160 @@ pacman -S cin
 ##pacman -R cin
 \end{lstlisting}
 
+\section{Windows 10 with Cygwin for Cinelerra limited}%
+\label{sec:ms_windows10}
+
+To run Cinelerra on a Windows 10 computer, you will need to have Cygwin installed on your system, 
+along with the  Cinelerra static tar and a patched library: libxbc.  This setup has been tested 
+with Windows 10, version 1909, on an HP EliteBook 820 at 2.3 GHz.
+
+This limited version provides \textit{core} functionality at this time with the standard Windows FFmpeg
+executable, meaning that specific modifications in FFmpeg needed for Cinelerra are not available. 
+Limited capabilities include only a few render output formats available - for example \textit{mov}, \textit{qt} 
+as \textit{mjpeg}, and \textit{mpeg} for videos and \textit{avi} and \textit{qt} as \textit{s16le} 
+for audio, but not \textit{mkv} or \textit{mp4}.  
+This is due to the fact that several codec and utility libraries are not currently compiled to 
+work with Windows.
+
+\underline{Installing Cygwin:}
+
+Cygwin is an environment that runs natively on Windows which allows Unix programs to be compiled 
+and run on Windows.  With cygwin installed on your Windows 10 computer, you will be able to run 
+Cinelerra.  Before installing cygwin, you need to be warned that the Avast anti-virus software 
+kills files necessary for cygwin installation and execution, so you will have to remove it and 
+use alternative anti-virus software (the standard default already included with Windows 10 
+is Defender). Below are the steps for installation:
+
+\begin{enumerate}
+	\item Download cygwin for your 64-bit computer at: \url{https://www.cygwin.com/}
+	\item Generally just take the defaults as they show up, but the next steps show what comes up.
+	\item When a warning window pops up, click \textit{Yes}.
+	\item Click \textit{Next}.
+	\item Choose \textit{Install from Internet} option and then click \textit{Next}.
+	\item Choose your desired directory by clicking on Browse button. Choose \textit{All Users (Recommended)} and then click \textit{Next}.
+	\item Choose the local package directory where you would like your installation files to be placed. Click \textit{Next}.
+	\item Choose \textit{Direct Connection} if you are using Internet with plug and play device. Click \textit{Next}.
+	\item Choose any download site preferably "cygwin.mirror.constant.com" and then click \textit{Next}.
+	\item For list of things to install, leave all set to \textit{Default} except these to \textit{Install} instead:
+
+\begin{tabular}{ll}
+	base& devel\\
+	gnome& graphics\\
+	system& video\\
+	X11 \\
+\end{tabular}
+
+     This install takes a long time; approximately 2 hours on an EliteBook and requires approximately 20GB storage.
+	\item Finally you will want to have the icons on your desktop (already default) and then click \textit{Finish}.
+\end{enumerate}
+
+Then to install the Cinelerra tar files, you will need to start a cygwin console terminal from the startup menu as shown here:
+	Start $\rightarrow$ Cygwin $\rightarrow$ Cygwin64 Terminal
+
+\underline{Installing Cinelerra:}
+
+\begin{enumerate}
+	\item Download the tar file at:
+	 https://cinelerra-gg.org/download/testing/libxcb-bld.tar.bz2
+	\item Install libxbc from the tar file -- installs into /usr/local and requires approximately 21MB storage.
+\begin{lstlisting}[language=bash,numbers=none]
+	$ tar -C /usr/local -xJf /path/libxcb-bld.tar.bz2
+\end{lstlisting}
+The libxcb path repairs an error (XIOError), which stops the program.
+	\item Download the tar file at:
+	https://cinelerra-gg.org/download/testing/cygcin-bld.tar.bz2
+	\item Install cygcin from the tar file - this installs into home directory.  Note this is cygcin NOT cygwin.
+\begin{lstlisting}[language=bash,numbers=none]
+	$ cd
+	$ tar -xJf /path/cygcin-bld.tar.bz2
+\end{lstlisting}
+\end{enumerate}
+This creates \~{}/cygcin , a user build installation of Cinelerra and requires approximately 400MB storage.
+
+\underline{Running Cinelerra:}
+
+You will need to start a cygwin desktop from the startup menu:
+\begin{enumerate}
+	\item Start$\rightarrow$ Cygwin-X $\rightarrow$ Openbox
+
+You should start a console controlling terminal so that you can see program logging.
+	\item Start$\rightarrow$ Cygwin $\rightarrow$ Cygwin64 Terminal
+
+This opens a separate window that can survive a cygwin hang and bugs. Without these logs, it is much more difficult to use.
+
+	\item Type into that console controlling window, the following:
+\begin{lstlisting}[language=bash,numbers=none]
+	$ export DISPLAY=:0.0
+\end{lstlisting}
+	\item Change directories to where Cinelerra is installed:
+\begin{lstlisting}[language=bash,numbers=none]
+	$ cd /path/cygcin    (NOT cygwin)
+\end{lstlisting}
+	\item Finally keyin:
+\begin{lstlisting}[language=bash,numbers=none]
+	$ ./cin
+\end{lstlisting}
+which starts up your 4 Cinelerra windows.
+\end{enumerate}
+
+The most noticeable difference from the Linux versions is that Cinelerra seems to run 
+very slowly on Windows 10. You must be very tolerant and patient to see this work.  
+It can however exhibit astonishing speed when encoding.  Cinelerra has to be downgraded significantly due to lack of supported interfaces, codecs (for example h264/h265), and utilities.  
+The only graphics driver is X11 and the only sound driver is pulseaudio.  Almost all configurable
+omissions are applied to this build.  
+
+\underline{Cinelerra build on cygwin from source code:}
+
+\begin{enumerate}
+	\item Download and install ffmpeg into /usr/local :
+
+   	download ffmpeg (currently 4.2.2)
+\begin{lstlisting}[language=bash,numbers=none]
+	$ cd /tmp
+	$ tar -xJf /path/ffmpeg-4.2.2.tar.bz2
+	$ cd ffmpeg-4.2.2
+	$ ./configure
+	$ make -j
+	$ make install
+\end{lstlisting}
+	\item Download and install a patched libxcb:
+\begin{lstlisting}[language=bash,numbers=none]
+	$ cd /tmp
+	$ rm -rf libxcb-1.13/
+	$ tar -xf /path/libxcb-1.13.tar.bz2
+	$ cd libxcb-1.13/
+	$ patch -p1 < /path/cinelerra-5.1/thirdparty/src/libxcb.patch1
+	   patching file configure.ac
+	   patching file src/xcb_in.c
+	$ ./autogen.sh
+	$ ./configure
+	$ make -j
+	$ make install
+\end{lstlisting}
+	\item Download cinelerra-gg:
+\begin{lstlisting}[language=bash,numbers=none]
+	$ cd /build_path/
+	$ git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git"
+	$ cd cinelerra-gg/cinelerra-5.1
+\end{lstlisting}
+	\item Apply cygwin patch:
+\begin{lstlisting}[language=bash,numbers=none]
+	$ patch -p2 < blds/cygwin.patch
+\end{lstlisting}
+	\item Run the build with:
+\begin{lstlisting}[language=bash,numbers=none]
+	$ ./blds/cygwin.bld
+\end{lstlisting}
+\end{enumerate}
+
+This produces a directory: $/build\_path$/cinelerra-gg$/cinelerra-5.1$/bin \newline
+which is used to create the cygcin archive.
+
+Currently, the targets are not stripped and can be run from gdb.
+There is only very limited signal handler dmp file support.
+Running gdb from inside a desktop resident console (not a cygwin64 window) will hang cygwin (and cin) when it hits a breakpoint.  You must run from an external console window to avoid this issue.
+
+
 \section{Distribution Systems with Cinelerra Included}%
 \label{sec:distribution_systems_with_cinelerra_included}
 

@@ -346,6 +346,7 @@ This converts the input to rgb before xxxxxx runs, and so it too is slower (beca
 
 \section{Audio Effects - Native}%
 \label{sec:audio_effects_native}
+\settocdepth{subsection}
 
 \subsection{AudioScope}%
 \label{sub:audioscope}
@@ -698,6 +699,7 @@ NOTE: There is often confusion between Tremolo and Vibrato, but the vibrato is t
 
 \section{Audio Ladspa Effects}%
 \label{sec:audio_ladspa_effects}
+\settocdepth{section}
 
 Ladspa effects are supported in realtime and rendered mode for audio. These audio effects are supported since Cinelerra implements the LADSPA interface as accurately as possible. Besides the supplied LADSPA effects\protect\footnote{credit Steve Harris}, additional LADSPA effects can be enabled by setting the \texttt{LADSPA\_PATH} environment variable to the location of your LADSPA plugins:
 
@@ -782,6 +784,7 @@ For example:
 
 \section[Video Effects --- Native]{Video Effects -- Native}}%
 \label{sec:video_effects_native}
+\settocdepth{subsection}
 
 \subsection{1080 to 480}%
 \label{sub:1080_to_480}
@@ -1967,7 +1970,7 @@ This effect makes video tracks appears as a painting. It can be controlled by \t
 \subsection{Overlay}%
 \label{sub:overlay}
 
-This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the on \nameref{cha:overlays} chapter  -- PorterDuff.
+This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the on \href{cha:overlays}{Overlays} chapter  -- PorterDuff.
 
 The \textit{overlay} plugin enables the use of this Overlayer device in the middle of any plugin stack, opening endless filtering and processing possibilities. It is only useful as a \textit{shared plugin} (i.e. a multitrack plugin). To use the overlay plugin:
 
@@ -2866,6 +2869,7 @@ Figure~\ref{fig:zoom} shows the parameters: Radius=21 and Steps=3.
 
 \section{OpenCV plugins}%
 \label{sec:opencv_plugins}
+\settocdepth{section}
 
 The \textit{Find Object} plugin searches a Scene for an Object, and the Object can be overlayed with a Replacement object. It requires the thirdparty \textit{OpenCV} (Open Computer Vision) library and you will have to do your own build. Also, be aware that the two useful algorithms of \textit{Sift} and \textit{Surf} have been removed from versions of OpenCV after version $4$.
 

@@ -4,8 +4,8 @@
 Performance of Cinelerra is related to the software and video format being used in conjunction with your computer system hardware -- the number of CPUs and its speed, I/O bus speed, graphics card, and amount of available memory. A basic, less powerful system will be sufficient for users working with audio only or lower resolution video formats.  Higher end computers will be needed when playing and working with higher resolution formats, like 1080p or 4k. Adding effects and multiple tracks will require more cpu, memory, and various other resources to 
 perform at an acceptable level.
 
-Perhaps the easiest method for determining if your performance could be improved is to look at the numerical value displayed as \textit{Framerate achieved}.  Good performance means that when \texttt{Play every frame} is set 
-in \texttt{Settings $\rightarrow$ Preferences, Playback A tab}, the frames/second (frames per second or fps) in playback might be almost always at the maximum rate of your project setting and/or video frame rate. You can check this in \texttt{Settings $\rightarrow$ Preferences, Playback A}, by watching \textit{Framerate achieved} while playing forward.  A higher number is better, up to the format frame rate of the video.
+Perhaps the easiest method for determining if your performance could be improved is to look at the numerical value displayed as \textit{Framerate achieved}.  Good performance means that when \textit{Play every frame} is set 
+in \texttt{Settings $\rightarrow$ Preferences, Playback A} tab, the frames/second (frames per second or fps) in playback might be almost always at the maximum rate of your project setting and/or video frame rate. You can check this in \texttt{Settings $\rightarrow$ Preferences, Playback A}, by watching \textit{Framerate achieved} while playing forward.  A higher number is better, up to the format frame rate of the video.
 
 Some computer hardware factors to consider for better performance are listed here:
 \begin{itemize}
@@ -23,7 +23,7 @@ Besides the above hardware recommendations, this section covers tips for perform
 \section{Hardware video acceleration}%
 \label{sec:hardware_video_acceleration}
 
-With certain newer, more powerful graphics boards and newer device drivers, there is the potential for enhanced \textit{decode} and \textit{encode} performance.   Decode refers to loading and playing video in Cinelerra. The GPU, Graphics Processing Unit, on the graphics board is accessed via one of the following libraries: vdpau or vaapi. The hardware acceleration done by the graphics card increases performance by activating certain functions in connection with a few of the FFmpeg decoders. This use makes it possible for the graphics card to decode video, thus offloading the CPU.  Decode operations are described here next.  Encode refers to rendering video and is described at the end of this section under \textit{GPU hardware encoding} \ref{sub:gpu_hardware_encoding}
+With certain newer, more powerful graphics boards and newer device drivers, there is the potential for enhanced \textit{decode} and \textit{encode} performance.   Decode refers to loading and playing video in Cinelerra. The GPU, Graphics Processing Unit, on the graphics board is accessed via one of the following libraries: vdpau or vaapi. The hardware acceleration done by the graphics card increases performance by activating certain functions in connection with a few of the FFmpeg decoders. This use makes it possible for the graphics card to decode video, thus offloading the CPU.  Decode operations are described here next.  Encode refers to rendering video and is described at the end of this section under \href{sub:gpu_hardware_encoding}{GPU hardware encoding}
 
 VDPAU, Video Decode and Presentation API for Unix, is an open source library to offload portions of the video decoding process and video post-processing to the GPU of graphics boards, such as Nvidia.  It may also apply to Nouveau and Amdgpu boards (by wrapper), but that has not been verified.
 
@@ -36,9 +36,9 @@ performing the operations in the hardware may actually be slower than in softwar
 \label{sub:gpu_hardware_decoding}
 
 \begin{enumerate}
-	\item Verify that you have installed \texttt{libva-dev} or \texttt{libva} on your operating system.
-	\item Verify that you also have \texttt{libvdpau-dev} or \texttt{libvdpau} installed.
-	\item Verify \texttt{Settings $\rightarrow$ Preferences, Playback tab, Video Driver} is set to\texttt{ X11} -- or \texttt{X11-OpenGL} if that	produces better results for your configuration.
+	\item Verify that you have installed \textit{libva-dev} or \textit{libva} on your operating system.
+	\item Verify that you also have \textit{libvdpau-dev} or \textit{libvdpau} installed.
+	\item Verify \texttt{Settings $\rightarrow$ Preferences, Playback} tab, Video Driver is set to\textit{ X11} -- or \textit{X11-OpenGL} if that	produces better results for your configuration.
 	\item Before starting CinelerraGG, you can set an environment variable that can be easily reversed and
 	then, to run from the Cinelerra installed directory, key in:
 \end{enumerate}
@@ -58,7 +58,7 @@ export CIN_HW_DEV=vaapi
 
 It might be more difficult to analyze problems as a result of using the GPU because of the wide variation in hardware.  When you do not set the \texttt{CIN\_HW\_DEV} environment variable, the code will work exactly as before since this feature is self-contained.
 
-There is also a \texttt{Settings $\rightarrow$ Preferences, Performance tab, Use HW device} flag
+There is also a \texttt{Settings $\rightarrow$ Preferences, Performance} tab, \textit{Use HW device} flag
 with a pulldown to set up \textit{none, vdpau, vaapi,} or \textit{cuda}.  To ensure it takes effect, it is best to set it the way you want, quit out of Cinelerra and then restart.  Its current purpose is for flexibility, but there is a possibility that it might eventually take the place of \texttt{CIN\_HW\_DEV} -- both are not needed.
 
 Precedence of the decode hardware acceleration settings are:
@@ -67,7 +67,7 @@ Precedence of the decode hardware acceleration settings are:
 
 -- environment variable \texttt{CIN\_HW\_DEV} is checked next
 
--- preferences \texttt{Use HW device} settings is of the lowest priority
+-- preferences \textit{Use HW device} settings is of the lowest priority
 
 \subsubsection*{Hardware decoding in Cinelerra GG}%
 \label{ssub:hardware_decoding_cinelerra}
@@ -75,7 +75,7 @@ Precedence of the decode hardware acceleration settings are:
 There are 4 phases during Cinelerra’s handling of hardware acceleration. These first 2 steps occur just \textit{before} the first read.
 
 \begin{enumerate}
-	\item Check to see if Hardware Acceleration is enabled, usually indicated by \texttt{CIN\_HW\_DEV} being set to
+	\item Check to see if Hardware Acceleration is enabled, usually indicated by \texttt{CIN\_HW\_ \_DEV} being set to
 	vaapi or vdpau.  If enabled, try to activate the decode device, and if that fails revert to software.
 	\item The next step is to send some data to decode to see if that works. If this does not work, you will see
 	an error message of \textit{HW device init failed, using SW decode}.
@@ -96,7 +96,7 @@ Due to variations in user’s computer hardware configuration, it is often sugge
 
 \begin{enumerate}
 	\item The Frames Per Second (FPS) in playback might usually be at the maximum rate.  You can check
-	this in \texttt{Settings $\rightarrow$ Preferences, Playback A}, looking at \texttt{Framerate achieved}; the higher, the better.
+	this in \texttt{Settings $\rightarrow$ Preferences, Playback A}, looking at \textit{Framerate achieved}; the higher, the better.
 	\item Percent of the CPU used should be less, thus saving more CPU for other operations.
 	\item Some users get the the impression that playing seems smoother.
 	\item The CPU fan noise may go down as the CPU is used less.
@@ -133,7 +133,7 @@ cin_hw_dev=vdpau
 
 For example your file, \texttt{test.mp4}, would have a side-kick called \texttt{test.opts} that will use the GPU for decoding/playing and the other files will just use the software. This is of some advantage because the ones that can not use the GPU if the environment variable is enabled, will not have to even check which saves a minuscule bit of time.
 
-It is important to note that if using the .opts file to override the default \texttt{ffmpeg / decode.opts} file, you will most likely see more warnings (not really errors) in the Cinelerra startup window because the standard \texttt{decode.opts} file has \textit{loglevel = fatal} whereas the default is \textit{loglevel = error}.  To avoid seeing all of the extra warnings, you can simply add the line   \texttt{loglevel=fatal}   to your .opts file.
+It is important to note that if using the .opts file to override the default \texttt{ffmpeg / decode.opts} file, you will most likely see more warnings (not really errors) in the Cinelerra startup window because the standard \texttt{decode.opts} file has \textit{loglevel = fatal} whereas the default is \textit{loglevel = error}.  To avoid seeing all of the extra warnings, you can simply add the line   \textit{loglevel=fatal}   to your .opts file.
 
 \subsubsection*{To verify hardware acceleration}%
 \label{ssub:verify_hardware_acceleration}
@@ -158,7 +158,7 @@ or
 HEVC with NVIDIA, VDPAU driver is buggy, skipping
 \end{lstlisting}
 
-If you would like to see more information on what is occurring, you can modify in the Cinelerra ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \texttt{loglevel =fatal} to \texttt{loglevel =verbose} and restarting Cinelerra.  Then you will see messages in the startup window like:
+If you would like to see more information on what is occurring, you can modify in the Cinelerra ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \textit{loglevel =fatal} to \textit{loglevel =verbose} and restarting Cinelerra.  Then you will see messages in the startup window like:
 
 \begin{lstlisting}[language=bash,numbers=none]
 [AVHWDeviceContext @ 0x7fc9540be940] Successfully created a VDPAU device 
@@ -174,7 +174,7 @@ Some mixed preliminary results that have been reported are provided below.
 \subsubsection*{Case 1:}%
 \label{ssub:case_1}
 
-\noindent X11 Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A tab}:
+\noindent X11 Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A} tab:
 
 \begin{center}
 	\begin{tabular}{lcr}
@@ -184,7 +184,7 @@ Some mixed preliminary results that have been reported are provided below.
 	\end{tabular}
 \end{center}
 
-\noindent X11-OpenGL Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A tab}:
+\noindent X11-OpenGL Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A} tab:
 
 \begin{center}
 	\begin{tabular}{lcr}
@@ -200,7 +200,7 @@ better than using the X11 video driver.
 \subsubsection*{Case 2:}%
 \label{ssub:case_2}
 
-\noindent X11 Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A tab}:
+\noindent X11 Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A} tab:
 
 \begin{center}
 	\begin{tabular}{lcr}
@@ -210,7 +210,7 @@ better than using the X11 video driver.
 	\end{tabular}
 \end{center}
 
-\noindent X11-OpenGL Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A tab}:
+\noindent X11-OpenGL Video Driver set in \texttt{Settings $\rightarrow$ Preferences, Playback A} tab:
 
 \begin{center}
 	\begin{tabular}{lcr}
@@ -225,7 +225,7 @@ than using the X11-OpenGL video driver.
 
 Older graphics cards or non-performing graphics cards will probably bring only a small amount of improvement or no speed advantage at all.  You can check to see if vdpau is implemented for your specific Nvidia board at:
 
-\small \url{https://download.nvidia.com/XFree86/Linux-x86_64/304.137/README/supportedchips.html}
+{\small \url{https://download.nvidia.com/XFree86/Linux-x86_64/304.137/README/supportedchips.html}}
 
 And, you can see what your specific hardware and software might support by running either \texttt{vainfo} or \texttt{vdpauinfo} from the command line.  Partial examples of each are shown below.
 
@@ -299,7 +299,7 @@ profile=high
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/render-vaapi.png}
+	\includegraphics[width=0.7\linewidth]{images/render-vaapi.png}
 	\caption{Render menu setup to encode using GPU with vaapi}
 	\label{fig:render-vaapi}
 \end{figure}
@@ -308,7 +308,7 @@ According to an online wiki, hardware encoders usually create output of lower qu
 
 Results of a particular test case performed on a Intel, 4-core computer, with Broadwell Graphics using an mp4 input video/audio file with dimensions of
 $1440x1080 / 29.97fps$ is shown next (note, filename is \texttt{tutorial.mp4}).  This may very well be a \textit{best case} scenario!  But clearly, at least on this computer with only 4 cores, the hardware acceleration seems to be quite advantageous.  A comparison of the 2 output files 
-using \texttt{ydiff} as described in the Appendix (\ref{sec:Ydiff to check results}) shows no obvious defects.
+using \texttt{ydiff} as described in the Appendix (\ref{sec:ydiff_check_results}) shows no obvious defects.
 
 \begin{center}
 	\begin{tabular}{l|cccc}
@@ -358,19 +358,21 @@ CUDA® is a parallel computing platform / programming model developed by Nvidia 
 
 At the time this was written, the use of Cuda is not going to improve the playing and rendering of video in Cinelerra except in the case where you use a specific Cuda-enabled plugin that is computationally intense -- sadly, most of what Cin does, Cuda will not help.  Cuda is mostly a \textit{block oriented algorithm} which works well for such things as \textit{a flock of birds all flying next to each other}.
 
-The same as for vaapi and vdpau, you can enable Cuda in the\texttt{ Settings $\rightarrow$ Preferences, Performance tab}, \texttt{Use HW Device} but it will not affect anything unless you have Cuda installed on your system and have built Cinelerra yourself with Cuda build enabled.  To install it on your computer, you will need to do the following:
+The same as for vaapi and vdpau, you can enable Cuda in the:\\
+\texttt{ Settings $\rightarrow$ Preferences, Performance} tab, \textit{Use HW Device}\\
+but it will not affect anything unless you have Cuda installed on your system and have built Cinelerra yourself with Cuda build enabled.  To install it on your computer, you will need to do the following:
 
 \begin{enumerate}
 	\item Make sure you have the Nvidia proprietary library drivers for your graphics board already installed.
 	\item Go to the Nvidia Cuda development website and choose one of the available operating system’s
-	such as Fedora, OpenSuse, CentOS, Ubuntu, $\dots$ at   \url{https://developer.nvidia.com/}
+	such as Fedora, OpenSuse, CentOS, Ubuntu, $\dots$ at   {\small \url{https://developer.nvidia.com/}}
 	\item You will be installing repositories by package -- this will be around 3 GB.
 	\item Also, install the Fusion repo, although it is unknown if necessary or not.
 \end{enumerate}
 
 There is a very good set of directions on the website to just follow.  Once you have installed the Cuda software on your computer, you must build Cinelerra yourself -- the default build in the configure script for cuda is \textit{auto}.  For Arch, be sure to first key in:     \texttt{setenv CUDA\_PATH=/opt/cuda} 
 
-There are currently 2 available plugins for \textit{show and tell} that take advantage of the hardware acceleration of Cuda -- N\_Body and Mandelbrot as shown next (figure~\ref{fig:cuda-effects}).
+There are currently 4 available plugins for \textit{show and tell} that take advantage of the hardware acceleration of Cuda -- \textit{N\_Body} and \textit{Mandelbrot} as shown next (figure~\ref{fig:cuda-effects}), \textit{F\_scale\_cuda} and \textit{F\_yadiff\_cuda}.
 
 \begin{figure}[htpb]
 	\centering
@@ -397,7 +399,7 @@ An error you may see on your Cinelerra startup window when you have Cuda install
 
 In wrapping up this Hardware Acceleration section, you may want to refer to the following to determine the current supported formats:
 
-\noindent \url{https://wiki.archlinux.org/index.php/Hardware_video_acceleration}
+{\small \url{https://wiki.archlinux.org/index.php/Hardware_video_acceleration}}
 
 \section{Optimized Playback -- X11 Direct}%
 \label{sec:optimized_playback}
@@ -405,7 +407,7 @@ In wrapping up this Hardware Acceleration section, you may want to refer to the 
 Normally, when Cinelerra reads a video frame, it is copied into a \textit{Vframe}.  This frame may also need other actions performed on it, such as a color model change.  In addition, ffmpeg and libzmpeg \textit{can\_scale\_input}.  So the read can be color transformed and scaled just by asking the library to do that.  This means that if the compositor is in a \textit{good} state with no zoom, the VFrame read can be done in the fastest render color model, and already scaled to the correct size for the compositor.  In reality, this is not what you need for editing, but quite often the \textit{virtualconsole} is not used because the render is media only -- that is \textit{just data}.  If no data transforms are needed and the input scaling can be done, the vrender program detects this, and tells the codec to transmit the data in a compatible way to the compositor canvas. This is the \textit{X11 direct} data path.
 
 With the X11 video driver choice, large format files such as 4K, will playback faster than either X11-XV or X11-OpenGL.  However, you still have the option to turn off the X11 direct data path if you use
-\texttt{Settings $\rightarrow$ Preferences, tab Playback A}, set video driver to X11 and uncheck \texttt{use direct X11 render if possible}.
+\texttt{Settings $\rightarrow$ Preferences, Playback A} tab set video driver to X11 and uncheck \textit{use direct X11 render if possible}.
 
 
 \section{Proxy Settings and Transcode}%
@@ -413,7 +415,7 @@ With the X11 video driver choice, large format files such as 4K, will playback f
 
 Working with videos that have large image geometry can greatly impede editing.  Instead you can substitute \textit{proxies} which will create smaller video image files from the original file that can then be edited more quickly.   When you are done working on this smaller scale, you will need to bring up the Proxy settings menu again, and change the Scale factor back to the Original size so that all of your edits/work take affect on that original higher quality video on the timeline.  
 
-To use this feature, select \texttt{Settings $\rightarrow$ Proxy settings} and change the Scale factor from Original size to your downsized choice.  You can choose ffmpeg as the File Format and a choice of various codecs associated with that.  A good choice is the default of \texttt{mpeg} which can usually be quite fast.  In addition, to modify values for that codec, click on the wrench icon.  When you have completed your choices, just click \texttt{OK}, and then the video tracks will be rendered. This may take some time, but previous proxy renders will be reused.  
+To use this feature, select \texttt{Settings $\rightarrow$ Proxy settings} and change the Scale factor from Original size to your downsized choice.  You can choose ffmpeg as the File Format and a choice of various codecs associated with that.  A good choice is the default of mpeg which can usually be quite fast.  In addition, to modify values for that codec, click on the wrench icon.  When you have completed your choices, just click OK, and then the video tracks will be rendered. This may take some time, but previous proxy renders will be reused.  
 The proxy videos will be added to your assets in a separate Proxy folder, and the video track edits will use the proxies.
 The assets in both the Media folder and Proxy folder will look proxied when dragged to the Viewer although the scale may be different.
 Proxy downsizing renders all loaded tracks, but only work on the $1^{st}$ video layer of any multi-layer media.  Rendered proxy media is saved in the same directory as the original media.
@@ -423,10 +425,10 @@ And you can save your project either as proxied or not.
 
 You can also nest clips while in a proxied state, but you can not drag the proxied nested clips
 to the viewer or the timeline.
-If you create proxies for Nested clips they will be saved in \$HOME/Videos unless you modify that in
-\texttt{Settings $\rightarrow$ Preferences, Interface tab}, Nested Proxy Path. 
+If you create proxies for Nested clips they will be saved in \texttt{\$HOME/Videos} unless you modify that in
+\texttt{Settings $\rightarrow$ Preferences, Interface} tab, \textit{Nested Proxy Path}. 
 
-There are two ways that the proxy files can be used, with or without input scaling. When the proxy is done without rescaling, the Mask, Camera and Projector automations are re-scaled accordingly. In this situation, the entire project will be re-sized so that the session is in the resized geometry.  Not all plugins are useful when the project is rescaled, because the keyframe data must be in the original geometry.  In this case, you can use the rescaler, by enabling \texttt{Use scaler (FFMPEG only)}. This has the added advantage that the project size does not change and the proxy media is down-scaled as usual and up-scaled on read-in, which means the project editing is done in full scale.   Since decoding is done on smaller video, there is a time savings, but all rendering is done full scale.  The main reason for using \textit{scaler} is that it does not change the image coordinate data, so that automation and plugin parameters will be in the original project geometry.   This is not as fast as the first option, but is a performance gain, and may be needed if you are using plugins that need coordinate data such as the Title plugin.  As noted, the scaler only works on ffmpeg video formats.
+There are two ways that the proxy files can be used, with or without input scaling. When the proxy is done without rescaling, the Mask, Camera and Projector automations are re-scaled accordingly. In this situation, the entire project will be re-sized so that the session is in the resized geometry.  Not all plugins are useful when the project is rescaled, because the keyframe data must be in the original geometry.  In this case, you can use the rescaler, by enabling \textit{Use scaler (FFMPEG only)}. This has the added advantage that the project size does not change and the proxy media is down-scaled as usual and up-scaled on read-in, which means the project editing is done in full scale.   Since decoding is done on smaller video, there is a time savings, but all rendering is done full scale.  The main reason for using \textit{scaler} is that it does not change the image coordinate data, so that automation and plugin parameters will be in the original project geometry.   This is not as fast as the first option, but is a performance gain, and may be needed if you are using plugins that need coordinate data such as the Title plugin.  As noted, the scaler only works on ffmpeg video formats.
 
 In the upper right hand corner of the main window, there is a toggle button to easily switch back and forth when you have a proxied file on the timeline.  The icon is to the left of the FF icon.  It will have the letter “P” as the icon for Proxy or if \textit{Using Scaler}, the letter “S”. \quad \includegraphics[height=\baselineskip]{images/proxy-01.png} \quad This quick switch is especially useful when editing and you need to see a better image temporarily.
 
@@ -436,12 +438,12 @@ In the case of the scaler checkbox, it will retain that setting for ease of use.
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/proxy-02.png}
+	\includegraphics[width=0.6\linewidth]{images/proxy-02.png}
 	\caption{Proxy settings dialog}
 	\label{fig:proxy-02}
 \end{figure}
 
-There is also a convenient \texttt{Beep on done volume} dial included so that you can work on other tasks until there is an audible notify of completion.  The default volume is set to 0 for no audible notify.
+There is also a convenient \textit{Beep on done volume} dial included so that you can work on other tasks until there is an audible notify of completion.  The default volume is set to 0 for no audible notify.
 
 A good choice for proxy settings with 1080p source video is:
 
@@ -464,13 +466,13 @@ Video Preset:
 Compression:	mov.mov
 \end{lstlisting}
 
-Or if you want small files with high image quality, a File Format of \texttt{m2ts} is optimal.  For example a 1 GB file can be reduced to 50 MB with scale $\frac{1}{2}$. 
+Or if you want small files with high image quality, a File Format of m2ts is optimal.  For example a 1 GB file can be reduced to 50 MB with scale $\frac{1}{2}$. 
 
-Checking the \texttt{Auto proxy/scale media loads} results in any additional media loads to be automatically proxy scaled.  However, single frame media such as PNG or JPEG \textit{stills}, can not be scaled to \textit{stream} media.  If this type of media exists, you should \texttt{use scaler}.
+Checking the \textit{Auto proxy/scale media loads} results in any additional media loads to be automatically proxy scaled.  However, single frame media such as PNG or JPEG \textit{stills}, can not be scaled to \textit{stream} media.  If this type of media exists, you should \textit{use scaler}.
 
 If you get error messages when creating proxies, check the Video wrench settings.  These usually default to values that are expected to work correctly for the \textit{File Format} and codec you selected but they can be changed and may result in errors.  If you get an error message of \textit{check\_frame\_rate failed} followed by \textit{Error making proxy} in the popup Errors window, do just that and check the Frame rate value by going to the Resources window, Media folder, and use the right mouse button for the Info option for that specific media in question.  You can change the frame rate in this window to a more codec acceptable value.  Different codecs may have different legal values.
 
-More specific information on which plugins need to use scaler is provided here next.  If the keyframe data uses coordinate data that is absolute, then the scaler should be used.  If the data is normalized (like always $0-100\%$) then the proxy can be done without the scaler.  The session geometry format, shown in \texttt{Settings $\rightarrow$ Format} as width x height, is changed if the scaler is not used to cause all of the data to be in the reduced format.  If this affects the plugin operation, then scaler should be used.  Examples of plugins that need the scaler are: Title, AutoScale, Scale, ScaleRatio, and Translate.  Most others are safe to use without scaling.
+More specific information on which plugins need to use scaler is provided here next.  If the keyframe data uses coordinate data that is absolute, then the scaler should be used.  If the data is normalized (like always $0-100\%$) then the proxy can be done without the scaler.  The session geometry format, shown in \texttt{Settings $\rightarrow$ Format} as $width \times height$, is changed if the scaler is not used to cause all of the data to be in the reduced format.  If this affects the plugin operation, then scaler should be used.  Examples of plugins that need the scaler are: Title, AutoScale, Scale, ScaleRatio, and Translate.  Most others are safe to use without scaling.
 
  This makes its so that you can save your project
 either as proxied or not.
@@ -478,24 +480,21 @@ either as proxied or not.
 \textbf{Transcode}, an option under the Settings pulldown right next to the Proxy settings option, is a type of full resolution \textbf{1:1 Proxy}.
 The process of transcoding works directly from the resource; it is independent of the timeline. 
 All of the loaded asset media will be converted, that is, rendered in the selected format and loaded onto the timeline. 
-Menu choices besides the usual File Format and File Type include: Tag suffix (to add to media filename), Remove originals from project, Into Nested Proxy directory
- (an option to have the file saved here instead of the location of the original media), and Beep on done volume.
+Menu choices besides the usual File Format and File Type include: \textit{Tag suffix} (to add to media filename), \textit{Remove originals from project}, \textit{Into Nested Proxy directory} (an option to have the file saved here instead of the location of the original media), and \textit{Beep on done} volume.
 
 The settings of the project have an effect, for example the dimensions are taken into account. The resulting files are also larger than if they were created directly with ffmpeg.
 Transcode works for videos with or without audio and even single frame files, like png's.
-If you have a video file that also contains audio, and you convert only the video, the original audio will stay on the timeline if do not check "Remove originals from project". Or vice versa if audio converted and not video.
+If you have a video file that also contains audio, and you convert only the video, the original audio will stay on the timeline if do not check \textit{Remove originals from project}. Or vice versa if audio converted and not video.
 Multiple stream media will only transcode the first stream (this would be like the TV channel recordings in the United States).
-You will get an error message if you already have a transcoded file in the selected format with the same suffix name and try to transcode it again with a different selection made - you will have to delete that file first. An example would be
+You will get an error message if you already have a transcoded file in the selected format with the same suffix name and try to transcode it again with a different selection made -- you will have to delete that file first. An example would be
 an already converted file that has both video and audio and now you request video only. 
 
-The BIGGEST gain from using this is if you have media that is not "seekable", that is, you can play it from the beginning 
-but can not move to another spot and have the audio or video play correctly. A video file with no keyframes makes seeking 
-next to impossible, but then a Transcode generally adds these keyframes. 
+The BIGGEST gain from using this is if you have media that is not \textit{seekable}, that is, you can play it from the beginning but can not move to another spot and have the audio or video play correctly. A video file with no keyframes makes seeking next to impossible, but then a Transcode generally adds these keyframes. 
 
 \section{Some Settings Parameter Values}%
 \label{sec:settings_parameter_values}
 
-\texttt{Cache} in \texttt{Settings $\rightarrow$ Preferences, Performance tab} is used to store images on the timeline.  One 1080p frame uses about 10 MB.  The default setting is 256 and this is enough for testing and running.  However, why not use more memory if it is available.   To experiment for testing a good number tuned to the way you use your computer, set the cache to 0, start up Cinelerra, load a typical media file, play it and run \texttt{top} on the command line in another window to see how much memory is being used.  In the \textit{top} display, look at \textit{free} memory.  Whatever your computer is not using, is a good number to use for cache.  If you start other programs, or change the design of the session so that it uses a lot of frame storage, you may need to experiment again later and resize accordingly.
+\texttt{Cache} in \texttt{Settings $\rightarrow$ Preferences, Performance} tab is used to store images on the timeline.  One 1080p frame uses about 10 MB.  The default setting is 256 and this is enough for testing and running.  However, why not use more memory if it is available.   To experiment for testing a good number tuned to the way you use your computer, set the cache to 0, start up Cinelerra, load a typical media file, play it and run \texttt{top} on the command line in another window to see how much memory is being used.  In the \textit{top} display, look at \textit{free} memory.  Whatever your computer is not using, is a good number to use for cache.  If you start other programs, or change the design of the session so that it uses a lot of frame storage, you may need to experiment again later and resize accordingly.
 
 For system \textit{swap}, 1 GB seems to be more than sufficient.  If the amount of memory being used by the program is \textit{close}, then swap might save you but often if swapping becomes necessary, it presents more problems and you end up killing the Cinelerra process anyway.
 
@@ -506,8 +505,8 @@ A list of items to check for smaller computers that will help to use less cpu/me
 
 \begin{itemize}
 	\item For large media files, use proxy to do your main editing.
-	\item In \texttt{Settings $\rightarrow$ Preferences, Appearance tab}, uncheck \textit{Use thumbnails in resource window}.
-	\item In \texttt{Settings $\rightarrow$ Preferences, Appearance tab}, uncheck \textit{Autocolor assets}.
+	\item In \texttt{Settings $\rightarrow$ Preferences, Appearance} tab, uncheck \textit{Use thumbnails in resource window}.
+	\item In \texttt{Settings $\rightarrow$ Preferences, Appearance} tab, uncheck \textit{Autocolor assets}.
 	\item  Speed-up certain time-consuming FFmpeg plugins through use of a carefully selected \texttt{.opts} file.
 	\item For large media files, in \texttt{Settings $\rightarrow$ Preferences, Playback A}, Video Driver set \textit{use direct X11 render if possible}.
 	\item For the Video Driver in \texttt{Settings $\rightarrow$ Preferences, Playback A}, if using a good graphics card, choose \textit{X11-OpenGL}.
@@ -517,7 +516,7 @@ A list of items to check for smaller computers that will help to use less cpu/me
 	timeline is being modified. The temporary output is displayed during playback whenever possible so 
 	it does not have to be recalculated -- very useful for transitions and previewing effects that are slow.
 	\item In  \texttt{Settings $\rightarrow$ Preferences, Playback A}, uncheck \textit{Play every frame} which means frames will be skipped as playback of the video falls behind.
-	\item Adjust \textit{Cache size} in \texttt{Settings $\rightarrow$ Preferences, Performance tab}, to not exhaust the memory and yet still provide decent playback.
+	\item Adjust \textit{Cache size} in \texttt{Settings $\rightarrow$ Preferences, Performance} tab, to not exhaust the memory and yet still provide decent playback.
 \end{itemize}
 
 \section{General Crash Handling Tips}%
@@ -527,8 +526,8 @@ This section is a handy guide for describing various kinds of software computer 
 
 \begin{description}
 	\item[System lockups:] When the system locks up, it is usually a system problem.  Normally an application program cannot lock up the system.  It is a major goal of system design to prevent an application (app) from failing a system interface.  This does not mean an app can not cause a system lockup, but it is unusual.
-	\item[Cinelerra crash:] This is covered in  \ref{cha:crash_dumps_analysis} Crash Dumps for Analysis, chapter 18.  Just a reminder that for best results you should be root and by providing a crash dump and as much other information as possible, you will be helping the developer to analyze the problem and fix it so that it can be avoided in the future.
-	\item[X Server crash:] Keyboard does not respond, screen is frozen, caps lock may operate LED light.  Sometimes using \texttt{ctrl-alt-F1} $\dots$ \texttt{ctrl-alt-F7} (etc.) will allow you to regain control of a VT console.  You can use this to login and check logs: eg. \textit{/var/log/Xorg.0.log}, \textit{dmesg}, \textit{journalctl} $\dots$ etc.  If you have another computer, make sure a terminal server is configured (for example: rsh, ssh, or telnet), then remote login via this other computer and check the logs.  Most important is to immediately note the current software state, and the very last thing that preceded the crash, i.e. last button click, last keystroke, $\dots$ or whatever.
+	\item[Cinelerra crash:] This is covered in  \href{cha:crash_dumps_analysis}{Crash Dumps for Analysis}.  Just a reminder that for best results you should be root and by providing a crash dump and as much other information as possible, you will be helping the developer to analyze the problem and fix it so that it can be avoided in the future.
+	\item[X Server crash:] Keyboard does not respond, screen is frozen, caps lock may operate LED light.  Sometimes using Ctrl-Alt-F1 $\dots$ Ctrl-Alt-F7 (etc.) will allow you to regain control of a VT console.  You can use this to login and check logs: eg. \texttt{/var/log/Xorg.0.log}, \textit{dmesg}, \textit{journalctl} $\dots$ etc.  If you have another computer, make sure a terminal server is configured (for example: rsh, ssh, or telnet), then remote login via this other computer and check the logs.  Most important is to immediately note the current software state, and the very last thing that preceded the crash, i.e. last button click, last keystroke, $\dots$ or whatever.
 	\item[Kernel crash:] The machine goes completely dead.  The keyboard caps lock LED will probably be flashing.  Most likely the only way to see anything after the kernel crashes is to use a serial port console log and usually kdb, the kernel debugger, and special cabling.  This requires a lot of setup, and is normally reserved for experts.  Login from another computer will not work.  Pinging the ip address will not respond since the network stack is part of the kernel.  There are some virtual machine setups that will let you debug a \textit{guest} kernel, but this also requires a lot of setup, and affects which kernel is currently under test.  The kdb route is preferable.
 	\item[Keyboard grabs, Server grabs, and Deadlocks:] A grab is an X-server state where all events are forced to just one window event stream.  This forces the user to respond to the dialog.  Things seems to be working, but no keypresses do anything useful. The system clock and other programs will still be working.  The network will work for remote logins. Grabs can be canceled if the \texttt{/etc/X11/xorg.conf} X config contains special setup as shown below:
 \end{description}
@@ -559,7 +558,7 @@ ctrl-alt-bksp = terminate the X-server, may restart automatically
 \end{lstlisting}
 
 
-Modal forms (always on top, and usually ptr/kbd grab) dialog boxes can lock a system by putting a form over another form holding a grab.  This means the form that needs input may never get any because you can not get to it, and the result is a deadlock.  Usually you will have to restart X (\texttt{ctrl-alt-bksp}).
+Modal forms (always on top, and usually ptr/kbd grab) dialog boxes can lock a system by putting a form over another form holding a grab.  This means the form that needs input may never get any because you can not get to it, and the result is a deadlock.  Usually you will have to restart X (Ctrl-Alt-Bksp).
 
 \begin{description}
 	\item[Window Manager issues:] The \textit{desktop} window manager can intercept and modify all kinds of user input.  Mostly, this is a good thing, but can be a nuisance.  If user keypresses can be programmed to trigger actions, then they may be useful to send \texttt{KILL} or \texttt{INTR} to an app that seems to be holding X's attention.  For example:
@@ -569,7 +568,7 @@ Modal forms (always on top, and usually ptr/kbd grab) dialog boxes can lock a sy
 	killall X,
 	# but you must run as root to be able do this
 	\end{lstlisting}
-	The \texttt{ALT} and \texttt{META} keys may be intercepted by the window manager, and this can cause unexpected interface operations.
+	The ALT and META keys may be intercepted by the window manager, and this can cause unexpected interface operations.
 \end{description}
 
 \section{Tips for Specific Operations}%
@@ -583,14 +582,14 @@ To create a specific 440 Hz tone, follow these steps.  You can vary the length, 
 \begin{enumerate}
 	\item Make sure there is an armed audio track on the timeline, get into Cut and Paste mode, and highlight
 	a selection or define In/Out points where you want to insert the audio tone.
-	\item Go to \texttt{Audio $\rightarrow$ Render effect}.  Rendered effect usage is described in Effect Plugins (\ref{sec:rendered_effects}), chapter 10. This brings up a menu where you will select the desired effect which in this case is \textit{F\_aeval}.  Also Select a file to render to, a File Format, and Insertion strategy of Paste at insertion point.
-	\item Click on the green \texttt{OK} checkmark which will popup the F\_aeval effect so that you can set the
+	\item Go to \texttt{Audio $\rightarrow$ Render effect}.  Rendered effect usage is described in \href{sec:rendered_effects}{Effect Plugins}. This brings up a menu where you will select the desired effect which in this case is \textit{F\_aeval}.  Also Select a file to render to, a File Format, and Insertion strategy of Paste at insertion point.
+	\item Click on the green OK checkmark which will popup the F\_aeval effect so that you can set the
 	parameters.
-	\item Highlight the \texttt{exprs} option and key in a specific audio filter expression which for 440 Hz would be:
-	$\sin(2\pi t\times440)$.  Then hit the \texttt{Apply} button.
-	\item Next when you hit the green \texttt{OK} checkmark on the Cinelerra: Effect Prompt popup, you will have
+	\item Highlight the \textit{exprs} option and key in a specific audio filter expression which for 440 Hz would be:
+	$\sin(2\pi t\times440)$.  Then hit the Apply button.
+	\item Next when you hit the green OK checkmark on the Cinelerra: Effect Prompt popup, you will have
 	your 440 Hz tone on the timeline plus in the select file that you chose to render it to.
-	\item To use 2 channels instead of 1, in the F\_aeval menu highlight the \texttt{channel\_layout} option and change
+	\item To use 2 channels instead of 1, in the F\_aeval menu highlight the \textit{channel\_layout} option and change
 	that to 1C|2C instead of the usual default of 1C.
 \end{enumerate}
 
@@ -604,7 +603,7 @@ To create a specific 440 Hz tone, follow these steps.  You can vary the length, 
 \subsection{Camera supplied LUTs}%
 \label{sub:camera_supplied_luts}
 
-A LUT, acronym for Look-Up Table, is a mathematically precise way of taking specific RGB image values from a source image and modifying them to new RGB values by changing the hue, saturation and brightness values of that source image. In other words, LUTs are used to map one color space to another.  Some high-end cameras supply a \texttt{.cube} file to use as input. There are several different ffmpeg plugins included with CinGG for using Lut's.  These are:
+A LUT, acronym for Look-Up Table, is a mathematically precise way of taking specific RGB image values from a source image and modifying them to new RGB values by changing the hue, saturation and brightness values of that source image. In other words, LUTs are used to map one color space to another.  Some high-end cameras supply a .cube file to use as input. There are several different ffmpeg plugins included with CinGG for using Lut's.  These are:
 
 \begin{description}
 	\item[F\_lut:] Compute and apply a lookup table to the RGB/YUV input video.
@@ -614,7 +613,7 @@ A LUT, acronym for Look-Up Table, is a mathematically precise way of taking spec
 	\item[F\_lutyuv:] Compute and apply a lookup table to the YUV input video.
 \end{description}
 
-For example, to use a 3dlut simply load your video, drop the F\_lut3d plugin on that track, and bring up the lut3d controls window, highlight the \texttt{file} option, key in your file name (whit path), and hit \texttt{apply} to have the lut take effect.  To easily adjust, move the \texttt{fader} slider in the patchbay for that video track.
+For example, to use a 3dlut simply load your video, drop the F\_lut3d plugin on that track, and bring up the lut3d controls window, highlight the \textit{file} option, key in your file name (whit path), and hit apply to have the lut take effect.  To easily adjust, move the \textit{fader} slider in the patchbay for that video track.
 
 \subsection{Encoding into Dolby Pro Logic}%
 \label{sub:encoding_dolby_pro_logic}
@@ -649,7 +648,7 @@ Other tricks you can perform to separate the speakers are parametric equalizatio
 
 The picture quality on analog TV is not always good but you can modify parameters in Cinelerra to make it look more like it did in the studio.
 
-First, when capturing the video, capture it in the highest resolution possible. For Europeans this would be $720\times576$ and for North Americans, $720\times480$. Do not adjust the brightness or contrast in the recording monitor, but you might want to max out the color. Capture the video using MJPEG or uncompressed Component Video if possible; if not possible, then capture it using JPEG preferably or RGB if that is all that will work.  Now on the timeline use Settings $\rightarrow$ Format to set a YUV colorspace, drop a \textit{Downsample} effect on the footage and set it as follows:
+First, when capturing the video, capture it in the highest resolution possible. For Europeans this would be $720\times576$ and for North Americans, $720\times480$. Do not adjust the brightness or contrast in the recording monitor, but you might want to max out the color. Capture the video using MJPEG or uncompressed Component Video if possible; if not possible, then capture it using JPEG preferably or RGB if that is all that will work.  Now on the timeline use \texttt{Settings $\rightarrow$ Format} to set a YUV colorspace, drop a \textit{Downsample} effect on the footage and set it as follows:
 
 \begin{lstlisting}[language=bash,numbers=none]
 Horizontal:					2
@@ -667,14 +666,14 @@ Use the Camera in the compositor to shift the picture up or down a line to remov
 \subsection{Remove Interlacing}%
 \label{sub:remove_interlacing}
 
-Interlacing often exists on older video sources, such as camcorders, and was previously used in broadcast television. Playing this video results in jagged images on a computer monitor, but with Cinelerra you can use deinterlacing effects to solve this.  After some experimentation, it has been determined that the FFmpeg \texttt{F\_kerndeint} plugin seems to produce the best results with the least amount of fiddling.  But some of the parameters described next are pertinent to other potential plugin usage.
+Interlacing often exists on older video sources, such as camcorders, and was previously used in broadcast television. Playing this video results in jagged images on a computer monitor, but with Cinelerra you can use deinterlacing effects to solve this.  After some experimentation, it has been determined that the FFmpeg \textit{F\_kerndeint} plugin seems to produce the best results with the least amount of fiddling.  But some of the parameters described next are pertinent to other potential plugin usage.
 
 \begin{description}
-	\item[Line Doubling:] done by the \texttt{Deinterlace} effect when set to \textit{Odd} lines or \textit{Even} lines.  When applied to a track it reduces the vertical resolution by $\frac{1}{2}$ and gives you progressive frames with stairstepping. This is only useful when followed by a scale effect which reduces the image to half its size.
-	\item[Line averaging:] the \texttt{Deinterlace} effect when set to \textit{Average even} lines or \textit{Average odd} lines does exactly what line doubling does except instead of making straight copies of the lines, it makes averages of the lines. This is actually useful for all scaling.
+	\item[Line Doubling:] done by the \textit{Deinterlace} effect when set to \textit{Odd} lines or \textit{Even} lines.  When applied to a track it reduces the vertical resolution by $\frac{1}{2}$ and gives you progressive frames with stairstepping. This is only useful when followed by a scale effect which reduces the image to half its size.
+	\item[Line averaging:] the \textit{Deinterlace} effect when set to \textit{Average even} lines or \textit{Average odd} lines does exactly what line doubling does except instead of making straight copies of the lines, it makes averages of the lines. This is actually useful for all scaling.
 	\item[Inverse Telecine:] this is the most effective deinterlacing tool when the footage is an NTSC TV broadcast of a film. It is described in Effect Plugins (\ref{sub:inverse_telecine}), chapter 10.
 	\item[Time base correction:] the previously discussed three tools either destroy footage irreversibly or do not work at times. Time base correction may be a better tool to use because it leaves the footage intact. It does not reduce resolution, perceptually at least, and does not cause jittery timing.
-	\item[Frames to Fields effect:] converts each frame to two frames, so it must be used on a timeline whose project frame rate is twice the footage's frame rate. In the first frame it puts a line-averaged copy of the even lines. In the second frame it puts a line-averaged copy of the odd lines. When played back at full framerate it gives the illusion of progressive video with no loss of detail. This effect can be reversed with the Fields to Frames effect, which combines two frames of footage back into the one original interlaced frame at half the framerate. However, keep in mind that Frames to Fields inputs frames at half the framerate as the project. Effects before Frames to Fields process at the reduced framerate.  The output of Frames to Fields can not be compressed as efficiently as the original because it introduces vertical twitter and a super high framerate. Interlaced $29.97$ fps footage can be made to look like film by applying Frames to Fields and then reducing the project frame rate of the resulting $59.94$ fps footage to $23.97$ fps. This produces no timing jitter and the occasional odd field gives the illusion of more detail than there would be if you just line averaged the original. It is described in Effect Plugins (\ref{sub:frames_to_fields}), chapter 10.
+	\item[Frames to Fields effect:] converts each frame to two frames, so it must be used on a timeline whose project frame rate is twice the footage's frame rate. In the first frame it puts a line-averaged copy of the even lines. In the second frame it puts a line-averaged copy of the odd lines. When played back at full framerate it gives the illusion of progressive video with no loss of detail. This effect can be reversed with the \textit{Fields to Frames} effect, which combines two frames of footage back into the one original interlaced frame at half the framerate. However, keep in mind that Frames to Fields inputs frames at half the framerate as the project. Effects before Frames to Fields process at the reduced framerate.  The output of Frames to Fields can not be compressed as efficiently as the original because it introduces vertical twitter and a super high framerate. Interlaced $29.97$ fps footage can be made to look like film by applying Frames to Fields and then reducing the project frame rate of the resulting $59.94$ fps footage to $23.97$ fps. This produces no timing jitter and the occasional odd field gives the illusion of more detail than there would be if you just line averaged the original. It is described in Effect Plugins (\ref{sub:frames_to_fields}), chapter 10.
 	\item[HDTV exceptions:] $1920\times1080$ HDTV is encoded in a special way. If it is a broadcast of original HDTV film, an inverse telecine works.  But if it is a rebroadcast of a $720\times480$ source, you need to use a time base and line doubling algorithm to deinterlace it.
 \end{description}
 
@@ -685,8 +684,8 @@ With an older camcorder video which has low quality video, you can improve the r
 
 \begin{enumerate}
 	\item Set project framerate to twice the video framerate.
-	\item Apply a \texttt{Sharpen} effect. Set it to sharpness: 25, no interlacing, and horizontal only.
-	\item Drop a \texttt{Frame to Fields} effect on the same track. Set Average Empty Rows to on and play through 
+	\item Apply a \textit{Sharpen} effect. Set it to sharpness: 25, no interlacing, and horizontal only.
+	\item Drop a \textit{Frame to Fields} effect on the same track. Set Average Empty Rows to on and play through 
 	the video a few times to figure out which field is first. If the wrong field is first, the motion is shaky.
 	Any editing in the doubled frame rate may now damage the field order. It is not clear which is the
 	easiest way to support warnings for field glitches but you should go back to the normal framerate to
@@ -721,11 +720,11 @@ It is important to set the $0\%$ alpha color to blue even though it is $0\%$ alp
 	\item Go to \texttt{Settings $\rightarrow$ Format }change \textit{Channels} to 1 and \textit{Samplerate} to 16000 or 22050.
 	\item Highlight a region of the timeline to use for the ringtone. To improve sound quality on the cell
 	phone, you need the maximum amplitude in as many parts of the sound as possible.
-	\item Right click on track Audio 1 and select \texttt{Attach effect}. Highlight the \textit{Compressor} effect and hit
-	\texttt{Attach} in the attachment popup.
+	\item Right click on track Audio 1 and select \textit{Attach effect}. Highlight the \textit{Compressor} effect and hit
+	Attach in the attachment popup.
 	\item Make sure the insertion point or highlighted area is in the region with the Compressor effect.
-	\item Right click on track Audio 2 and select \texttt{Attach effect}.
-	\item Highlight Audio 1 Compressor and hit \texttt{Attach}.
+	\item Right click on track Audio 2 and select \textit{Attach effect}.
+	\item Highlight Audio 1 Compressor and hit Attach.
 	\item Click the Audio 1 Compressor's magnifying glass to bring up the compressor GUI.
 	\item Set the following parameters:
 	\begin{lstlisting}[language=bash,numbers=none]

@@ -9,7 +9,10 @@ Cinelerra is a software program NLE, Non-Linear Editor, that provides a way to e
 \subsection{Install the Software}%
 \label{sub:install_software}
 
-On the internet, click on the Download page at:  \quad {\small \url{https://cinelerra-gg.org/downloads/}}
+On the internet, click on the Download page at:
+\begin{center}
+	{\small \url{https://cinelerra-gg.org/downloads/}}
+\end{center}
 Here you will see several Operating System distro packages that are already built for you to download.  Click on your preference and read the specific instructions for usage.
 
 \begin{figure}[htpb]
@@ -61,17 +64,17 @@ On the main timeline program window are many pulldowns, the first of which is \t
 \end{figure}
 
 \begin{enumerate}
-	\item Click on \texttt{File} for a list of available options and note that in the right hand column are shortcuts for
+	\item Click on \textit{File} for a list of available options and note that in the right hand column are shortcuts for
 	many of the options that will come in handy if you use Cinelerra often.
-	\item Next click on the second one down -- \texttt{Load files$\dots$} -- which brings up the Load menu.
-	\item Below \texttt{Select files to load} on the top left side is a textbox and if you look all the way to the right
+	\item Next click on the second one down -- \textit{Load files$\dots$} -- which brings up the Load menu.
+	\item Below \textit{Select files to load} on the top left side is a textbox and if you look all the way to the right
 	side of the textbox, there is a down arrow which you use to navigate your file system.  Highlight the
 	desired file system and you will see that directory name appear in the textbox and the files below.
 	\item Scroll to the media file you would like to work on and highlight that file.  When you do, you will
 	see that filename also appear in the textbox below the listing of files.  You could have directly
 	keyed in that file in that textbox instead.
 	\item On the bottom of the Load menu, is a box called \textit{Insertion strategy}.  For getting started the
-	default of \texttt{Replace current project} is sufficient.  But you can click on the down arrow to see what
+	default of \textit{Replace current project} is sufficient.  But you can click on the down arrow to see what
 	is available for future use.
 	\item Now click on the green colored checkmark on the bottom left hand side to actually load the file
 	and see it appear on the timeline in Cinelerra’s main window and a single frame in the Compositor.
@@ -89,24 +92,24 @@ You can skip this step if you want the format of your output to be the same as y
 
 \begin{enumerate}
 	\item On the main timeline, use the \textit{Settings} pulldown (about the $7^{th}$ pulldown from the left side top) and
-	click on \texttt{Format} which is the first option in that list.
+	click on \textit{Format} which is the first option in that list.
 	\item A \textit{Set Format} menu will appear that shows what the current format is for your loaded media in an
 	Audio and a Video tab.  In the United States, the Video Frame rate is usually expected to be 29.970	and usually the Color model is only changed if you have a personal preference.
-	\item The \texttt{Canvas size} is probably the only thing you will want to change here in order to get to the
+	\item The \textit{Canvas size} is probably the only thing you will want to change here in order to get to the
 	most commonly viewable settings.  On the right hand side of the Width parameter is a down arrow. 
 	Left click the down arrow to see your options.
+	\item Highlight $1280\times720$ HD for a good common option.
+	\item Click OK to have this option take effect.  When you do, the Compositor window may change to fit
+	this option and may look wrong sized.
 \end{enumerate}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/format_setting.png}
+	\includegraphics[width=0.7\linewidth]{images/format_setting.png}
 	\caption{Format menu to change settings}	
 \end{figure}
 
-\begin{enumerate}[resume]
-	\item Highlight $1280\times720$ HD for a good common option.
-	\item Click \texttt{OK} to have this option take effect.  When you do, the Compositor window may change to fit
-	this option and may look wrong sized.
+\begin{enumerate}[resume]	
 	\item If the video now looks too small or too large in the Compositor, you will want to \textit{autoscale} it to
 	look correct when the new media is created.  To do this, mouse over to the Resources window in the
 	lower right hand corner and under the word Visibility, highlight \textit{Video Effects} to see some
@@ -117,17 +120,14 @@ You can skip this step if you want the format of your output to be the same as y
 	new value.  Click on the magnifying glass icon on the brown colored line beneath the main timeline
 	video which opens a new window.  In that window, again use the down arrow to choose $1280\times720$
 	HD, then dismiss this window.
+	\item If not needed, to remove the Auto Scale plugin, right mouse on the brown line and choose \textit{Detach}.
 \end{enumerate}
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.6\linewidth]{images/magnifier.png}
+	\includegraphics[width=0.5\linewidth]{images/magnifier.png}
 	\caption{Effect brown bar with magnifier}	
 \end{figure}
-
-\begin{enumerate}[resume]
-	\item If not needed, to remove the Auto Scale plugin, right mouse on the brown line and choose \texttt{Detach}.
-\end{enumerate}
 
 \subsection{View and Listen}%
 \label{sub:view_listen}
@@ -170,18 +170,18 @@ There may be sections of your media that you want to delete, or audio that is ha
 	easiest is to move your mouse and left click at the beginning of the section you want to delete on the
 	timeline and while holding down the left mouse button, drag to the end of the section to be deleted. 
 	When you do this, a white colored highlighted section becomes visible.  Use the edit pulldown and
-	choose the \texttt{split/cut} option to cut out the highlighted area (note the shortcut of \texttt{x}).  Remember if you
+	choose the \textit{split/cut} option to cut out the highlighted area (note the shortcut of "x").  Remember if you
 	cut the wrong thing out you can always use the Edit pulldown to Undo that.
 	\item To add a transition where there is deleted section which may make your video look disjointed, do
 	the following.   Go back to the Resources window in the bottom right hand corner.  Change to
 	\textit{Video Transitions} by highlighting that underneath the word \textit{Visibility}.  Highlight a transition like
-	\texttt{BandSlide} with the left button mouse click, hold down and drag to the video track and when you see
+	\textit{BandSlide} with the left button mouse click, hold down and drag to the video track and when you see
 	a white colored box around the area that you deleted above, drop the icon.  Right mouse click the
 	icon on the track to vary some parameters like length.
 	\item  To insert another clip from a different video, first you have to load the other video on another track.
-	Go to \textit{File} pulldown again and choose the \texttt{Load files} option.  Type in a directory at the top again and
+	Go to \textit{File} pulldown again and choose the \textit{Load files} option.  Type in a directory at the top again and
 	erase any specific file that you may have chosen previously in the bottom 2 textboxes.  It is very
-	important to now change the Insertion strategy to \texttt{Append in new tracks} or you will write over
+	important to now change the Insertion strategy to \textit{Append in new tracks} or you will write over
 	your current work.  But if you make this mistake, you can use the Edit pulldown and Undo that!
 	\begin{enumerate}
 		\item Once the new video is on the track below your current work, you want to work with only this new 
@@ -194,11 +194,11 @@ There may be sections of your media that you want to delete, or audio that is ha
 		window to the right of the transport buttons, are action buttons and as you mouse over them a
 		yellow colored tooltip explains its purpose.  Find the one that says \textit{To clip} which is on the right
 		hand side of the right bracket symbol.
-		\item Click on \texttt{To clip} and a small window comes up which you can comment in, but you do not have
+		\item Click on \textit{To clip} and a small window comes up which you can comment in, but you do not have
 		to, so just click on the green checkmark and now you will have a clip.
 		\item Disarm that new track and re-arm your original tracks so you can go back to working on them
 		\item Move your cursor to the spot in your original video where you want to insert the clip.   Make a
-		\textit{Split} with the \texttt{Split | Cut} option.
+		\textit{Split} with the \textit{Split | Cut} option.
 		\item Go to the Resources window and under the word Visibility, highlight \textit{Clips} so you can see your
 		recently created clip in the box to the right.  Highlight that clip and drag it to where you did the
 		blade cut and drop it in.
@@ -221,11 +221,11 @@ There may be sections of your media that you want to delete, or audio that is ha
 	usual with left mouse click on the timeline and drag to the end of the desired area.
 	\begin{enumerate}
 		\item Right click on the brown colored bar that appeared below your video track to get to options and
-		then left click on \texttt{Show} to get the Title window to appear.
+		then left click on \textit{Show} to get the Title window to appear.
 		\item Now for the fun part.  First type in some words in the bottom large text box just to see what it
 		does.  There are so many variable parameters here and they are a lot of fun to play around with.
 		\item You can dismiss the Title window when finished BUT be sure to leave the brown colored Title bar
-		on the track.  And if you enabled the “drag” feature, you should disable it so you do not forget.
+		on the track.  And if you enabled the \textit{drag} feature, you should disable it so you do not forget.
 		\item Right mouse click on the bottom Text box to see many more interesting parameters.
 	\end{enumerate}
 \end{enumerate}
@@ -233,7 +233,7 @@ There may be sections of your media that you want to delete, or audio that is ha
 \subsection{Back up your work}%
 \label{sub:backup_your_work}
 
-At this time, or even earlier if you think you might make a mistake or if you are concerned about computer crashes, you should save your work.  Use the \textit{File} pulldown, and you can use \texttt{Save as} to designate a directory and filename.  Then click the green checkmark.  You are saving the EDL which is the set of changes that you have made -- this file is separate from your original media.
+At this time, or even earlier if you think you might make a mistake or if you are concerned about computer crashes, you should save your work.  Use the \textit{File} pulldown, and you can use \textit{Save as} to designate a directory and filename.  Then click the green checkmark.  You are saving the EDL which is the set of changes that you have made -- this file is separate from your original media.
 
 \subsection{Create your new media}%
 \label{sub:create_new_media}
@@ -254,7 +254,7 @@ At this time, or even earlier if you think you might make a mistake or if you ar
 	the menu.  Then click on the wrench for Video and check Pixels by using the down arrow to the
 	right to be yuv420p -- this is most commonly usable option.  And click on the green checkmark.
 	\item Check the Insertion Strategy in the Render Menu window.  You might want to change that to
-	a different strategy than the default of \texttt{Append in new tracks}.  If not, then when the Render is done,
+	a different strategy than the default of \textit{Append in new tracks}.  If not, then when the Render is done,
 	your new video will automatically be loaded in another set of tracks below your work tracks.  Click
 	on the green checkmark in the lower left corner to start the render.
 	\item As the render is running, you will see the video play by in the Compositor.  Rendering is usually
@@ -287,16 +287,16 @@ To create a youtube or dailymotion video, you can easily follow the steps below.
     highlighting the \textit{Title} icon and dragging it to the Program window video track and dropping.
     \item Click on the middle icon button (looks like a magnifying glass) on the brown colored Title bar to
     bring up the Title window bottom text box and key in a title.
-    \item Use the \textit{File} pulldown to select \texttt{Render} to create the desired video.  In the \textit{Render} window just next to the empty box to the right of the \texttt{ffmpeg} file format, click on the down arrow shown there
-    to see the choices and pick \texttt{youtube}.  Then move back up to key in the path and filename to render
+    \item Use the \textit{File} pulldown to select \textit{Render} to create the desired video.  In the \textit{Render} window just next to the empty box to the right of the \textit{ffmpeg} file format, click on the down arrow shown there
+    to see the choices and pick \textit{youtube}.  Then move back up to key in the path and filename to render
     to.  It will pick all of the defaults automatically for you so then just click on the green checkmark to
     have it start.  There is a progress bar in the main window, very bottom of the right hand side.
     \item Key in “q” in the main window to get out of Cinelerra and yes or no to save your edit session.
 \end{enumerate}
 
-Youtube will allow the upload of the resulting rendered file as named.  However, Dailymotion requires that the file be named with an acceptable extension so you must rename the output file to have the extension of \texttt{.webm} instead of \texttt{.youtube}.
+Youtube will allow the upload of the resulting rendered file as named.  However, Dailymotion requires that the file be named with an acceptable extension so you must rename the output file to have the extension of .webm instead of .youtube
 
-There are currently 6 specific variations within the ffmpeg (file format) / youtube (file type) for different video options.  You see these when you click on the wrench to the right of the word Video and then the Compression down arrow in the Video Preset window.  The first 3 are based on Webm/Vp9 (credit Frederic Roenitz) and contain basic comments of usage and where to find more information.
+There are currently 6 specific variations within the ffmpeg (file format) / youtube (file type) for different video options.  You see these when you click on the wrench to the right of the word Video and then the Compression down arrow in the Video Preset window.  The first 3 are based on Webm/Vp9\protect\footnote{credit by Frederic Roenitz} and contain basic comments of usage and where to find more information.
 
 The first 3 below, plus any of the VP9 files under the file type of \textit{webm} are the recommended options to use because they are freely usable in any circumstance.
 
@@ -308,7 +308,7 @@ The first 3 below, plus any of the VP9 files under the file type of \textit{webm
 	\end{tabular}
 \end{center}
 
-Alternatives based on h264 and for non-commercial use are listed below.  For Dailymotion, these must be renamed to have a different extension of \texttt{.mp4} instead of \texttt{.youtube} before uploading.
+Alternatives based on h264 and for non-commercial use are listed below.  For Dailymotion, these must be renamed to have a different extension of .mp4 instead of .youtube before uploading.
 
 \begin{center}
 	\begin{tabular}{l p{8cm}}

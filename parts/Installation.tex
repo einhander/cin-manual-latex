@@ -592,7 +592,7 @@ use alternative anti-virus software (the standard default already included with 
 is Defender). Below are the steps for installation:
 
 \begin{enumerate}
-	\item Download cygwin for your 64-bit computer at: \url{https://www.cygwin.com/}
+	\item Download cygwin for your 64-bit computer at: {\small \url{https://www.cygwin.com/}}
 	\item Generally just take the defaults as they show up, but the next steps show what comes up.
 	\item When a warning window pops up, click \textit{Yes}.
 	\item Click \textit{Next}.
@@ -615,36 +615,36 @@ is Defender). Below are the steps for installation:
 \end{enumerate}
 
 Then to install the Cinelerra tar files, you will need to start a cygwin console terminal from the startup menu as shown here:
-	Start $\rightarrow$ Cygwin $\rightarrow$ Cygwin64 Terminal
+	\texttt{Start $\rightarrow$ Cygwin $\rightarrow$ Cygwin64} Terminal
 
 \underline{Installing Cinelerra:}
 
 \begin{enumerate}
-	\item Download the tar file at:
-	 https://cinelerra-gg.org/download/testing/libxcb-bld.tar.bz2
-	\item Install libxbc from the tar file -- installs into /usr/local and requires approximately 21MB storage.
+	\item Download the tar file at:\\
+	 {\small \url{https://cinelerra-gg.org/download/testing/libxcb-bld.tar.bz2}}
+	\item Install libxbc from the tar file -- installs into \texttt{/usr/local} and requires approximately 21MB storage.
 \begin{lstlisting}[language=bash,numbers=none]
 	$ tar -C /usr/local -xJf /path/libxcb-bld.tar.bz2
 \end{lstlisting}
 The libxcb path repairs an error (XIOError), which stops the program.
-	\item Download the tar file at:
-	https://cinelerra-gg.org/download/testing/cygcin-bld.tar.bz2
+	\item Download the tar file at:\\
+	{\small \url{https://cinelerra-gg.org/download/testing/cygcin-bld.tar.bz2}}	
 	\item Install cygcin from the tar file - this installs into home directory.  Note this is cygcin NOT cygwin.
 \begin{lstlisting}[language=bash,numbers=none]
 	$ cd
 	$ tar -xJf /path/cygcin-bld.tar.bz2
 \end{lstlisting}
 \end{enumerate}
-This creates \~{}/cygcin , a user build installation of Cinelerra and requires approximately 400MB storage.
+This creates \texttt{\~{}/cygcin} , a user build installation of Cinelerra and requires approximately 400MB storage.
 
 \underline{Running Cinelerra:}
 
 You will need to start a cygwin desktop from the startup menu:
 \begin{enumerate}
-	\item Start$\rightarrow$ Cygwin-X $\rightarrow$ Openbox
+	\item \texttt{Start$\rightarrow$ Cygwin-X $\rightarrow$ Openbox}
 
 You should start a console controlling terminal so that you can see program logging.
-	\item Start$\rightarrow$ Cygwin $\rightarrow$ Cygwin64 Terminal
+	\item \texttt{Start$\rightarrow$ Cygwin $\rightarrow$ Cygwin64} Terminal
 
 This opens a separate window that can survive a cygwin hang and bugs. Without these logs, it is much more difficult to use.
 
@@ -713,7 +713,7 @@ omissions are applied to this build.
 \end{lstlisting}
 \end{enumerate}
 
-This produces a directory: $/build\_path$/cinelerra-gg$/cinelerra-5.1$/bin \newline
+This produces a directory: $/build\_path$/cinelerra-gg$/cinelerra$-5.1/bin \newline
 which is used to create the cygcin archive.
 
 Currently, the targets are not stripped and can be run from gdb.

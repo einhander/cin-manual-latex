@@ -1,7 +1,7 @@
 \chapter{Translations}%
 \label{cha:translations}
 
-There are several \textit{po} files for various languages to make Cinelerra more usable for non-English countries.  A program, \texttt{xlat.C}, assists in providing several variations of text files that can be used in order to allow anyone to help make meaningful translations.  All of the \textit{po} files are located in Cinelerra’s \texttt{/po} subdirectory. There are 3 different ways to proceed described below.
+There are several \textit{po} files for various languages to make Cinelerra more usable for non-English countries.  A program, \textit{xlat.C}, assists in providing several variations of text files that can be used in order to allow anyone to help make meaningful translations.  All of the \textit{po} files are located in Cinelerra’s \texttt{/po} subdirectory. There are 3 different ways to proceed described below.
 
 Because Cinelerra frequently is changing, it is a good idea to start by building a new \texttt{cin.po} file which contains the latest messages/words in English to be translated, along with a comment line of the routine name and line number.  To create this, run the following lines from a window:
 
@@ -11,7 +11,7 @@ cd /{your top level cinelerra directory}
 \end{lstlisting}
 
 \begin{description}
-	\item[Method 1]  use the freely-available \textit{poedit} program to provide translations to the current \texttt{xx.po} where xx is your language such as fr.po, de.po, ru.po, etc.  The drawback to this is that xx.po files are not recreated monthly so they do not have all of the newest phrases included.
+	\item[Method 1]  use the freely-available \textit{poedit} program to provide translations to the current \textit{xx.po} where xx is your language such as \texttt{fr.po}, \texttt{de.po}, \texttt{ru.po}, etc.  The drawback to this is that \textit{xx.po} files are not recreated monthly so they do not have all of the newest phrases included.
 	\item[Method 2] using \textit{msgmerge} is probably the simplest method for user translation.
 \end{description}
 
@@ -30,7 +30,7 @@ Then use any editor or poedit to provide messages/words translations in the new 
 	\item[Method 3 ] using \textit{xlat.C} program is the most versatile with a variety of features.  When a non-existent language translation is first set up, you would want to use this methodology to get started.
 \end{description}
 
-To use the xlat.C program, first compile it with “c++ xlat.C”.  You can see the usage help here:
+To use the \textit{xlat.C} program, first compile it with \texttt{c++ xlat.C}.  You can see the usage help here:
 
 \begin{lstlisting}[language=bash,numbers=none]
 	./a.out 
@@ -50,7 +50,7 @@ This program has 6 commands where the desired command is the first parameter to 
 	\item \textit{po}  = convert po to csv data;  for example, what you need to convert ru.po to ru.csv.
 	You can even open the resulting *.csv in LibrOffice and update the \textit{key $\rightarrow$ value} replacements
 	(fields separated by "," only and check quoted fields as text during import).  These results can
-	be \textit{Saved As} a csv file, and then used by xlat.C to reformulate a \texttt{po}.
+	be \textit{Saved As} a csv file, and then used by xlat.C to reformulate a \textit{po}.
 	\item \textit{dups} = list only key/value items where either the \textit{key=value} or \textit{value=" "}.
 	\item \textit{nodups} = list only key/value items where \textit{key$\ne$value} and \textit{value$\ne$" "}.
 	\item \textit{key} = list cin.po key set.
@@ -67,7 +67,7 @@ c++ xlat.C
 ./a.out xlat cin.po /tmp/es.csv > /tmp/new_es.po
 \end{lstlisting}
 
-The first run preserves the existing mapping of es.po, the second creates new mappings from cin.po, and the third merges the original and new mappings to create a po with new included/overriding es.po.
+The first run preserves the existing mapping of \texttt{es.po}, the second creates new mappings from \texttt{cin.po}, and the third merges the original and new mappings to create a po with new included/overriding \texttt{es.po}.
 
 \paragraph{NOTE:} some words and abbreviations can lead to ambiguous language translations.  Therefore, the usage of C\_ and D\_ in the program code was added to represent Contextual and Definitional exceptions to the usual \_ and N\_ .  You will see the following:
 

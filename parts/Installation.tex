@@ -4,10 +4,10 @@
 \label{sec:How_to_build}
 
 These are generic build instructions for building Cinelerra-GG Infinity.  
-Known to work on Ubuntu, Mint, Suse/Leap, Fedora, Debian, Centos, Arch, and Slackware.  
+Known to work on Ubuntu, Mint, OpenSuse, Fedora, Debian, Centos, Arch, Slackware, and Gentoo. 
 It has not been tested on every single possible distro yet so you might expect to have to make some minor changes.
-
-Patches have been created to build on FreeBSD through the work of another programmer and a Gentoo version is being maintained elsewhere by another programmer.
+Also works on a somewhat limited basis on FreeBSD and Windows 10 with the bsd.patch for FreeBSD
+and the cygwin.patch for Windows 10.
 
 Alternatively, there are some pre-built dynamic or static binaries which are updated on a fairly regular basis (as long as code changes have been made) available at the link below.
 
@@ -22,13 +22,13 @@ The single user build allows for running completely out of a local user director
 
 We recommend the single-user version when possible.  
 It makes it very easy to install a new version without having to delete the older version in case you want it for backup -- once you are happy with the new version, all you have to do is delete the entire old directory path.  
-Also, if you install a new Operating System version and if you have Cinelerra on separate disk space that is preserved, you won't have to reinstall Cinelerra.  
-In addition for purposes of having the ability to interrupt or to see any possible error messages, if you start the application from a terminal window command line you will have more control to catch problems.  
-However, the system builds can be useful in a university lab setting where there are possibly multiple users, or multiple versions.
+Another reason for using single-user is that if you install a new Operating System version and if you have Cinelerra on separate disk space that is preserved, you won't have to reinstall Cinelerra.  
+It is also convenient for the purpose of having the ability to interrupt or to see any possible error messages, if you start the application from a terminal window command line where you will have more control to catch problems.  
+All that said, the system builds can be useful in a university lab setting where there are possibly multiple users, or multiple versions.
 
 There are two notable differences between \textit{standard} views of Cinelerra and this implementation for the system builds.  
 Both of these can be configured during installation.  
-These differences make it possible to have several different versions installed without having them \textit{walk} on each other. 
+The differences make it possible to have several different versions installed without having them \textit{walk} on each other. 
 
 \begin{enumerate}
     \item 
@@ -37,7 +37,7 @@ These differences make it possible to have several different versions installed 
         the home configuration directory can also be set and defaults to:\\ \texttt{\$HOME/.bcast5}
 \end{enumerate}
 
-\paragraph{To do a system build,} you should read the \texttt{README} that is at the top level after you get the source.
+\paragraph{To do a system build,} you should read the file \texttt{README} that is at the top level after you get the source.
 
 
 \begin{enumerate}
@@ -57,12 +57,15 @@ $ cd cinelerra5/cinelerra-5.1 # toplevel directory
         So on the very first build you should run:
 
         \begin{lstlisting}[language=bash,numbers=none]
-$ ./blds/bld_prepare.sh <os> # where <os> represents the Operating System of Centos, Fedora, Suse, Leap, Ubuntu, Debian.
+$ ./blds/bld_prepare.sh <os> # where <os> represents the Operating System of centos, fedora, suse, ubuntu, mint, debian.
 $ ./autogen.sh
 $ ./configure --prefix=/usr  # optional parameters can be added here
 $ make 2>&1 | tee log        # make and log the build
         \end{lstlisting}
-        \texttt{bld\_prepare.sh} does not work for Arch Linux, so we have to install the dependencies manually. \texttt{README.arch}, which contains the list of dependencies, can be found at: {\small \url{https://cinelerra-gg.org/download/pkgs/README.arch}}
+        \texttt{bld\_prepare.sh} does not work for Arch Linux or Gentoo, so we have to install the dependencies manually. \texttt{README.arch} or \texttt{README.gentoo}, which contain the list of dependencies, can be found at: \\ 
+{\small \url{https://cinelerra-gg.org/download/README.arch}
+
+	\url{https://cinelerra-gg.org/download/README.gentoo}}
     \item  Check for obvious build errors:
         \begin{lstlisting}[language=bash,numbers=none]
 $ grep "\*\*\*.*error" -ai log
@@ -79,7 +82,7 @@ $ /<build_path>/cinelerra5/cinelerra-5.1/log
     \item  If it all worked, you are all setup. Just click on the Cinelerra desktop icon.
 \end{enumerate}
 
-\paragraph{To do a single-user build,} read the \texttt{README} that is at the top level after you get the source.
+\paragraph{To do a single-user build,} read the file \texttt{README} that is at the top level after you get the source.
 \begin{enumerate}
     \item  You need at least 6\,GB of disk storage to operate a build + you need to have  “\texttt{git}” installed.
     \item  Recommend you build and run as \textbf{root}, just to avoid permission issues initially.
@@ -96,7 +99,7 @@ NOTE: if your system has never had Cinelerra-GG Infinity installed, you will hav
 the compilers and libraries necessary are installed. So on the very first build you should run as \textbf{root}:
 
 \begin{lstlisting}[language=bash,numbers=none]
-$ ./blds/bld_prepare.sh <os>     # where <os> represents the Operating System of centos, fedora, suse, leap, ubuntu, debian.
+$ ./blds/bld_prepare.sh <os>     # where <os> represents the Operating System of centos, fedora, suse, ubuntu, mint, debian.
 $ ./autogen.sh
 $ ./configure --with-single-user # the “with-single-user” parameter makes it so
 $ make 2>&1 | tee log            # make and log build (check for errors before proceeding)
@@ -104,16 +107,19 @@ $ make install
 \end{lstlisting}
 
 Then just start the application by keying in: \texttt{./cin} in the bin subdirectory OR add a desktop icon by
-using the appropriate directory to copy the files to, run as \textbf{root}, and edit to correct the directory path.
+using the appropriate directory to copy the files to, run as \textbf{root}, and edit to correct
+the directory path.  Below are generic directions of how to do this.
 
 \begin{lstlisting}[language=bash,numbers=none]
 $ cd /cinelerra_directory_path
 $ cp -a image/cin.{svg,xpm} /usr/share/pixmaps/.
 $ cp -a image/cin.desktop /usr/share/applications/cin.desktop
 \end{lstlisting}
-Change the \texttt{Exec=cin} line to be \texttt{Exec=<your\_directory\_path>/bin/cin}
 
-The preceding directions for doing a single-user build has been meticulously followed to build and run
+After you have followed the above, in the cin.desktop file, change the \texttt{Exec=cin} line
+to be \texttt{Exec=<your\_directory\_path>/bin/cin}.
+
+The preceding directions for doing a single-user build have been meticulously followed to build and run
 on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{bld\_prepare.sh} and creating the desktop icon.
 
 \subsection{Notable Options and Caveats}%
@@ -146,7 +152,7 @@ If you wish to change the default directory for a system build you will have to 
 $ make install DESTDIR=<your selected target directory path>
 \end{lstlisting}
 
-The application name can be set during installation, but defaults to cin so that the GG/Infinity build can coexist with other Cinelerra builds if necessary.  To override the default \texttt{cin} name, use:	
+The application name can be set during installation, but defaults to \texttt{cin} so that the GG/Infinity build can coexist with other Cinelerra builds if necessary.  To override the default \texttt{cin} name, use:	
 \begin{lstlisting}[language=bash,numbers=none]
 $ ./configure --with-exec-name=cinelerra
 \end{lstlisting}
@@ -158,8 +164,8 @@ For example:
 $ ./configure -with-config-dir=/myusername/.bcast5
 \end{lstlisting}
 
-NOTE:  when you specify parameters to the configure program, it will create a make file as a consequence.  
-Since in a make file, the \$ is a special character, it must be escaped so in order to represent a \$ as part of an input parameter, it has to be stuttered.  
+NOTE:  when you specify parameters to the configure program, it will create a \texttt{make} file as a consequence.  
+Since in a \texttt{make} file, the \$ is a special character, it must be escaped so in order to represent a \$ as part of an input parameter, it has to be stuttered.  
 That is, you will need \$\$ (2 dollar signs) to represent a single dollar sign. 
 
 It may be necessary on some distros which have missing or incomplete up-to-date libraries, to build Cinelerra without Ladspa.  
@@ -193,18 +199,18 @@ Getting a build to work in a custom environment is not easy.  If you have alread
         \toprule
  	a52dec   & yes\\
  	djbfft   & yes\\
-	fdk      & auto\\
  	ffmpeg   & yes\\
  	fftw     & auto\\
  	flac     & auto\\
  	giflib   & yes\\
- 	ilmbase&auto\\
- 	lame    &  auto\\
+ 	ilmbase	 & auto\\
+ 	lame     & auto\\
  	libavc1394&auto\\
  	libraw1394&auto\\
  	libiec61883&auto\\
 	libdv     &auto\\
  	libjpeg   &auto\\
+ 	opus	  &auto\\
  	openjpeg  &auto\\
  	libogg    &auto\\
  	libsndfile&auto\\
@@ -217,9 +223,17 @@ Getting a build to work in a custom environment is not easy.  If you have alread
  	twolame   &auto\\
  	x264      &auto\\
  	x265      &auto\\
- 	libvpx	&auto\\
-	libwebp&auto\\
-	libaom&	auto\\
+ 	libvpx    &auto\\
+ 	lv2       &auto\\
+ 	sratom    &auto\\
+ 	serd      &auto\\
+ 	sord      &auto\\
+ 	lilv      &auto\\
+ 	suil      &auto\\
+ 	libaom    &auto\\
+ 	dav1d     &auto\\
+	libwebp   &auto\\
+ 	ffnvcodec &auto\\
     \bottomrule
     \end{tabular}
 \end{table}
@@ -229,7 +243,7 @@ The \textit{yes} means force build and \textit{auto} means probe and use the sys
 To get your customized build to work, you need to change the probe options for the conflicting libraries from \textit{yes} to \textit{auto}, or even rework the \texttt{configure.ac} script.  
 There may be several libraries which need special treatment.
 
-An example of a problem you might encounter with your customized installation is with \texttt{a52dec} which has probes line \texttt{(CHECK\_LIB/CHECK\_HEADER)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
+An example of a problem you might encounter with your customized installation is with \texttt{a52dec} which has probes line \texttt{(CHECK\_LIB/CHECK\_HEADERS)} in \texttt{configure.ac}, but \texttt{djbfft} does not.  
 In this case, \texttt{djbfft} is only built because \texttt{a52dec} is built, so if your system has \texttt{a52dec}, set \texttt{a52dec} to auto and see if that problem is solved by retrying the build with:  
 \begin{lstlisting}[language=bash,numbers=none]
 $ ./confgure --with-single-user -enable-a52dec=auto .
@@ -239,7 +253,7 @@ With persistence, you can get results, but it may take several tries to stabiliz
 If you need help, email the \texttt{log} and \texttt{config.log}, which is usually sufficient to determine why a build failed.
 %\vspace{5ex}
 
-If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational.
+If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational. The libfdk\_aac library is not a part of Cinelerra by default because it is not license free.
 
 \begin{lstlisting}[language=bash,numbers=none]
 $ export FFMPEG_EXTRA_CFG=" --enable-libfdk-aac --enable-nonfree"
@@ -254,14 +268,15 @@ $ done
 
 If you want to avoid downloading the software every time an update is available you need to create a local "repository" or repo.  
 The repo is a directory where you first do a \texttt{git clone}.  
-For the initial git clone, setup a local area for the repository storage, referred to as \texttt{<repo\_path>}.  
+For the initial git clone, set up a local area for the repository storage, referred to as \texttt{<repo\_path>}.  
 The \texttt{git clone} creates a repo named \texttt{cin5} in the \texttt{/<repo\_path>/} directory.  
 This accesses about 530\,MB of repo data, so the device has to have at least that available.  
 The repo path is always a perfect clone of the main repo.
 
 \paragraph{Setting up the initial clone}%
 \label{par:setting_up_the_initial_clone}
-add "\texttt{ -{}-depth 1}" before \texttt{cin5} which is faster/smaller, but has no history.
+
+You may want to add "\texttt{ -{}-depth 1}" before \texttt{cin5} because this will clone faster and is smaller, but has no history.
 
 \begin{lstlisting}[numbers=none]
 $ cd /<repo\_path>/
@@ -278,6 +293,7 @@ Checking connectivity... done.
 
 \paragraph{Update an existing repo}%
 \label{par:update_an_existing_repo}
+The below shows how you can get updates.
 
 \begin{lstlisting}[language=bash,numbers=none]
  $ cd /<repo home>/cin5
@@ -286,7 +302,7 @@ Checking connectivity... done.
 
 \paragraph{Useful git commands}%
 \label{par:useful_git_commands}
-
+Some other commands that are useful.
 
 \begin{lstlisting}[language=bash,numbers=none]
 $ git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cin5
@@ -355,7 +371,7 @@ $ git checkout master
 \label{sub:debuggable_single_user_build}
 
 
-To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead \texttt{/tmp} should be substituted with a permanent disk path if you want to keep it.
+To build from source with full debugging symbols, first build a full static (non\_debug) build as follows but instead of using \texttt{/tmp} substitute your permanent disk path if you want to keep it.
 
 \begin{lstlisting}[numbers=none]
 $ git clone ...
@@ -378,10 +394,11 @@ $ gdb ./ci
 \label{sub:unbundled_builds}
 
 There are some generic build scripts included in the Cinelerra-GG GIT repository for users who want to do unbundled builds with ffmpeg already available on their system.  
-This has been tested on Arch, Ubuntu 18, FreeBSD, and Leap 15 (rpm) at the time this was documented.  
-The names of the build scripts are:  \texttt{arch.bld} ,  \texttt{bsd.bld} , \texttt{deb.bld} , and \texttt{rpm.bld}.  
+This has been tested on Arch, Ubuntu 18, FreeBSD, Windows10 and Leap 15 (rpm) at the time this was documented.  
+The names of the build scripts are:  \texttt{arch.bld} ,  \texttt{bsd.bld} , \texttt{deb.bld} , \texttt{rpm.bld}, and \texttt{cygwin.bld}.  
 These scripts are in the \texttt{blds} subdirectory.  
 The \texttt{bsd.bld} should be used with the \texttt{bsd.patch} file in that same directory.
+The \texttt{cygwin.bld} should be used with the \texttt{cygwin.patch} file in that same directory.
 
 The reason that Cin Infinity traditionally uses thirdparty builds (bundled builds) is because there are a lot of different distros with varying levels of ffmpeg and other needed thirdparty libraries.  
 However, some users prefer using their current system baseline without another/different copy of ffmpeg.  
@@ -393,14 +410,15 @@ So if you use a pulldown, or pick a render option, or choose something that is n
 For example, unless special options were set up by you, the LV2 audio plugins will not be available.  
 Nor will the codec libzmpeg, the file codec ac3, or DVD creation.  
 The old school file classes will all work, but some of the formats that come with ffmpeg may not because of the way that ffmpeg was installed on your operating system.  
-That is because the Cinelerra ffmpeg is a known static build and is usually the latest stable/released version.  
-In the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating; you can always run \texttt{ffmpeg -formats} and \texttt{ffmpeg -codecs} to see what is available on your system.
+That is because the Cinelerra included ffmpeg is a known static build and is usually the latest stable/released version.  
+For example, in the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating; you can always run \texttt{ffmpeg -formats} and \texttt{ffmpeg -codecs} to see what is available on your system.
 
 
 \section{Download Already Built Cinelerra-GG}%
 \label{sec:download_already_built_cinelerra_gg}
 
 If you prefer to not have to take the time to build Cinelerra-GG Infinity yourself, there are pre-built dynamic or static binaries for various versions of Ubuntu, Mint, Suse, Fedora, Debian, Centos, Arch, and Slackware linux as well as Gentoo and FreeBSD.  
+A Windows 10 version installation is described in \ref{sec:ms_windows10}.
 There are also 32-bit i686 Ubuntu, Debian, and Slackware versions available.  
 These are updated on a fairly regular basis as long as significant code changes have been made.  
 They are in subdirectories of:
@@ -410,7 +428,9 @@ They are in subdirectories of:
 	\url{https://cinelerra-gg.org/download/pkgs}}
 
 The \textbf{tars} directory contains single-user static builds for different distros.  
-This is the recommended usage of Cinelerra-GG because all of the files will exist in a single directory.  
+This is the recommended usage of Cinelerra-GG because all of the files will exist in a single directory.
+Generally all of the necessary libraries are built into the static build, but in some cases you may
+have to install another library that is being called for.  
 To install the single user builds, download the designated tarball from the \texttt{./tars} subdirectory and unpack as indicated below:
 
 \begin{lstlisting}[language=bash,numbers=none]
@@ -425,27 +445,39 @@ Do NOT download the LEAP 10-bit version unless you use h265 (it can't render 8-b
 The \textbf{pkgs} directory contains the standard packaged application for various distros.  
 This will install a dynamic system version for users who prefer to have the binaries in the system area and for multi-user systems.  
 In addition, performing the package install checks the md5sum in the file \texttt{md5sum.txt} to ensure the channel correctly transmits the package.  
-There is a {\small \href{https://cinelerra-gg.org/download/pkgs/README.pkgs}{README.pkgs}} file in the \texttt{pkgs} directory with instructions so you can \textit{ cut and paste} and avoid typos; it is also shown next.
+There is a {\small \href{https://cinelerra-gg.org/download/README.pkgs}{README.pkgs}} file in the \texttt{download} directory with instructions so you can \textit{ cut and paste} and avoid typos; it is also shown next.
 
 \begin{lstlisting}[numbers=none]
 Depending on the distro, use the instructions below and select the appropriate 
-setup operations to install, update or remove cinelerr-gg infinity.  (03/04/2019)
+setup operations to install, update or remove cinelerr-gg infinity.  (02/05/2020)
 To upgrade, refresh repo, then replace "install" with "update", or whatever.
 
 Email problems to cin@lists.cinelerra-gg.org
 If repository problems, usually you can manually do an install by using:
+ UBUNTU, MINT, DEBIAN
   wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.deb
-  and install it manually, for example: dpkg -i cin_5.1.{substitute_filename}.deb
+  and install it manually: dpkg -i cin_5.1.{substitute_filename}.deb
+ ARCH
+  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.pkg.tar.xz
+  and install it manually: pacman -U cin_5.1.{substitute_filename}.pkg.tar.xz
+ FEDORA
+  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
+  and install it manually: dnf install cin_5.1.{substitute_filename}.rpm
+ LEAP, SUSE
+  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
+  and install it manually: zypper install cin_5.1.{substitute_filename}.rpm
+ CENTOS
+  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
+  and install it manually: yum localinstall cin_5.1.{substitute_filename}.rpm
 
-# GENTOO - courtesy Dominque Michel
-# There is an ebuild package at this time as of 01/03/2019 at:
-#    https://svnweb.tuxfamily.org/listing.php?repname=proaudio%2Fproaudio&path=
-#    %2Ftrunk%2Foverlays%2Fproaudio%2Fmedia-video%2Fcinelerra%2F&#ab000caf7024d83112f42a7e8285f2f29
+# GENTOO - there are static and dynamic tarballs for Base Release 2.6
+  https://cinelerra-gg.org/download/tars/cinelerra-5.1-gentoo-20200202.x86_64-static.txz
+  https://cinelerra-gg.org/download/tars/cinelerra-5.1-gentoo-20200202.x86_64.txz
+  download one of the above and then refer to README.txt
 
-# FREEBSD - courtesy Yuri
-# There is a port available at: https://www.freshports.org/multimedia/cinelerra-gg/
-# To use this port: cd /usr/ports/multimedia/cinelerra-gg && make install clean
-#   and then install this precompiled package via: pkg install cinelerra-gg
+# FREEBSD - there is a tarball based on FreeBSD version 12.1 at
+  https://cinelerra-gg.org/download/testing/bsdcin.tar.xz
+  download the above and then refer to README.txt
 
 # FEDORA
 # Replace the XX in fedoraXX in the next line with your current O/S version number
@@ -464,17 +496,16 @@ gpgcheck=0
 yum install cinelerra
 ##yum erase cinelerra
 
-# UBUNTU, replace ub14 with your distro id: ub16,ub17,ub18
+# UBUNTU, replace ub14 with your distro id: ub16,ub18
 #  Some ubuntu apt downloads register status as working 0% constantly while running the package
 #   download, like ubuntu 14.  It may take a few minutes for this step so be patient.
 apt install software-properties-common apt-transport-https
 apt-add-repository https://cinelerra-gg.org/download/pkgs/ub14
-# UBUNTU 16/17/18 note - This has been known to work, but things change quickly:
+# UBUNTU 16/18 note - This has been known to work, but things change quickly:
 # VIP - for the first install, the above line adds Cinelerra to /etc/apt/sources.list but...
-# Version 16/17/18 of Ubuntu are more strict for licensing so you will have to edit
+# Version 16/18 of Ubuntu are more strict for licensing so you will have to edit
 #  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
 # For example the line should be: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub16 xenial main
-#   Or for ub17: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub17 zesty main
 #   Or for ub18: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub18 bionic main
 # Also, on the install you will get an error message that you can either ignore as Cinelerra
 #  will run anyway, or else (the first time only) on the commnand line keyin: 
@@ -521,17 +552,22 @@ apt update
 apt upgrade cin
 ##apt remove cin
 
-# SUSE/LEAP
+# SUSE/LEAP/TUMBLEWEED
 # (Note: you may have to zypper libavc and libiec versions if not already installed)
 # cinelerra packages are unsigned so you will have to ignore: Package is not signed!
 # openSUSE LEAP 15
 zypper ar -f https://cinelerra-gg.org/download/pkgs/leap15/ cingg
 zypper install -r cingg cinelerra   # or cinelerra10bit for 10 bit
-# openSUSE LEAP 42
+# openSUSE LEAP 42 
 zypper ar -f https://cinelerra-gg.org/download/pkgs/leap42/ cingg
 # as of 42.3 SUSE there is a new requirement, so you will need to add:
 zypper mr -G cingg
 zypper install -r cingg cinelerra   # or cinelerra10bit for 10 bit
+# openSUSE TUMBLEWEED
+zypper ar -f https://cinelerra-gg.org/download/pkgs/tweed/ cingg
+# as of 42.3 SUSE there is a new requirement, so you will need to add:
+zypper mr -G cingg
+zypper install -r cingg cinelerra
 ##zypper remove cinelerra	    # or cinelerra10bit for 10 bit
 #to update a previous install (assuming you enabled autorefresh as above)
 zypper refresh cingg
@@ -567,7 +603,7 @@ pacman -S cin
 ##pacman -R cin
 \end{lstlisting}
 
-\section{Windows 10 with Cygwin for Cinelerra limited}%
+\section{Windows 10 with Cygwin for Cinelerra Limited}%
 \label{sec:ms_windows10}
 
 To run Cinelerra on a Windows 10 computer, you will need to have Cygwin installed on your system, 
@@ -626,10 +662,10 @@ Then to install the Cinelerra tar files, you will need to start a cygwin console
 \begin{lstlisting}[language=bash,numbers=none]
 	$ tar -C /usr/local -xJf /path/libxcb-bld.tar.bz2
 \end{lstlisting}
-The libxcb path repairs an error (XIOError), which stops the program.
+The libxcb path repairs an error (XIOError), which stops Cinelerra.
 	\item Download the tar file at:\\
 	{\small \url{https://cinelerra-gg.org/download/testing/cygcin-bld.tar.bz2}}	
-	\item Install cygcin from the tar file - this installs into home directory.  Note this is cygcin NOT cygwin.
+	\item Install cygcin from the tar file - this installs into home directory.  Note this is cygcin NOT cygwin. You must change the \texttt{path} below to the name of the path where you downloaded the tar file.
 \begin{lstlisting}[language=bash,numbers=none]
 	$ cd
 	$ tar -xJf /path/cygcin-bld.tar.bz2

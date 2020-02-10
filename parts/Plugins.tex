@@ -1211,6 +1211,32 @@ Since \textit{complementary colors} are neutralized, to eliminate a \textit{colo
     \item[White Balance] used in conjunction with the \textit{color picker} on a neutral color of the output, it will automatically balance the white.
 \end{description}
 
+\subsection{ColorSpace}%
+\label{sub:color_space}
+
+This plugin is a tool that can be used to convert your input media, such as a recording from your camera,
+from one color space/range to another.  It works for both RGB and YUV as set by your project format.  
+Options are BT601, BT709, or BT2020 for Color Space input and output and JPEG or MPEG for Color Range 
+input and output.  The Inverse option checkbox is available in case your media was rendered in the wrong
+color space  or range so that you can fix it.
+
+\begin{tabular}{lcl}
+Algorithm for conversion - where equations is a 3x3 matrix multiply \\
+\hspace{1em}Math formula:  output = (input - input\_zero) * equations + output\_zero \\
+
+Algorithm for inverse - where equations is s 3x3 matrix multiply \\
+\hspace{1em}Description:    invert(equations), swap(input,output), swap(input\_zero,output\_zero) \\
+\hspace{1em}Math formula:  input = (output - output\_zero) * inverse\_equations + input\_zero \\
+\end{tabular}
+
+\begin{figure}[hbtp]
+    \centering
+    \includegraphics[width=0.45\linewidth]{images/colorspace.png}
+    \caption{ColorSpace control window}
+    \label{fig:colorspace}
+\end{figure}
+
+
 \subsection{CriKey}%
 \label{sub:crikey}
 

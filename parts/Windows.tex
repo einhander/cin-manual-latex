@@ -12,68 +12,76 @@
 \section{Program Window}%
 \label{sec:program_window}
 
-The main window is called the Program window and contains the timeline as well as the entry point for all menu driven operations.  
-It is often just called the \textit{timeline}.  
-The timeline consists of a vertical stack of tracks with a horizontal representation of time. 
-This defines the output of rendering operations and what is saved when you save files. 
-To the left of the timeline is the patchbay which contains options affecting each track.  
-The patchbay is described in detail in the Editing section (\ref{sec:patchbay}).
+The main window is called the \textit{Program} window and is often just referred to as the \textit{timeline}.  Here is where you enter the main menu operations.  
+This timeline consists of a vertical stack of tracks with time represented horizontally on the track. 
+It is the output of the rendering operations and this is what is saved when you run the File Save command.
+Immediately to the left of the timeline is the patchbay. The patchbay contains options that affect each track.  
+These options are described in great detail in the Editing section (\ref{sec:patchbay}).
 
-The \textit{Window} pulldown on this main window contains options that affect the 4 main windows. 
-Default positions repositions all the windows to a 4 screen editing configuration.
-On dual headed displays,
-the Default positions operation fills only one monitor with windows.
+The \textit{Window} pulldown on the main window contains options that affect the 4 main windows. The first 3 options are used to display each of the windows in case one is accidentally closed.  You can
+move or resize the windows as needed, save that particular layout, and revert to the default positions
+to reposition all 4 windows to the original screen configuration.
+On dual headed displays, the Default positions operation fills only one monitor with windows, but as you
+can see in the \textit{Window} pulldown you have more options to change that. Usage with dual monitors is
+explained in \ref{sec:multiscreen_playback_configuration}.
 
 \subsection{Video and Audio Tracks and Navigation}%
 \label{sub:video_and_audio_tracks_and_navigation}
 
-The program window (figure~\ref{fig:pathbay})   contains many features for navigation and displays the timeline as it is structured in memory: tracks stacked vertically and extending across time horizontally. 
-The horizontal scroll bar allows you to scan across time. 
-The vertical scroll bar allows you to scan across tracks.
+The \textit{Program} window (figure~\ref{fig:patchbay}) has many features for navigation and displays the timeline as it is structured in memory. The tracks are stacked vertically with horizontal movement over time.
+There is a vertical scroll bar which allows for moving across tracks and a horizontal scroll bar for scanning across time. 
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/pathbay.png}
-    \caption{Patchbay  | Timeline with pulldowns \& navigation icons, Video/Audio tracks \& bottom Zoom}
-    \label{fig:pathbay}
+    \includegraphics[width=0.8\linewidth]{images/patchbay.png}
+    \caption{Patchbay  | Timeline with pulldowns, navigation icons, Video/Audio tracks | bottom Zoom Panel}
+    \label{fig:patchbay}
 \end{figure}
 
+Video tracks represent the duration of your media, just as if you placed old-fashioned rolls of photographic
+film one right after the other along a table.
+Individual images that are drawn on each track are snapshots of what is located at that place on the timeline.
 
-Video tracks represent the duration of your videos and clips, just as if you placed real photographic film stock end-to-end on a table. 
-The individual images you see on the track are samples of what is located at that particular instant on the timeline.
+Audio tracks represent the sound media as an audio waveform, or if you change a preference settings, a rectified audio waveform. 
+This too looks like old-fashioned digital magnetic tape laid out horizontally across a table.
+Using the \textit{Zoom Panel} controls at the bottom of the timeline,
+you can adjust the horizontal and vertical size of the video and audio waveform displays.
+Each track on the timeline has a set of attributes on its left side in the patchbay which is used to 
+control some options of that particular track. 
 
-Audio tracks represent your sound media as an audio waveform. 
-Following the film analogy, it would be as if you \textit{viewed} magnetic tape horizontally on your table. 
-You can adjust the horizontal and vertical magnification of the tracks and the magnification of the audio \textit{waveform} display using the zoom panel controls. 
-Every track on the timeline has a set of attributes on the left, called the patch-bay. 
-It is used to control some of the behavior of the tracks.
+Track Navigation is performed by selecting a video or audio track and moving to a certain time in the track. 
+Use the vertical scroll bar to scan across tracks. or even easier you can use the mouse wheel. 
+And use the horizontal scroll bar to scan across time, or again even easier, you can use the mouse wheel with the Ctrl key.  
 
-Track Navigation involves both selecting a specific audio or video track and moving to a certain time in the track. 
-The vertical scroll bar allows you to scan across tracks. 
-For vertical scrolling you can also use the mouse wheel. 
-The horizontal scroll bar allows you to scan across time. For horizontal scrolling you can use the mouse wheel with the Ctrl key.  
-
-In addition to the graphical tools, you can use the keyboard to navigate.  
-There is a shortcuts document for keyboard navigation (\ref{sub:main_menu_keys}); it includes, for example, shortcuts like use the \texttt{Home} and \texttt{End} keys to instantly go to the beginning or end of the timeline.  
-Or in the default cut and paste mode, hold down \texttt{Shift} while pressing \texttt{Home} or \texttt{End} in order to select the region of the timeline between the insertion point and the key pressed.
+Once you have become familiar with many of the graphical tools and pulldowns, you can switch to using more of
+the keyboard to navigate.  Many of the key equivalences are listed in the pulldowns to the right of the option
+ as a shortcut. All of the shortcuts are listed in a document for keyboard 
+navigation (\ref{sub:main_menu_keys}). This includes, for example, shortcuts like the \texttt{Home} and \texttt{End} keys to go to the beginning or end of the timeline.  
+Another example is in the default cut and paste mode, hold down \texttt{Shift} while pressing \texttt{Home} or \texttt{End} in order to select the region of the timeline between the insertion point and the key pressed.
 
 \subsection{Zoom Panel}%
 \label{sub:zoom_panel}
 
-Below the timeline, you will find the zoom panel. 
-The zoom panel contains values for sample zoom (duration visible on the timeline), amplitude (audio waveform scale), track zoom (height of tracks in the timeline), and curve zoom (automation range). 
-In addition to the scrollbars, these zooms are the main tools for positioning the timeline.  
-Also on the zoom panel is selection change and alpha slider.
+Below the displayed tracks in the timeline, you will find the zoom panel as seen in figure~\ref{fig:patchbay}.
+In addition to the scrollbars, these options and their values are another set of tools for positioning the timeline.  
+In order of appearance in the zoom panel as rectangular boxes and up/down arrows, this next list shows each option along with its tooltip description if available.
+Then more details are provided in the next paragraphs.
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.99\linewidth]{images/zoompanel.png}
-    \caption{Zoom panel on the bottom of the main program window}
-    \label{fig:zoompanel}
-\end{figure}
+\vspace{2ex}
+\begin{tabular}{ l  l }
+   \hline
+	Sample zoom & Duration visible on the timeline \\
+	Amplitude & Audio waveform scale \\
+	Track zoom & Height of tracks in the timeline \\
+	  (type) & Automation Type \\
+	Curve zoom & Automation range minimum and maximum \\
+	Selection change & 3 boxes with starting point, length, and ending point \\
+	Alpha slider & Slider bar to control alpha value for colored assets \\
+   \hline
+\end{tabular}
 
 Changing the \emph{sample zoom} causes the unit of time displayed in the timeline to change size. 
-It allows you to view your media all the way from individual frames to the entire length of your project. 
+So you can view your media all the way from individual frames to the entire length of your media. 
 The higher the setting, the more frames you can see per screen. 
 The sample zoom value is not an absolute reference for the unit of time since it refers to the duration visible on the timeline and thus changes also as you modify the length of the program window horizontally.
 Use the $\uparrow$ and $\downarrow$ arrows to change the sample zoom by a power of two. 
@@ -87,11 +95,12 @@ It determines the height of each track.
 If you change the track zoom, the amplitude zoom compensates so that the audio waveforms look proportional. 
 \texttt{Ctrl-Pgup} and \texttt{Ctrl-Pgdown} cause the track zoom to change.
 
-The \emph{curve zoom} affects the curves in all the tracks of the same type. 
-It determines the value range for curves. 
-First select the automation type (audio fade, video fade, zoom, X,Y) then use the left tumblers for the minimum value and the right tumblers for the maximum value or manually enter the values in the text box. 
-Normally you will use -40.0 to 6.0 for audio fade and 0.0 to 100.0 for video fade. 
-The tumblers change curve amplitude, but the only way to curve offset is to use the fit curves button.
+\emph{Automation type} is used for selecting one of the following: Audio Fade, Video Fade, Zoom, Speed, X, or Y (X and Y are for the compositor's Camera and Projector).
+ 
+The \emph{curve zoom} affects the curves for the selected \emph{automation type} in all the tracks of that type and determines the value range for those curves. 
+Use the left up/down arrows for the minimum value and the right up/down arrows for the maximum value or manually enter the values in the text box. 
+Good default values for audio fade are -40.0 to 6.0 and for video fade are 0.0 to 100.0. 
+The up/down arrows change curve amplitude, but the only way to curve offset is to use the fit curves button.
 
 The \emph{selection start time}, \emph{selection length}, and \emph{selection end time} display the current selected timeline values.  
 The \emph{alpha slider} allows for varying the alpha value when using colors on the tracks as set in your \texttt{Preferences $\rightarrow$ Appearance} for \texttt{Autocolor assets}.  

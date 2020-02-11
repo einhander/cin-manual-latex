@@ -360,7 +360,7 @@ you the sound wave.
 \label{sub:chorus}
 
 It is a multitrack effect, where each track is a channel. For example if you have 4 voices per channel and 2 channels, you will have a total of 8 tracks.
-It is an effect that modulates the signal, precisely the pitches (instead of modulating the phases as for example in the \textit{Flanger}) plugin and creates voices from the original signal and adds them to the Output. You then get a chorus effect, with multiple voices \textit{singing} the same \textit{song} but with slightly different modulations. Voices not only modulate the original signal but also start with a certain delay. There are two components of delay, \textit{constant delay} and \textit{oscillating delay} (figure~\ref{fig:chorus}).
+It is an effect that modulates the signal, varies the pitch up and down (instead of modulating the phases as for example in the \textit{Flanger} plugin) and creates voices from the original signal and adds them to the Output. You then get a chorus effect, with multiple voices \textit{singing} the same song but with slightly different modulations. Voices not only modulate the original signal but also start with a certain delay. There are two components of delay, \textit{constant delay} and \textit{oscillating delay} (figure~\ref{fig:chorus}).
 
 \begin{figure}[htpb]
 	\centering
@@ -373,14 +373,13 @@ It is an effect that modulates the signal, precisely the pitches (instead of mod
 	\item[Voices per channel]: number of items we want to put in the effect. Using more than 4 voices creates sound artifacts that lose the feel of a human voice choir, but can still be used as an artificial sound effect.
 	\item[Phase offset] (ms): is the constant delay, i.e. the amount of delay of the voices compared to the original signal.
 	\item[Depth] (ms): is the oscillating delay, i.e. the delay in the oscillation of the various voices from the original signal.
-	\item[Rate] (Hz): is the speed at which we apply the oscillating delay. Practically the speed at which the oscillations occur.
+	\item[Rate] (Hz): is the speed at which we apply the oscillating delay. In other words, the speed at which the oscillations occur.
 	\item[Wetnwss] (db): Indicates how much of the original (dry) signal is taken into account compared to delayed voices.
 \end{description}
 
 \subsection{Compressor (Single Band)}%
 \label{sub:compressor}
 
-Effect rewritten and improved.
 The audio compressor reduces the dynamic range of the audio, not the amount of data required to store the audio. In Cinelerra the compressor actually performs the function of an expander and compressor of the signal's dynamic range. A third and more sophisticated use serves to highlight the voice with respect to the sound background. It is a multitrack effect and can also be applied as a Shared Effect. (figure~\ref{fig:compressor}).
 
 \begin{figure}[htpb]
@@ -431,7 +430,7 @@ In figure~\ref{fig:compressorM} we can see the three bands; the one currently ac
 	\item[Solo]: brings only the active band to the Output, silencing the others. So we can make more precise adjustments without listening to the whole effect.
 	\item[Bypass band]: In contrast to Solo, it only brings the sound signals of the two inactive bands to the Output.
 	\item[Freq range]: is used to set bandwidth limits. You act separately on the left and right edge.
-	\item[Stepness]: varies the slope of the edges of the band range. Creates some overlap in the band boundaries.
+	\item[Steepness]: varies the slope of the edges of the band range. Creates some overlap in the band boundaries.
 	\item[Channel]: is the equivalent of the \textit{Trigger} option in Compressor (single band). Allows you to choose the channel or track to act on.
 	\item[Window size]: Determines the number of samples used in the compression calculation. The more they are, the higher the quality of the result, but the more CPU usage.
 \end{description}
@@ -540,7 +539,7 @@ EchoCancel is the process of removing echos from audio in order to improve the q
 
 It's a single-track effect. If you apply it to multiple tracks each will work on its own track independently of the others.
 It consists of making a copy of the original sound wave and then playing it over the original one with a certain delay. The resulting signal (Output) will then be the sum of the two waves and will have peaks where the two values add up and gaps where the two values compensate each other. The result is a more \textit{evanescent} and \textit{metallic} sound. Much, however, depends on the intensity of the effect.
-The delay introduced consists of two distinct components: The \textit{constant delay} and the \textit{oscillating delay}. Their sum constitutes the total delay of the effect (figure~\ref{fig:flanger}).
+The delay introduced consists of two distinct components: the \textit{constant delay} and the \textit{oscillating delay}. Their sum constitutes the total delay of the effect (figure~\ref{fig:flanger}).
 
 \begin{figure}[htpb]
 	\centering
@@ -550,9 +549,9 @@ The delay introduced consists of two distinct components: The \textit{constant d
 \end{figure}
 
 \begin{description}
-	\item[Phase Offset]: it is the constant delay. Once set, its value does not change (unless we change it voluntarily, maybe with keyframes) for the duration of the effect.
+	\item[Phase Offset]: it is the constant delay. Once set, its value does not change (unless we change it, for example by use of keyframes) for the duration of the effect.
 	\item[Starting phase] \%: is the point of oscillation where we start the oscillating delay; basically it is the attack value at which the effect starts the calculations. Not to be confused with the point on the timeline where we apply the effect. It only matches this for the 0\% value. The position on the timeline where we want to start the flanger at a given starting phase value can be chosen using keyframes.
-	\item[Depth]: It is the oscillating delay. This value determines the amplitude variation of the delayed (wet) signal phase. this oscillation will be maintained for the entire duration of the effect unless we change it voluntarily.
+	\item[Depth]: It is the oscillating delay. This value determines the amplitude variation of the delayed (wet) signal phase. this oscillation will be maintained for the entire duration of the effect unless we change it.
 	\item[Rate]: is the speed at which we apply the oscillating delay. Low values indicate a lower oscillation frequency, a high value a rapid succession of oscillations.
 	\item[Wetness]: indicates how much of the original (dry) signal is taken into account compared to the delayed (wet) signal.
 \end{description}
@@ -621,8 +620,8 @@ Allows you to convert an audio file from one sample rate to another. This effect
 \subsection{Reverb}%
 \label{sub:reverb}
 
-Effect rewritten and improved.
-Reflections of sound to add depth and fullness; the sound will seem to come from a space that can go from a small bare room to large natural valleys, cathedrals, etc. The reverb is made up of a group of echoes that occur at the same time and feel, therefore, like a single effect. Basically simulates creation of a large number of reflections (lots of walls) which build up and then decay. You can use the reverb plugin to mix tracks together to simulate ambiance, because it is a multitrack effect.
+Reverb uses reflections of sound to add depth and fullness; the sound will seem to come from a space that can go from a small bare room to large natural valleys, cathedrals, etc. The reverb is made up of a group of echoes that occur at the same time making it feel like a single effect. 
+Basically simulates creation of a large number of reflections, like lots of walls, which build up and then decay. You can use the reverb plugin to mix tracks together to simulate ambiance because it is a multitrack effect.
 The configuration window (figure~\ref{fig:reverb}) shows a graph of the full band pass filter frequencies.
 
 \begin{figure}[htpb]
@@ -633,15 +632,15 @@ The configuration window (figure~\ref{fig:reverb}) shows a graph of the full ban
 \end{figure}
 
 \begin{description}
-	\item[Initial signal level](db): Allows you to set the level of the reflected signal. At 0 you start from its maximum level, decreasing the signal volume will give more presence to the original signal.
+	\item[Initial signal level](db): Allows you to set the level of the reflected signal. At 0 you start from its maximum level. Decreasing the signal volume will give more presence to the original signal.
 	\item[ms before reflections]: indicates when to start the reflected sounds in relation to the original sound  (delay).
 	\item[First reflection level] (db): the sound level of the reflection that starts first.
 	\item[Last reflection leve] (db): the level of the last reflection. It is weaker than the first.
-	\item[numbers of refelctions]: the number of reflections can be set as desired, CPU permitting. With a few reflections you get closer to the Chorus effect. You can start from values of 100 - 150, up to a maximum of 255.
-	\item[ms of refelction]: Sets the action time of the effect. With high values you have more incisiveness
+	\item[numbers of refelctions]: the number of reflections can be set as desired as long as there is sufficient CPU to handle it. With a few reflections you get closer to the Chorus effect. You can start from values of 100 - 150, up to a maximum of 255.
+	\item[ms of refelction]: Sets the action time of the effect. With high values, the sound is more clear and sharp
 	\item[Low freq of bandpass] and \textbf{High freq of bandpass}: allow you to set the frequency limits (range) on which the effect acts.
-	\item[Stepness of bandpass]: allows you to adjust the slope of the frequency range limits imposed by the previous items. With the value 1.00 we have a vertical edge that clearly separates the range of frequencies on which to act from the remaining ones (as you can see in figure~\ref{fig:reverb}). By sloping the edge we have a certain overlap and a smoother effect.
-	\item[Window]: determines the number of frequency samples taken into account by the effect for its calculations. The higher the number, the smoother the effect; but the CPU is engaged more.
+	\item[Steepness of bandpass]: allows you to adjust the slope of the frequency range limits imposed by the previous items. With the value 1.00 we have a vertical edge that clearly separates the range of frequencies on which to act from the remaining ones (as you can see in figure~\ref{fig:reverb}). By sloping the edge we have a certain overlap and a smoother effect.
+	\item[Window]: determines the number of frequency samples taken into account by the effect for its calculations. The higher the number, the smoother the effect; but more CPU is used.
 \end{description}
 
 \subsection{Reverse Audio}%
@@ -662,7 +661,7 @@ Effect rewritten and improved. Visual representation of the sound levels at spec
 \subsection{Synthesizer}%
 \label{sub:Synthesizer}
 
-Effect rewritten and improved. Generate synthesizer sounds; to set key data, turn on Generate keyframes while tweaking (figure~\ref{fig:synthesizer}).
+Generate synthesizer sounds; to set key data, turn on Generate keyframes while tweaking (figure~\ref{fig:synthesizer}).
 
 \begin{figure}[htpb]
     \centering
@@ -679,7 +678,7 @@ Change the speed of an audio signal without affecting its pitch.
 \subsection{Tremolo}%
 \label{sub:tremolo}
 
-It serves to give flavors and vitality to the sound by modulating the amplitude of the sound signal and the delay (figure~\ref{fig:tremolo}).
+It serves to give various vibes and vitality to the sound by modulating the amplitude of the sound signal and the delay (figure~\ref{fig:tremolo}).
 
 NOTE: There is often confusion between Tremolo and Vibrato, but the vibrato is the periodic variation of the height of a note (frequency) while the tremolo is the periodic variation of the height (amplitude) of the sound wave.
 
@@ -691,10 +690,11 @@ NOTE: There is often confusion between Tremolo and Vibrato, but the vibrato is t
 \end{figure}
 
 \begin{description}
-	\item[Phase offset] (\%): is where the oscillation effect begins. At 0\% we are at maximum volume; increasing the percentage we start at a lower volume.
+	\item[Phase offset] (\%): is where the oscillation effect begins. At 0\% we are at maximum volume; to lower the volume, increase the percentage.
 	\item[Depth] (dB): is the oscillation damping value. You can only decrease the level, you cannot increase it.
 	\item[Rate] (Hz): is the speed at which the oscillations are repeated.
-	\item[Waveform]: you can choose waveform algorithms to use in effect calculations. We have: \textit{Sine}; \textit{Sawtooth}; \textit{Rev Sawtooth}; \textit{Square} and \textit{Triangle}.
+	\item[Waveform]: you can choose waveform algorithms to use in effect calculations.
+Currently available waveforms are: \textit{Sine}; \textit{Sawtooth}; \textit{Rev Sawtooth}; \textit{Square} and \textit{Triangle}.
 \end{description}
 
 \section{Audio Ladspa Effects}%
@@ -1166,7 +1166,7 @@ Now the mask is probably still very harsh, so just below the Chromakey (HSV) plu
 \subsection{Color 3 Way}%
 \label{sub:color_3_way}
 
-Together with \textit{Histogram Bezier / Curves} is the main tool of Color Grading because you can modify the colors of \textit{Shadows}, \textit{Midtones}, and \textit{Highlights} as desired. Color 3 Way is keyframable (figure~\ref{fig:color3way}).
+Together with \textit{Histogram Bezier / Curves} Color 3 Way is the main tool of Color Grading because you can modify the colors of \textit{Shadows}, \textit{Midtones}, and \textit{Highlights} as desired. Color 3 Way is keyframable (figure~\ref{fig:color3way}).
 
 \begin{figure}[htpb]
     \centering
@@ -1220,14 +1220,15 @@ Options are BT601, BT709, or BT2020 for Color Space input and output and JPEG or
 input and output.  The Inverse option checkbox is available in case your media was rendered in the wrong
 color space  or range so that you can fix it.
 
-\begin{tabular}{lcl}
-Algorithm for conversion - where equations is a 3x3 matrix multiply \\
-\hspace{1em}Math formula:  output = (input - input\_zero) * equations + output\_zero \\
+\textbf{Algorithm for conversion} -- where equations is a $3\times3$ matrix multiply
 
-Algorithm for inverse - where equations is s 3x3 matrix multiply \\
-\hspace{1em}Description:    invert(equations), swap(input,output), swap(input\_zero,output\_zero) \\
-\hspace{1em}Math formula:  input = (output - output\_zero) * inverse\_equations + input\_zero \\
-\end{tabular}
+\qquad $output = (input - input\_zero) \times equations + output\_zero$
+
+\textbf{Algorithm for inverse}  -- where equations is a $3\times3$ matrix multiply
+
+\textit{Description}:    invert(equations); swap(input,output); swap(input\_zero,output\_zero)
+
+\qquad $input = (output - output\_zero) \times inverse\_equations + input\_zero$
 
 \begin{figure}[hbtp]
     \centering
@@ -2278,7 +2279,7 @@ Shift the interlace lines using \textit{odd} or \textit{even}. With the Clear bu
 \subsection{Sketcher}%
 \label{sub:Sketcher}
 
-Now you can sketch \textit{lines}, \textit{curves} or \textit{shapes}, on your video in different colors using various pen widths and pen type with the \texttt{sketcher} plugin. You can even fill them. You can do rotations and scaling and apply two Antialiasing modes; single and double. Getting started is fairly easy -- simply hold down the \textit{shift key} while using the \textit{left mouse button} to create a bunch of points in the compositor window. However, to do more than that you will need to understand the buttons and options or you may end up with unexpected results.
+Now you can sketch \textit{lines}, \textit{curves} or \textit{shapes}, on your video in different colors using various pen widths and pen type with the \texttt{sketcher} plugin. You can even fill them. You can do rotations and scaling and apply two anti-aliasing modes; single and double. Getting started is fairly easy -- simply hold down the \textit{shift key} while using the \textit{left mouse button} to create a bunch of points in the compositor window. However, to do more than that you will need to understand the buttons and options or you may end up with unexpected results.
 
 (figure~\ref{fig:sketcher}) shows the Sketcher gui and the sketch lines/curves created in the Compositor.
 
@@ -2289,7 +2290,7 @@ Now you can sketch \textit{lines}, \textit{curves} or \textit{shapes}, on your v
     \label{fig:sketcher}
 \end{figure}
 
-In the screencast, note the Sketcher window gui \textit{Curve top section} and the \textit{Point bottom section}. The pink circle sketch is $id\,\#1$ in the curve section. Since $id\,\#2$ is highlighted in the Curve section, the X/Y coordinates in the Point section below show the points used to create the blue shape. Point 6 is selected so we see a red crosshair (\textit{Drag point}) inside the rectangle. The yellow arrow on the image is $id\,\#3$ curve. Finally the cursor shows Double antialiasing.
+In the screencast, note the Sketcher window gui \textit{Curve top section} and the \textit{Point bottom section}. The pink circle sketch is $id\,\#1$ in the curve section. Since $id\,\#2$ is highlighted in the Curve section, the X/Y coordinates in the Point section below show the points used to create the blue shape. Point 6 is selected so we see a red crosshair (\textit{Drag point}) inside the rectangle. The yellow arrow on the image is $id\,\#3$ curve. Finally the cursor shows Double anti-aliasing.
 
 \subsubsection*{Some basic rules}%
 \label{ssub:some_basic_rules}
@@ -2311,13 +2312,13 @@ You can not delete the empty default curve but you can use it for a curve.
 
 LMB click almost anywhere on the compositor screen will automatically show, in the currently highlighted curve, the closest point by turning it red.
 
-There is no \textit{undo} recorded between gui updates. Recommend using the option "b" to save a backup if you get to a place where you want to make sure you do not lose your sketch.
+There is no \textit{undo} recorded between gui updates. It is recommended that you use the option "b" to save a backup if you get to a place where you want to make sure you do not lose your sketch.
 
 \begin{center}
 	\small
 	\begin{longtable}{{m{15em}m{13em}m{12em}}}
-		\caption{Titler controls}
-		\label{tabular:titler controls} \\ % note that double backslash is mandatory here
+		\caption{Sketcher controls}
+		\label{tabular:sketcher controls} \\ % note that double backslash is mandatory here
 		\toprule        
 		\textbf{Compositor: Mouse usage} &
 		\textbf{Compositor: Action} &
@@ -2372,15 +2373,15 @@ There is no \textit{undo} recorded between gui updates. Recommend using the opti
 	\item[Anti-Aliasing] You can set Off; On or Double. Default is On.
     \item[Color] refers to the current curve pen color. Click on the \textit{Color rectangle} to bring up the Color window to change any of the color values, including alpha.
     \item[Drag] check to create curves and to be able to see any Off type curves. Uncheck for render/viewing.
-    \item[Reset] -- in the \textit{Curve section}, all of the curve lines will be deleted except for an empty default curve.
+    \item[Reset] -- in the \textit{Curve section}, all of the curve lines will be deleted except for an empty default curve;
     -- in the \textit{Point section}, all points for the highlighted curve in the Curve section will be deleted.
     \item[Width] integer width of line; width of $1$ is the default; width of $0$ is the smallest size of $1$ pixel.
     \item[ID] is the label number of the curve or point.
     \item[Pen] value can be set with the pulldown to \textit{box} (a square), \textit{+}, \textit{/}, \textit{x} or \textit{off}. The default is \textit{x}.
     \item[Alpha] alpha value as set in the Color window. Default is $1$ which is totally opaque.
-    \item[Arc Type] value can be set with this pulldown, which is to the right of the \texttt{Drag} checkbox, to either \textit{off}, \textit{line}, \textit{curve}, or \textit{fill}. Off is the default. If the line type is off when you uncheck drag, you will no longer see the line/curve. Fill specifies a point be inside the region to be filled with the chosen color. Multiple fill points can be used within a single curve.
+    \item[Arc Type] value can be set with this pulldown, which is to the right of the \texttt{Drag} checkbox, to either \textit{off}, \textit{line}, \textit{curve}, or \textit{fill}. \textit{Off} is the default. If the line type is off when you uncheck drag, you will no longer see the line/curve. \textit{Fill} specifies a point be inside the region to be filled with the chosen color. Multiple fill points can be used within a single curve.
     \item[Up] moves the highlighted Curve or Point Up in the stacking order. Multiple points, but not multiple curves, can be highlighted and moved.
-    \item[Dn] moves the highlighted Curve or Point(s) Down in the stacking order.
+    \item[Dn] moves the highlighted Curve or Point(s) down in the stacking order.
     \item[X] is the point’s $X$ coordinate.
     \item[Y] is the point’s $Y$ coordinate.
 \end{description}
@@ -2393,7 +2394,7 @@ Points and curves are identified by numeric ids, and not the table position. Thi
 \subsubsection*{Fill detailed information}%
 \label{ssub:fill_detailed_information}
 
-The \textit{fill} point is a marker point, and not really part of the curve. That point identifies the inside of the loop. It can also be used to identify the outside of the loop in order to fill that. The loop is created by drawing a line draw from the last point to the first point in the curve. The line type of this last segment is from the last point of the curve. If there are isolated loops in the curve (it is self intersecting) then you will be able to use multiple fill points to fill these regions.
+The \textit{fill} point is a marker point, and not really part of the curve. That point identifies the inside of the loop. It can also be used to identify the outside of the loop in order to fill that. The loop is created by drawing a line from the last point to the first point in the curve. The line of this last segment is from the last point of the curve. If there are isolated loops in the curve (it is self intersecting) then you will be able to use multiple fill points to fill these regions.
 
 \subsection{Sphere Cam}%
 \label{sub:sphere_cam}
@@ -2690,7 +2691,7 @@ When using the Titler, kerning is applied in order to allow parts of a letter to
 \subsection{Tracer}%
 \label{sub:tracer}
 
-Tracer creates an outline around an object after a few points are designated, so it traces the object. Its operation recalls Gimp's \textit{magic wand}. You can then Fill the alpha channel with a mask, like with a gradient or another object on another track or Invert that fill. Although it works best for still images or objects that stay in the same place on a video like a logo, you can also add keyframes. To limit the mis-tracking that occurs when working on a moving object, we can increase the number of points so that the tracking is more accurate and relies on a solid foundation. Rather than \textit{points} as in a mask, tracer is based on \textit{edges} to form an outline (figure~\ref{fig:tracer-01}). Frequently it will be desirable to use either RGB or YUV as the color model without the -A for Alpha.
+Tracer creates an outline around an object after a few points are designated, so it traces the object. Its operates in a similar manner to that of Gimp's \textit{magic wand}. You can then Fill the alpha channel with a mask, like with a gradient or another object on another track or Invert that fill. Although it works best for still images or objects that stay in the same place on a video like a logo, you can also add keyframes. To limit the mis-tracking that occurs when working on a moving object, we can increase the number of points so that the tracking is more accurate and relies on a solid foundation. Rather than \textit{points} as in a mask, tracer is based on \textit{edges} to form an outline (figure~\ref{fig:tracer-01}). Frequently it will be desirable to use either RGB or YUV as the color model without the -A for Alpha.
 
 \begin{figure}[hbtp]
 	\centering
@@ -2705,12 +2706,12 @@ Tracer creates an outline around an object after a few points are designated, so
 	\item[Del] to delete the highlighted point.
 	\item[X, Y] are the point’s $x/y$ coordinate.
 	\item[Invert] to change the mask to outside.
-	\item[Feather] to sort of blur the edges (inward and outward). Feather influences the softness of the edge. The more Feather is set, the softer the edge becomes.
+	\item[Feather] to sort of blur the edges (inward and outward). Feather influences the softness of the edge. The higher the number Feather is set to, the softer the edges become.
 	\item[Radius] for varying the size a little. Radius extends the area further in or out to cover more or less area.
 	\item[Drag] to enable or disable moving.
 	\item[Draw] to draw the outline for visual.
 	\item[Fill] to black out the object (no alpha); figure~\ref{fig:tracer-02}.
-	\item[Mouse wheel] rotate the outline, centered on cursor. Note that rotates the outline around the nearest point. Normally the scroll is slow to be more precise. If you make a fast scroll you have an acceleration that allows you to make complete rotations in a short time.
+	\item[Mouse wheel] rotate the outline, centered on cursor. Note that this rotates the outline around the nearest point. The slower you scroll, the more precise the the result. If you scroll faster, an accelerator kicks in that allows you to make complete rotations more quickly.
 	\item[Mouse wheel + shift] scale the outline, centered on cursor.
 \end{description}
 
@@ -3269,6 +3270,7 @@ FFmpeg’s plugin guide is at the link:
 \textbf{F\_colorkey:} Turns a certain color into transparency. Operates on RGB colors.\\
 \textbf{F\_colorlevels:} Adjusts the color levels.\\
 \textbf{F\_colormatrix:} Converts color matrix.\\
+\textbf{F\_colorspace:} Converts color space.\\
 \textbf{F\_cover\_rect:} Find and cover a user specified object.\\
 \textbf{F\_crop:} Crops the input video.\\
 \textbf{F\_cropdetect:} Auto-detect crop size.\\

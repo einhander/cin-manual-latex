@@ -39,7 +39,23 @@
 %\renewcommand{\afterchaptertitle}{\par\nobreak\medskip\hrule\vskip 
 %\afterchapskip}
 %}
-\chapterstyle{madsen}		% one of chapter header style for memoir documentclass
+%\chapterstyle{madsen}		% one of chapter header style for memoir documentclass
+\makechapterstyle{morrow}{% requires graphicx package
+  \chapterstyle{default}%
+  \renewcommand*{\chapnamefont}{%
+    \normalfont\Large\scshape\raggedleft}%
+  \renewcommand*{\chapnumfont}{%
+    \normalfont\Large\bfseries\sffamily}%
+  \renewcommand*{\printchapternum}{%
+    \chapnumfont \resizebox{!}{3ex}{\thechapter}%
+  }%
+  \renewcommand*{\chaptitlefont}{%
+    \normalfont\Huge\bfseries\sffamily\raggedleft}%
+  \renewcommand*{\afterchapternum}{%
+    \par\hspace{1.5cm}\hrule\vskip\midchapskip}%
+}%
+
+\chapterstyle{morrow}		% one of chapter header style for memoir documentclass
 %\renewcommand{\printchaptername}{\normalfont\large\scshape Chapter}
 \renewcommand{\chapterheadstart}{}
 %\renewcommand{\beforechapskip}{\vspace{2pt}}

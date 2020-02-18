@@ -23,7 +23,9 @@ Besides the above hardware recommendations, this section covers tips for perform
 \section{Hardware video acceleration}%
 \label{sec:hardware_video_acceleration}
 
-With certain newer, more powerful graphics boards and newer device drivers, there is the potential for enhanced \textit{decode} and \textit{encode} performance.   Decode refers to loading and playing video in Cinelerra. The GPU, Graphics Processing Unit, on the graphics board is accessed via one of the following libraries: vdpau or vaapi. The hardware acceleration done by the graphics card increases performance by activating certain functions in connection with a few of the FFmpeg decoders. This use makes it possible for the graphics card to decode video, thus offloading the CPU.  Decode operations are described here next.  Encode refers to rendering video and is described at the end of this section under \href{sub:gpu_hardware_encoding}{GPU hardware encoding}
+With certain newer, more powerful graphics boards and newer device drivers, there is the potential for enhanced \textit{decode} and \textit{encode} performance.   Decode refers to loading and playing video in Cinelerra. The GPU, Graphics Processing Unit, on the graphics board is accessed via one of the following libraries: vdpau or vaapi. The hardware acceleration done by the graphics card increases performance by activating certain functions in connection with a few of the FFmpeg decoders. This use makes it possible for the graphics card to decode video, thus offloading the CPU.  Decode operations are described here next.  
+Encode refers to rendering video and is described at the end of this section
+under \hyperref[sub:gpu_hardware_encoding]{GPU hardware encoding}.
 
 VDPAU, Video Decode and Presentation API for Unix, is an open source library to offload portions of the video decoding process and video post-processing to the GPU of graphics boards, such as Nvidia.  It may also apply to Nouveau and Amdgpu boards (by wrapper), but that has not been verified.
 
@@ -43,14 +45,14 @@ performing the operations in the hardware may actually be slower than in softwar
 	then, to run from the Cinelerra installed directory, key in:
 \end{enumerate}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 CIN_HW_DEV=vdpau ./cin	# for computers with Nvidia and some other graphics cards
 CIN_HW_DEV=vaapi ./cin	# mostly for computers with Intel or AMD specific graphics hardware
 \end{lstlisting}
 
 If you find that the environment variable setting is advantageous for your CinGG usage and you want to always use it, you can add it in your \texttt{\$HOME} directory \texttt{.profile} file which takes effect every time you log in.  The line you would add would look something like this:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 export CIN_HW_DEV=vdpau
 or
 export CIN_HW_DEV=vaapi
@@ -121,13 +123,13 @@ Using the GPU is going to react differently depending on your hardware, software
 
 The situation may arise where you have enabled hardware acceleration and after loading several files for a project, you find that a file had some kind of error resulting in a black video instead of an image or you see an error message pop up which states something like \textit{Error retrieving data from GPU to CPU} or \textit{err: Unknown error occurred}. Because the \texttt{CIN\_HW\_DEV} environment variable is either all or none, ordinarily in order to correct the non-working video you would have to turn off hardware acceleration for the entire project/session.  However, there is a way to continue working on your project without having to reload all of your files. You still use the environment variable and it will be effective for all of the formats it is able to handle, but you make an exception for any of the files that erred out. To do this you simply create a file in the same directory with the same name as the erring file with the different extension of .opts. The contents of this .opts file would just be the one line of:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 cin_hw_dev=none
 \end{lstlisting}
 Conversely, if you have a bunch of files in your project, like dnxhd format, that are not hardware accelerated, but you have an accompanying large file of type .mp4 for which you would like the hardware acceleration, you can leave the \texttt{CIN\_HW\_DEV} variable unset (that is, do not use it) and just create an .opts file containing the line:
 
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 cin_hw_dev=vdpau
 \end{lstlisting}
 
@@ -140,7 +142,7 @@ It is important to note that if using the .opts file to override the default \te
 
 Probably the easiest way to tell if hardware acceleration is working, is just to look at the messages in the window from where you started Cin (not available if start using the application icon).  For example load a png, dnxhd, or some other non-supported format file and you will see messages similar to those below.  The line \textit{HW device init failed, using SW decode} indicates that the vdpau/vaapi HW (hardware) decode is not available so will use SW (software) decode instead.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 Failed to get HW surface format.
 HW device init failed, using SW decode.
 file:/tmp/media/aer_zypr.mp4
@@ -160,7 +162,7 @@ HEVC with NVIDIA, VDPAU driver is buggy, skipping
 
 If you would like to see more information on what is occurring, you can modify in the Cinelerra ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \textit{loglevel =fatal} to \textit{loglevel =verbose} and restarting Cinelerra.  Then you will see messages in the startup window like:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 [AVHWDeviceContext @ 0x7fc9540be940] Successfully created a VDPAU device 
 (NVIDIA VDPAU Driver Shared Library 390.116 Sun Jan 27 06:28:58 PST 2019) on X11 display :0
 [h264 @ 0x7fc950159380] Reinit context to 1920x1088, pix_fmt: vdpau
@@ -229,7 +231,7 @@ Older graphics cards or non-performing graphics cards will probably bring only a
 
 And, you can see what your specific hardware and software might support by running either \texttt{vainfo} or \texttt{vdpauinfo} from the command line.  Partial examples of each are shown below.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 # vainfo
 vainfo: VA-API version: 1.4 (libva 2.4.0)
 vainfo: Driver version: Intel i965 driver for Intel(R) Broadwell - 2.4.0.pre1 (2.3.0-11-g881e67a)
@@ -247,7 +249,7 @@ VAProfileVC1Simple
 VAProfileVP8Version0_3 
 \end{lstlisting}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 # vdpauinfo
 display: :0   screen: 0
 API version: 1
@@ -291,7 +293,7 @@ There are currently 4 options files available in the Render menu already set up 
 Other option files can be added as needed for your specific hardware if it is known to work for you, such as VP8 and VP9.  An example of the included Cinelerra’s \texttt{ffmpeg/video/h264\_vaapi.mp4} file (figure~\ref{fig:render-vaapi}):
 
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 mp4 h264_vaapi
 cin_hw_dev=vaapi
 profile=high
@@ -447,7 +449,7 @@ There is also a convenient \textit{Beep on done volume} dial included so that yo
 
 A good choice for proxy settings with 1080p source video is:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 Scale Factor: 	1/4
 Use Scaler:	unchecked
 File Format:	FFMPEG - mpeg
@@ -460,7 +462,7 @@ Pixels:		yuv420p
 
 If you get errors for some videos, such as those with strange variable bit rate or some types of files made on a smartphone, a usually reliable alternative is to change the following parameters:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 File Format:	FFMPEG - mov
 Video Preset:
 Compression:	mov.mov
@@ -526,13 +528,13 @@ This section is a handy guide for describing various kinds of software computer 
 
 \begin{description}
 	\item[System lockups:] When the system locks up, it is usually a system problem.  Normally an application program cannot lock up the system.  It is a major goal of system design to prevent an application (app) from failing a system interface.  This does not mean an app can not cause a system lockup, but it is unusual.
-	\item[Cinelerra crash:] This is covered in  \href{cha:crash_dumps_analysis}{Crash Dumps for Analysis}.  Just a reminder that for best results you should be root and by providing a crash dump and as much other information as possible, you will be helping the developer to analyze the problem and fix it so that it can be avoided in the future.
+	\item[Cinelerra crash:] This is covered in  \hyperref[cha:crash_dumps_analysis]{Crash Dumps for Analysis}.  Just a reminder that for best results you should be root and by providing a crash dump and as much other information as possible, you will be helping the developer to analyze the problem and fix it so that it can be avoided in the future.
 	\item[X Server crash:] Keyboard does not respond, screen is frozen, caps lock may operate LED light.  Sometimes using Ctrl-Alt-F1 $\dots$ Ctrl-Alt-F7 (etc.) will allow you to regain control of a VT console.  You can use this to login and check logs: eg. \texttt{/var/log/Xorg.0.log}, \textit{dmesg}, \textit{journalctl} $\dots$ etc.  If you have another computer, make sure a terminal server is configured (for example: rsh, ssh, or telnet), then remote login via this other computer and check the logs.  Most important is to immediately note the current software state, and the very last thing that preceded the crash, i.e. last button click, last keystroke, $\dots$ or whatever.
 	\item[Kernel crash:] The machine goes completely dead.  The keyboard caps lock LED will probably be flashing.  Most likely the only way to see anything after the kernel crashes is to use a serial port console log and usually kdb, the kernel debugger, and special cabling.  This requires a lot of setup, and is normally reserved for experts.  Login from another computer will not work.  Pinging the ip address will not respond since the network stack is part of the kernel.  There are some virtual machine setups that will let you debug a \textit{guest} kernel, but this also requires a lot of setup, and affects which kernel is currently under test.  The kdb route is preferable.
 	\item[Keyboard grabs, Server grabs, and Deadlocks:] A grab is an X-server state where all events are forced to just one window event stream.  This forces the user to respond to the dialog.  Things seems to be working, but no keypresses do anything useful. The system clock and other programs will still be working.  The network will work for remote logins. Grabs can be canceled if the \texttt{/etc/X11/xorg.conf} X config contains special setup as shown below:
 \end{description}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 Section "ServerFlags"
 	Option      "HandleSpecialKeys" "Always"
 	Option      "AllowDeactivateGrabs" "True"
@@ -550,7 +552,7 @@ EndSection
 
 or to \texttt{\$HOME/.xinitrc}, add:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 #  xkb terminate/grab actions disabled in xorg.conf, use:	
 setxkbmap -option "grab:break_actions"
 setxkbmap -option "terminate:ctrl_alt_bksp"
@@ -562,7 +564,7 @@ Modal forms (always on top, and usually ptr/kbd grab) dialog boxes can lock a sy
 
 \begin{description}
 	\item[Window Manager issues:] The \textit{desktop} window manager can intercept and modify all kinds of user input.  Mostly, this is a good thing, but can be a nuisance.  If user keypresses can be programmed to trigger actions, then they may be useful to send \texttt{KILL} or \texttt{INTR} to an app that seems to be holding X's attention.  For example:
-	\begin{lstlisting}[language=bash,numbers=none]
+	\begin{lstlisting}[numbers=none]
 	killall -INTR cinelerra,
 	killall -9 cinelerra,	
 	killall X,
@@ -582,7 +584,7 @@ To create a specific 440 Hz tone, follow these steps.  You can vary the length, 
 \begin{enumerate}
 	\item Make sure there is an armed audio track on the timeline, get into Cut and Paste mode, and highlight
 	a selection or define In/Out points where you want to insert the audio tone.
-	\item Go to \texttt{Audio $\rightarrow$ Render effect}.  Rendered effect usage is described in \href{sec:rendered_effects}{Effect Plugins}. This brings up a menu where you will select the desired effect which in this case is \textit{F\_aeval}.  Also Select a file to render to, a File Format, and Insertion strategy of Paste at insertion point.
+	\item Go to \texttt{Audio $\rightarrow$ Render effect}.  Rendered effect usage is described in \hyperref[sec:rendered_effects]{Effect Plugins}. This brings up a menu where you will select the desired effect which in this case is \textit{F\_aeval}.  Also Select a file to render to, a File Format, and Insertion strategy of Paste at insertion point.
 	\item Click on the green OK checkmark which will popup the F\_aeval effect so that you can set the
 	parameters.
 	\item Highlight the \textit{exprs} option and key in a specific audio filter expression which for 440 Hz would be:
@@ -650,7 +652,7 @@ The picture quality on analog TV is not always good but you can modify parameter
 
 First, when capturing the video, capture it in the highest resolution possible. For Europeans this would be $720\times576$ and for North Americans, $720\times480$. Do not adjust the brightness or contrast in the recording monitor, but you might want to max out the color. Capture the video using MJPEG or uncompressed Component Video if possible; if not possible, then capture it using JPEG preferably or RGB if that is all that will work.  Now on the timeline use \texttt{Settings $\rightarrow$ Format} to set a YUV colorspace, drop a \textit{Downsample} effect on the footage and set it as follows:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 Horizontal:					2
 Horizontal offset: 	0
 Vertical:						2
@@ -702,7 +704,7 @@ This entire procedure could be implemented in one non-realtime effect, but the p
 
 If you photograph a lot of haze instead of blue sky, these horizon shots will usually need more depth. You can use the \texttt{gradient} effect to improve your video. Drop the gradient effect on hazy tracks and set the following parameters:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 Angle: 				0
 Inner radius: 0
 Outer radius: 40
@@ -727,7 +729,7 @@ It is important to set the $0\%$ alpha color to blue even though it is $0\%$ alp
 	\item Highlight Audio 1 Compressor and hit Attach.
 	\item Click the Audio 1 Compressor's magnifying glass to bring up the compressor GUI.
 	\item Set the following parameters:
-	\begin{lstlisting}[language=bash,numbers=none]
+	\begin{lstlisting}[numbers=none]
 	Reaction secs: -0.1
 	Decay secs: 0.1
 	Trigger Type: Total

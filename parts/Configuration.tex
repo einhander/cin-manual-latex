@@ -265,7 +265,7 @@ If a user wants to prevent the automatic scaling, \textit{Layout Scale} should b
 
 For testing or when you are using a different sized monitor and want to ensure the expected
 size for larger text/fonts before you start the application from a window, you can keyin:
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
         BC_SCALE=2.0 {your Cinelerra path}/bin/cin
 \end{lstlisting}
 The scaling size would only be in effect for that run of Cinelerra.  This is particularly
@@ -274,7 +274,7 @@ Then the environment variable, BC\_SCALE, can be used to overcome the bad settin
 Cinelerra and fix the scaling parameter.  For example, if you 
 accidentally set \textit{Layout Scale} to 112.6, keyin the following 
 and then when you get back into Cinelerra, fix \textit{Layout Scale} value in Preferences.  
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
         BC_SCALE=1.0 {your Cinelerra path}/bin/cin
 \end{lstlisting}
 
@@ -327,7 +327,7 @@ This section contains many useful options to cater to the various preferences of
     \item[Set Input Focus when window entered] this is checked on by default because on some operating system distros, when you move your mouse to a different window, nothing happens and you are left wondering why you can not enter information.  When checked this causes the input focus to shift to any Cinelerra window when the cursor enters an exposed region of the window which eliminates the need to switch input focus by tabbing. 
     \item[Click to activate text focus] Click to activate text focus
     \item [Click to deactivate text focus] if checked, you will have to click to deactivate text focus.
-    \item[Always show next frame] in this mode the insertion pointer reflects the same as the Compositor so that for playing forward, the result is what looks like 1 was added to the frame displayed in the Compositor window.  This is fully explained in another section (\hyperref[sub:playing_seeking]{17.2.1}).
+    \item[Always show next frame] in this mode the insertion pointer reflects the same as the Compositor so that for playing forward, the result is what looks like 1 was added to the frame displayed in the Compositor window.  This is fully explained in another section (\hyperref[sub:playing_seeking]{Playing is Different than Seeking/Positioning!}).
     \item[Use thumbnails in resource window] the Resource Window displays thumbnails of assets by default, but drawing asset thumbnails can take more time and CPU so you may want to uncheck this.
     \item[Perpetual session] is very useful for working on a project over many days so you can just quit before
     shutting down and the next time you start up Cinelerra you will be right back where you left off. You
@@ -357,19 +357,19 @@ The following exported variables can be set to customize your environment. \\ Th
     \item[{\small CIN\_LOCALE}] locale text domain path to use for translating text
     \item[{\small CIN\_PLUGIN}] plugin directory path
     \item[{\small CIN\_RENDER}] complete filename with path, that was used for \textit{select file to render} to in the current session’s last successful Render job; this is used in the \texttt{RenderMux} defined \textit{Shell Cmds} and is available for any user-defined script inside Cinelerra
-    \item[{\small CIN\_PKG}] used to set your text domain, that is the locale path pointing to mo language file
+    \item[{\small CIN\_PKG}] used to set your text domain, that is the locale path pointing to the cin.mo language file
     \item[{\small CIN\_XSYNCH}] (for Developers only) set to 1 helps debugging for windows primitives to execute immediately and not be buffered up so you can see what is happening
 \end{description}
 
 One example:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 export CIN_BROWSER=chrome       #would override default firefox for Shell Cmds.
 \end{lstlisting}
 
 Another example:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 export CIN_CONFIG=/tmp/.bcast5   #use a temporary setup for testing purposes.
 \end{lstlisting}
 
@@ -386,8 +386,30 @@ normal size of 1. Refer to the previous Appearance section, \textit{Layout Scale
     \item[{\small LADSPA\_PATH}] specify an alternate set of ladspa plugins or include the default with the use of a colon separated list of directories to search for LADSPA plugins. This is always used first and if it does not
     exist, then the value for \texttt{CIN\_LADSPA} becomes \texttt{LADSPA\_PATH}.
     \item[{\small LV2\_PATH}] specify a certain set of LV2 plugins to use.  Separate multiple paths with colons.
-    \item[{\small LANG and LANGUAGE}] Cinelerra can be localized to display menus and messages in many languages. Language settings are normally read from your linux O/S language settings. To run on a language different than the one selected on your system just change the \texttt{LANG} and \texttt{LANGUAGE} environment variables.  For example, open a shell and type: \texttt{export LANG=es\_ES} or
-    \texttt{LANGUAGE=es\_ES}, then run Cin from the same shell and you will have translations in Spanish.
+    \item[{\small LANG}] Cinelerra can be localized to display menus and messages in many languages.
+Currently there are 16 languages in addition to English, of varying quality. A little more information on
+these is in the \nameref{cha:translations} chapter.
+Language settings are normally read from your Linux O/S language settings. To run on a language different
+than the one selected on your system just change the \texttt{LANG} environment variable before starting
+up Cinelerra like this:
+
+\hspace{2em} \texttt{export} LANG=2 letter language code\_2 letter country code.UTF-8 
+
+For example, from a window type:
+
+\hspace{2em} \texttt{export LANG=es\_ES.UTF-8} 
+
+then startup Cinelerra and you will have translations in Spanish.  If you started Cinelerra from that same
+window using the \{cinelerra\_path\}/bin/cin you will see a message in that window something similar to:
+
+\hspace{2em}  lang changed from 'en\_US.UTF-8' to 'es\_ES-UTF-8'
+
+Depending on your Operating System and Desktop application, there may be other ways to accomplish a
+language change.  For example, on Fedora with the Gnome desktop, the simplest method of switching your
+language to German and immediately starting Cinelerra is to use:
+
+\hspace{2em} \texttt{LANGUAGE=de} \{cinelerra\_path\}/bin/cin 
+
     \item[{\small SHUTTLE\_CONFIG\_FILE}] alternate shuttle configuration file.
 \end{description}
 

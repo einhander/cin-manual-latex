@@ -725,7 +725,7 @@ To set the buffer size:
 However, be forewarned that due to variability in the lv2 plugin programming code, some of the plugins only work with the minimum buffer size of $1024$. In these cases, what you will see is the main track canvas cursor just bounces back and forth over a very small area in the timeline. This does not crash Cinelerra but you will have to remove the plugin to continue working.
 You can specify a certain set of LV2 plugins to use by setting \texttt{LV2\_PATH} as shown below before starting Cinelerra -- include a colon ($:$) separator for multiple paths. The default path for most operating systems is \texttt{/usr/lib64/lv2}. To list the system installed lv2 plugins key in: \texttt{lv2ls}.
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 export LV2_PATH=/tmp/j/balance.lv2/usr/local/lib/lv2/:/usr/local/lv2
 \end{lstlisting}
 
@@ -1968,7 +1968,7 @@ C - has only object2 visible
 \subsection{Motion 2 Point}%
 \label{sub:motion_2_point}
 
-Motion stabilization using 2 pass tracking. For theory and explanations refer to the \href{sub:motion}{Motion} plugin.
+Motion stabilization using 2 pass tracking. For theory and explanations refer to the \hyperref[sub:motion]{Motion} plugin.
 
 \subsection{Motion Blur}%
 \label{sub:motion_blur}
@@ -1982,12 +1982,12 @@ Uses X/Y camera automation vectors to apply a linear blur trailing camera direct
 \subsection{MotionCV}%
 \label{sub:motioncv}
 
-Motion tracking/stabilization from the community version of Cinelerra. For theory and explanations refer to the \href{sub:motion}{Motion} plugin.
+Motion tracking/stabilization from the community version of Cinelerra. For theory and explanations refer to the \hyperref[sub:motion]{Motion} plugin.
 
 \subsection{MotionHV}%
 \label{sub:motionhv}
 
-Updated motion tracking/stabilization of 2017 from the original author of Cinelerra. For theory and explanations refer to the \href{sub:motion}{Motion} plugin.
+Updated motion tracking/stabilization of 2017 from the original author of Cinelerra. For theory and explanations refer to the \hyperref[sub:motion]{Motion} plugin.
 
 \subsection{Oil painting}%
 \label{sub:oil_painting}
@@ -1997,7 +1997,7 @@ This effect makes video tracks appears as a painting. It can be controlled by \t
 \subsection{Overlay}%
 \label{sub:overlay}
 
-This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the on \href{cha:overlays}{Overlays} chapter  -- PorterDuff.
+This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the on \hyperref[cha:overlays]{Overlays} chapter  -- PorterDuff.
 
 The \textit{overlay} plugin enables the use of this Overlayer device in the middle of any plugin stack, opening endless filtering and processing possibilities. It is only useful as a \textit{shared plugin} (i.e. a multitrack plugin). To use the overlay plugin:
 
@@ -3119,7 +3119,7 @@ We can apply 6 different styles:
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/stylizeobj01.png}
+    \includegraphics[width=0.6\linewidth]{images/stylizeobj01.png}
     \caption{Pulldown of Stylize mode on the original image}
     \label{fig:stylizeobj01}
 \end{figure}

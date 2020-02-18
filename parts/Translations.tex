@@ -1,11 +1,39 @@
 \chapter{Translations}%
 \label{cha:translations}
 
-There are several \textit{po} files for various languages to make Cinelerra more usable for non-English countries.  A program, \textit{xlat.C}, assists in providing several variations of text files that can be used in order to allow anyone to help make meaningful translations.  All of the \textit{po} files are located in Cinelerra’s \texttt{/po} subdirectory. There are 3 different ways to proceed described below.
+There are several \textit{po} files for various languages to make Cinelerra more usable for non-English 
+countries.  These are listed below along with the po file name with the translations, the frequency
+of updates, and date of last update as of this writing.
+
+\begin{tabular}{llll}
+\hline
+	English& cin.po& Baseline &(en\_US) \\
+	French&	fr.po&	Updated often& Last update 2019 May\\
+	German&  de.po&	Updated often& Last update 2019 December\\
+	Russian& ru.po&	Updated often& Last update 2019 October\\
+	Spanish& es.po& Updated often& Last update 2020 February\\
+\\
+	Basque& eu.po&	From CV with Google Translate & Last update 2016 October\\
+	Italian&it.po&	From CV with Google Translate & Last update 2016 October\\
+	Norwegian& nb.po& From CV with Google Translate & Last update 2016 October\\ 
+	Portuguese& pt.po& From CV with Google Translate& Last update 2016 October \\
+	Slovenian& sl.po & From CV with Google Translate& Last update 2016 October \\
+\\
+	Chinese& zh.po&	Only Google Translate & 2016 October\\
+	Greek&	el.po& Only Google Translate & 2016 October\\
+	Hindi& hi,po& Only Google Translate & 2016 October\\
+	Japanese& ja.po& Only Google Translate & 2016 October \\
+	Korean& ko.po& Only Google Translate	& 2016 October \\
+	Ukrainian& uk.po & Only Google Translate & 2016 October \\
+	Vietnamese& vi.po& Only Google Translate & 2016 October \\
+\hline
+\end{tabular}
+
+A program, \textit{xlat.C}, assists in providing several variations of text files that can be used in order to allow anyone to help make meaningful translations.  All of the \textit{po} files are located in Cinelerra’s \texttt{/po} subdirectory. There are 3 different ways to proceed described below.
 
 Because Cinelerra frequently is changing, it is a good idea to start by building a new \texttt{cin.po} file which contains the latest messages/words in English to be translated, along with a comment line of the routine name and line number.  To create this, run the following lines from a window:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 cd /{your top level cinelerra directory}
 ./po/xlat.sh > /tmp/cin.po
 \end{lstlisting}
@@ -17,7 +45,7 @@ cd /{your top level cinelerra directory}
 
 To use the msgmerge command after creating a new cin.po as suggested previously:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 cd /{your top level cinelerra directory}
 ./po/xlat.sh > /tmp/cin.po			       # use /tmp as a temporary place
 cp /{your cinelerra directory}/po/xx.po /tmp/xx.po     # substitute your language for x
@@ -32,7 +60,7 @@ Then use any editor or poedit to provide messages/words translations in the new 
 
 To use the \textit{xlat.C} program, first compile it with \texttt{c++ xlat.C}.  You can see the usage help here:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 	./a.out 
 list csv    ./a.out csv < data.csv > data.po
 list po     ./a.out po < data.po > data.csv
@@ -60,7 +88,7 @@ This program has 6 commands where the desired command is the first parameter to 
 The xlat command line parameters specify a new cin.po template, usually created with xlat.sh, and a list of key/value files which are used to build a mapping for the desired translation.  The mapping files are added to the mapping in the order they appear on the command line, and any existing key is replaced with the newest definition; so typically the newest key/value data is last in the command parameters.  
 Once the mapping is built, the first parameter which is the new po template is scanned and the keys it contains are used to find the latest mapping in the key/value files.  The new value replaces the existing value in the template.  For example, to overlay a new map onto an existing po using the Spanish es.po file and where cin.po represents the latest english words:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[numbers=none]
 c++ xlat.C
 ./a.out po < es.po > /tmp/es.csv
 ./a.out po < cin.po > /tmp/cin.csv

@@ -323,6 +323,9 @@ This section contains many useful options to cater to the various preferences of
     \end{figure}
     \item[EDL version warns if mismatched] in the case of a Batch Render, it is often helpful to be warned if the EDL has been changed so that you are aware that what is going to be rendered is different than your current EDL session.
     \item[Create Bluray warns if not root] if checked and you are not logged in as root, you will get an error message in order to avoid doing a lot of work and then failing out because root is required for automount and to write on DVD hardware.
+    \item[Warn on creating file references] if checked, you will always be warned when using "File by 
+Reference", that is when an EDL is opened as \textit{Reference}.  This is best left checked to ensure that you are aware of the fact that when changes are made
+to this file and rendered, any other uses of the same file will be affected and modified also.
     \item[Popups activate on button up] this is the default but if unchecked, popups activate on button down.
     \item[Set Input Focus when window entered] this is checked on by default because on some operating system distros, when you move your mouse to a different window, nothing happens and you are left wondering why you can not enter information.  When checked this causes the input focus to shift to any Cinelerra window when the cursor enters an exposed region of the window which eliminates the need to switch input focus by tabbing. 
     \item[Click to activate text focus] Click to activate text focus
@@ -387,11 +390,17 @@ normal size of 1. Refer to the previous Appearance section, \textit{Layout Scale
     exist, then the value for \texttt{CIN\_LADSPA} becomes \texttt{LADSPA\_PATH}.
     \item[{\small LV2\_PATH}] specify a certain set of LV2 plugins to use.  Separate multiple paths with colons.
     \item[{\small LANG}] Cinelerra can be localized to display menus and messages in many languages.
-Currently there are 16 languages in addition to English, of varying quality. A little more information on
+Currently there are 16 languages in addition to English, of varying quality. Some information on
 these is in the \nameref{cha:translations} chapter.
-Language settings are normally read from your Linux O/S language settings. To run on a language different
-than the one selected on your system just change the \texttt{LANG} environment variable before starting
-up Cinelerra like this:
+Language settings are normally read from your Linux O/S \textit{locale} settings. 
+The Cinelerra program checks environment variables to determine your settings to use as the language.
+First it checks the value of LANGUAGE and will use that if set.
+If that is not set, then it checks 
+LC\_ALL and finally if that is not set either, it will use the value of LANG. You can check the current
+settings from a window by looking at the output of the \textit{printenv} command.
+
+To run on a language different than the one selected on your system just change 
+the \texttt{LANG} environment variable before starting up Cinelerra like this:
 
 \hspace{2em} \texttt{export} LANG=2 letter language code\_2 letter country code.UTF-8 
 
@@ -400,15 +409,19 @@ For example, from a window type:
 \hspace{2em} \texttt{export LANG=es\_ES.UTF-8} 
 
 then startup Cinelerra and you will have translations in Spanish.  If you started Cinelerra from that same
-window using the \{cinelerra\_path\}/bin/cin you will see a message in that window something similar to:
+window using \{cinelerra\_path\}/bin/cin you will see a message in that window something similar to:
 
 \hspace{2em}  lang changed from 'en\_US.UTF-8' to 'es\_ES-UTF-8'
+
+However, although generally LANGUAGE is not set, it is possible that another progam that was run may
+have set it so you may have to substitute LANGUAGE for the word LANG above.
 
 Depending on your Operating System and Desktop application, there may be other ways to accomplish a
 language change.  For example, on Fedora with the Gnome desktop, the simplest method of switching your
 language to German and immediately starting Cinelerra is to use:
 
 \hspace{2em} \texttt{LANGUAGE=de} \{cinelerra\_path\}/bin/cin 
+
 
     \item[{\small SHUTTLE\_CONFIG\_FILE}] alternate shuttle configuration file.
 \end{description}

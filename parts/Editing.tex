@@ -12,7 +12,16 @@ The timeline is where all editing decisions are made (figure~\ref{fig:timeline})
     \label{fig:timeline}
 \end{figure}
 
-The active region is the range of time which is affected by editing commands on the timeline.  The active region is determined first by the presence of in/out points on the timeline.  If those do not exist the highlighted region is used.  If no highlighted region exists, the insertion point is used as the start of the active region.  Some commands treat all the space to the right of the insertion point as active while others treat the active length as 0 if no end point for the active region is defined.
+The active region is the range of time which is affected by editing commands on the 
+timeline.  The active region is determined first by the presence of in/out points on the 
+timeline.  
+If those do not exist the highlighted region is used. To reiterate, \emph{highlighting}
+is done in \emph{cut and paste mode} by moving the insertion point with the mouse in the timeline
+to where you want to start. Then hold down the LMB, drag the mouse to where you want
+the end point to be and release the LMB. In \emph{drag and drop mode}, the method to create a highlighted
+selection is to hold down the Ctrl key and double click with the LMB with the mouse over that column.
+
+ If no highlighted region exists, the insertion point is used as the start of the active region.  Some commands treat all the space to the right of the insertion point as active while others treat the active length as 0 if no end point for the active region is defined.
 
 Most importantly, editing decisions never affect source material meaning that it is non-destructive editing.  So not only does your original media stay completely untouched, it is much faster than if you had to copy all the media affected by an edit.  Editing only affects pointers to source material, so if you want to have a new modified media file at the end of your editing session which represents the editing decisions, you need to render it.  Saving and loading your edit decisions is explained in the Load, Save and the EDL section and rendering is explained in the section on Rendering.
 

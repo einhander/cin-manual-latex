@@ -402,16 +402,16 @@ settings from a window by looking at the output of the \textit{printenv} command
 To run on a language different than the one selected on your system just change 
 the \texttt{LANG} environment variable before starting up Cinelerra like this:
 
-\hspace{2em} \texttt{export} LANG=2 letter language code\_2 letter country code.UTF-8 
+\hspace{2em} \texttt{export LANG}=\textit{2 letter language code\_2 letter country code.UTF-8} 
 
 For example, from a window type:
 
 \hspace{2em} \texttt{export LANG=es\_ES.UTF-8} 
 
 then startup Cinelerra and you will have translations in Spanish.  If you started Cinelerra from that same
-window using \{cinelerra\_path\}/bin/cin you will see a message in that window something similar to:
+window using \texttt{\{cinelerra\_path\}/bin/cin} you will see a message in that window something similar to:
 
-\hspace{2em}  lang changed from 'en\_US.UTF-8' to 'es\_ES-UTF-8'
+\hspace{2em}  \textit{lang changed from en\_US.UTF-8 to es\_ES-UTF-8}
 
 However, although generally LANGUAGE is not set, it is possible that another progam that was run may
 have set it so you may have to substitute LANGUAGE for the word LANG above.
@@ -420,7 +420,7 @@ Depending on your Operating System and Desktop application, there may be other w
 language change.  For example, on Fedora with the Gnome desktop, the simplest method of switching your
 language to German and immediately starting Cinelerra is to use:
 
-\hspace{2em} \texttt{LANGUAGE=de} \{cinelerra\_path\}/bin/cin 
+\hspace{2em} \texttt{LANGUAGE=de \{cinelerra\_path\}/bin/cin} 
 
 
     \item[{\small SHUTTLE\_CONFIG\_FILE}] alternate shuttle configuration file.

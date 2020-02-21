@@ -148,16 +148,20 @@ their title name changed.
 \subsection{Insertion Point}%
 \label{sub:insertion_point}
 
-The insertion point (figure~\ref{fig:insertion-points}) is the flashing hairline mark that vertically spans the timeline in the program window. 
-Analogous to the cursor on your word processor, the insertion point marks the place on the timeline where the next activity will begin. 
-It is the point where a paste operation takes place. 
-When rendering, it defines the beginning of the region of the timeline to be rendered. It is also the starting point of all playback operations.
+The insertion point (figure~\ref{fig:insertion-points}) is the vertical hairline mark that spans the timeline in the program window - it can be a solid line but most of the time it will be flashing. 
+Like the cursor on a word processor, the insertion point marks the place on the timeline where the next
+operation will begin. It is the starting point of all play operations and is the point where a paste operation will occur. 
+In some cases, when rendering it defines the beginning of the region of the timeline to be rendered. 
 
-Normally, the insertion point is moved by clicking inside the main timebar. 
-Any region of the timebar not obscured by labels and in or out points is a hotspot for repositioning the insertion point. 
-In cut and paste editing mode only, the insertion point can be moved also by clicking in the timeline itself. 
-When moving the insertion point the position is either aligned to frames or aligned to samples. 
-When editing video, you will want to align to frames. When editing audio you will want to align to samples. Select your preference by using \texttt{Settings$\rightarrow$Align cursor on frames}.
+To move the insertion point, you move the mouse inside the timebar area and click with the left mouse button. 
+You can use any place on the timebar to reposition the insertion point as long as that spot is not blocked
+by In/Out point or a label. 
+In cut and paste editing mode, you can also change the position of the insertion point with a simple 
+left mouse click in the timeline itself.
+When moving the insertion point, the position is either aligned to frames or aligned to samples. 
+For best results, "Align cursor on frames" when editing a video track and "Align to samples" when editing audio. 
+Use the pulldown \texttt{Settings$\rightarrow$Align cursor on frames} to change the alignment by
+checking the box on for video and off for audio.
 
 \begin{figure}[htpb]
     \centering
@@ -186,25 +190,27 @@ When editing video, you will want to align to frames. When editing audio you wil
 \subsection{Editing Modes}%
 \label{sub:editing_modes}
 
-There are 2 different editing methods of operation that affect the insertion point and the editing on the timeline.  
+There are 2 different editing modes for operations which affect how the insertion point and editing
+on the timeline operate.  
 There is:  \emph{drag and drop mode} and \emph{cut and paste mode}. 
-The editing mode is determined by selecting the \texttt{arrow} or the \texttt{I-beam} in the Transport and Buttons bar. 
+The editing mode is determined by selecting the \texttt{arrow}, or immediately to the right of the arrow,
+the \texttt{I-beam} in the Transport and Buttons bar. In figure~\ref{fig:insertion-points} you can see
+the green colored highlight on the arrow icon indicating that you are currently in 
+\emph{drag and drop mode}.
 
-If the arrow is highlighted, it enables \emph{drag and drop mode}.  
-In drag and drop mode, clicking in the timeline does not reposition the insertion point.  
-Double-clicking in the timeline selects the entire edit the mouse pointer is over.  
-Dragging in the timeline repositions the edit the mouse pointer is over. 
-This is useful for reordering audio playlists, sorting movie scenes, or moving effects around. 
-To cut and paste in drag and drop mode you need to set In/Out points to define an affected region. 
+With the arrow highlighted for \emph{drag and drop mode}, a double click with the left mouse button in the timeline selects the edit the mouse pointer is over. 
+Then dragging in the timeline repositions that edit and this can be used for moving effects,
+changing the order of playlists, or moving video pieces around. 
+There are numerous methods to cut and paste in \emph{drag and drop mode} by setting In/Out points to define
+a selected region or using the Copy/Paste Behavior as outlined in \ref{sub:copy_paste_behavior}. 
+In this mode, clicking the LMB in the timeline does not reposition the \textit{Insertion Point}. 
 
-If the I-beam is highlighted it enables \emph{cut and paste mode}. 
-In cut and paste mode, clicking (LMB) in the timeline repositions the \textit{Insertion Point}. 
-Double-clicking in the timeline selects the entire edit the cursor is over (column). 
-Dragging in the timeline highlights a region. 
-The highlighted region becomes the region affected by cut and paste operations and the playback range during the next playback operation. 
-Shift-clicking in the timeline extends the highlighted region.
-
-When highlighting a region, the start and end points are either aligned to frames or aligned to samples. When editing video, you will want to align to frames. When editing audio you will want to align to samples. Select your preference by using \texttt{Settings $\rightarrow$ align cursor on frames}.
+When the I-beam is highlighted, you are in \emph{cut and paste mode}.
+In cut and paste mode, clicking the LMB in the timeline does reposition the \textit{Insertion Point}. 
+Double clicking in the timeline selects the entire edit the cursor is over, i.e. that column. 
+Dragging in the timeline with the LMB pressed down, highlights a selected region and this is the region that is affected by cut
+and paste operations.  It is also the playback range used for the subsequent playback operation. 
+Holding down the Shift key while clicking in the timeline extends the highlighted region.
 
 \begin{figure}[htpb]
     \centering
@@ -216,90 +222,107 @@ When highlighting a region, the start and end points are either aligned to frame
 \subsection{In/Out Points}%
 \label{sub:in_out_points}
 
-In both editing modes, you can set one In point and one Out point. 
-The in/out points define the affected region. In the timebar, a colored bar will appear between [ and ] to better highlight the area between the In and Out Points.
-In drag and drop mode, they are the only way to define an affected region.
+The In/Out points, displayed on the timebar by [ and ] brackets,  can be set in either of the editing modes to define the selection.
+In the timebar, a colored bar will show between these 2 brackets to better outline the area selected.
+In \emph{drag and drop mode}, they are an easy way to define a selected region.
 
-In both cut and paste mode and drag and drop mode, the highlighted area overrides the In/Out points. 
+It is important to remember that in \emph{cut and paste mode} and \emph{drag and drop mode}, a highlighted area 
+overrides the In/Out points. That is, if a highlighted area and In/Out points are both set, the highlighted area is changed by editing operations and the In/Out points are ignored. 
+But if no region is highlighted, the In/Out points are used. 
+To avoid confusion, use either highlighting or In/Out points but not both at the same time.
 
-If a highlighted area and In/Out points are set, the highlighted area is affected by editing operations and the In/Out points are ignored. 
-If no region is highlighted, the In/Out points are used. 
-To avoid confusion, it is better to use either highlighting or In/Out points but not both simultaneously.
+To set In/Out points, in the timebar move to the position where you want the In point and click the In
+point icon or one of the [ or < keys.
+Then move the insertion point to a position after the In point and click the ] or > or the Out point icon. 
+You can use these same icons or keyboard characters to toggle In/Out points on or off.
 
-To set in/out points, go to the timebar and position the insertion point somewhere. 
-LMB the In point button. 
-Move the insertion point to a position after the In point and click the Out point button. 
-Instead of using the button bar, you can use the [ or < and ] or > keys to toggle in/out points.
+If you set the insertion point in another place when In/Out points are already set, that existing point will be
+repositioned when you click the In/Out icon or keyboard equivalent. 
+If you click on In/Out points while a region is highlighted, the insertion point will be ignored and In/Out points will be set at the beginning and at the end of the highlighted area.
 
-If you set the insertion point somewhere else while In/Out points already exist, when you click the In/Out buttons the existing points will be repositioned. 
-If you click on in/out points while a region is highlighted, the insertion point will be ignored and In/Out points will be set at the beginning and at the end of the highlighted area.
+When you select either the In or Out point on the timebar, the insertion point will move to that location. 
+If the In point is set, when you click the In point icon the In point will be deleted. 
+If the Out point is set, when you click the Out point icon the Out point will be deleted. 
+Holding the Shift key while clicking on an In/Out point, the area between the insertion point and that
+In/Out point will be highlighted; or extended to that In/Out point if already highlighted. 
 
-If you select either the In point or the Out point, the insertion point will jump to that location. 
-After selecting an In point, if you click the In point button the In point will be deleted. 
-After selecting an Out point, if you click the Out point button the Out point will be deleted. 
-Shift-clicking on an In/Out point highlights the region between the insertion point and that In/Out point. 
-If a region is already highlighted, it extends the highlighted region up to that In/Out point.
-
-To quickly get rid of In/Out points, without caring about where they are or if they are set or not, just double click on [ and ] buttons. 
-The first click will set a new point or reposition an old one at the insertion point; the second click will delete it. This trick does not work if the In point or the Out point is already set at insertion point.
+An easy way to turn off the In/Out points if both are set, is to double click on the [ icon. 
+If you have already set the In and Out points, and then move the insertion point anywhere to the left of
+the Out point, a LMB click on the [ icon will move the In point to the location of the insertion point.  In the same
+manner if you move the insertion point anywhere to the right of the In point, a LMB click on the ] icon
+will move the Out point to that new position.  However, if you move the insertion point for either the
+In or Out point beyond what makes sense to designate In/Out points, the bracket you clicked on will be
+moved to the insertion point and the other bracket will be eliminated.  That is obviously because the
+In point has to come before the Out point on the timeline.
 
 Some of the useful operations concerning the In/Out pointers are listed next.
 
 \begin{description}
-    \item[Ctrl-KeyPad\#]  if in/out set, \texttt{KP 2,3,5,6 + Enter}, play between In/Out point
+    \item[Ctrl-KeyPad\#]  if In/Out set, \texttt{KP 2,3,5,6 + Enter}, play between In/Out points
     \item[Shift-Ctrl]  loops play between In/Out points
-    \item[Click in/out] while holding the left mouse button, drags In/Out pointer elsewhere
-    \item[Shift-Ctrl] with transport button, loops play between In/Out points
+    \item[Click In/Out] while holding the LMB down, drags In/Out pointer where you drag to
+    \item[Shift-Ctrl] with a transport button (e.g. Fast Forward), loops play between In/Out points
     \item[Ctrl-t]  clears both In/Out points
 \end{description}
 
 \subsection{Labels}%
 \label{sub:labels}
 
-The insertion point and the In/Out points allow you to define an affected region, but they do not let you jump to exact points on the timeline very easily. 
-Labels are an easy way to set exact locations on the timeline that you want to jump to. 
-When you position the insertion point somewhere and click the label button, a new label appears on the timeline. 
-With label traversal you can quickly seek back and forth on the timeline.
+Labels are used in order to set exact locations on the timeline that you want to be able to easily get to. 
+To create a label, position the insertion point at a location and click on the label icon in the Transport
+and Buttons bar. The new label is displayed on the timebar as a down arrow at that location as shown in
+figure~\ref{fig:i-beam}.
+Labels make it so you can jump back and forth to exact marked locations on the timeline.
+Use the lower case letter “\texttt{L}” as a shortcut for the label button.
 
-No matter what the zoom settings are, clicking on the label highlights it and positions the insertion point exactly where you set the label. 
-The lower case letter “\texttt{L}” is a shortcut for the label button.
-
-Labels can reposition the insertion point when they are selected but they can also be traversed with the label traversal buttons. When a label is out of view, the label traversal buttons reposition the timeline so the label is visible. Keyboard shortcuts for label traversal are:
+You can use labels to reposition the insertion point when that label is selected. They are also
+especially useful for moving along the timeline to the \textit{Next label} or \textit{Previous label}
+with the buttons on the Transport and Buttons bar to the right of the Labels button.  
+When moving along the timeline with the Next or Previous label buttons, if a label is out of view
+the timeline will automatically be repositioned so that the label is visible. If you do either a Next
+label or Previous label and there are no more, the insertion point will go to either the Home or End
+position.  Keyboard shortcuts for label traversal are:
 
 \begin{description}
-    \item[Ctrl-left] repositions the insertion point on the previous label.
-    \item[Ctrl-right] repositions the insertion point on the next label.
+    \item[Ctrl-left] moves the insertion point to the previous label.
+    \item[Ctrl-right] moves the insertion point to the next label.
 \end{description}
 
-The Label folder in the Resources window lists the timestamp of every label. 
-You can edit the label list and add a title for every item using the popup menu. 
-To open the Label info dialog right click on the label icon in the Resources window or directly on the label symbol on the timebar. 
+There is a  Label folder in the Resources window which has a list of every label and its exact location
+where the label is. The location is based on the timestamp, frame number, or sample number depending on the selected Time Format of your timebar. 
+You can edit, delete, or goto a label by clicking the RMB on that label in the Resources window which
+brings up a popup menu with those options.  It can be quite helpful to \textit{edit} the label
+and add a text string to help identify what the label represents.
+In addition, RMB clicking the label symbol on the timebar brings up a textbox displaying the current
+text string and allowing you to change it. If a Label has been given a name, simply mousing over
+the label symbol on the timebar will display that string.
+
 With labels you can also select regions:
 
 \begin{description}
-    \item[Shift-Ctrl-left] highlights the region between the insertion point and the previous label.
-    \item[Shift-Ctrl-right] highlights the region between the insertion point and the next label.
-    \item[Double-clicking] on the timebar between two labels highlights the region between the labels.	   
-    \item[Shift-clicking] on a label highlights the region between that label and the insertion point.
-        If a region is already highlighted, it extends the highlighted region up to that label.
+    \item[Shift-Ctrl-left] highlights the area between the insertion point and the previous label.
+    \item[Shift-Ctrl-right] highlights the area between the insertion point and the next label.
+    \item[Double-clicking] on the timebar between two labels, highlights the area between the labels.	   
+    \item[Shift-clicking] on a label, highlights the area between that label and the insertion point.
+        If an area is already highlighted, it extends the highlighted area up to that label.
 \end{description}
 
+If you LMB click the label button when an area is highlighted, labels are created at each end of the
+highlighted area. But if either end already has a label, then the existing label is deleted. 
+When a label is selected, if you click on the label icon, the label will be deleted. 
+To delete multiple labels, highlight that area, then use the \texttt{Edit $\rightarrow$ Clear labels}
+function to delete them all. The same precedence rules apply to this operation as mentioned earlier.  That
+is, if both In/Out points are set and there is a highlighted area also set, the highlighted area's 
+labels will be cleared and not those between the In/Out points.
 
-If you hit the label button when a region is highlighted, labels are created at each end of the highlighted region. 
-However, if one end already has a label, then the existing label is deleted. 
-Hitting the label button again when a label is selected deletes it. 
-Manually hitting the label button or L key over and over again to delete a series of labels can get tedious. 
-To delete a set of labels, first highlight a region, then use the \texttt{Edit $\rightarrow$ Clear labels} function. 
-If in/out points exist, the labels between the in/out points are cleared and the highlighted region is ignored.
-
-
-In Cut and Paste editing mode only, by enabling \emph{Edit labels} in the settings menu or by disabling the \emph{Lock labels from moving} button on the program toolbar, labels will be cut, copied or pasted along with the selected region of the first armed track. 
-Similarly, if a selected area of a resource is spliced from the viewer to the timeline in a position before labels, these labels will be pushed to the right on the timebar for the length of the selected area. 
-To prevent labels from moving on the timebar, just disable the \emph{Edit labels} option or enable the \emph{Lock labels from moving} button.
-
-
-Originally in Drag and Drop editing mode labels will be always locked to the timebar, even with the \emph{Edit labels} option enabled.  
-This may no longer be correct in all cases. 
+If you enable \emph{Edit labels} in the Settings pulldown menu or disable the \emph{Lock labels from moving}
+button on the Transport and Buttons bar, labels will be cut, copied or pasted along with the selected
+area of the first armed track. 
+In the same manner, if a selected area of media is spliced from the viewer to the timeline in a position 
+before labels, the labels will be moved to the right on the timebar so that the label maintains its 
+relative position to its edit. 
+To prevent labels from moving on the timebar, enable the \emph{Lock labels from moving} icon or
+disable the \emph{Edit labels} option under the Settings pulldown.
 
 \subsection{Color Title Bars and Assets}%
 \label{sub:color_title_bars_and_assets}

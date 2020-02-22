@@ -240,11 +240,13 @@ If you set the insertion point in another place when In/Out points are already s
 repositioned when you click the In/Out icon or keyboard equivalent. 
 If you click on In/Out points while a region is highlighted, the insertion point will be ignored and In/Out points will be set at the beginning and at the end of the highlighted area.
 
-When you select either the In or Out point on the timebar, the insertion point will move to that location. 
-If the In point is set, when you click the In point icon the In point will be deleted. 
-If the Out point is set, when you click the Out point icon the Out point will be deleted. 
+When you select either the In or Out point on the timebar, the insertion point will move to that location.Note that when the insertion point is at the exact position of an In or Out point, the bracket will change
+color making it easy to see that you are exactly at that spot.
+ 
+If only the In point is set, when you click the In point icon the In point will be deleted. 
+If only the Out point is set, when you click the Out point icon the Out point will be deleted. 
 Holding the Shift key while clicking on an In/Out point, the area between the insertion point and that
-In/Out point will be highlighted; or extended to that In/Out point if already highlighted. 
+In/Out point will be highlighted or extended to that In/Out point if already highlighted. 
 
 An easy way to turn off the In/Out points if both are set, is to double click on the [ icon. 
 If you have already set the In and Out points, and then move the insertion point anywhere to the left of
@@ -271,17 +273,20 @@ Some of the useful operations concerning the In/Out pointers are listed next.
 Labels are used in order to set exact locations on the timeline that you want to be able to easily get to. 
 To create a label, position the insertion point at a location and click on the label icon in the Transport
 and Buttons bar. The new label is displayed on the timebar as a down arrow at that location as shown in
-figure~\ref{fig:i-beam}.
+figure~\ref{fig:i-beam}.  Whenever the insertion point is at the same position as a label, it changes
+color to emphasize that it is exactly at that spot.
 Labels make it so you can jump back and forth to exact marked locations on the timeline.
 Use the lower case letter “\texttt{L}” as a shortcut for the label button.
 
 You can use labels to reposition the insertion point when that label is selected. They are also
 especially useful for moving along the timeline to the \textit{Next label} or \textit{Previous label}
 with the buttons on the Transport and Buttons bar to the right of the Labels button.  
-When moving along the timeline with the Next or Previous label buttons, if a label is out of view
-the timeline will automatically be repositioned so that the label is visible. If you do either a Next
-label or Previous label and there are no more, the insertion point will go to either the Home or End
-position.  Keyboard shortcuts for label traversal are:
+When moving along the timeline with the Next or Previous label buttons, if a label is out 
+out of view the timeline will automatically be repositioned so that the label is visible.
+If you perform a \textit{Next label} operation and there are no more, the insertion point
+will go to the End position.  Conversely if you perform a \textit{Previous label} operation
+and there are no more labels, the insertion point will go to the Home position. 
+Keyboard shortcuts for label traversal are:
 
 \begin{description}
     \item[Ctrl-left] moves the insertion point to the previous label.
@@ -308,7 +313,7 @@ With labels you can also select regions:
 \end{description}
 
 If you LMB click the label button when an area is highlighted, labels are created at each end of the
-highlighted area. But if either end already has a label, then the existing label is deleted. 
+highlighted area. 
 When a label is selected, if you click on the label icon, the label will be deleted. 
 To delete multiple labels, highlight that area, then use the \texttt{Edit $\rightarrow$ Clear labels}
 function to delete them all. The same precedence rules apply to this operation as mentioned earlier.  That
@@ -331,45 +336,36 @@ In order to visually aid in locating clips on the timeline that are from the sam
 Use of this feature requires additional memory and cpu on every timeline redraw, therefore it is recommended that smaller computers leave it turned off.
 
 For auto-color the color will be based on a hashed filename so that whenever you load this particular media, it will always have the same color on the title bar even if you use proxy.  
-To enable auto-color (figure~\ref{fig:autocolor_assets}, go to \texttt{Settings $\rightarrow$ Preferences, Appearance tab} and check on \texttt{Autocolor assets}.  
-It is disabled by default.  
+To enable auto-color go to \texttt{Settings $\rightarrow$ Preferences, Appearance tab} and check on \texttt{Autocolor assets}. You will see this in the Flags section
+as shown in Figure~\ref{fig:settings}.  It is disabled by default.  
 Each media will have a random muted color and there could easily be close duplicates as generated by the program algorithm.  There will be no total black, but some dark shades are possible.  
-
-Screencast shows the red colored checkmark to enable Autocolor assets.  
-In the lower left corner is Highlighting Inversion color which can also be set and is discussed elsewhere.
-
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.8\linewidth]{images/autocolor-assets.png}
-    \caption{Autocolor assets}
-    \label{fig:autocolor_assets}
-\end{figure}
 
 To change a specific clip to your own chosen color, middle mouse button (MMB) over that clip and an Edits popup will be displayed.  
 Choose the option \textit{Bar Color} to bring up the color picker and choose a color.   
-You can also change the alpha value in the color picker and this alpha takes precedence over the current alpha slider bar value unless it was set to 1.0.   
+You can also change the alpha value in the color picker and this alpha takes precedence over the current alpha slider bar value unless the color picker's alpha value is set to 1.0.   
 The color will only change after you click on the checkmark.  
 The \emph{Bar Color} option works in either Drag and Drop or Cut and Paste editing mode and also works if \textit{Autocolor assets} is not set.  
 In Drag and Drop editing mode, if you select several clips and then bring up the Edits popup with the middle mouse button over a track, you can use the \emph{Bar Color} option to change all of those selected to the same color.
 
 To go back to the default colors, uncheck \textit{Autocolor assets} in Preferences, but this does not affect the specially chosen self-colored ones as they are preserved.  
-To change these individually or  selectively use the Edits popup \emph{Bar Color} option and click on \textit{Default} in the color picker window.  Auto-color does not honor armed/disarmed tracks.  
+To change these individually or  selectively, use the Edits popup \emph{Bar Color} option and click on \textit{Default} in the color picker window.  Auto-color does not honor armed/disarmed tracks.  
 Self-color does honor armed/disarmed tracks.
 
 And that’s not all!  
-There is an \emph{alpha fader slider bar} on the bottom of the main window on the right hand side of what is referred to as the Zoom Panel.  
-With this alpha slider, you can colorize your video and audio tracks to either see only the color at 0.0 or see only the image/audio waveform at 1.0.  
+There is an \emph{alpha fader slider bar} on the bottom of the main window on the right hand side of the Zoom Panel.  
+With this alpha slider, you can colorize your video and audio tracks to either see only the color at 0.0 or see only the image at 1.0.  
 This slider bar affects all colored areas of the Autocolor assets and the self-colored ones.  
-In the case when a specifically changed edit alpha value is any value except 1, the slider bar will not affect that.  
+In the case when a specifically changed edit alpha value is set in the color picker
+to any value except 1, the slider bar will not affect that.  
 Once you use the slider bar, it is activated so gets first shot at any keystrokes in the main window.  
 You deactivate this by simply clicking in a different part of the main window.  
 
-As long as we are on the subject of color, just a reminder that you can also change the \textit{Highlighting Inversion color} in \texttt{Settings $\rightarrow$ Preferences, Appearance tab}.  
-This is on right left hand side of the menu more than half the way down and you can see this in the figure~\ref{fig:autocolor_assets}.  
+As long as we are on the subject of color, just a note that you can also change the \textit{Highlighting Inversion color} in \texttt{Settings $\rightarrow$ Preferences, Appearance tab}.  You can see this option in Figure~\ref{fig:settings} in the Color section.  
 That setting defaults to white ($ffffff$) but sometimes this is a little bright so you can put any hex value in that suits you.
 
-Screencast (figure~\ref{fig:autocolor_assets_alpha}a) which shows an example of the Autocolor assets with alpha set to 0.0.
-In this screencast (figure~\ref{fig:autocolor_assets_alpha}b), the alpha is set to show the image as well as the colors.  The pink media file has been self-colored rather than the autocolor to make it easy to see.
+This image (figure~\ref{fig:autocolor_assets_alpha}a) shows an example of the Autocolor assets with alpha set to 0.0 so that you see only the color and no image.
+In this image (figure~\ref{fig:autocolor_assets_alpha}b), the alpha is set to show the image
+and waveforms with transluent colors.  The pink media file has been self-colored rather than the autocolor to make it easy to see.
 
 \begin{figure}[htpb]
     \centering
@@ -396,8 +392,8 @@ The main window pulldowns as pointed out in figure~\ref{fig:insertion-points} ar
     \item[File]  options for loading, saving, and rendering as described in other sections (\ref{cha:load_save_and_the_EDL}).
     \item[Edit]  edit functions; most of which have shortcuts that you will quickly learn (\ref{cha:editing}).
     \item[Keyframes]  keyframe options which are described in the Keyframe section (\ref{cha:keyframes}).
-    \item[Audio]  audio related functions such as \textit{Add track}, \textit{Attach transition/effect}.
-    \item[Video]  video functions such as \textit{Default/Attach transition}.
+    \item[Audio]  audio functions such as \textit{Add track}, \textit{Attach transition/effect}.
+    \item[Video]  video functions such as \textit{Add track, Default/Attach transition, Render effect}.
     \item[Tracks]  move or delete tracks are the most often used.
     \item[Settings]  much of this is described elsewhere with the most frequently used to include
 Preferences (\ref{cha:configuration_settings_preferences}), Format (\ref{cha:project_and_media_attributes}), 
@@ -410,13 +406,14 @@ Proxy and Transcode (\ref{sec:proxy_settings}), as well as the others.
 \subsection{Window Layouts}%
 \label{sub:window_layouts}
 
-If you like to use different window layouts than the default for certain scenarios, you can setup, save, and load 4 options.   
-First position your Cinelerra windows where you want them to be and then use the Window pulldown and choose \emph{Save layout}.  
+If you like to use different window layouts than the default for certain scenarios, you can setup, save, and load 4 variations.   
+First, position your Cinelerra windows where you want them to be and then use the Window pulldown and choose \emph{Save layout}. Note the words \emph{Save layout} highlighted in Figure~\ref{fig:window_layouts}a with 4 names shown to the right and below of that highlight. 
 To use the default name of \textit{Layout \#}, when the popup comes up, just click the green checkmark OK on the Layout popup menu.  
-If you would like a specific name for your layout so you can remember what it is for, keyin 1-8 english characters that are meaningful to you (english characters mean you can not use the German umlaut or the French accent).  
+If you would like a specific name for your layout so you can remember what its best use case is,
+keyin 1-8 english characters that are meaningful to you (english characters mean you can not use the German umlaut or the French accent).  
 Legal characters are a-z, A-Z, 0-9, \_ (the underscore character) and a limit of 8 total.  
 If you keyin more than 8, only the last 8 characters will be used.  
-To rename a currently existing layout, use the Save layout option again on the one to rename, and keyin a different name into the text box or blank for the default name (figure~\ref{fig:window_layouts}).
+To rename a currently existing layout, use the \emph{Save layout} option again on the one to rename, and keyin a different name into the text box or leave blank for the default name (figure~\ref{fig:window_layouts}b).
 
 \begin{figure}[htpb]
     \centering
@@ -435,14 +432,16 @@ To rename a currently existing layout, use the Save layout option again on the o
 
 The files containing the coordinates for your layouts will automatically be saved in the \texttt{\$HOME/.bcast5} directory as \texttt{layout\#\_rc} or \texttt{layout\#\_8chars\_rc}.
 
-To use the desired layout, keyin the shortcut or use the Window pulldown and choose \emph{Load layout} and then make your choice. 
+To use the desired layout, keyin the shortcut or use the Window pulldown and choose \emph{Load layout} and then make your choice. It is very beneficial to learn the shortcuts for your
+layouts because they can be executed from any of the 4 windows instead of just the main
+timeline window.
 
 \subsection{Just Playing!}%
 \label{sub:just_playing_}
 What if you are just using Cinelerra to play media and listen to tunes? 
 After loading your media, just hit the space bar to start playing and then again to stop playing.  
 Other than that, use the transport buttons on the top bar of the Program window.  
-Other ways, not previously mentioned to \textit{play around} are described next. 
+Other ways to \textit{play around} are described next. 
 
 \subsubsection*{Repeat Play / Looping Method}%
 \label{ssub:repeat_play_looping_method}
@@ -502,7 +501,8 @@ Now you can clip/play/expand or edit the previous playback selection.
 
 
 The speed automation causes the playback sampling rate to increase or decrease to a period controlled by the speed automation curve.  
-This can make playback speed-up or slow-down according to the scaled sampling rate, as \textit{time is multiplied by speed} (Speed $\times$ Unit\_rate).
+This can make playback speed-up or slow-down according to the scaled sampling rate, as \textit{time is multiplied by speed} (Speed $\times$ Unit\_rate). For more information on changing
+the speed, read the section on Speed Automation \ref{sec:speed_fade_automation_gang}.
 
 \subsubsection*{Alternative to using Numeric Keypad for Playing}%
 \label{ssub:alternative_to_using_numeric_keypad_for_playing}

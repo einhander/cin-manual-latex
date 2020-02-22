@@ -372,9 +372,27 @@ but it will not affect anything unless you have Cuda installed on your system an
 	\item Also, install the Fusion repo, although it is unknown if necessary or not.
 \end{enumerate}
 
-There is a very good set of directions on the website to just follow.  Once you have installed the Cuda software on your computer, you must build Cinelerra yourself -- the default build in the configure script for cuda is \textit{auto}.  For Arch, be sure to first key in:     \texttt{setenv CUDA\_PATH=/opt/cuda} 
+There is a very good set of directions on the website to just follow.  Once you have installed the Cuda software on your computer, you must build Cinelerra yourself -- 
+the default flag for a build in the configure script for cuda is \textit{auto}.  For Arch, and possibly
+other distros, you may have to supply the CUDA\_PATH if it is not in the standard place.  This would be
+something like:
 
-There are currently 4 available plugins for \textit{show and tell} that take advantage of the hardware acceleration of Cuda -- \textit{N\_Body} and \textit{Mandelbrot} as shown next (figure~\ref{fig:cuda-effects}), \textit{F\_scale\_cuda} and \textit{F\_yadiff\_cuda}.
+
+\begin{lstlisting}[numbers=none]
+	env CUDA_PATH=/opt/cuda
+OR if using the bash shell: 
+	export CUDA_PATH=/opt/cuda
+\end{lstlisting}
+For all distros you will need to add to the ./configure line in your build script, the following:
+
+
+\begin{lstlisting}[numbers=none]
+	--with-cuda
+so your configure line will look something like this:
+	./configure --with-single-user --with-booby --with-cuda
+\end{lstlisting}
+
+There are currently 4 available plugins for \textit{show and tell} that take advantage of the hardware acceleration of Cuda -- \textit{N\_Body} and \textit{Mandelbrot} as shown next (figure~\ref{fig:cuda-effects}), \textit{F\_scale\_cuda} and \textit{F\_yadif\_cuda}.
 
 \begin{figure}[htpb]
 	\centering

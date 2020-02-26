@@ -18,7 +18,7 @@ It is the output of the rendering operations and this is what is saved when you 
 Immediately to the left of the timeline is the patchbay. The patchbay contains options that affect each track.  
 These options are described in great detail in the Editing section (\ref{sec:patchbay}).
 
-The \textit{Window} pulldown on the main window contains options that affect the 4 main windows. The first 3 options are used to display each of the windows in case one is accidentally closed.  You can
+The \textit{Window} pulldown on the main window contains options that affect the 4 main windows. The first 3 options are used to display each of the windows in case one was accidentally closed.  You can
 move or resize the windows as needed, save that particular layout, and revert to the default positions
 to reposition all 4 windows to the original screen configuration.
 On dual headed displays, the \textit{Default positions} operation only uses the one monitor to display the windows, but as you
@@ -539,83 +539,164 @@ For the keyboards without a numeric keypad or if you prefer to use keys closer t
 \section{Compositor Window}%
 \label{sec:compositor_window}
 
-The Compositor window (figure~\ref{fig:compositor_window}) displays the output of the timeline. 
-It is the interface for most compositing operations or operations that affect the appearance of the timeline output. 
-Operations done in the Compositor affect the timeline but do not affect clips.
-
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.99\linewidth]{images/compositor_window.png}
-    \caption{Upper right side contains navigation tools / bottom bar has manu control functions}
+    \caption{Left hand side are the toolbar functions / bottom bar has many control functions}
     \label{fig:compositor_window}
 \end{figure}
 
-\subsection{Compositor controls}%
+The Compositor window (figure~\ref{fig:compositor_window}) is used to display the timeline
+output.  Playing and moving along the timeline video in the Program window shows in the
+Compositor window what the current image is.  Here is where many compositing operations are
+performed that can change 
+what the timeline will look like.  When enabled, you can simply click the LMB in the Compositor
+window to start and stop play.
+  You can zoom in and out to 
+see small details, pan with the scrollbars, lock the window to prevent changes, add masks,
+and make changes with the Projector and Camera function operators. These will be explained
+in more detail in the following sections.
+
+\subsection{Compositor Controls}%
 \label{sub:compositor_controls}
 
+On the bottom of the window, there are many
+of the same transport buttons and controls that are available in the Program window.
+They work the same as in the Program window and also have tooltips that are visible 
+when you mouse over each of the icons so their use is fairly obvious.  However,
+of particular note is the button \textit{Click to play} which is described in
+\ref{sub:click_to_play_in_viewer_and_compositor}.
 
-Navigating the video output does not affect the rendered output; it just changes the point of view in the compositor window. 
-The video output has several navigation functions. 
-The video output size is either locked to the window size or unlocked with scrollbars for navigation. 
-The video output can be zoomed in and out and panned. 
-If it is unlocked from the window size, middle clicking and dragging anywhere in the video pans the point of view. Hitting the + and -- keys zooms in and out of the video output.
+Next to all of these controls all the way to the right side, there is a \textit{zoom menu} and a \textit{tally light}.  The \textit{zoom menu} has a pulldown with different settings that you can choose from
+or you can just use the tumbler arrows to the right. Generally when just getting started, you
+will be using the default \textit{Auto} option.  The window size is not changed, but rather
+the size of the video itself. In addition there are many shortcuts for zooming that you
+will find in the Shortcuts chapter (\ref{cha:shortcuts}).
 
-Underneath the video output are copies of many of the functions available in the main window. 
-In addition there is a zoom menu and a tally light. 
-The zoom menu jumps to all the possible zoom settings and, through the Auto option, locks the video to the window size. 
-The zoom menu does not affect the window size. 
-The tally light turns red when rendering is happening. This is useful for knowing if the output is current. 
-Right clicking anywhere in the video output brings up a menu with all the zoom levels, zoom auto mode, and some other options. 
-In this particular case the zoom levels resize the entire window and not just the video. 
-The \emph{Reset camera} and \emph{Reset projector} options center the camera and projector. 
-The \emph{Hide controls} option hides everything except the video. 
+To resize the entire window instead of just the video, use a RMB click in the compositor
+window which brings up a menu with all the zoom levels, zoom auto mode, and some other options. 
+As you would expect, whenever the video is zoomed so that only part of the image is visible
+in the window, scrollbars are automatically added as needed on the bottom, the right hand 
+side, or both.
+Other options include \emph{Reset camera} and \emph{Reset projector} which obviously are used
+to reset the camera and the projector. 
+The \emph{Hide controls/Show controls} option is great for hiding the left hand toolbar and
+bottom set of controls for a cleaner look. 
 
-On the left of the video output is a toolbar specific to the compositor window. The toolbar has the following functions:
+Next to the zoom tumbler arrows, is a \textit{tally light} that will be filled in with some color
+(often red or blue) when a rendering operation
+is taking place. This is especially helpful when loading a very large video so you know
+when it is finished loading.  You should pay attention to this \textit{tally light} when performing
+a particularly time-consuming operation so that you do not keep executing more operations
+that just have to wait until completion of that CPU intensive operation.  Also, you should look
+to see if the light is on before assuming that Cinelerra is hung up.
 
-\emph{Protect video} --- disables changes to the compositor output from clicks in it. It is an extra layer on top of the track arming toggle to prevent unwanted changes.
+When the window is unlocked, meaning that it is not in \textit{Protect video from changes} mode on the
+toolbar, MMB clicking and dragging anywhere in the video pans the view.  Panning can also
+be accomplished with the bottom and right hand side scroll bars when displayed.
 
-\emph{Magnifying glass} --- this tool zooms in and out of the compositor output without resizing the window. If the video output is currently locked to the size of the window, clicking in it with the magnifying glass unlocks it and creates scrollbars for navigation.
+\subsection{Compositor Toolbar}%
+\label{sub:compositor_toolbar}
 
+On the left hand side of the Compositor window, there is a toolbar with several icons that
+provide functions for viewing and compositing the video. Each of these operational features 
+will be described in more detail next. 
 \begin{description}
-    \item[Left clicking] in the video zooms in;
-    \item[Ctrl clicking] in the video zooms out;
-    \item[Rotating the wheel] on a wheel mouse zooms in and out.
-\end{description}
+    \item[Protect video from changes] this option makes it possible to disable changes to the
+compositor output when clicking on the Compositor window. It allows for using the
+\textit{Click to play} button (when enabled) for simply starting and stopping play.  It helps
+to prevent an accidental click from making unwanted changes. When you enable this option, any
+of the other enabled tools will automatically be disabled.
 
-In addition, if you enable the Magnifying glass, a zoom slider for fine-viewing appears below these tools.  
-It allows you to zoom to most any size. 
-A \textit{zoom slider} will pop-up towards the bottom on the left-hand side of the Compositor when you enable \textit{Zoom view} via the magnifying glass or when you click on the icons for \textit{Adjust camera automation} or \textit{Adjust projector automation}.  
-This will allow for adjusting the amount of zoom at any level between 0.01 and 100 based on a logarithmic scale.  
-When using the zoom slider, the number by which the view is zoomed can be seen in the textbox where the original-also-working \% zoom is located.  
-The zoom slider size is in the form of \textit{times}, such as $\times$0.82 which indicates that the picture is zoomed to $\frac{82}{100}^{th}$ of the original size as seen in \texttt{Settings $\rightarrow$ Format}.  
+     \item[Zoom view / magnifying glass] when enabled, the \textit{Zoom view} immediately results
+in the addition of a zoom slider for fine viewing.  
+The vertically oriented \textit{zoom slider} will be displayed underneath the last icon of the toolbar and extends
+to almost the end of the toolbar.
+The slider allows for adjusting the amount of zoom at any level between 0.01 and 100 based on a logarithmic scale.  
+
+When using the zoom slider, the number by which the view is zoomed can be seen in the textbox 
+on the bottom controls where the \% zoom is located.  
+The zoom slider size is in the form of \textit{times}, such as $\times$0.82 which indicates that the picture is zoomed to $\frac{82}{100}^{th}$ of the original size as seen in the \texttt{Settings $\rightarrow$ Format} menu.  
 Once you have set the zoom to the desired size, use the vertical and horizontal scroll bars to position the view as needed.
+As mentioned earlier, this
+variety of zoom only affects the video and not the resizing of the Compositor window.  After
+utilizing this slider bar for zooming around, you may want to switch back to \textit{Auto} 
+using the Controls on the bottom of the window.
+This slider bar is also displayed
+when you click on the icons for \textit{Adjust camera automation} or \textit{Adjust projector automation}.  
 
-Screencast (figure~\ref{fig:zoom_slider}) shows below at a zoom slider bar with the diamond shaped slider in the middle.  Note 
-that the magnifying glass is  enabled which automatically pops-up the slider.
+The Compositor window image in figure~\ref{fig:zoom_slider} shows the zoom slider bar with rectangular shaped slider about in the middle.  Note that the magnifying glass is enabled which
+automatically pops-up the slider and the Protect video from changes is disabled.  Also note that
+there is a scroll bar on the bottom and right side of the image since the image at this magnification
+does not fit in the window.
+The Controls zoom textbox shows $\times0.82$ size.  
+\end{description}
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.99\linewidth]{images/zoom_slider.png}
-    \caption{A zoom slider bar with the diamond shaped slider in the middle}
+    \caption{Compositor window zoom slider bar and scroll bars}
     \label{fig:zoom_slider}
 \end{figure}
-The Format shows a large $5204\times3468$ video and the box at the arrow shows $\times0.82$ size.  
 
 \begin{description}
-    \item[Masks tool] this tool brings up the mask editing tool. Enable \textit{Show tool info} to see the options.
-    \item[Camera]  the camera brings up the camera editing tool. Enable \textit{Show tool info} to see options.
-    \item[Projector]  the projector brings up the projector editing tool. Enable \textit{Show tool info} for options.
-    \item[Crop tool]  this tool brings up the cropping tool. \textit{Show tool info} must be enabled to use this tool.
-    \item[Eyedropper]  brings up the eyedropper. The eyedropper detects whatever color is under it and stores it
-        in a temporary area. Enabling the \textit{Show tool info} shows the currently selected color. Click
-        anywhere in the video output to select the color at that point. The eyedropper not only lets you see
-        areas which are clipped, but its value can be applied to many effects. Different effects handle the
-        eyedropper differently.
-    \item[Show tool info]  this tool button works only in conjunction with the other controls on the compositor.
-        Based on what compositing control is active, the toggle button will activate or deactivate the
-        appropriate control dialog box. Controls with dialog boxes are: Edit mask, Camera and Projector
-        automation, Crop control, and Get color.
-    \item[Safe regions tool]  draws the safe regions in the video output. The largest (external) square is called \textit{action safe overlay}; the smallest internal square is called \textit{title safe overlay}. They are especially useful if the destination is the TV. This does not affect the rendered output
+    \item[Edit mask] brings up a mask editing menu with many versatile options as
+described in great detail later in this section (\ref{sub:masks}). You may also have to click on
+\textit{Show tool info} to popup the menu depending on whether or not you dismissed that window previously.
+    \item[Ruler] this can be a handy tool to get the X,Y coordinates of an exact point or to 
+measure the distance between 2 points. To use the \textit{Ruler}, move the mouse on the video to
+get to the desired spot - these X,Y coordinates will be displayed in the \textit{Current} text
+box.  Clicking the LMB creates Point 1 and then continue to hold down the LMB so that a ruler line is created between
+this Point 1 and the stopping Point 2.  \textit{Deltas} is the X,Y difference between the 2 points;
+\textit{Distance} is the number of pixels between the 2 points; and \textit{Angle} is the angle in degrees of the ruler line.  
+In Figure ~\ref{fig:safe_regions} you can see the Ruler menu on the right side of the Compositor window.
+
+Holding down the Ctrl key while dragging with the LMB on one of the points, will
+ensure that the line is always at a multiple of a 45 degree angle.  Holding down the Alt key while
+dragging with the LMB on one of the points, will translate the ruler line to another place on 
+the video while maintaining its length and angle. If you dismiss the Ruler menu, click on
+\textit{Show tool info} to get the menu to popup again.  
+    \item[Adjust camera automation]  the camera brings up the camera editing tool. Enable \textit{Show tool info} if the popup menu does not appear. More detail for usage is provided in the subsequent
+paragraph \ref{sub:camera_and_projector}.
+    \item[Adjust projector automation]  the projector brings up the projector editing tool. Enable \textit{Show tool info} to get the menu to popup again. More detail for usage is provided in the
+subsequent paragraph \ref{sub:camera_and_projector}.
+    \item[Crop a layer or output]  this is a cropping tool used to reduce the visible picture area.
+More detail for usage is provided in a 
+subsequent paragraph (\ref{sub:cropping}).  There is also a Crop \& Position plugin that provides
+a different set of capabilities \ref{sub:crop_position}.
+    \item[Get color / eyedropper]  brings up the eyedropper used to detect the color at a
+particular spot.  Enable the \textit{Show tool info} if the Color popup menu does not come up 
+automatically or if that menu was accidentally dismissed.  Click on a specific color in the video
+output with the LMB to see the selected color. You can then use that color's 
+value to be applied to some effects depending on how the effect handles the eyedropper.
+    \item[Show tool info]  this tool button is used in conjunction with the other tools on the
+compositor's toolbar. You only need to click on this if one of these tools popup menu does not
+come up or has been dismissed - Mask, Ruler, Camera, Projector, Crop, or Eyedropper tools.
+You can also use it when highlighted to dismiss the highlighted tool's dialog box.
+It is not needed for Protect video from changes, Zoom view, and Show safe regions since they have
+no dialog popup menus.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.99\linewidth]{images/safe_regions.png}
+    \caption{Note the black outlines showing the safe regions. Also note the Ruler menu}
+    \label{fig:safe_regions}
+\end{figure}
+
+    \item[Show safe regions]  draws 2 outlines to display the safe regions in the video as you
+can see in Figure~\ref{fig:safe_regions}.
+On some particular TVs/monitors/displays, the borders of the image are cut off and that
+cut off section might not be as square as it appears in the compositor window. 
+These are especially useful if the device for the output display is an older model TV.
+The outside largest outline is the \textit{action safe overlay}; whereas the inside smallest
+outline is the \textit{title safe overlay}.
+Using the \textit{Show safe regions} has no affect on the rendered output.
+The purpose of showing the borders is to make it easy to see where it might be cut off.  This
+area outside the safe region can then be used as
+a scratch or vertical blanking space.  Enabling the safe regions makes it really
+easy to see these borders so that you can make sure 
+titles are inside the inner outline and actions are inside the outer outline.
+
 \end{description}
 
 \subsection{Compositing}%
@@ -958,7 +1039,29 @@ Note: in order to be able to rotate/scale around pointer, the Focus checkbox mus
 \subsection{Cropping}%
 \label{sub:cropping}
 
-Cropping reduces the visible picture area of the whole project. It changes the values of the output dimensions (width and height in pixels) and the $X, Y$ values of the projector in a single operation. Since it changes project settings it affects all the tracks for their entire duration and it is not keyframable. 
+It changes the values of the output dimensions (width and height in pixels) and the $X, Y$ values of the projector in a single operation. Since it changes project settings it affects all the tracks for their entire duration and it is not keyframable. 
+
+
+  The easiest way to use cropping is to click with the LMB at the spot
+to begin cropping and while holding down the LMB drag. This creates a rectangular cropping area.
+To change the size/location of that area, click on any of the 4 corner points with the LMB
+and drag.
+Note the X1,Y1 coordinates and W for width, H for height, in the Crop tool popup menu
+automatically will change numerical value to reflect your dragging. For precise locations, you
+can keyin exact values into those textboxes.
+Once you have the crop are defined as you want it, then click on the Apply button to have the
+actual cropping take affect.
+There are 3 choices of capabilities to choose in the menu pulldown on the bottom right side.
+Reformat (or Reformat Session) which crops and changes the Format for the session. 
+Because the Format is changed, this is applied to all tracks in the project.\\
+Resize (or Resize Projector)\\
+Shrink (or Resize Projector and Camera).\\
+ An important note here is that the original aspect ratio will be maintained so if your frame is rectangular (as many are) and you "crop" by surrounding the region of interest with a square, the cropped are will be more than you marked in order
+to keep the aspect rectangular shape.
+The Resize and Shrink options are applicable to all video tracks except the disarmed ones. 
+This is in contrast to the Reformat option, as mentioned previously, which applies to all tracks even if disarmed because it changes the Format for the session.
+One last note of interest, this cropping is keyframable.
+
 
 \begin{figure}[htpb]
     \centering
@@ -980,21 +1083,6 @@ Cropping reduces the visible picture area of the whole project. It changes the v
 \end{itemize}
  
 To undo the cropping enter the original project dimensions in the \textit{Set Format} window and click on \textit{Reset projector} in the popup menu of the compositor.
-
-\subsection{Safe Regions}%
-\label{sub:safe_regions}
-
-On consumer displays the borders of the image are cut off and within the cut-off point is a region which is not always square like it is in the compositor window. 
-The borders are intended for scratch room and vertical blanking data. 
-You can show where these borders are by enabling the safe regions toggle. 
-Keep titles inside the inner rectangle and keep action inside the outer rectangle.
-
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/safe_regions.png}
-    \caption{Note the black frames showing the safe regions}
-    \label{fig:safe_regions}
-\end{figure}
 
 \subsection{Track and Output Sizes}%
 \label{sub:track_and_output_sizes}

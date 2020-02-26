@@ -39,7 +39,8 @@ performing the operations in the hardware may actually be slower than in softwar
 
 \begin{enumerate}
 	\item Verify that you have installed \textit{libva-dev} or \textit{libva} on your operating system.
-	\item Verify that you also have \textit{libvdpau-dev} or \textit{libvdpau} installed.
+	\item Verify that you have installed \textit{libva-intel-driver} on your operating system
+        \item Verify that you also have \textit{libvdpau-dev} or \textit{libvdpau} installed.
 	\item Verify \texttt{Settings $\rightarrow$ Preferences, Playback} tab, Video Driver is set to\textit{ X11} -- or \textit{X11-OpenGL} if that	produces better results for your configuration.
 	\item Before starting CinelerraGG, you can set an environment variable that can be easily reversed and
 	then, to run from the Cinelerra installed directory, key in:
@@ -92,6 +93,7 @@ There are 4 phases during Cinelerra’s handling of hardware acceleration. These
 \end{enumerate}
 
 Due to variations in user’s computer hardware configuration, it is often suggested that you refer to your startup window to check for error messages.   Since your situation is unique, the error may not have been seen by anyone else and is probably unknown/undocumented.
+\textcolor{red}{For debugging problems, modify in the Cinelerra ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \textit{loglevel =fatal} to \textit{loglevel =verbose} and restarting Cinelerra}.  
 
 \subsubsection*{Possible improvements or differences}%
 \label{ssub:possible_improvements_differences}

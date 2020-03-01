@@ -31,7 +31,7 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 \end{figure}
 
 \begin{description}
-    \item[Wrench:] select the \textit{wrench} next to each toggle to set compression parameters.  If the file format can not store audio or video the compression parameters will be blank.  If \textit{Render audio tracks} or \textit{Render video tracks} is selected and the file format does not support it, trying to render will result in an error message.
+    \item[Wrench:] select the \textit{wrench} next to each toggle to set compression parameters.  If the file format can not store audio or video the compression parameters will be blank.  If \textit{Render audio tracks} or \textit{Render video tracks} is selected and the file format does not support it, trying to render will result in an error message. More details in the section: \nameref{sub:extra_cin_option_ffmpeg}
     \item[Create new file at each label] the option causes a new file to be created when every label in the timeline is encountered – a separate file for each.  This is useful for dividing long audio recordings into individual tracks.  When using the Render Farm (described later), \textit{Create new file at each label} causes one render farm job to be created at every label instead of using the internal load balancing algorithm to space jobs.   If the filename given in the render dialog has a 2 digit number in it, the 2 digit number is overwritten with a different incremental number for every output file. If no 2 digit number is given, Cinelerra automatically concatenates a number to the end of the given filename for every output file.
     For example, in the filename \texttt{/movies/track01.wav} the $01$ would be overwritten for every output file. 
     The filename \texttt{/movies/track.wav}; however, eventually would become \texttt{/movies/track.wav001} and so on.  
@@ -513,7 +513,7 @@ To use x264 lossless rendering -- choose File format of ffmpeg, m2ts in the Rend
 \subsection{Extra “cin\_” Options for Render with FFmpeg}%
 \label{sub:extra_cin_option_ffmpeg}
 
-There are several special parameters that can be used in the ffmpeg options file to pass values to the codecs that are not normally available.  These are explained below.
+There are several special parameters that can be used in the ffmpeg options file to pass values to the codecs that are not normally available.  They're called Global Options. These are explained below.
 
 \paragraph{cin\_pix\_fmt} The Render menus allows you to choose the codec input pixel format (figure~\ref{fig:yuv420}).  The Pixels selection provides the available pixel format options for the chosen codec type; valid choices vary for the different file types.  This list represents the formats that the codec advertises.  It is not always complete, and it may include options that are not legal with all parameter configurations.
 
@@ -555,6 +555,8 @@ Example: \textit{cin\_sample\_fmt=s16}
     \caption{Render menu showing where Samples is}
     \label{fig:audio}
 \end{figure}
+
+\paragraph{Private Options} (muxers). In the window of the \textit{wrench} in addition to the \textit{View} button, which allows more global options and changes to the formats, there is an additional \textit{Format} button that allows you to modify the Private Options, i.e. relating to specific muxing formats. More information on all these options can be found at: {\small \url{https://ffmpeg.org/ffmpeg-all.html#Format-Options}} sections 19 and 21.
 
 \subsection{Two-pass Encoding with FFmpeg}%
 \label{sub:two_pass_encoding_ffmpeg}

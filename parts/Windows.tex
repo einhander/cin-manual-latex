@@ -638,7 +638,6 @@ The Controls zoom textbox shows $\times0.82$ size.
     \caption{Compositor window zoom slider bar and scroll bars}
     \label{fig:zoom_slider}
 \end{figure}
-
 \begin{description}
     \item[Edit mask] brings up a mask editing menu with many versatile options as
 described in great detail later in this section (\ref{sub:masks}). You may also have to click on
@@ -678,7 +677,7 @@ no dialog popup menus.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.99\linewidth]{images/safe_regions.png}
+    \includegraphics[width=0.5\linewidth]{images/safe_regions.png}
     \caption{Note the black outlines showing the safe regions. Also note the Ruler menu}
     \label{fig:safe_regions}
 \end{figure}
@@ -690,6 +689,7 @@ cut off section might not be as square as it appears in the compositor window.
 These are especially useful if the device for the output display is an older model TV.
 The outside largest outline is the \textit{action safe overlay}; whereas the inside smallest
 outline is the \textit{title safe overlay}.
+
 Using the \textit{Show safe regions} has no affect on the rendered output.
 The purpose of showing the borders is to make it easy to see where it might be cut off.  This
 area outside the safe region can then be used as
@@ -702,13 +702,13 @@ titles are inside the inner outline and actions are inside the outer outline.
 \subsection{Compositing}%
 \label{sub:compositing}
 
-A large amount of Cinelerra's editing is directed towards compositing. 
-Changing the resolution of a show, making a split screen, and fading in and out among other things are all compositing operations in Cinelerra. 
-Cinelerra detects when it is in a compositing operation and plays back through the compositing engine only then. 
-Otherwise, it uses the fastest decoder available in the hardware.
-
-Compositing operations are done on the timeline and in the Compositor window. Shortcuts exist in the Resource window for changing some compositing attributes. 
-Once some video files are on the timeline, the compositor window is a good place to try compositing.
+Much of the editing in Cinelerra involves "compositing" which is the combining of visual
+elements from different sources into single images.  This includes such things as 
+speeding up and slowing down the video, changing the resolution, creating a split screen, and fading in and out.
+Compositing operations are done on the timeline and in the Compositor window using various
+operations and other compositing attributes that are available in the Resources window.
+When Cinelerra is performing a compositing operation it plays back through the
+compositing engine, but when not, it uses the fastest decoder that it has.
 
 \subsection{Camera and Projector}%
 \label{sub:camera_and_projector}
@@ -827,54 +827,57 @@ In the compositing window, there is a popup menu of options for the camera and p
 \subsection{Masks}%
 \label{sub:masks}
 
-Masks select a region of the video for either displaying or hiding. 
-Masks are also used in conjunction with another effect to isolate the effect to a certain region of the frame. 
-A copy of one video track may be delayed slightly and unmasked in locations where the one copy has interference but the other copy does not. 
-Color correction may be needed in one subsection of a frame but not another. 
-A mask can be applied to just a subsection of the color corrected track while the plain track shows through. 
-Removal of boom microphones and airplanes are a common kind of mask uses.
+Masks can be used to accomplish various tasks but basically are used to select an area of the 
+video to be displayed or hidden. 
+They can be used in conjunction with another effect to isolate the effect to a certain region.
+Another usage is where you slightly delay one video track copy and unmask an area where
+the one copy has interference but the other copy does not.  Or use a mask when  color correction is
+needed in one part of a frame but not another.  A mask can be applied to just a small section of
+a color corrected track while a plain track shows through. 
+Removal of boom microphones, license plates, people and airplanes via mask is a very common usage.
 
-The order of the compositing pipeline affects what can be done with masks. Mainly, masks are performed on the temporary after effects and before the projector. This means multiple tracks can be bounced to a masked track and projected with the same mask.
+The order of the compositing pipeline affects how masks are done. Usually masks are operated on the
+temporary, after the effects but before the projector. Because of the way this works, multiple
+tracks can be bounced to a masked track and projected with the same mask.
 
 The compositing pipeline graph has a masking stage (figure~\ref{fig:temporary-02}).
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.7\linewidth]{images/temporary-02.pdf}
-    \caption{compositing pipeline with mask}
+    \caption{Compositing pipeline with mask}
     \label{fig:temporary-02}
 \end{figure}
-
-There are 8 possible masks per track. Each mask is defined separately, although they each perform the same operation, whether it is addition or subtraction.
 
 \subsubsection*{Compositing pipeline with masks}%
 \label{ssub:compositing_pipeline_with_masks}
 
+The Mask popup menu can be overwhelming upon first encounter.  However, if you follow the next
+few steps you can create a single simple mask without having to understand every possible parameter.
 \begin{enumerate}
-    \item To define a mask, go into the Compositor window and enable the mask toggle.
-    \item  Next go over the video and click-drag. 
-        Note: You have to select automatic keyframes if you wish to move a mask over time.  
-        If you do not, the mask position will be the same even if you edit at different places on the timeline.
-    \item  Click-drag again in another part of the image to create each new point of the mask. 
-        While it is not the conventional Bezier curve behavior, this masking interface performs in realtime what the effect 
-        of the mask is going to be. Creating each point of the mask expands a rubber band curve.
-
-        Once points are defined, they can be moved by Ctrl-dragging in the vicinity of the corner. 
-        Shift-drag allows you to move existing points to new locations, thus altering the shape of the mask.  
-        However, this does not smooth out the curve. 
-        The end points of the Bezier curve are accessed by Ctrl-dragging in the vicinity of the corner. 
-        Then Ctrl-dragging near the end point causes the point to move.  
-        Shift-drag activates bezier handles (control points) to create curves between mask points.       
-
-    \item  Finally once you have a mask, the mask can be translated in one piece by Alt-dragging the mask.
-    The effect of the mask is always on.  
-    Ctrl-Alt-drag translates an entire mask to a new location on the
-    screen.
+    \item To define a mask, in the Compositor window click on the \textit{Edit mask} icon to get the popup Mask menu.  If the menu does not come up, click on the \textit{Show tool info}.
+    \item  On the video LMB click on the place where you want to start a mask.
+    \item  Then LMB click on another spot of the image to create each new point of the mask. Once
+you have at least 3 points, lines will be drawn between them, but you can just create as many
+more points as you need and the lines will be redrawn to cover all points. When you 
+create each point of the mask a straight line curve is expanded, altering the shape of the mask.
+The mask position will always be in the same place on each image of the video unless you enable 
+\textit{Generate keyframes while tweaking} on the Program window Transport and Buttons bar. When 
+enabled you can move a mask over time.
+     \item For a mask to be seen or not seen, there must be another video track under the track
+that you are viewing in the compositor.  An easy way to see the masked area is to just add an empty track
+below the target track and drag the \textit{Gradient} plugin to a highlighted area on that track.
+     \item  You can move existing points to new locations by simply using the LMB near a point to
+drag that point to a different location.
+    \item  The mask can be translated as a single entity by Alt-dragging the mask.
+    \item To create curved instead of straight lines between the points, use  Ctrl-drag on a
+specific point. Using Ctrl-drag activates bezier handles (control points) to create these curves
+between the points.       
 \end{enumerate}
 
-The masks have many more parameters which could not be represented with video overlays. 
-These are represented in the tool window for masks. 
-Selecting the question mark when the mask toggle is highlighted brings up the mask options window (figure~\ref{fig:mask_window}).
+There are a lot more operations you can do using the Mask menu as shown in 
+figure~\ref{fig:mask_window}.  Detailed description is provided here next.  Note that the Mask
+window is separated into various sections to make it easier to locate the area of interest.
 
 \begin{figure}[htpb]
     \centering
@@ -883,14 +886,12 @@ Selecting the question mark when the mask toggle is highlighted brings up the ma
     \label{fig:mask_window}
 \end{figure}
 
-Masking has been greatly improved compared to the original tool.  Detailed description is provided here.  Note that the Mask window is separated into various sections to make it easier to locate the area of interest.
-
 \subsubsection*{Masks on Track section}%
 \label{ssub:masks_track_section}
 
-The \textit{Track}: textbox displays the different video tracks for your session which will be initially set to the first armed video track or will be left blank if there are no armed tracks.  A pulldown to the right of the box brings up the names of all of the video tracks allowing you to change to which track the masking applies.  You can also just use the tumbler to easily mouse up/down to get to the desired track. In the pulldown list, any track that has red colored text is disarmed so that you can not change it.  A track that contains masks has yellow colored text for easy identification.  Only when there are no masks on the track, do you have the default text color. This textbox is display only and you can not type into it.
+The \textit{Track}: textbox displays the different video tracks for your session which will be initially set to the first armed video track or will be left blank if there are no armed tracks.  A pulldown to the right of the box brings up the names of all of the video tracks allowing you to change to which track the masking applies.  You can also just use the tumbler to easily mouse up/down to get to the desired track. In the pulldown list, any track that has a red colored text name is disarmed so that you can not change it.  A track that contains masks has yellow colored text for easy identification.  Only when there are no masks on the track, do you have the default text color. This textbox is display only and you can not type into it.
 
-The \textit{Solo} button in the Masks on Track section of the Mask window is very handy when working with masks on different tracks.  It displays only that track so that you only see the track you choose, as well as the tracks behind it to show the mask part.  The Solo button is just a convenience to prevent having to mouse over to the patchbay.
+The \textit{Solo} button in the Masks on Track section of the Mask window is very handy when working with masks on different tracks.  It displays just that track so that you see only the track you choose, as well as the tracks behind it to show the mask part.  The Solo button is just a convenience to prevent having to mouse over to the patchbay.
 
 \subsubsection*{Masks section}%
 \label{ssub:masks_section}
@@ -1039,50 +1040,62 @@ Note: in order to be able to rotate/scale around pointer, the Focus checkbox mus
 \subsection{Cropping}%
 \label{sub:cropping}
 
-It changes the values of the output dimensions (width and height in pixels) and the $X, Y$ values of the projector in a single operation. Since it changes project settings it affects all the tracks for their entire duration and it is not keyframable. 
+Cropping is used to reduce the visible picture area by changing the output dimensions, width and
+height in pixels, and the $X, Y$ values. An example of cropping and the crop menu is seen in
+figure~\ref{fig:cropped_area}.
+The easiest way to use cropping is to click with the LMB 
+at the spot to begin cropping and while holding down the LMB, drag the mouse. This creates a rectangular
+cropping area.  To change the size/location of that area, click on any of the 4 corner points
+with the LMB and drag.  While dragging, you will see 
+the X1, Y1 coordinates and W for width, H for height, in the Crop tool popup menu
+automatically change numerical value to reflect the current position. For precise locations, you
+can keyin exact values into those textboxes instead of using the mouse.
+Once you have the crop area defined as you want it, then click on the \textit{Apply} button to have
+the actual cropping take affect.
 
-
-  The easiest way to use cropping is to click with the LMB at the spot
-to begin cropping and while holding down the LMB drag. This creates a rectangular cropping area.
-To change the size/location of that area, click on any of the 4 corner points with the LMB
-and drag.
-Note the X1,Y1 coordinates and W for width, H for height, in the Crop tool popup menu
-automatically will change numerical value to reflect your dragging. For precise locations, you
-can keyin exact values into those textboxes.
-Once you have the crop are defined as you want it, then click on the Apply button to have the
-actual cropping take affect.
-There are 3 choices of capabilities to choose in the menu pulldown on the bottom right side.
-Reformat (or Reformat Session) which crops and changes the Format for the session. 
-Because the Format is changed, this is applied to all tracks in the project.\\
-Resize (or Resize Projector)\\
-Shrink (or Resize Projector and Camera).\\
- An important note here is that the original aspect ratio will be maintained so if your frame is rectangular (as many are) and you "crop" by surrounding the region of interest with a square, the cropped are will be more than you marked in order
-to keep the aspect rectangular shape.
+There are 3 choices of crop methods to choose in the menu pulldown on the bottom right side.
+\begin{enumerate}
+     \item Reformat - Reformat Session crops and changes the Format for the entire session. 
+Because the Format is changed, this is applied to all tracks in the project.
+The part of the image outside the rectangle will be cut off and the projector will make the video fit.
+The  \texttt{Settings $\rightarrow$ Format} window will show the new project Width and Height values and
+the projector tool window will show the new $X, Y$ values. Track size remains unchanged.
+You can undo the cropping by entering the original project dimensions in the
+\texttt{Settings $\rightarrow$ Format} window for the Width and Height.  You will also have to use the Projector
+tool in the Compositor toolbar to \textit{Ajdust projector automation} by clicking on the Reset icon.
+     \item Resize - Resize Projector; to undo this, enable \textit{Adjust projector automation} 
+and do a Reset.
+     \item Shrink - Resize Projector and Camera; to undo this, enable each of the \textit{Adjust
+projector and camera automation} tools, one at a time, and do a Reset in the menus.
+\end{enumerate}
+An important note here is that the original aspect ratio will be maintained so if your frame is
+rectangular (as many are) and you "crop" by surrounding the region of interest with a square,
+the cropped area will be more than you marked in order to keep the aspect rectangular shape.
 The Resize and Shrink options are applicable to all video tracks except the disarmed ones. 
 This is in contrast to the Reformat option, as mentioned previously, which applies to all tracks even if disarmed because it changes the Format for the session.
 One last note of interest, this cropping is keyframable.
 
-
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.5\linewidth]{images/cropped_area.png}
-    \caption{Cropped area is in the top right corner}
+    \caption{Crop menu and outlined crop rectangle on the right side}
     \label{fig:cropped_area}
 \end{figure}
 
+An easy to follow step by step usage of the cropping tool is outlined next.
 \begin{itemize}
-    \item Enable the crop toggle and the tool window in the compositor window to display the Crop control dialog box.
-    \item Click-drag anywhere in the video to define the crop area. This draws a rectangle over the video.
-    \item Click-drag anywhere in the video to start a new rectangle.
-    \item Click-drag over any corner of the rectangle to reposition the corner.
-    \item Alt-click in the cropping rectangle to translate the rectangle to any position without resizing it.
-    \item The crop control dialog allows text entry of the top left coordinates ($X1,Y1$) and bottom right coordinates ($X2,Y2$) that define the crop rectangle. When the rectangle is positioned, hit the \emph{Do it} button in the crop control dialog to execute the cropping operation: the portion of the image outside  the rectangle will be cut off and the projector will make the output fit the canvas.
-    \item The \textit{Set Format} window will show the new project Width and Height values.
-    \item The projector tool window will show the new $X, Y$ values.
-    \item Track size will remain unchanged.
+    \item Enable the crop tool in the compositor window to display the Crop popup menu.
+    \item Click-drag in the video to define the crop area which draws a rectangle on the video.
+    \item Click-drag in the video to start a different rectangle instead.
+    \item Click-drag on a corner of the rectangle to reposition that corner.
+    \item Alt-click in crop rectangle to translate the rectangle to a different position without resizing.
+    \item The crop popup menu allows text entry of the top left coordinates ($X1,Y1$) and width and
+height ($W, H$) that define the crop rectangle. 
+    \item Choose one of the 3 options of Reformat, Resize, or Shrink.
+    \item When you have the rectangle where you want it,
+click on the \emph{Apply} button in the menu to actually perform the crop operation.
 \end{itemize}
  
-To undo the cropping enter the original project dimensions in the \textit{Set Format} window and click on \textit{Reset projector} in the popup menu of the compositor.
 
 \subsection{Track and Output Sizes}%
 \label{sub:track_and_output_sizes}

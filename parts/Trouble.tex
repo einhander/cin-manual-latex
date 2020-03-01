@@ -16,7 +16,11 @@ installed in \texttt{/mnt0/build5/cinelerra-5.1}, you would execute the followin
 \texttt{/mnt0/build5/cinelerra-5.1/bin/cin} \\
 The problem you are experiencing may be as simple as an error due to the settings in your \texttt{\$HOME/.bcast5} subdirectory so you may want to first rename your current \texttt{.bcast5} in order to start with default settings. By renaming the directory instead of deleting it, you will be able to put it back and not lose all of your preferences.
 
-Some other troubleshooting help is also included in other sections of this manual for specific features.
+However, there are some easy things to do to fix errors that may have resulted from media problems,
+computer problems, or operational missteps so you can proceed without having to wait for help.  These
+are outlined in \ref{cha:when_things_go_wrong} - be sure to read down through
+\textit{Common Problems} where some exact error messages are mentioned along with their cause or solution.  Other 
+troubleshooting help is included in other sections of this manual for specific features.
 
 \section{What to Include in Problem Reports}%
 \label{cha:include_in_problem_reports}
@@ -92,12 +96,22 @@ Sometimes things go wrong and there are some ways to continue your work without 
 to try before abandoning your session.
 
 \begin{enumerate}
-	\item If you suddenly get hangs on media or strange looking tracks, you might want to rebuild indexes. You can do this in the Resources window with a right mouse click on the media to get a pulldown with the \textit{Rebuild index} option. For an easy way to rebuild for all of your media use \texttt{Settings $\rightarrow$ Preferences, Interface} tab, Index Files section, \textit{Delete existing indexes}. This will take some time to recreate all of the currently loaded media and subsequent loads, but can be an easy fix.
+	\item If you suddenly get errors or hangs on media or strange looking tracks, you might want to rebuild indexes. You can do this in the Resources window with a right mouse click on the media to get a pulldown with the \textit{Rebuild index} option. For an easy way to rebuild for all of your media use \texttt{Settings $\rightarrow$ Preferences, Interface} tab, Index Files section, \textit{Delete existing indexes}. Over time, as you
+load media, the indexes will automatically be recreated so each load takes a little longer, but this quite often
+is all that is needed to repair a media problem.
 	\item On an older computer, if you are playing media and it can not keep up, you can turn off \textit{Play every frame} in the \textit{Video Out} tab of \texttt{Settings $\rightarrow$ Preferences, Playback} tab. You will then see the video jump as it skips frames in order to stay caught up.
 	\item The \textit{Cache size} can be lowered to 1048 if playback seems choppy or if you have problems with lv2 plugins, or you can increase the \textit{Cache size} for better flow. This can be changed in \texttt{Settings $\rightarrow$ Preferences, Performance} tab.
-	\item After saving your current session and exiting Cinelerra, you might want to rename your current \texttt{\$HOME/.bcast5} directory and start with the default setup. This will eliminate your settings as the potential cause of a problem; however, all of your current preferences will be lost until you go back to your original \texttt{.bcast5}.
+	\item After saving your session and settings and exiting Cinelerra, you might want to rename your current \texttt{\$HOME/.bcast5} directory and start with the default setup. This will eliminate your settings as the potential cause of a problem; however, all of your preferences will be lost until you go back to your original \texttt{.bcast5}.
+        \item You can also temporarily rename just Cinelerra\_rc in your \$HOME/.bcast5 directory, so
+that a new file with the original name will be created with original defaults.  You will lose your preferences,
+but it is just for testing and you can move back the renamed Cinelerra\_rc over the new one if that is not the
+cause of the problem.  Be sure to stop and restart Cinelerra whenever you rename this file.
 	\item Some media has only a single keyframe at the beginning of the file so that moving anywhere on the timeline results in just a black image in the compositor. Cinelerra needs more keyframes to determine position. You can temporarily use \texttt{Settings $\rightarrow$ Proxy} to $\frac{1}{2}$ size to put in keyframes. How to use Proxy is explained in \href{sec:proxy_settings}{Proxy settings and Transcode}.
-	\item If the rate at which frames are captured during Recording is much lower than the framerate of the source, the video will accumulate in the recording buffers over time and the audio and video will become out of sync. Decrease the number of frames to buffer in the device in \texttt{Settings $\rightarrow $ Preferences, Recording} tab so that the excess frames are dropped instead of buffered.
+        \item If you have enabled an \textit{Automation Curve} such as Fade or Speed on your track but it
+does not show, it could simply be because the range minimum and maximum are incorrectly set in the zoom bar.
+Set them to more reasonable values until you see the lines appear. Just as a reminder, the zoom bar is on the
+bottom of the main window (figure~\ref{fig:automation}). 
+ 	\item If the rate at which frames are captured during Recording is much lower than the framerate of the source, the video will accumulate in the recording buffers over time and the audio and video will become out of sync. Decrease the number of frames to buffer in the device in \texttt{Settings $\rightarrow $ Preferences, Recording} tab so that the excess frames are dropped instead of buffered.
 	\item If loading files locks up, this might be because Cinelerra is building picons/vicons for the Resources window. If you load a large number of images it needs to decompress every single image to build a picon/vicon. Go into \texttt{Settings $\rightarrow$ Preferences, Appearance} tab and disable \textit{Use thumbnails in resource window} to skip this process. Keep in mind though, that it only has to create these thumbnails the first time a new piece of media is loaded or the values are changed.
 	\item For an older computer with less CPU power, in \texttt{Settings $\rightarrow$ Preferences, Appearance} tab, be sure that \textit{Autocolor assets }is disabled; set \textit{View thumbnail size} \& \textit{Vicon quality}\& \textit{Vicon color mode} to lower values or switch to \textit{No Play} instead of \textit{Full Play} in the Resources window (this is to the right of the word \textit{Visibility} in the left hand side of that window). You will then have more CPU and more memory available to do actual editing.
 \end{enumerate}

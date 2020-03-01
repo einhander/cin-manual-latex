@@ -71,7 +71,7 @@ When enabled, which is the default, and you edit tracks, the effects follow the 
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/editing-effects.png}
+    \includegraphics[width=0.9\linewidth]{images/editing-effects.png}
     \caption{Screencast of the native Video plugins in the default Cinfinity icon set.}
     \label{fig:editing-effects}
 \end{figure}
@@ -749,8 +749,8 @@ Below is a screencast showing the auto start gui flag and the \texttt{LV2\_PATH}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/reload.png}
-    \caption{\textit{Reload plugin index} in yellow and \textit{Auto start lv2 gui} unchecked}
+    \includegraphics[width=0.9\linewidth]{images/reload.png}
+    \caption{Reload plugin index in yellow and Auto start lv2 gui unchecked}
     \label{fig:reload}
 \end{figure}
 
@@ -760,7 +760,7 @@ Note the UI button in the upper right hand corner above the Reset button (figure
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/calf.png}
+    \includegraphics[width=1.0\linewidth]{images/calf.png}
     \caption{Screencast of simple text interface in the middle of the screen for a Calf LV2 plugin}
     \label{fig:calf}
 \end{figure}
@@ -1245,7 +1245,7 @@ The Chroma Interpolation Key plugin, CriKey, is a regionally based chroma key wi
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/crikey.png}
+    \includegraphics[width=0.5\linewidth]{images/crikey.png}
     \caption{three active point created in CriKey}
     \label{fig:crikey}
 \end{figure}
@@ -2625,7 +2625,7 @@ The Text Color window has several enhanced features as listed here and seen in f
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/title04.png}
+    \includegraphics[width=0.6\linewidth]{images/title04.png}
     \caption{Screencast showing the Color Picker menu.}
     \label{fig:title04}
 \end{figure}
@@ -2891,6 +2891,43 @@ Figure~\ref{fig:zoom} shows the parameters: Radius=21 and Steps=3.
     \includegraphics[width=0.8\linewidth]{images/zoom.png}
     \caption{For clarity of presentation only 3 fields are shown}
     \label{fig:zoom}
+\end{figure}
+
+\section{CUDA plugins}%
+\label{sec:cuda_plugins}
+\settocdepth{section}
+
+Only for Nvidia GPU and Cuda SDK
+
+\subsection{Mandelbrot}%
+\label{sub:mandelbrot}
+
+Produce fractal figures (figure~\ref{fig:mandelbrot}). Use case:
+\begin{enumerate}
+	\item add the Mandelbrot Cuda video effect to the timeline
+	\item you must enable Drag in the plugin popup menu
+	\item drag the mouse with the RMB down and you will see the fractal change
+	\item enable "Generate keyframes while tweaking" and move to another spot on the timeline and RMB drag again
+	\item so now when you play the video from the beginning because you have keyframes, the fractal will be animated between keyframes.
+\end{enumerate}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/mandelbrot.png}
+	\caption{Mandelbrot Cuda plugin}
+	\label{fig:mandelbrot}
+\end{figure}
+
+\subsection{N\_Body}%
+\label{sub:n_body}
+
+Produce animated particles (figure~\ref{fig:n_body}).
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{images/n_body.png}
+	\caption{N\_Body Cuda plugin}
+	\label{fig:n_body}
 \end{figure}
 
 \section{OpenCV plugins}%

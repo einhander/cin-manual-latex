@@ -394,20 +394,7 @@ so your configure line will look something like this:
 	./configure --with-single-user --with-booby --with-cuda
 \end{lstlisting}
 
-There are currently 4 available plugins for \textit{show and tell} that take advantage of the hardware acceleration of Cuda -- \textit{N\_Body} and \textit{Mandelbrot} as shown next (figure~\ref{fig:cuda-effects}), \textit{F\_scale\_cuda} and \textit{F\_yadif\_cuda}.
-
-\begin{figure}[htpb]
-	\centering
-	\begin{minipage}[h]{0.99\linewidth}
-		\center{\includegraphics[width=0.99\linewidth]{images/n_body.png}} \\
-	\end{minipage}
-	\vfill
-	\begin{minipage}[h]{0.7\linewidth}
-		\center{\includegraphics[width=0.99\linewidth]{images/mandelbrot.png}} \\
-	\end{minipage}
-	\caption{N\_Body and Mandelbrot effects}
-	\label{fig:cuda-effects}
-\end{figure}
+There are currently 4 available plugins for \textit{show and tell} that take advantage of the hardware acceleration of Cuda -- \textit{N\_Body} and \textit{Mandelbrot} (see \nameref{sec:cuda_plugins}), \textit{F\_scale\_cuda} and \textit{F\_yadif\_cuda}.
 
 An error you may see on your Cinelerra startup window when you have Cuda installed and try to run one of the 2 plugins is \textit{cudaErrorInsufficientDriver}.  This indicates CUDA 10 (the current version at the time of this writing) is not compatible with the driver version on your computer.  You can either:
 

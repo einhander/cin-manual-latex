@@ -33,7 +33,7 @@ There is a vertical scroll bar which allows for moving across tracks and a horiz
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/patchbay.png}
+    \includegraphics[width=1.0\linewidth]{images/patchbay.png}
     \caption{Patchbay  | Timeline with pulldowns, navigation icons, Video/Audio tracks | bottom Zoom Panel}
     \label{fig:patchbay}
 \end{figure}
@@ -170,16 +170,16 @@ checking the box on for video and off for audio.
         \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/insertion-point.png}};
         \node [yshift=-13mm, xshift=-1cm,anchor=east] at (img1.north west) (Pulldowns) {Pulldowns};
         \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Transport) {Transport \& Buttons Bar};
-        \node [yshift=-27mm, xshift=-1cm,anchor=east] at (img1.north west) (Timebar) {Timebar};
-        \node [yshift=-33mm, xshift=-1cm,anchor=east] at (img1.north west) (Title) {Media Title };
-        \node [yshift=-43mm, xshift=-1cm,anchor=east] at (img1.north west) (Video) {Video Track};
-        \node [yshift=-63mm, xshift=-1cm,anchor=east] at (img1.north west) (Audio) {Audio Track};
+        \node [yshift=-25mm, xshift=-1cm,anchor=east] at (img1.north west) (Timebar) {Timebar};
+        \node [yshift=-31mm, xshift=-1cm,anchor=east] at (img1.north west) (Title) {Media Title };
+        \node [yshift=-40mm, xshift=-1cm,anchor=east] at (img1.north west) (Video) {Video Track};
+        \node [yshift=-60mm, xshift=-1cm,anchor=east] at (img1.north west) (Audio) {Audio Track};
         \draw [->, line width=1mm] (Pulldowns) edge  ([yshift=-13mm] img1.north west);
         \draw [->, line width=1mm] (Transport) edge  ([yshift=-20mm] img1.north west);
-        \draw [->, line width=1mm] (Timebar) edge    ([yshift=-27mm] img1.north west);
-        \draw [->, line width=1mm] (Title) edge      ([yshift=-33mm] img1.north west);
-        \draw [->, line width=1mm] (Video) edge      ([yshift=-43mm] img1.north west);
-        \draw [->, line width=1mm] (Audio) edge      ([yshift=-63mm] img1.north west);
+        \draw [->, line width=1mm] (Timebar) edge    ([yshift=-25mm] img1.north west);
+        \draw [->, line width=1mm] (Title) edge      ([yshift=-31mm] img1.north west);
+        \draw [->, line width=1mm] (Video) edge      ([yshift=-40mm] img1.north west);
+        \draw [->, line width=1mm] (Audio) edge      ([yshift=-60mm] img1.north west);
         \end{tikzpicture}
     
     \caption{Insertion point is at 0:00:25:10 in Hr:Mn:Sec:Frames}
@@ -781,7 +781,7 @@ These are accessed in the \emph{Show tool info} window .
 Most operations in the Compositor window have a tool window which is enabled by activating the question mark icon (figure~\ref{fig:camera_tool}).
 
 \begin{wrapfigure}[12]{O}{0.3\linewidth} 
-	\vspace{-2ex}
+	\vspace{1ex}
     \includegraphics[width=0.9\linewidth]{images/camera_tool.png}
     \caption{Camera and Projector tool}
     \label{fig:camera_tool}
@@ -1077,7 +1077,7 @@ One last note of interest, this cropping is keyframable.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/cropped_area.png}
+    \includegraphics[width=0.7\linewidth]{images/cropped_area.png}
     \caption{Crop menu and outlined crop rectangle on the right side}
     \label{fig:cropped_area}
 \end{figure}
@@ -1402,13 +1402,12 @@ Below are steps illustrating an easy way to set up a folder.
         It flashes when the drop is successful.
 \end{enumerate}
 
-\begin{wrapfigure}[12]{O}{0.53\linewidth} 
-    \vspace{-3ex}
+\begin{figure}[htbp]    
     \centering
-    \includegraphics[width=0.9\linewidth]{images/folder_master.png}
+    \includegraphics[width=0.7\linewidth]{images/folder_master.png}
     \caption{The “master” Media folder}
     \label{fig:folder_master}
-\end{wrapfigure}
+\end{figure}
 
 Adding the Shift key before the actual drop, will allow for relative path filenames instead of full path.
 But you might want to include or eliminate some of the media that exists in one of the folders that you have set up already.  

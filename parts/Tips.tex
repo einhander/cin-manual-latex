@@ -231,7 +231,10 @@ Older graphics cards or non-performing graphics cards will probably bring only a
 
 {\small \url{https://download.nvidia.com/XFree86/Linux-x86_64/304.137/README/supportedchips.html}}
 
-And, you can see what your specific hardware and software might support by running either \texttt{vainfo} or \texttt{vdpauinfo} from the command line.  Partial examples of each are shown below.
+And, you can see what your specific hardware and software might support by running either \texttt{vainfo}
+(available in the libva-utils package) or \texttt{vdpauinfo} (available in the vdpauinfo package) from the
+command line.  For example which "Profiles" your hardware can handle is listed in the output such as Main
+and High.  Partial examples of each are shown below.
 
 \begin{lstlisting}[numbers=none]
 # vainfo

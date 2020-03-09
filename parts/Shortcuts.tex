@@ -1,7 +1,11 @@
 \chapter{Shortcuts}%
 \label{cha:shortcuts}
 
-Almost every Cinellerra GG Infinity commands has its own keyboard and mouse shortcuts. Below we list them all organized by windows and type.
+Almost every Cinellerra GG Infinity command has its own keyboard and mouse shortcuts. Here 
+they are listed organized by window and type.  If a desktop window manager and operating
+system is already using a specific key for its own purpose then that key will not be available
+for use as a shortcut in Cinelerra. An example might be the Alt key. Some specific alternatives 
+are listed in \ref{ssub:key_alternatives} in the "Key Alternatives" paragraph.
 
 \section{Main window }%
 \label{sec:main_window}
@@ -36,7 +40,7 @@ The Main window (also called the program window) consists of pulldown menus, but
              & Render\dots & Shift-R & Open render window \\             
              & Export EDL\dots & Shift-E & Open export EDL window \\             
              & Batch Render\dots & Shift-B & Open batch render window \\             
-             & BD Render\dots & Ctrl-d & Open create bluray disk window \\             
+             & BD Render\dots & Ctrl-Shift-D & Open create bluray disk window \\             
              & DVD Render\dots & Alt-D & Open create dvd disk window \\             
              & Quit & q & Quit the program \\             
              & Dump EDL &  & Write current EDL to stdout \\             
@@ -91,7 +95,7 @@ The Main window (also called the program window) consists of pulldown menus, but
           \textcolor{blue}{Tracks} & Move tracks up & Shift-Up & Circulate tracks up \\             
              & Move trks down & Shift-Down & Circulate tracks down \\             
              & Delete tracks &  & Delete all tracks \\             
-             & Delete last track & Ctrl-Shift-D & Delete last track \\             
+             & Delete last track & Ctrl-d & Delete last track \\             
              & Delete first track & Shift-D & Delete first track \\             
              & Concatenate trks &  & Concatenate tracks together \\             
              & Append to Proj.	 & Shift-N & Add set of tracks \\             
@@ -204,6 +208,10 @@ The Main window (also called the program window) consists of pulldown menus, but
         & Previous keyframe & Ctrl-k & Move to previous keyframe \\        
         & Next keyframe select & Shift-K & Select from cursor to next keyframe \\        
         & Previous keyfr select & Ctrl-Shift-K & Select from cursor to previous keyframe \\        
+        & Next auto& Alt-a & Move to next auto \\        
+        & Previous auto & Ctrl-Alt-a & Move to previous auto\\        
+        & Next auto select & Alt-Shift-A & Select from cursor to next auto \\        
+        & Previous auto select & Ctrl-Alt-Shift-A & Select from cursor to previous auto \\        
         & Previous edit & Alt $\leftarrow$ & Move to previous edit \\        
         & Next edit & Alt $\rightarrow$ & Move to next edit \\        
         & Cut left label & Ctl-alt-shift-'<' & Cut from insert pointer to previous label \\        
@@ -211,7 +219,7 @@ The Main window (also called the program window) consists of pulldown menus, but
         & Cut previous edit & Ctrl-alt- ',' & Cut from insert pointer to previous edit \\        
         & Cut next edit & Ctrl-alt- '.' & Cut from insert pointer to next edit \\        
         & Fit & f & Fit time displayed to selection \\        
-        & Auto Fit & Alt-f' & Fit the max/min range of all automation types \\        
+        & Auto Fit & Alt-f & Fit the max/min range of all automation types \\        
         & Auto Fit & Ctrl-alt-f & Fit the max/min range of current automation types \\        
         & Undo & z & Undo from history previous operation \\        
         & Redo & Shift-Z & Redo from history next operation \\        
@@ -309,7 +317,7 @@ The Main window (also called the program window) consists of pulldown menus, but
         &  & Double click & On subtitle track, displays text in Line text \\        
         &  & Double click & On fade/speed, synch video/audio ganged \\        
         &  & Shift & While dragging auto, turns of gang \\        
-        &  & Double MMB & On fade/speed, select keyframe position \\        
+        &  & Double MMB & On auto or keyframe, select that position \\        
         & U &  & Paste the last Video transition \\        
         & u &  & Paste the last Audio transition \\        
         & r & Ctrl & Proxy quick switch \\        

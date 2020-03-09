@@ -1,3 +1,31 @@
+% Cover sheet with full logo, realized
+% whith eso-pic as background image.
+\thispagestyle{empty}
+\newcommand\CinBackgroundLogo{%
+   \put(0,0){%
+     \parbox[b][\paperheight]{\paperwidth}{%
+       \vfill
+       \centering
+       \includegraphics[width=\paperwidth,%
+        height=\paperheight]{cin-big.png}% ,keepaspectratio
+       \vfill
+     }}}
+
+% Use the logo
+\AddToShipoutPicture{\CinBackgroundLogo}
+
+% Place the title over the "black hole".
+% The position must be set appropriately.
+\vspace*{14.5cm}
+\definecolor{CinBlue}{RGB}{35,134,220}
+\begin{minipage}[t]{80mm}
+  \textcolor{CinBlue}{\textsf{\Huge{The Comprehensive}}}\\[1em]
+  \textcolor{CinBlue}{\textsf{\Huge{\textbf{User Manual}}}}
+\end{minipage}
+
+\clearpage
+% Remove the logo
+\ClearShipoutPicture
 
 % Title page definition
 %\providecommand{\HUGE}{\Huge}% if not using memoir

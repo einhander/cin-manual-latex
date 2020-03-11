@@ -160,6 +160,29 @@ There is now program code to look for RGB versus YUV color model mismatches.  Yo
     \item[YUV color range] default choice is JPEG,   alternate is MPEG
 \end{description}
 
+\section{Automatic "Best Model" Media Load}%
+\label{sec:conform_the_project}
+When you load media with the insertion strategy of \textit{replace current project}, the program code will
+automatically use the "best model" for the render based on the media's codec.  The best model is pretty
+much going to be what works well for television.  This automation was added to facilitate easy use of
+Cinelerra.  Which is to say that it is difficult for a new or occasional user to set all of the 
+necessary parameters as best as possible so the program does it for you.  This means you do not have to 
+\textit{conform your project} which ordinarily would have to have been done in the Resources window with RMB
+click on the highlighted media and choosing \textit{Match project size}. 
+
+However, this automatic method leads to the dilemma of where you have a 10-bit media file and it would
+get loaded as RGBA-8 when you would prefer it to be RGBA-Float.  So instead of using \textit{replace current
+project} when loading your media, you would have to make sure the project is first set to your desired
+Format.  This could be done with the File$\rightarrow$New project and then setting your Color
+Model to RGBA-Float and whatever other parameters you want.  Next when doing a File$\rightarrow$Load, use
+\textit{Append in new tracks} or \textit{Create resources only}. This avoids using the "best model"
+technique and uses instead what you have designated so that if you set the Color Model to RGBA-Float that
+will be in effect.
+
+It is important to note that even when using the "best model" no bits are lost if the input media is 10-bit
+and the Color Model is RGBA-8. This is because the media will be loaded using the "case BC\_RGB16161616"
+where 16 stands for 16 bits. It fills the other 6 bits not used for 10 bits with zeros.
+
 \section{Simple Animation (Festival)}%
 \label{sec:simple_animation_festival}
 

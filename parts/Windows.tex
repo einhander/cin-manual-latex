@@ -710,14 +710,50 @@ operations and other compositing attributes that are available in the Resources 
 When Cinelerra is performing a compositing operation it plays back through the
 compositing engine, but when not, it uses the fastest decoder that it has.
 
+\subsection{The Temporary, Track and Output Sizes}%
+\label{sub:track_and_output_sizes}
+
+This section explains a few things which help to understand Compositing - especially with relation
+to the camera, effects, and the projector.
+
+\subsubsection*{The Temporary}%
+\label{ssub:output_size}
+
+Cinelerra's compositing routines use a \textit{temporary} which is a single frame of video in
+memory where graphics processing takes place. The size of the temporary and of the output in
+the compositing pipeline are different and vary for any particular frame.  Effects are processed in
+the temporary and as such are affected by the temporary size.  In the case of the camera, its
+viewport is the temporary size. However, projectors are rendered to the output and so are affected
+by the output size. When the temporary is smaller than the output, the temporary will have blank
+borders around the region in the output.  When the temporary is larger than the output, it will be
+cropped.
+
+\subsubsection*{Track and Output size}%
+\label{ssub:track_size}
+
+The \textit{Track size} is used to define the temporary size with each track having a different size.
+You can see or set the track size by RMB click on a track and then select \emph{Resize Track} to resize
+the track to any size. Or select \emph{Match output size} to make the track the same size as the
+output.  When a track is resized what it looks like on the compositor changes.  The relationship
+between the track and the project's output size makes it possible to magnify or reduce the size of
+a track in regards to the final output. This feature means you cancreate visual effects such as split
+screens, zooms, and pans in the compositor.
+
+The \textit{Output size} can be set in \texttt{File $\rightarrow$ New} when creating a new project,
+or by using \texttt{Settings $\rightarrow$ Format}, or in the Resources window with RMB click on
+a video asset and choosing \emph{Match project size}. When you \emph{Match project size}, you
+are conforming the output to the asset. Once you have set the output size in 1 of these 3 ways,
+any newly created tracks will conform to the specified output size.  When rendering, the project's
+output size is the final video track size where the temporary pipeline is rendered into.  
+
 \subsection{Camera and Projector}%
 \label{sub:camera_and_projector}
 
-In the compositor window, two of the more important functions are the adjust camera automation and the adjust projector automation which control operation of the camera and projector. 
-Cinelerra's compositing routines use a \textit{temporary}, a frame of video in memory where all graphics processing is performed. 
-Inside Cinelerra's compositing pipeline, the camera determines where in the source video the \textit{temporary} is copied from. 
-The projector determines where in the output the \textit{temporary} is copied to (figure~\ref{fig:temporary-01}). 
-Each track has a different \textit{temporary} which is defined by the track size. By resizing the tracks you can create split screens, pans, and zooms.
+In the compositor window, \textit{Adjust camera automation} and \textit{Adjust projector automation}
+are editing tools to control operation of the camera and projector.  In Cinelerra's compositing
+pipeline, the camera determines where in the source the \textit{temporary} is copied from while
+the projector determines where in the output the \textit{temporary} is copied to
+(figure~\ref{fig:temporary-01}). 
 
 \begin{figure}[htpb]
     \centering
@@ -726,8 +762,9 @@ Each track has a different \textit{temporary} which is defined by the track size
     \label{fig:temporary-01}
 \end{figure}
 
-In compositing, each frame can be digitally altered using various options, such as a color correction plugin (figure~\ref{fig:camera_and_projector}). 
-Once the image has been transformed, the finished image is then projected to the compositor thus creating a modified version of the original.
+In compositing, each frame can be changed using various options and plugins, such as
+a color correction plugin (figure~\ref{fig:camera_and_projector}).  After the image has been
+modified, the final image is projected to the compositor so that you now have a changed original.
 
 \begin{figure}[htpb]
     \centering
@@ -736,45 +773,56 @@ Once the image has been transformed, the finished image is then projected to the
     \label{fig:camera_and_projector}
 \end{figure}
 
-When editing the camera and projector in the compositing window, the first track with record enabled is the track affected. 
-Even if the track is completely transparent, it is still the affected track. 
-If multiple video tracks exist, the easiest way to select one track for editing is to Shift-click on the record icon of the track. 
-This solos the track.
+When editing the camera and projector in the compositing window, the affected track will be the
+first track that is armed.  If there are multiple video tracks, you can select one specific track
+for editing with a LMB click on the \textit{Arm track} icon of the desired track. This is called
+"solo" the track. To reverse this solo-ing, LMB click on the icon again. 
 
-The purpose of the projector is to place the contents of the \textit{temporary} into the project's output.  
-The intent of the projector is to composite several sources from the various tracks into one final output track. 
-The projector alignment frame is identical to the camera's viewport, except that it guides where on the output canvas to put the contents of each temporary.
+\subsubsection*{Projector Compositing}%
+\label{ssub:projector_compositing}
 
-\subsubsection*{Compositing projector controls}%
-\label{ssub:compositing_projector_controls}
+The purpose of the \textit{projector} is to composite several sources from various tracks into one
+output track.  The projector alignment frame is the same as the camera's viewport, except that it
+shows where to put the contents of each temporary on the output canvas.  To get into projector
+editing mode, click on the \textit{Adjust projector automation} icon in the Compositor toolbar. You
+will then see red border lines surrounding the image and 2 diagonal lines criss-crossing in the 
+middle, displayed in the video window.  The red outline indicates the size of the frame that will be
+sent to the Output. You can easily drag the box with LMB, moving the frame in $x$ and $y$ directions.
+When moving along the $z-axis$ (i.e. the zoom, with SHIFT+Drag) the box exactly follows the movement
+and the size of the frame. After you position the video with the projector, you may next want to
+\textit{Adjust camera automation}.
 
-When the projector button is enabled in the compositor window, you are in projector editing mode. A guide box appears in the video window. The red box indicates the size of the frame that will be sent to the Ouput. You can drag the box with LMB, moving the frame in $x$ and $y$ as you like. Even when moving along the $z-axis$ (i.e. the zoom, with SHIFT+Drag) the red box faithfully follows the movement and size of the frame. Once you have positioned the video with the projector, you may want to work with adjusting the camera automation.
+\subsubsection*{The Viewport}%
+\label{ssub:viewport}
 
-\subsubsection*{Viewport sizes}%
-\label{ssub:viewport_sizes}
-
-The viewport is a window on the camera that frames the area of source video to be scanned.
-The initial size of the viewport is defined by the size of the current track. A smaller viewport ($640\times400$) captures a smaller area. 
-A larger viewport ($800\times200$) captures an area larger than the source video and fills the empty spaces with blanks. 
-Once we have our viewport defined, we still need to place the camera right above the area of source video we are interested on. To control the location of the camera:
+The \textit{viewport} is a window on the camera that frames the area of source video. The size of
+the current track is used for the initial size of the viewport. A smaller viewport, for example
+($640\times480$), captures a smaller area; whereas a larger viewport of ($800\times600$) captures
+a larger area.  If the captured area is larger than the source video, the empty spaces will be
+automatically filled with blanks.  After the viewport is defined, the camera needs to be placed
+right above the area of interest in the source video. Operations to control the location of the
+camera are as follows:
 
 \begin{enumerate}
-    \item  Open the compositor window with a track selected.
-    \item  Select the camera button to enable camera editing mode.
-    \item  Drag over the display window.
+    \item  In the compositor window you should see the selected track.
+    \item  LMB click on the \textit{Adjust camera automation} to bring up the editing menu and the 
+green and yellow colored outlines.
+    \item  Use the LMB to drag the video over the display in the compositor window to the desired
+placement.
 \end{enumerate}
 
-When we drag over the viewport in the compositor window, the way it looks is as if you \textit{move the camera with the mouse}.  The viewport also moves with it.
+When you drag over the viewport in the compositor window, it looks like you are moving the camere
+with the mouse.  The viewport moves in the same manner.
 
-\subsubsection*{Compositing camera controls}%
-\label{ssub:compositing_camera_controls}
+\subsubsection*{Camera Compositing}%
+\label{ssub:camera_compositing}
 
 Select the camera button to enable camera editing mode. 
 In this mode, the guide box shows where the camera position is in relation to past and future camera positions but not where it is in relation to the source video. 
 The green box is the Viewport; at the beginning it coincides with the size of the source frame. If we move the viewport by dragging it with LMB (moving it in $x/y$), the green box remains fixed to the original size but the frame is moved to the new position.  A yellow frame will appear along the edges of the frame to indicate the displacement with respect to the green box; this behavior differs from that seen for the Projector. Even if we act on the $z-axis$ (SHIFT + Drag, equivalent to the zoom), the frame narrows or widens, moving behind the yellow frame.
 
-\subsubsection*{The camera and projector tool window}%
-\label{ssub:the_camera_and_projector_tool_window}
+\subsubsection*{Camera and Projector Menu}%
+\label{ssub:camera_and_projector_menu}
 
 The camera and projector have shortcut operations that do not appear in the popup menu and are not represented in video overlays. 
 These are accessed in the \emph{Show tool info} window . 
@@ -856,18 +904,18 @@ The Mask popup menu can be overwhelming upon first encounter.  However, if you f
 few steps you can create a single simple mask without having to understand every possible parameter.
 \begin{enumerate}
     \item To define a mask, in the Compositor window click on the \textit{Edit mask} icon to get the popup Mask menu.  If the menu does not come up, click on the \textit{Show tool info}.
-    \item  On the video LMB click on the place where you want to start a mask.
+    \item  On the video, LMB click on the place where you want to start a mask.
     \item  Then LMB click on another spot of the image to create each new point of the mask. Once
 you have at least 3 points, lines will be drawn between them, but you can just create as many
 more points as you need and the lines will be redrawn to cover all points. When you 
 create each point of the mask a straight line curve is expanded, altering the shape of the mask.
-The mask position will always be in the same place on each image of the video unless you enable 
-\textit{Generate keyframes while tweaking} on the Program window Transport and Buttons bar. When 
+The mask position will always be in the same position on each image of the video unless you enable 
+\textit{Generate keyframes while tweaking} on the Program window Transport and Buttons bar. Then when 
 enabled you can move a mask over time.
      \item For a mask to be seen or not seen, there must be another video track under the track
 that you are viewing in the compositor.  An easy way to see the masked area is to just add an empty track
 below the target track and drag the \textit{Gradient} plugin to a highlighted area on that track.
-     \item  You can move existing points to new locations by simply using the LMB near a point to
+     \item  You can move existing points to new locations by simply using the LMB at a point to
 drag that point to a different location.
     \item  The mask can be translated as a single entity by Alt-dragging the mask.
     \item To create curved instead of straight lines between the points, use  Ctrl-drag on a
@@ -909,7 +957,7 @@ The \textit{Enable} row of masks makes it so you can enable all or none of the m
 
 There are 4 shapes that are automatically available for usage as masks – square, circle, triangle, and oval.  In addition, the next 3 symbols in this section are for the purpose of loading, saving, and deleting your own customized shapes.  The first symbol, \textit{Load} preset, will bring up a list of your previously saved presets.  Clicking on \textit{Save} preset brings up a popup window allowing you to provide a name used to identify the preset you want to save, along with a pulldown to see the names of your other saved presets.   Clicking on \textit{Delete} preset also brings up a textbox with a pulldown to choose which one to delete.  There is a file, called \texttt{mask\_rc}, in \texttt{\$HOME/.bcast5} that records your custom masks.  
 
-When you click \textit{Load} preset, keep in mind that it will write the mask number that you have selected so if you already have a mask at that location, it will write over it – just UNDO to revert to the previous if you made this mistake.
+When you click \textit{Load} preset, keep in mind that it will write the mask number that you have selected so if you already have a mask at that location, it will write over it – just \textit{Undo mask} under the main window Edit pulldown (shortcut 'z') to revert to the previous if you made this mistake.
 
 \subsubsection*{Position \& Scale section}%
 \label{ssub:position_scale_section}
@@ -971,13 +1019,14 @@ A \textit{gang} symbol on the right hand side of this section, tooltip of \texti
 The \textit{X:} and \textit{Y:} coordinates mark the value of the current \textit{Pivot Point} used for rotation, scaling, and translation.  You can either directly key in numerical values or use the tumblers to change the values as long as the \textit{Focus} checkbox is checked.
 
 The \textit{Focus} checkbox is used in case you want to set a different point in the Compositor for pivoting instead.  And the \textit{Gang} symbol for rotate/scale/translate means that these operations will be performed on all points of the enabled masks.  The gang symbol is surrounded by a gold colored background when it is in effect.  When performing a rotate operation on a mask with the mouse wheel, \textit{acceleration} is in effect -- this means the faster you wheel, the more space is covered so that you do not have to wheel dozens of time to make a full rotation.  Then when you wheel around slower, you can fine tune the result.
+Note that in order to be able to rotate/scale around pointer, the Focus checkbox must be unchecked.
 
 \subsubsection*{Other sections}%
 \label{ssub:other_sections}
 
 Finally there are the \textit{Apply masks before plugins} and \textit{Disable OpenGL masking} self-explanatory checkboxes.
 
-Note: Not all OpenGL software can support the current masking methods.  If your opengl implementation does not support Shader Version 4.3 or has trouble with this (it is relatively new to opengl at the time this was implemented), then this checkbox will allow you to use the software masking to avoid any potential issues.  Normally, a OpenGL is probed for the shader version and will automatically use the software implementation if required.
+Note: Not all OpenGL software can support the current masking methods.  If your opengl implementation does not support Shader Version 4.3 or has trouble with this (it is relatively new to opengl at the time this was implemented), then this checkbox will allow you to use the software masking to avoid any potential issues.  Normally, OpenGL is probed for the shader version and will automatically use the software implementation if required.
 
 The \textit{Help} checkbox can be enabled in order to see a list of the keys used to perform various operations.  If you use Masking infrequently, these are a valuable reminder to which key combinations to use.  Currently they are as follows:
 
@@ -989,10 +1038,13 @@ The \textit{Help} checkbox can be enabled in order to see a list of the keys use
     Alt+LMB & to drag translate the mask \\
     Shift+MMB & set Pivot Point at pointer \\
     Wheel & rotate around Pivot Point \\
-    Ctrl+Shift+Wheel & scale around Pivot Point \\
+    Shift+Wheel & scale around Pivot Point \\
     Ctrl+Wheel & rotate/scale around pointer \\
     \hline  
 \end{tabular}
+
+\subsubsection*{Key Alternatives}%
+\label{ssub:key_alternatives}
 
 \vspace{2ex} Note: For some desktop window managers, certain keys may already be in use by the operating system, so you will either have to redefine them in your desktop or use different key combinations.  For example, at least some desktops used with \textit{UbuntuStudio 16.04} and \textit{Arch} field the \texttt{Alt} key, thus requiring alternative key combinations to be needed.  Below are some of these alternatives.
 
@@ -1035,7 +1087,6 @@ Focus checkbox = checked:
 \end{tabular}
 
 \vspace{2ex}
-Note: in order to be able to rotate/scale around pointer, the Focus checkbox must be unchecked.
 
 \subsection{Cropping}%
 \label{sub:cropping}
@@ -1097,47 +1148,14 @@ click on the \emph{Apply} button in the menu to actually perform the crop operat
 \end{itemize}
  
 
-\subsection{Track and Output Sizes}%
-\label{sub:track_and_output_sizes}
-
-
-The size of the temporary and the size of the output in our compositing pipeline are independent and variable. 
-The camera's viewport is the temporary size. 
-Effects are processed in the temporary and are affected by the temporary size. 
-Projectors are rendered to the output and are affected by the output size. 
-If the temporary is smaller than the output, the temporary is bordered by blank regions in the output. 
-If the temporary is bigger than the output, the temporary is cropped.
-
-\subsubsection*{Track size}%
-\label{ssub:track_size}
-
-The temporary size is defined as the track size. 
-Each track has a different size. 
-Right click on a track to bring up the track's menu. 
-Select \emph{Resize Track} to resize the track to any arbitrary size. 
-Alternatively you can select \emph{Match output size} to make the track the same size as the output. 
-If you resize a track, then its appearance on the compositor changes accordingly. 
-Using the relationship between the track and the project's output size you can effectively reduce or magnify the size of a particular track with regards to the final output and therefore create visual effects like split screens, pans, and zooms on the compositor.
-
-\subsubsection*{Output size}%
-\label{ssub:output_size}
-
-
-The output size is set in either \texttt{File $\rightarrow$ New} when creating a new project or \texttt{Settings $\rightarrow$ Format}. 
-In the Resources window there is another way to change the output size. 
-Right click on a video asset and select \emph{Match project size} to conform the output to the asset. 
-When new tracks are created, the track size always conforms to the output size specified by these methods.
-
-When rendering, the project's output size is the final video track size where the temporary pipeline is rendered into.  
-If the output size is larger than the temporary then the image transferred from the temporary will fit inside the Output Track. 
-Any space left on the Output is left blank.  
-If the output size is smaller than the temporary then some of the temporary video will be cropped.
-
 \section{Viewer Window}%
 \label{sec:viewer_window}
 
-The viewer window (figure~\ref{fig:viewer_window}) is a place to load and preview your source media and clips.  
-Here you can quickly browse through an asset using the slider control, focus on an area of work with the preview region or you use editing controls to cut and paste segments into the project or create a clip for later use.
+The Viewer window (figure~\ref{fig:viewer_window}) is convenient for previewing your media and 
+clips as well as for Two Screen Editing as explained in \ref{sec:two_screen_editing}. There are
+transport buttons to use same as in the Program and Compositor windows or you can quickly move
+through the media by dragging with the LMB in the timebar above the transport buttons.  It is useful
+for cutting and pasting sections onto the timeline or to create a clip.
 
 \begin{figure}[htpb]
     \centering
@@ -1146,26 +1164,31 @@ Here you can quickly browse through an asset using the slider control, focus on 
     \label{fig:viewer_window}
 \end{figure}
 
-To open the viewer window, go to \texttt{Window $\rightarrow$ Show Viewer}.  
-The display is the area on the viewer where you actually see media playing.  
-Before you can play any media, you must first load it on the viewer. 
-To load media into the viewer:
+In order to view media in the display, you have to load it as follows:
 
 \begin{enumerate}
-    \item  Open the resources manager window and select the Media folder or the Clip folder.
-    \item  Drag a file from the Media or the Clip folder to the viewer.
+    \item  In the Resources window, highlight the Media folder or the Clip folder.
+    \item  Drag a file from the folder to the Viewer.
+    \item  Or highlight an asset, RMB to bring up choices, and click on \textit{View} or
+\textit{View in new window}.
 \end{enumerate}
 
-You can also load media onto the viewer by right clicking on a file in the asset manager and selecting View from the popup menu or by double clicking on the icon. 
-Once your media loads you will see it appear on the display. 
-To play, rewind or forward through it use the slider control or the transport controls. 
-You can change the media display size by right clicking on the screen to activate the display zoom menu. 
-Select zoom levels of 50\%, 100\% or 200\% of the original media size.
+After the media is loaded you can use the transport buttons to play, rewind, stop, etc. or for fast
+previewing, drag with the LMB anywhere on the timebar slider.  A few more options available in the
+Viewer window can be accessed with a RMB click on the display.  These functions are listed next.
 
-When displaying media, the viewer uses the project's defined output size format settings, not the original assets format. 
-You can change the project's output to match the asset's format using the match project size menu option in the asset manager. 
-In the Viewer you can move around in the source media or clips and select regions to paste into the project. 
-Operations done in the viewer affect a temporary EDL or a clip, but not the timeline.
+\begin{enumerate}
+    \item  Switch to a fullscreen display by choosing \textit{Fullscreen}.  To switch back, click
+with the RMB on the display again and choose \textit{Windowed}.
+    \item  Change the display size by choosing the \textit{Zoom} function to select a zoom level of
+25\%, 33\%, ... 300\% or 400\% of the original media size.
+    \item  To remove the current media from being displayed, choose \textit{Close source}.
+\end{enumerate}
+
+The Viewer uses the project's output size format settings to display the media instead of the original
+assets format. Operations performed in the Viewer affect a temporary EDL or a clip rather than the
+timeline.  By default the Viewer window is automatically available but if it gets accidentally
+closed you can open it again by using \texttt{Window $\rightarrow$ Show Viewer} to bring it back up. 
 
 \section{Options in both the Compositor and Viewer Windows}%
 \label{sec:options_in_both_the_compositor_and_viewer_windows}

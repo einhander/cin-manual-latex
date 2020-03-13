@@ -3,7 +3,7 @@
 
 There are realtime effects -- these are the most useful and probably all you will ever need -- and rendered effects. 
 The rendered effects are discussed separately in the \nameref{sec:rendered_effects}  section. 
-Effect plugins modify the track when played, according to how they are set, with no permanent storage of the output except when the project is rendered. There are many Plugins in Cinelerra-GG Infinity which are actually quite easy to use just by experimenting with them. The plugins are shown and selected from the \textit{Resources window} (figure~\ref{fig:video-plugins}). They are described in more detail later.
+Effect plugins modify the track when played, according to how they are set, with no permanent storage of the output except when the project is rendered. There are many Plugins in \CGG{} Infinity which are actually quite easy to use just by experimenting with them. The plugins are shown and selected from the \textit{Resources window} (figure~\ref{fig:video-plugins}). They are described in more detail later.
 
 \begin{figure}[htpb]
     \centering
@@ -112,14 +112,14 @@ Shared effects and shared tracks allow very unique things to be done. In the cas
 
 When a shared effect is played back, it is processed just like a normal effect except the configuration is copied from the original effect. Some effects detect when they are being shared. These effects determine what tracks are sharing them and either mix the two tracks together or use one track to stage some value. 
 
-When an original track has a shared track as one of its effects, the shared track itself is used as a \textit{realtime} effect. This is more commonly known as \textit{bouncing tracks} but Cinelerra achieves the same operation by attaching shared tracks. The fade and any effects in the shared track are applied to the original track. Once the shared track has processed the data, the original track performs any effects which come below the shared track and then composites it on the output.
+When an original track has a shared track as one of its effects, the shared track itself is used as a \textit{realtime} effect. This is more commonly known as \textit{bouncing tracks} but \CGG{} achieves the same operation by attaching shared tracks. The fade and any effects in the shared track are applied to the original track. Once the shared track has processed the data, the original track performs any effects which come below the shared track and then composites it on the output.
 
 In order to prevent the shared track from mixing the same data as the original track on the output, enable the output \texttt{mute} toggle in the patchbay next to each track for which you do not want to mix on the output. If you are making a video and you do want the shared track to composite the original track's data on the output a second time, the video from the shared track would always appear under the video from the original track, regardless of whether it was on top of the original track. This is because shared tracks are composited in order of their attachment. Since it is part of the original track it has to be composited before the original track is.
 
 \section{Saved Plugin Presets}%
 \label{sec:saved_plugin_preset}
 
-\textit{Presets} and \textit{Factory Presets} for Plugin settings are now combined with the Preset Keyframe Parameters allowing you to choose, apply, delete, and edit your own Presets which can then be easily saved in the file \texttt{\$HOME/.bcast5/Cinelerra\_\\presets}. In addition to your own saved presets, there are automatically available Factory presets for some plugins, for example the Lens video plugin. The Factory presets are preceded by an asterisk (*) and can not be modified permanently.
+\textit{Presets} and \textit{Factory Presets} for Plugin settings are now combined with the Preset Keyframe Parameters allowing you to choose, apply, delete, and edit your own Presets which can then be easily saved in the file \texttt{\$HOME/.bcast5/\CGG{}\_\\presets}. In addition to your own saved presets, there are automatically available Factory presets for some plugins, for example the Lens video plugin. The Factory presets are preceded by an asterisk (*) and can not be modified permanently.
 
 \begin{wrapfigure}[4]{r}{0.3\linewidth}
     \vspace{-2ex}
@@ -166,7 +166,7 @@ To get a short one or a few lines description of a plugin, right click on that p
 \subsection{Delete Plugins to save Resources Space or make them Unavailable}%
 \label{sub:delete_plugin_resouces_unavaible}
 
-Maybe you just don't ever use certain plugins or would prefer to only find the ones that are useful to you. To save space in the Resources Window so you don't have to scroll to find the plugins you want as much, a feature to delete others is available. If you have a System install, you will have to be root for this function to be usable. The plugins will be permanently deleted, but only until you rebuild or download a new set of Cinelerra binaries. To delete a plugin, highlight the plugin you no longer want in the Resources window then press Ctrl-Shift-delete. A small window will come up allowing you to change your mind and red-X out or check-OK to remove plugin. This feature may come in handy if you have personnel working on media for you and you only want them to exercise certain functions. Or maybe you can't remember which is the good \textit{deinterlace} plugin out of the available five or so and want to delete the extras so as not to be confused. The ffmpeg, \textit{ladspa}, and \textit{lv2} plugins can not be deleted in this manner but, of course, you can always turn them off from view by clicking on \textit{Visibility} and unchecking them (figure~\ref{fig:remove-effect}).
+Maybe you just don't ever use certain plugins or would prefer to only find the ones that are useful to you. To save space in the Resources Window so you don't have to scroll to find the plugins you want as much, a feature to delete others is available. If you have a System install, you will have to be root for this function to be usable. The plugins will be permanently deleted, but only until you rebuild or download a new set of \CGG{} binaries. To delete a plugin, highlight the plugin you no longer want in the Resources window then press Ctrl-Shift-delete. A small window will come up allowing you to change your mind and red-X out or check-OK to remove plugin. This feature may come in handy if you have personnel working on media for you and you only want them to exercise certain functions. Or maybe you can't remember which is the good \textit{deinterlace} plugin out of the available five or so and want to delete the extras so as not to be confused. The ffmpeg, \textit{ladspa}, and \textit{lv2} plugins can not be deleted in this manner but, of course, you can always turn them off from view by clicking on \textit{Visibility} and unchecking them (figure~\ref{fig:remove-effect}).
 
 \begin{figure}[htpb]
     \centering
@@ -178,7 +178,7 @@ Maybe you just don't ever use certain plugins or would prefer to only find the o
 \subsection{Updatable Icon Image Support}%
 \label{sub:updatable_icon_image_support}
 
-When running Cinelerra-GG Infinity builtin icons are loaded before the program starts. Png files in the path: \\ \texttt{<target\_directory>picon/picon\_set\_name} \\
+When running \CGG{} Infinity builtin icons are loaded before the program starts. Png files in the path: \\ \texttt{<target\_directory>picon/picon\_set\_name} \\
 are searched before the images loaded into memory. Override \texttt{icon.png} files must be put into the path: \\ \texttt{<target\_directory>/picon/picon\_set\_name} \\
 There are currently 4 sets of icons and their directory names are \textit{cinfinity} (the default) and \textit{cinfinity2}, \textit{original} (the long-time original set), and \textit{smoother} (generally was in use by some of the themes). An example, to replace the cinfinity icon of Blue Banana with a red apple instead, create your .png file as desired, and replace the file in: \\
 \texttt{<target\_directory>/bin/plugins/picon/cinfinity/bluebanana.png}.
@@ -204,7 +204,7 @@ In order to make the icons available to all themes, which would thus be the defa
 
 \texttt{<cinlib\_path>/bin/plugins/picon/cinfinity} (or cinfinity2, original or smoother)
 
-The Cinelerra program looks for a plugin icon in two places:
+The \CGG{} program looks for a plugin icon in two places:
 
 \begin{enumerate}
     \item First, it tries to find a png file in \texttt{<cinlib>/plugins/picon/cinfinity}(2) or original, smoother directory.
@@ -233,17 +233,17 @@ Keep in mind these points for newly created plugin icons:
     \item All ffmpeg icons must begin with \texttt{ff\_<plugin\_name>.png} (Resources window title will still be F\_\dots)
     \item For ladspa, check in the \texttt{<cin\_config>} directory (\texttt{\$HOME/.bcast5} normally) and look for the text file \texttt{\$HOME/.bcast5/ladspa\_plugins\dots} for the names of the ladspa libraries which correspond to plugin names where the needed name is the basename of the \texttt{.so} file. 
         For example \texttt{pha\-sers\_1217.so} would need to have a \texttt{phasers\_1217.png} file. There may be multiple plugins in a single “so” file which means that you can only have 1 icon to represent all of the plugins in that file; again as in phasers.
-    \item Once you have placed the .png file in the correct spot, you will have to restart Cinelerra to test it.
-    \item To submit your .png file for inclusion into Cinelerra-GG Infinity for all to enjoy, it is best to upload it to any datafilehost and notify the community via email with any informative documentation.
+    \item Once you have placed the .png file in the correct spot, you will have to restart \CGG{} to test it.
+    \item To submit your .png file for inclusion into \CGG{} Infinity for all to enjoy, it is best to upload it to any datafilehost and notify the community via email with any informative documentation.
 \end{itemize}
 
 \subsection{Example of new Plugin Icon Testing}%
 \label{sub:example_plugin_icon_testing}
 
-For a simple test just copy an existing \texttt{<plugin\_name>.png} file into the cinfinity directory with the name \texttt{bluebanana.png} to write over the existing file. This icon will now show up in Cinelerra and still execute the Blue Banana function.
+For a simple test just copy an existing \texttt{<plugin\_name>.png} file into the cinfinity directory with the name \texttt{bluebanana.png} to write over the existing file. This icon will now show up in \CGG{} and still execute the Blue Banana function.
 
 For an ffmpeg plugin, create \texttt{ff\_loop.png} and copy it to: \\
-\texttt{<cinlib\_path>/plugins/picon/original}. This icon will show up in Cinelerra if original is selected and execute the \textit{F\_loop} function.
+\texttt{<cinlib\_path>/plugins/picon/original}. This icon will show up in \CGG{} if original is selected and execute the \textit{F\_loop} function.
 
 For a ladspa plugin, the text line in \texttt{\$HOME/.bcast5/ladspa\_plugins}$\dots$ as seen below:
 2 \texttt{am\_pitchshift\_1433.so} \\
@@ -263,7 +263,7 @@ Restart cin by changing \texttt{Settings$\rightarrow$ Preferences$\rightarrow$ A
 \subsection{Plugins/Effects Visibility}%
 \label{sub:plugins_effects_visibility}
 
-Cinelerra contains many plugins, especially with the addition of ffmpeg, and it is somewhat difficult to find the one you are looking for in the Resources window. In Cinelerra-GG Infinity, the plugins have been categorized into the following subsets in the \textit{Visibility} section of the Resources window to make it easier to locate a particular one:
+\CGG{} contains many plugins, especially with the addition of ffmpeg, and it is somewhat difficult to find the one you are looking for in the Resources window. In \CGG{} Infinity, the plugins have been categorized into the following subsets in the \textit{Visibility} section of the Resources window to make it easier to locate a particular one:
 
 \textit{Audio Effects, \quad Video Effects, \quad Audio Transitions, \quad Video Transitions}
 
@@ -290,7 +290,7 @@ Highlight the set you want to turn on and a check mark appears to show it is act
 \label{sub:expanders_plugin_subtrees}
 
 To accentuate a set of common plugins, there are \textit{expander} arrows on the left side of the Resources window. You will see these expanders only when in \textit{Display text} mode, not \textit{icon} mode. 
-Cinelerra’s default setup is in the file \texttt{\$CIN\_DAT/expan\-ders.txt} but if the user wants their own specific setup and if the file in \texttt{\$HOME/.\\bcast5/expanders.txt} exists, it will take precedence. 
+\CGG{}’s default setup is in the file \texttt{\$CIN\_DAT/expan\-ders.txt} but if the user wants their own specific setup and if the file in \texttt{\$HOME/.\\bcast5/expanders.txt} exists, it will take precedence. 
 If there are recommendations for other relevant categories, they can be added. The subtree structure is applicable to any of the \textit{Video Effects/Transitions} or \textit{Audio Effects/Transitions}. You can not sort once an expansion is in effect (figure~\ref{fig:expander}).
 
 The \texttt{expanders.txt} file has very specific requirements. The most specific is that there are no blanks -- you must use tabs only. A \# (pound sign) can be used in column 1 to indicate a comment. Here is a short example:
@@ -319,14 +319,14 @@ Audio Effects
 \subsection{Speed-up of Ffmpeg plugin usage with OPTS files}%
 \label{sub:speedup_ffmpeg_plugin_opts}
 
-You can speed up some ffmpeg plugins that are quite time-consuming and use a lot of CPU. For a specific color-based example, Cinelerra uses 6 primary rendering color models. All of them have 3 components at full scale. Direct usage of a particular ffmpeg plugin from the ffmpeg command line might handle the planar at less than full scale chroma (yuv420), which means there is less data to manipulate. But when cinelerra loads a video it uses full scale color models. In other words:
+You can speed up some ffmpeg plugins that are quite time-consuming and use a lot of CPU. For a specific color-based example, \CGG{} uses 6 primary rendering color models. All of them have 3 components at full scale. Direct usage of a particular ffmpeg plugin from the ffmpeg command line might handle the planar at less than full scale chroma (yuv420), which means there is less data to manipulate. But when cinelerra loads a video it uses full scale color models. In other words:
 
 \begin{itemize}[noitemsep]
-    \item Cinelerra uses \textit{yuv444}
+    \item \CGG{} uses \textit{yuv444}
     \item ffmpeg uses \textit{yuv420}
 \end{itemize}
 
-if using an ffmpeg plugin that uses filters and many passes over the data, the amount of data is a big factor. If you load a file in Cinelerra with a
+if using an ffmpeg plugin that uses filters and many passes over the data, the amount of data is a big factor. If you load a file in \CGG{} with a
 
 \texttt{same\_directory\_path\_and\_filename.opts}
 
@@ -380,7 +380,7 @@ It is an effect that modulates the signal, varies the pitch up and down (instead
 \subsection{Compressor (Single Band)}%
 \label{sub:compressor}
 
-The audio compressor reduces the dynamic range of the audio, not the amount of data required to store the audio. In Cinelerra the compressor actually performs the function of an expander and compressor of the signal's dynamic range. A third and more sophisticated use serves to highlight the voice with respect to the sound background. It is a multitrack effect and can also be applied as a Shared Effect. (figure~\ref{fig:compressor}).
+The audio compressor reduces the dynamic range of the audio, not the amount of data required to store the audio. In \CGG{} the compressor actually performs the function of an expander and compressor of the signal's dynamic range. A third and more sophisticated use serves to highlight the voice with respect to the sound background. It is a multitrack effect and can also be applied as a Shared Effect. (figure~\ref{fig:compressor}).
 
 \begin{figure}[htpb]
     \centering
@@ -701,7 +701,7 @@ Currently available waveforms are: \textit{Sine}; \textit{Sawtooth}; \textit{Rev
 \label{sec:audio_ladspa_effects}
 \settocdepth{section}
 
-Ladspa effects are supported in realtime and rendered mode for audio. These audio effects are supported since Cinelerra implements the LADSPA interface as accurately as possible. Besides the supplied LADSPA effects\protect\footnote{credit Steve Harris}, additional LADSPA effects can be enabled by setting the \texttt{LADSPA\_PATH} environment variable to the location of your LADSPA plugins:
+Ladspa effects are supported in realtime and rendered mode for audio. These audio effects are supported since \CGG{} implements the LADSPA interface as accurately as possible. Besides the supplied LADSPA effects\protect\footnote{credit Steve Harris}, additional LADSPA effects can be enabled by setting the \texttt{LADSPA\_PATH} environment variable to the location of your LADSPA plugins:
 
 \begin{lstlisting}[language=Bash,numbers=none]
 export LADSPA_PATH=/usr/lib/ladspa
@@ -710,20 +710,20 @@ export LADSPA_PATH=/usr/lib/ladspa
 \section[Audio LV2 / Calf Plugins]{Audio LV2 / Calf Plugins\protect\footnote{Optional Feature - OS dependent}}%
 \label{sec:audio_lv2_calf_plugins}
 
-LV2 is an open standard for audio plugins using a simple interface with extensions which add functionality to support audio software. These plugins were written by external developers and provide additional audio effects to Cinelerra audio without having to change Cinelerra every time. Because the LV2 plugins are separate from Cinelerra-GG Infinity, if one fails or does not perform as expected, Cinelerra should stay running and you will have to contact the programmers responsible for that plugin for a fix.
+LV2 is an open standard for audio plugins using a simple interface with extensions which add functionality to support audio software. These plugins were written by external developers and provide additional audio effects to \CGG{} audio without having to change \CGG{} every time. Because the LV2 plugins are separate from \CGG{} Infinity, if one fails or does not perform as expected, \CGG{} should stay running and you will have to contact the programmers responsible for that plugin for a fix.
 
-Typically, a user OS has specialized package groups installed. It is difficult to create one build of Cinelerra to accommodate all potential LV2 plugins. Specifically for the \textit{Calf-Studio LV2 plugins}, you should install the \textit{Calf Plugins} package. The user’s computer must have \textit{gtk-2-runtime} installed, which seems to be automatically done already for most distros. For users doing their own builds, you can build Cinelerra without LV2 support by including \texttt{-{}-without-lv2} in the configure step. The default build is \texttt{-{}-with-lv2=yes} and requires that \textit{GTK-2-devel} must be installed or the build will fail and notify you.
+Typically, a user OS has specialized package groups installed. It is difficult to create one build of \CGG{} to accommodate all potential LV2 plugins. Specifically for the \textit{Calf-Studio LV2 plugins}, you should install the \textit{Calf Plugins} package. The user’s computer must have \textit{gtk-2-runtime} installed, which seems to be automatically done already for most distros. For users doing their own builds, you can build \CGG{} without LV2 support by including \texttt{-{}-without-lv2} in the configure step. The default build is \texttt{-{}-with-lv2=yes} and requires that \textit{GTK-2-devel} must be installed or the build will fail and notify you.
 
 LV2 plugins have their own category in the \textit{Audio Plugins Visibility} as lv2. There is a simple text interface which is available via the usual \textit{Show controls} button when the plugin is attached to the audio track. This window has a Reset button to get back to the default settings. To change a value of one of the parameters, highlight that parameter and type in the new value in the topmost text box and then hit Apply to take effect -- the reason for requiring hitting apply is so that the audio is not moving all over the place while you are still typing a value. More easily, you can just move the \textit{pot dial} or the \textit{slider} bar which take effect automatically. 
 
-Cinelerra’s buffer size setting may cause a delay in activation of the changes you make taking effect, so you can lessen the time by using a small buffer. Notice that $1024$ samples at $48000$ samples per sec is only $\frac{1}{50}^{th}$ a second. This is not a lot of time to shuffle a bunch of stuff. Short buffers produce low latency, but no time for complex programs or lots of stacked effects. Bigger buffers allow for more complex setups.
+\CGG{}’s buffer size setting may cause a delay in activation of the changes you make taking effect, so you can lessen the time by using a small buffer. Notice that $1024$ samples at $48000$ samples per sec is only $\frac{1}{50}^{th}$ a second. This is not a lot of time to shuffle a bunch of stuff. Short buffers produce low latency, but no time for complex programs or lots of stacked effects. Bigger buffers allow for more complex setups.
 
 To set the buffer size:
 
 \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ tab Playback A $\rightarrow$ section Audio Out $\rightarrow$ variable Playback buffer samples}
 
-However, be forewarned that due to variability in the lv2 plugin programming code, some of the plugins only work with the minimum buffer size of $1024$. In these cases, what you will see is the main track canvas cursor just bounces back and forth over a very small area in the timeline. This does not crash Cinelerra but you will have to remove the plugin to continue working.
-You can specify a certain set of LV2 plugins to use by setting \texttt{LV2\_PATH} as shown below before starting Cinelerra -- include a colon ($:$) separator for multiple paths. The default path for most operating systems is \texttt{/usr/lib64/lv2}. To list the system installed lv2 plugins key in: \texttt{lv2ls}.
+However, be forewarned that due to variability in the lv2 plugin programming code, some of the plugins only work with the minimum buffer size of $1024$. In these cases, what you will see is the main track canvas cursor just bounces back and forth over a very small area in the timeline. This does not crash \CGG{} but you will have to remove the plugin to continue working.
+You can specify a certain set of LV2 plugins to use by setting \texttt{LV2\_PATH} as shown below before starting \CGG{} -- include a colon ($:$) separator for multiple paths. The default path for most operating systems is \texttt{/usr/lib64/lv2}. To list the system installed lv2 plugins key in: \texttt{lv2ls}.
 
 \begin{lstlisting}[numbers=none]
 export LV2_PATH=/tmp/j/balance.lv2/usr/local/lib/lv2/:/usr/local/lv2
@@ -737,7 +737,7 @@ If there is no default \texttt{LV2\_PATH} set automatically, the value will be \
 When you change this field, cin will automatically restart and load the newly specified lv2 plugins. If when switching \texttt{LV2\_PATH} or if the lv2 audio plugins are not displayed/usable in the Resources window, you can execute a reload via:
 
 \texttt{Settings $\rightarrow$  Preferences $\rightarrow$ Interface tab $\rightarrow$ Reload plugin in\-dex} 
-or else before you bring up Cinelerra, delete \texttt{\$HOME/.bcast5/Cinelerra\_\\plugins} so that the plugins get properly reloaded.
+or else before you bring up \CGG{}, delete \texttt{\$HOME/.bcast5/\CGG{}\_\\plugins} so that the plugins get properly reloaded.
 
 There are some lv2 plugins that display a \textit{glitzy} UI (User Interface); for example the \textit{Calf plugins}. For these LV2 plugins, if you want that to automatically come up without having to click on the UI button on the simplified UI interface, there is a flag to enable that. It is at:
 
@@ -754,7 +754,7 @@ Below is a screencast showing the auto start gui flag and the \texttt{LV2\_PATH}
     \label{fig:reload}
 \end{figure}
 
-There is also a blacklist that prevents known problematic-for-Cinelerra lv2 plugins from loading to avoid crashes. If others are found to have problems, once informed about them, they will be added to this blacklist. In order to determine which lv2 plugin causes a SEGV on Cinelerra startup, you can start from a terminal window and you will see each plugin that is being loaded and the last one shown before the crash is a bad plugin. However, many of the plugins causing a crash are due to not having been compiled on your current system with the current compiler so may actually work correctly on other user systems and so will not be added to the Cinelerra-wide blacklist. You can either recompile the problematic plugin, or modify your own blacklist which you will have to maintain and save so as not to be written over when loading a new build.
+There is also a blacklist that prevents known problematic-for-\CGG{} lv2 plugins from loading to avoid crashes. If others are found to have problems, once informed about them, they will be added to this blacklist. In order to determine which lv2 plugin causes a SEGV on \CGG{} startup, you can start from a terminal window and you will see each plugin that is being loaded and the last one shown before the crash is a bad plugin. However, many of the plugins causing a crash are due to not having been compiled on your current system with the current compiler so may actually work correctly on other user systems and so will not be added to the \CGG{}-wide blacklist. You can either recompile the problematic plugin, or modify your own blacklist which you will have to maintain and save so as not to be written over when loading a new build.
 
 Note the UI button in the upper right hand corner above the Reset button (figure~\ref{fig:calf}). If you click this button, a glitzy interface window comes up (if available) for changing variable values. It is possible that a bug in the LV2 plugin causes the glitzy window to appear as blank and then die, but in that case the original simple text window might still work -- in either case, if the timeline movement hangs, just detach the plugin to continue your current session. There is an environment variable that you can set,  \texttt{BC\_TRAP\_LV2\_SEGV}, to get a dump of the failure which may be helpful for debugging.
 
@@ -765,9 +765,9 @@ Note the UI button in the upper right hand corner above the Reset button (figure
     \label{fig:calf}
 \end{figure}
 
-When the glitzy ui is up, the simple text window remains up also since it is the Cinelerra side and keeps track of the value changes so they remain in effect for further usage of the plugin. Changes to one or the other will occur in both with the exception of certain features in the glitzy window which are not communicated correctly back to Cinelerra; for example a reset button -- the simple interface Reset button must be used instead. To change values in the glitzy window you use the mouse and move up or down unlike a knob that turns! (Figure~\ref{fig:calf02})
+When the glitzy ui is up, the simple text window remains up also since it is the \CGG{} side and keeps track of the value changes so they remain in effect for further usage of the plugin. Changes to one or the other will occur in both with the exception of certain features in the glitzy window which are not communicated correctly back to \CGG{}; for example a reset button -- the simple interface Reset button must be used instead. To change values in the glitzy window you use the mouse and move up or down unlike a knob that turns! (Figure~\ref{fig:calf02})
 
-In order to test a particular plugin without bringing up Cinelerra, especially for ones that do not operate, it is possible to manually display an lv2ui gui with: \\
+In order to test a particular plugin without bringing up \CGG{}, especially for ones that do not operate, it is possible to manually display an lv2ui gui with: \\
 \texttt{/cin-path/lv2ui <lv2-uri>} \\
 For example:
 
@@ -819,10 +819,10 @@ Allows you to apply an alpha value (transparency) to one or more tracks or one o
 
 Automatically scale to a specified size.
 
-\subsection{Blue Banana\protect\footnote{credit to Monty Montgomery programmer}}%
+\subsection{Blue Banana}%
 \label{sub:blue_banana}
 
-Blue Banana is an \textit{HSL Qualifier} (HSL= hue, saturation, lightness), one of the basic tools of any grading software that are based on circumscribing a zone of the frame by extracting a chromatic key and producing a \textit{matte} in the alpha channel (Secondary Color Correction). Blue Banana differs not by creating a real matte, but by creating a \textit{selection mask} exclusively for use within the plugin. The BlueBanana plugin has a couple of useful purposes. It can be used for color transformation or remapping -- by isolating a specific color and then performing color change/correction on only that color (or color ranges). Another useful purpose is for chroma-key filtering, using multiple BlueBanana plugins on the same track. Also, it can be used in conjunction with the mask operation of the Compositor. Usage of BlueBanana may seem complicated at first, but it is necessarily so in order to get enough control to produce the desired effect simply and quickly. Just changing a single color is actually quite easy. BlueBanana is keyframable (figure~\ref{fig:bluebanana}).
+Blue Banana\protect\footnote{credit to Monty Montgomery programmer} is an \textit{HSL Qualifier} (HSL= hue, saturation, lightness), one of the basic tools of any grading software that are based on circumscribing a zone of the frame by extracting a chromatic key and producing a \textit{matte} in the alpha channel (Secondary Color Correction). Blue Banana differs not by creating a real matte, but by creating a \textit{selection mask} exclusively for use within the plugin. The BlueBanana plugin has a couple of useful purposes. It can be used for color transformation or remapping -- by isolating a specific color and then performing color change/correction on only that color (or color ranges). Another useful purpose is for chroma-key filtering, using multiple BlueBanana plugins on the same track. Also, it can be used in conjunction with the mask operation of the Compositor. Usage of BlueBanana may seem complicated at first, but it is necessarily so in order to get enough control to produce the desired effect simply and quickly. Just changing a single color is actually quite easy. BlueBanana is keyframable (figure~\ref{fig:bluebanana}).
 
 The basic strategy for BlueBanana is to:
 
@@ -1471,7 +1471,7 @@ frame 2 $\implies$ F2-field1, F2-field2
 Interlaced video reading: $F1-f1$ then $F1-f2$ then $F2-f1$ then $F2-f2$ \dots
 There may be visual problems if the Top type interlacing is read according to a Bottom scheme. So it's important to know if a video is Top or Bottom. Generally an \textit{HD} video is Top; a \textit{DV} video (both PAL and NTSC) is Bottom; \textit{SD} (PAL) is Top; \textit{SD} (NTSC) is Bottom (but not always). Instead, high-definition videos need to be more compressed and this contrasts with the interlacing that is little and badly compressible, so modern videos are mostly \textit{progressive}.
 
-\subsubsection*{In Cinelerra-GG}
+\subsubsection*{In \CGG{}}
 \label{ssub:in_cin_gg}
 
 \begin{enumerate}
@@ -1491,7 +1491,7 @@ This plugin is only useful if its output is pulled with doubled framerate with r
 \begin{enumerate}
     \item Create a new project with doubled frame rate. That is, make it $50\,fps$ if your source footage is $25i$. 
     In \texttt{Resources $\rightarrow$ Media $\rightarrow$ Info} set the interlaced type (or unknown)
-    \item Insert your source footage onto a video track in the timeline. Now, Cinelerra will playback each
+    \item Insert your source footage onto a video track in the timeline. Now, \CGG{} will playback each
     frame of your footage twice. There will be visual artifacts because the video is interlaced and the
     monitor is progressive.
     \item Apply the \textit{Frames to Fields} effect. Be sure to choose the correct field order. If we know or believe that the original video is \textit{Top First} let's try it first, but it doesn't have to be the right solution. The only way is to playback and look for visual artifacts.
@@ -1500,7 +1500,7 @@ This plugin is only useful if its output is pulled with doubled framerate with r
     \item Render your project to an intermediate clip. Be sure to choose a rather lossless video codec, for
     example \textit{Motion-JPEG-A} or even \textit{uncompressed YUV} if you have plenty of storage.
     \item Insert the intermediate clip into your original project. Make sure the doubled framerate has been
-    detected correctly by Cinelerra (by looking in the clip's media \textit{info} in the media resources folder).
+    detected correctly by \CGG{} (by looking in the clip's media \textit{info} in the media resources folder).
     \item Apply the \textit{Fields to frames} effect to the intermediate clip. This will combine two adjacent fields
     into one interlaced field with the original frame rate.
     \item Do the final render on your original project. Now there will be no visual artifacts on the monitor.
@@ -1520,9 +1520,9 @@ In its simplest form, highlight a region of the track to freeze, drop the \textt
 \subsection{Gamma}%
 \label{sub:gamma}
 
-\textit{Log} camera images store colors in a $logarithmic$ scale. The blacks in these images are nearly $0$ and the whites are supposed to be infinity. The graphics card and most video codecs store colors in a $linear$ scale but Cinelerra keeps log camera images in their original logarithmic scale when it renders them. This is necessary because the raw image parser can not always decode the proper gamma ($\gamma$) values for the images. It also does its processing in $16\,bit$ integers, which takes away a lot of information.
+\textit{Log} camera images store colors in a $logarithmic$ scale. The blacks in these images are nearly $0$ and the whites are supposed to be infinity. The graphics card and most video codecs store colors in a $linear$ scale but \CGG{} keeps log camera images in their original logarithmic scale when it renders them. This is necessary because the raw image parser can not always decode the proper gamma ($\gamma$) values for the images. It also does its processing in $16\,bit$ integers, which takes away a lot of information.
 
-Mathematically, the gamma function is exponential ($output = input^{\gamma}$) and therefore the inverse of the logarithmic function [$output = \log(input)$]. Actually the formula used by the Cinelerra-gg plugin is: $output = input^{\frac{1}{\gamma}}$ which allows for a range of values $0 \div 1.0$. The gamma effect converts the logarithmic colors to linear colors through a \textit{gamma value} and a \textit{maximum value}. The gamma value determines how steep the output curve is (i.e. the value of the gamma parameter; for color space Rec709 is $2.4$ ($\frac{1}{\gamma} =0.41\dots$), for sRGB is $2.2$ ($\frac{1}{\gamma} =0.45\dots$), etc.). The maximum value is where $1.0$ in the output corresponds to maximum brightness in the input. It serves to avoid clipped values because it allows you to set the maximum value of the output, $1.0$, whenever range adjustment is done (see figure~\ref{fig:gamma01}). It is important to adjust the two parameters accurately in order to avoid undesired and unexpected effects, such as excessive values, unbalanced image, incorrect linearization, etc.
+Mathematically, the gamma function is exponential ($output = input^{\gamma}$) and therefore the inverse of the logarithmic function [$output = \log(input)$]. Actually the formula used by the \CGG{} plugin is: $output = input^{\frac{1}{\gamma}}$ which allows for a range of values $0 \div 1.0$. The gamma effect converts the logarithmic colors to linear colors through a \textit{gamma value} and a \textit{maximum value}. The gamma value determines how steep the output curve is (i.e. the value of the gamma parameter; for color space Rec709 is $2.4$ ($\frac{1}{\gamma} =0.41\dots$), for sRGB is $2.2$ ($\frac{1}{\gamma} =0.45\dots$), etc.). The maximum value is where $1.0$ in the output corresponds to maximum brightness in the input. It serves to avoid clipped values because it allows you to set the maximum value of the output, $1.0$, whenever range adjustment is done (see figure~\ref{fig:gamma01}). It is important to adjust the two parameters accurately in order to avoid undesired and unexpected effects, such as excessive values, unbalanced image, incorrect linearization, etc.
 
 \begin{figure}[htpb]
     \centering
@@ -1982,12 +1982,12 @@ Uses X/Y camera automation vectors to apply a linear blur trailing camera direct
 \subsection{MotionCV}%
 \label{sub:motioncv}
 
-Motion tracking/stabilization from the community version of Cinelerra. For theory and explanations refer to the \hyperref[sub:motion]{Motion} plugin.
+Motion tracking/stabilization from the community version of \CGG{}. For theory and explanations refer to the \hyperref[sub:motion]{Motion} plugin.
 
 \subsection{MotionHV}%
 \label{sub:motionhv}
 
-Updated motion tracking/stabilization of 2017 from the original author of Cinelerra. For theory and explanations refer to the \hyperref[sub:motion]{Motion} plugin.
+Updated motion tracking/stabilization of 2017 from the original author of \CGG{}. For theory and explanations refer to the \hyperref[sub:motion]{Motion} plugin.
 
 \subsection{Oil painting}%
 \label{sub:oil_painting}
@@ -1997,7 +1997,7 @@ This effect makes video tracks appears as a painting. It can be controlled by \t
 \subsection{Overlay}%
 \label{sub:overlay}
 
-This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by Cinelerra GG Infinity to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the on \hyperref[cha:overlays]{Overlays} chapter  -- PorterDuff.
+This effect can combine several tracks by using the so called Overlayer. This is a basic internal device normally used by \CGGI{} to create the dissolve transitions and for compositing the final output of every track onto the output bitmap. The Overlayer has the ability to combine one or several image layers on top of a bottom layer. It can do this combining of images in several different (and switchable) output modes such as \textit{Normal}, \textit{Additive}, \textit{Subtractive}, \textit{Multiply} (Filter), \textit{Divide}, \textit{Max} and \textit{Replace}. For a detailed list refer to the on \hyperref[cha:overlays]{Overlays} chapter  -- PorterDuff.
 
 The \textit{overlay} plugin enables the use of this Overlayer device in the middle of any plugin stack, opening endless filtering and processing possibilities. It is only useful as a \textit{shared plugin} (i.e. a multitrack plugin). To use the overlay plugin:
 
@@ -2193,7 +2193,7 @@ Plugin variables:
 \subsection{SVG via Inkscape}%
 \label{sub:svg_via_inkscape}
 
-This plugin allows the user to manipulate an SVG (scalable vector graphics) image with \textit{Inkscape} without having to leave the program. The associated Cinelerra window provides the ability to change the DPI, the Out $x/y$ coordinates, and the Out w/h values. For more information on use of inkscape, refer to: {\small \url{https://inkscape.org/develop/about-svg/}}
+This plugin allows the user to manipulate an SVG (scalable vector graphics) image with \textit{Inkscape} without having to leave the program. The associated \CGG{} window provides the ability to change the DPI, the Out $x/y$ coordinates, and the Out w/h values. For more information on use of inkscape, refer to: {\small \url{https://inkscape.org/develop/about-svg/}}
 
 \begin{description}
     \item[DPI] is Dots per inch and it represents the resolution of the SVG image. Since the image is scaled with interpolation mode linear, the edges will look blurry when the input resolution is lower than the output resolution. You can either set the desired \textit{DPI value} in the window or use the tumbler on the integer text box, then use the \textit{update dpi} button to have the change take effect. Changing DPI causes the entire image to be re-exported via inkscape. DPI changes cause adjustments in the resolution, speed of re-import, and storage needed for the image data.
@@ -2469,7 +2469,7 @@ With \textit{Time Range} we decide the size (and therefore the number) of the ba
 \subsection{Title}%
 \label{sub:title}
 
-The \textit{Titler} allows you to add text from within Cinelerra GG. The titler has standard options for font, size, and style plus many options as described next (figure~\ref{fig:title01}).
+The \textit{Titler} allows you to add text from within \CGG{}. The titler has standard options for font, size, and style plus many options as described next (figure~\ref{fig:title01}).
 
 \begin{description}
     \item[Justify] justifies the text relative to the entire frame. Once justified, the $X$ and $Y\, offset$ is applied. This allows text to be justified while at the same time letting you push it within the title safe region.
@@ -2505,7 +2505,7 @@ The titler supports mainly \textit{TTF}, true type fonts. It supports others but
     # /usr/lib/cinelerra/fonts
     ttmkfdir && mv fonts.scale fonts.dir
 \end{lstlisting}
-and restart Cinelerra. The new fonts should appear. The usage of ttmkfdir changes frequently so this technique might not work. 
+and restart \CGG{}. The new fonts should appear. The usage of ttmkfdir changes frequently so this technique might not work. 
 
 If the video is displayed on a consumer TV, the outer border is going to be cropped by $5\%$ on each side. To avoid text which is too close to the edge looking bad, you may want to enable the \textit{title-safe} tool in the compositor window. The text should not cross the inner rectangle.
 
@@ -2583,7 +2583,7 @@ If the video is displayed on a consumer TV, the outer border is going to be crop
     \end{longtable}
 \end{center}
 
-These attributes stay in effect until you change them or reset them. Additional cpu time is needed for the \textit{blink} attribute because it requires redrawing every frame and for the background option described below. Note that some Title window controls can not be set, such as Justify and Outline color. The lines below are examples for testing purposes. The accompanying screenshot displays the corresponding Cinelerra output.
+These attributes stay in effect until you change them or reset them. Additional cpu time is needed for the \textit{blink} attribute because it requires redrawing every frame and for the background option described below. Note that some Title window controls can not be set, such as Justify and Outline color. The lines below are examples for testing purposes. The accompanying screenshot displays the corresponding \CGG{} output.
 
 \vspace{1ex} Examples of Title line keyins:
 
@@ -2604,7 +2604,7 @@ Figure~\ref{fig:title03}.
 \paragraph{Special Characters (< > / \textbackslash \#)} Besides the previously described <, >, and / characters, there are two special characters: backslash “\textbackslash”, and the pound sign “\#”. The backslash character is used for two things. With the advent of the attribute name and value, your line may become quite long so you can use “\textbackslash” followed by the carriage return to continue on the next line as if it is just a single line. It also can be used to designate that the following character does not represent the beginning of an attribute. For example, if you want to use the opening angle character “<“ as a title character, precede it with the backslash character. The pound sign, “\#”, designates the whole line as a comment or if in the middle of the line, then the rest of the line is a comment (this includes the carriage return).
 
 \begin{description}
-    \item[Background] in this box you can keyin the name of a file of the type that Cinelerra accepts and use that file as a background for your Title characters. This will be seen in the compositor window on top of the video that is loaded in the main track canvas. Besides typing in the filename, you must also check the checkbox. This makes it easy to turn it \textit{On} and \textit{Off} to see what it looks like. Next to the background box is a \textit{Loop} checkbox. If the background file takes less time than the main track canvas video to run, you can turn on the loop checkbox so that it runs over and over again to match the time size of your video.
+    \item[Background] in this box you can keyin the name of a file of the type that \CGG{} accepts and use that file as a background for your Title characters. This will be seen in the compositor window on top of the video that is loaded in the main track canvas. Besides typing in the filename, you must also check the checkbox. This makes it easy to turn it \textit{On} and \textit{Off} to see what it looks like. Next to the background box is a \textit{Loop} checkbox. If the background file takes less time than the main track canvas video to run, you can turn on the loop checkbox so that it runs over and over again to match the time size of your video.
     \item[Stroker] to add \textit{pen strokes} to the text letters, adjust the stroke width numerically. This looks particularly nice on certain fonts and with a negative adjustment of the \textit{Drop shadow}.
     \item[Unicode Insertion] if you want to enter a special character like the mathematical \textit{summation} symbol, you can use the unicode equivalent to do so. Press Ctrl-Shift-U followed by $2022$ and a carriage return is an example of the bullet. Refer to section \hyperref[sec:textbox_non_std_character_unicode]{17.5} for details.
     \item[Popup Helper] put your cursor where you want to add an attribute, then right mouse will bring up a list of the available attributes for you to choose, along with a submenu to choose from. The program will insert that attribute for you and all you have to add is a value when required! (see figure~\ref{fig:title02}).
@@ -2644,7 +2644,7 @@ In order to choose a font faster, you can keyin the first few characters of the 
 \subsubsection*{Font Addition / Font Subtraction}%
 \label{ssub:font_addition_subtraction}
 
-Some of the system fonts are automatically included in the set of fonts being used by Cinelerra. The easiest way to add additional fonts for the Title plugin's set, is to use ones available in specific directories on your computer as long as they have a \texttt{fonts.scale} file already set up. You can run \texttt{mkfontscale} to create this file within that directory. In order to include a specific directory you set an environment variable before starting Cinelerra which stays in effect until it is unset or until the next reboot. Below is the method and an example.
+Some of the system fonts are automatically included in the set of fonts being used by \CGG{}. The easiest way to add additional fonts for the Title plugin's set, is to use ones available in specific directories on your computer as long as they have a \texttt{fonts.scale} file already set up. You can run \texttt{mkfontscale} to create this file within that directory. In order to include a specific directory you set an environment variable before starting \CGG{} which stays in effect until it is unset or until the next reboot. Below is the method and an example.
 
 \vspace{1ex}
 \begin{lstlisting}[language=Bash,numbers=none]
@@ -2652,12 +2652,12 @@ export BC_FONT_PATH=<colon-separated-search-path-for-fonts>
 export BC_FONT_PATH=/usr/share/fonts
 \end{lstlisting}
 
-The current set of fonts in Cinelerra's directory will be automatically included and will be the default set if this environment variable is not set. Keep in mind that if you add a lot of fonts, it will considerably slow down the startup every time you bring up the Title plugin. 
+The current set of fonts in \CGG{}'s directory will be automatically included and will be the default set if this environment variable is not set. Keep in mind that if you add a lot of fonts, it will considerably slow down the startup every time you bring up the Title plugin. 
 
-If you want to only have a limited number of fonts set up, you can manipulate the Cinelerra directory directly at \texttt{<cinelerra\_install\_path> /bin/plug\-ins/fonts}. 
-Here you will find the default set of fonts that come with the install. Copy any other fonts you would like to include here with read permission, delete any fonts you do not want to have, then execute \texttt{mkfontscale} which creates the file \texttt{fonts.scale} that Cinelerra will read. However, the next time you install a new version of Cinelerra GG, your changes will be written over so you will have to make sure to save them elsewhere and then re-establish. 
+If you want to only have a limited number of fonts set up, you can manipulate the \CGG{} directory directly at \texttt{<cinelerra\_install\_path> /bin/plug\-ins/fonts}. 
+Here you will find the default set of fonts that come with the install. Copy any other fonts you would like to include here with read permission, delete any fonts you do not want to have, then execute \texttt{mkfontscale} which creates the file \texttt{fonts.scale} that \CGG{} will read. However, the next time you install a new version of \CGG{}, your changes will be written over so you will have to make sure to save them elsewhere and then re-establish. 
 
-If you have problems with a specific font or set of fonts, there is a debug option available to determine which font is an issue. When starting Cinelerra, you should set up the variable:
+If you have problems with a specific font or set of fonts, there is a debug option available to determine which font is an issue. When starting \CGG{}, you should set up the variable:
 
 \vspace{1ex}
 \begin{lstlisting}[language=Bash,numbers=none]
@@ -2665,7 +2665,7 @@ export BC_FONT_DEBUG=1	(default is 0 for no debug)
 unset BC_FONT_DEBUG		(to remove debug messages)
 \end{lstlisting}
 
-Then start Cinelerra from a terminal window to see the fonts being loaded and previewed in the Titler. This should point out any issues. Another debug methodology is to remove all fonts from being used and subsequently add in the ones that you want. For example:
+Then start \CGG{} from a terminal window to see the fonts being loaded and previewed in the Titler. This should point out any issues. Another debug methodology is to remove all fonts from being used and subsequently add in the ones that you want. For example:
 
 \vspace{1ex}
 \begin{lstlisting}[language=Bash,numbers=none]
@@ -2674,7 +2674,7 @@ export BC_FONT_PATH=:/usr/share/fonts #(remove all fonts and then add /usr/shar/
 \end{lstlisting}
 
 One last item of information about fonts that may lead to some confusion. The checkbox for Bold and Italic will occasionally be ghosted out if no bold or italic version of the selected font is available. This is no guarantee, but currently as good as it can get due to inconsistency in the creation of fonts. It is mostly just a hint. If boxes are checkmarked, but ghosted, you can not uncheck until you change to a font that does not ghost out the boxes. If you use the popup helper with the boxes checked, and attempt to keyin a font that does not have the bold/italic attribute as checked, the font will be considered illegal.
-Text: chars is output and updated to indicate the number of characters already used. The only limit to the number of characters based on a count of single $8\, bit$ characters is the available resources on the user computer available for Cinelerra use. Keep in mind that unicode or other special characters may consist of $2$ to $4$ $8\,bit$ bytes. Also, newlines are a character and any of the attributes you use count in the total. There is now a horizontal scroll bar as well as the vertical one in the textbox and they only appear when there are more lines or characters that can fit in the original sized textbox.
+Text: chars is output and updated to indicate the number of characters already used. The only limit to the number of characters based on a count of single $8\, bit$ characters is the available resources on the user computer available for \CGG{} use. Keep in mind that unicode or other special characters may consist of $2$ to $4$ $8\,bit$ bytes. Also, newlines are a character and any of the attributes you use count in the total. There is now a horizontal scroll bar as well as the vertical one in the textbox and they only appear when there are more lines or characters that can fit in the original sized textbox.
 
 \subsubsection*{Kerning}%
 \label{ssub:kerning}
@@ -2755,7 +2755,7 @@ This effect applies a traditional \textit{darkroom} technique, the so called \te
 \subsection{Videoscope}%
 \label{sub:videoscope}
 
-Videoscope summarizes intensity and color on a calibrated display. The Videoscope can be used in conjunction with other Cinelerra plugins such as \textit{Color 3 Way}, \textit{YUV}, \textit{Brightness}, \textit{Color Balance} or \textit{Histogram} to accurately correct video for contrast, clarity, conformance (to normalize various videos shot under different light settings), or for cinematic purposes. The human eye is not specialized to match precise level of light and color, but Videoscope is. Videoscope contains three displays: the waveform scope and the vectorscope, plus the histograms (figure~\ref{fig:videoscope01}).
+Videoscope summarizes intensity and color on a calibrated display. The Videoscope can be used in conjunction with other \CGG{} plugins such as \textit{Color 3 Way}, \textit{YUV}, \textit{Brightness}, \textit{Color Balance} or \textit{Histogram} to accurately correct video for contrast, clarity, conformance (to normalize various videos shot under different light settings), or for cinematic purposes. The human eye is not specialized to match precise level of light and color, but Videoscope is. Videoscope contains three displays: the waveform scope and the vectorscope, plus the histograms (figure~\ref{fig:videoscope01}).
 
 \begin{figure}[hbtp]
     \centering
@@ -2945,7 +2945,7 @@ There are some potential pitfalls with using this to include:
     \item internally the colormodel is converted to greyscale, which means the color information is not used
 \end{enumerate}
 
-Because of the build size of opencv, it is not normally included in the thirdparty directory. Building opencv adds a lot of storage demand ($4\,GB$) to the Cinelerra build tree, and the opencv compile time is significant. For these reasons, \textit{findobject} is not normally built. You can however invoke a build which adds findobject to the Cinelerra plugin library. Building findobject will configure and build opencv into the thirdparty library build area if needed (it does not rebuild if already done). System builds are possible, but the system compatibility of the newer opencv interfaces can vary between distros. The opencv interface is rapidly changing; we recommend the static library build and link to avoid problems.
+Because of the build size of opencv, it is not normally included in the thirdparty directory. Building opencv adds a lot of storage demand ($4\,GB$) to the \CGG{} build tree, and the opencv compile time is significant. For these reasons, \textit{findobject} is not normally built. You can however invoke a build which adds findobject to the \CGG{} plugin library. Building findobject will configure and build opencv into the thirdparty library build area if needed (it does not rebuild if already done). System builds are possible, but the system compatibility of the newer opencv interfaces can vary between distros. The opencv interface is rapidly changing; we recommend the static library build and link to avoid problems.
 
 \subsection{How to Build OpenCV Plugins}%
 \label{sub:how_build_opencv_plugins}
@@ -3010,7 +3010,7 @@ cin/plugins/opencv/stylizeobj.plugin
     \item \texttt{cd} that-directory;
     \item \texttt{tar -xf} location-of-the-tarball-you-downloaded;
     \item \texttt{cp plugins/*obj.plugin <see below for your location>/.} (note the period on the end!)
-    \item Start Cinelerra and look for the six plugins in Video Effects;
+    \item Start \CGG{} and look for the six plugins in Video Effects;
     \item To reverse this, simply delete the six plugin files (eg.
        
     \texttt{rm /usr/lib*/cin*/*obj.plugin}).
@@ -3051,7 +3051,7 @@ As in the standard OpenCV FindObj program, there are $5$ \textit{detector} metho
     \item [Don’t Calculate] Do nothing
 \end{description}
 
-The Cinelerra plugin has several additional features for ease of use and more flexibility. A description of parameters is outlined below.
+The \CGG{} plugin has several additional features for ease of use and more flexibility. A description of parameters is outlined below.
 
 \begin{description}
     \item[Mode:]
@@ -3193,7 +3193,7 @@ Figure~\ref{fig:stylize} show the images after adding the 6 various styles.
 \section[FFmpeg Audio and Video Plugins]{FFmpeg Audio and Video Plugins\protect\footnote{credit to WPfilmmaker for the Ffmpeg info description lines taken from his contributed pdf}}%
 \label{sec:ffmpeg_audio_video_plugins}
 
-Cinelerra GG Infinity currently comes with more than $140$ of the video plugins and $55$ of the audio plugins developed by the FFmpeg project {\small \url{www.ffmpeg.org}}. These plugins do not have a GUI with buttons like the rest of plugins, therefore to change settings it is necessary to change the variables by hand by highlighting the \textit{option}, typing a value in the \textit{Range} box, and then hitting the \textit{Apply} button. Many of these plugins provide tooltips at the bottom right corner of the window when the option is highlighted. A \textit{slider} bar and a \textit{dial} for numerical values can be used to easily vary the values which take effect immediately.
+\CGGI{} currently comes with more than $140$ of the video plugins and $55$ of the audio plugins developed by the FFmpeg project {\small \url{www.ffmpeg.org}}. These plugins do not have a GUI with buttons like the rest of plugins, therefore to change settings it is necessary to change the variables by hand by highlighting the \textit{option}, typing a value in the \textit{Range} box, and then hitting the \textit{Apply} button. Many of these plugins provide tooltips at the bottom right corner of the window when the option is highlighted. A \textit{slider} bar and a \textit{dial} for numerical values can be used to easily vary the values which take effect immediately.
 
 Figure~\ref{fig:ffchromakey} shows what an FFmpeg video plugin looks like; example is \texttt{F\_chromakey}.
 
@@ -3219,7 +3219,7 @@ If you want to replace the icon with a more descriptive picture, see a previous 
 
 Simply drag and drop the plugin on the timeline. To enter the settings option, once you have added the plugin to the timeline, right click on the colored bar that appears below the timeline track of the plugin and highlight the \textit{show} option. Alternatively, you can left click the \textit{magnifying glass} icon that appears on the right side of the colored bar. For the audio plugins, if the plugin is not working at all, you will hear a trouble tone waveform to indicate that. If the value is unspecified, it uses default. If you specify the default, the value becomes unspecified which means that nothing gets sent into the program.
 
-Some of the ffmpeg plugins are not usable with Cinelerra GG Infinity due to input/output requirements. Also, some do not come with legal initial supplied values for the parameters (ffmpeg works on filtergraph, while Cinelerra works on stack). These plugins get tested at least once and if they crash, cause problems, or are deemed unusable, they are commented out in the \texttt{plugin.opts} file in the Cinelerra ffmpeg subdirectory. Generally they are not retested so if the ffmpeg software changes them making them usable, they will still not be accessible until the \texttt{plugin.opts} file is changed. You can easily retest these, by temporarily uncommenting the copy of the \texttt{plugin.opts} file in the \texttt{bin} subdirectory and using \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface tab $\rightarrow$ Reload plugin index}
+Some of the ffmpeg plugins are not usable with \CGGI{} due to input/output requirements. Also, some do not come with legal initial supplied values for the parameters (ffmpeg works on filtergraph, while \CGG{} works on stack). These plugins get tested at least once and if they crash, cause problems, or are deemed unusable, they are commented out in the \texttt{plugin.opts} file in the \CGG{} ffmpeg subdirectory. Generally they are not retested so if the ffmpeg software changes them making them usable, they will still not be accessible until the \texttt{plugin.opts} file is changed. You can easily retest these, by temporarily uncommenting the copy of the \texttt{plugin.opts} file in the \texttt{bin} subdirectory and using \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface tab $\rightarrow$ Reload plugin index}
 
 FFmpeg’s plugin guide is at the link:
 

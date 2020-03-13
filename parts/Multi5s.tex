@@ -123,7 +123,7 @@ Instead of Open Mixers, you can Insert Mixers with new tracks at the timeline in
 
 Multi-camera footage of a single event can have various shots starting and ending at different times. So when the footage start times are different, you can use the mixer audio to synchronize the clips on the timeline. The program algorithm attempts to find and align automatically the waveforms of the media.
 
-Synchronizing multiple camera videos based on audio tracks can be done with Cinelerra-GG easily enough with the \texttt{Window $\rightarrow$ Mixers$\dots$ $\rightarrow$  Align mixers} option.  Align mixers brings up a window displaying your mixers, the currently selected Master Track, and a list of all of the Audio Tracks (figure~\ref{fig:mixer-align01}).  There is a limit of 32 audio tracks per each mixer (that should be enough!)
+Synchronizing multiple camera videos based on audio tracks can be done with \CGG{} easily enough with the \texttt{Window $\rightarrow$ Mixers$\dots$ $\rightarrow$  Align mixers} option.  Align mixers brings up a window displaying your mixers, the currently selected Master Track, and a list of all of the Audio Tracks (figure~\ref{fig:mixer-align01}).  There is a limit of 32 audio tracks per each mixer (that should be enough!)
 
 \begin{figure}[htpb]
     \centering
@@ -257,7 +257,7 @@ Sometimes the association does not stick initially.  If not, highlight the mixer
 \section{Multi-Pane Support}%
 \label{sec:multipane_support}
 
-The main Cinelerra edit window holds the Track Canvas which can be divided into 4 panes of track data: 1 or 2 vertical panes and/or 1 or 2 horizontal panes.  To split the track, use the Window pulldown, and then click on \textit{Split X} or \textit{Split Y} depending on how you wish to split the track.  Alternatively, the canvas pane types can be changed using keys \textit{<Ctrl-1>} for toggle split horizontal or \textit{<Ctrl-2>} for toggle split vertical.  Or the track can be split into panes by using the \textit{+ widget} in the lower right hand corner of the track canvas.  Once the track has been divided, you can use the + widget shortcut or the drag bars to change the size of the panes.
+The main \CGG{} edit window holds the Track Canvas which can be divided into 4 panes of track data: 1 or 2 vertical panes and/or 1 or 2 horizontal panes.  To split the track, use the Window pulldown, and then click on \textit{Split X} or \textit{Split Y} depending on how you wish to split the track.  Alternatively, the canvas pane types can be changed using keys \textit{<Ctrl-1>} for toggle split horizontal or \textit{<Ctrl-2>} for toggle split vertical.  Or the track can be split into panes by using the \textit{+ widget} in the lower right hand corner of the track canvas.  Once the track has been divided, you can use the + widget shortcut or the drag bars to change the size of the panes.
 
 Multi-Pane, or split screen, allows you to look at the first part of a movie at the same time as a part that is a long ways away on the timeline which would have been off the screen.  By having multiple panes, you can see the 2 parts you want to look at simultaneously and drag/drop easily between the 2.  Also, the \textit{X pane split} is extremely convenient for laptop users and computer monitors with small screens since it can be used with horizontal scrolling with the mouse wheel + Ctrl.  The \textit{Y-pane split} makes it easy to see 2 simultaneous drag and drop zones when you have lots of tracks (figure~\ref{fig:multi-pane01}).
 
@@ -271,11 +271,11 @@ Multi-Pane, or split screen, allows you to look at the first part of a movie at 
 \section{Multi-Screen / Playback Configuration}%
 \label{sec:multiscreen_playback_configuration}
 
-Cinelerra-GG supports 2 separate preferences for the playback configuration.  Cinelerra can be operated in a single or dual screen configuration, both by using Xinerama or dual screen configuration of X windows.  It will take some setup using Xconfig to make this work.
+\CGG{} supports 2 separate preferences for the playback configuration.  \CGG{} can be operated in a single or dual screen configuration, both by using Xinerama or dual screen configuration of X windows.  It will take some setup using Xconfig to make this work.
 
-The \texttt{Settings $\rightarrow$ Preferences} menu has \textit{Playback A and Playback B} tabs.  The target display and audio device configuration can be separate, to support up to 2 display and/or audio device stations.  The active configuration displays an asterisk (*) in its selection tab and the selected tab will be made active when OK is pressed.  For example: you may have a dual screen monitor system with the left screen showing the Cinelerra main window and the right screen showing the composer.  Another setup might use a monitor for the left screen and an HDTV as the right screen displaying the composer.  When a playback configuration is selected, the audio/video device configuration is switched to the playback selection.  The active playback setup can be changed through use of the menu pulldown of \texttt{Settings $\rightarrow$ Preferences} or via the remote control menu selection (see the section Remote Control for DVB for more detail). 
+The \texttt{Settings $\rightarrow$ Preferences} menu has \textit{Playback A and Playback B} tabs.  The target display and audio device configuration can be separate, to support up to 2 display and/or audio device stations.  The active configuration displays an asterisk (*) in its selection tab and the selected tab will be made active when OK is pressed.  For example: you may have a dual screen monitor system with the left screen showing the \CGG{} main window and the right screen showing the composer.  Another setup might use a monitor for the left screen and an HDTV as the right screen displaying the composer.  When a playback configuration is selected, the audio/video device configuration is switched to the playback selection.  The active playback setup can be changed through use of the menu pulldown of \texttt{Settings $\rightarrow$ Preferences} or via the remote control menu selection (see the section Remote Control for DVB for more detail). 
 
-\subsubsection*{Yes, you can watch TV on Cinelerra instead of Cinelerra on TV.}%
+\subsubsection*{Yes, you can watch TV on \CGG{} instead of \CGG{} on TV.}%
 \label{ssub:watch_tv_on_cinelerra}
 
 Figure~\ref{fig:multi-screen01} shows partial window of \textit{*Playback A} selected and the second tab for \textit{Playback B}.  Note that on the bottom right of the window, \textit{Default B Display:} is set to $:0.1$, representing the setting for Screen 1.  On the unseen \textit{Playback A} window, the \textit{Default A Display:} will be set to $:0.0$ meaning for Screen 0.  Otherwise, the default would be nothing there or just <empty>.
@@ -283,20 +283,20 @@ Figure~\ref{fig:multi-screen01} shows partial window of \textit{*Playback A} sel
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.9\linewidth]{images/multi-screen01.png}
-    \caption{Multi-screen Playback example useful for watching Cinelerra run on the \textit{big screen}}
+    \caption{Multi-screen Playback example useful for watching \CGG{} run on the \textit{big screen}}
     \label{fig:multi-screen01}
 \end{figure}
 
 \section{Multi-Session}%
 \label{sec:multi_session}
 
-You can run as many sessions of Cinelerra as your computer resources allow.  However, if you are using the same \texttt{\$HOME/.bcast5}, changes you make for one may impact the others. You can always create and rename a new \texttt{.bcast5} from:\\
+You can run as many sessions of \CGG{} as your computer resources allow.  However, if you are using the same \texttt{\$HOME/.bcast5}, changes you make for one may impact the others. You can always create and rename a new \texttt{.bcast5} from:\\
 \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface $\rightarrow$ Index files:} and press \textit{Index files go here}
 
 \section{Multi-Viewer Window Support}%
 \label{sec:multi_viewer_window_support}
 
-You can create as many Viewer windows as you want in Cinelerra.  These are handy for users who are adept at working with a lot of different clips simultaneously.  By bringing up multiple Viewer windows, each clip can be edited in its own area, making it easy to see all of the separate pieces.  After you have loaded some media files, to start another Viewer window, right click on one of the pieces of media in the Resources window.  This brings up a menu of several options, one of which is \textit{view in new window}.  Choose this option and that media will come up in a new Viewer window for you to work (figure~\ref{fig:multi-view01}).
+You can create as many Viewer windows as you want in \CGG{}.  These are handy for users who are adept at working with a lot of different clips simultaneously.  By bringing up multiple Viewer windows, each clip can be edited in its own area, making it easy to see all of the separate pieces.  After you have loaded some media files, to start another Viewer window, right click on one of the pieces of media in the Resources window.  This brings up a menu of several options, one of which is \textit{view in new window}.  Choose this option and that media will come up in a new Viewer window for you to work (figure~\ref{fig:multi-view01}).
 
 \begin{figure}[htpb]
     \centering

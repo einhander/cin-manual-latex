@@ -1,21 +1,29 @@
-
+%
 \usepackage{cmap}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}         % file encoding
-\usepackage{substitutefont}         % so we can use fonts other than those specified in babel
-\usepackage[english]{babel}         % default language for document
-\usepackage[scaled=0.925]{XCharter} % Подключение русифицированных шрифтов XCharter
-\usepackage[bitstream-charter]{mathdesign} % Согласование математических шрифтов
+\usepackage[T2A]{fontenc} % T2A (Cyrillic) and T1 are only identical
+                          % in the first 128 positions. This is an
+                          % English language document.
+\usepackage[utf8]{inputenc} % file encoding
+\usepackage{substitutefont} % so we can use fonts other than those specified in babel
+\usepackage[english]{babel} % default language for document
+% Cyrillic - if it is used, no Small Caps are available:
+%\usepackage[scaled=0.925]{XCharter} % Подключение русифицированных
+                                    % шрифтов XCharter "Connection
+                                    % of Russified XCharter Fonts"
+\usepackage[bitstream-charter]{mathdesign} % Согласование
+                                           % математических шрифтов
+                                           % "Math font
+                                           % harmonization"
 
 \usepackage{
     %amsfonts,
     mathtools,
-    mathtext,
+    mathtext,% Cyrillic?
     cite,
     enumerate,
     float,
-    textcomp    
-}                                   % some packages 
+    textcomp
+}                                   % some packages
 \usepackage[font={small},textfont=it]{caption}
 \usepackage{hhline}                 % beautiful links
 \PassOptionsToPackage{hyphens}{url}
@@ -30,28 +38,28 @@
 
 %\usepackage[nottoc]{tocbibind} %  do we need bibliography in toc
 %----------------------------------------------
-%\usepackage{mhchem}        
+%\usepackage{mhchem}
 %===============  Font for tables  ============
 %\let\oldtabular\tabular
 %\renewcommand{\tabular}{\small\oldtabular}
 
 \hypersetup{colorlinks=true,
     linkcolor=blue,
-    citecolor=blue, 
-    filecolor=blue, 
-    urlcolor=blue, 
-    pdftitle={Cinelerra GG Infinity Manual}, 
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    pdftitle={Cinelerra-GG Infinity Manual},
     pdfauthor={Cinelerra Authors},
-    pdfsubject={Video Editing}, 
+    pdfsubject={Video Editing},
     pdfkeywords={Cinelerra, Good Guy}
 } % pdf properties
-\usepackage[pdftex]{graphicx}       % do we need some figures in our pdf 
+\usepackage[pdftex]{graphicx}       % do we need some figures in our pdf
 \graphicspath{{images/}}            % path to images
 \usepackage{tikz}                   % drawing package
 \usepackage{nameref}                % use \nameref{} to set reference to chapter neme.
 
 %----------------------------------------------------------------------
-\usepackage{listings}               % include code 
+\usepackage{listings}               % include code
 \lstset{                            % begin settings
   %language=R,                      % the language of the code
   inputencoding=utf8,
@@ -95,7 +103,7 @@
     arrows,
     shapes,
     shadows
-} 
+}
 \usepackage{wrapfig}                % Wrapping figures
 
 \usepackage{enumitem}               % custom lists

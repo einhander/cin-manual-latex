@@ -36,7 +36,7 @@ The way that transitions work is that two edits overlap for some length of time 
 Instead extra frames from the source file will be used to lengthen the first edit enough to make it overlap the second edit for the length of the transition. The transition takes effect exactly at the beginning of the second edit and lasts for the specific length of time you set into the second edit. 
 What this means is that if you set a duration of 2 seconds for a flash transition, it will not start at the last 1 second of the first edit and continue 1 second into the second edit. Instead the transition will start exactly at the beginning of the second edit and last for 2 seconds into that second edit. 
 This is why it is necessary that the first edit needs to have extra data after the end boundary to provide enough fill for the transition length into the second edit.
-In the case where the last frame on the timeline is the last frame of the source, Cinelerra will lengthen the first edit using only that last frame.  The result will not be what you want because the first edit will freeze into the transition.
+In the case where the last frame on the timeline is the last frame of the source, \CGG{} will lengthen the first edit using only that last frame.  The result will not be what you want because the first edit will freeze into the transition.
 
 When playing transitions, software rendering is used.  This means that if you are using hardware, as with the video driver set to OpenGL, hardware acceleration will usually be turned \textit{off} during the transition and \textit{on} after the transition. Consequently, you may notice small anomalies while playing this section but you can avoid this by switching to using X11 video driver instead or just ignore it because when you create your final render that is always done in software only.
     
@@ -106,7 +106,7 @@ Next, there is a \textit{Feather} textbox with tumbler arrows or a slider bar to
 You can add your own images to the Shape Wipe transition and there are some free ones available to download such as under the \texttt{Video $\rightarrow$ Transitions} pulldown at {\small \url{assistcg.com}}.
 
 To include new images in the Shape Wipe Transition, simply copy the file \texttt{{shape}.png} to the
- subdirectory \texttt{plugins/shapes} in your Cinelerra directory path.
+ subdirectory \texttt{plugins/shapes} in your \CGG{} directory path.
 
 \subsection*{Slide}%
 \label{sub:slide}

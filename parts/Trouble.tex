@@ -1,7 +1,7 @@
 \chapter{Troubleshooting and Help}%
 \label{cha:troubleshooting_help}
 
-You can report potential problems, bugs, and crashes to the Cinelerra-GG website at:
+You can report potential problems, bugs, and crashes to the \CGG{} website at:
 
 \begin{center}
 	\href{https://www.cinelerra-gg.org/}{https://www.cinelerra-gg.org}
@@ -9,7 +9,7 @@ You can report potential problems, bugs, and crashes to the Cinelerra-GG website
 
 Here you can log the problem into the MantisBT bugtracker, or use the forum Q\&A for help from other users, or email the
 problem using the address:{\small \href{mailto:cin@lists.cinelerra-gg.org}{cin@lists.cinelerra-gg.org}} It is usually more
-helpful if instead of starting Cinelerra from its application icon, start from a window so that if there are error
+helpful if instead of starting \CGG{} from its application icon, start from a window so that if there are error
 messages related to the problem, they can be captured from the screen and emailed or logged. The command to run
 from a window is: \texttt{<directory\_path of where you installed cinelerra>/bin/cin} -- for example if
 installed in \texttt{/mnt0/build5/cinelerra-5.1}, you would execute the following command to start the program:\\
@@ -64,7 +64,7 @@ helpful information on the crash, location of uploaded files, and list of setup 
 {\small \href{mailto:cin@lists.cinelerra-gg.org}{cin@lists.cinelerra-gg.org}}
 
 \begin{enumerate}[nosep]
-	\item Use the latest version of Cinelerra as you want to make sure the problem has not been fixed.
+	\item Use the latest version of \CGG{} as you want to make sure the problem has not been fixed.
 	\item Be sure \textit{gdb} is installed (usually installed but if not, it is easy to do so).
     \item Run as root if at all possible (this enables using gdb to create a full \texttt{/tmp/cinelerra* .dmp} file).
     \item Be sure \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface $\rightarrow$ trap SEGV} and \texttt{trap INTR} are checked.
@@ -80,8 +80,8 @@ is available. Here are the steps to do so -- you should also have gdb installed.
 	\item Temporarily login as root and key in:\\
 	\texttt{echo 0 > /proc/sys/kernel/yama/ptrace\_scope} \\
 	This opens up \textit{ptrace}, used by gdb (the debugger). You will want to reverse this when done.
-	\item Run Cinelerra as an ordinary user from a window using the command line and try to create the problem. If the program crashes, this should produce a file named \texttt{/tmp/cinelerra*.dmp} where * is a number. The dump usually takes about 30 seconds or so to complete after the failure invokes the crash handler, so be patient. 
-	\item Email the output that shows in the window from where you started up Cinelerra and upload or directly email the \texttt{/tmp/cinelerra*.dmp} file (this file may be too large for the Mailing List).
+	\item Run \CGG{} as an ordinary user from a window using the command line and try to create the problem. If the program crashes, this should produce a file named \texttt{/tmp/cinelerra*.dmp} where * is a number. The dump usually takes about 30 seconds or so to complete after the failure invokes the crash handler, so be patient. 
+	\item Email the output that shows in the window from where you started up \CGG{} and upload or directly email the \texttt{/tmp/cinelerra*.dmp} file (this file may be too large for the Mailing List).
 	\item After you are finished creating/testing the problem, reverse the previous setting while logged in as root by keying in:\\
 	\texttt{echo 1 > /proc/sys/kernel/yama/ptrace\_scope}
 \end{enumerate}
@@ -101,24 +101,24 @@ load media, the indexes will automatically be recreated so each load takes a lit
 is all that is needed to repair a media problem.
 	\item On an older computer, if you are playing media and it can not keep up, you can turn off \textit{Play every frame} in the \textit{Video Out} tab of \texttt{Settings $\rightarrow$ Preferences, Playback} tab. You will then see the video jump as it skips frames in order to stay caught up.
 	\item The \textit{Cache size} can be lowered to 1048 if playback seems choppy or if you have problems with lv2 plugins, or you can increase the \textit{Cache size} for better flow. This can be changed in \texttt{Settings $\rightarrow$ Preferences, Performance} tab.
-	\item After saving your session and settings and exiting Cinelerra, you might want to rename your current \texttt{\$HOME/.bcast5} directory and start with the default setup. This will eliminate your settings as the potential cause of a problem; however, all of your preferences will be lost until you go back to your original \texttt{.bcast5}.
-        \item You can also temporarily rename just Cinelerra\_rc in your \$HOME/.bcast5 directory, so
+	\item After saving your session and settings and exiting \CGG{}, you might want to rename your current \texttt{\$HOME/.bcast5} directory and start with the default setup. This will eliminate your settings as the potential cause of a problem; however, all of your preferences will be lost until you go back to your original \texttt{.bcast5}.
+        \item You can also temporarily rename just \CGG{}\_rc in your \$HOME/.bcast5 directory, so
 that a new file with the original name will be created with original defaults.  You will lose your preferences,
-but it is just for testing and you can move back the renamed Cinelerra\_rc over the new one if that is not the
-cause of the problem.  Be sure to stop and restart Cinelerra whenever you rename this file.
-	\item Some media has only a single keyframe at the beginning of the file so that moving anywhere on the timeline results in just a black image in the compositor. Cinelerra needs more keyframes to determine position. You can temporarily use \texttt{Settings $\rightarrow$ Proxy} to $\frac{1}{2}$ size to put in keyframes. How to use Proxy is explained in \href{sec:proxy_settings}{Proxy settings and Transcode}.
+but it is just for testing and you can move back the renamed \CGG{}\_rc over the new one if that is not the
+cause of the problem.  Be sure to stop and restart \CGG{} whenever you rename this file.
+	\item Some media has only a single keyframe at the beginning of the file so that moving anywhere on the timeline results in just a black image in the compositor. \CGG{} needs more keyframes to determine position. You can temporarily use \texttt{Settings $\rightarrow$ Proxy} to $\frac{1}{2}$ size to put in keyframes. How to use Proxy is explained in \href{sec:proxy_settings}{Proxy settings and Transcode}.
         \item If you have enabled an \textit{Automation Curve} such as Fade or Speed on your track but it
 does not show, it could simply be because the range minimum and maximum are incorrectly set in the zoom bar.
 Set them to more reasonable values until you see the lines appear. Just as a reminder, the zoom bar is on the
 bottom of the main window (figure~\ref{fig:automation}). 
  	\item If the rate at which frames are captured during Recording is much lower than the framerate of the source, the video will accumulate in the recording buffers over time and the audio and video will become out of sync. Decrease the number of frames to buffer in the device in \texttt{Settings $\rightarrow $ Preferences, Recording} tab so that the excess frames are dropped instead of buffered.
-	\item If loading files locks up, this might be because Cinelerra is building picons/vicons for the Resources window. If you load a large number of images it needs to decompress every single image to build a picon/vicon. Go into \texttt{Settings $\rightarrow$ Preferences, Appearance} tab and disable \textit{Use thumbnails in resource window} to skip this process. Keep in mind though, that it only has to create these thumbnails the first time a new piece of media is loaded or the values are changed.
+	\item If loading files locks up, this might be because \CGG{} is building picons/vicons for the Resources window. If you load a large number of images it needs to decompress every single image to build a picon/vicon. Go into \texttt{Settings $\rightarrow$ Preferences, Appearance} tab and disable \textit{Use thumbnails in resource window} to skip this process. Keep in mind though, that it only has to create these thumbnails the first time a new piece of media is loaded or the values are changed.
 	\item For an older computer with less CPU power, in \texttt{Settings $\rightarrow$ Preferences, Appearance} tab, be sure that \textit{Autocolor assets }is disabled; set \textit{View thumbnail size} \& \textit{Vicon quality}\& \textit{Vicon color mode} to lower values or switch to \textit{No Play} instead of \textit{Full Play} in the Resources window (this is to the right of the word \textit{Visibility} in the left hand side of that window). You will then have more CPU and more memory available to do actual editing.
 \end{enumerate}
 
 \textbf{Some Helpful User Readable Text Dumps}
 
-On the File pulldown, there is a \textit{Dumps} option with a submenu of dump EDL, Plugins, Assets, and Undo. In all cases, you will have to have started Cinelerra from a window instead of from an application icon and
+On the File pulldown, there is a \textit{Dumps} option with a submenu of dump EDL, Plugins, Assets, and Undo. In all cases, you will have to have started \CGG{} from a window instead of from an application icon and
 the text results will be shown in that window.
 
 \begin{itemize}[nosep]
@@ -135,14 +135,14 @@ Some messages you may see in the startup window may or may not be errors. Some e
 
 \textit{FFMPEG::open\_decoder: some stream times estimated:} \quad \texttt{/your directory/filename}
 
-This is not a problem. Basically, when you open a file if a stream has a known duration, there is no message. If the duration is unknown, it is estimated by using the File Size and Bitrate to estimate the duration. This may just indicate that the stream number Cinelerra uses versus ffmpeg may be counted differently.
+This is not a problem. Basically, when you open a file if a stream has a known duration, there is no message. If the duration is unknown, it is estimated by using the File Size and Bitrate to estimate the duration. This may just indicate that the stream number \CGG{} uses versus ffmpeg may be counted differently.
 \bigskip
 
 \textit{AudioALSA::write\_buffer err -32(Broken pipe) at sample \#}
 
 This indicates that there is something wrong with the audio. Some reasons for this are:
 \begin{itemize}[nosep]
-	\item You simply stopped playing in Cinelerra while the audio is in progress.
+	\item You simply stopped playing in \CGG{} while the audio is in progress.
 	\item Running on a computer where there is no sound card.
 	\item Incorrect setup of the audio parameters in the \texttt{Settings $\rightarrow$ Preferences, Playback} tab.
 	\item Your sound system is already in use by another program, like when playing \textit{tunes} outside Cin.
@@ -154,9 +154,9 @@ This indicates that there is something wrong with the audio. Some reasons for th
 When this occurs, it most likely means that there is not enough CPU power to keep up. You can go into \texttt{Settings $\rightarrow$ Preferences, Playback} tab and uncheck \textit{Play every frame}. Not playing every frame means that as it plays, if it can not keep up with doing all it has to do to change the frame into a vframe and then draw it, the program just notes that it is falling behind so skips frames to catch back up. This does not affect rendering. A different solution is to use Background Rendering as described in \href{sec:background_rendering}{Rendering}.
 \bigskip
 
-\textit{Cinelerra will not start and produces error message on the startup window.}
+\textit{\CGG{} will not start and produces error message on the startup window.}
 
-There can be various reasons that Cinelerra does not come up. Some of the recent reasons are listed here. Please notify the {\small \href{http://www.cinelerra-gg.org/}{www.cinelerra-gg.org}} website when you have any unknown startup issues.
+There can be various reasons that \CGG{} does not come up. Some of the recent reasons are listed here. Please notify the {\small \href{http://www.cinelerra-gg.org/}{www.cinelerra-gg.org}} website when you have any unknown startup issues.
 \medskip
 
 \begin{itemize}[nosep]
@@ -170,7 +170,7 @@ There can be various reasons that Cinelerra does not come up. Some of the recent
 You can usually install the required library to fix the problem. A temporary fix may be to create a symlink but this must be done with extreme caution as it may create an unstable condition. A better workaround is to use a tarball to install the software instead of the package build until the libraries are in sync between the build and your Operating System install.
 \bigskip
 
-\textit{ Loading a very large number of media files, for example 500 clips, crashes Cinelerra with messages similar to the following that are displayed in the window from where you started Cin:}
+\textit{ Loading a very large number of media files, for example 500 clips, crashes \CGG{} with messages similar to the following that are displayed in the window from where you started Cin:}
 
 \begin{lstlisting}[numbers=none,xleftmargin=10mm]
 
@@ -213,7 +213,7 @@ and if you mouse over it, the tooltip says \textit{shell cmds}. This is a config
 see a table of Shortcuts in html format, refer to the reference manual or execute a pre-defined script to perform a
 specific task, such as some type of post processing which you plan on performing on a repeat basis. Unless redirected
 elsewhere, the output from executing any script-type commands will be displayed in the window from where you started
-Cinelerra.
+\CGG{}.
 
 The Shell Cmds popup menu items are configured in:
 
@@ -233,14 +233,14 @@ This runs a dialog that lets you Add/Del/Edit the scripts in the main menu popup
 	\end{itemize}
 	\item \textit{Del} to delete an existing menu item
 	\begin{itemize}[noitemsep]
-		\item select to highlight an entry in the Cinelerra: Shell listbox
+		\item select to highlight an entry in the \CGG{}: Shell listbox
 		\item click on the \textit{Del }button
 		\item click the green checkmark for OK in the Shell window
 		\item click on OK or Apply in the Preferences window (the entry is now deleted)
 	\end{itemize}
 	\item \textit{Edit} an existing menu item:
 	\begin{itemize}[noitemsep]
-		\item select to highlight an entry in the Cinelerra: Shell listbox
+		\item select to highlight an entry in the \CGG{}: Shell listbox
 		\item click on the \textit{Edit} button (the Commands window appears)
 		\item set the label and/or commands to the new desired values
 		\item click on the green checkmark for OK in the Commands window
@@ -259,9 +259,9 @@ Both the \textit{Add} and \textit{Edit} options have checkboxes in the Commands 
 \end{itemize}
 
 
-When modifications to the Shell Cmds are included in a new Cinelerra release, they are not added to your Preferences file automatically unless you create a new one. But if you have added no custom scripts, you can update your currently existing \texttt{\$HOME/.bcast5/ Cinelerra\_rc} file to delete the lines that are all grouped together that begin with the letters: \texttt{SHBTN} (the entire line -- these are the \textbf{SH}ell \textbf{B}u\textbf{T}to\textbf{N}s). \ You should first Quit out of Cinelerra, edit the file, and then when you restart Cinelerra, it will create the new default buttons in that same file.
+When modifications to the Shell Cmds are included in a new \CGG{} release, they are not added to your Preferences file automatically unless you create a new one. But if you have added no custom scripts, you can update your currently existing \texttt{\$HOME/.bcast5/ \CGG{}\_rc} file to delete the lines that are all grouped together that begin with the letters: \texttt{SHBTN} (the entire line -- these are the \textbf{SH}ell \textbf{B}u\textbf{T}to\textbf{N}s). \ You should first Quit out of \CGG{}, edit the file, and then when you restart \CGG{}, it will create the new default buttons in that same file.
 
-There are 2 specific Cinelerra file names that have unique characteristics that allow for usage from a user-defined
+There are 2 specific \CGG{} file names that have unique characteristics that allow for usage from a user-defined
 script. The first one is an environment variable, \texttt{CIN\_RENDER} which is used in the \textit{RenderMux} shell command that is already setup. It contains the complete path and filename of the file in your session that you selected as \textit{Select a file to render to} when you ran a Render operation.
 
 The second one concerns usage of the Resource window assets to use as argvs in shell scripts. The added command line
@@ -294,12 +294,12 @@ There are some Help features currently included in the Shell Cmds menu. Those av
 	\label{fig:shell_script_manupulation}
 \end{figure}
 
-\section{Cinelerra Command Line -h}%
+\section{\CGG{} Command Line -h}%
 \label{cha:cinelerra_command_line_-h}
 
-To see the command line parameters available to use with Cinelerra, key in:
+To see the command line parameters available to use with \CGG{}, key in:
 
-\qquad \texttt{<your Cinelerra directory path>/bin/cin -h}
+\qquad \texttt{<your \CGG{} directory path>/bin/cin -h}
 
 What will be shown in the window where this line was entered is:
 

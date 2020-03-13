@@ -1,7 +1,7 @@
 \chapter{Performance and other Tips}%
 \label{cha:performance_tips}
 
-Performance of Cinelerra is related to the software and video format being used in conjunction with your computer system hardware -- the number of CPUs and its speed, I/O bus speed, graphics card, and amount of available memory. A basic, less powerful system will be sufficient for users working with audio only or lower resolution video formats.  Higher end computers will be needed when playing and working with higher resolution formats, like 1080p or 4k. Adding effects and multiple tracks will require more cpu, memory, and various other resources to 
+Performance of \CGG{} is related to the software and video format being used in conjunction with your computer system hardware -- the number of CPUs and its speed, I/O bus speed, graphics card, and amount of available memory. A basic, less powerful system will be sufficient for users working with audio only or lower resolution video formats.  Higher end computers will be needed when playing and working with higher resolution formats, like 1080p or 4k. Adding effects and multiple tracks will require more cpu, memory, and various other resources to 
 perform at an acceptable level.
 
 Perhaps the easiest method for determining if your performance could be improved is to look at the numerical value displayed as \textit{Framerate achieved}.  Good performance means that when \textit{Play every frame} is set 
@@ -9,12 +9,12 @@ in \texttt{Settings $\rightarrow$ Preferences, Playback A} tab, the frames/secon
 
 Some computer hardware factors to consider for better performance are listed here:
 \begin{itemize}
-	\item Multi-core and more SMP processors greatly improve Cinelerra speed by making use of threads.
+	\item Multi-core and more SMP processors greatly improve \CGG{} speed by making use of threads.
 	\item A large amount of free memory available can help speed up operations by avoiding unnecessary disk
 	swaps and keeping videos easily accessible in memory.
 	\item Video editing is almost always I/O intensive. To create longer running videos at high resolution
 	you will want to have a lot of disk space available on fast access disks.
-	\item Cinelerra benefits from OpenGL hardware acceleration. A good graphics card is worthwhile to have.
+	\item \CGG{} benefits from OpenGL hardware acceleration. A good graphics card is worthwhile to have.
 	\item Multiple monitors really come in handy to increase productivity as you can see more information and
 	in bigger windows so you do not have to keep moving windows around.
 \end{itemize}
@@ -23,7 +23,7 @@ Besides the above hardware recommendations, this section covers tips for perform
 \section{Hardware video acceleration}%
 \label{sec:hardware_video_acceleration}
 
-With certain newer, more powerful graphics boards and newer device drivers, there is the potential for enhanced \textit{decode} and \textit{encode} performance.   Decode refers to loading and playing video in Cinelerra. The GPU, Graphics Processing Unit, on the graphics board is accessed via one of the following libraries: vdpau or vaapi. The hardware acceleration done by the graphics card increases performance by activating certain functions in connection with a few of the FFmpeg decoders. This use makes it possible for the graphics card to decode video, thus offloading the CPU.  Decode operations are described here next.  
+With certain newer, more powerful graphics boards and newer device drivers, there is the potential for enhanced \textit{decode} and \textit{encode} performance.   Decode refers to loading and playing video in \CGG{}. The GPU, Graphics Processing Unit, on the graphics board is accessed via one of the following libraries: vdpau or vaapi. The hardware acceleration done by the graphics card increases performance by activating certain functions in connection with a few of the FFmpeg decoders. This use makes it possible for the graphics card to decode video, thus offloading the CPU.  Decode operations are described here next.  
 Encode refers to rendering video and is described at the end of this section
 under \hyperref[sub:gpu_hardware_encoding]{GPU hardware encoding}.
 
@@ -42,8 +42,8 @@ performing the operations in the hardware may actually be slower than in softwar
 	\item Verify that you have installed \textit{libva-intel-driver} on your operating system
         \item Verify that you also have \textit{libvdpau-dev} or \textit{libvdpau} installed.
 	\item Verify \texttt{Settings $\rightarrow$ Preferences, Playback} tab, Video Driver is set to\textit{ X11} -- or \textit{X11-OpenGL} if that	produces better results for your configuration.
-	\item Before starting CinelerraGG, you can set an environment variable that can be easily reversed and
-	then, to run from the Cinelerra installed directory, key in:
+	\item Before starting \CGG{}, you can set an environment variable that can be easily reversed and
+	then, to run from the \CGG{} installed directory, key in:
 \end{enumerate}
 
 \begin{lstlisting}[numbers=none]
@@ -62,7 +62,7 @@ export CIN_HW_DEV=vaapi
 It might be more difficult to analyze problems as a result of using the GPU because of the wide variation in hardware.  When you do not set the \texttt{CIN\_HW\_DEV} environment variable, the code will work exactly as before since this feature is self-contained.
 
 There is also a \texttt{Settings $\rightarrow$ Preferences, Performance} tab, \textit{Use HW device} flag
-with a pulldown to set up \textit{none, vdpau, vaapi,} or \textit{cuda}.  To ensure it takes effect, it is best to set it the way you want, quit out of Cinelerra and then restart.  Its current purpose is for flexibility, but there is a possibility that it might eventually take the place of \texttt{CIN\_HW\_DEV} -- both are not needed.
+with a pulldown to set up \textit{none, vdpau, vaapi,} or \textit{cuda}.  To ensure it takes effect, it is best to set it the way you want, quit out of \CGG{} and then restart.  Its current purpose is for flexibility, but there is a possibility that it might eventually take the place of \texttt{CIN\_HW\_DEV} -- both are not needed.
 
 Precedence of the decode hardware acceleration settings are:
 
@@ -72,10 +72,10 @@ Precedence of the decode hardware acceleration settings are:
 
 -- preferences \textit{Use HW device} settings is of the lowest priority
 
-\subsubsection*{Hardware decoding in Cinelerra GG}%
+\subsubsection*{Hardware decoding in \CGG{}}%
 \label{ssub:hardware_decoding_cinelerra}
 
-There are 4 phases during Cinelerra’s handling of hardware acceleration. These first 2 steps occur just \textit{before} the first read.
+There are 4 phases during \CGG{}’s handling of hardware acceleration. These first 2 steps occur just \textit{before} the first read.
 
 \begin{enumerate}
 	\item Check to see if Hardware Acceleration is enabled, usually indicated by \texttt{CIN\_HW\_ \_DEV} being set to
@@ -93,7 +93,7 @@ There are 4 phases during Cinelerra’s handling of hardware acceleration. These
 \end{enumerate}
 
 Due to variations in user’s computer hardware configuration, it is often suggested that you refer to your startup window to check for error messages.   Since your situation is unique, the error may not have been seen by anyone else and is probably unknown/undocumented.
-\textcolor{red}{For debugging problems, modify in the Cinelerra ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \textit{loglevel =fatal} to \textit{loglevel =verbose} and restarting Cinelerra}.  
+\textcolor{red}{For debugging problems, modify in the \CGG{} ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \textit{loglevel =fatal} to \textit{loglevel =verbose} and restarting \CGG{}}.  
 
 \subsubsection*{Possible improvements or differences}%
 \label{ssub:possible_improvements_differences}
@@ -137,7 +137,7 @@ cin_hw_dev=vdpau
 
 For example your file, \texttt{test.mp4}, would have a side-kick called \texttt{test.opts} that will use the GPU for decoding/playing and the other files will just use the software. This is of some advantage because the ones that can not use the GPU if the environment variable is enabled, will not have to even check which saves a minuscule bit of time.
 
-It is important to note that if using the .opts file to override the default \texttt{ffmpeg / decode.opts} file, you will most likely see more warnings (not really errors) in the Cinelerra startup window because the standard \texttt{decode.opts} file has \textit{loglevel = fatal} whereas the default is \textit{loglevel = error}.  To avoid seeing all of the extra warnings, you can simply add the line   \textit{loglevel=fatal}   to your .opts file.
+It is important to note that if using the .opts file to override the default \texttt{ffmpeg / decode.opts} file, you will most likely see more warnings (not really errors) in the \CGG{} startup window because the standard \texttt{decode.opts} file has \textit{loglevel = fatal} whereas the default is \textit{loglevel = error}.  To avoid seeing all of the extra warnings, you can simply add the line   \textit{loglevel=fatal}   to your .opts file.
 
 \subsubsection*{To verify hardware acceleration}%
 \label{ssub:verify_hardware_acceleration}
@@ -162,7 +162,7 @@ or
 HEVC with NVIDIA, VDPAU driver is buggy, skipping
 \end{lstlisting}
 
-If you would like to see more information on what is occurring, you can modify in the Cinelerra ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \textit{loglevel =fatal} to \textit{loglevel =verbose} and restarting Cinelerra.  Then you will see messages in the startup window like:
+If you would like to see more information on what is occurring, you can modify in the \CGG{} ffmpeg subdirectory, the file:  \texttt{decode.opts}   by temporarily changing the line from \textit{loglevel =fatal} to \textit{loglevel =verbose} and restarting \CGG{}.  Then you will see messages in the startup window like:
 
 \begin{lstlisting}[numbers=none]
 [AVHWDeviceContext @ 0x7fc9540be940] Successfully created a VDPAU device 
@@ -280,7 +280,13 @@ One last item of note, \textit{nvdec} is also enabled in the ffmpeg build, but a
 \subsection{GPU hardware encoding}%
 \label{sub:gpu_hardware_encoding}
 
-Encoding using hardware acceleration of your graphics board GPU is included in CinelerraGG but it is of limited availability and works only with a specific set of hardware graphics boards, a certain level of graphics driver versions and only with certain ffmpeg formats.  The encoding is done via vaapi (libva installed), which is known to work with Intel HD graphics boards and some others or via nvenc as developed by Nvidia for Nvidia graphics boards.
+Encoding using hardware acceleration of your graphics board GPU is
+included in \CGG{} but it is of limited availability and works only
+with a specific set of hardware graphics boards, a certain level of
+graphics driver versions and only with certain ffmpeg formats.  The
+encoding is done via vaapi (libva installed), which is known to work
+with Intel HD graphics boards and some others or via nvenc as
+developed by Nvidia for Nvidia graphics boards.
 
 \subsubsection*{Broadcom, Intel HD, AMD}%
 \label{ssub:broadcom_intel_amd}
@@ -295,7 +301,7 @@ There are currently 4 options files available in the Render menu already set up 
 	\item[mjpeg\_vaapi.mp4] error message of \textit{open failed with mjpeg\_vaapi$\dots$} on above computer
 	\item[hevc\_vaapi.mp4] error message of \textit{open failed with hevc\_vaapi$\dots$} on above computer
 \end{description}
-Other option files can be added as needed for your specific hardware if it is known to work for you, such as VP8 and VP9.  An example of the included Cinelerra’s \texttt{ffmpeg/video/h264\_vaapi.mp4} file (figure~\ref{fig:render-vaapi}):
+Other option files can be added as needed for your specific hardware if it is known to work for you, such as VP8 and VP9.  An example of the included \CGG{}’s \texttt{ffmpeg/video/h264\_vaapi.mp4} file (figure~\ref{fig:render-vaapi}):
 
 
 \begin{lstlisting}[numbers=none]
@@ -338,7 +344,7 @@ To use hardware acceleration for rendering (that is, encoding) you do not have t
 	390.25 or newer.  You will see error messages on the startup window if you are on lower versions.
 \end{enumerate}
 
-If you try to render using\texttt{ h264/h265\_nvenc.mp4} formats and do not have an Nvidia graphics card or this feature was not built in, you will see in the window from where you started Cinelerra, the error message: \qquad \textit{Cannot load libcuda.so.1}
+If you try to render using\texttt{ h264/h265\_nvenc.mp4} formats and do not have an Nvidia graphics card or this feature was not built in, you will see in the window from where you started \CGG{}, the error message: \qquad \textit{Cannot load libcuda.so.1}
 
 A small test using 2 minutes from the 4k version of Big Buck Bunny shows using nvenc can be about 4 times faster.  The test was done on a 4 core Intel laptop with an Nvidia 950M graphics board.
 
@@ -363,11 +369,11 @@ There is one last potentially significant graphics speedup when using the X11-Op
 
 CUDA® is a parallel computing platform / programming model developed by Nvidia that provides big increases in computing performance through use of the GPU. It was first introduced in about 2006 for applications in computationally intense fields such as astronomy, biology, chemistry, and physics.
 
-At the time this was written, the use of Cuda is not going to improve the playing and rendering of video in Cinelerra except in the case where you use a specific Cuda-enabled plugin that is computationally intense -- sadly, most of what Cin does, Cuda will not help.  Cuda is mostly a \textit{block oriented algorithm} which works well for such things as \textit{a flock of birds all flying next to each other}.
+At the time this was written, the use of Cuda is not going to improve the playing and rendering of video in \CGG{} except in the case where you use a specific Cuda-enabled plugin that is computationally intense -- sadly, most of what Cin does, Cuda will not help.  Cuda is mostly a \textit{block oriented algorithm} which works well for such things as \textit{a flock of birds all flying next to each other}.
 
 The same as for vaapi and vdpau, you can enable Cuda in the:\\
 \texttt{ Settings $\rightarrow$ Preferences, Performance} tab, \textit{Use HW Device}\\
-but it will not affect anything unless you have Cuda installed on your system and have built Cinelerra yourself with Cuda build enabled.  To install it on your computer, you will need to do the following:
+but it will not affect anything unless you have Cuda installed on your system and have built \CGG{} yourself with Cuda build enabled.  To install it on your computer, you will need to do the following:
 
 \begin{enumerate}
 	\item Make sure you have the Nvidia proprietary library drivers for your graphics board already installed and up to date.
@@ -377,7 +383,7 @@ but it will not affect anything unless you have Cuda installed on your system an
 	\item Also, install the Fusion repo, although it is unknown if necessary or not.
 \end{enumerate}
 
-There is a very good set of directions on the website to just follow.  Once you have installed the Cuda software on your computer, you must build Cinelerra yourself -- the default flag for a build in the configure script for cuda is \textit{auto}.  For Arch, and possibly other distros, you may have to supply the CUDA\_PATH if it is not in the standard place.  This would be
+There is a very good set of directions on the website to just follow.  Once you have installed the Cuda software on your computer, you must build \CGG{} yourself -- the default flag for a build in the configure script for cuda is \textit{auto}.  For Arch, and possibly other distros, you may have to supply the CUDA\_PATH if it is not in the standard place.  This would be
 something like:
 
 
@@ -397,7 +403,7 @@ For all distros you will need to add to the ./configure line in your build scrip
 
 There are currently 2 available plugins for \textit{show and tell} that take advantage of the hardware acceleration of Cuda -- \textit{N\_Body} and \textit{Mandelbrot} (see \nameref{sec:cuda_plugins}).
 
-An error you may see on your Cinelerra startup window when you have Cuda installed and try to run one of the 2 plugins is \textit{cudaErrorInsufficientDriver}.  This indicates CUDA 10 (the current version at the time of this writing) is not compatible with the driver version on your computer.  You can either:
+An error you may see on your \CGG{} startup window when you have Cuda installed and try to run one of the 2 plugins is \textit{cudaErrorInsufficientDriver}.  This indicates CUDA 10 (the current version at the time of this writing) is not compatible with the driver version on your computer.  You can either:
 
 \begin{enumerate}
 	\item Upgrade the driver if your board supports newer nvidia builds.
@@ -414,7 +420,7 @@ In wrapping up this Hardware Acceleration section, you may want to refer to the 
 \section{Optimized Playback -- X11 Direct}%
 \label{sec:optimized_playback}
 
-Normally, when Cinelerra reads a video frame, it is copied into a \textit{Vframe}.  This frame may also need other actions performed on it, such as a color model change.  In addition, ffmpeg and libzmpeg \textit{can\_scale\_input}.  So the read can be color transformed and scaled just by asking the library to do that.  This means that if the compositor is in a \textit{good} state with no zoom, the VFrame read can be done in the fastest render color model, and already scaled to the correct size for the compositor.  In reality, this is not what you need for editing, but quite often the \textit{virtualconsole} is not used because the render is media only -- that is \textit{just data}.  If no data transforms are needed and the input scaling can be done, the vrender program detects this, and tells the codec to transmit the data in a compatible way to the compositor canvas. This is the \textit{X11 direct} data path.
+Normally, when \CGG{} reads a video frame, it is copied into a \textit{Vframe}.  This frame may also need other actions performed on it, such as a color model change.  In addition, ffmpeg and libzmpeg \textit{can\_scale\_input}.  So the read can be color transformed and scaled just by asking the library to do that.  This means that if the compositor is in a \textit{good} state with no zoom, the VFrame read can be done in the fastest render color model, and already scaled to the correct size for the compositor.  In reality, this is not what you need for editing, but quite often the \textit{virtualconsole} is not used because the render is media only -- that is \textit{just data}.  If no data transforms are needed and the input scaling can be done, the vrender program detects this, and tells the codec to transmit the data in a compatible way to the compositor canvas. This is the \textit{X11 direct} data path.
 
 With the X11 video driver choice, large format files such as 4K, will playback faster than either X11-XV or X11-OpenGL.  However, you still have the option to turn off the X11 direct data path if you use
 \texttt{Settings $\rightarrow$ Preferences, Playback A} tab set video driver to X11 and uncheck \textit{use direct X11 render if possible}.
@@ -504,9 +510,9 @@ The BIGGEST gain from using this is if you have media that is not \textit{seekab
 \section{Some Settings Parameter Values}%
 \label{sec:settings_parameter_values}
 
-\texttt{Cache} in \texttt{Settings $\rightarrow$ Preferences, Performance} tab is used to store images on the timeline.  One 1080p frame uses about 10 MB.  The default setting is 256 and this is enough for testing and running.  However, why not use more memory if it is available.   To experiment for testing a good number tuned to the way you use your computer, set the cache to 0, start up Cinelerra, load a typical media file, play it and run \texttt{top} on the command line in another window to see how much memory is being used.  In the \textit{top} display, look at \textit{free} memory.  Whatever your computer is not using, is a good number to use for cache.  If you start other programs, or change the design of the session so that it uses a lot of frame storage, you may need to experiment again later and resize accordingly.
+\texttt{Cache} in \texttt{Settings $\rightarrow$ Preferences, Performance} tab is used to store images on the timeline.  One 1080p frame uses about 10 MB.  The default setting is 256 and this is enough for testing and running.  However, why not use more memory if it is available.   To experiment for testing a good number tuned to the way you use your computer, set the cache to 0, start up \CGG{}, load a typical media file, play it and run \texttt{top} on the command line in another window to see how much memory is being used.  In the \textit{top} display, look at \textit{free} memory.  Whatever your computer is not using, is a good number to use for cache.  If you start other programs, or change the design of the session so that it uses a lot of frame storage, you may need to experiment again later and resize accordingly.
 
-For system \textit{swap}, 1 GB seems to be more than sufficient.  If the amount of memory being used by the program is \textit{close}, then swap might save you but often if swapping becomes necessary, it presents more problems and you end up killing the Cinelerra process anyway.
+For system \textit{swap}, 1 GB seems to be more than sufficient.  If the amount of memory being used by the program is \textit{close}, then swap might save you but often if swapping becomes necessary, it presents more problems and you end up killing the \CGG{} process anyway.
 
 \section{Tips for Improving Smaller Computers Use}%
 \label{sec:tips_improving_smaller_computers}
@@ -536,7 +542,7 @@ This section is a handy guide for describing various kinds of software computer 
 
 \begin{description}
 	\item[System lockups:] When the system locks up, it is usually a system problem.  Normally an application program cannot lock up the system.  It is a major goal of system design to prevent an application (app) from failing a system interface.  This does not mean an app can not cause a system lockup, but it is unusual.
-	\item[Cinelerra crash:] This is covered in  \hyperref[cha:crash_dumps_analysis]{Crash Dumps for Analysis}.  Just a reminder that for best results you should be root and by providing a crash dump and as much other information as possible, you will be helping the developer to analyze the problem and fix it so that it can be avoided in the future.
+	\item[\CGG{} crash:] This is covered in  \hyperref[cha:crash_dumps_analysis]{Crash Dumps for Analysis}.  Just a reminder that for best results you should be root and by providing a crash dump and as much other information as possible, you will be helping the developer to analyze the problem and fix it so that it can be avoided in the future.
 	\item[X Server crash:] Keyboard does not respond, screen is frozen, caps lock may operate LED light.  Sometimes using Ctrl-Alt-F1 $\dots$ Ctrl-Alt-F7 (etc.) will allow you to regain control of a VT console.  You can use this to login and check logs: eg. \texttt{/var/log/Xorg.0.log}, \textit{dmesg}, \textit{journalctl} $\dots$ etc.  If you have another computer, make sure a terminal server is configured (for example: rsh, ssh, or telnet), then remote login via this other computer and check the logs.  Most important is to immediately note the current software state, and the very last thing that preceded the crash, i.e. last button click, last keystroke, $\dots$ or whatever.
 	\item[Kernel crash:] The machine goes completely dead.  The keyboard caps lock LED will probably be flashing.  Most likely the only way to see anything after the kernel crashes is to use a serial port console log and usually kdb, the kernel debugger, and special cabling.  This requires a lot of setup, and is normally reserved for experts.  Login from another computer will not work.  Pinging the ip address will not respond since the network stack is part of the kernel.  There are some virtual machine setups that will let you debug a \textit{guest} kernel, but this also requires a lot of setup, and affects which kernel is currently under test.  The kdb route is preferable.
 	\item[Keyboard grabs, Server grabs, and Deadlocks:] A grab is an X-server state where all events are forced to just one window event stream.  This forces the user to respond to the dialog.  Things seems to be working, but no keypresses do anything useful. The system clock and other programs will still be working.  The network will work for remote logins. Grabs can be canceled if the \texttt{/etc/X11/xorg.conf} X config contains special setup as shown below:
@@ -597,7 +603,7 @@ To create a specific 440 Hz tone, follow these steps.  You can vary the length, 
 	parameters.
 	\item Highlight the \textit{exprs} option and key in a specific audio filter expression which for 440 Hz would be:
 	$\sin(2\pi t\times440)$.  Then hit the Apply button.
-	\item Next when you hit the green OK checkmark on the Cinelerra: Effect Prompt popup, you will have
+	\item Next when you hit the green OK checkmark on the \CGG{}: Effect Prompt popup, you will have
 	your 440 Hz tone on the timeline plus in the select file that you chose to render it to.
 	\item To use 2 channels instead of 1, in the F\_aeval menu highlight the \textit{channel\_layout} option and change
 	that to 1C|2C instead of the usual default of 1C.
@@ -656,7 +662,7 @@ Other tricks you can perform to separate the speakers are parametric equalizatio
 \subsection{Improving Analog TV Quality}%
 \label{sub:improving_tv_quality}
 
-The picture quality on analog TV is not always good but you can modify parameters in Cinelerra to make it look more like it did in the studio.
+The picture quality on analog TV is not always good but you can modify parameters in \CGG{} to make it look more like it did in the studio.
 
 First, when capturing the video, capture it in the highest resolution possible. For Europeans this would be $720\times576$ and for North Americans, $720\times480$. Do not adjust the brightness or contrast in the recording monitor, but you might want to max out the color. Capture the video using MJPEG or uncompressed Component Video if possible; if not possible, then capture it using JPEG preferably or RGB if that is all that will work.  Now on the timeline use \texttt{Settings $\rightarrow$ Format} to set a YUV colorspace, drop a \textit{Downsample} effect on the footage and set it as follows:
 
@@ -676,7 +682,7 @@ Use the Camera in the compositor to shift the picture up or down a line to remov
 \subsection{Remove Interlacing}%
 \label{sub:remove_interlacing}
 
-Interlacing often exists on older video sources, such as camcorders, and was previously used in broadcast television. Playing this video results in jagged images on a computer monitor, but with Cinelerra you can use deinterlacing effects to solve this.  After some experimentation, it has been determined that the FFmpeg \textit{F\_kerndeint} plugin seems to produce the best results with the least amount of fiddling.  But some of the parameters described next are pertinent to other potential plugin usage.
+Interlacing often exists on older video sources, such as camcorders, and was previously used in broadcast television. Playing this video results in jagged images on a computer monitor, but with \CGG{} you can use deinterlacing effects to solve this.  After some experimentation, it has been determined that the FFmpeg \textit{F\_kerndeint} plugin seems to produce the best results with the least amount of fiddling.  But some of the parameters described next are pertinent to other potential plugin usage.
 
 \begin{description}
 	\item[Line Doubling:] done by the \textit{Deinterlace} effect when set to \textit{Odd} lines or \textit{Even} lines.  When applied to a track it reduces the vertical resolution by $\frac{1}{2}$ and gives you progressive frames with stairstepping. This is only useful when followed by a scale effect which reduces the image to half its size.
@@ -774,7 +780,7 @@ Another way to change duration slightly is to go to the Resources window, highli
 \subsection{Pan and zoom: still images}%
 \label{sub:pan_zoom_still_image}
 
-Cinelerra's powerful keyframe features allow you to use pan and zoom effects on still pictures.
+\CGG{}'s powerful keyframe features allow you to use pan and zoom effects on still pictures.
 
 \begin{enumerate}
 	\item Load and create a clip from a still image. Make the clip 10 seconds long.
@@ -786,5 +792,5 @@ Cinelerra's powerful keyframe features allow you to use pan and zoom effects on 
 	\item Next go to the beginning of the clip and play it.
 \end{enumerate}
 
-You can see that the camera smoothly flows from keyframe point to next keyframe point, as Cinelerra automatically adjusts the camera movement in straight lines from point to point.
+You can see that the camera smoothly flows from keyframe point to next keyframe point, as \CGG{} automatically adjusts the camera movement in straight lines from point to point.
 

@@ -1,9 +1,9 @@
 \chapter{Installation}
 \label{cha:Installation}
-\section{How to Build Cinelerra-GG from Developer's Git Repository}%
+\section{How to Build \CGG{} from Developer's Git Repository}%
 \label{sec:How_to_build}
 
-These are generic build instructions for building Cinelerra-GG Infinity.  
+These are generic build instructions for building \CGG{} Infinity.  
 Known to work on Ubuntu, Mint, OpenSuse, Fedora, Debian, Centos, Arch, Slackware, and Gentoo. 
 It has not been tested on every single possible distro yet so you might expect to have to make some minor changes.
 Also works on a somewhat limited basis on FreeBSD and Windows 10 with the bsd.patch for FreeBSD
@@ -22,11 +22,11 @@ The single user build allows for running completely out of a local user director
 
 We recommend the single-user version when possible.  
 It makes it very easy to install a new version without having to delete the older version in case you want it for backup -- once you are happy with the new version, all you have to do is delete the entire old directory path.  
-Another reason for using single-user is that if you install a new Operating System version and if you have Cinelerra on separate disk space that is preserved, you won't have to reinstall Cinelerra.  
+Another reason for using single-user is that if you install a new Operating System version and if you have \CGG{} on separate disk space that is preserved, you won't have to reinstall \CGG{}.  
 It is also convenient for the purpose of having the ability to interrupt or to see any possible error messages, if you start the application from a terminal window command line where you will have more control to catch problems.  
 All that said, the system builds can be useful in a university lab setting where there are possibly multiple users, or multiple versions.
 
-There are two notable differences between \textit{standard} views of Cinelerra and this implementation for the system builds.  
+There are two notable differences between \textit{standard} views of \CGG{} and this implementation for the system builds.  
 Both of these can be configured during installation.  
 The differences make it possible to have several different versions installed without having them \textit{walk} on each other. 
 
@@ -53,7 +53,7 @@ $ git clone --depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cineler
 $ cd cinelerra5/cinelerra-5.1 # toplevel directory
         \end{lstlisting}
 
-        NOTE: if your system has never had Cinelerra-GG Infinity installed, you will have to make sure you have all of the compilers and libraries necessary.  
+        NOTE: if your system has never had \CGG{} Infinity installed, you will have to make sure you have all of the compilers and libraries necessary.  
         So on the very first build you should run:
 
         \begin{lstlisting}[numbers=none]
@@ -79,7 +79,7 @@ $ /<build_path>/cinelerra5/cinelerra-5.1/log
         \begin{lstlisting}[numbers=none]
    $ make install
         \end{lstlisting}
-    \item  If it all worked, you are all setup. Just click on the Cinelerra desktop icon.
+    \item  If it all worked, you are all setup. Just click on the \CGG{} desktop icon.
 \end{enumerate}
 
 \paragraph{To do a single-user build,} read the file \texttt{README} that is at the top level after you get the source.
@@ -95,7 +95,7 @@ $ cd cinelerra5/cinelerra-5.1 # toplevel directory
         \end{lstlisting}
 \end{enumerate}
 
-NOTE: if your system has never had Cinelerra-GG Infinity installed, you will have to make sure all
+NOTE: if your system has never had \CGG{} Infinity installed, you will have to make sure all
 the compilers and libraries necessary are installed. So on the very first build you should run as \textbf{root}:
 
 \begin{lstlisting}[numbers=none]
@@ -125,7 +125,7 @@ on a newly installed ubuntu 15 system WITHOUT BEING ROOT except for the \texttt{
 \subsection{Notable Options and Caveats}%
 \label{sub:notable_options_and_caveats}
 
-These procedures and the Cinelerra-GG Infinity software have all been run as \textbf{root} on various home laptops and desktops. This provides the best chance to ensure all works correctly and also allows for handling errors, other problems and potential crashes with the most success.  Included in this section are some of the build variations easily available for normal builds.
+These procedures and the \CGG{} Infinity software have all been run as \textbf{root} on various home laptops and desktops. This provides the best chance to ensure all works correctly and also allows for handling errors, other problems and potential crashes with the most success.  Included in this section are some of the build variations easily available for normal builds.
 
 To see the full list of features use:	 
 
@@ -152,7 +152,7 @@ If you wish to change the default directory for a system build you will have to 
 $ make install DESTDIR=<your selected target directory path>
 \end{lstlisting}
 
-The application name can be set during installation, but defaults to \texttt{cin} so that the GG/Infinity build can coexist with other Cinelerra builds if necessary.  To override the default \texttt{cin} name, use:	
+The application name can be set during installation, but defaults to \texttt{cin} so that the GG/Infinity build can coexist with other \CGG{} builds if necessary.  To override the default \texttt{cin} name, use:	
 \begin{lstlisting}[numbers=none]
 $ ./configure --with-exec-name=cinelerra
 \end{lstlisting}
@@ -168,7 +168,7 @@ NOTE:  when you specify parameters to the configure program, it will create a \t
 Since in a \texttt{make} file, the \$ is a special character, it must be escaped so in order to represent a \$ as part of an input parameter, it has to be stuttered.  
 That is, you will need \$\$ (2 dollar signs) to represent a single dollar sign. 
 
-It may be necessary on some distros which have missing or incomplete up-to-date libraries, to build Cinelerra without Ladspa.  
+It may be necessary on some distros which have missing or incomplete up-to-date libraries, to build \CGG{} without Ladspa.  
 To do so, use:
 
 \begin{lstlisting}[numbers=none]
@@ -253,7 +253,7 @@ With persistence, you can get results, but it may take several tries to stabiliz
 If you need help, email the \texttt{log} and \texttt{config.log}, which is usually sufficient to determine why a build failed.
 %\vspace{5ex}
 
-If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational. The libfdk\_aac library is not a part of Cinelerra by default because it is not license free.
+If you have already installed the \texttt{libfdk\_aac} development package on your computer because you prefer this version over the default aac, you will have to do the following to get this alternative operational. The libfdk\_aac library is not a part of \CGG{} by default because it is not license free.
 
 \begin{lstlisting}[numbers=none]
 $ export FFMPEG_EXTRA_CFG=" --enable-libfdk-aac --enable-nonfree"
@@ -393,7 +393,7 @@ $ gdb ./ci
 \subsection{Unbundled Builds}%
 \label{sub:unbundled_builds}
 
-There are some generic build scripts included in the Cinelerra-GG GIT repository for users who want to do unbundled builds with ffmpeg already available on their system.  
+There are some generic build scripts included in the \CGG{} GIT repository for users who want to do unbundled builds with ffmpeg already available on their system.  
 This has been tested on Arch, Ubuntu 18, FreeBSD, Windows10 and Leap 15 (rpm) at the time this was documented.  
 The names of the build scripts are:  \texttt{arch.bld} ,  \texttt{bsd.bld} , \texttt{deb.bld} , \texttt{rpm.bld}, and \texttt{cygwin.bld}.  
 These scripts are in the \texttt{blds} subdirectory.  
@@ -402,7 +402,7 @@ The \texttt{cygwin.bld} should be used with the \texttt{cygwin.patch} file in th
 
 The reason that Cin Infinity traditionally uses thirdparty builds (bundled builds) is because there are a lot of different distros with varying levels of ffmpeg and other needed thirdparty libraries.  
 However, some users prefer using their current system baseline without another/different copy of ffmpeg.  
-With different levels of the user’s libraries, uncertainty, potential instability, and unknown issues may come up while running Cinelerra and this will make it, for all practical purposes, impossible to diagnose and debug problems or crashes.  
+With different levels of the user’s libraries, uncertainty, potential instability, and unknown issues may come up while running \CGG{} and this will make it, for all practical purposes, impossible to diagnose and debug problems or crashes.  
 There may be no help in these cases.  You are encouraged to report any errors which potentially originate from Cin Infinity, but if the data indicates alternate library sources, please report the problems to the appropriate maintainers.
 
 With the unbundled builds, some features may not be available and no attempt to comment them out has been made.  
@@ -410,21 +410,21 @@ So if you use a pulldown, or pick a render option, or choose something that is n
 For example, unless special options were set up by you, the LV2 audio plugins will not be available.  
 Nor will the codec libzmpeg, the file codec ac3, or DVD creation.  
 The old school file classes will all work, but some of the formats that come with ffmpeg may not because of the way that ffmpeg was installed on your operating system.  
-That is because the Cinelerra included ffmpeg is a known static build and is usually the latest stable/released version.  
+That is because the \CGG{} included ffmpeg is a known static build and is usually the latest stable/released version.  
 For example, in the current case of Leap 15, libx264 and libx265 are not built in and this can be debilitating; you can always run \texttt{ffmpeg -formats} and \texttt{ffmpeg -codecs} to see what is available on your system.
 
 
-\section{Download Already Built Cinelerra-GG}%
+\section{Download Already Built \CGG{}}%
 \label{sec:download_already_built_cinelerra_gg}
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=1.0\linewidth]{images/download-distros.png}
-    \caption{Screencast of the website Download page for installing Cinelerra for various O/S.}
+    \caption{Screencast of the website Download page for installing \CGG{} for various O/S.}
     \label{fig:download-distros}
 \end{figure}
 
-If you prefer to not have to take the time to build Cinelerra-GG Infinity yourself, there are pre-built dynamic or static binaries for various versions of Ubuntu, Mint, Suse, Fedora, Debian, Centos, Arch, and Slackware linux as well as Gentoo and FreeBSD.  
+If you prefer to not have to take the time to build \CGG{} Infinity yourself, there are pre-built dynamic or static binaries for various versions of Ubuntu, Mint, Suse, Fedora, Debian, Centos, Arch, and Slackware linux as well as Gentoo and FreeBSD.  
 A Windows 10 version installation is described in \ref{sec:ms_windows10}.
 There are also 32-bit i686 Ubuntu, Debian, and Slackware versions available.  
 These are updated on a fairly regular basis as long as significant code changes have been made.  
@@ -435,7 +435,7 @@ They are in subdirectories of:
 	\url{https://cinelerra-gg.org/download/pkgs}}
 
 The \textbf{tars} directory contains single-user static builds for different distros.  
-This is the recommended usage of Cinelerra-GG because all of the files will exist in a single directory.
+This is the recommended usage of \CGG{} because all of the files will exist in a single directory.
 Generally all of the necessary libraries are built into the static build, but in some cases you may
 have to install another library that is being called for.  
 To install the single user builds, download the designated tarball from the \texttt{./tars} subdirectory and unpack as indicated below:
@@ -509,12 +509,12 @@ yum install cinelerra
 apt install software-properties-common apt-transport-https
 apt-add-repository https://cinelerra-gg.org/download/pkgs/ub14
 # UBUNTU 16/18 note - This has been known to work, but things change quickly:
-# VIP - for the first install, the above line adds Cinelerra to /etc/apt/sources.list but...
+# VIP - for the first install, the above line adds \CGG{} to /etc/apt/sources.list but...
 # Version 16/18 of Ubuntu are more strict for licensing so you will have to edit
 #  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
 # For example the line should be: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub16 xenial main
 #   Or for ub18: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub18 bionic main
-# Also, on the install you will get an error message that you can either ignore as Cinelerra
+# Also, on the install you will get an error message that you can either ignore as \CGG{}
 #  will run anyway, or else (the first time only) on the commnand line keyin: 
 #  echo > /etc/sysctl.d/50-cin.conf "kernel.shmmax=0x7fffffff"
 apt update
@@ -600,9 +600,9 @@ Server = https://cinelerra-gg.org/download/pkgs/arch
 pacman -Syu
 pacman -S cin
 # NOTE: the first line above updates your Arch system to the current rolling release and the second
-#  line updates Cinelerra-GG based on the rolling release that was in effect on the last day of the month.
+#  line updates \CGG{} based on the rolling release that was in effect on the last day of the month.
 #  Please complete the 2 steps above in order, one right after the other to avoid risk of a partial upgrade.
-#  Due to the unpredictability of when Arch libraries are updated, performing an install of Cinelerra at
+#  Due to the unpredictability of when Arch libraries are updated, performing an install of \CGG{} at
 #  any time other than shortly after the last day of the month when the new build package is created,
 #  could lead to library incompatibilities.  In that case, please consider using the Arch static tar file
 #  for installation instead.
@@ -610,15 +610,15 @@ pacman -S cin
 ##pacman -R cin
 \end{lstlisting}
 
-\section{Windows 10 with Cygwin for Cinelerra Limited}%
+\section{Windows 10 with Cygwin for \CGG{} Limited}%
 \label{sec:ms_windows10}
 
-To run Cinelerra on a Windows 10 computer, you will need to have Cygwin installed on your system, 
-along with the  Cinelerra static tar and a patched library: libxbc.  This setup has been tested 
+To run \CGG{} on a Windows 10 computer, you will need to have Cygwin installed on your system, 
+along with the  \CGG{} static tar and a patched library: libxbc.  This setup has been tested 
 with Windows 10, version 1909, on an HP EliteBook 820 at 2.3 GHz.
 
 This limited version provides \textit{core} functionality at this time with the standard Windows FFmpeg
-executable, meaning that specific modifications in FFmpeg needed for Cinelerra are not available. 
+executable, meaning that specific modifications in FFmpeg needed for \CGG{} are not available. 
 Limited capabilities include only a few render output formats available - for example \textit{mov}, \textit{qt} 
 as \textit{mjpeg}, and \textit{mpeg} for videos and \textit{avi} and \textit{qt} as \textit{s16le} 
 for audio, but not \textit{mkv} or \textit{mp4}.  
@@ -629,7 +629,7 @@ work with Windows.
 
 Cygwin is an environment that runs natively on Windows which allows Unix programs to be compiled 
 and run on Windows.  With cygwin installed on your Windows 10 computer, you will be able to run 
-Cinelerra.  Before installing cygwin, you need to be warned that the Avast anti-virus software 
+\CGG{}.  Before installing cygwin, you need to be warned that the Avast anti-virus software 
 kills files necessary for cygwin installation and execution, so you will have to remove it and 
 use alternative anti-virus software (the standard default already included with Windows 10 
 is Defender). Below are the steps for installation:
@@ -657,10 +657,10 @@ is Defender). Below are the steps for installation:
 	\item Finally you will want to have the icons on your desktop (already default) and then click \textit{Finish}.
 \end{enumerate}
 
-Then to install the Cinelerra tar files, you will need to start a cygwin console terminal from the startup menu as shown here:
+Then to install the \CGG{} tar files, you will need to start a cygwin console terminal from the startup menu as shown here:
 	\texttt{Start $\rightarrow$ Cygwin $\rightarrow$ Cygwin64} Terminal
 
-\underline{Installing Cinelerra:}
+\underline{Installing \CGG{}:}
 
 \begin{enumerate}
 	\item Download the tar file at:\\
@@ -678,9 +678,9 @@ The libxcb path repairs an error (XIOError), which stops Cinelerra.
 	$ tar -xJf /path/cygcin-bld.tar.bz2
 \end{lstlisting}
 \end{enumerate}
-This creates \texttt{\~{}/cygcin} , a user build installation of Cinelerra and requires approximately 400MB storage.
+This creates \texttt{\~{}/cygcin} , a user build installation of \CGG{} and requires approximately 400MB storage.
 
-\underline{Running Cinelerra:}
+\underline{Running \CGG{}:}
 
 You will need to start a cygwin desktop from the startup menu:
 \begin{enumerate}
@@ -695,7 +695,7 @@ This opens a separate window that can survive a cygwin hang and bugs. Without th
 \begin{lstlisting}[language=bash,numbers=none]
 	$ export DISPLAY=:0.0
 \end{lstlisting}
-	\item Change directories to where Cinelerra is installed:
+	\item Change directories to where \CGG{} is installed:
 \begin{lstlisting}[numbers=none]
 	$ cd /path/cygcin    (NOT cygwin)
 \end{lstlisting}
@@ -703,16 +703,16 @@ This opens a separate window that can survive a cygwin hang and bugs. Without th
 \begin{lstlisting}[numbers=none]
 	$ ./cin
 \end{lstlisting}
-which starts up your 4 Cinelerra windows.
+which starts up your 4 \CGG{} windows.
 \end{enumerate}
 
-The most noticeable difference from the Linux versions is that Cinelerra seems to run 
+The most noticeable difference from the Linux versions is that \CGG{} seems to run 
 very slowly on Windows 10. You must be very tolerant and patient to see this work.  
-It can however exhibit astonishing speed when encoding.  Cinelerra has to be downgraded significantly due to lack of supported interfaces, codecs (for example h264/h265), and utilities.  
+It can however exhibit astonishing speed when encoding.  \CGG{} has to be downgraded significantly due to lack of supported interfaces, codecs (for example h264/h265), and utilities.  
 The only graphics driver is X11 and the only sound driver is pulseaudio.  Almost all configurable
 omissions are applied to this build.  
 
-\underline{Cinelerra build on cygwin from source code:}
+\underline{\CGG{} build on cygwin from source code:}
 
 \begin{enumerate}
 	\item Download and install ffmpeg into /usr/local :
@@ -764,21 +764,21 @@ There is only very limited signal handler dmp file support.
 Running gdb from inside a desktop resident console (not a cygwin64 window) will hang cygwin (and cin) when it hits a breakpoint.  You must run from an external console window to avoid this issue.
 
 
-\section{Distribution Systems with Cinelerra Included}%
+\section{Distribution Systems with \CGG{} Included}%
 \label{sec:distribution_systems_with_cinelerra_included}
 
-There are also some special complete distribution systems available that include Cinelerra-GG for audio and video production capabilities.
+There are also some special complete distribution systems available that include \CGG{} for audio and video production capabilities.
 
 \textbf{AV Linux} is a downloadable/installable shared snapshot ISO image based on Debian. 
 It provides the user an easy method to get an Audio and Video production workstation without the hassle of trying to find and install all of the usual components themselves. 
-Of course, it includes Cinelerra-GG!  
+Of course, it includes \CGG{}!  
 It is at:
 
 \begin{center}
 	{\small \url{http://www.bandshed.net/avlinux/}}
 \end{center}
 
-\textbf{Bodhi Linux} is a free and open source distribution that comes with a curated list of open source software for digital artists who work with audio, video, includes Cinelerra GG, games, graphics, animations, physical computing, etc.  
+\textbf{Bodhi Linux} is a free and open source distribution that comes with a curated list of open source software for digital artists who work with audio, video, includes \CGG{}, games, graphics, animations, physical computing, etc.  
 It is at:
 
 \begin{center}

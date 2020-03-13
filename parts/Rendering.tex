@@ -1,7 +1,7 @@
 \chapter{Rendering}%
 \label{cha:rendering}
 
-Rendering takes a section of the timeline, performs all the editing, effects and compositing, and creates a new media file.  You can then delete all the source assets, play the rendered file, or bring it back into Cinelerra for more editing.   All rendering operations are based on a region of the timeline to be rendered.  You need to define this region on the timeline.  The rendering functions define the region based on a set of rules.  When a region is highlighted or in/out points are set, the affected region is rendered.  When no region is highlighted, everything after the insertion point is rendered.  By
+Rendering takes a section of the timeline, performs all the editing, effects and compositing, and creates a new media file.  You can then delete all the source assets, play the rendered file, or bring it back into \CGG{} for more editing.   All rendering operations are based on a region of the timeline to be rendered.  You need to define this region on the timeline.  The rendering functions define the region based on a set of rules.  When a region is highlighted or in/out points are set, the affected region is rendered.  When no region is highlighted, everything after the insertion point is rendered.  By
 positioning the insertion point at the beginning of a track and unsetting all in/out points, the entire track is rendered.  But you also have the choice to render \textit{one frame}.
 
 \section{Single File Rendering}%
@@ -32,7 +32,7 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 
 \begin{description}
     \item[Wrench:] select the \textit{wrench} next to each toggle to set compression parameters.  If the file format can not store audio or video the compression parameters will be blank.  If \textit{Render audio tracks} or \textit{Render video tracks} is selected and the file format does not support it, trying to render will result in an error message. More details in the section: \nameref{sub:extra_cin_option_ffmpeg}
-    \item[Create new file at each label] the option causes a new file to be created when every label in the timeline is encountered – a separate file for each.  This is useful for dividing long audio recordings into individual tracks.  When using the Render Farm (described later), \textit{Create new file at each label} causes one render farm job to be created at every label instead of using the internal load balancing algorithm to space jobs.   If the filename given in the render dialog has a 2 digit number in it, the 2 digit number is overwritten with a different incremental number for every output file. If no 2 digit number is given, Cinelerra automatically concatenates a number to the end of the given filename for every output file.
+    \item[Create new file at each label] the option causes a new file to be created when every label in the timeline is encountered – a separate file for each.  This is useful for dividing long audio recordings into individual tracks.  When using the Render Farm (described later), \textit{Create new file at each label} causes one render farm job to be created at every label instead of using the internal load balancing algorithm to space jobs.   If the filename given in the render dialog has a 2 digit number in it, the 2 digit number is overwritten with a different incremental number for every output file. If no 2 digit number is given, \CGG{} automatically concatenates a number to the end of the given filename for every output file.
     For example, in the filename \texttt{/movies/track01.wav} the $01$ would be overwritten for every output file. 
     The filename \texttt{/movies/track.wav}; however, eventually would become \texttt{/movies/track.wav001} and so on.  
     Filename regeneration is only used when either render farm mode is active or creating new files for every label is active.
@@ -60,9 +60,9 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 \section{Batch Rendering}%
 \label{sec:batch_rendering}
 
-Batch Rendering automates the rendering of audio/video files in that you can establish a set of job parameters, save them, and use them repeatedly.  It also allows for Cinelerra to be run by external programs, with no need for the user to manually interact with the user interface (figure~\ref{fig:batch01}).
+Batch Rendering automates the rendering of audio/video files in that you can establish a set of job parameters, save them, and use them repeatedly.  It also allows for \CGG{} to be run by external programs, with no need for the user to manually interact with the user interface (figure~\ref{fig:batch01}).
 
-If you want to render many projects to media files without having to constantly set up the render dialog for each one, batch rendering is a more efficient method of rendering.  In the Batch Render menu, you specify one or more Cinelerra project XML files, the EDL, to render and unique output files for each. (The EDL is the Edit Decision List or the set of changes to be applied to the project and media files.) Then Cinelerra loads each project file and renders it automatically. The project XML files, combined with the settings for rendering an output file, are called a batch.  This allows a large amount of media to be processed without user intervention.
+If you want to render many projects to media files without having to constantly set up the render dialog for each one, batch rendering is a more efficient method of rendering.  In the Batch Render menu, you specify one or more \CGG{} project XML files, the EDL, to render and unique output files for each. (The EDL is the Edit Decision List or the set of changes to be applied to the project and media files.) Then \CGG{} loads each project file and renders it automatically. The project XML files, combined with the settings for rendering an output file, are called a batch.  This allows a large amount of media to be processed without user intervention.
 
 \begin{figure}[htpb]
     \centering
@@ -71,11 +71,11 @@ If you want to render many projects to media files without having to constantly 
     \label{fig:batch01}
 \end{figure}
 
-The first thing to do when preparing to do batch rendering is to create one or more Cinelerra projects to be rendered and save them as a normal project, such as \texttt{ProjectA.xml}.  The batch renderer requires a separate project file for every batch to be rendered.  You can use the same Cinelerra project file if you are rendering to different output files, as in an example where you might be creating the same output video in different file formats.
+The first thing to do when preparing to do batch rendering is to create one or more \CGG{} projects to be rendered and save them as a normal project, such as \texttt{ProjectA.xml}.  The batch renderer requires a separate project file for every batch to be rendered.  You can use the same \CGG{} project file if you are rendering to different output files, as in an example where you might be creating the same output video in different file formats.
 
 To create a project file which can be used in batch render, set up your project and define the region to be rendered either by highlighting it, setting in/out points around it, or positioning the insertion point before it. Then save the project as usual to your \texttt{project.xm}l file. Define as many projects as needed this way.  The batch renderer takes the active region from the EDL file for rendering. If we have not set active regions, it is better to bring the insertion point to the beginning of the timeline to avoid possible problems with the rendering.
 
-With all the Cinelerra xml project files prepared with active regions, go to \texttt{File $\rightarrow$ Batch Render}. This brings up the batch render dialog. The interface for batch rendering is more complex than for single file rendering.  A list of batches must be defined before starting a batch rendering operation.  The table of batches appears on the bottom of the batch render dialog and is called \textit{Batches to render}.  Above this are the configuration parameters for a single batch; a batch is simply a pairing of a project file with a choice of output file and render settings.
+With all the \CGG{} xml project files prepared with active regions, go to \texttt{File $\rightarrow$ Batch Render}. This brings up the batch render dialog. The interface for batch rendering is more complex than for single file rendering.  A list of batches must be defined before starting a batch rendering operation.  The table of batches appears on the bottom of the batch render dialog and is called \textit{Batches to render}.  Above this are the configuration parameters for a single batch; a batch is simply a pairing of a project file with a choice of output file and render settings.
 
 Set the \textit{Output path}, \textit{File format}, \textit{Audio}, \textit{Video}, and \textit{Create new file at each label} parameters as if you were rendering a single file.  These parameters apply to only one batch.  In addition to the standard rendering parameters, you must select the \textit{EDL Path} to be the project file (such as \texttt{ProjectA.xml}) that will be used in the batch job.  In this case, \textit{EDL Path} is not related in anyway with the EDL files as created by \texttt{File/Export EDL}.  In batch render mode the program will not overwrite an existing output file and will simply fail, so make sure that no files with the same name as the output files exist before starting.
 
@@ -92,19 +92,19 @@ The description of each of the columns in the batch list are as follows:
 \end{description}
 To start rendering from the first enabled batch, hit \texttt{Start}.  Once rendering, the main window shows the progress of the batch. After each batch finishes, the elapsed column in the batch list is updated and the next batch is rendered until all the enabled batches are finished.  The currently rendering batch is always highlighted red.  To stop rendering before the batches are finished without closing the batch render dialog, hit \texttt{Stop}.  To stop rendering before the batches are finished and close the batch render dialog, hit \texttt{Close}.  Or you can exit the batch render dialog whether or not anything is being rendered, by hitting \texttt{Close}.
 
-You can automate Cinelerra batch renders from other programs.  In the batch render dialog, once you have created your list of batch render jobs, you can click the button \texttt{Save Jobs} and choose a file to save your batch render list to.  Once you have created this file, you can start up a batch render without needing to interact with the Cinelerra user interface.  From a shell prompt, from a script, or other program, execute:
+You can automate \CGG{} batch renders from other programs.  In the batch render dialog, once you have created your list of batch render jobs, you can click the button \texttt{Save Jobs} and choose a file to save your batch render list to.  Once you have created this file, you can start up a batch render without needing to interact with the \CGG{} user interface.  From a shell prompt, from a script, or other program, execute:
 
 \begin{lstlisting}[language=bash,numbers=none]
     {path_to_cinelerra} -r batchjob.xml
 \end{lstlisting}
-substituting  your actual filename for \texttt{batchjob.xml}.  When invoked with these parameters, Cinelerra will start up and perform the rendering jobs in that list, without creating its usual windows.
+substituting  your actual filename for \texttt{batchjob.xml}.  When invoked with these parameters, \CGG{} will start up and perform the rendering jobs in that list, without creating its usual windows.
 
 \subsection{Command Line Rendering}%
 \label{sub:command_line_rendering}
 
 The command line rendering method consists of a way to load the current set of batch rendering jobs and process them without a GUI. This is useful if you want to do rendering on the other side of a low bandwidth network and you have access to a high powered computer located elsewhere. Setting up all the parameters for this operation is somewhat difficult. That is why the command line aborts if any output files already exist.
 
-To perform rendering from the command line, first run Cinelerra in graphical mode. Go to \texttt{File $\rightarrow$ Batch Render}. Create the batches you intend to render in the batch window and close the window. This saves the batches in a file. Set up the desired render farm attributes in \texttt{Settings $\rightarrow$ Preferences} and quit out of Cinelerra if you want to use the Render Farm capability.  These settings are used the next time command line rendering is used to process the current set of batch jobs without a GUI.
+To perform rendering from the command line, first run \CGG{} in graphical mode. Go to \texttt{File $\rightarrow$ Batch Render}. Create the batches you intend to render in the batch window and close the window. This saves the batches in a file. Set up the desired render farm attributes in \texttt{Settings $\rightarrow$ Preferences} and quit out of \CGG{} if you want to use the Render Farm capability.  These settings are used the next time command line rendering is used to process the current set of batch jobs without a GUI.
 
 On the command line run:
 
@@ -187,9 +187,9 @@ It is often useful to insert an effect or a transition and then select \texttt{S
 \section{Render Farm Usage}%
 \label{sec:render_farm_usage}
 
-Render Farm uses background rendering, a feature of Cinelerra where the video is rendered in the background, to speed up rendering significantly.  Because rendering is memory and cpu intensive, using multiple computers on a network via a render farm is a significant gain.  With Cinelerra installed on all nodes, the master node and the clients communicate via a network port that you specify. 
+Render Farm uses background rendering, a feature of \CGG{} where the video is rendered in the background, to speed up rendering significantly.  Because rendering is memory and cpu intensive, using multiple computers on a network via a render farm is a significant gain.  With \CGG{} installed on all nodes, the master node and the clients communicate via a network port that you specify. 
 
-Cinelerra can distribute the rendering tasks over the network to the other computers of the Render Farm.  The render farm software tries to process all of the rendering in parallel so that several computers can be used to render the results.  The \textit{Total jobs to create} in the setup or labels on the timeline are used to divide a render job into that specified number of tasks.  Each background job is assigned a timeline segment to process and the jobs are sent to the various computer nodes depending upon the load balance.  The jobs are processed by the nodes separately and written to individual files.  You will have to put the files back together via a load with concatenation, or typically by using a command line tool from a script.
+\CGG{} can distribute the rendering tasks over the network to the other computers of the Render Farm.  The render farm software tries to process all of the rendering in parallel so that several computers can be used to render the results.  The \textit{Total jobs to create} in the setup or labels on the timeline are used to divide a render job into that specified number of tasks.  Each background job is assigned a timeline segment to process and the jobs are sent to the various computer nodes depending upon the load balance.  The jobs are processed by the nodes separately and written to individual files.  You will have to put the files back together via a load with concatenation, or typically by using a command line tool from a script.
 
 \subsection{Basic Steps to Start a Render Farm}%
 \label{sub:basic_steps_start_render_farm}
@@ -216,7 +216,7 @@ The following steps are just a guideline to start your render farm.  It is assum
         \item set the Total number of jobs to create;
         \item click OK on the bottom of the Preferences window.
     \end{itemize}
-    \item On the client computers ($192.168.1.12$), start 5 background Cinelerra tasks via:
+    \item On the client computers ($192.168.1.12$), start 5 background \CGG{} tasks via:
     \begin{lstlisting}[language=bash,numbers=none]
 $ cd /{path_to_cinelerra}
 $ cin -d 401
@@ -224,7 +224,7 @@ $ cin -d 402
 ...
 $ cin -d 405
     \end{lstlisting}
-    \item On the master node (localhost), start the 2 background Cinelerra tasks via:
+    \item On the master node (localhost), start the 2 background \CGG{} tasks via:
     \begin{lstlisting}[language=bash,numbers=none]
 $ cd /{path_to_cinelerra}
 $ cin -d 406
@@ -251,7 +251,7 @@ Below we describe the Performance tab for configuring a render farm (figure~\ref
 \end{figure}
 
 \begin{description}
-    \item[Project SMP cpus] although this field is not Render Farm specific, it is useful for Cinelerra to have the CPU count and for using multiple threads.
+    \item[Project SMP cpus] although this field is not Render Farm specific, it is useful for \CGG{} to have the CPU count and for using multiple threads.
     \item[Use render farm] check this to turn on the render farm option.  Once checked ALL rendering will be done via the farm including the usual Render (\texttt{Shift-R}).  You may want to turn if off for small jobs.
     \item[Nodes listbox] displays all the nodes on the render farm and shows which ones are currently enabled. The Nodes listbox has 4 columns -- On,  Hostname,  Port,  Framerate -- which show the current values.  An \textit{X} in the \textit{On} designates that that host is currently enabled; \textit{Hostname} shows the name of the host; \textit{Port} shows the port number that host uses; and \textit{Framerate} will either be zero initially or the current framerate value.
     \item[Hostname] this field is used to edit the hostname of an existing node or enter a new node.
@@ -282,7 +282,7 @@ divided by the number of packages to portion out the work (if not labels).  If s
 {\color{red} CAUTION }, any exact command lines worked as of $01/2018$ on a Fedora system.  These can change over time and on different operating systems/levels.  Always check/verify any command line before using.
 
 \begin{description}
-    \item[Set up Cinelerra] A Cinelerra render farm is organized into a master node and any number of client nodes.  The master node is the computer which is running the gui.  The client nodes are anywhere else on the network with Cinelerra installed and are run from the command line.  Before you start the master node for Cinelerra, you need to set up a shared filesystem on the disk storage node as this is the node that will have the common volume where all the data will be stored.  
+    \item[Set up \CGG{}] A \CGG{} render farm is organized into a master node and any number of client nodes.  The master node is the computer which is running the gui.  The client nodes are anywhere else on the network with \CGG{} installed and are run from the command line.  Before you start the master node for \CGG{}, you need to set up a shared filesystem on the disk storage node as this is the node that will have the common volume where all the data will be stored.  
     The location of the project and its files should be the same in the client computers as in the master computer and to avoid problems of permissions, it is better to use the same user in master and clients. 
     For example, if you have the project in \texttt{/home/<user>/project-video} you must create the same directory path on the clients, but empty.  Sharing the directory of the location of your project on the master computer can be done with NFS as described next.  Alternatively, you can look up on the internet how to use Samba to share a directory.
     \item[Create a shared filesystem and mount using NFS] All nodes in the render farm should use the same filesystem with the same paths to the project files on all of the master and client nodes.  This is easiest to do by setting up an NFS shared disk system.
@@ -339,9 +339,9 @@ $ umount <path>
         
         Be aware that you may have to adjust any security or firewalls you have in place.  \textit{Most firewalls will require extra rules to allow nfs access}.  Many have built-in configurations for this. 
     \end{enumerate}
-    \item[Configure Rendering on Master Node] There is 1 master node which is running the Cinelerra gui and where the video will be edited and the command given to start up the rendering.  Any number of client computers can be run from the command line only, so they can be headless since no X or any graphical libraries are needed.  Of course, the Cinelerra software must be installed on each of the client computers.
+    \item[Configure Rendering on Master Node] There is 1 master node which is running the \CGG{} gui and where the video will be edited and the command given to start up the rendering.  Any number of client computers can be run from the command line only, so they can be headless since no X or any graphical libraries are needed.  Of course, the \CGG{} software must be installed on each of the client computers.
     \begin{enumerate}
-        \item Assuming you already have Cinelerra installed on the master node, start Cinelerra by clicking on the
+        \item Assuming you already have \CGG{} installed on the master node, start \CGG{} by clicking on the
         icon or by typing the following command on the terminal screen:  \texttt{/{cinelerra\_path}/cin}.
         \item Use the file pulldown \texttt{Settings $\rightarrow$ Preferences}, the Performance tab, to set up your Render Farm
         options in the Render Farm pane.
@@ -361,11 +361,11 @@ $ netstat -n -l -4 --protocol inet
         \item Click OK on the Preferences window when done.
     \end{enumerate}
     \item[Create Workflow] While working on the master computer, it is recommended that you keep all the resources being used on the same shared disk.  Load your video/audio piece and do your editing and preparation.  Add any desired plugins, such as a Title, to fine-tune your work.  You want to make sure your video is ready to be rendered into the final product.
-    \item[Start the Client Nodes] To start up the client nodes run Cinelerra from the command line on each of the client computers using the following command:
+    \item[Start the Client Nodes] To start up the client nodes run \CGG{} from the command line on each of the client computers using the following command:
     \begin{lstlisting}[language=bash,numbers=none]
 /{cinelerra_pathname}/cin -d [port #]   ;   \#for example /mnt1/bin/cinelerra -d 401
     \end{lstlisting}
-    This starts Cinelerra in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
+    This starts \CGG{} in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
     \begin{lstlisting}[language=bash,numbers=none]
 RenderFarmClient::main_loop: client started
 RenderFarmClient::main_loop: Session started from 127.0.0.1
@@ -378,7 +378,7 @@ RenderFarmClientThread::run: Session finished
     \begin{lstlisting}[language=bash,numbers=none]
 or n in `seq 1501 1505`; do cin -d $n; done
     \end{lstlisting}
-    \item[Render Using Render Farm] After you have followed the preceding steps, you are ready to use the render farm.  Click on \texttt{File $\rightarrow$ Render}\dots which opens the render dialog.  The most important point here is to use for \textit{the Output path / Select a file to render to} a path/file name that is on the shared volume that is also mounted on the clients.  Click on OK to render. The Cinelerra program divides the timeline into the number of jobs specified by the user.  These jobs are then dispatched to the various nodes depending upon the load balance. The first segment will always render on the master node and the other segments will be farmed out to the render nodes.  Batch Rendering, as well as BD/DVD rendering, may use the render farm.  Each line in the batchbay can enable/disable the render farm.  Typically, video can be rendered into many file segments and concatenated, but normally audio is rendered as one monolithic file (not farmed).
+    \item[Render Using Render Farm] After you have followed the preceding steps, you are ready to use the render farm.  Click on \texttt{File $\rightarrow$ Render}\dots which opens the render dialog.  The most important point here is to use for \textit{the Output path / Select a file to render to} a path/file name that is on the shared volume that is also mounted on the clients.  Click on OK to render. The \CGG{} program divides the timeline into the number of jobs specified by the user.  These jobs are then dispatched to the various nodes depending upon the load balance. The first segment will always render on the master node and the other segments will be farmed out to the render nodes.  Batch Rendering, as well as BD/DVD rendering, may use the render farm.  Each line in the batchbay can enable/disable the render farm.  Typically, video can be rendered into many file segments and concatenated, but normally audio is rendered as one monolithic file (not farmed).
     
     Another performance feature which can use the Render Farm is \textit{Background Rendering}.  This is also enabled on the \texttt{Preferences $\rightarrow$ Performances} tab.  The background render function generates a set of image files by pre-rendering the timeline data on the fly.  As the timeline is update by editing, the image data is re-rendered to a \textit{background render} storage path.  The Render Farm will be used for this operation if it is enabled at the same time as the \textit{background render} feature.
     \item[Assemble the Output Files] Once all of the computer jobs are complete, you can put the output files together by using the shell script, \textit{RenderMux} (from the menubar \textit{scripts} button just above FF), if the files were rendered using ffmpeg, or you can load these by creating a new track and specifying concatenate to existing tracks in the load dialog in the correct numerical order.  File types which support direct copy can be concatenated into a single file by rendering to the same file format with render farm disabled as long as the track dimensions, output dimensions, and asset dimensions are equal.
@@ -390,7 +390,7 @@ or n in `seq 1501 1505`; do cin -d $n; done
 These steps are for quickly setting up render farm with the least amount of additional system work, but it is non-optimal.  It is useful in situations where a few people all show up with their laptops to work together on the same video/audio file and you don’t want to bother setting up NFS for a shared disk.
 
 \begin{enumerate}
-    \item Make sure the Cinelerra program is installed on all of the computers and the network between the
+    \item Make sure the \CGG{} program is installed on all of the computers and the network between the
     main computer and the client computers is working.  Use the same version if possible.
     \item Load your video file on the master node and use \texttt{File $\rightarrow$ Save as}\dots  to save it to \texttt{/tmp}.
     \item Move that same file with the same name to \texttt{/tmp} on all of the client computers via rsh or sneaker net -- the ONLY reason you are doing this is to avoid having to set up NFS or Samba on the buddy client
@@ -440,14 +440,14 @@ This means that you can make project related configurations that do not impact t
 \noindent If you have problems running the Render Farm.  Here is a list of items to check.
 
 \begin{itemize}
-    \item Cinelerra must be installed on the master node and all client machines.
+    \item \CGG{} must be installed on the master node and all client machines.
     \item It is best to have the same username available on all nodes to avoid problems with access rights.
     \item Check file permissions and ownership to ensure that the clients all have access.
     \item If a node does not have access to an input asset it will not die, but just display error messages.
     \item If a node can not access an output asset, the rendering will abort.
     \item A port in use when stopped may take up to $30$ seconds to time out before you can restart the jobs.
     \item Each of the port combinations have to be unique across clients, and not already in use in the network.
-    \item Cinelerra load balances on a first come, first serve basis.  If the last section of the video is sent to the
+    \item \CGG{} load balances on a first come, first serve basis.  If the last section of the video is sent to the
     slowest node, the render job will have to wait for the slowest node to finish.  It would be better to 
     start on the slowest node with the earlier section of the video so keep that in mind when designating
     port numbers.
@@ -456,7 +456,7 @@ This means that you can make project related configurations that do not impact t
     \item The master and client jobs on the ports do not go away so if you want to stop them, you will have to
     kill them via: \texttt{kill PID\#}.
     \item Check to see if there are services listening on the ports to use:  \texttt{netstat -n -l -4 --protocol inet}
-    \item There is a watchdog timer in Cinelerra and if there is no response from a client in the designated
+    \item There is a watchdog timer in \CGG{} and if there is no response from a client in the designated
     number of seconds, it will kill the render job.
     \item The \textit{localhost} should exist as $127.0.0.1$ in \texttt{/etc/hosts} and as the \texttt{lo} network device in ifconfig.
     \item If the job loads become unbalanced, you may want to \textit{reset rates} to start over for new framerates.
@@ -465,7 +465,7 @@ This means that you can make project related configurations that do not impact t
     \item If one of the client computers is unavailable, check to see if there is an \texttt{X} to the left of the \texttt{nodename}
     in the Nodes listbox.  Check the \texttt{X} to disable it which sets ON to OFF.
     \item A red message in the lower left hand corner of the main timeline that reads \textit{Failed to start render
-    farm} often means that the client Cinelerra programs were not started up.
+    farm} often means that the client \CGG{} programs were not started up.
     \item A message of \texttt{RenderFarmWatchdog::run 1 killing server thread \\ \#address\#} means that the client did
     not respond in time.  You can adjust the timer in \texttt{Settings $\rightarrow$ Preferences, Performance} tab.
     \item When you get the message \texttt{RenderFarmClient::main\_loop: bind port 400: Address already in use}, use a different port.
@@ -488,7 +488,7 @@ If one of the render farm computers is connected to the internet, you should use
 \subsection{FFmpeg Common H.264 Rendering}%
 \label{sub:ffmpeg_h264_rendering}
 
-Because H.264 is so widely used, the method in Cinelerra-GG Infinity is outlined below.  These setup steps make it easy to just get started.
+Because H.264 is so widely used, the method in \CGG{} Infinity is outlined below.  These setup steps make it easy to just get started.
 
 \begin{itemize}
     \item File $\rightarrow$ Render
@@ -561,9 +561,9 @@ Example: \textit{cin\_sample\_fmt=s16}
 \subsection{Two-pass Encoding with FFmpeg}%
 \label{sub:two_pass_encoding_ffmpeg}
 
-In Cinelerra for two-pass, you need to run ffmpeg twice, with the same settings, except for designating the options of pass 1 for the first pass and then pass 2.  In pass 1, a logfile that ffmpeg needs for the second pass is created.  In pass 1 the audio codec should be specified that will be used in pass 2.  For more information on ffmpeg 2-pass, check {\small \url{https://trac.ffmpeg.org/wiki/Encode/H.264}}.  Different libraries may have different requirements and you will probably have to determine this by looking online at ffmpeg or looking directly at that code.
+In \CGG{} for two-pass, you need to run ffmpeg twice, with the same settings, except for designating the options of pass 1 for the first pass and then pass 2.  In pass 1, a logfile that ffmpeg needs for the second pass is created.  In pass 1 the audio codec should be specified that will be used in pass 2.  For more information on ffmpeg 2-pass, check {\small \url{https://trac.ffmpeg.org/wiki/Encode/H.264}}.  Different libraries may have different requirements and you will probably have to determine this by looking online at ffmpeg or looking directly at that code.
 
-This 2 line ffmpeg 2-pass operation can be functionally duplicated in Cinelerra in the steps below them:
+This 2 line ffmpeg 2-pass operation can be functionally duplicated in \CGG{} in the steps below them:
 
 \begin{lstlisting}[language=bash,numbers=none]
 ffmpeg -y -i input -c:v libx264 -b:v 2600k -pass 1 -c:a aac -b:a 128k -f mp4 /dev/null && \
@@ -686,7 +686,7 @@ A CRF of 16 delivers satisfactory results in most cases. However, if
 the video material is really \emph{grainy}, a CRF~16 can lead to unwanted large files.  In this case, a trial export of perhaps one minute should be performed. The resulting bit rate can be used to correct the CRF to 17,\,18,\,19\ldots -- remember, a CRF of 0 means lossless, the higher the number the stronger the lossy compression. The approximate calculation of the final file size can be extrapolated from the sample export.
 
 The color space information must be used explicitly so that it can
-be included in the video. Cinelerra\,GG or FFmpeg does not write it
+be included in the video. \CGG{} or FFmpeg does not write it
 by itself. Without this information the players (e.\,g.\ \href{https://mpv.io/}{mpv}) stick to the dimensions of the video and take the assumed color model from a table. With videos in the dimensions from 720 to 1080 this is bt709. For smaller dimensions, e.\,g.\ DVD, bt601 is assumed and for 4k and above it is bt2020. Normally this is not a problem, but if you want to export a FullHD without color loss to a smaller size like 576 for example, you have to inform the encoder as well as the decoder of the player. This also applies if the videos are to be loaded on video platforms, where they are then converted into videos of different sizes. It is a security measure to prevent false colors, such as the color profiles in digital photos and the copies made from them.
 
 The HEVC tuning has not been considered here, because it is is
@@ -716,7 +716,7 @@ mknod /tmp/piper.yuv p
     \item set up your Render (\texttt{Shift-R}), you can choose a raw format such as \textit{yuv} or \textit{rgb}
     \item for the filename \textit{Select a file to render to}, use the named pipe as created in step 1 (\texttt{/tmp/piper.yuv})
     \item for \textit{Insertion Strategy}, you will want to make sure to select \textit{insert nothing}
-    \item click for OK on the green checkmark.(the Cinelerra gui will look like it is hanging while waiting for a command line to use the pipe.)
+    \item click for OK on the green checkmark.(the \CGG{} gui will look like it is hanging while waiting for a command line to use the pipe.)
     \item on the terminal window, keyin your command, for example:
     \begin{lstlisting}[language=bash,numbers=none]
 /mnt0/build5/cinelerra-5.1/thirdparty/ffmpeg-3.4.1/ffmpeg -f rawvideo -pixel_format yuv420p \ -video_size 1280x720 -framerate 30000/1001 -i /tmp/piper.yuv /tmp/pys.mov

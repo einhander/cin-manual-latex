@@ -29,7 +29,7 @@ The media file will be written using the format and codec specified in the \text
 Below describes the necessary steps for recording freely available media from the internet for your own personal use.  You have to be on a system using pulseaudio, such as ubuntu, fedora, centos.
 
 \begin{enumerate}
-    \item Start Cinelerra and select \texttt{Settings $\rightarrow$ Preferences $\rightarrow$  Recording} From a terminal (with a wide text window) run: \texttt{pactl list}. You will see all of the audio sources and sinks on your system. Identify the source associated with the normal output your system uses. Example: \textit{Source $\#1$}. Locate the source which monitors your normal audio output.  For example: \textit{front stereo}.        
+    \item Start \CGG{} and select \texttt{Settings $\rightarrow$ Preferences $\rightarrow$  Recording} From a terminal (with a wide text window) run: \texttt{pactl list}. You will see all of the audio sources and sinks on your system. Identify the source associated with the normal output your system uses. Example: \textit{Source $\#1$}. Locate the source which monitors your normal audio output.  For example: \textit{front stereo}.        
     \item Choose a File Format and File Type (for example: FFMPEG \& qt).
     \begin{itemize}
         \item Check \textit{Record audio tracks}.
@@ -167,7 +167,7 @@ One other noted new feature is a new choice for recording -  \texttt{V4L2 MPEG}.
 \section{Digital Video Broadcasting (DVB)}%
 \label{sec:digital_video_broadcasting}
 
-You can do real-time capture of a full transport stream of Broadcast TV.  Record television programs using Cinelerra by setting up ahead of time to start recording later at the specified time.  Then you can use Cinelerra to watch later and easily fast forward through the commercials or edit the program, deleting the commercials, to watch uninterrupted.  Some details may be slightly different than what it is in the United States.  There are 3 requirements you must have to take advantage of this capability.
+You can do real-time capture of a full transport stream of Broadcast TV.  Record television programs using \CGG{} by setting up ahead of time to start recording later at the specified time.  Then you can use \CGG{} to watch later and easily fast forward through the commercials or edit the program, deleting the commercials, to watch uninterrupted.  Some details may be slightly different than what it is in the United States.  There are 3 requirements you must have to take advantage of this capability.
 
 \begin{enumerate}
     \item You need to have a suitable DVB Adapter such as the Hauppauge WinTV-HVR 950Q usb adapter. Make sure it is the linux version, not the new version.
@@ -195,7 +195,7 @@ There is a lot of detailed explanation below to be thorough, but an overview is 
 Listed below are the steps for the initial DVB setup.  Setup will be preserved until you make changes.
 
 \begin{enumerate}
-    \item Start Cinelerra, and click \textit{Settings $\rightarrow$ Preferences $\rightarrow$ Recording}
+    \item Start \CGG{}, and click \textit{Settings $\rightarrow$ Preferences $\rightarrow$ Recording}
     \item Select \textit{File Format} checkbox: \texttt{Realtime TOC} (Table of Contents)
     \begin{itemize}
         \item It is not necessary to set File Format at this point as it will automatically be set later.
@@ -277,7 +277,7 @@ Any time after the channels have been scanned, you can edit them from the \texti
 
 \noindent After the channel-db is ready, you can watch any of the selectable channels.
 
-\subsection{Watching TV using Cinelerra}%
+\subsection{Watching TV using \CGG{}}%
 \label{sub:watching_tv_cinelerra}
 
 If you have setup for DVB capture as outlined in the section above, just start here to watch TV.
@@ -368,11 +368,11 @@ To watch on a large TV screen or monitor which you have connected, you will have
 \subsection{Dual Screen Mode}%
 \label{sub:dual_screen_mode}
 
-Dual screen mode is useful for displaying Cinelerra video/project on a large screen digital Television set or for watching a previously recorded broadcast TV program via Cinelerra.  The physical configuration results in one screen (an \textit{Xwindow}) on one monitor and the other screen on the other monitor or TV screen.  Before the mode is usable for Cinelerra, X has to be configured in \textit{dual screen mode} --- that is, you must first split the configuration into 2 displays to operate Dual Screen Mode.  On some systems, you may be able to get to the dual screen mode by using \textit{Xinerama} allowing for use of 2 physical displays to act as 1 virtual display.
+Dual screen mode is useful for displaying \CGG{} video/project on a large screen digital Television set or for watching a previously recorded broadcast TV program via \CGG{}.  The physical configuration results in one screen (an \textit{Xwindow}) on one monitor and the other screen on the other monitor or TV screen.  Before the mode is usable for \CGG{}, X has to be configured in \textit{dual screen mode} --- that is, you must first split the configuration into 2 displays to operate Dual Screen Mode.  On some systems, you may be able to get to the dual screen mode by using \textit{Xinerama} allowing for use of 2 physical displays to act as 1 virtual display.
 
 The main menu pulldown, \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Playback A} and \texttt{B} Tabs, must be properly configured in order to take advantage of the Dual Screen Mode capability.
 
-In the main menu Window pulldown there are \textit{Tile left} and \textit{Tile right} options for the 2 monitors.  If you have only 1 monitor, you will see no change upon activating these options.  Tiling is possible due to the existence of one long horizontal screen display buffer. Tile left takes Cinelerra and moves all of its windows to the $2^{nd}$ monitor/TV and Tile right puts it back to the $1^{st}$ monitor.  The left and right monitors are the left part or right part of a Playback A/B Xwindow host referenced in the Video Config Playback A/B for separate X screens.  Shortcuts for Tile left and Tile rights are the letters \texttt{a} and \texttt{b} on the keyboard once you have set \textit{Remote Control mode}.  Below is a summary of the configuration letters:
+In the main menu Window pulldown there are \textit{Tile left} and \textit{Tile right} options for the 2 monitors.  If you have only 1 monitor, you will see no change upon activating these options.  Tiling is possible due to the existence of one long horizontal screen display buffer. Tile left takes \CGG{} and moves all of its windows to the $2^{nd}$ monitor/TV and Tile right puts it back to the $1^{st}$ monitor.  The left and right monitors are the left part or right part of a Playback A/B Xwindow host referenced in the Video Config Playback A/B for separate X screens.  Shortcuts for Tile left and Tile rights are the letters \texttt{a} and \texttt{b} on the keyboard once you have set \textit{Remote Control mode}.  Below is a summary of the configuration letters:
 
 \begin{description}
     \item[a] select \textit{playback a} and tile windows left (all on monitor or laptop)
@@ -382,7 +382,7 @@ In the main menu Window pulldown there are \textit{Tile left} and \textit{Tile r
 
 Since Dual Screen Mode is most widely used for either a demonstration or watching TV, you will want to take advantage of Remote Control mode as described in a following section.  In the camera shots below, note the square red box that shows up in the upper left hand corner of the Viewer window (arrow pointing to it but it looks more orange than red) which denotes that the Application/Menu key was used to get into Remote Control mode.
 
-Figure~\ref{fig:two-monitors01} shows 2 monitors (could just as well be a big-screen TV for the second monitor) with Tile left where all of the Cinelerra windows are on the left most monitor.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
+Figure~\ref{fig:two-monitors01} shows 2 monitors (could just as well be a big-screen TV for the second monitor) with Tile left where all of the \CGG{} windows are on the left most monitor.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
 
 \begin{figure}[htpb]
     \centering
@@ -391,12 +391,12 @@ Figure~\ref{fig:two-monitors01} shows 2 monitors (could just as well be a big-sc
     \label{fig:two-monitors01}
 \end{figure}
 
-Figure~\ref{fig:two-monitors02} shows 2 monitors with Tile right (b key) where all of the Cinelerra windows are on the right monitor.  The left monitor shows the Suse distro logo and a couple of xterm type windows.
+Figure~\ref{fig:two-monitors02} shows 2 monitors with Tile right (b key) where all of the \CGG{} windows are on the right monitor.  The left monitor shows the Suse distro logo and a couple of xterm type windows.
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.85\linewidth]{images/two-monitors02.png}
-    \caption{Dual screen - Cinelerra and desktop on different screens}
+    \caption{Dual screen - \CGG{} and desktop on different screens}
     \label{fig:two-monitors02}
 \end{figure}
 
@@ -405,16 +405,16 @@ Figure~\ref{fig:two-monitors03} shows 2 monitors with Compositor window on the 2
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.85\linewidth]{images/two-monitors03.png}
-    \caption{Dual screen - Cinelerra compositor on own screen windowed}
+    \caption{Dual screen - \CGG{} compositor on own screen windowed}
     \label{fig:two-monitors03}
 \end{figure}
 
-Figure~\ref{fig:two-monitors04} shows 2 monitors with Compositor window on the 2nd monitor in Fullscreen mode so that no Cinelerra borders are visible to distract from the picture.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
+Figure~\ref{fig:two-monitors04} shows 2 monitors with Compositor window on the 2nd monitor in Fullscreen mode so that no \CGG{} borders are visible to distract from the picture.  The big red arrow points to the little red square box indicating that Remote Control mode is in effect.
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.85\linewidth]{images/two-monitors04.png}
-    \caption{Dual screen - Cinelerra compositor on own screen full screen}
+    \caption{Dual screen - \CGG{} compositor on own screen full screen}
     \label{fig:two-monitors04}
 \end{figure}
 
@@ -428,7 +428,7 @@ Figure~\ref{fig:two-monitors04} shows 2 monitors with Compositor window on the 2
     \label{fig:remote01}
 \end{wrapfigure}
 
-Cinelerra DVB recording/playback can now easily be done in \textit{couch potato} mode using a remote control.  This comes in handy when you want to playback on a big TV screen for multiple person viewing. You can use the Application/Menu key on the keyboard to toggle between standard Cinelerra usage or a Dispatcher methodology through use of a remote control, an Android programmed device such as a tablet, or keyboard. The Application/Menu key on most keyboards is between the Alt and Ctrl keys on the right hand side bottom and depicts a menu on it either with or without a pointer (see image below).  An ati-x10 Remote Control device (figure~\ref{fig:remote01}) is currently working with Cinelerra and other remote controls may work but have never been tried.  The red/orange box on the top left main screen of Cinelerra  indicates Dispatcher Method access is activated which allows for keyboard grab which routes all key strokes until toggled off.  Below are the currently defined operations.
+\CGG{} DVB recording/playback can now easily be done in \textit{couch potato} mode using a remote control.  This comes in handy when you want to playback on a big TV screen for multiple person viewing. You can use the Application/Menu key on the keyboard to toggle between standard \CGG{} usage or a Dispatcher methodology through use of a remote control, an Android programmed device such as a tablet, or keyboard. The Application/Menu key on most keyboards is between the Alt and Ctrl keys on the right hand side bottom and depicts a menu on it either with or without a pointer (see image below).  An ati-x10 Remote Control device (figure~\ref{fig:remote01}) is currently working with \CGG{} and other remote controls may work but have never been tried.  The red/orange box on the top left main screen of \CGG{}  indicates Dispatcher Method access is activated which allows for keyboard grab which routes all key strokes until toggled off.  Below are the currently defined operations.
 \newline
 
 Remote Control Keys (Application/Menu key toggle for ati-x10 remote)
@@ -474,7 +474,7 @@ Remote Control Keys (Application/Menu key toggle for ati-x10 remote)
     
     book key&=&toggles channel scan (always available)\\
     
-    hand key&=&terminates Cinelerra (always available)\\ 
+    hand key&=&terminates \CGG{} (always available)\\ 
     \bottomrule 
 \end{tabular}
 
@@ -502,16 +502,16 @@ Remote Control Keys (Application/Menu key toggle for ati-x10 remote)
 
 The Application/Menu key  \quad
 \includegraphics[height=\baselineskip]{images/alt-ctrl.png} \quad
-is used to get into remote control mode, even if there is no remote control hardware device in use, allowing for use of the same defined remote control keys to work on the keyboard.  Once the Application/Menu key enables remote mode, the remote control keys don't allow the standard Cinelerra keys to work.
+is used to get into remote control mode, even if there is no remote control hardware device in use, allowing for use of the same defined remote control keys to work on the keyboard.  Once the Application/Menu key enables remote mode, the remote control keys don't allow the standard \CGG{} keys to work.
 
 \subsection{Android Remote Control for DVB}%
 \label{sub:android_remote_control_dvb}
 
-Cinelerra GG Infinity has Android remote interface code (figure~\ref{fig:remote02}). Any device, such as a tablet or a phone, can be used as long as it is running the Android operating system. Programming an Android Remote Control for DVB is a bit complicated at first, but becomes pretty simple after a bit.
+\CGGI{} has Android remote interface code (figure~\ref{fig:remote02}). Any device, such as a tablet or a phone, can be used as long as it is running the Android operating system. Programming an Android Remote Control for DVB is a bit complicated at first, but becomes pretty simple after a bit.
 
 \begin{enumerate}
     \item The Android Remote Control requires you to download and install the Android \textit{CineRmt} app package (apk). To install it simply download it (any way you can) to your phone or tablet and click it to install, if it doesn't run automatically.
-    \item In Cinelerra, open \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface} tab, and enable \textit{Android Remote Control} in the Operation section using the checkbox. The default port $23432$ and default PIN value \textit{cinelerra} are OK.
+    \item In \CGG{}, open \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface} tab, and enable \textit{Android Remote Control} in the Operation section using the checkbox. The default port $23432$ and default PIN value \textit{cinelerra} are OK.
     \item After you install the new phone/tablet app in step 1, start it up from your apps menu.
 \end{enumerate}
 
@@ -522,13 +522,13 @@ Cinelerra GG Infinity has Android remote interface code (figure~\ref{fig:remote0
     \label{fig:remote02}
 \end{figure}
 
-Before you can use it, the Android device must have the ip address of your computer entered into the configuration menu.  The PC you are running Cinelerra on and the Android device have to be on the same network.  You can tell it is in communication by tapping the \texttt{Power} (menu) button. When the remote is operated with the \textit{Power} (menu) button, there is a little orange box on the upper left corner of the display to indicate the remote state is active. If you do not see the little orange box when the menu key is tapped, the communication is broken and must be fixed before proceeding.   Follow the directions in the paragraph below.
+Before you can use it, the Android device must have the ip address of your computer entered into the configuration menu.  The PC you are running \CGG{} on and the Android device have to be on the same network.  You can tell it is in communication by tapping the \texttt{Power} (menu) button. When the remote is operated with the \textit{Power} (menu) button, there is a little orange box on the upper left corner of the display to indicate the remote state is active. If you do not see the little orange box when the menu key is tapped, the communication is broken and must be fixed before proceeding.   Follow the directions in the paragraph below.
 
 BIG NOTICE:  the firewalls in your computer and wifi router can stop this thing dead.  Re-configuring a firewall is tricky and varies from distro to distro.  If possible, during setup it is suggested that you disable the firewall temporarily.  For those with advanced skills, use tcpdump or wireshark to look for udp messages from the IP address of the device.
 
 SECTION NOT COMPLETE – (manualandroid)
 
-Figure~\ref{fig:remote03} shows an Android Tablet that can be used as a Remote Control for Cinelerra Recording and Playback.
+Figure~\ref{fig:remote03} shows an Android Tablet that can be used as a Remote Control for \CGG{} Recording and Playback.
 
 \begin{figure}[htpb]
     \centering
@@ -540,12 +540,12 @@ Figure~\ref{fig:remote03} shows an Android Tablet that can be used as a Remote C
 \subsection{Setup a Remote Control Device}%
 \label{sub:setup_remote_control_device}
 
-SECTION NOT DONE !! This section explains how you can take your own brand of remote control and set it up to easily work the way you want with Cinelerra.
+SECTION NOT DONE !! This section explains how you can take your own brand of remote control and set it up to easily work the way you want with \CGG{}.
 
 \section{The commercial DB}%
 \label{sec:commercial_db}
 
-While watching broadcast television, it is possible to use Cinelerra to automatically mute commercials being aired during a broadcast capture.  Visual muting as well as sound muting is done!  You can NOT use ffmpeg for the format when working with the \textit{commercial DB}.  This database that was added is a \textit{novel architecture} shared memory database, a \textit{Traveling Data Base} (TDB). With TDB you have direct access to the shared database presence (instead of having to go to the server).
+While watching broadcast television, it is possible to use \CGG{} to automatically mute commercials being aired during a broadcast capture.  Visual muting as well as sound muting is done!  You can NOT use ffmpeg for the format when working with the \textit{commercial DB}.  This database that was added is a \textit{novel architecture} shared memory database, a \textit{Traveling Data Base} (TDB). With TDB you have direct access to the shared database presence (instead of having to go to the server).
 
 Basically it works as follows, but there are a few differences in just how it goes about it:
 
@@ -572,7 +572,7 @@ Currently, to activate the commercial database (db) methods you must do the foll
 cd <cin-path>/bin
 mkdir /cinelerra              #yes, currently only in the / filesystem
 ./cin_db /cinelerra/media.db  #to create a new empty commercial     capture database
-export BC_USE_COMMERCIALS=1   #in the command shell that is starting Cinelerra
+export BC_USE_COMMERCIALS=1   #in the command shell that is starting \CGG{}
 \end{lstlisting}
 
 This activates the gui tools and database access.  As of yet, all of the requisite permission changes
@@ -602,10 +602,10 @@ To review media stored in the \texttt{media.db}, and delete old expired commerci
 
 Currently, only a customized \textit{ati-x10} (kernel mod required) radio remote control works.  But this can quite readily be modified for other remote control models.
 
-\section{Transfer VHS/DVD Media into Cinelerra}%
+\section{Transfer VHS/DVD Media into \CGG{}}%
 \label{sec:transfer_vhs_dvd_into_cinelerra}
 
-If you want to transfer the data on a VHS tape or DVD disc into Cinelerra, you can do so by playing the media and recording while playing.  This captures the media, which you are able to view as it plays, and writes it to a file so it can be played directly or edited.  Because there is so much variation in hardware on both the Computer side and the Media Player side, these \textit{how to} directions are only a guideline.  You will most likely still have to do some experimentation and testing to see what works for you.
+If you want to transfer the data on a VHS tape or DVD disc into \CGG{}, you can do so by playing the media and recording while playing.  This captures the media, which you are able to view as it plays, and writes it to a file so it can be played directly or edited.  Because there is so much variation in hardware on both the Computer side and the Media Player side, these \textit{how to} directions are only a guideline.  You will most likely still have to do some experimentation and testing to see what works for you.
 
 The basic strategy consists of 3 operations:  connect the relevant outputs to representative inputs, configure the capture card to match the video, and start the Record monitor.  Each of these may have to be experimented with to get them correct for your hardware setup.
 
@@ -613,7 +613,7 @@ The basic strategy consists of 3 operations:  connect the relevant outputs to re
 
 For example in a test case using the \textit{CX23418} capture card (an older/unusual single chip MPEG-2 encoder with integrated analog video/broadcast audio decoder), one end of an S-Video cable was plugged into the back of a DVD player and the other end plugged into this computer’s Capture card; the audio was plugged into the \textit{line in} on the computer sound card.
 
-\textit{Step 2}:Setup Cinelerra and it might be best the first time if you start with a default \texttt{.bcast5} file by using a
+\textit{Step 2}:Setup \CGG{} and it might be best the first time if you start with a default \texttt{.bcast5} file by using a
 command line from a window of \\
 \texttt{CIN\_CONFIG=\$HOME/bcast6 {cinelerra\_path}/bin/cin}
 
@@ -638,7 +638,7 @@ command line from a window of \\
     \item Click on the Antenna icon ($3^{rd}$ icon from the left on the left side of the right hand screen window).
     \item In the popup \textit{Channels} menu, click on \texttt{Add} which brings up the \textit{Edit Channel} menu.
     \item Use the down arrow in the \textit{Input} box to display the available options.  In the test case, and very likely your case too, \textit{S-Video 1} should be picked.
-    \item In the Recording menu, be sure to designate a complete path and filename in the \textit{Path:} textbox which will be used to record/write the playing media.  Remember you must have the media on a file in order for Cinelerra to load it on the timeline for editing purposes.    
+    \item In the Recording menu, be sure to designate a complete path and filename in the \textit{Path:} textbox which will be used to record/write the playing media.  Remember you must have the media on a file in order for \CGG{} to load it on the timeline for editing purposes.    
 \end{itemize}
 
 \begin{figure}[htpb]

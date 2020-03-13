@@ -29,9 +29,9 @@ So, an example of what happens in 4 steps for a single-user build would be as fo
 	\texttt{make install}
 \end{enumerate}
 
-A lot of things can be tweaked to change the results. Mostly these changes are parameters to the configure step, which can change important build related items, like the application name, or where and what the target system directories should be. This makes it possible to have several versions at the same time on the same computer if needed. To see what it is that the makefiles use to build Cinelerra, look at the resulting top-level global\_config file which is created by the ./configure step.
+A lot of things can be tweaked to change the results. Mostly these changes are parameters to the configure step, which can change important build related items, like the application name, or where and what the target system directories should be. This makes it possible to have several versions at the same time on the same computer if needed. To see what it is that the makefiles use to build \CGG{}, look at the resulting top-level global\_config file which is created by the ./configure step.
 
-Building Cinelerra requires many thirdparty libraries, and it is recommended that you use the static build version included in the git repo. Some of them are patched, and fix significant bugs. It is important to note that because system installation historically has been with as many shared objects as possible, the defaults are that any system library detected during configuration setup will be used, when the package is built \textit{-{}-without-single-user}, which is the default build. To build with static thirdparty libraries for system install to the system /usr area, use:
+Building \CGG{} requires many thirdparty libraries, and it is recommended that you use the static build version included in the git repo. Some of them are patched, and fix significant bugs. It is important to note that because system installation historically has been with as many shared objects as possible, the defaults are that any system library detected during configuration setup will be used, when the package is built \textit{-{}-without-single-user}, which is the default build. To build with static thirdparty libraries for system install to the system /usr area, use:
 
 \hspace{2em}\texttt{.configure -{}-enable-static-build --prefix=/usr}
 
@@ -88,7 +88,7 @@ There are a lot of different options.  Thirdparty library build control is avail
   -{}-enable-libname=no   &  this forces no thirdparty build\\
 \end{tabular}
 
-FFmpeg is a \textit{strongly connected} component in the build linkage and widely influences the Cinelerra library demands.  It is possible to make small additions to the ffmpeg configuration step using the environment variable \texttt{FFMPEG\_EXTRA\_CFG}.  For example, to eliminate the use of libvdpau (an nvidia support library) in the ffmpeg configuration step after you have determined that it is causing an error, use:
+FFmpeg is a \textit{strongly connected} component in the build linkage and widely influences the \CGG{} library demands.  It is possible to make small additions to the ffmpeg configuration step using the environment variable \texttt{FFMPEG\_EXTRA\_CFG}.  For example, to eliminate the use of libvdpau (an nvidia support library) in the ffmpeg configuration step after you have determined that it is causing an error, use:
 
 \begin{itemize}[label={},nosep]
 	\item \texttt{make clean}
@@ -108,7 +108,7 @@ mv Makefile Makefile.cfg
 cp Makefile.devel Makefile
 \end{lstlisting}
 
-Since the procedure for obtaining the latest ffmpeg version is not always kept up-to-date and the line numbers will always change, you may have to create that patch first. Generally those line numbers are only updated by a developer when a new stable version with worthwhile features is actually included in the Cinelerra build. FFmpeg is constantly changing and many times the git version is not as stable as desired.
+Since the procedure for obtaining the latest ffmpeg version is not always kept up-to-date and the line numbers will always change, you may have to create that patch first. Generally those line numbers are only updated by a developer when a new stable version with worthwhile features is actually included in the \CGG{} build. FFmpeg is constantly changing and many times the git version is not as stable as desired.
 
 \section{Configuration Features}
 \label{sec:configuration_features}
@@ -119,7 +119,7 @@ A listing of the current configuration features as of January 11, 2020:
     \fontsize{10pt}{12pt}\selectfont
 \begin{verbatim}
 
-`configure' configures Cinelerra to adapt to many kinds of systems.
+`configure' configures \CGG{} to adapt to many kinds of systems.
 
 Usage: ./configure [OPTION]... [VAR=VALUE]...
 
@@ -312,7 +312,7 @@ Individual package libraries can be rebuilt, via:
 
 \hspace{2em}\texttt{make -C thirdparty <pkg>-clean;  make -C thirdparty <pkg>}
 
-The rule targets create the set of thirdparty packages which are built from local source archive copies of thirdparty source code and patches, if needed.  The build rule set of dependencies allows for compiling multiple thirdparty programs simultaneously using maximum computer resources.  This parallel build speeds up the process considerably.  For example, these are full static build timings on the production build machine (full build includes building all thirdparty programs as well as all of Cinelerra):
+The rule targets create the set of thirdparty packages which are built from local source archive copies of thirdparty source code and patches, if needed.  The build rule set of dependencies allows for compiling multiple thirdparty programs simultaneously using maximum computer resources.  This parallel build speeds up the process considerably.  For example, these are full static build timings on the production build machine (full build includes building all thirdparty programs as well as all of \CGG{}):
 
 \hspace{2em}
 \begin{tabular}{@{}rcr}
@@ -369,7 +369,7 @@ It comes back with the routine as:
 \section{Valgrind Support Level}
 \label{sec:valgrind_support_level}
 
-Valgrind is a memory mis-management detector.  It shows you memory leaks, deallocation errors, mismanaged threads, rogue reads/writes, etc.  Cinelerra-GG memory management is designed to work with Valgrind detection methods.  This assists in developing reliable code.  Use of Valgrind points out problems so that they can be fixed.  For example, when this version of Cinelerra shuts down, it deallocates memory instead of just stopping, thus making memory leak detection possible.
+Valgrind is a memory mis-management detector.  It shows you memory leaks, deallocation errors, mismanaged threads, rogue reads/writes, etc.  \CGG{} memory management is designed to work with Valgrind detection methods.  This assists in developing reliable code.  Use of Valgrind points out problems so that they can be fixed.  For example, when this version of \CGG{} shuts down, it deallocates memory instead of just stopping, thus making memory leak detection possible.
 
 The best way to compile and run valgrind is to run the developer static build. This takes 2 steps and you must already have gdb and valgrind installed:
 
@@ -382,20 +382,20 @@ The best way to compile and run valgrind is to run the developer static build. T
 		\texttt{CFLAGS=-ggdb make -j8 rebuild\_all}
 \end{enumerate}
 
-Now your Cinelerra obj has all of the debug stuff. Next run valgrind as root for the most useful results:
+Now your \CGG{} obj has all of the debug stuff. Next run valgrind as root for the most useful results:
 
 \hspace{2em}\texttt{cd /path/cinelerra-5.1/cinelerra}
 
 \hspace{2em}\texttt{valgrind -{}-log-file=/tmp/log -{}-leak-check=full\\
 	-{}-num-callers=32 ./ci}
 
-This runs Cinelerra under the control of valgrind, and produces a log file in /tmp which will list information about any leaks, usually clearly identifiable. Be sure to Quit out of Cinelerra normally instead of Ctrl-C or a SEGV otherwise the program does not have a chance to cleanup and there will be some false alarms. But it runs very slowly, and is basically single threaded, which means that race conditions may be impossible to catch$\dots$ like one thread deletes memory that another thread is currently using. But overall it is a big help and if you test any new features, please email the log output. A lot of effort when writing the code was put into trying to be sure that all of the object constructors have matching destructors so that the leaks can be identified. There are already several libraries that create predictable memory leaks and valgrind does a good job for most of these.
+This runs \CGG{} under the control of valgrind, and produces a log file in /tmp which will list information about any leaks, usually clearly identifiable. Be sure to Quit out of \CGG{} normally instead of Ctrl-C or a SEGV otherwise the program does not have a chance to cleanup and there will be some false alarms. But it runs very slowly, and is basically single threaded, which means that race conditions may be impossible to catch$\dots$ like one thread deletes memory that another thread is currently using. But overall it is a big help and if you test any new features, please email the log output. A lot of effort when writing the code was put into trying to be sure that all of the object constructors have matching destructors so that the leaks can be identified. There are already several libraries that create predictable memory leaks and valgrind does a good job for most of these.
 
-It is impossible to test everything with valgrind because some things are just too big and slow for a practical test. Occasionally you can find a leak or an illegal memory access. There are several false alarms that are difficult to avoid \textit{Conditional jump} messages, and \textit{unhandled DW\_OP\_}, but anything with the word \textit{illegal} in the message is important. Memory leaks that originate in Cinelerra are good to find and fix, but are usually not deadly.
+It is impossible to test everything with valgrind because some things are just too big and slow for a practical test. Occasionally you can find a leak or an illegal memory access. There are several false alarms that are difficult to avoid \textit{Conditional jump} messages, and \textit{unhandled DW\_OP\_}, but anything with the word \textit{illegal} in the message is important. Memory leaks that originate in \CGG{} are good to find and fix, but are usually not deadly.
 
 \section{CFLAGS has -Wall}
 \label{sec:cflags_has_-wall}
-When compiling Cinelerra-GG Infinity a CFLAGS option used is \textit{Wall} where the "W" represents warnings and "all" means all.  This causes the compile to check for simple mistakes that can be detected automatically and issue warnings when the code is questionable.  It can also detect situations where the compiler will generate incorrect code, like type-punned pointer.  By turning on this flag, when new code is vetted for predictable mistakes, the code can be corrected before becoming manifested in the application.
+When compiling \CGG{} Infinity a CFLAGS option used is \textit{Wall} where the "W" represents warnings and "all" means all.  This causes the compile to check for simple mistakes that can be detected automatically and issue warnings when the code is questionable.  It can also detect situations where the compiler will generate incorrect code, like type-punned pointer.  By turning on this flag, when new code is vetted for predictable mistakes, the code can be corrected before becoming manifested in the application.
 
 \section{Prof2 -- A Profiler}
 \label{sec:prof2_profiler}
@@ -417,7 +417,7 @@ There are many different profilers available -- this particular one does not do 
 
 This profiler works on x86\_64 systems and you must be root to compile and run it. Also, you must install your operating system's \textit{iberty} -- for example, which would be binutils-devel for Fedora or libiberty-dev for Ubuntu 18.
 
-Go to the top level Cinelerra directory.
+Go to the top level \CGG{} directory.
 
 Key in: \qquad \texttt{prof2}
 
@@ -452,7 +452,7 @@ To execute the profiler, key in:
 
 \hspace{2em}\texttt{prof -o /tmp/prof\_list.txt ./cin}
 
-where \texttt{/tmp/prof\_list.txt} is the output file and in this case \texttt{cin} is the Cinelerra binary file. The pid of this command will be displayed on the startup window. This comes in handy in the use case where there is a lot of initial load and possible configuration setup inside of Cinelerra and you want to profile plugins and not necessarily all of the setup steps. Then you can use the following command in another window to continue running Cinelerra and obtain the more useful information:
+where \texttt{/tmp/prof\_list.txt} is the output file and in this case \texttt{cin} is the \CGG{} binary file. The pid of this command will be displayed on the startup window. This comes in handy in the use case where there is a lot of initial load and possible configuration setup inside of \CGG{} and you want to profile plugins and not necessarily all of the setup steps. Then you can use the following command in another window to continue running \CGG{} and obtain the more useful information:
 
 \hspace{2em}\texttt{kill -USR1 pid}
 

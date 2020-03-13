@@ -96,7 +96,7 @@ Several convenience functions are provided for automatically setting the panning
         \item[Audio$\rightarrow$Map 5.1:2] This maps 6 tracks to 2 channels. The project should have 2 channels when using this function. Go to \texttt{Settings $\rightarrow$ Format} to set the output channels to 2. This is most useful for down-mixing 5.1 audio to to stereo (for more information refer to Configuration, Settings and Preferences section \ref{sub:audio_out_section}).
     \end{description}
 
-\paragraph{Standard audio mappings} Although Cinelerra lets you map any audio track to any speaker, there are standard mappings you should use to ensure the media can be played back elsewhere. Also, most audio encoders require the audio tracks to be mapped to standard speaker numbers or they will not work.
+\paragraph{Standard audio mappings} Although \CGG{} lets you map any audio track to any speaker, there are standard mappings you should use to ensure the media can be played back elsewhere. Also, most audio encoders require the audio tracks to be mapped to standard speaker numbers or they will not work.
 
 In the channel position widget, the channels are numbered to correspond to the output tracks they are rendered to. For stereo, the source of channel 1 needs to be the left track and the source of channel 2 needs to be the right track.  For 5.1 surround sound, the sources of the 6 channels need to be in the order of center, front left, front right, back left, back right, low frequency effects. If the right tracks are not mapped to the right speakers, most audio encoders will not encode the right information if they encode anything at all. The low frequency effects track specifically can not store high frequencies in
 most cases.
@@ -104,7 +104,7 @@ most cases.
 \section{Manipulating Tracks}%
 \label{sec:manipulating_tracks}
 
-Tracks in Cinelerra either contain audio or video.  There is no special designation for tracks other than the type of media they contain.  When you create a new project, it contains three default tracks: one video track and two audio tracks.  You can still add and delete tracks from the menus.  The Tracks menu contains a number of options for dealing with multiple tracks simultaneously.  Each track itself has a popup menu which affects one track. 
+Tracks in \CGG{} either contain audio or video.  There is no special designation for tracks other than the type of media they contain.  When you create a new project, it contains three default tracks: one video track and two audio tracks.  You can still add and delete tracks from the menus.  The Tracks menu contains a number of options for dealing with multiple tracks simultaneously.  Each track itself has a popup menu which affects one track. 
 
 Operations in the \textbf{Tracks pulldown} affect only tracks which are armed.
 
@@ -186,7 +186,7 @@ NOTE: for correct operation of this use case, you should have the same (or more)
 \section{Cut and Paste Editing}%
 \label{sec:cut_paste_editing}
 
-This is the more traditional method of editing in Cinelerra and therefore is the default.  To enable the cut and paste editing mode on the timeline, select the I-beam toggle on the control bar at the top of the main program window. You can copy edits in the same track, copy from different tracks in the same instance, start a second instance of Cinelerra and copy from one instance to the other or load a media file into the Viewer and copy from there.
+This is the more traditional method of editing in \CGG{} and therefore is the default.  To enable the cut and paste editing mode on the timeline, select the I-beam toggle on the control bar at the top of the main program window. You can copy edits in the same track, copy from different tracks in the same instance, start a second instance of \CGG{} and copy from one instance to the other or load a media file into the Viewer and copy from there.
 
 To start editing, load some files onto the timeline.  Select a region of the timeline by click dragging on it and select the cut button to cut it. Move the insertion point to another point in the timeline and select the paste button.  Assuming no In/Out points are defined on the timeline this performs a cut and paste operation.
 
@@ -239,13 +239,13 @@ pasted one after the other, keeping the same order they have on the stack.
 \end{wrapfigure}
 
  A \textit{cut} uses a non-empty selection region, where the \textit{blade cut} or \textit{split} has no duration in the selection, just a hairline.  As usual the use of cut when a selection is set, deletes/cuts the highlighted area.  In the case where an In point or an Out point exists on the timeline, the clip is split at the location of the In/Out point since it has priority over the cursor location.  A blade cut simply splits the edit into two edits.  In order to have the video and audio aligned, it works best to have \texttt{Settings $\rightarrow$ Align cursor on frames}.  When a blade cut occurs, the edges are created as \textit{hard edges}.  These are edges that cannot be deleted by track optimizations.
-Cinelerra has built-in optimization on the timeline.  So that whenever two parts on the timeline are sequential frames, it automatically optimizes by making them into 1 item.  So if you are cutting, dragging, editing, or whatever and somehow frame \# 40 ends up right next to frame \# 41, it optimizes them together.  This optimization affects many areas throughout the program code.
+\CGG{} has built-in optimization on the timeline.  So that whenever two parts on the timeline are sequential frames, it automatically optimizes by making them into 1 item.  So if you are cutting, dragging, editing, or whatever and somehow frame \# 40 ends up right next to frame \# 41, it optimizes them together.  This optimization affects many areas throughout the program code.
 When you do a blade cut/split, all armed tracks will be included in the cut and green-colored triangles will show on the bottom of the track on both the left and the right side of the cut.  This is a \textit{hard edge} marker toggle, as opposed to the soft edge designation for an ordinary edit.  The \textit{hard edge} marker can be toggled off/on if so desired.  In order to not interfere with the usual drag handles, only a few pixels are used for the toggle so you have to be sure you have the cursor right over the hard edge triangle  -- when in position, it will be obvious because you can see an arrow pointing to the corner.  Use Shift-left mouse button 1 to toggle off/on the hard edge marker on all tracks simultaneously.
 
 \section{Drag and Drop Editing}%
 \label{sec:drag_drop_editing}
 
-To enable the drag and drop editing mode on the timeline, select the arrow toggle on the control bar at the top of the main program window.  Drag and drop editing is a quick and simple way of working in Cinelerra, using mostly only the mouse. The basic idea is to create a bunch of clips, then drag them in order into the timeline, thus building prototype media that you can watch in the compositor. If after watching it, you wish to re-arrange your clips, set effects, add transitions or insert/delete material, just drag and drop them on the timeline. 
+To enable the drag and drop editing mode on the timeline, select the arrow toggle on the control bar at the top of the main program window.  Drag and drop editing is a quick and simple way of working in \CGG{}, using mostly only the mouse. The basic idea is to create a bunch of clips, then drag them in order into the timeline, thus building prototype media that you can watch in the compositor. If after watching it, you wish to re-arrange your clips, set effects, add transitions or insert/delete material, just drag and drop them on the timeline. 
 
 To simply get started, perform the following operations which are useful for working in a drag and drop editing session.  First load your media by using the main menu File pulldown and choose \textit{Load files}; make sure the insertion mode is set to \textit{Create new resources only}.  This loads the files into the Resources window.
 
@@ -259,7 +259,7 @@ To simply get started, perform the following operations which are useful for wor
 \noindent You can also drag multiple files from the Resources window. When dropped in the timeline they are concatenated. If you have \textit{Display Icons} selected in the Resources window, drawing a box around the files selects contiguous files. If you have \textit{Display Text} selected, Ctrl-clicking on media files selects additional files one at a time; Shift-clicking on media files extends the number of highlighted selections.  In addition to dragging media files, if you create clips and open the clip folder you can drag
 clips onto the timeline.
 
-Cinelerra fills out the audio and video tracks below the dragging cursor with data from the file. This affects what tracks you should create initially and which track to drag the media onto. To drag and drop a file on the Program window, you need to create on the timeline the same set of tracks as your media file.
+\CGG{} fills out the audio and video tracks below the dragging cursor with data from the file. This affects what tracks you should create initially and which track to drag the media onto. To drag and drop a file on the Program window, you need to create on the timeline the same set of tracks as your media file.
 
 When you drag your chosen media from the media folder to the timeline, your mouse pointer will drag a thumbnail and, once over the timeline, the outline of a white rectangle, as big as the edit you are going to have appears.  Drag the media to the desired position of an empty track of the timeline and drop it.  If there are other edits on that track, when you move the white outline over an edit, you will see a bow tie symbol $\bowtie$ appearing at edit boundaries. If you drop the media there, the new edit will start from the edit boundary indicated by the center of the bow tie $\bowtie$.
 
@@ -331,7 +331,7 @@ Attaching transitions to multiple selected edits via the Video or Audio pulldown
 \subsection{Grouping edits}%
 \label{sub:grouping_edits}
 
-Cinelerra recognizes as a group, the edits of different armed tracks that have aligned beginnings, regardless of whether they have the same source or aligned ends.  You can drag these edits around on the timeline to construct your movie by rearranging scenes. If more than one track is armed, Cinelerra will drag any edits which start on the same positions the edit the mouse pointer is currently over. \\
+\CGG{} recognizes as a group, the edits of different armed tracks that have aligned beginnings, regardless of whether they have the same source or aligned ends.  You can drag these edits around on the timeline to construct your movie by rearranging scenes. If more than one track is armed, \CGG{} will drag any edits which start on the same positions the edit the mouse pointer is currently over. \\
 Another method of Grouping of edits is performed as follows:
 \begin{enumerate}
     \item Select each of the clips you would like to be part of a group.
@@ -533,7 +533,7 @@ In addition to the \textit{Open EDL} option in the Resources menu, this option i
 
 An aside -- when nesting and unnesting clips to take advantage of this feature, names of the media can lead to some confusion.  For example, if you nest a clip, the new name in the Media folder is the word \textit{Nested} followed by an underscore with the date and timestamp, another underscore, and then the clip name.  Then when you unnest this Media folder clip via the \textit{EDL to clip} option, the name will be changed in the Clip folder to the next available Clip \#.  However the comment field will reflect the nested clip name from which it was derived.  To avoid confusion you can easily change the name for these clips in either the Clip or Media folder because they are not real files at this point. To do so, highlight the clip name in Resources, click on Info and type in a new name.
 
-For additional safety, the \textit{Open EDL} feature includes additional backup capabilities. Automatically Cinelerra saves a backup when certain changes are made or you can always use the shortcut "b" to do one yourself, although keep in mind it will be overwritten whenever Cinelerra wants to do another backup.  Now there is a shortcut for the backup shortcut "b" so you can keep your hand on the mouse instead of the keyboard.  Just click on the \# in the upper right hand corner of the main window.  If \# is at 0, it backs up to backup.xml, if at 1, it backs up to \texttt{backup1.xml} and so on $\dots$ up to \texttt{backup9.xml}.
+For additional safety, the \textit{Open EDL} feature includes additional backup capabilities. Automatically \CGG{} saves a backup when certain changes are made or you can always use the shortcut "b" to do one yourself, although keep in mind it will be overwritten whenever \CGG{} wants to do another backup.  Now there is a shortcut for the backup shortcut "b" so you can keep your hand on the mouse instead of the keyboard.  Just click on the \# in the upper right hand corner of the main window.  If \# is at 0, it backs up to backup.xml, if at 1, it backs up to \texttt{backup1.xml} and so on $\dots$ up to \texttt{backup9.xml}.
 
 When \textit{Open EDL} is invoked, the current EDL and current undo stack are both \textit{pushed}, and the active session EDL is replaced with the target clip/nested edl.  A new undo stack is created, and the active \texttt{backup.xml} file name is decorated with the stack level.  So, \texttt{backup.xml} is \texttt{backup1.xml} when your edits are at stack level 1, \texttt{backup2.xml} at stack level 2, and so on.  This means that if you \textit{load backup} at stack level 1, the session will reload from history at stack level 1, not the main session.
 
@@ -552,7 +552,7 @@ The purpose of this feature is to be able to rework a smaller section of a globa
 master project at any time, which can be done by an "assistant" and then this work 
 is automatically reflected in the global master project.  It is for \textbf{advanced usage only}.
 
-Up until the addition of this feature, Cinelerra has always used copies and no 
+Up until the addition of this feature, \CGG{} has always used copies and no 
 direct reference in order to ensure original data is never compromised.  In the 
 usual case, subprojects as xmls are copied into a master project where subprojects 
 had been inserted, so that if you change something in a subproject or delete a subproject,
@@ -579,15 +579,15 @@ cavalier about the warning.  Instead just use the X to dismiss the warning.
 
 Here is a step by step example of how you can use \textit{File by Reference}:
 \begin{enumerate}
-    \item Start up Cinelerra and use the Title plugin to create a new credits file.  Save as credits.xml.
+    \item Start up \CGG{} and use the Title plugin to create a new credits file.  Save as credits.xml.
     \item Start a New project and then load an existing master project to the timeline.
     \item  Load the credits file you created in step 1 with a Load Strategy of Create Resources Only and with
      EDL Strategy as \textit{Reference}.
     \item  Note the color change in the credits.xml filename and the reference comment in the Resources
      Media folder.
     \item Drag the credits file to an empty spot on the timeline.  Save this new master project and quit.
-    \item Start Cinelerra up again.  Load credits.xml and make a change to the Title and save again.
-    \item Exit Cinelerra; restart Cinelerra; load your master project and now you will automatically see on the
+    \item Start \CGG{} up again.  Load credits.xml and make a change to the Title and save again.
+    \item Exit \CGG{}; restart \CGG{}; load your master project and now you will automatically see on the
      timeline the changes you just made in the previous step.
 \end{enumerate}
 
@@ -864,14 +864,14 @@ looking timelines because of the automatic rendering capability of nesting.
 \subsection{Copy/Paste clips/medias across Multiple Instances}%
 \label{sub:copy_paste_multiple_instances}
 
-It is easy to copy/paste clips/media within a single instance of Cinelerra or across multiple instances.  The reason this works is because there are hidden X cut buffers and these are used to transmit EDL from 1 instance to another.
+It is easy to copy/paste clips/media within a single instance of \CGG{} or across multiple instances.  The reason this works is because there are hidden X cut buffers and these are used to transmit EDL from 1 instance to another.
 
 \noindent Steps to copy from a source timeline and paste to a target timeline:
 
 \begin{enumerate}
-    \item highlight a selection on the timeline in 1 instance of Cinelerra
+    \item highlight a selection on the timeline in 1 instance of \CGG{}
     \item use the Copy icon (shortcut c)  on the main menu bar to copy into a buffer
-    \item move the pointer to another instance of Cinelerra and set an insertion point in its timeline
+    \item move the pointer to another instance of \CGG{} and set an insertion point in its timeline
     \item use the Paste icon (shortcut v) to paste the clip to that other instance selection target
 \end{enumerate}
 
@@ -880,7 +880,7 @@ It is easy to copy/paste clips/media within a single instance of Cinelerra or ac
 
 
 The ShuttlePROv2 and ShuttleXpress are affordable jog wheels which can be useful for working with Cin, especially if you do a lot of playing forward/backward, fast/slow/normal, and single frames (figure~\ref{fig:shuttle}).
-Directions for using the ShuttlePROv2 and the ShuttleXpress with Cinelerra are described next. These devices work by sending keystrokes used in Cin, corresponding to the shuttle action, to the keyboard buffer. The shuttle has been fully integrated into the Cinelerra code so that after the one initial setup, no further intervention is required.  The multi-speed outer wheel works the same and has the same number of S positions on both shuttles but the shuttle Xpress has only 5 keys.  Since the majority of user operations will most likely be with the use of the 2 wheels, the slightly smaller Xpress could be a better choice with its 5 easy to reach keys.  The Pro is approximately $4\times7$\,inches whereas the Xpress is about $4\times4$\,inches.
+Directions for using the ShuttlePROv2 and the ShuttleXpress with \CGG{} are described next. These devices work by sending keystrokes used in Cin, corresponding to the shuttle action, to the keyboard buffer. The shuttle has been fully integrated into the \CGG{} code so that after the one initial setup, no further intervention is required.  The multi-speed outer wheel works the same and has the same number of S positions on both shuttles but the shuttle Xpress has only 5 keys.  Since the majority of user operations will most likely be with the use of the 2 wheels, the slightly smaller Xpress could be a better choice with its 5 easy to reach keys.  The Pro is approximately $4\times7$\,inches whereas the Xpress is about $4\times4$\,inches.
 
 \begin{figure}[htpb]
     \centering
@@ -903,7 +903,7 @@ Directions for using the ShuttlePROv2 and the ShuttleXpress with Cinelerra are d
 \noindent Only 1 necessary initial setup is required due to permission settings for non-root usage. As root, just copy a file that provides the necessary permissions to use the shuttle, then reboot,  Example copy:
 
 \begin{lstlisting}[language=Bash,numbers=none]
-$sudo cp {cindat_path}/doc/99-ShuttlePRO.rules /etc/udev/rules.d/
+\$sudo cp {cindat_path}/doc/99-ShuttlePRO.rules /etc/udev/rules.d/
 \end{lstlisting}
 
 \noindent then the next time after you reboot, the permissions should be correct. This file only needs to contain one of the following lines depending on which shuttle version you have/use, but all will be in the file.
@@ -917,18 +917,18 @@ ATTRS{name}=="Contour Design ShuttleXpress" MODE="0644"
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0020", MODE="0666" 
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0030", MODE="0666"
 \end{lstlisting}
-If you swap your shuttle, for example upgrade from an Xpress to a PROv2, just stop Cin, unplug the original shuttle, plug in the replacement shuttle, and restart Cin.  If you start the Cinelerra program and the shuttle does not function as before, stop Cinelerra and then simply unplug it and plug it in again.  There are a couple of reasons why it may stop functioning.  One is because Cinelerra was not stopped with the usual Quit command and the shuttle was improperly shut down when there was a crash.  The other possibility is that a static discharge occurred in the area.
+If you swap your shuttle, for example upgrade from an Xpress to a PROv2, just stop Cin, unplug the original shuttle, plug in the replacement shuttle, and restart Cin.  If you start the \CGG{} program and the shuttle does not function as before, stop \CGG{} and then simply unplug it and plug it in again.  There are a couple of reasons why it may stop functioning.  One is because \CGG{} was not stopped with the usual Quit command and the shuttle was improperly shut down when there was a crash.  The other possibility is that a static discharge occurred in the area.
 
-A default shuttlerc file is automatically used when a shuttle device is plugged in when Cin is started. This file sets up the key bindings for Cinelerra to use. You can override any default settings by having a local file in your \texttt{\$HOME} directory, named \texttt{.shuttlerc} to reflect your personal preferences.
+A default shuttlerc file is automatically used when a shuttle device is plugged in when Cin is started. This file sets up the key bindings for \CGG{} to use. You can override any default settings by having a local file in your \texttt{\$HOME} directory, named \texttt{.shuttlerc} to reflect your personal preferences.
 
 \subsection{How to Modify the Default Key Settings}%
 \label{sub:modify_default_key_settings}
 
 Detailed information on how to modify your local .shuttlerc file is described next, but if you need help you can request more information in the forum at {\small \url{https://cinelerra-gg.org}}. In the \texttt{shuttlerc} file, a \# always represents a comment and blank lines are ignored.  The first thing you must do is copy the system supplied \texttt{shuttlerc} file to your \texttt{\$HOME} directory and rename it as \texttt{.shuttlerc} (with a period). 
 
-The \texttt{shuttlerc} file has sections that in the case of Cinelerra, represent different windows allowing you to set the keys, K1-K15 for the Pro and K5-K9 for the Xpress, the shuttle wheel positions of S0/S1/S-1 for stop, S2 through S7 for wheeling to the right, and S-7 through S-2 for wheeling to the left for reverse.  Then there is JR to jog right (clockwise) and JL to jog left (counter-clockwise) for the inner smaller wheel for single frame movement.  See the key arrangement on a later page for location of the keys for each of the two different shuttles.
+The \texttt{shuttlerc} file has sections that in the case of \CGG{}, represent different windows allowing you to set the keys, K1-K15 for the Pro and K5-K9 for the Xpress, the shuttle wheel positions of S0/S1/S-1 for stop, S2 through S7 for wheeling to the right, and S-7 through S-2 for wheeling to the left for reverse.  Then there is JR to jog right (clockwise) and JL to jog left (counter-clockwise) for the inner smaller wheel for single frame movement.  See the key arrangement on a later page for location of the keys for each of the two different shuttles.
 
-The sections are surrounded by brackets for windows such as Cinelerra (the main window), Viewer, Composer, Resources, Load, and Default.  If you want the keys to be defined the same in every window, you can bracket each window on lines one right after the other and then just define one set of keys.  The other lines will have the key name/shuttle position followed by its assigned value.  The values you use for the keys are usually shortcuts and have to be operationally defined within Cinelerra. For example, the shortcut “f” to go fullscreen is defined so can be used; however the shortcut “h” is not defined so will not do anything.  You can check the file, shortcuts.html, for some options to use.
+The sections are surrounded by brackets for windows such as \CGG{} (the main window), Viewer, Composer, Resources, Load, and Default.  If you want the keys to be defined the same in every window, you can bracket each window on lines one right after the other and then just define one set of keys.  The other lines will have the key name/shuttle position followed by its assigned value.  The values you use for the keys are usually shortcuts and have to be operationally defined within \CGG{}. For example, the shortcut “f” to go fullscreen is defined so can be used; however the shortcut “h” is not defined so will not do anything.  You can check the file, shortcuts.html, for some options to use.
 
 Next are a few actual examples from the default \texttt{{cindat\_path}/shuttlerc} file.
 
@@ -948,7 +948,7 @@ JL XK_Scroll_Up
 JR XK_Scroll_Down
 \end{lstlisting}
 
-\noindent Cinlerra with brackets around it next, is the section with some key definitions for the main window.
+\noindent Cinelerra with brackets around it next, is the section with some key definitions for the main window.
 
 \begin{lstlisting}[language=Bash,numbers=none]
 [Cinelerra] 
@@ -985,7 +985,7 @@ K2 "v"
 K4 "b"         # Overwrite
 \end{lstlisting}
 
-\noindent To change any key value to an alternative value, just edit the file and make the changes.  Besides just keys and alphabetic letters of numbers, you can also use any Cinelerra value that contains the combination with Shift, Alt, and Ctrl.  For keys that are not printable characters, you can look up the symbol name to use for a specific operation in the file called: \texttt{/usr/include/X11/keysymdef.h} .
+\noindent To change any key value to an alternative value, just edit the file and make the changes.  Besides just keys and alphabetic letters of numbers, you can also use any \CGG{} value that contains the combination with Shift, Alt, and Ctrl.  For keys that are not printable characters, you can look up the symbol name to use for a specific operation in the file called: \texttt{/usr/include/X11/keysymdef.h} .
 \noindent Some examples:
 
 \begin{lstlisting}[language=bash,numbers=none]
@@ -995,7 +995,7 @@ K13 Ctrl-XK_Right 	# Go to next label
 
 \noindent For sequences of one or more \textit{printable} characters, you can just enclose them in double quotes.  For example in the \texttt{[Composer]} section, to go into or out of fullscreen mode, automatically start playing and put a label there, you could define a key like this:  K7 “f~l” - that is printable character f, a space, and printable character l.  
 
-After modifying \texttt{.shuttlerc}, the next time you use the shuttle, your changes will automatically take affect without even having to stop and restart Cin.  However, the first thing to try if problems is to stop Cinelerra, unplug the shuttle, wait a few seconds, plug it in again, and then restart cin.  If for some reason, the shuttle keys still do not work after that, you may have an incorrect setup and you will have to correct that first.  For example, if you define S5 twice within the Cinelerra setup, it will fail.  It is suggested that if you make changes, you should initially uncomment DEBUG in the \texttt{.shuttlerc} file and start up Cinelerra from a terminal window so that you can make sure it is working and has no output errors.  An error might look like:
+After modifying \texttt{.shuttlerc}, the next time you use the shuttle, your changes will automatically take affect without even having to stop and restart Cin.  However, the first thing to try if problems is to stop \CGG{}, unplug the shuttle, wait a few seconds, plug it in again, and then restart cin.  If for some reason, the shuttle keys still do not work after that, you may have an incorrect setup and you will have to correct that first.  For example, if you define S5 twice within the \CGG{} setup, it will fail.  It is suggested that if you make changes, you should initially uncomment DEBUG in the \texttt{.shuttlerc} file and start up \CGG{} from a terminal window so that you can make sure it is working and has no output errors.  An error might look like:
 
 \begin{lstlisting}[language=Bash,numbers=none]
 dupl key name: [Cinelerra]K1 
@@ -1037,7 +1037,7 @@ key: 0059 1
 \noindent You can also set an environment variable to temporarily use an alternative shuttle configuration file for testing as in:
 
 \begin{lstlisting}[language=Bash,numbers=none]
-$ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test 
+\$ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test 
 \end{lstlisting}
 
 \noindent The shuttle wheel occasionally will not \textit{stop} after you have wheeled it to play forward.  This is a documented known problem from the original code so you just have to joggle it a little in the other direction and then it will stop.  S0 does not always generate a signal to do a stop and that is why S1 and S-1 have to be used to relay the stop instead.  Also, if you have a fullscreen Composer or Viewer up and the regular one also, the fullscreen takes precedence.
@@ -1048,8 +1048,8 @@ $ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test
 In order to see if you hardware was recognized by the operating system, key in:
 
 \begin{lstlisting}[language=Bash,numbers=none]
-$ lsusb -v -d 0b33:0030		# for the Shuttle Pro or PROv2 \\
-$ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
+\$ lsusb -v -d 0b33:0030		# for the Shuttle Pro or PROv2 \\
+\$ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
 \end{lstlisting}
 
 
@@ -1067,11 +1067,11 @@ Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2
 \end{lstlisting}
     \item To make sure you have usbmon installed key in:
 \begin{lstlisting}[language=Bash,numbers=none]
-$ sudo modprobe usbmon
+\$ sudo modprobe usbmon
 \end{lstlisting}
     \item Next key in the following:
 \begin{lstlisting}[language=Bash,numbers=none]
-$ sudo od -tx1 /dev/usbmon3
+\$ sudo od -tx1 /dev/usbmon3
 \end{lstlisting}
     where the last 3 is the same \# as the Bus in above.  If it lists \texttt{Bus 002}, then use \texttt{/dev/usbmon2} instead.
     \item Now with focus in that same terminal window, press any shuttle key just to see what happens and
@@ -1100,15 +1100,15 @@ $ sudo od -tx1 /dev/usbmon3
     \item Use Ctrl-C on the terminal window when done to get back to the prompt.
 \end{enumerate}
 \paragraph{Note 3}
-Another method for testing to make sure your model of the Shuttle does not have different key definitions than the one that Cinelerra was coded for is to do the following.
+Another method for testing to make sure your model of the Shuttle does not have different key definitions than the one that \CGG{} was coded for is to do the following.
 
 \begin{enumerate}
-    \item Locate the shudmp.C program in your Cinelerra directory.
+    \item Locate the shudmp.C program in your \CGG{} directory.
     \item Compile that with the command:  \texttt{c++ shdmp.C -o shudmp}
     \item Make the file executable with the command:  \texttt{chmod +x shudmp}
     \item Execute:
     \begin{lstlisting}[language=Bash,numbers=none]
-$ sudo ./shdmp /dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00 # substitute your shuttle
+\$ sudo ./shdmp /dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00 # substitute your shuttle
     \end{lstlisting}
 \end{enumerate}
 
@@ -1148,13 +1148,13 @@ cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/events"  # press keys to see the 
     %\item \texttt{cat “/sys/kernel/debug/hid/0003:0B33.0030.0006/events”  \# press keys to see the results}
 %\end{enumerate}
 
-\subsection{Shuttle key default arrangement for Cinelerra / Composer / Viewer:}%
+\subsection{Shuttle key default arrangement for \CGG{} / Composer / Viewer:}%
 \label{sub:shuttle_key_default_cinelerra}
 
 The following is the default setting for the ShuttlePROv2 and ShuttleXpress (table~\ref{tab:shuttleprov2} and table~\ref{tab:xpress}):
 
 \begin{table}[ht]
-	\caption{ShuttlePROv2 key default arrangement for Cinelerra / Composer / Viewer}
+	\caption{ShuttlePROv2 key default arrangement for \CGG{} / Composer / Viewer}
 	\label{tab:shuttleprov2}
     % Tell table to adjust font to fix on the page using \resize
 	\resizebox{\textwidth}{!}{%
@@ -1192,7 +1192,7 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress (tab
 \end{table}
 
 \begin{table}[ht]
-	\caption{ShuttleXpress key default arrangement for Cinelerra / Composer / Viewer}
+	\caption{ShuttleXpress key default arrangement for \CGG{} / Composer / Viewer}
 	\label{tab:xpress}
     % Tell table to adjust font to fix on the page using \resize
     \resizebox{\textwidth}{!}{%

@@ -1,7 +1,7 @@
 \chapter{Project and Media Attributes}%
 \label{cha:project_and_media_attributes}
 
-When you play media files in Cinelerra, the media files have a certain number of tracks, frame size, sample size, and so on. 
+When you play media files in \CGG{}, the media files have a certain number of tracks, frame size, sample size, and so on. 
 No matter what attributes the media file has, it is played back according to the project attributes. 
 So, if an audio file's sample rate is different than the project attributes, it is resampled. 
 Similarly, if a video file's frame size is different than the project attributes, the video is composited on a black frame, either cropped or bordered with black.
@@ -19,7 +19,7 @@ But every timeline created from this point uses the same settings.
 	\label{fig:set-format}
 \end{figure}
 
-In addition to the standard settings for sample rate, frame rate, and frame size, Cinelerra uses some less traditional settings like channel positions, color model, and aspect ratio.  
+In addition to the standard settings for sample rate, frame rate, and frame size, \CGG{} uses some less traditional settings like channel positions, color model, and aspect ratio.  
 The aspect ratio refers to the screen aspect ratio.
 
 Edit decision lists , the EDL stored in XML, save the project settings.  
@@ -106,10 +106,10 @@ Explanation of the various fields is described next.
         if this option is checked, the Set Format dialog always recalculates the Aspect ratio setting based upon the given Canvas size. This ensures pixels are always square.
 
     \item[Color model:]
-        the internal color space of Cinelerra GG is X11 sRGB without color profile. Cinelerra always switches to sRGB when applying filters or using the compositing engine. Different case for decoding/playback or encoding/output; the project will be stored in the color model video that is selected in the dropdown.  
+        the internal color space of \CGG{} is X11 sRGB without color profile. \CGG{} always switches to sRGB when applying filters or using the compositing engine. Different case for decoding/playback or encoding/output; the project will be stored in the color model video that is selected in the dropdown.  
         Color model is important for video playback because video has the disadvantage of being slow compared to audio.  
         Video is stored on disk in one colormodel, usually a YUV derivative. 
-        When played back, Cinelerra decompresses it from the file format directly into the format of the output device. 
+        When played back, \CGG{} decompresses it from the file format directly into the format of the output device. 
         If effects are processed, the program decompresses the video into an intermediate colormodel first and then converts it to the format of the output device. 
         The selection of an intermediate colormodel determines how fast and accurate the effects are.  
         A list of the current colormodel choices follows.

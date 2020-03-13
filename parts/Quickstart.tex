@@ -1,10 +1,10 @@
 \chapter{QuickStart}%
 \label{cha:Quickstart}
 
-\section{Cinelerra-GG Quick Start Guide}%
+\section{\CGG{} Quick Start Guide}%
 \label{sec:cin_quick_start_guide}
 
-Cinelerra is a software program NLE, Non-Linear Editor, that provides a way to edit, record, and play audio or video media on Linux.   It can also be used to color correction, retouch photos, motion tracking, watch TV, and create DVDs.
+\CGG{} is a software program NLE, Non-Linear Editor, that provides a way to edit, record, and play audio or video media on Linux.   It can also be used to color correction, retouch photos, motion tracking, watch TV, and create DVDs.
 
 \subsection{Install the Software}%
 \label{sub:install_software}
@@ -30,7 +30,7 @@ However, if you want to get going as quickly as possible, just do this so that e
 	\item Key in:  \texttt{tar -xJf /tmp/cinelerra-5.1-*.txz}   (if you put the tar in \texttt{/tmp} AND replace * with full name)
 \end{itemize}
 
-\subsection{Start Cinelerra GG}%
+\subsection{Start \CGG{}}%
 \label{sub:start_cinelerra_gg}
 
 Depending on how you installed the software, you can log in as root or as a user if you used a package.
@@ -40,7 +40,7 @@ Depending on how you installed the software, you can log in as root or as a user
 	\item Or if you installed using the pkg method, click on the \textit{Cin icon}.
 \end{itemize}
 
-You will now see 4 separate windows appear.  The top 2 windows from left to right are the Viewer which is most useful for previewing clips and media and the Compositor which displays the current working frame at the timeline position.  The bottom 2 windows are the Cinelerra Program, also called the timeline, which is where the real work gets done and the Resources window showing a selection of media or effects.
+You will now see 4 separate windows appear.  The top 2 windows from left to right are the Viewer which is most useful for previewing clips and media and the Compositor which displays the current working frame at the timeline position.  The bottom 2 windows are the \CGG{} Program, also called the timeline, which is where the real work gets done and the Resources window showing a selection of media or effects.
 
 \begin{figure}[htpb]
 	\centering
@@ -50,7 +50,7 @@ You will now see 4 separate windows appear.  The top 2 windows from left to righ
 
 Any of these windows can be resized to better suit your needs.  Note that if your system’s native language is not English, some of the words you see on the screen will be correctly translated for you, others will be in english, and some will have not very good translations.
 
-It is important to know that Cinelerra does not directly change your media.  It writes all changes to what is called the EDL, Edit Decision List.  This way you original media remains completely intact.
+It is important to know that \CGG{} does not directly change your media.  It writes all changes to what is called the EDL, Edit Decision List.  This way you original media remains completely intact.
 
 \subsection{Load Media}%
 \label{sub:load_media}
@@ -65,7 +65,7 @@ On the main timeline program window are many pulldowns, the first of which is \t
 
 \begin{enumerate}
 	\item Click on \textit{File} for a list of available options and note that in the right hand column are shortcuts for
-	many of the options that will come in handy if you use Cinelerra often.
+	many of the options that will come in handy if you use \CGG{} often.
 	\item Next click on the second one down -- \textit{Load files$\dots$} -- which brings up the Load menu.
 	\item Below \textit{Select files to load} on the top left side is a textbox and if you look all the way to the right
 	side of the textbox, there is a down arrow which you use to navigate your file system.  Highlight the
@@ -77,7 +77,7 @@ On the main timeline program window are many pulldowns, the first of which is \t
 	default of \textit{Replace current project} is sufficient.  But you can click on the down arrow to see what
 	is available for future use.
 	\item Now click on the green colored checkmark on the bottom left hand side to actually load the file
-	and see it appear on the timeline in Cinelerra’s main window and a single frame in the Compositor.
+	and see it appear on the timeline in \CGG{}’s main window and a single frame in the Compositor.
 	The first track will most likely be video thumbnails and the next tracks may be audio waveforms.
 	\item Press the space bar in the main Program window and your video will start playing and press the
 	space bar again to stop the play.  While playing, you should see the video in the Compositor
@@ -240,7 +240,7 @@ At this time, or even earlier if you think you might make a mistake or if you ar
 
 \begin{enumerate}
 	\item Once again in the main Program window, click on the \textit{File} pulldown and highlight/click the \texttt{Render}
-	option which is about the $9^{th}$ option down from the top of the list.  A Cinelerra Render menu will
+	option which is about the $9^{th}$ option down from the top of the list.  A \CGG{} Render menu will
 	appear.
 	\item First key in the first textbox the file to render to under \textit{Select a file to render to}.
 	\item For the \textit{File Format}, click on the down arrow and select FFMPEG (because this is the most
@@ -264,15 +264,15 @@ At this time, or even earlier if you think you might make a mistake or if you ar
 \subsection{Play your new media}%
 \label{sub:play_your_new_media}
 
-The file you created in the Render step should now be playable.  You can test this in Cinelerra most easily by going to the Resource window in the lower right corner, clicking on the Media folder, and dragging and dropping the last video to the Viewer window.  There is a separate set of transport buttons on the bottom on that screen to use for playing.
+The file you created in the Render step should now be playable.  You can test this in \CGG{} most easily by going to the Resource window in the lower right corner, clicking on the Media folder, and dragging and dropping the last video to the Viewer window.  There is a separate set of transport buttons on the bottom on that screen to use for playing.
 
-\section{YouTube with Cinelerra}%
+\section{YouTube with \CGG{}}%
 \label{sec:youtube_with_cinelerra}
 
-To create a youtube or dailymotion video, you can easily follow the steps below.  You will have to learn a lot more about Cinelerra to take full advantage of its capabilities and make some really special videos, but this is just to get a start and to see the possibilities.
+To create a youtube or dailymotion video, you can easily follow the steps below.  You will have to learn a lot more about \CGG{} to take full advantage of its capabilities and make some really special videos, but this is just to get a start and to see the possibilities.
 
 \begin{enumerate}
-	\item Start Cinelerra; usually you can do this by clicking on Cinelerra icon or key in \texttt{{cin\_path}/bin/cin}.
+	\item Start \CGG{}; usually you can do this by clicking on \CGG{} icon or key in \texttt{{cin\_path}/bin/cin}.
 	\item In the Program window on the lower left side of your screen, left mouse click the \textit{File} pulldown.
 	\item You will see \textit{Load files} as the second choice so left mouse click this and find your video file to
 	load, highlight it, and check the green checkmark in the lower left hand corner to get it loaded.
@@ -291,7 +291,7 @@ To create a youtube or dailymotion video, you can easily follow the steps below.
     to see the choices and pick \textit{youtube}.  Then move back up to key in the path and filename to render
     to.  It will pick all of the defaults automatically for you so then just click on the green checkmark to
     have it start.  There is a progress bar in the main window, very bottom of the right hand side.
-    \item Key in “q” in the main window to get out of Cinelerra and yes or no to save your edit session.
+    \item Key in “q” in the main window to get out of \CGG{} and yes or no to save your edit session.
 \end{enumerate}
 
 Youtube will allow the upload of the resulting rendered file as named.  However, Dailymotion requires that the file be named with an acceptable extension so you must rename the output file to have the extension of .webm instead of .youtube

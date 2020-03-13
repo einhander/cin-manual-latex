@@ -8,10 +8,10 @@
     \label{fig:settings}
 \end{figure}
 
-The user's default settings, preferences, and other helpful files are retained across sessions in a hidden file, called .bcast5, in the user’s \texttt{\$HOME} directory. Initially when Cinelerra is launched there is an empty project and there are program default settings, and from then on the \texttt{.bcast5} directory will contain the settings that were set when quitting.  If you need to revert to the default settings, delete the \texttt{.bcast5} directory contents and restart Cinelerra.  Or you may want to rename it temporarily if you think you might want it back later.
-Although the location defaults to \texttt{\$HOME/.bcast5}, you can use the \texttt{CIN\_CONFIG} variable to override this location.  For example:  \texttt{export CIN\_CONFIG=/tmp/.bcast5}  will use a temporary setup for testing purposes.  It is also useful for multiple users sharing the same home directory who would like to have different configuration/preferences settings data.  And if you are experiencing inexplicable errors or crashes in Cinelerra, they may be due to a problem with \texttt{.bcast5} in which case taking it out of the picture  can at least eliminate this as the cause.
+The user's default settings, preferences, and other helpful files are retained across sessions in a hidden file, called .bcast5, in the user’s \texttt{\$HOME} directory. Initially when \CGG{} is launched there is an empty project and there are program default settings, and from then on the \texttt{.bcast5} directory will contain the settings that were set when quitting.  If you need to revert to the default settings, delete the \texttt{.bcast5} directory contents and restart \CGG{}.  Or you may want to rename it temporarily if you think you might want it back later.
+Although the location defaults to \texttt{\$HOME/.bcast5}, you can use the \texttt{CIN\_CONFIG} variable to override this location.  For example:  \texttt{export CIN\_CONFIG=/tmp/.bcast5}  will use a temporary setup for testing purposes.  It is also useful for multiple users sharing the same home directory who would like to have different configuration/preferences settings data.  And if you are experiencing inexplicable errors or crashes in \CGG{}, they may be due to a problem with \texttt{.bcast5} in which case taking it out of the picture  can at least eliminate this as the cause.
 
-Several ways exist to change Cinelerra’s operational characteristics.  A lot of variations can be made to  settings and preferences by using the \textit{Settings} pulldown from the main window and choosing \textit{Preferences}.
+Several ways exist to change \CGG{}’s operational characteristics.  A lot of variations can be made to  settings and preferences by using the \textit{Settings} pulldown from the main window and choosing \textit{Preferences}.
 
 \section{Playback A / Playback B}%
 \label{sec:playback_a_b}
@@ -39,7 +39,7 @@ The audio drivers are used for both recording and playback. The Audio Out settin
         \item[Pulseaudio] Extends the functionality of ALSA. It is a more modern and highly supported driver.
     \end{description}
     \item[Device] with the down arrow, you can see the device choices on your computer.
-    \item[Bits] 8, 16 or 24 Bit Linear are the current choices for the number of bits of precision Cinelerra should set the device for. The meaning of the number of bits can be misleading. Some sound drivers need to be set to 32 bits to perform 24 bit playback and will not play anything when set to 24 bits. Other sound drivers need to be set to 24 bits for 24 bit playback.
+    \item[Bits] 8, 16 or 24 Bit Linear are the current choices for the number of bits of precision \CGG{} should set the device for. The meaning of the number of bits can be misleading. Some sound drivers need to be set to 32 bits to perform 24 bit playback and will not play anything when set to 24 bits. Other sound drivers need to be set to 24 bits for 24 bit playback.
     \item[Stop playback locks up] this ALSA only checkbox is needed if stopping playback causes the software to lock up.  This has worked some time ago, but may no longer work as expected
 \end{description}
 
@@ -130,7 +130,7 @@ The parameters here expedite the \texttt{File $\rightarrow$ Record}\dots functio
     \item[Follow video config] ??
     \item[Frames to record to disk at a time] frames are recorded in a pipeline. First, frames are buffered in the device. Then, they are read into a larger buffer for writing to disk. The disk writing is done in a separate thread from the device reading. For certain codecs the disk writing uses multiple processors. The value set here determines how many frames are written to disk at a time.
     \item[Frames to buffer in device ] the number of frames to store in the device before reading and this determines how much latency there can be in the system before frames are dropped.
-    \item[Positioning] if set to \textit{Software timing}, use software for positioning information. Video uses audio for synchronization, but most sound cards do not give accurate position information so selecting this option makes Cinelerra calculate an estimation of audio position in software instead of hardware for synchronization.  You can also choose \textit{Presentation Timestamps}, \textit{Device Position}, or \textit{Sample Position}.
+    \item[Positioning] if set to \textit{Software timing}, use software for positioning information. Video uses audio for synchronization, but most sound cards do not give accurate position information so selecting this option makes \CGG{} calculate an estimation of audio position in software instead of hardware for synchronization.  You can also choose \textit{Presentation Timestamps}, \textit{Device Position}, or \textit{Sample Position}.
     \item[Sync drives automatically] for high bitrate recording, the disk drives you use may be fast enough to store the data but your operating system may wait several minutes and stall as it writes several minutes of data at a time. This forces the operating system to flush its buffers every second instead of every few minutes to produce slightly better real-time behavior.
     \item[Size of captured frame] is the size of the recorded frames in pixels. It is independent of the project frame size because most video devices only record a fixed frame size.
     \item[Frame rate for recording ] the frame rate recorded is different from the project settings. This sets the recorded frame rate.
@@ -147,8 +147,8 @@ The main focus of the performance section is rendering parameters not available 
 \begin{description}
     \item[Cache size] to speed up rendering, several assets are kept open simultaneously. This determines how     many are kept open. A number too large may exhaust your memory rapidly. A number too small may result in slow playback as assets need to be reopened more frequently.
     \item[Seconds to preroll renders] some effects need a certain amount of time to settle in. Checking this option sets a number of seconds to render without writing to disk before the selected region is rendered. When using the render farm, you will sometimes need to preroll to get seamless transitions between the     jobs. Every job in a render farm is prerolled by this value. This does not affect background rendering because background rendering uses a different preroll value.
-    \item[Force single processor use] Cinelerra tries to use all processors on the system by default, but sometimes you will only want to use one processor, like in a render farm client. This forces only one processor to be used.  The operating system usually uses the second processor for disk access. The value of this parameter is used in render farm clients.
-    \item[Project SMP cpus ] to restrict the number of processors utilized, change the count number.  This number will be used for the plugin per load balance operation cpu limit, which uses smp-cpus to stripe your data. It does not affect the number of cpus used in any other Cinelerra operation besides plugins. On large cpu systems, it can come in handy to downgrade the number of cpus used for some plugins; otherwise it uses all of the processors and splits up the program into too many pieces which may add
+    \item[Force single processor use] \CGG{} tries to use all processors on the system by default, but sometimes you will only want to use one processor, like in a render farm client. This forces only one processor to be used.  The operating system usually uses the second processor for disk access. The value of this parameter is used in render farm clients.
+    \item[Project SMP cpus ] to restrict the number of processors utilized, change the count number.  This number will be used for the plugin per load balance operation cpu limit, which uses smp-cpus to stripe your data. It does not affect the number of cpus used in any other \CGG{} operation besides plugins. On large cpu systems, it can come in handy to downgrade the number of cpus used for some plugins; otherwise it uses all of the processors and splits up the program into too many pieces which may add
     considerable overhead in high cpu count systems.
 \end{description}
 
@@ -176,7 +176,7 @@ In the Render Farm Section are many options that are explained in detail in the 
 \label{sub:editing_section}
 
 \begin{description}
-    \item[Clicking on edit boundaries] (trimming) Cinelerra not only allows you to perform editing by dragging edit boundaries, but also defines five separate operations that occur when you drag an edit boundary. Here you can select the behavior of each mouse button. The usage of each editing mode is described in great detail in the \hyperref[sub:drag_handle_management_trimming]{Editing} chapter.
+    \item[Clicking on edit boundaries] (trimming) \CGG{} not only allows you to perform editing by dragging edit boundaries, but also defines five separate operations that occur when you drag an edit boundary. Here you can select the behavior of each mouse button. The usage of each editing mode is described in great detail in the \hyperref[sub:drag_handle_management_trimming]{Editing} chapter.
     \item[Keyframe reticle] the options are \textit{Newer}, \textit{Dragging}, or \textit{Always}. This is used to help in checking edit alignment across tracks.  Always renders a line over all plugins, and dragging only over the drag icon. Never draws nothing.
     \item[Snapshot path] designates the default directory path for snapshot and grabshot generated output.
 \end{description}
@@ -186,7 +186,7 @@ In the Render Farm Section are many options that are explained in detail in the 
 
 \begin{description}
     \item[Probe Order] clicking on this box brings up a popup allowing you to change the probe order usually for media that is raw camera output but it is also helpful if you want to ensure that a specific driver is used for certain media; for example you may want \textit{tiff} files to be read natively instead of by ffmpeg.
-    \item[trap sigSEGV] always enable this so that if Cinelerra crashes, a dump will be generated for analysis.
+    \item[trap sigSEGV] always enable this so that if \CGG{} crashes, a dump will be generated for analysis.
     \item[trap sigINT] always enable this so that you can use Ctrl-c to interrupt the program if it appears to be hanging.  This will often generate some useful information for analysis.
     \item[Use yuv420p dvd interlace format] for DVD media this option maintains the interlacing in Chroma sample addressing, which ordinarily would be deleted because the upsampling of interlaced chroma fields is normally done using a progressive algorithm.  With this mode enabled, the MPEG decoder uses a different algorithm for interlaced frames so that the 4:2:0 format chroma interlacing is preserved.
     \item[Min / Max DB for meter] \textit{Min DB} is useful because some sound sources have a lower noise threshold than others. Everything below the noise threshold is meaningless. This option sets the meters to clip below a certain level.  \textit{Max DB} sets the maximum sound level represented by the sound meters. This value is presented merely to show how far over the limit a sound wave is. No matter what this value is, no sound card can play sound over 0 dB.
@@ -220,7 +220,7 @@ In the Render Farm Section are many options that are explained in detail in the 
 \subsection{Layout section}%
 \label{sub:layout_section}
 
-\paragraph{Theme} Cinelerra supports 11 different themes to suit the preferences of different users (figure~\ref{fig:theme}).  When you change the theme, Cinelerra automatically saves your session and restarts exactly where you were.  The \textit{Themes User Interface} are described in more detail next.  \textit{Akirad} themes are all available in Cin-GG with major thanks to the \textit{Cinecutie} project for all of their hard work. These modifications provide alternative User Interface environments and allows you to choose your favorite look.  Be aware that when you change your theme, Cinelerra will automatically shutdown and restart for it to take effect.  The theme you choose is preserved across sessions.
+\paragraph{Theme} \CGG{} supports 11 different themes to suit the preferences of different users (figure~\ref{fig:theme}).  When you change the theme, \CGG{} automatically saves your session and restarts exactly where you were.  The \textit{Themes User Interface} are described in more detail next.  \textit{Akirad} themes are all available in Cin-GG with major thanks to the \textit{Cinecutie} project for all of their hard work. These modifications provide alternative User Interface environments and allows you to choose your favorite look.  Be aware that when you change your theme, \CGG{} will automatically shutdown and restart for it to take effect.  The theme you choose is preserved across sessions.
 
 \underline{Theme choices available:}
 
@@ -252,13 +252,13 @@ To change a \textit{Theme} in the main window pulldown, select:
 
 \texttt{Settings $\rightarrow$ Preferences};
 
-then in Preferences window, click on the \textit{Appearance} tab. In the Editing section in the lower left hand corner,	click on the \textit{down arrow} next to Theme to see your choices. Click on your desired choice from the list given. Check OK, Cinelerra will automatically shutdown and restart.
+then in Preferences window, click on the \textit{Appearance} tab. In the Editing section in the lower left hand corner,	click on the \textit{down arrow} next to Theme to see your choices. Click on your desired choice from the list given. Check OK, \CGG{} will automatically shutdown and restart.
 
 \begin{description}
     \item[Plugin Icons] here are currently 4 choices for different plugin icons to include the old original.
     \item[Layout Scale] allows for setting up scaling 
 for your 4K monitors or any monitor where you would like the text and icons to be just a little bigger or a lot bigger. This scale setting is automatically saved across sessions. 
-When first using Cinelerra, or if \textit{Layout Scale} has never been set, the initial value is 0.0.
+When first using \CGG{}, or if \textit{Layout Scale} has never been set, the initial value is 0.0.
 This means an automatic probe of the biggest monitor in use will be used for the setting. The advantage of this is that "new users" with a 4K monitor will not immediately be discouraged with too small text/icons.
 Leaving it at 0 instead of 1 is what most people will do and is probably preferable so that if you move to a different monitor with different dimensions/resolution, it will automatically probe. 
 If a user wants to prevent the automatic scaling, \textit{Layout Scale} should be set to 1.0 to avoid the smaller characters that might result due to the probe of a non-1080p monitor.
@@ -268,12 +268,12 @@ size for larger text/fonts before you start the application from a window, you c
 \begin{lstlisting}[numbers=none]
         BC_SCALE=2.0 {your Cinelerra path}/bin/cin
 \end{lstlisting}
-The scaling size would only be in effect for that run of Cinelerra.  This is particularly
-useful in the case where the user makes a mistake in setting the \textit{Layout Scale} and Cinelerra becomes unusable. 
+The scaling size would only be in effect for that run of \CGG{}.  This is particularly
+useful in the case where the user makes a mistake in setting the \textit{Layout Scale} and \CGG{} becomes unusable. 
 Then the environment variable, BC\_SCALE, can be used to overcome the bad setting so that you can get back into
-Cinelerra and fix the scaling parameter.  For example, if you 
+\CGG{} and fix the scaling parameter.  For example, if you 
 accidentally set \textit{Layout Scale} to 112.6, keyin the following 
-and then when you get back into Cinelerra, fix \textit{Layout Scale} value in Preferences.  
+and then when you get back into \CGG{}, fix \textit{Layout Scale} value in Preferences.  
 \begin{lstlisting}[numbers=none]
         BC_SCALE=1.0 {your Cinelerra path}/bin/cin
 \end{lstlisting}
@@ -313,7 +313,7 @@ Various representations of time are given so that you can select the most conven
 This section contains many useful options to cater to the various preferences of individual users.
 
 \begin{description}
-    \item[Show tip of the day] if checked, a tip will be displayed in a popup box when start up Cinelerra.
+    \item[Show tip of the day] if checked, a tip will be displayed in a popup box when start up \CGG{}.
     \item[Autocolor assets] to make it visually easier to see your clips on the timeline that are from the same media file, you can have them automatically colored. Use of this feature requires additional memory and cpu on every timeline redraw, therefore smaller computers may not want this checked on.
     \item[ffmpeg probe warns rebuild indexes] this warning is very important for switching from using ffmpeg to using native formats, such as in the case of MPEG, so that you are reminded to \textit{rebuild indexes}.  If you do not rebuild the indexes, seeking on the timeline back and forth could very well be problematic, meaning it might not go to the right place.  Notification about rebuilding the indexes will appear by default as shown in the figure~\ref{fig:ff_probe} when you click on the FF icon in the main timeline in the upper right hand corner.  Once you click on \textit{Don’t show this warning again} you will no longer be warned and this flag will no longer be enabled.
     \begin{figure}[htpb]
@@ -327,13 +327,13 @@ This section contains many useful options to cater to the various preferences of
 Reference", that is when an EDL is opened as \textit{Reference}.  This is best left checked to ensure that you are aware of the fact that when changes are made
 to this file and rendered, any other uses of the same file will be affected and modified also.
     \item[Popups activate on button up] this is the default but if unchecked, popups activate on button down.
-    \item[Set Input Focus when window entered] this is checked on by default because on some operating system distros, when you move your mouse to a different window, nothing happens and you are left wondering why you can not enter information.  When checked this causes the input focus to shift to any Cinelerra window when the cursor enters an exposed region of the window which eliminates the need to switch input focus by tabbing. 
+    \item[Set Input Focus when window entered] this is checked on by default because on some operating system distros, when you move your mouse to a different window, nothing happens and you are left wondering why you can not enter information.  When checked this causes the input focus to shift to any \CGG{} window when the cursor enters an exposed region of the window which eliminates the need to switch input focus by tabbing. 
     \item[Click to activate text focus] Click to activate text focus
     \item [Click to deactivate text focus] if checked, you will have to click to deactivate text focus.
     \item[Always show next frame] in this mode the insertion pointer reflects the same as the Compositor so that for playing forward, the result is what looks like 1 was added to the frame displayed in the Compositor window.  This is fully explained in another section (\hyperref[sub:playing_seeking]{Playing is Different than Seeking/Positioning!}).
     \item[Use thumbnails in resource window] the Resource Window displays thumbnails of assets by default, but drawing asset thumbnails can take more time and CPU so you may want to uncheck this.
     \item[Perpetual session] is very useful for working on a project over many days so you can just quit before
-    shutting down and the next time you start up Cinelerra you will be right back where you left off. You
+    shutting down and the next time you start up \CGG{} you will be right back where you left off. You
     will retain all of your undo's and redo's.
     \item[Clears before toggle] when using copy/paste in drag and drop mode some users prefer to resort to the addition of the Ctrl key for adding multiple selections.  By checking this flag, the user retains usage as is commonly done for listbox operations.
     \item[Timeline Rectify Audio] for displaying rectified audio on the timeline instead of a standard audio waveform, check this flag.  The waveform is cut on the zero line, thus making the silent areas more visible and the waveform is stretched more over the entire height of the audio track, which improves the visibility of certain areas. This only affects the timeline and not any other audio waveform displays.
@@ -342,7 +342,7 @@ to this file and rendered, any other uses of the same file will be affected and 
 \section{About}%
 \label{sec:about}
 
-This section gives you information about the Cinelerra program and version you are running.  The original author’s copyright and name are first and foremost.  Next is a textbox with additional information and a summary of the monthly new features of note. Below that is a summary of the GPL License and the fact that it is provided without any warranty.  Then the licensing verbage is the item that you may need to refer to most often -- the \textit{built} date and time in case you need to know which version you are currently running.
+This section gives you information about the \CGG{} program and version you are running.  The original author’s copyright and name are first and foremost.  Next is a textbox with additional information and a summary of the monthly new features of note. Below that is a summary of the GPL License and the fact that it is provided without any warranty.  Then the licensing verbage is the item that you may need to refer to most often -- the \textit{built} date and time in case you need to know which version you are currently running.
 
 \section{Environment Variables for Customization}%
 \label{sec:environment_variables_customization}
@@ -359,7 +359,7 @@ The following exported variables can be set to customize your environment. \\ Th
     \item[{\small CIN\_LIB}] location of library programs, such as bdwrite
     \item[{\small CIN\_LOCALE}] locale text domain path to use for translating text
     \item[{\small CIN\_PLUGIN}] plugin directory path
-    \item[{\small CIN\_RENDER}] complete filename with path, that was used for \textit{select file to render} to in the current session’s last successful Render job; this is used in the \texttt{RenderMux} defined \textit{Shell Cmds} and is available for any user-defined script inside Cinelerra
+    \item[{\small CIN\_RENDER}] complete filename with path, that was used for \textit{select file to render} to in the current session’s last successful Render job; this is used in the \texttt{RenderMux} defined \textit{Shell Cmds} and is available for any user-defined script inside \CGG{}
     \item[{\small CIN\_PKG}] used to set your text domain, that is the locale path pointing to the cin.mo language file
     \item[{\small CIN\_XSYNCH}] (for Developers only) set to 1 helps debugging for windows primitives to execute immediately and not be buffered up so you can see what is happening
 \end{description}
@@ -380,7 +380,7 @@ export CIN_CONFIG=/tmp/.bcast5   #use a temporary setup for testing purposes.
     \item[{\small BC\_USE\_COMMERCIALS=1}] to activate the commercial database (db) methods.
     \item[{\small BC\_TRAP\_LV2\_SEGV}] to get a dump of the failure of an LV2 plugin for help in debugging.
     \item[{\small BC\_FONT\_SCALE=1.2}] for changing the default size of the characters to be twice as big.
-    \item[{\small BC\_ICON\_SCALE=1.1}] for changing the default size of the icons to be bigger; can change \# to any. You can increase the size of the characters in the fonts and icons on your Cinelerra system.  This will make it easier to read the characters if you have trouble seeing the default small letters, which have been auto-scaled based on the window geometry. The user-friendly font/icon scaling default is 1 but you can set it to any decimal value.  To defeat default auto scaling and get any size characters/fonts, override the setting via the previous 2 listed shell environment variables. This is very sensitive, meaning that even a small increase in the numeric value can vary the size quite dramatically.
+    \item[{\small BC\_ICON\_SCALE=1.1}] for changing the default size of the icons to be bigger; can change \# to any. You can increase the size of the characters in the fonts and icons on your \CGG{} system.  This will make it easier to read the characters if you have trouble seeing the default small letters, which have been auto-scaled based on the window geometry. The user-friendly font/icon scaling default is 1 but you can set it to any decimal value.  To defeat default auto scaling and get any size characters/fonts, override the setting via the previous 2 listed shell environment variables. This is very sensitive, meaning that even a small increase in the numeric value can vary the size quite dramatically.
     \item[{\small BC\_FONT\_PATH=<colon-separated-search-path-for-fonts>}]  to add additional font sets for the \textit{Title}
     plugin or to remove all fonts set to : \texttt{(colon)}.  An example: \texttt{export BC\_FONT\_PATH=/usr/share/fonts}.
     \item[{\small BC\_FONT\_DEBUG=1}] debug for determining which font is causing problems.  0 for no debug.
@@ -389,18 +389,18 @@ normal size of 1. Refer to the previous Appearance section, \textit{Layout Scale
     \item[{\small LADSPA\_PATH}] specify an alternate set of ladspa plugins or include the default with the use of a colon separated list of directories to search for LADSPA plugins. This is always used first and if it does not
     exist, then the value for \texttt{CIN\_LADSPA} becomes \texttt{LADSPA\_PATH}.
     \item[{\small LV2\_PATH}] specify a certain set of LV2 plugins to use.  Separate multiple paths with colons.
-    \item[{\small LANG}] Cinelerra can be localized to display menus and messages in many languages.
+    \item[{\small LANG}] \CGG{} can be localized to display menus and messages in many languages.
 Currently there are 16 languages in addition to English, of varying quality. Some information on
 these is in the \nameref{cha:translations} chapter.
 Language settings are normally read from your Linux O/S \textit{locale} settings. 
-The Cinelerra program checks environment variables to determine your settings to use as the language.
+The \CGG{} program checks environment variables to determine your settings to use as the language.
 First it checks the value of LANGUAGE and will use that if set.
 If that is not set, then it checks 
 LC\_ALL and finally if that is not set either, it will use the value of LANG. You can check the current
 settings from a window by looking at the output of the \textit{printenv} command.
 
 To run on a language different than the one selected on your system just change 
-the \texttt{LANG} environment variable before starting up Cinelerra like this:
+the \texttt{LANG} environment variable before starting up \CGG{} like this:
 
 \hspace{2em} \texttt{export LANG}=\textit{2 letter language code\_2 letter country code.UTF-8} 
 
@@ -408,7 +408,7 @@ For example, from a window type:
 
 \hspace{2em} \texttt{export LANG=es\_ES.UTF-8} 
 
-then startup Cinelerra and you will have translations in Spanish.  If you started Cinelerra from that same
+then startup \CGG{} and you will have translations in Spanish.  If you started \CGG{} from that same
 window using \texttt{\{cinelerra\_path\}/bin/cin} you will see a message in that window something similar to:
 
 \hspace{2em}  \textit{lang changed from en\_US.UTF-8 to es\_ES-UTF-8}
@@ -418,7 +418,7 @@ have set it so you may have to substitute LANGUAGE for the word LANG above.
 
 Depending on your Operating System and Desktop application, there may be other ways to accomplish a
 language change.  For example, on Fedora with the Gnome desktop, the simplest method of switching your
-language to German and immediately starting Cinelerra is to use:
+language to German and immediately starting \CGG{} is to use:
 
 \hspace{2em} \texttt{LANGUAGE=de \{cinelerra\_path\}/bin/cin} 
 

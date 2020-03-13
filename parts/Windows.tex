@@ -109,7 +109,7 @@ The \emph{alpha slider} allows for varying the alpha value when using colors on 
 It has no function without that flag set.
 
 There are 3 additional pieces of information in the line immediately below the \textit{zoom panel}.
-In the lower left hand corner there could be messages such as "Welcome to Cinelerra" when there is no 
+In the lower left hand corner there could be messages such as "Welcome to \CGG{}" when there is no 
 need to display a red-colored error message or a line that reads "Rendering took H:MM:SS" after a render
 has just been completed. Or when working with an auto, a small square the color of that auto line, will be
 present along with its keyframe type, location on the timeline, and its current value.  This is simply
@@ -407,7 +407,7 @@ Proxy and Transcode (\ref{sec:proxy_settings}), as well as the others.
 \label{sub:window_layouts}
 
 If you like to use different window layouts than the default for certain scenarios, you can setup, save, and load 4 variations.   
-First, position your Cinelerra windows where you want them to be and then use the Window pulldown and choose \emph{Save layout}. Note the words \emph{Save layout} highlighted in Figure~\ref{fig:window_layouts}a with 4 names shown to the right and below of that highlight. 
+First, position your \CGG{} windows where you want them to be and then use the Window pulldown and choose \emph{Save layout}. Note the words \emph{Save layout} highlighted in Figure~\ref{fig:window_layouts}a with 4 names shown to the right and below of that highlight. 
 To use the default name of \textit{Layout \#}, when the popup comes up, just click the green checkmark OK on the Layout popup menu.  
 If you would like a specific name for your layout so you can remember what its best use case is,
 keyin 1-8 english characters that are meaningful to you (english characters mean you can not use the German umlaut or the French accent).  
@@ -438,7 +438,7 @@ timeline window.
 
 \subsection{Just Playing!}%
 \label{sub:just_playing_}
-What if you are just using Cinelerra to play media and listen to tunes? 
+What if you are just using \CGG{} to play media and listen to tunes? 
 After loading your media, just hit the space bar to start playing and then again to stop playing.  
 Other than that, use the transport buttons on the top bar of the Program window.  
 Other ways to \textit{play around} are described next. 
@@ -589,7 +589,7 @@ is taking place. This is especially helpful when loading a very large video so y
 when it is finished loading.  You should pay attention to this \textit{tally light} when performing
 a particularly time-consuming operation so that you do not keep executing more operations
 that just have to wait until completion of that CPU intensive operation.  Also, you should look
-to see if the light is on before assuming that Cinelerra is hung up.
+to see if the light is on before assuming that \CGG{} is hung up.
 
 When the window is unlocked, meaning that it is not in \textit{Protect video from changes} mode on the
 toolbar, MMB clicking and dragging anywhere in the video pans the view.  Panning can also
@@ -702,12 +702,12 @@ titles are inside the inner outline and actions are inside the outer outline.
 \subsection{Compositing}%
 \label{sub:compositing}
 
-Much of the editing in Cinelerra involves "compositing" which is the combining of visual
+Much of the editing in \CGG{} involves "compositing" which is the combining of visual
 elements from different sources into single images.  This includes such things as 
 speeding up and slowing down the video, changing the resolution, creating a split screen, and fading in and out.
 Compositing operations are done on the timeline and in the Compositor window using various
 operations and other compositing attributes that are available in the Resources window.
-When Cinelerra is performing a compositing operation it plays back through the
+When \CGG{} is performing a compositing operation it plays back through the
 compositing engine, but when not, it uses the fastest decoder that it has.
 
 \subsection{The Temporary, Track and Output Sizes}%
@@ -719,7 +719,7 @@ to the camera, effects, and the projector.
 \subsubsection*{The Temporary}%
 \label{ssub:output_size}
 
-Cinelerra's compositing routines use a \textit{temporary} which is a single frame of video in
+\CGG{}'s compositing routines use a \textit{temporary} which is a single frame of video in
 memory where graphics processing takes place. The size of the temporary and of the output in
 the compositing pipeline are different and vary for any particular frame.  Effects are processed in
 the temporary and as such are affected by the temporary size.  In the case of the camera, its
@@ -750,7 +750,7 @@ output size is the final video track size where the temporary pipeline is render
 \label{sub:camera_and_projector}
 
 In the compositor window, \textit{Adjust camera automation} and \textit{Adjust projector automation}
-are editing tools to control operation of the camera and projector.  In Cinelerra's compositing
+are editing tools to control operation of the camera and projector.  In \CGG{}'s compositing
 pipeline, the camera determines where in the source the \textit{temporary} is copied from while
 the projector determines where in the output the \textit{temporary} is copied to
 (figure~\ref{fig:temporary-01}). 
@@ -1152,43 +1152,48 @@ click on the \emph{Apply} button in the menu to actually perform the crop operat
 \label{sec:viewer_window}
 
 The Viewer window (figure~\ref{fig:viewer_window}) is convenient for previewing your media and 
-clips as well as for Two Screen Editing as explained in \ref{sec:two_screen_editing}. There are
-transport buttons to use same as in the Program and Compositor windows or you can quickly move
-through the media by dragging with the LMB in the timebar above the transport buttons.  It is useful
-for cutting and pasting sections onto the timeline or to create a clip.
+clips. It can also be used for editing with cuts and then paste operations into the timeline or
+to create a clip.  There are transport buttons to use in the same manner as in the Program
+and Compositor windows or you can quickly move through the media by dragging with the LMB in
+the timebar above the transport buttons.  
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.99\linewidth]{images/viewer_window.png}
-    \caption{Viewer Window}
+    \caption{Viewer Window - note the green/white arrow "Play" button left of 001484}
     \label{fig:viewer_window}
 \end{figure}
 
-In order to view media in the display, you have to load it as follows:
+In order to view media in the window, you have to load it as follows:
 
 \begin{enumerate}
     \item  In the Resources window, highlight the Media folder or the Clip folder.
     \item  Drag a file from the folder to the Viewer.
-    \item  Or highlight an asset, RMB to bring up choices, and click on \textit{View} or
+    \item  \textbf{Or} double LMB click on a media asset.
+    \item  \textbf{Or} highlight an asset, RMB to bring up choices, and click on \textit{View} or
 \textit{View in new window}.
 \end{enumerate}
 
-After the media is loaded you can use the transport buttons to play, rewind, stop, etc. or for fast
-previewing, drag with the LMB anywhere on the timebar slider.  A few more options available in the
-Viewer window can be accessed with a RMB click on the display.  These functions are listed next.
+Note that you can have multiple Viewer windows open with different or even the same media asset.
+After the media is loaded you can use the transport buttons to play, rewind, stop, and so on, or
+for fast previewing drag with the LMB anywhere on the timebar slider.  A few more options
+available in the Viewer window can be accessed with a RMB click on the display.  These functions
+are listed next.
 
 \begin{enumerate}
     \item  Switch to a fullscreen display by choosing \textit{Fullscreen}.  To switch back, click
 with the RMB on the display again and choose \textit{Windowed}.
     \item  Change the display size by choosing the \textit{Zoom} function to select a zoom level of
-25\%, 33\%, ... 300\% or 400\% of the original media size.
+25\%, 33\%, ... 300\%, or 400\% of the original media size.
     \item  To remove the current media from being displayed, choose \textit{Close source}.
 \end{enumerate}
 
-The Viewer uses the project's output size format settings to display the media instead of the original
-assets format. Operations performed in the Viewer affect a temporary EDL or a clip rather than the
-timeline.  By default the Viewer window is automatically available but if it gets accidentally
-closed you can open it again by using \texttt{Window $\rightarrow$ Show Viewer} to bring it back up. 
+The Viewer uses the project's output size format settings to display the media instead of the
+original assets format. Operations performed in the Viewer affect a temporary EDL or a clip rather
+than the timeline.  By default the Viewer window is automatically available but if it gets
+accidentally closed you can open it again by using the pulldown \texttt{Window $\rightarrow$ Show
+Viewer} to bring it back up.  More details for editing in the Viewer window with the Two Screen
+Editing method is explained in \ref{sec:two_screen_editing}.
 
 \section{Options in both the Compositor and Viewer Windows}%
 \label{sec:options_in_both_the_compositor_and_viewer_windows}
@@ -1198,9 +1203,10 @@ The next sections describe capabilities that are available in both the Composito
 \subsection{Click to Play in Viewer and Compositor}%
 \label{sub:click_to_play_in_viewer_and_compositor}
 
-In both the Viewer and Compositor windows, there is an arrow on the right hand side of the other buttons in the edit panel.  
+In both the Viewer and Compositor windows, there is an arrow on the right hand side of the other
+buttons in the edit panel as shown in figure~\ref{fig:viewer_window}.  
 Mouse action can be toggled on/off via this arrow, which has a tooltip of \textit{Click to play} with the letter "\texttt{P}" to be used for a shortcut.  
-When enabled there is a gold-colored shadow around the usual green-colored arrow.  
+When enabled there is a green or gold colored shadow around the usual red or green colored arrow.  
 The purpose of enabling this capability is to make it really easy to play the media in the window by just using the left mouse button to start or stop the play.  
 The entire main canvas surface becomes a big play button!  
 Although the default is initially off, a good reason to enable this, at least temporarily, is so that you can quickly review your video before a render. 
@@ -1672,7 +1678,7 @@ Note that if in \texttt{Settings $\rightarrow$ Preferences} under the Appearance
 
 
 Preview mode can be used to pop up a window which draws the vicons/aicons thumbnails in a larger size.  
-Preview or \textit{draw vicons} mode is a helpful feature of Cinelerra that lets you see and/or hear the first 5 seconds of the video for identification purposes. 
+Preview or \textit{draw vicons} mode is a helpful feature of \CGG{} that lets you see and/or hear the first 5 seconds of the video for identification purposes. 
 The Preview mode/playback toggle is to the right of the Visibility label as seen in the screenshot above. 
 Preview mode is available for the Media, Proxy, Media User Bins, and Clips but clips are only 1 image.
 
@@ -1735,7 +1741,7 @@ Note that if in \texttt{Settings $\rightarrow$ Preferences} under the Appearance
 \subsection{Moving clips/media from/to Resources window}%
 \label{sub:moving_clips_media_from_to_resources_window}
 
-If you have several media files loaded into the Resources window of one instance of Cinelerra and want to load some of the same ones into another instance or just want a listing to save in a file for later use, you can do this with these set of steps:
+If you have several media files loaded into the Resources window of one instance of \CGG{} and want to load some of the same ones into another instance or just want a listing to save in a file for later use, you can do this with these set of steps:
 
 Copy or paste a list of files in the Media Resources window:  
 
@@ -1745,14 +1751,14 @@ Copy or paste a list of files in the Media Resources window:
     \item    right click on an unused portion of that window to bring up the popup menu
     \item     select the \textit{Copy file list} item and a file list box will appear that contains the full path filenames
     \item     wipe the textbox using your standard copy/paste method to put the list of files in the copy buffer
-    \item     in another Cinelerra instance, choose the \textit{Paste file list} of the media Resources window
+    \item     in another \CGG{} instance, choose the \textit{Paste file list} of the media Resources window
     \item     paste the list of files, again using your standard paste method, into the new file list box; press OK
     \item    the status bar of the main window will be updated as the file list is loaded to the media folder (the purpose of displaying the status is simply to show that the load is progressing normally).
 \end{enumerate}
 
-Obviously this \textit{Paste file list} feature means you can create a list of files outside of Cinelerra using an editor, wipe the names, and then use \textit{Paste file list} to load them into the media Resources window.  
+Obviously this \textit{Paste file list} feature means you can create a list of files outside of \CGG{} using an editor, wipe the names, and then use \textit{Paste file list} to load them into the media Resources window.  
 
-It is important to note that in the steps above, the Operating System cut and paste capabilities are in use for steps 4 and 6 as opposed to Cinelerra’s c/v shortcuts.  
+It is important to note that in the steps above, the Operating System cut and paste capabilities are in use for steps 4 and 6 as opposed to \CGG{}’s c/v shortcuts.  
 Since the procedure varies among the distros, you will have to adapt to your specific one.  For example, a usage for ubuntu consists of:
 \begin{enumerate}
     \setcounter{enumi}{3}
@@ -1776,10 +1782,10 @@ Since the procedure varies among the distros, you will have to adapt to your spe
     \label{fig:copy_files1}
 \end{figure}
 
-In the Figure~\ref{fig:copy_files1}, one instance of Cinelerra has 6 items in the Media area highlighted that were copied to the file list.  
+In the Figure~\ref{fig:copy_files1}, one instance of \CGG{} has 6 items in the Media area highlighted that were copied to the file list.  
 Note how it includes the full pathname.
 
-In this screenshot on another instance of Cinelerra, there are only 2 items in the media but the \textit{Paste file list} box is ready to have the items inserted via the standard text box paste method.  When that is done, the additional 6 media files will be available on this other instance too.
+In this screenshot on another instance of \CGG{}, there are only 2 items in the media but the \textit{Paste file list} box is ready to have the items inserted via the standard text box paste method.  When that is done, the additional 6 media files will be available on this other instance too.
 
 
 Another possible usage of this capability:
@@ -1853,7 +1859,7 @@ When playback stops, the insertion point stays where playback stopped.
 Thus, by playing back you change the position of the insertion point. 
 The keyboard interface of either the numeric pad or alternative keys has more speeds with the addition of \emph{Forward Slow}(2) and \emph{Reverse Slow} (5).  
 Hitting any key on the keyboard twice pauses it. 
-The shortcuts section of this manual as well as a Shell Command available from the Cinelerra main window has a listing of each of the keys.
+The shortcuts section of this manual as well as a Shell Command available from the \CGG{} main window has a listing of each of the keys.
 
 When using frame advance functions the behavior may seem odd. 
 If you frame advance forward and then frame advance backward, the displayed frame does not change. 
@@ -1881,7 +1887,7 @@ The zoom toggle also causes the Compositor window to enter zoom mode.
 In zoom mode, clicking in the video output zooms in while a Ctrl-click in the video output zooms out. 
 If you have a wheel mouse, rotating the wheel zooms in or out too. 
 Zooming in or out with the zoom tool does not change the rendered output. 
-It is merely for scrutinizing video or fitting it in the desktop. Playing video on the compositor when zoomed to any size other that 100\%, the original size, requires Cinelerra to do extra processing steps. 
+It is merely for scrutinizing video or fitting it in the desktop. Playing video on the compositor when zoomed to any size other that 100\%, the original size, requires \CGG{} to do extra processing steps. 
 This could affect performance on slower systems
 
 \subsection{Show Overlays}%
@@ -1990,10 +1996,10 @@ Even without numerical markings, the sound level color can distinguish between s
 Look at the color codings in a meter with numerical markings to see what colors correspond to what sound level.  
 Then for meters in the patchbay in expanded audio tracks, use the color codings to see if it is overloading.
 
-Be aware that sound levels in Cinelerra can go above 0 dB.  
+Be aware that sound levels in \CGG{} can go above 0 dB.  
 This allows for not only seeing if a track is overloading but how much information is being lost by the overloading.  
 Overloading by less than 3 dB is usually acceptable.  
-While overloading is treated as positive numbers in Cinelerra, it is clipped to 0 when sent to a sound card or file.
+While overloading is treated as positive numbers in \CGG{}, it is clipped to 0 when sent to a sound card or file.
 
 
 

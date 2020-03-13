@@ -1,7 +1,7 @@
 \chapter{Overlays}%
 \label{cha:overlays}
 
-The purpose of the Overlay Modes is to control the foreground and background stacking and use blending to reshape image object boundaries.  It normally makes use of a binary type alpha blending system for all in or all out.  To use the available operations in Cinelerra GG, follow these steps:
+The purpose of the Overlay Modes is to control the foreground and background stacking and use blending to reshape image object boundaries.  It normally makes use of a binary type alpha blending system for all in or all out.  To use the available operations in \CGG{}, follow these steps:
 
 \begin{enumerate}
     \item In the main window, look at the Patchbay on the far left.
@@ -23,9 +23,9 @@ Porter-Duff is the industry standard for alpha blending operations.  Only a shor
 
 Conceptually, when the foreground color is completely opaque, the resulting blended color will be the foreground color.  If it is transparent, the blended color will be the color of the background.  When the value of the alpha channel is $1$, the image is all there, if it is $0$, there is no image at all, otherwise it is only partially there.  In other words, the alpha value goes from $0$ to $1$, where full transparency is $0$ and opaque is represented by $1$.  Alpha blending models opacity. 
 
-When blending source and destination shapes (Dst and Src), the shape boundaries can be changed with the alpha blending effects.  There are a total of 10 standard Porter-Duff operators, but there are 30 possible overlay modes used in Cinelerra-GG.  Each is characterized by its value in the four regions: source, destination and both, with the \textit{neither} region always being blank.  The source and destination regions can either be blank or filled with the source or destination colors.  A specific compositing math formula is used to calculate effect.  This is only applicable to RGB; some effort has been made to accommodate YUV, but the effects are not as predictable, and may not be useful. 
+When blending source and destination shapes (Dst and Src), the shape boundaries can be changed with the alpha blending effects.  There are a total of 10 standard Porter-Duff operators, but there are 30 possible overlay modes used in \CGG{}.  Each is characterized by its value in the four regions: source, destination and both, with the \textit{neither} region always being blank.  The source and destination regions can either be blank or filled with the source or destination colors.  A specific compositing math formula is used to calculate effect.  This is only applicable to RGB; some effort has been made to accommodate YUV, but the effects are not as predictable, and may not be useful. 
 
-Below, in figure~\ref{fig:normal}, are the results of utilizing the 30 available operations within Cinelerra as listed on a following page.  Src is the solid green rectangle and Dst is the solid red rectangle.  There are better illustrations of what alpha blending can do, however for consistency sake, these are the results when using standards.
+Below, in figure~\ref{fig:normal}, are the results of utilizing the 30 available operations within \CGG{} as listed on a following page.  Src is the solid green rectangle and Dst is the solid red rectangle.  There are better illustrations of what alpha blending can do, however for consistency sake, these are the results when using standards.
 
 \begin{figure}[htpb]
     \centering

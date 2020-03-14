@@ -3,7 +3,7 @@
 \label{cha:configuration_settings_preferences}
 
 \begin{figure}[htpb]
-    \centering \includegraphics[width=0.9\linewidth]{images/settings.png}
+    \centering \includegraphics[width=0.9\linewidth]{settings.png}
     \caption{Settings of default Preferences with the Appearance tab selected}
     \label{fig:settings}
 \end{figure}
@@ -202,7 +202,15 @@ In the Render Farm Section are many options that are explained in detail in the 
 \end{description}
 
 \subsection{Index Files section}%
+
 \label{sub:index_file_section}
+Screencast below shows part of the Preferences menu where you can change the index files setup (figure~\ref{fig:index}).
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/index.png}
+    \caption{Index file setup for your preferred configuration for Render Farm sharing or anything}
+    \label{fig:index}
+\end{figure}
 
 \begin{description}
     \item[Index files go here] index files exist in order to speed up drawing the audio/video tracks. This option determines where index files are placed on the disk.
@@ -240,7 +248,7 @@ In the Render Farm Section are many options that are explained in detail in the 
 
 
 \begin{figure}[htpb]
-    \centering \includegraphics[width=0.9\linewidth]{images/theme.png}
+    \centering \includegraphics[width=0.9\linewidth]{theme.png}
     \caption{Shows the Cakewalk theme (courtesy Olaf )on Preferences window with list of themes}
     \label{fig:theme}
 \end{figure}
@@ -317,7 +325,7 @@ This section contains many useful options to cater to the various preferences of
     \item[Autocolor assets] to make it visually easier to see your clips on the timeline that are from the same media file, you can have them automatically colored. Use of this feature requires additional memory and cpu on every timeline redraw, therefore smaller computers may not want this checked on.
     \item[ffmpeg probe warns rebuild indexes] this warning is very important for switching from using ffmpeg to using native formats, such as in the case of MPEG, so that you are reminded to \textit{rebuild indexes}.  If you do not rebuild the indexes, seeking on the timeline back and forth could very well be problematic, meaning it might not go to the right place.  Notification about rebuilding the indexes will appear by default as shown in the figure~\ref{fig:ff_probe} when you click on the FF icon in the main timeline in the upper right hand corner.  Once you click on \textit{Don’t show this warning again} you will no longer be warned and this flag will no longer be enabled.
     \begin{figure}[htpb]
-        \centering \includegraphics[width=0.7\linewidth]{images/ff_probe.png}
+        \centering \includegraphics[width=0.7\linewidth]{ff_probe.png}
         \caption{Default warning when you click on FF icon in main window}
         \label{fig:ff_probe}
     \end{figure}

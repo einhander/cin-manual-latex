@@ -4,36 +4,61 @@
 \section{Using Ydiff to check results}
 \label{sec:ydiff_check_results}
 
-Delivered with Infinity \CGG{} and in the \CGG{} path, there is a file \texttt{ydiff.C} This program compares the output from 2 files to see the differences . Do: \texttt{cd cin\_path} and key in \texttt{make ydiff}. 
+Delivered with Infinity \CGG{} and in the \CGG{} path, there is a file \texttt{ydiff.C} This program compares the output from 2 files to see the differences . Do: \texttt{cd cin\_path} and key in \texttt{make ydiff}.
 
-You can now use this to check the quality differences of various outputs. \ For example, in this same directory key in:
+% The following does not work like this.
+% {                                      % uses braces to localize caption alignment changes.
+% \begin{figure}[h]
+%        \captionsetup{justification=raggedright,singlelinecheck=false}
+%        \includegraphics[width=0.4\linewidth]{ydiff_same.png}
+%        \caption{Exact match}
+%        \vspace{-9cm}
+%        \hspace{0.4\linewidth}
+%        \captionsetup{justification=raggedleft,singlelinecheck=false}
+%        \includegraphics[width=0.4\linewidth]{ydiff_change.png}
+%        \caption{"giraffe" artifacts on 2 files spaced differently}
+% \end{figure}
+% }
 
-\hspace{2em}\texttt{./ydiff /tmp/yourfile.mp4 /tmp/yourfile.mp4} 
+% We pack two pictures of unequal height next to each other and
+% align them flush at
+% a) the first line of the caption.
+% b) or tricks with strut, it's flush at the top.
+\begin{figure}[h]
+  \begin{minipage}[t]{0.49\textwidth}
+    \strut\\[-1em]
+    \includegraphics[width=\linewidth]{ydiff_same.png}
+    \caption{Exact match}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.49\textwidth}
+    \strut\\[-1em]
+    \includegraphics[width=\linewidth]{ydiff_change.png}
+    \caption{"Giraffe" artifacts on 2 files spaced differently}
+  \end{minipage}
+\end{figure}
 
-Since you are comparing a file to itself, you will see a clean looking white window in the left-hand corner and columns 2,3,4 will be all zeros. \ Run this same command with a 3rd spacing parameter of {}-1 as shown below, and you will see artifacts of comparing 2 files starting in a different position.
+You can now use this to check the quality differences of various
+outputs. For example, in this same directory key in:
+% The indentation of an environment matches the type area.
+\begin{list}{}{}
+\item \texttt{./ydiff /tmp/yourfile.mp4 /tmp/yourfile.mp4}
+\end{list}
+%\hspace{2em}\texttt{./ydiff /tmp/yourfile.mp4 /tmp/yourfile.mp4}
 
-\hspace{2em}\texttt{./ydiff /tmp/yourfile.mp4 /tmp/yourfile.mp4 -1}
+Since you are comparing a file to itself, you will see a clean looking white window in the left-hand corner and columns 2,3,4 will be all zeros. Run this same command with a 3rd spacing parameter of {}-1 as shown below, and you will see artifacts of comparing 2 files starting in a different position.
+\begin{list}{}{}
+\item \texttt{./ydiff /tmp/yourfile.mp4 /tmp/yourfile.mp4 -1}
+\end{list}
+% \hspace{2em}\texttt{./ydiff /tmp/yourfile.mp4 /tmp/yourfile.mp4 -1}
 
 Now render yourfile using different quality levels and run ydiff to compare the 2 results. You will see only noise difference which accounts for the quality level. Columns 2,3,4 might no longer be exactly zero but will represent only noise differences. The ydiff output is debug data with lines that show frame size in bytes, sum of error, and sum of absolute value of error. The frames size is sort of useless, the sum of error shows frame gray point drift and the abs error is the total linear color error between the images. At the very end is the total gray point drift and total absolute error on the last line.
 
-{					% uses braces to localize caption alignment changes.
-\begin{figure}
-	\captionsetup{justification=raggedright,singlelinecheck=false}
-	\includegraphics[width=0.4\linewidth]{ydiff_same.png}
-	\caption{Exact match}
-	\vspace{-9cm}
- 	\hspace{0.4\linewidth}
-	\captionsetup{justification=raggedleft,singlelinecheck=false}
-	\includegraphics[width=0.4\linewidth]{ydiff_change.png}
-	\caption{"giraffe" artifacts on 2 files spaced differently}
-\end{figure}
-}
 
 \section{Image Sequence Creation}
 \label{sec:image_sequence_creation}
 
 Example script to create a jpeglist sequence file is next:
-
 \begin{lstlisting}[numbers=none]
 #!/bin/bash
 out="$1"
@@ -53,24 +78,39 @@ echo "# Height:"
 echo "$h"
 echo "# List of image files follows"
 while [ $# -gt 0 ]; do
-if [ x`dirname "$1"` = x"$dir" ]; then f=./`basename "$1"`; else f="$1"; fi
-echo "$f"
-shift
+  if [ x`dirname "$1"` = x"$dir" ]; then
+	f=./`basename "$1"`;
+  else
+	f="$1";
+  fi
+  echo "$f"
+  shift
 done
 \end{lstlisting}
-
 Example usage of this script follows:
 
 \qquad \texttt{jpeglist.sh outfile infiles*.jpg}
 
-\section{Webm / Vp9 Usage and Example File\protect\footnote{credit Frederic Roenitz}}
+\section{Webm\,/\,Vp9 Usage and Example File}
 \label{sec:webm/vp9_usage_example}
+% FIXME No footnotes with expressions of thanks in the title.
+% \protect\footnote{credit Frederic Roenitz}}
 
-There are some common VP9 rendering options files that support creation of video for YouTube, Dailymotion, and other online video services. Webm / VP9 is a media file format which is free to use under the BSD license and is open-source; thus there are no licensing issues to be concerned about. The Webm container is based on Matroska for video and Opus for audio.
+\textsc{VP9} is a video codec licensed under the BSD license and is
+considered open source,
+% Sisvel Announces AV1 Patent Pool, March 10, 2020
+% https://www.streamingmedia.com/Articles/ReadArticle.aspx?ArticleID=139636
+%  Webm / VP9 is a media file format which is free to use under the
+%  BSD license and is open-source; thus there are no licensing
+%  issues to be concerned about.
+the \textsc{Webm} container is based on \textsc{Matroska} for video
+and \textsc{Opus} for audio. There are some common \textsc{VP9} rendering
+options files that support creation of video for YouTube,
+Dailymotion, and other online video services.
 
-Youtube easy startup steps are documented in the Appendix (\ref{sec:youtube_with_cinelerra}). These same steps have been verified to work for creating Dailymotion videos -- however, the created files must be renamed before uploading to change the youtube extension to webm instead for Dailymotion.
+YouTube easy startup steps are documented in the Appendix (\ref{sec:youtube_with_cinelerra}). These same steps have been verified to work for creating Dailymotion videos -- however, the created files must be renamed before uploading to change the youtube extension to webm instead for Dailymotion.
 
-Below is one of the VP9 rendering options file with documentation for specifics:
+Below is one of the \textsc{VP9} rendering options file with documentation for specifics:
 
 \textbf{webm libvpx-vp9}
 
@@ -82,7 +122,7 @@ from {\small \url{https://developers.google.com/media/vp9/settings/vod/}}
 
 Bitrate (bit rate)
 
-VP9 supports several different bitrate modes:
+\textsc{VP9} supports several different bitrate modes:
 
 \textit{mode:}
 
@@ -152,3 +192,8 @@ The following extensions of files in \CGG{}'s \texttt{.bcast5} directory are exp
 	\item [.png] thumbnails of files in Resources so they do not have to be created over and over
 \end{labeling}
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

@@ -146,7 +146,7 @@ The final screenshot showing the Resources Asset Info displaying the File format
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.95\linewidth]{images/raw.png}
+    \includegraphics[width=0.95\linewidth]{raw.png}
     \caption{Screenshots for RAW images}
     \label{fig:raw}
 \end{figure}
@@ -158,7 +158,7 @@ All data that you work with in \CGG{} is acquired either by loading from disk or
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/load.png}
+    \includegraphics[width=0.8\linewidth]{load.png}
     \caption{Load file menu.  Note the green checkmark for OK and the middle Apply option}
     \label{fig:load}
 \end{figure}
@@ -229,7 +229,7 @@ When you use the File pulldown to load files, you can do a sort within a sort wh
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/load-sort.png}
+    \includegraphics[width=0.9\linewidth]{load-sort.png}
     \caption{Load - Sort by File name, sort by file Size, and within Extension after a previous Size sort}
     \label{fig:load-sort}
 \end{figure}
@@ -249,7 +249,7 @@ There are several icon buttons at the top on the right hand side of the Load win
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/load-size.png}
+    \includegraphics[width=0.9\linewidth]{load-size.png}
     \caption{Load windows with various Numeric Sizes}
     \label{fig:load-size}
 \end{figure}
@@ -269,7 +269,7 @@ The default setup is set to duplicate the past expected behavior with the except
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/probe.png}
+    \includegraphics[width=0.9\linewidth]{probe.png}
     \caption{Three example of Probes window}
     \label{fig:probe}
 \end{figure}
@@ -289,7 +289,7 @@ Below are screenshots illustrating multiple program streams (figure~\ref{fig:str
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/stream.png}
+    \includegraphics[width=0.8\linewidth]{stream.png}
     \caption{Multiple program streams and Asset Detail}
     \label{fig:stream}
 \end{figure}
@@ -323,7 +323,7 @@ Originally, the easiest way to maintain a project for moving to another computer
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/export.png}
+    \includegraphics[width=0.6\linewidth]{export.png}
     \caption{Export Project option popup and the 3         available options.}
     \label{fig:export}
 \end{figure}
@@ -356,7 +356,10 @@ In an effort to minimize loss of work due to user, hardware, or software issues,
 
 \CGG{} automatically saves every \textit{editing operation} to the current project on disk continuously to a file named \texttt{\$HOME/.bcast5/backup.xml}.  In the unlikely event of a crash, when you restart \CGG{}, you should select \texttt{File $\rightarrow$ Load backup} in order to continue with the operations that were recorded before the crash.  If you have more than 1 instance of \CGG{} running, only the last editing operation made in whichever instance it was last made, will overwrite the backup. 
 
-There is still 1 more backup that may save you.  If for some reason you forgot to use \textit{Load backup} immediately when restarting, you have a second chance to use \texttt{File $\rightarrow$ Load} and select \texttt{\$HOME/.bcast5/backup.prev} as long as you only loaded a different file and have performed no editing operations.  This same file is also used by multiple instances of \CGG{}.
+There is still 1 more backup that may save you.  If for some reason you forgot to use \textit{Load backup}
+immediately when restarting or you did a Load with \textit{Replace current project} in your current session,
+you have a second chance to use \texttt{File $\rightarrow$ Load} and select \texttt{\$HOME/.bcast5/backup.prev}
+as long as you only loaded a different file and have performed no editing operations.  This same file is also used by multiple instances of \CGG{}.
 
 \textbf{Perpetual session} is very useful for working on a project over many days so you can just quit before shutting down and the next time you start up \CGG{} you will be right back where you left off.  
 You will retain all of your undo’s and redo’s.  

@@ -11,7 +11,7 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/render.png}
+    \includegraphics[width=0.7\linewidth]{render.png}
     \caption{Example of the Render menu}
     \label{fig:render}
 \end{figure}
@@ -25,7 +25,7 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/render01.png}
+    \includegraphics[width=0.7\linewidth]{render01.png}
     \caption{Audio and Video tracks automatically checked for Pro file type}
     \label{fig:render01}
 \end{figure}
@@ -41,7 +41,7 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/render02.png}
+    \includegraphics[width=0.7\linewidth]{render02.png}
     \caption{Render menu displaying a PNG \textit{one frame} option}
     \label{fig:render02}
 \end{figure}
@@ -66,7 +66,7 @@ If you want to render many projects to media files without having to constantly 
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/batch01.png}
+    \includegraphics[width=0.8\linewidth]{batch01.png}
     \caption{Example of the Batch Render menu}
     \label{fig:batch01}
 \end{figure}
@@ -149,7 +149,7 @@ The \textit{Save to EDL Path} and \textit{Use Current EDL} buttons can be valuab
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/batch02.png}
+    \includegraphics[width=0.8\linewidth]{batch02.png}
     \caption{Batch render with the 4 ghosted buttons on the right side + the Warning message below}
     \label{fig:batch02}
 \end{figure}
@@ -163,7 +163,7 @@ Background rendering is enabled in the \texttt{Performance} tab of the \texttt{P
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/back-ren02.png}
+    \includegraphics[width=0.8\linewidth]{back-ren02.png}
     \caption{Settings Background Rendering}
     \label{fig:back-ren02}
 \end{figure}
@@ -172,7 +172,7 @@ It is often useful to insert an effect or a transition and then select \texttt{S
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/back-ren.png}
+    \includegraphics[width=0.8\linewidth]{back-ren.png}
     \caption{Timeline with the top red bar}
     \label{fig:back-ren}
 \end{figure}
@@ -245,7 +245,7 @@ Below we describe the Performance tab for configuring a render farm (figure~\ref
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/farm.png}
+    \includegraphics[width=0.8\linewidth]{farm.png}
     \caption{Settings $\rightarrow$ Preferences, Performance tab, menu to set up your Render Farm}
     \label{fig:farm}
 \end{figure}
@@ -417,22 +417,16 @@ These steps are for quickly setting up render farm with the least amount of addi
     \item Load the files by concatenate to existing track on the master node or use RenderMux shell script.
 \end{enumerate}
 
-\subsection{Multi-core Computers Render Farm Setup\protect\footnote{the 'Epyc' method}}%
+\subsection{Multi-core Computers Render Farm Setup}%
 \label{sub:multi_core_render_farm_setup}
 
-Because index files speed up displaying the video you may want to share these files with the clients on a shared filesystem.  There is a configuration option available in \texttt{Settings $\rightarrow$ Preferences}, the Interface tab, that sets up in your preferences the location of the index files which you can put on a shared disk.
-Screencast below shows part of the Preferences menu where you can change the index files setup (figure~\ref{fig:index}).
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.8\linewidth]{images/index.png}
-    \caption{Index file setup for your preferred configuration for Render Farm sharing or anything}
-    \label{fig:index}
-\end{figure}
- Or, one of the convenient features of cin5 is the redirection of the path via \texttt{CIN\_CONFIG} as in:
-\begin{lstlisting}[language=bash,numbers=none]
-CIN_CONFIG=/<shared_file_pathname>/<filename_such_as_.bcast5> /<cinelerra_pathname>/cin
-\end{lstlisting}
-This means that you can make project related configurations that do not impact the default \texttt{\$HOME} config.  You can either export your default \texttt{\$HOME} config or the \texttt{CIN\_CONFIG} config to use on the render farm.
+If you are lucky enough to have a computer with a large cpu core count, setting up a render farm
+can really take advantage of using all of the cpus. This is much faster than the default automatic
+threading capability. Since you don’t need to communicate with other computers, you will not have
+to be concerned about TCP communication or shared disks/files. When you are going to be doing other
+work simultaneously while rendering a large job, you will want to leave some of the cpus available
+for that.  Be sure to set “Project SMP cpus” in the Settings→Preferences, Performance tab to your
+CPU count.
 
 \subsection{Troubleshooting Tips and Warnings}%
 \label{sub:troubleshhoting_tips_warnings}
@@ -474,6 +468,19 @@ This means that you can make project related configurations that do not impact t
     \item There are numerous error messages associated with file \textit{open/close/status} or problems with the file
     that should be dealt with according to what is printed out.
     \item Other illustrative messages may be shown such as: \texttt{RenderFarmClientThread:: run: Session finished}.
+\end{itemize}
+
+And here are a couple of more tips for making Render Farm specific for your setup.
+\begin{itemize}
+    \item Because \textit{index files} speed up displaying the video you may want to share these files
+with the clients on a shared filesystem. More information on index files configuration is outlined in
+\ref{sub:index_file_section}.
+    \item Or, one of the convenient features of Cinelerra is the redirection of the path
+ via \texttt{CIN\_CONFIG} as in:
+\begin{lstlisting}[language=bash,numbers=none]
+CIN_CONFIG=/<shared_file_pathname>/<filename_such_as_.bcast5> /<cinelerra_pathname>/cin
+\end{lstlisting}
+This means that you can make project related configurations that do not impact the default \texttt{\$HOME} config.  You can either export your default \texttt{\$HOME} config or the \texttt{CIN\_CONFIG} config to use on the render farm.
 \end{itemize}
 
 \paragraph{Warnings}
@@ -519,7 +526,7 @@ There are several special parameters that can be used in the ffmpeg options file
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/yuv420.png}
+    \includegraphics[width=0.6\linewidth]{yuv420.png}
     \caption{Render \& Video Preset menus displaying Pixel choices}
     \label{fig:yuv420}
 \end{figure}
@@ -551,7 +558,7 @@ Example: \textit{cin\_sample\_fmt=s16}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.55\linewidth]{images/audio.png}
+    \includegraphics[width=0.55\linewidth]{audio.png}
     \caption{Render menu showing where Samples is}
     \label{fig:audio}
 \end{figure}

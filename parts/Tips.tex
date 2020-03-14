@@ -312,7 +312,7 @@ profile=high
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.7\linewidth]{images/render-vaapi.png}
+	\includegraphics[width=0.7\linewidth]{render-vaapi.png}
 	\caption{Render menu setup to encode using GPU with vaapi}
 	\label{fig:render-vaapi}
 \end{figure}
@@ -446,7 +446,7 @@ If you create proxies for Nested clips they will be saved in \texttt{\$HOME/Vide
 
 There are two ways that the proxy files can be used, with or without input scaling. When the proxy is done without rescaling, the Mask, Camera and Projector automations are re-scaled accordingly. In this situation, the entire project will be re-sized so that the session is in the resized geometry.  Not all plugins are useful when the project is rescaled, because the keyframe data must be in the original geometry.  In this case, you can use the rescaler, by enabling \textit{Use scaler (FFMPEG only)}. This has the added advantage that the project size does not change and the proxy media is down-scaled as usual and up-scaled on read-in, which means the project editing is done in full scale.   Since decoding is done on smaller video, there is a time savings, but all rendering is done full scale.  The main reason for using \textit{scaler} is that it does not change the image coordinate data, so that automation and plugin parameters will be in the original project geometry.   This is not as fast as the first option, but is a performance gain, and may be needed if you are using plugins that need coordinate data such as the Title plugin.  As noted, the scaler only works on ffmpeg video formats.
 
-In the upper right hand corner of the main window, there is a toggle button to easily switch back and forth when you have a proxied file on the timeline.  The icon is to the left of the FF icon.  It will have the letter “P” as the icon for Proxy or if \textit{Using Scaler}, the letter “S”. \quad \includegraphics[height=\baselineskip]{images/proxy-01.png} \quad This quick switch is especially useful when editing and you need to see a better image temporarily.
+In the upper right hand corner of the main window, there is a toggle button to easily switch back and forth when you have a proxied file on the timeline.  The icon is to the left of the FF icon.  It will have the letter “P” as the icon for Proxy or if \textit{Using Scaler}, the letter “S”. \quad \includegraphics[height=\baselineskip]{proxy-01.png} \quad This quick switch is especially useful when editing and you need to see a better image temporarily.
 
 Screencast in figure~\ref{fig:proxy-02} shows the Use scaler checked so you can still use plugins and the original project size is kept.  The Scale factor pull-down gives you available size options.  Note the new media dimensions shown (partially covered).  If the size is an odd number, 1 is added to make the dimensions both even numbers.
 
@@ -454,7 +454,7 @@ In the case of the scaler checkbox, it will retain that setting for ease of use.
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.6\linewidth]{images/proxy-02.png}
+	\includegraphics[width=0.6\linewidth]{proxy-02.png}
 	\caption{Proxy settings dialog}
 	\label{fig:proxy-02}
 \end{figure}
@@ -611,7 +611,7 @@ To create a specific 440 Hz tone, follow these steps.  You can vary the length, 
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=1.0\linewidth]{images/aeval.png}
+	\includegraphics[width=1.0\linewidth]{aeval.png}
 	\caption{Use Audio$\rightarrow$Render effect to set render parameter values and then that effect can be varied.}
 	\label{fig:aeval}
 \end{figure}
@@ -759,7 +759,7 @@ It is important to set the $0\%$ alpha color to blue even though it is $0\%$ alp
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/ringtone.png}
+	\includegraphics[width=0.8\linewidth]{ringtone.png}
 	\caption{Using the Compressor plugin graph to create a ringtone}
 	\label{fig:ringtone}
 \end{figure}

@@ -1,33 +1,129 @@
-%\usepackage[sfdefault]{noto}
+% FIXME Settings
+% - Page numbers always on the right, matching the chapter
+%   number. Possibly coloring.
+% - Improve header, remove the line, because with the listings also
+%   come lines and when they meet it looks bad. Set italics and
+%   color if necessary.
+% - But be careful, too much ink can quickly have a negative
+%   effect.
+
+% FIXME Text
+% - Change all tables to variable dimensions. -> use draft
+% - (Remove all leading \$ characters from the shell
+%   examples. Alternative: invalidate according to TeX rules, so that
+%   other editors do not consider this an error. Do not automate, this
+%   must be adjusted manually.)
+% - Done. Remove "images/" from the path of includegraphics, the
+%   "graphicspath" is already set.
+
+
+% The Settings
+
+% In loose reference to the theme CW.
+\definecolor{CinBlueText}{RGB}{23,85,142}% "Dark blue"
+\definecolor{CinBlue}{RGB}{35,134,220}%    "Light blue"
+\definecolor{CinRed}{RGB}{205,38,11}%      "negativ"
+\definecolor{CinOrange}{RGB}{250,125,0}%   "neutral"
+\definecolor{CinGreen}{RGB}{39,174,96}%    "positiv"
+\definecolor{CinSilver}{RGB}{127,140,141}%
+\definecolor{CinWhite}{RGB}{239,240,241}%
+
+% Original
+% \definecolor{chaptercolour}{RGB}{23,85,142}
+% \definecolor{sectioncolour}{RGB}{23,85,142}
+% \definecolor{subsectioncolour}{RGB}{23,85,142}
+% \definecolor{subsubsectioncolour}{RGB}{23,85,142}
+
+\makechapterstyle{morrow}{% requires graphicx package
+  \chapterstyle{default}
+  \renewcommand*{\chapnamefont}{%
+    \normalfont\Large\scshape\raggedleft\color{CinBlueText}}
+  \renewcommand*{\chapnumfont}{%
+    \normalfont\Large\bfseries\sffamily\color{CinBlueText}}
+  \renewcommand*{\printchapternum}{%
+    \chapnumfont \resizebox{!}{3ex}{\thechapter}}
+  \renewcommand*{\afterchapternum}{% FIXME vskip?
+    \par\hspace{1.5cm}\hrule\vskip\midchapskip}
+  \renewcommand*{\chaptitlefont}{% Overwrites toc
+    \normalfont\Huge\bfseries\sffamily\raggedleft\color{CinBlueText}}
+}
+
+\addtodef{\printpartname}{\color{CinBlueText}}{}% Part
+\addtodef{\printchaptername}{\color{CinBlueText}}{}% Chapter
+\setsecheadstyle{\Large\bfseries\color{CinBlueText}}% Section
+\setsubsecheadstyle{\large\bfseries\color{CinBlueText}}% SubSection
+\setsubsubsecheadstyle{\normalfont\bfseries\color{CinBlueText}}% SubSubSection
+\setparaheadstyle{\normalfont\bfseries\color{CinBlueText}}% Paragraph
+\setsubparaheadstyle{\normalfont\bfseries\color{CinBlueText}}% SubParagraph
+
+% Table of contents
+\addtodef{\tocheadstart}{\color{CinBlueText}}{} % If you want the whole TOC to be blue also
+%\addtoiargdef{\printtoctitle}{\color{CinBlueText}}{} % If you just want the TOC title blue
+
+% PDF properties
+\hypersetup{colorlinks=true,
+  linkcolor=[named]{CinBlueText},
+  citecolor=[named]{CinBlueText},
+  filecolor=[named]{CinBlueText},
+  urlcolor=[named]{CinBlueText},
+  bookmarksnumbered=true,
+  pdftitle={The Comprehensive User Manual},
+  pdfauthor={The Cinelerra-GG Community},
+  pdfsubject={Video Editing},
+  pdfkeywords={Cinelerra-GG, CGG, Cin5, Infinity, User Manual, Video
+    editing system, Video editing program}
+}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Package listings
+\lstset{                            % begin settings
+  %language=R,                      % the language of the code
+  inputencoding=utf8,
+  basicstyle=\ttfamily\footnotesize,% the size of the fonts that are used for the code
+  numbers=left,                     % where to put the line-numbers
+  numberstyle=\tiny\color{black},   % the style that is used for the line-numbers
+  stepnumber=1,                     % the step between two line-numbers. If it's 1, each line
+                                    % will be numbered
+  numbersep=5pt,                    % how far the line-numbers are from the code
+  %backgroundcolor=\color{white},   % choose the background color. You must add \usepackage{color}
+  showspaces=false,                 % show spaces adding particular underscores
+  showstringspaces=false,           % underline spaces within strings
+  showtabs=false,                   % show tabs within strings adding particular underscores
+  frame=lines,                      % adds a frame around the code
+  %frame=single,                    % adds a frame around the code
+  rulecolor=\color{CinSilver},      % if not set, the frame-color
+                                    % may be changed on line-breaks
+                                    % within not-black text
+                                    % (e.g. commens (green here)).
+  tabsize=2,                        % sets default tabsize to 2 spaces
+  captionpos=b,                     % sets the caption-position to bottom
+  breaklines=true,                  % sets automatic line breaking
+  breakatwhitespace=false,          % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                    % also try caption instead of title
+  keywordstyle=\color{CinGreen},    % keyword style
+  commentstyle=\color{gray},        % comment style
+  stringstyle=\color{black},        % string literal style
+  %backgroundcolor=\color{green!10},
+  escapeinside={\%*}{*)},% FIXME?           % if you want to add a comment within your code
+  extendedchars=true,
+  %keepspaces = true                %!!!! spaces in comments
+  texcl=true,
+  postbreak=\mbox{\textcolor{CinSilver}{$\hookrightarrow$}\space},
+  % morekeywords={*,...}% FIXME              % if you want to add more keywords to the set
+}
+
+
 %====================== Page geometry
-\usepackage{geometry}               % page geometry
-\geometry{left=2.0cm}
-\geometry{right=2.0cm}
-\geometry{top=2.0cm}
-\geometry{bottom=2.0cm}
+% \geometry{left=2.0cm}
+% \geometry{right=2.0cm}
+% \geometry{top=2.0cm}
+% \geometry{bottom=2.0cm}
+
 \parindent=0.0cm                    % first indent in section
 \righthyphenmin=2                   % hyphen last charecter
-
 \setsecnumdepth{subsubsection} 		% section numeration depth
-
-% Redefine Chapters and Sections
-% https://tex.stackexchange.com/questions/476735/change-chapter-and-section-color-memoir-class
-\usepackage{xcolor}
-% define colors
-\definecolor{chaptercolour}{RGB}{23,85,142}
-\definecolor{sectioncolour}{RGB}{23,85,142}
-\definecolor{subsectioncolour}{RGB}{23,85,142}
-%\definecolor{subsubsectioncolour}{RGB}{23,85,142}
-
-\definecolor{CinBlueText}{RGB}{23,85,142}
-% \definecolor{CinBlue}{RGB}{35,134,220}
-\definecolor{CinRed}{RGB}{205,38,11}
-% \definecolor{CinOrange}{RGB}{250,125,0}
-% \definecolor{CinGreen}{RGB}{205,38,11}
-
-\setparaheadstyle{\Large\bfseries\color{sectioncolour}}%
-\setsecheadstyle{\Large\bfseries\color{sectioncolour}}% Set \section style
-\setsubsecheadstyle{\large\bfseries\color{subsectioncolour}}% Set \subsection style
 
 %\pagestyle{plain}
 %\pagenumbering{roman}
@@ -46,36 +142,32 @@
 %\afterchapskip}
 %}
 %\chapterstyle{madsen}		% one of chapter header style for memoir documentclass
-\makechapterstyle{morrow}{% requires graphicx package
-  \chapterstyle{default}%
-  \renewcommand*{\chapnamefont}{%
-    \normalfont\Large\scshape\raggedleft}%
-  \renewcommand*{\chapnumfont}{%
-    \normalfont\Large\bfseries\sffamily}%
-  \renewcommand*{\printchapternum}{%
-    \chapnumfont \resizebox{!}{3ex}{\thechapter}%
-  }%
-  \renewcommand*{\chaptitlefont}{%
-    \normalfont\Huge\bfseries\sffamily\raggedleft}%
-  \renewcommand*{\afterchapternum}{%
-    \par\hspace{1.5cm}\hrule\vskip\midchapskip}%
-}%
-
 \chapterstyle{morrow}		% one of chapter header style for memoir documentclass
-%\renewcommand{\printchaptername}{\normalfont\large\scshape Chapter}
+% \renewcommand{\printchaptername}{\normalfont\large\scshape Chapter}
 \renewcommand{\chapterheadstart}{}
 %\renewcommand{\beforechapskip}{\vspace{2pt}}
 
-%\renewcommand{\@pnumwidth}{3em}  % memoir class, more space between chapter number and text.
+%\renewcommand{\@pnumwidth}{3em} % memoir class, more space between chapter number and text.
 \setlength{\cftfigurenumwidth}{4em} % memoir class, more space between figure number and text.
 
-\renewcommand{\nomname}{Glossary}                  % glossary name
+\renewcommand{\nomname}{Glossary} % glossary name
 
-
-% Define the Cinnelerr-GG wordmark - a rough draft that can be
+% Define the Cinnelerra-GG wordmark - a rough draft that can be
 % adapted at any time. To be used in the text with \CGG{}
 % or % \CGGI{}
 \def\GG{\textsc{G\kern-0.1em G}}
 \def\CGG{\textsc{Cinelerra-\GG}}
 \def\INF{\textsc{Infinity}}
 \def\CGGI{\CGG\;\INF}
+
+% Hyphenation for unknown words and technical terms
+\hyphenation{
+  plug-ins
+  ex-pan-ders
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

@@ -100,7 +100,7 @@ Figure~\ref{fig:cursor01} using the default \textit{playing} method where the fr
 	\centering
 	%\includegraphics[width=0.8\linewidth]{name.ext}
 	\begin{tikzpicture}[scale=1, transform shape]
-	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/cursor01.png}};    
+	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{cursor01.png}};    
 	\node [yshift=-21mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {Red cursor in Compositor};
 	\node [yshift=-26mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {red cursor in Timeline};
 	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-21mm] img1.north west);
@@ -116,7 +116,7 @@ Figure~\ref{fig:cursor02} using the \textit{Always show next frame} method where
 	\centering
 	%\includegraphics[width=0.8\linewidth]{name.ext}
 	\begin{tikzpicture}[scale=1, transform shape]
-	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/cursor02.png}};    
+	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{cursor02.png}};    
 	\node [yshift=-23mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {White cursor in Compositor};
 	\node [yshift=-28mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {White cursor in Timeline};
 	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-23mm] img1.north west);
@@ -142,7 +142,7 @@ The cause of the issue is that X11 is RGB only and it is used to draw the \texti
 \begin{wrapfigure}[11]{O}{0.5\textwidth} 
     \vspace{-5ex}
     \centering
-    \includegraphics[width=0.5\textwidth,keepaspectratio]{images/color.png}
+    \includegraphics[width=0.5\textwidth,keepaspectratio]{color.png}
     \caption{Color space and Color range}
     \label{fig:color}
 \end{wrapfigure} 

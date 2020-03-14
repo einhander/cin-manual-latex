@@ -1,6 +1,8 @@
-%
+% Packages - The programs texdoc and texdoctk (GUI for texdoc) offer
+% help for the packages.
+
 \usepackage{cmap}
-\usepackage[T2A]{fontenc} % T2A (Cyrillic) and T1 are only identical
+\usepackage[T1]{fontenc}  % T2A (Cyrillic) and T1 are only identical
                           % in the first 128 positions. This is an
                           % English language document.
 \usepackage[utf8]{inputenc} % file encoding
@@ -23,13 +25,19 @@
     enumerate,
     float,
     textcomp
-}                                   % some packages
+}
+
+% Customization of captions in floating environments
 \usepackage[font={small},textfont=it]{caption}
+
 \usepackage{hhline}                 % beautiful links
 \PassOptionsToPackage{hyphens}{url}
 \usepackage{hyperref}               % beautiful links
+
 \usepackage{pdflscape}              % landscape pages
 \usepackage{longtable}              % longtable support
+\usepackage{calc} % in conjunction with longtable
+
 \usepackage{multirow}               % vertical cell in table
 \usepackage{bigstrut}               % big strut
 \usepackage{array}                  % additional cell aligh
@@ -43,81 +51,63 @@
 %\let\oldtabular\tabular
 %\renewcommand{\tabular}{\small\oldtabular}
 
-\hypersetup{colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    filecolor=blue,
-    urlcolor=blue,
-    pdftitle={Cinelerra-GG Infinity Manual},
-    pdfauthor={Cinelerra Authors},
-    pdfsubject={Video Editing},
-    pdfkeywords={Cinelerra, Good Guy}
-} % pdf properties
 \usepackage[pdftex]{graphicx}       % do we need some figures in our pdf
 \graphicspath{{images/}}            % path to images
 \usepackage{tikz}                   % drawing package
 \usepackage{nameref}                % use \nameref{} to set reference to chapter neme.
-
+\usepackage{geometry}               % page geometry
 %----------------------------------------------------------------------
 \usepackage{listings}               % include code
-\lstset{                            % begin settings
-  %language=R,                      % the language of the code
-  inputencoding=utf8,
-  basicstyle=\ttfamily\footnotesize,         % the size of the fonts that are used for the code
-  numbers=left,                     % where to put the line-numbers
-  numberstyle=\tiny\color{black},   % the style that is used for the line-numbers
-  stepnumber=1,                     % the step between two line-numbers. If it's 1, each line
-                                    % will be numbered
-  numbersep=5pt,                    % how far the line-numbers are from the code
-  %backgroundcolor=\color{white},   % choose the background color. You must add \usepackage{color}
-  showspaces=false,                 % show spaces adding particular underscores
-  showstringspaces=false,           % underline spaces within strings
-  showtabs=false,                   % show tabs within strings adding particular underscores
-  frame=lines,                      % adds a frame around the code
-  %frame=single,                    % adds a frame around the code
-  rulecolor=\color{black},          % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
-  tabsize=2,                        % sets default tabsize to 2 spaces
-  captionpos=b,                     % sets the caption-position to bottom
-  breaklines=true,                  % sets automatic line breaking
-  breakatwhitespace=false,          % sets if automatic breaks should only happen at whitespace
-  title=\lstname,                   % show the filename of files included with \lstinputlisting;
-                                    % also try caption instead of title
-  keywordstyle=\color{blue},        % keyword style
-  commentstyle=\color{gray},        % comment style
-  stringstyle=\color{black},        % string literal style
-  %backgroundcolor=\color{green!10},
-  escapeinside={\%*}{*)},           % if you want to add a comment within your code
-  extendedchars=true,
-  %keepspaces = true                %!!!! spaces in comments
-  texcl=true,
-  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-  morekeywords={*,...}              % if you want to add more keywords to the set
-}
 %---------------------------------------------------------------------------
 \makeatletter
 \renewcommand{\@biblabel}[1]{#1.}
 %---------------------------------------------------------------
 %
-\usetikzlibrary{                    % Libraries for TiKz
+\usetikzlibrary{% Libraries for TiKz
     positioning,
     arrows,
     shapes,
     shadows
 }
-\usepackage{wrapfig}                % Wrapping figures
+\usepackage{wrapfig}  % Wrapping figures
+\usepackage{enumitem} % custom lists
 
-\usepackage{enumitem}               % custom lists
-
-\usepackage[colorinlistoftodos,textsize=tiny]{todonotes}    % todo package
-\setlength{\marginparwidth}{2.0cm}                          % fix left margin for todo
+% Todo package - Inserts a list of shame at the end of the
+% document. This way you can show your readers that you
+% have identified the problem, but don't feel like fixing it at the
+% moment. Use the general FIXME as a invisible comment instead.
+% \usepackage[colorinlistoftodos,textsize=tiny]{todonotes}
+% \setlength{\marginparwidth}{2.0cm} % fix left margin for todo
 
 \usepackage{scrextend}
 \usepackage{enumitem}
 %\usepackage{ifthen}
 %\usepackage{tocvsec2}
-\usepackage[intoc]{nomencl}                         % glossary package
-\makenomenclature                                           % make glossary
+\usepackage[intoc]{nomencl} % glossary package
+\makenomenclature           % make glossary
 
+% eso-pic makes it easy to add some picture commands to every page
+% at absolute positions:
 \usepackage{eso-pic}
-\usepackage{calc}		    % in conjunction with longtable
-%\input{common/settings.tex}
+% For easier alignment of graphics:
+% \usepackage{subfig}
+
+% The corporate typeface. So far this is the charter, see above. The
+% charter has a pleasant typeface and continuous text is easy to
+% understand. When designing the graphics, the font used there
+% should roughly match. Suggestion: Myriad Pro 11pt,
+% 90% black or a similar neutral but well readable Sans Serif.
+
+% Playground
+% \usepackage[sfdefault]{noto}
+% \usepackage{AlegreyaSans}
+% \usepackage{Alegreya}
+% \usepackage{lmodern}
+% Switch to sans serif (usually these do not contain SC):
+% \renewcommand*\familydefault{\sfdefault}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

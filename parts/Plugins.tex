@@ -7,7 +7,7 @@ Effect plugins modify the track when played, according to how they are set, with
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/video-plugins.png}
+    \includegraphics[width=1.0\linewidth]{video-plugins.png}
     \caption{Screencast of the native Video plugins in the default Cinfinity icon set.}
     \label{fig:video-plugins}
 \end{figure}
@@ -20,7 +20,7 @@ Note that when you change the plugin icons, your session will automatically save
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/audio-plugins.png}
+    \includegraphics[width=0.6\linewidth]{audio-plugins.png}
     \caption{Cinfinity2 audio plugins}
     \label{fig:audio-plugins}
 \end{figure}
@@ -28,7 +28,7 @@ Note that when you change the plugin icons, your session will automatically save
 \begin{figure}[htpb]
     \centering    
     \begin{tikzpicture}[scale=1, transform shape]
-    \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.5\linewidth]{images/plugin-icons.png}};
+    \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.5\linewidth]{plugin-icons.png}};
     \node [yshift=-8mm, xshift=-1cm,anchor=east] at (img1.north west) (Preferences) {Preferences Window};
     \node [yshift=-17mm, xshift=-1cm,anchor=east] at (img1.north west) (Tab) {Tab section};
     \node [yshift=-41mm, xshift=-1cm,anchor=east] at (img1.north west) (Icon) {Plugin icon choices};    
@@ -57,7 +57,7 @@ Besides the magnifying glass, for Show Controls, on the effect colored bar benea
 \begin{wrapfigure}[2]{r}{0.3\linewidth}
     \vspace{-3ex}
     \centering
-    \includegraphics[width=0.7\linewidth]{images/button-options.png} 
+    \includegraphics[width=0.7\linewidth]{button-options.png} 
 \end{wrapfigure}
 
 The rightmost knob is used to Turn Off/Turn On the effect where the default is On. This is useful to easily see that the plugin is doing what you expect. The leftmost symbol that looks like a gear is for \textit{Preset Edit} and its usage is described in the section \nameref{sec:saved_plugin_preset}.
@@ -71,7 +71,7 @@ When enabled, which is the default, and you edit tracks, the effects follow the 
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/editing-effects.png}
+    \includegraphics[width=0.9\linewidth]{editing-effects.png}
     \caption{Screencast of the native Video plugins in the default Cinfinity icon set.}
     \label{fig:editing-effects}
 \end{figure}
@@ -88,7 +88,7 @@ Figure~\ref{fig:drag-effect} showing 5 plugins, two still plugin, two have alrea
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/drag-effect.png}
+    \includegraphics[width=0.7\linewidth]{drag-effect.png}
     \caption{Dragging the Color 3 way effect}
     \label{fig:drag-effect}
 \end{figure}
@@ -119,12 +119,12 @@ In order to prevent the shared track from mixing the same data as the original t
 \section{Saved Plugin Presets}%
 \label{sec:saved_plugin_preset}
 
-\textit{Presets} and \textit{Factory Presets} for Plugin settings are now combined with the Preset Keyframe Parameters allowing you to choose, apply, delete, and edit your own Presets which can then be easily saved in the file \texttt{\$HOME/.bcast5/\CGG{}\_\\presets}. In addition to your own saved presets, there are automatically available Factory presets for some plugins, for example the Lens video plugin. The Factory presets are preceded by an asterisk (*) and can not be modified permanently.
+\textit{Presets} and \textit{Factory Presets} for Plugin settings are now combined with the Preset Keyframe Parameters allowing you to choose, apply, delete, and edit your own Presets which can then be easily saved in the file \texttt{\$HOME/.bcast5/Cinelerra\_presets}. In addition to your own saved presets, there are automatically available Factory presets for some plugins, for example the Lens video plugin. The Factory presets are preceded by an asterisk (*) and can not be modified permanently.
 
 \begin{wrapfigure}[4]{r}{0.3\linewidth}
     \vspace{-2ex}
     \centering
-    \includegraphics[width=0.7\linewidth]{images/preset.png} 
+    \includegraphics[width=0.7\linewidth]{preset.png} 
 \end{wrapfigure}
 Note that using this is directly changing a keyframe object so you will only want to modify parameters you are familiar with. Most of the data is obvious and safe to change.
 
@@ -134,7 +134,7 @@ A Presets button on the plugin bar to the left of the Controls and On/Off button
 \begin{figure}[htpb]
     \centering    
     \begin{tikzpicture}[scale=1, transform shape]
-    \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{images/preset02.png}};
+    \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{preset02.png}};
     \node [yshift=-30mm, xshift=-1cm,anchor=east] at (img1.north west) (Green) {A user preset Green};
     \node [yshift=-101mm, xshift=-1cm,anchor=south east,text width=10em, inner ysep=-3mm] at (img1.north west) (Textbox) {Textbox to type in the title for the chosen preset or name for a new preset.};
     \node [yshift=-110mm, xshift=-1cm,anchor=north east,text width=10em,inner ysep=-3mm] at (img1.north west) (Save) {Use the Delete, Save or Apply button for operation.};    
@@ -158,7 +158,7 @@ To get a short one or a few lines description of a plugin, right click on that p
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/info-effect.png}
+    \includegraphics[width=0.7\linewidth]{info-effect.png}
     \caption{Effect Info for Color 3 Way}
     \label{fig:info-effect}
 \end{figure}
@@ -170,7 +170,7 @@ Maybe you just don't ever use certain plugins or would prefer to only find the o
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/remove-effect.png}
+    \includegraphics[width=0.6\linewidth]{remove-effect.png}
     \caption{Remove Deinterlace-CV plugin}
     \label{fig:remove-effect}
 \end{figure}
@@ -217,7 +217,7 @@ The \CGG{} program looks for a plugin icon in two places:
 \end{enumerate}
 \begin{figure}[htpb]          
     \centering
-    \includegraphics[width=0.05\linewidth]{images/audio-default.png} 
+    \includegraphics[width=0.05\linewidth]{audio-default.png} 
 \end{figure} 
 
 Keep in mind these points for newly created plugin icons:
@@ -269,7 +269,7 @@ Restart cin by changing \texttt{Settings$\rightarrow$ Preferences$\rightarrow$ A
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/visibility01.png}
+    \includegraphics[width=0.8\linewidth]{visibility01.png}
     \caption{Screenshot showing on the left hand side the Visibility box with Audio Effects highlighted.}
     \label{fig:visibility01}
 \end{figure}
@@ -281,7 +281,7 @@ Highlight the set you want to turn on and a check mark appears to show it is act
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/visibility02.png}
+    \includegraphics[width=0.6\linewidth]{visibility02.png}
     \caption{Screenshot showing the Visibility categories of plugins with all toggled on and audio highlighted.}
     \label{fig:visibility02}
 \end{figure}
@@ -311,7 +311,7 @@ Audio Effects
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/expander.png}
+    \includegraphics[width=0.8\linewidth]{expander.png}
     \caption{$\bigtriangledown$, $\rhd$ =expander; "-" = options}
     \label{fig:expander}
 \end{figure}
@@ -364,7 +364,7 @@ It is an effect that modulates the signal, varies the pitch up and down (instead
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/chorus.png}
+	\includegraphics[width=0.5\linewidth]{chorus.png}
 	\caption{GUI of configuration for Chorus plugin}
 	\label{fig:chorus}
 \end{figure}
@@ -384,7 +384,7 @@ The audio compressor reduces the dynamic range of the audio, not the amount of d
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/compressor.png}
+    \includegraphics[width=0.7\linewidth]{compressor.png}
     \caption{GUI of configuration for Compressor plugin}
     \label{fig:compressor}
 \end{figure}
@@ -416,7 +416,7 @@ The normal compressor acts over the entire frequency spectrum. The multi-band al
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.7\linewidth]{images/compressorM.png}
+	\includegraphics[width=0.7\linewidth]{compressorM.png}
 	\caption{GUI of configuration for Compressor Multi plugin}
 	\label{fig:compressorM}
 \end{figure}
@@ -472,7 +472,7 @@ Graphic equalizer sets the output levels for specified frequency bands. This eff
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/equalizer.png}
+    \includegraphics[width=0.7\linewidth]{equalizer.png}
     \caption{Graphic Equalizer audio plugin}
     \label{fig:equalizer}
 \end{figure}
@@ -484,7 +484,7 @@ Parametric equalizer shows and outputs levels for \textit{frequency}, \textit{qu
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.4\linewidth]{images/eq_param.png}
+	\includegraphics[width=0.4\linewidth]{eq_param.png}
 	\caption{Graphic Equalizer audio plugin}
 	\label{fig:eq_param}
 \end{figure}
@@ -496,7 +496,7 @@ Echo is reflection of sound. This plugin could be used to add echoing to video o
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.4\linewidth]{images/echo.png}
+    \includegraphics[width=0.4\linewidth]{echo.png}
     \caption{The 3 dials of Echo plugin}
     \label{fig:echo}
 \end{figure}
@@ -514,7 +514,7 @@ EchoCancel is the process of removing echos from audio in order to improve the q
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/echo-cancel.png}
+    \includegraphics[width=0.8\linewidth]{echo-cancel.png}
     \caption{GUI for EchoCancel with crosshair and mode set to ON}
     \label{fig:echo-cancel}
 \end{figure}
@@ -543,7 +543,7 @@ The delay introduced consists of two distinct components: the \textit{constant d
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/flanger.png}
+	\includegraphics[width=0.5\linewidth]{flanger.png}
 	\caption{GUI of configuration for Flanger plugin}
 	\label{fig:flanger}
 \end{figure}
@@ -626,7 +626,7 @@ The configuration window (figure~\ref{fig:reverb}) shows a graph of the full ban
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/reverb.png}
+	\includegraphics[width=0.5\linewidth]{reverb.png}
 	\caption{GUI of configuration for Reverb plugin}
 	\label{fig:reverb}
 \end{figure}
@@ -665,7 +665,7 @@ Generate synthesizer sounds; to set key data, turn on Generate keyframes while t
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/synthesizer.png}
+    \includegraphics[width=1.0\linewidth]{synthesizer.png}
     \caption{GUI for Synthesizer}
     \label{fig:synthesizer}
 \end{figure}
@@ -684,7 +684,7 @@ NOTE: There is often confusion between Tremolo and Vibrato, but the vibrato is t
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/tremolo.png}
+	\includegraphics[width=0.5\linewidth]{tremolo.png}
 	\caption{GUI of configuration for Tremolo plugin}
 	\label{fig:tremolo}
 \end{figure}
@@ -749,7 +749,7 @@ Below is a screencast showing the auto start gui flag and the \texttt{LV2\_PATH}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/reload.png}
+    \includegraphics[width=0.9\linewidth]{reload.png}
     \caption{Reload plugin index in yellow and Auto start lv2 gui unchecked}
     \label{fig:reload}
 \end{figure}
@@ -760,7 +760,7 @@ Note the UI button in the upper right hand corner above the Reset button (figure
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/calf.png}
+    \includegraphics[width=1.0\linewidth]{calf.png}
     \caption{Screencast of simple text interface in the middle of the screen for a Calf LV2 plugin}
     \label{fig:calf}
 \end{figure}
@@ -777,7 +777,7 @@ For example:
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/calf02.png}
+    \includegraphics[width=0.8\linewidth]{calf02.png}
     \caption{Screencast with a Calf plugin glitzy window that appears when clicking the simple interface UI button.}
     \label{fig:calf02}
 \end{figure}
@@ -836,7 +836,7 @@ The basic strategy for BlueBanana is to:
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/bluebanana.png}
+    \includegraphics[width=1.0\linewidth]{bluebanana.png}
     \caption{Screencast showing the BlueBanana plugin control}
     \label{fig:bluebanana}
 \end{figure}
@@ -1031,7 +1031,7 @@ Use the effect along with keyframing to brighten a long shot that is dark at the
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/brightness.png}
+    \includegraphics[width=0.6\linewidth]{brightness.png}
     \caption{How it works Brightness and Contrast}
     \label{fig:brightness}
 \end{figure}
@@ -1095,7 +1095,7 @@ Figure~\ref{fig:c41} shows the C41 controls on the left and part of the Composit
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/c41.png}
+    \includegraphics[width=0.9\linewidth]{c41.png}
     \caption{C41 - Control window and compositor window in action}
     \label{fig:c41}
 \end{figure}
@@ -1107,7 +1107,7 @@ This effect erases pixels which match the selected color. They are replaced with
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/chroma-key.png}
+    \includegraphics[width=0.5\linewidth]{chroma-key.png}
     \caption{Chroma Key control window}
     \label{fig:chroma-key}
 \end{figure}
@@ -1128,7 +1128,7 @@ Chroma Key (HSV) (figure~\ref{fig:chroma-key-hsv}) replaces a color with another
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.55\linewidth]{images/chroma-key-hsv.png}
+    \includegraphics[width=0.55\linewidth]{chroma-key-hsv.png}
     \caption{Keying a green screen with Chroma Key (HSV)}
     \label{fig:chroma-key-hsv}
 \end{figure}
@@ -1170,7 +1170,7 @@ Together with \textit{Histogram Bezier / Curves} Color 3 Way is the main tool of
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/color3way.png}
+    \includegraphics[width=0.8\linewidth]{color3way.png}
     \caption{Color 3 Way control window}
     \label{fig:color3way}
 \end{figure}
@@ -1232,7 +1232,7 @@ color space  or range so that you can fix it.
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.45\linewidth]{images/colorspace.png}
+    \includegraphics[width=0.45\linewidth]{colorspace.png}
     \caption{ColorSpace control window}
     \label{fig:colorspace}
 \end{figure}
@@ -1245,7 +1245,7 @@ The Chroma Interpolation Key plugin, CriKey, is a regionally based chroma key wi
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/crikey.png}
+    \includegraphics[width=0.5\linewidth]{crikey.png}
     \caption{three active point created in CriKey}
     \label{fig:crikey}
 \end{figure}
@@ -1278,14 +1278,14 @@ Figure~\ref{fig:crikey01} and figure~\ref{fig:crikey02} shows how moving the Thr
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/crikey01.png}
+    \includegraphics[width=0.8\linewidth]{crikey01.png}
     \caption{The screenshot shows the compositor with some default settings in the controls window.}
     \label{fig:crikey01}
 \end{figure}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/crikey02.png}
+    \includegraphics[width=0.8\linewidth]{crikey02.png}
     \caption{same screenshot with moving Threshold}
     \label{fig:crikey02}
 \end{figure}
@@ -1310,7 +1310,7 @@ It allows you to obtain a rectangle from the frame, whose dimensions are fully a
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=1.0\linewidth]{images/crop_position.png}
+	\includegraphics[width=1.0\linewidth]{crop_position.png}
 	\caption{Crop tool and Crop \& Position plugin compared}
 	\label{fig:crop_position}
 \end{figure}
@@ -1324,14 +1324,14 @@ Figure~\ref{fig:descratch01} shows a list of the parameter descriptions:
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/descratch01.png}
+    \includegraphics[width=0.6\linewidth]{descratch01.png}
     \caption{DeScratch control window}
     \label{fig:descratch01}
 \end{figure}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/descratch02.png}
+    \includegraphics[width=0.8\linewidth]{descratch02.png}
     \caption{Various parameters of DeScratch}
     \label{fig:descratch02}
 \end{figure}
@@ -1361,7 +1361,7 @@ Figure~\ref{fig:descratch} shows a before and after DeScratch scenario. With \te
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/descratch.png}
+    \includegraphics[width=0.9\linewidth]{descratch.png}
     \caption{Original video with scratch; Option Mark selected and Final video}
     \label{fig:descratch}
 \end{figure}
@@ -1387,7 +1387,7 @@ Selection of deinterlacing mode for your video to eliminate comb artifacts (figu
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/deinterlace.png}
+    \includegraphics[width=0.6\linewidth]{deinterlace.png}
     \caption{Pulldown menu}
     \label{fig:deinterlace}
 \end{figure}
@@ -1404,7 +1404,7 @@ Denoise video (figure~\ref{fig:denoise}).
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.4\linewidth]{images/denoise.png}
+    \includegraphics[width=0.4\linewidth]{denoise.png}
     \caption{Control window of the DeNoise plugin}
     \label{fig:denoise}
 \end{figure}
@@ -1419,7 +1419,7 @@ Pixels which are different between the background and action track are treated a
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/diff-key.png}
+    \includegraphics[width=0.8\linewidth]{diff-key.png}
     \caption{Difference key and its problematic output}
     \label{fig:diff-key}
 \end{figure}
@@ -1526,7 +1526,7 @@ Mathematically, the gamma function is exponential ($output = input^{\gamma}$) an
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/gamma01.png}
+    \includegraphics[width=1.0\linewidth]{gamma01.png}
     \caption{settting \textit{Maximun} to $0.5900$}
     \label{fig:gamma01}
 \end{figure}
@@ -1543,7 +1543,7 @@ The best use of the gamma is manually monitoring the waveform as shown in figure
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/gamma02.png}
+    \includegraphics[width=1.0\linewidth]{gamma02.png}
     \caption{Setting \textit{Maximun} to $0.6100$ and \textit{Gamma} to $0.3300$}
     \label{fig:gamma02}
 \end{figure}
@@ -1581,7 +1581,7 @@ Remap colors using blended histogram weights. Figure~\ref{fig:histeq} shows the 
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/histeq.png}
+    \includegraphics[width=0.8\linewidth]{histeq.png}
     \caption{Control window and split screen}
     \label{fig:histeq}
 \end{figure}
@@ -1602,7 +1602,7 @@ The histogram allows an immediate view of the contrast amplitude of an image wit
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/histogram.png}
+    \includegraphics[width=0.8\linewidth]{histogram.png}
     \caption{Master Histogram and RGB Histogram}
     \label{fig:histogram}
 \end{figure} 
@@ -1629,7 +1629,7 @@ The input graph is edited by adding and removing any number of points. Click and
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/bezier.png}
+    \includegraphics[width=0.8\linewidth]{bezier.png}
     \caption{Histogram Bezier / Curves}
     \label{fig:bezier}
 \end{figure}
@@ -1652,7 +1652,7 @@ Curves are generally adjusted by introducing several control points, some to be 
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.75\linewidth]{images/ex-bezier.png}
+    \includegraphics[width=0.75\linewidth]{ex-bezier.png}
     \caption{Gain Up/Down; clamp; S-Shaped curve and Luma Key}
     \label{fig:ex-bezier}
 \end{figure}
@@ -1681,7 +1681,7 @@ This effect originated from {\small \url{https://effectv.com}}.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/holographictv.png}
+    \includegraphics[width=0.8\linewidth]{holographictv.png}
     \caption{Holographic messages in CinGG!}
     \label{fig:holographictv}
 \end{figure}
@@ -1756,7 +1756,7 @@ This effect acts only in one direction which can vary up to an angle of $180\deg
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/linear.png}
+	\includegraphics[width=0.8\linewidth]{linear.png}
 	\caption{For clarity of presentation only 2 fields are shown}
 	\label{fig:linear}
 \end{figure}
@@ -1807,7 +1807,7 @@ The amount of sampling does not significantly change for smaller or larger searc
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/motion51.png}
+    \includegraphics[width=0.9\linewidth]{motion51.png}
     \caption{Motion51 plugin window with its default options set.}
     \label{fig:motion51}
 \end{figure}
@@ -2017,7 +2017,7 @@ In (figure~\ref{fig:perspective}) you can see that there are four options for th
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/perspective.png}
+    \includegraphics[width=0.5\linewidth]{perspective.png}
     \caption{perspective control window}
     \label{fig:perspective}
 \end{figure}
@@ -2049,7 +2049,7 @@ Figure~\ref{fig:perspective01} show the results of the 4 different smoothing opt
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/perspective01.png}
+    \includegraphics[width=0.8\linewidth]{perspective01.png}
     \caption{Clockwise: Nearest; Linear; OpenGL and Cubic}
     \label{fig:perspective01}
 \end{figure}
@@ -2073,7 +2073,7 @@ Most cameras take the light coming into the lens, and convert that into $3$ sets
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/rgbshift.png}
+    \includegraphics[width=0.8\linewidth]{rgbshift.png}
     \caption{Bad Misaligned color and after color aligned}
     \label{fig:rgbshift}
 \end{figure}
@@ -2094,7 +2094,7 @@ Figure~\ref{fig:radial} has the parameters: $Angle=-35$ and $Steps=2$.
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/radial.png}
+    \includegraphics[width=0.8\linewidth]{radial.png}
     \caption{For clarity of presentation only 2 fields are shown}
     \label{fig:radial}
 \end{figure}
@@ -2169,7 +2169,7 @@ The random generator varies from $-0.5\, to\, 0.5$. The rumble perturbs the norm
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.45\linewidth]{images/rumbler.png}
+    \includegraphics[width=0.45\linewidth]{rumbler.png}
     \caption{Rumbler control window}
     \label{fig:rumbler}
 \end{figure}
@@ -2205,7 +2205,7 @@ Figure~\ref{fig:svg} shows the menu options plugin window and the SVG image in t
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/svg.png}
+    \includegraphics[width=1.0\linewidth]{svg.png}
     \caption{Control window and Inkscape}
     \label{fig:svg}
 \end{figure}
@@ -2228,7 +2228,7 @@ With the Scale Ratio plugin you can manipulate your video to maintain the pixel 
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/scaleratio.png}
+    \includegraphics[width=0.5\linewidth]{scaleratio.png}
     \caption{Many parameters of scale ratio}
     \label{fig:scaleratio}
 \end{figure}
@@ -2242,7 +2242,7 @@ This plugin is designed to smooth out non-moving areas of a video clip (figure~\
 \vspace{2ex}
 \begin{wrapfigure}[20]{O}{0.4\linewidth} 
    % \vspace{-4ex}
-    \includegraphics[width=0.9\linewidth]{images/staveraging.png}
+    \includegraphics[width=0.9\linewidth]{staveraging.png}
     \caption{STA control window}
     \label{fig:staveraging}
 \end{wrapfigure}
@@ -2285,7 +2285,7 @@ Now you can sketch \textit{lines}, \textit{curves} or \textit{shapes}, on your v
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=1.0\linewidth]{images/sketcher.png}
+    \includegraphics[width=1.0\linewidth]{sketcher.png}
     \caption{Sketcher control window and sketch on Compositor}
     \label{fig:sketcher}
 \end{figure}
@@ -2432,7 +2432,7 @@ Inside the time average effect is an accumulation buffer and a divisor. A number
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.35\linewidth]{images/timeaverage.png}
+    \includegraphics[width=0.35\linewidth]{timeaverage.png}
     \caption{GUI for Time Average}
     \label{fig:timeaverage}
 \end{figure}
@@ -2452,7 +2452,7 @@ Inside the time average effect is an accumulation buffer and a divisor. A number
 Space-temporal warping enables time to flow differently at different locations in the video (figure~\ref{fig:timefront}).
 \begin{wrapfigure}[13]{O}{0.3\linewidth} 
     \vspace{-2ex}
-    \includegraphics[width=0.8\linewidth]{images/timefront.png}
+    \includegraphics[width=0.8\linewidth]{timefront.png}
     \caption{Temporal bands for Timefront}
     \label{fig:timefront}
 \end{wrapfigure}
@@ -2483,7 +2483,7 @@ The \textit{Titler} allows you to add text from within \CGG{}. The titler has st
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/title01.png}
+    \includegraphics[width=0.9\linewidth]{title01.png}
     \caption{GUI of the Title plugin}
     \label{fig:title01}
 \end{figure}
@@ -2524,7 +2524,7 @@ If the video is displayed on a consumer TV, the outer border is going to be crop
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.3\linewidth]{images/title02.png}
+    \includegraphics[width=0.3\linewidth]{title02.png}
     \caption{Pulldown Attributes}
     \label{fig:title02}
 \end{figure}
@@ -2596,7 +2596,7 @@ Figure~\ref{fig:title03}.
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/title03.png}
+    \includegraphics[width=0.9\linewidth]{title03.png}
     \caption{Final result of the exemple}
     \label{fig:title03}
 \end{figure}
@@ -2625,7 +2625,7 @@ The Text Color window has several enhanced features as listed here and seen in f
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/title04.png}
+    \includegraphics[width=0.6\linewidth]{title04.png}
     \caption{Screencast showing the Color Picker menu.}
     \label{fig:title04}
 \end{figure}
@@ -2683,7 +2683,7 @@ When using the Titler, kerning is applied in order to allow parts of a letter to
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/title05.png}
+    \includegraphics[width=0.5\linewidth]{title05.png}
     \caption{Kerning in action}
     \label{fig:title05}
 \end{figure}
@@ -2695,7 +2695,7 @@ Tracer creates an outline around an object after a few points are designated, so
 
 \begin{figure}[hbtp]
 	\centering
-	\includegraphics[width=0.55\linewidth]{images/tracer-01.png}
+	\includegraphics[width=0.55\linewidth]{tracer-01.png}
 	\caption{Gui for Tracer plugin}
 	\label{fig:tracer-01}
 \end{figure}
@@ -2719,7 +2719,7 @@ Be sure to uncheck \textit{Draw} and \textit{Drag} before rendering so that the 
 
 \begin{figure}[hbtp]
 	\centering
-	\includegraphics[width=0.7\linewidth]{images/tracer-02.png}
+	\includegraphics[width=0.7\linewidth]{tracer-02.png}
 	\caption{Rug in the top picture is traced in order to black it out or replace later}
 	\label{fig:tracer-02}
 \end{figure}
@@ -2759,7 +2759,7 @@ Videoscope summarizes intensity and color on a calibrated display. The Videoscop
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/videoscope01.png}
+    \includegraphics[width=0.8\linewidth]{videoscope01.png}
     \caption{GUI of the Videoscope. You see Histogram, RGB Parade and Vectorscope}
     \label{fig:videoscope01}
 \end{figure}
@@ -2771,7 +2771,7 @@ The \textit{Waveform Scope} displays image intensity (luminance) versus image $X
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/videoscope02.png}
+    \includegraphics[width=0.9\linewidth]{videoscope02.png}
     \caption{Colortest 75\% with RGB Parade (left) and Waveform (right)}
     \label{fig:videoscope02}
 \end{figure}
@@ -2782,7 +2782,7 @@ The Waveform scope helps correct image light levels for contrast range or for co
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/videoscope03.png}
+    \includegraphics[width=0.7\linewidth]{videoscope03.png}
     \caption{Example of waveform}
     \label{fig:videoscope03}
 \end{figure}
@@ -2824,7 +2824,7 @@ Vectorscope is used as monitor with other plugins to correct color, adjust image
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/videoscope04.png}
+    \includegraphics[width=0.9\linewidth]{videoscope04.png}
     \caption{Balancing a yellow dominace tint}
     \label{fig:videoscope04}
 \end{figure}
@@ -2867,7 +2867,7 @@ A corrected video image is shown in the bottom. Now the red and blue colors are 
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.7\linewidth]{images/yuvshift.png}
+    \includegraphics[width=0.7\linewidth]{yuvshift.png}
     \caption{Before and after YUVShift adjusting}
     \label{fig:yuvshift}
 \end{figure}
@@ -2888,7 +2888,7 @@ Figure~\ref{fig:zoom} shows the parameters: Radius=21 and Steps=3.
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/zoom.png}
+    \includegraphics[width=0.8\linewidth]{zoom.png}
     \caption{For clarity of presentation only 3 fields are shown}
     \label{fig:zoom}
 \end{figure}
@@ -2913,7 +2913,7 @@ Produce fractal figures (figure~\ref{fig:mandelbrot}). Use case:
 
 \begin{figure}[hbtp]
 	\centering
-	\includegraphics[width=0.9\linewidth]{images/mandelbrot.png}
+	\includegraphics[width=0.9\linewidth]{mandelbrot.png}
 	\caption{Mandelbrot Cuda plugin}
 	\label{fig:mandelbrot}
 \end{figure}
@@ -2925,7 +2925,7 @@ Produce animated particles (figure~\ref{fig:n_body}).
 
 \begin{figure}[hbtp]
 	\centering
-	\includegraphics[width=1.0\linewidth]{images/n_body.png}
+	\includegraphics[width=1.0\linewidth]{n_body.png}
 	\caption{N\_Body Cuda plugin}
 	\label{fig:n_body}
 \end{figure}
@@ -3127,7 +3127,7 @@ The following steps were used to set up the example in figure~\ref{fig:findobj}.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{images/findobj.png}
+    \includegraphics[width=0.9\linewidth]{findobj.png}
     \caption{Timeline; control window and compositor for FindObj}
     \label{fig:findobj}
 \end{figure}
@@ -3145,7 +3145,7 @@ The following steps were used to set up the example in figure~\ref{fig:findobj}.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/opencv.png}
+    \includegraphics[width=0.8\linewidth]{opencv.png}
     \caption{FlowObj; GaborObj (before and after) and PuzzleObj}
     \label{fig:opencv}
 \end{figure}
@@ -3156,7 +3156,7 @@ We can apply 6 different styles:
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/stylizeobj01.png}
+    \includegraphics[width=0.6\linewidth]{stylizeobj01.png}
     \caption{Pulldown of Stylize mode on the original image}
     \label{fig:stylizeobj01}
 \end{figure}
@@ -3185,7 +3185,7 @@ Figure~\ref{fig:stylize} show the images after adding the 6 various styles.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.95\linewidth]{images/stylize.png}
+    \includegraphics[width=0.95\linewidth]{stylize.png}
     \caption{Clockwise: Edge Smooth and Recursive; Detail Enhance; Stylization; Color and Pencil Sketch}
     \label{fig:stylize}
 \end{figure}
@@ -3199,7 +3199,7 @@ Figure~\ref{fig:ffchromakey} shows what an FFmpeg video plugin looks like; examp
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{images/ffchromakey.png}
+    \includegraphics[width=0.6\linewidth]{ffchromakey.png}
     \caption{GUI for FFmpeg plugins}
     \label{fig:ffchromakey}
 \end{figure}
@@ -3209,8 +3209,8 @@ Figure~\ref{fig:ffchromakey} shows what an FFmpeg video plugin looks like; examp
 
 Currently FFmpeg audio and video plugins that do not have a personalized icon use one of the default icons as shown below.
 
-Default Audio Icon: \quad \includegraphics[height=\baselineskip]{images/ffaudio.png}
-\quad Default Video Icon: \quad \includegraphics[height=\baselineskip]{images/ffvideo.png}
+Default Audio Icon: \quad \includegraphics[height=\baselineskip]{ffaudio.png}
+\quad Default Video Icon: \quad \includegraphics[height=\baselineskip]{ffvideo.png}
 
 If you want to replace the icon with a more descriptive picture, see a previous section on Updatable Icon Image Support and Details on where to put Plugin Icons.
 

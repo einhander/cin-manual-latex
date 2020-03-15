@@ -159,7 +159,7 @@ by In/Out point or a label.
 In cut and paste editing mode, you can also change the position of the insertion point with a simple 
 left mouse click in the timeline itself.
 When moving the insertion point, the position is either aligned to frames or aligned to samples. 
-For best results, "Align cursor on frames" when editing a video track and "Align to samples" when editing audio. 
+For best results, \textit{Align cursor on frames} when editing a video track and \textit{Align to samples} when editing audio. 
 Use the pulldown \texttt{Settings$\rightarrow$Align cursor on frames} to change the alignment by
 checking the box on for video and off for audio.
 
@@ -167,19 +167,20 @@ checking the box on for video and off for audio.
     \centering
     %\includegraphics[width=0.8\linewidth]{name.ext}
     \begin{tikzpicture}[scale=1, transform shape]
-        \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{insertion-point.png}};
-        \node [yshift=-13mm, xshift=-1cm,anchor=east] at (img1.north west) (Pulldowns) {Pulldowns};
-        \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Transport) {Transport \& Buttons Bar};
-        \node [yshift=-25mm, xshift=-1cm,anchor=east] at (img1.north west) (Timebar) {Timebar};
-        \node [yshift=-31mm, xshift=-1cm,anchor=east] at (img1.north west) (Title) {Media Title };
-        \node [yshift=-40mm, xshift=-1cm,anchor=east] at (img1.north west) (Video) {Video Track};
-        \node [yshift=-60mm, xshift=-1cm,anchor=east] at (img1.north west) (Audio) {Audio Track};
-        \draw [->, line width=1mm] (Pulldowns) edge  ([yshift=-13mm] img1.north west);
-        \draw [->, line width=1mm] (Transport) edge  ([yshift=-20mm] img1.north west);
-        \draw [->, line width=1mm] (Timebar) edge    ([yshift=-25mm] img1.north west);
-        \draw [->, line width=1mm] (Title) edge      ([yshift=-31mm] img1.north west);
-        \draw [->, line width=1mm] (Video) edge      ([yshift=-40mm] img1.north west);
-        \draw [->, line width=1mm] (Audio) edge      ([yshift=-60mm] img1.north west);
+        \node (img1) [yshift=0cm, xshift=0cm, rotate=0]
+         {\includegraphics[width=0.6\linewidth]{insertion-point.png}};
+        \node [yshift=-5mm, xshift=-1cm,anchor=east] at (img1.north west) (Pulldowns) {Pulldowns};
+        \node [yshift=-10mm, xshift=-1cm,anchor=east] at (img1.north west) (Transport) {Transport \& Buttons Bar};
+        \node [yshift=-15mm, xshift=-1cm,anchor=east] at (img1.north west) (Timebar) {Timebar};
+        \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Title) {Media Title };
+        \node [yshift=-28mm, xshift=-1cm,anchor=east] at (img1.north west) (Video) {Video Track};
+        \node [yshift=-46mm, xshift=-1cm,anchor=east] at (img1.north west) (Audio) {Audio Track};
+        \draw [->, line width=1mm] (Pulldowns) edge  ([yshift=-5mm] img1.north west);
+        \draw [->, line width=1mm] (Transport) edge  ([yshift=-10mm] img1.north west);
+        \draw [->, line width=1mm] (Timebar) edge    ([yshift=-15mm] img1.north west);
+        \draw [->, line width=1mm] (Title) edge      ([yshift=-20mm] img1.north west);
+        \draw [->, line width=1mm] (Video) edge      ([yshift=-28mm] img1.north west);
+        \draw [->, line width=1mm] (Audio) edge      ([yshift=-46mm] img1.north west);
         \end{tikzpicture}
     
     \caption{Insertion point is at 0:00:25:10 in Hr:Mn:Sec:Frames}
@@ -677,7 +678,7 @@ no dialog popup menus.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.5\linewidth]{safe_regions.png}
+    \includegraphics[width=0.9\linewidth]{safe_regions.png}
     \caption{Note the black outlines showing the safe regions. Also note the Ruler menu}
     \label{fig:safe_regions}
 \end{figure}
@@ -828,7 +829,7 @@ The camera and projector have shortcut operations that do not appear in the popu
 These are accessed in the \emph{Show tool info} window . 
 Most operations in the Compositor window have a tool window which is enabled by activating the question mark icon (figure~\ref{fig:camera_tool}).
 
-\begin{wrapfigure}[12]{O}{0.3\linewidth} 
+\begin{wrapfigure}[11]{O}{0.3\linewidth} 
 	\vspace{1ex}
     \includegraphics[width=0.9\linewidth]{camera_tool.png}
     \caption{Camera and Projector tool}
@@ -1128,7 +1129,7 @@ One last note of interest, this cropping is keyframable.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{cropped_area.png}
+    \includegraphics[width=0.9\linewidth]{cropped_area.png}
     \caption{Crop menu and outlined crop rectangle on the right side}
     \label{fig:cropped_area}
 \end{figure}
@@ -1189,8 +1190,8 @@ with the RMB on the display again and choose \textit{Windowed}.
 \end{enumerate}
 
 The Viewer uses the project's output size format settings to display the media instead of the
-original assets format. Operations performed in the Viewer affect a temporary EDL or a clip rather
-than the timeline.  By default the Viewer window is automatically available but if it gets
+original asset's format. Operations performed in the Viewer affect a temporary EDL or a clip rather
+than the timeline.  By default, the Viewer window is automatically available but if it gets
 accidentally closed you can open it again by using the pulldown \texttt{Window $\rightarrow$ Show
 Viewer} to bring it back up.  More details for editing in the Viewer window with the Two Screen
 Editing method is explained in \ref{sec:two_screen_editing}.
@@ -1204,33 +1205,35 @@ The next sections describe capabilities that are available in both the Composito
 \label{sub:click_to_play_in_viewer_and_compositor}
 
 In both the Viewer and Compositor windows, there is an arrow on the right hand side of the other
-buttons in the edit panel as shown in figure~\ref{fig:viewer_window}.  
-Mouse action can be toggled on/off via this arrow, which has a tooltip of \textit{Click to play} with the letter "\texttt{P}" to be used for a shortcut.  
-When enabled there is a green or gold colored shadow around the usual red or green colored arrow.  
-The purpose of enabling this capability is to make it really easy to play the media in the window by just using the left mouse button to start or stop the play.  
-The entire main canvas surface becomes a big play button!  
-Although the default is initially off, a good reason to enable this, at least temporarily, is so that you can quickly review your video before a render. 
+buttons in the edit panel as shown in figure~\ref{fig:viewer_window}.  The "play" button can be
+toggled on/off via this arrow, which has a tooltip of \textit{Click to play}.  When enabled there
+is a green or gold colored shadow around the usual red or green colored arrow.
+The purpose of enabling this capability is to make it really easy to play the media in the window
+by just using the left mouse button to start or stop the play.  The entire main canvas surface
+becomes a big play button!  Although the default is initially off, a good reason to enable this,
+at least temporarily, is so that you can quickly review your video before a render.
  
 \begin{description}
-    \item[left click]          forward play or stop forward play if already playing
+    \item[left click]  forward play or stop forward play if already playing
     \item[middle wheel]  single frame forward or back
-    \item[middle click]    reverse play or stop reverse play if already playing. 
+    \item[middle click]  reverse play or stop reverse play if already playing. 
         Note that some 3 button mice do not accommodate a middle click for reverse but you can find out by testing from a terminal window with the command \texttt{xev}.
 \end{description}
 
 \subsection{Timebar + Preview Region Usage in the Compositor and Viewer}%
 \label{sub:timebar_preview_region_usage_in_the_compositor_and_viewer}
 
-The navigation features of the Viewer and Compositor behave very similarly. 
-Each has a timebar and slider below the video output. 
-The timebar represents the entire time covered by the program.   
-When you have a file loaded in the main window and then slide around it using the compositor slider. The insertion point in the main window follows the compositor. 
+The Viewer and Compositor each have a timebar control area with an indicator line below the video
+output. The \textit{timebar} shows the whole time covered by the program. When a video asset
+is loaded in the main window and you move in the compositor, the insertion pointer in the main
+window will reflect those movements.  However, this is not the case with the viewer.  In the viewer
+only that specific media is shown and there is no corresponding movement on the timeline.
 
-Labels and In/Out points are fully supported in the viewer and compositor.  
-In the viewer and compositor, labels and in/out points are displayed in the timebar.  
-But there is a difference between the viewer and compositor in that the compositor reflects the state of the program while the viewer reflects the state of a clip but not the program. 
-When you hit the label button in the compositor, the label appears both in the compositor timebar and the program timebar. 
-When you select a label or in/out point in the compositor, the insertion point in the program window jumps to that position. 
+Both the Compositor and Viewer support labels and in/out pointer which are displayed in the timebar.
+And as with the movements, when you use the labels or in/out pointer in the compositor timebar,
+the result will also be reflected in the main window timebar.  Along with that, of course, when
+you move to a label or in/out pointer in the compositor, the insertion point in the program window
+will go to that position.
 
 The timebar in the compositor and the viewer can be used to define a region known as the \textit{preview region}.  
 This preview region is the region of the timeline which the slider affects.  
@@ -1245,26 +1248,26 @@ This has the effect of magnifying the interesting media in terms of the mouse po
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{timebar1.png}
+    \includegraphics[width=1.0\linewidth]{timebar1.png}
     \caption{The arrow above the green colored “play forward” transport button is on the timebar.}
     \label{fig:timebar1}
 \end{figure}
 
 To create and use a preview region, hold down the right mouse button inside the timebar on either end of the timebar close to the edge until you see the resize pointer.  
 While continuously holding the right mouse button down, drag the arrow away from the end towards the middle of the timebar until you have the desired area outlined.  
-The slider will be a light blue color while the selected preview region will remain the same initial black color.  
+The slider will be a dark red color while the selected preview region will remain the same initial black color.  
 There are either a left or right resize pointer and you can click and drag in either direction to expand or shrink the region.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{timebar2.png}
+    \includegraphics[width=1.0\linewidth]{timebar2.png}
     \caption{ A left-facing arrow on the right side of the blue slider bar is used to drag the bar.}
     \label{fig:timebar2}
 \end{figure}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{timebar3.png}
+    \includegraphics[width=1.0\linewidth]{timebar3.png}
     \caption{Here you can see the right-facing arrow used to drag the other end of the slider bar.  
         The black area between is the actual preview area.}
     \label{fig:timebar3}
@@ -1275,7 +1278,7 @@ The selected area will move left or right as you drag and still retains the same
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{timebar4.png}
+    \includegraphics[width=1.0\linewidth]{timebar4.png}
     \caption{Note the double-headed fat arrow in the preview area used  to move the selection over.}
     \label{fig:timebar4}
 \end{figure}
@@ -1292,13 +1295,13 @@ Settings:
         preview region may appear to either move, shrink, or grow depending on the new length of the
         media on the timeline.  
     \item  To disable the preview region, you will have to drag both the right and the left blue slider bars
-        completely to their corresponding end so that there is no longer any visible blue slider.
+        completely to their corresponding end so that there is no longer any visible red slider.
 \end{enumerate}
 
 A good method for taking advantage of the preview region is described here.  
 On the main track canvas, scroll to the beginning of the area of interest.  
 When you do that, you will see in the compositor the red indicator line of that location.  
-Now in the compositor window, right mouse drag from the left side of the edge of the timebar to create the blue slider bar line up to the red indicator.  
+Now in the compositor window, right mouse drag from the left side of the edge of the timebar to create the dark red slider bar line up to the red indicator.  
 Back in the main track canvas, move to the location of the area you want to end looking and again you will see the red indicator line in the compositor.  
 Use the right mouse drag from the right to stop at that end point.  Using this method is often easier than continuous usage of the single frame move which can be tedious.
 
@@ -1313,7 +1316,7 @@ Management of resource allocation is also performed here.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{resource_window.png}
+    \includegraphics[width=0.8\linewidth]{resource_window.png}
     \caption{Folders are in the first column with contents of that folder on the right hand side}
     \label{fig:resource_window}
 \end{figure}
@@ -1401,7 +1404,7 @@ Below are steps illustrating an easy way to set up a folder.
     \item In the Resources window (figure~\ref{fig:folder_resources}), in the location of the Video/Audio effects and Media folders, bring up the \textit{Folder}$\dots$ popup by clicking the right mouse button.  
         Highlight, then click \textit{New Media or Clips}.
         \begin{figure}[htpb]
-            \begin{minipage}{.55\linewidth}
+            \begin{minipage}{.6\linewidth}
                 \centering
                 \includegraphics[width=0.9\linewidth]{folder_resources.png}
                 \caption{Highlight, then click “New Media or Clips”.
@@ -1411,7 +1414,7 @@ Below are steps illustrating an easy way to set up a folder.
                 \label{fig:folder_resources}
             \end{minipage}
             \hfill
-            \begin{minipage}{.35\linewidth}
+            \begin{minipage}{.37\linewidth}
                 \centering
                 \vspace{18ex}
 
@@ -1421,22 +1424,18 @@ Below are steps illustrating an easy way to set up a folder.
             \end{minipage}
         \end{figure}
     \item  In the \textit{New folder} popup as shown below (figure~\ref{fig:folder_new}), type in your folder name in the textbox.  Click OK.
-        \begin{figure}[htpb]
-            \centering
-        \end{figure}
+     \begin{figure}[htbp]    
+     	\centering
+     	\includegraphics[width=0.9\linewidth]{folder_master.png}
+     	\caption{The “master” Media folder}
+     	\label{fig:folder_master}
+     \end{figure}     
     \item  Select the \textit{master} Media folder to see which files are currently loaded, figure~\ref{fig:folder_master}.  
         Highlight the files there that you want to copy to your new folder (named Photos of Garden).  
         Drag the files to the left and when you see the Photos of Garden folder become highlighted, then drop there.  
         You can drag and drop any of the media from the \textit{master} Media at any time.  
         It flashes when the drop is successful.
 \end{enumerate}
-
-\begin{figure}[htbp]    
-    \centering
-    \includegraphics[width=0.7\linewidth]{folder_master.png}
-    \caption{The “master” Media folder}
-    \label{fig:folder_master}
-\end{figure}
 
 Adding the Shift key before the actual drop, will allow for relative path filenames instead of full path.
 But you might want to include or eliminate some of the media that exists in one of the folders that you have set up already.  
@@ -1449,9 +1448,9 @@ When you bring up the Modify folder window, if you already have files in that fo
     %\includegraphics[width=0.8\linewidth]{name.ext}
     \begin{tikzpicture}[scale=1, transform shape]
         \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.7\linewidth]{folder_modify.png}};
-        \node [yshift=-31mm, xshift=-1cm,anchor=east] at (img1.north west) (Arrow1) {\parbox{8em}{Here is the filter that was generated with the original drop }};
-        \node [yshift=-85mm, xshift=0cm,anchor=east] at (img1.north west) (Arrow2) {\parbox{10em}{When you click on the Value portion of that filter, the entire set of files that are covered by the filter rules pops up.   Now you can highlight a target filename that you would like to remove, and just erase that line and check the green checkmark for OK.}};
-        \draw [->, line width=1mm] (Arrow1) edge  ([yshift=-31mm] img1.north west);
+        \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Arrow1) {\parbox{8em}{Here is the filter that was generated with the original drop }};
+        \node [yshift=-65mm, xshift=0cm,anchor=east] at (img1.north west) (Arrow2) {\parbox{10em}{When you click on the Value portion of that filter, the entire set of files that are covered by the filter rules pops up.   Now you can highlight a target filename that you would like to remove, and just erase that line and check the green checkmark for OK.}};
+        \draw [->, line width=1mm] (Arrow1) edge  ([yshift=-20mm] img1.north west);
         \end{tikzpicture}
     
     \caption{Modify target}
@@ -1474,9 +1473,9 @@ The figure~\ref{fig:modify_folder} below displays the available choices for each
     \centering
     %\includegraphics[width=0.8\linewidth]{name.ext}
     \begin{tikzpicture}[scale=1, transform shape]
-        \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{modify_folder1.png}};
-        \node (img2) [yshift=-1cm, xshift=4cm, rotate=0] at (img1) {\includegraphics[width=0.6\linewidth]{modify_folder2.png}};
-        \node (img3) [yshift=-1cm, xshift=3cm, rotate=0] at (img2){\includegraphics[width=0.3\linewidth]{modify_folder3.png}};
+        \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.8\linewidth]{modify_folder1.png}};
+        \node (img2) [yshift=-1cm, xshift=3.5cm, rotate=0] at (img1) {\includegraphics[width=0.8\linewidth]{modify_folder2.png}};
+        \node (img3) [yshift=-1cm, xshift=3cm, rotate=0] at (img2){\includegraphics[width=0.5\linewidth]{modify_folder3.png}};
     \end{tikzpicture}
     \caption{The available choices for each field}
     \label{fig:modify_folder}
@@ -1649,7 +1648,7 @@ This is enabled for the Media/Proxy folders in icon mode when the mouse pointer 
     \label{fig:vicons1}
 \end{figure}
 
-The waveform in the figure~\ref{fig:vicons2} is displayed in the Resources window in the color green/yellow for the 2 audio tracks. 
+The waveform in the figure~\ref{fig:vicons2} is displayed in the Resources window in the color green for the 3 audio tracks. 
 There is a colored bar on the top of each a-icon where the color is based on the Color Spectrum -- the smaller the time duration, the redder the color; then as the time duration goes up, the color goes up so that you will go to green, then yellow, then blue, then really dark blue, then purple for the audio files 1 hour and over.  
 There are various other colors between these colors same as that seen in the color spectrum in the screenshot below.  
 Colors are utilized from the hue wheel in the counter-clockwise direction.  
@@ -1769,12 +1768,12 @@ Since the procedure varies among the distros, you will have to adapt to your spe
 
 \begin{figure}[htpb]
     \centering
-    \begin{minipage}{.49\linewidth}
+    \begin{minipage}{.9\linewidth}
     \centering
         \includegraphics[width=0.99\linewidth]{copy_files1.png}
     \end{minipage}
-    \hfill
-    \begin{minipage}{.49\linewidth}
+    \vfill
+    \begin{minipage}{.5\linewidth}
     \centering
         \includegraphics[width=0.99\linewidth]{copy_files2.png}
     \end{minipage}
@@ -1782,7 +1781,7 @@ Since the procedure varies among the distros, you will have to adapt to your spe
     \label{fig:copy_files1}
 \end{figure}
 
-In the Figure~\ref{fig:copy_files1}, one instance of \CGG{} has 6 items in the Media area highlighted that were copied to the file list.  
+In the Figure~\ref{fig:copy_files1}, one instance of \CGG{} has 3 items in the Media area highlighted that were copied to the file list.  
 Note how it includes the full pathname.
 
 In this screenshot on another instance of \CGG{}, there are only 2 items in the media but the \textit{Paste file list} box is ready to have the items inserted via the standard text box paste method.  When that is done, the additional 6 media files will be available on this other instance too.
@@ -1902,22 +1901,22 @@ The color ball changes made will be retained across sessions.
 There is a line separating the first 4 items, which are just non-automation type settable values as opposed to \textit{auto} keyframe types.  
 The color is not changeable for the 3 items of Mode, Pan, and Mask which simply display their symbol icon.
 
-Screenshot below displays the Show overlays popup with all of its options and color coded types such as yellow for Speed and blue for Camera Z.  
+Figure~\ref{fig:overlays_window} displays the Show overlays popup with all of its options and color coded types such as yellow for Speed and blue for Camera Z.  
 Upon clicking on the associated \textit{color ball} to the right of any keyframe type, for example \textit{Fade} in this screenshot, the color wheel palette window pops up so that you can manipulate the color as desired.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.99\linewidth]{overlays_window.png}
+    \includegraphics[width=0.85\linewidth]{overlays_window.png}
     \caption{Show Overlays window on the left with the Color ball window to the right to set color}
     \label{fig:overlays_window}
 \end{figure}
 
-Screenshot below shows several color coded lines for different keyframes along with the Fade slider for manipulation.  
+Figure~\ref{fig:overlays1} shows several color coded lines for different keyframes along with the Fade slider for manipulation.  
 The slider is in the same color as the color coded keyframe type line which is the same color as in the \textit{Show overlays} window.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{overlays1.png}
+    \includegraphics[width=1.0\linewidth]{overlays1.png}
     \caption{Lines are colored here on the timeline as designated in Show Overlays}
     \label{fig:overlays1}
 \end{figure}
@@ -1973,14 +1972,6 @@ An additional window, the levels window, can be brought up from the Window pulld
 The levels window displays the output audio levels after all mixing is done.  
 The visible range of the sound level meters is configurable in \texttt{Settings $\rightarrow$ Preferences, Interface tab} under the Operations section.
 
-\begin{wrapfigure}[16]{O}{0.3\linewidth} 
-    \centering
-    %\vspace{-4ex}
-    \includegraphics[width=0.5\linewidth]{volume_meter.png}
-    \caption{Sound Level Meters Window}
-    \label{fig:volume_meter}
-\end{wrapfigure}
-
 Sound level meters can be toggled in the viewer and compositor windows with the show meters button.  
 They also appear in the patchbay when the track is expanded and in the recording monitor when audio is being recorded. 
 
@@ -1989,7 +1980,13 @@ In the record monitor they are the input values from the sound card.
 In the patchbay they are the sound levels for each track after all effects are processed and before down-mixing for the output.  
 Most of the time, audio levels have numerical markings in dB but in the patchbay there is not enough room.
 
-
+\begin{wrapfigure}[15]{O}{0.3\linewidth} 
+	\centering
+	\vspace{-4ex}
+	\includegraphics[width=0.5\linewidth]{volume_meter.png}
+	\caption{Sound Level Meters Window}
+	\label{fig:volume_meter}
+\end{wrapfigure}
 
 The sound level is color coded as an extra means of determining the sound level.  
 Even without numerical markings, the sound level color can distinguish between several ranges and overload.  

@@ -75,8 +75,8 @@ File lists formats can be utilized in some way for the following list of types o
 %\vspace*{1ex} 
 Using the example of jpeg’s, the jpeg list sequence file type is the easiest and fastest way to access a sequence of jpg images as a single asset.  First build a jpeglist sequence file and name it something like jpeglist.sh.  There is an example script of how to do this in the Auxiliary Programs section of the Appendix (\ref{sec:image_sequence_creation}).  Once the jpeglist.sh file is built you can then run it similar to this line:
 
-\begin{lstlisting}[language=bash,numbers=none]
-$ jpeglist.sh   /<path>/file.jpg   /<path>/DSC*.jpg
+\begin{lstlisting}[style=sh]
+jpeglist.sh   /<path>/file.jpg   /<path>/DSC*.jpg
 \end{lstlisting}
 
 \vspace*{1ex} \noindent If <\texttt{path}> is the same on both outfile and infiles, then file.jpg is created in the same directory as infiles, the directory contains the entire asset, and the file list uses relative paths; otherwise the file list contains absolute paths.   Since this creates outfile list as a single asset, the memory demand and access time is much lower.  When you load the outfile in \CGG{}, you will need to set \textit{Try ffmpeg last} since ffmpeg does not work with jpeglist sequence files.
@@ -85,7 +85,7 @@ An example output file from running this script residing in the directory where 
 
 To use this, turn off ffmpeg probes first, and open \texttt{timelapse.jpg} using File ~$\rightarrow$ ~Load files.
 
-\begin{lstlisting}[language=bash,numbers=none,caption={Example: timelapse.jpg},captionpos=t]
+\begin{lstlisting}[style=sh,caption={Example: timelapse.jpg},captionpos=t]
 JPEGLIST
 # First line is always JPEGLIST
 # Frame rate:
@@ -111,11 +111,8 @@ Image2file format is an alternative method to open an image sequence via ffmpeg.
 \texttt{DSC0\%04d.opts} should contain the following lines which have to be modified to fit your exact requirements for duration, start\_number, and frame\_rate.
 
 
-\begin{lstlisting}[
-language=bash,
-numbers=none,
-caption={Example DSC0\%04d.opts},
-captionpos=t]
+\begin{lstlisting}[style=sh,caption={Example
+    DSC0\%04d.opts},captionpos=t]
 loglevel=verbose
 threads=auto
 format=image2
@@ -158,7 +155,7 @@ All data that you work with in \CGG{} is acquired either by loading from disk or
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{load.png}
+    \includegraphics[width=0.9\linewidth]{load.png}
     \caption{Load file menu.  Note the green checkmark for OK and the middle Apply option}
     \label{fig:load}
 \end{figure}
@@ -229,7 +226,7 @@ When you use the File pulldown to load files, you can do a sort within a sort wh
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{load-sort.png}
+    \includegraphics[width=1.0\linewidth]{load-sort.png}
     \caption{Load - Sort by File name, sort by file Size, and within Extension after a previous Size sort}
     \label{fig:load-sort}
 \end{figure}
@@ -241,15 +238,15 @@ There are several icon buttons at the top on the right hand side of the Load win
 
 \begin{description}
     \item[0] this is the default and current behavior and shows bytes the same as the \textit{ls -l} command.
-    \item[b] 3 significant digits suffixed by lower case k,m,g,t,b for representing magnitudes in $10^3$ (1000)
-    \item[B] 3 significant digits followed by upper case characters for representing magnitudes in $2^{10}$ (1024)
-    \item[;] like the exact default byte representation but with comma separators for easy reading.  Periods can
+    \item[SI] 3 significant digits suffixed by lower case k,m,g,t,b for representing magnitudes in $10^3$ (1000)
+    \item[Ic$^{E}$] 3 significant digits followed by upper case characters for representing magnitudes in $2^{10}$ (1024)
+    \item[0,] like the exact default byte representation but with comma separators for easy reading.  Periods can
     not be used as separators due to locale conflict with ffmpeg coding.
 \end{description}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{load-size.png}
+    \includegraphics[width=1.0\linewidth]{load-size.png}
     \caption{Load windows with various Numeric Sizes}
     \label{fig:load-size}
 \end{figure}
@@ -257,7 +254,7 @@ There are several icon buttons at the top on the right hand side of the Load win
 \subsection{Probe Order when Loading Media}%
 \label{sub:probe_order_loading_media}
 
-Why is this mentioned here?  So many programs have been written whose functionalities overlap and you may want to ensure that the one you wish to use is actually used.  Over time which one matches first may vary.  Ffmpeg is so generic that if your setting is \textit{Try ffmpeg first} it will almost certainly get used and it leaves little chance that other methods will even get a chance.  Some of the codec file drivers can open a variety of media, and some of the more common methods may have more than one file driver which could be useful to decode your media file, for example Tiff.  For expert specialized usage, when you want to guarantee that a certain method is used, you can change the \textit{probe order}.  Use the pulldown \texttt{Settings $\rightarrow$ Preferences} to get to the Interface tab where you will see a box in the Operation section on the left side called \textit{Probe Order}.  Click on the box and use the up/down/enabled boxes to change the order of the item you have highlighted (figure~\ref{fig:probe}).
+Why is this mentioned here?  So many programs have been written whose functionalities overlap and you may want to ensure that the one you wish to use is actually used.  Over time which one matches first may vary.  Ffmpeg is so generic that if your setting is \textit{Try ffmpeg first} it will almost certainly get used and it leaves little chance that other methods will even get a chance.  Some of the codec file drivers can open a variety of media, and some of the more common methods may have more than one file driver which could be useful to decode your media file, for example Tiff.  For expert specialized usage, when you want to guarantee that a certain method is used, you can change the \textit{probe order}.  Use the pulldown \texttt{Settings $\rightarrow$ Preferences} to get to the \textit{Interface tab} where you will see a box in the \textit{Operation} section on the left side called \textit{Probe Order}.  Click on the box and use the up/down/enabled boxes to change the order of the item you have highlighted (figure~\ref{fig:probe}).
 
 \begin{description} [noitemsep]
     \item[Up] move the item up 1 (if the item is currently on the top, it will be moved to the bottom)
@@ -269,12 +266,12 @@ The default setup is set to duplicate the past expected behavior with the except
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{probe.png}
+    \includegraphics[width=0.8\linewidth]{probe.png}
     \caption{Three example of Probes window}
     \label{fig:probe}
 \end{figure}
 
-Screencast show the first few probe items.  Note that the up arrow on the left, signifies \textit{enabled}.
+Figure~\ref{fig:probe} show the first few probe items.  Note that the up arrow on the left, signifies \textit{enabled}.
 Scrolling down shows the next 2 pages of possible drivers for a total of 18.
 
 The order change will not take effect until you click on the checkmark in both the Probes window and the Preferences window.  When you click on the FF button, which is in the upper right-hand corner of the main page to change \textit{Try FFMpeg first/last}, enabling of FFMPEG\_Late or FFMPEG\_Early will be toggled automatically in Probes to match that choice but does NOT change its position in the table. Be sure to only click on the FF button without the Preference/Probes window up to avoid unexpected results.  It is also recommended to leave FFMPEG\_Early/FFMPEG\_Late close to the top/bottom positions.  There is one case where you may want to disable all of the probes if you want to force PCM -- Pulse Code Modulator.  This code is always run when all other probes fail.
@@ -285,14 +282,14 @@ The order change will not take effect until you click on the checkmark in both t
 Some kinds of media have \textit{program} streams, like captured mpeg broadcast stream data.  For example, you may be able to \textit{tune} to channel 9, but be able to see 9-1, 9-2, and 9-3 on your TV.  If you open a capture of this kind of media, all of the channels are present in the timeline.  To select and view just one program, you can use Alt-1 to select program 1, or Alt-2 to select program 2, etc. up to Alt-8.  This will remove all of the other unrelated tracks and reset the format.  This feature can be used even if there is only one program, by pressing Alt-1, and the effect will be to reset the session format to the parameters from the media probe.  Note that there may be several audio \textit{programs} associated to a video stream;
 for example, there may be dialog in another language or some kind of descriptive dialog.  Since the first associated audio is always selected, this may not produce the intended results.
 
-Below are screenshots illustrating multiple program streams (figure~\ref{fig:stream}).  The left screenshot is a partial main \CGG{} window showing a pre-recorded broadcast TV media/audio stream with 3 programs plus several associated audio tracks.  The second screenshot of \textit{Asset Detail} provides detailed information on each of the streams obtained through executing the Info Details as explained in the section \textit{Info Asset Details}.
-
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{stream.png}
+    \includegraphics[width=1.0\linewidth]{stream.png}
     \caption{Multiple program streams and Asset Detail}
     \label{fig:stream}
 \end{figure}
+
+Below are screenshots illustrating multiple program streams (figure~\ref{fig:stream}).  The left screenshot is a partial main \CGG{} window showing a pre-recorded broadcast TV media/audio stream with 2 programs plus several associated audio tracks.  The second screenshot of \textit{Asset Detail} provides detailed information on each of the streams obtained through executing the \texttt{Info $\rightarrow$  Details} as explained in the section \nameref{sub:info_asset_details}.
 
 \section{Saving Your Work}%
 \label{sec:saving_your_work}
@@ -307,7 +304,7 @@ Saving  XML files is useful to save the current state of \CGG{} before quitting 
 When \CGG{} saves a file, it saves the EDL of the current project but does not save any media, instead just pointers to the original media files. For each media file, the XML file stores either an absolute path or just the relative path. If the media is in the same directory as the XML file, a relative path is saved. If it is in a different directory, an absolute path is saved.
 
 You have to be careful when moving files around to avoid breaking the media linkages. You can keep the media and the XML file in the same directory forever and freely move the whole directory, since relative paths are saved. Alternatively you can save the XML file in a different directory than the media but then you can't move the media. In this case you can freely move your XML file around, since absolute paths are saved. If you saved your XML file in the same directory as your media but you would like to move location, you can change the paths from relative to absolute by going
-to \texttt{File $\rightarrow$ Save as}$\dots$ and entering the new location. Similarly if you saved your project outside your media directory but you would like to move your media to another location, you can change the paths from absolute to relative by going to File $\rightarrow$ Save as\dots and saving your XML file in the same directory as the media.
+to \texttt{File $\rightarrow$ Save as}$\dots$ and entering the new location. Similarly if you saved your project outside your media directory but you would like to move your media to another location, you can change the paths from absolute to relative by going to \textit{File $\rightarrow$ Save as}\dots and saving your XML file in the same directory as the media.
 
 You can also repair broken media linkage by editing the XML file in a text editor. For every media you moved, search for the old path and replace it with the new one. You should make a backup copy of your XML file before editing. You can also replace the path of every asset whose source file you moved also within the program, by entering the new location in the Asset info window. To open this window, right click on the asset in the Resources window and choose Info\dots in the popup menu. Directly type the path in the first field of the dialog or click on the magnifier on the right to browse your files. Operating
 from the GUI is convenient only when a very small number of changes is needed.

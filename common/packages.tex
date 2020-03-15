@@ -17,7 +17,7 @@
                                            % "Math font
                                            % harmonization"
 
-\usepackage{
+\usepackage{%
     %amsfonts,
     mathtools,
     mathtext,% Cyrillic?
@@ -60,7 +60,7 @@
 \usepackage{listings}               % include code
 %---------------------------------------------------------------------------
 \makeatletter
-\renewcommand{\@biblabel}[1]{#1.}
+\renewcommand{\@biblabel}[1]{#1.} % FIXME? Do not use @ in LaTeX macro names.
 %---------------------------------------------------------------
 %
 \usetikzlibrary{% Libraries for TiKz
@@ -84,7 +84,7 @@
 %\usepackage{ifthen}
 %\usepackage{tocvsec2}
 \usepackage[intoc]{nomencl} % glossary package
-\makenomenclature           % make glossary
+\makenomenclature%            make glossary
 
 % eso-pic makes it easy to add some picture commands to every page
 % at absolute positions:

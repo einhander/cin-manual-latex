@@ -88,14 +88,14 @@ In the ffmpeg configuration directory there are a series of options files used w
 For the option files a specific format must be followed in creating the file content.
 In \texttt{typ.ext} encoder parameter files, the first line is defined as:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
       muxer codec
 (or) 	muxer codec | bitstream filter [ bitstream filter options ]
 \end{lstlisting}
 
 where the | represents piping the codec data through the bitstream filter. The rest of the lines in the file should look as follows:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
       # in column one is a comment
       id1   value1
 (or)	id2 = value2
@@ -103,7 +103,7 @@ where the | represents piping the codec data through the bitstream filter. The r
 
 Only one equals sign is allowed and it is just for readability.  There may be any number of id/value pair lines in a media definition, including zero. A typical line might be:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
       bitrate 4000000
 (or)	bitrate = 5000000
 \end{lstlisting}
@@ -119,13 +119,13 @@ There are 4 special id's recognized by \CGG{} which cause special processing.  T
 
 All other id's should be in the ffmpeg documentation, and correspond to the global, muxer, and codec option names and values used by ffmpeg.  For example to set the aspect ratio to 4:3, use:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 aspect 4:3
 \end{lstlisting}
 
 Below shows an example:  \texttt{decode.opts} which is used when the ffmpeg decoder is initialized.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # apply at init decode
 loglevel=fatal
 formatprobesize=5000000
@@ -150,13 +150,13 @@ So if you want to create a \textit{mov} codec class, add two new files to the ff
 Now you will see this as what you can choose in the rendering choices for ffmpeg.
 Inside the file you will see that the first line is special.  It is the muxer and codec.  For example:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 h264     libx265
 \end{lstlisting}
 
 The contents may be something like:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # <path>/video/vid.mov 
 mp4 libx265
 bitrate 4000000
@@ -167,7 +167,7 @@ This will code an mp4 formatted file using the \textit{lib264} codec encoder.
 For audio and video together, the mux format must agree between the aud.mov and vid.mov files when they are to be used together.  The stream muxer must be the same for all the streams in the file being written.
 For example:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # <path>/audio/aud.mov
 mp4 pcm_mulaw
 \end{lstlisting}
@@ -184,12 +184,12 @@ When the menu popup is created, there may be many choices for that class type, s
 
 \texttt{audio/<class>.dfl}  and  \texttt{video/<class>.dfl}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # audio/mov.dft
 aud.mov
 \end{lstlisting}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # video/mov.dft =
 vid.mov
 \end{lstlisting}
@@ -198,7 +198,7 @@ The above will be the default choice when the menu opens.
 
 When you see problems in using the new options files you have created and put into place, add the following line to \texttt{ffmpeg/encoder.opts}:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 loglevel=verbose
 \end{lstlisting}
 
@@ -206,7 +206,7 @@ sometimes that will be enough to see what has caused a failure, or even catch un
 
 There is an \textsc{EXCEPTION} to all of the above because of a conflict between ffmpeg and the x264 person making the detection of default ffmpeg settings terminate with an error.  If you get this error, you must workaround this termination by including parameters that don't match $5$ or more of the normal expected values.  So you just have to change a few parameters to avoid the probe detection.  Here is an example where you will notice the \textit{x264-params} line tweaking values to throw off the detection/error termination code.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # <path>/ffmpegvideo/test.mp4
 mp4 libx264
 preset=slow
@@ -221,7 +221,7 @@ If you send any new options files to \href{mailto:cin@lists.cinelerra-gg.org}{ci
 
 To get a listing of the current ffmpeg supported formats and codecs that can be made to work with \CGG{}, provided there are option files added, run the following commands.  This should be done from the \texttt{<build>} directory substituting the location of \texttt{<build>} where you have installed \CGG{} on your system and the ffmpeg may be a different version than $4.2$ as used below.  Then look at the output created in \texttt{/tmp/ff-formats.txt} and \texttt{codecs.txt}.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 /<build>/cinelerra-5.1/thirdparty/ffmpeg-4.2/ffmpeg -formats > /tmp/ff-formats.txt
 /<build>/cinelerra-5.1/thirdparty/ffmpeg-4.2/ffmpeg -codecs > /tmp/ff-codecs.txt
 \end{lstlisting}
@@ -233,7 +233,7 @@ For illustrative purposes, here is an example of the options files that need to 
 
 Add the file named  \texttt{./ffmpeg/audio/acc256k.pro} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 mov aac
 strict -2
 b 256000
@@ -243,13 +243,13 @@ b 256000
 
 Add the file named \texttt{./ffmpeg/audio/pro.dfl} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 acc256k.pro
 \end{lstlisting}
 
 Add the file named \texttt{./ffmpeg/video/prores.pro} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 mov prores
 profile=2
 # lines of comments
@@ -257,7 +257,7 @@ profile=2
 
 Add the file named \texttt{./ffmpeg/video/pro.dfl} which contains the following lines:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 prores.pro
 \end{lstlisting}
 
@@ -306,14 +306,14 @@ Another feature gained from using ffmpeg in \CGG{} takes advantage of what is be
 
 To encode a series of $48$\,bit tiff output image files, add a file to the \CGG{} data ffmpeg/video subdirectory as in:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # \dots/ffmpeg/video/tiff.dfl
 tiff48.tif
 \end{lstlisting}
 
 Then create an ffmpeg video encoder parameters file in the same directory:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # \dots/ffmpeg/video/tiff48.tiff
 image2 tiff
 pixel_format=rgb48
@@ -328,7 +328,7 @@ The resulting directory of images can be opened for reading by simply opening th
 
 Raw video is not affected by decoding on read in.  This makes it very attractive to provide raw image data for editing and rendering media.  A wide variety of raw formats are available via the ffmpeg file interface.  To load media in a raw format, select \textit{try ffmpeg first} and create an accompanying \textit{opts} file.  The opts files must be in the same directory as your media, with the same base name, and the \texttt{.opts} extension.  The opts file contents should reflect your video setup.  An example follows:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 # Video file name:    /tmp/buddy.mov
 # Opts file name:     /tmp/buddy.opts
 # Contents of opts file:

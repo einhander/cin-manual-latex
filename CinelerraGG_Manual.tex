@@ -4,28 +4,28 @@ a4paper,
 oneside,
 svgnames,
 %draft
-]{memoir}                       % paper size, font size and other options for document
-\input{common/packages.tex}     % common packages
-
+]{memoir} % paper size, font size and other options for document
+\input{common/packages.tex} % common packages
 \input{common/settings.tex}
+
+%\includeonly{common/title,parts/}% Introduction,parts/Installation,parts/Windows
 
 \begin{document}
 
 \input{common/title.tex}        % create and use custom title page
 
 \thispagestyle{empty}           % no page numbers
-
-\newpage
-\parskip=14pt
+% \newpage
+\setlength{\parskip}{1\baselineskip}
 \frontmatter
 
-\include{parts/Introduction}     % Introduction 
+\include{parts/Introduction}
 
 \tableofcontents
 
 \pagestyle{ruled}
 
-\mainmatter
+\mainmatter%
 
 \include{parts/Installation}
 \include{parts/Windows}

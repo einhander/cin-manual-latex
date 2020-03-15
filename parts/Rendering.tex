@@ -33,8 +33,8 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
 \begin{description}
     \item[Wrench:] select the \textit{wrench} next to each toggle to set compression parameters.  If the file format can not store audio or video the compression parameters will be blank.  If \textit{Render audio tracks} or \textit{Render video tracks} is selected and the file format does not support it, trying to render will result in an error message. More details in the section: \nameref{sub:extra_cin_option_ffmpeg}
     \item[Create new file at each label] the option causes a new file to be created when every label in the timeline is encountered – a separate file for each.  This is useful for dividing long audio recordings into individual tracks.  When using the Render Farm (described later), \textit{Create new file at each label} causes one render farm job to be created at every label instead of using the internal load balancing algorithm to space jobs.   If the filename given in the render dialog has a 2 digit number in it, the 2 digit number is overwritten with a different incremental number for every output file. If no 2 digit number is given, \CGG{} automatically concatenates a number to the end of the given filename for every output file.
-    For example, in the filename \texttt{/movies/track01.wav} the $01$ would be overwritten for every output file. 
-    The filename \texttt{/movies/track.wav}; however, eventually would become \texttt{/movies/track.wav001} and so on.  
+    For example, in the filename \texttt{/movies/track01.wav} the $01$ would be overwritten for every output file.
+    The filename \texttt{/movies/track.wav}; however, eventually would become \texttt{/movies/track.wav001} and so on.
     Filename regeneration is only used when either render farm mode is active or creating new files for every label is active.
     \item[Render range:] choices are \textit{Project}, \textit{Selection}, \textit{In/Out points}, and \textit{One Frame} for single images like Tiff.  For these images, Render range will have \textit{One Frame} automatically checked and all of the others ghosted since nothing else makes sense (figure~\ref{fig:render02}).  This makes it easy to set the insertion point where you want the 1 frame to be rendered rather than having to precisely zoom in to set the in/out pointers.  Note that whichever Render range is checked, remains checked so that if \textit{One Frame} gets automatically checked, the next time you render it will still be checked and you will have to select a different one if desired.  That is why you should always check the settings.
 \end{description}
@@ -52,8 +52,8 @@ Use the File pulldown and select Render to start the render dialog (figure~\ref{
     frequently, is to save that profile for future usage without having to set it up again.
     \item[Save Profile:] after setting up your render preference formats, use the save profile button to save it.
     \item[Delete Profile:] if you want to delete a saved profile, highlight the one you no longer want and delete.
-    \item[Insertion strategy:] select an insertion mode from the available choices as seen when you click on the down arrow on the right hand side of the option. The insertion modes are the same as with loading files.  In the case if you select “insert nothing” the file will be written out to disk without changing the current project. For other insertion strategies be sure to prepare the timeline to have the output inserted at the right position before the rendering operation is finished. 
-    
+    \item[Insertion strategy:] select an insertion mode from the available choices as seen when you click on the down arrow on the right hand side of the option. The insertion modes are the same as with loading files.  In the case if you select “insert nothing” the file will be written out to disk without changing the current project. For other insertion strategies be sure to prepare the timeline to have the output inserted at the right position before the rendering operation is finished.
+
     Even if you only have audio or only have video rendered, a paste insertion strategy will behave like a normal paste operation, erasing any selected region of the timeline and pasting just the data that was rendered.  If you render only audio and have some video tracks armed, the video tracks will get truncated while the audio output is pasted into the audio tracks.
 \end{description}
 
@@ -94,7 +94,7 @@ To start rendering from the first enabled batch, hit \texttt{Start}.  Once rende
 
 You can automate \CGG{} batch renders from other programs.  In the batch render dialog, once you have created your list of batch render jobs, you can click the button \texttt{Save Jobs} and choose a file to save your batch render list to.  Once you have created this file, you can start up a batch render without needing to interact with the \CGG{} user interface.  From a shell prompt, from a script, or other program, execute:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
     {path_to_cinelerra} -r batchjob.xml
 \end{lstlisting}
 substituting  your actual filename for \texttt{batchjob.xml}.  When invoked with these parameters, \CGG{} will start up and perform the rendering jobs in that list, without creating its usual windows.
@@ -108,7 +108,7 @@ To perform rendering from the command line, first run \CGG{} in graphical mode. 
 
 On the command line run:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cinelerra -r
 \end{lstlisting}
 
@@ -123,20 +123,20 @@ The \textit{Save to EDL Path} and \textit{Use Current EDL} buttons can be valuab
     \item[Save to EDL Path] if you have made a change to the EDL, use this button to save the changes so
     that they will be used in the render operation.  Although you can get the same results by using
     \texttt{File  $\rightarrow$  Save\dots}, this capability was initially added to assist developers in testing the batch jobs needed to create dvd/bluray media as it keeps the work focused in a single window and retains the original
-    job name.  An example --you have everything all set up with a new job in the Batch Render window 
+    job name.  An example --you have everything all set up with a new job in the Batch Render window
     using \texttt{generic.xml} for the EDL path and with a job name of \texttt{original\_name.xml}.  Then you realize
-    that you forgot to cut out a section in the media that is not wanted in the final product.  You can cut 
+    that you forgot to cut out a section in the media that is not wanted in the final product.  You can cut
     that out and then \textit{Save to EDL Path} so your change will be in effect for the rendering.  Without this
-    button, you would be using the EDL you started with and the cut would be ignored.  Alternatively, if 
-    the cut changes are saved via \texttt{File  $\rightarrow$  Save as}\dots with a filename of \texttt{new.xml} and then you use \textit{Save to EDL Path}, the current highlighted job displayed in the window as \texttt{original\_name.xml} will be 
+    button, you would be using the EDL you started with and the cut would be ignored.  Alternatively, if
+    the cut changes are saved via \texttt{File  $\rightarrow$  Save as}\dots with a filename of \texttt{new.xml} and then you use \textit{Save to EDL Path}, the current highlighted job displayed in the window as \texttt{original\_name.xml} will be
     replaced with \texttt{new.xml}.  However, it is important to note that the result will be saved with the name
     \texttt{original\_name} – that is, the new content from \texttt{new.xml} but with the old name of \texttt{original\_name.xml}.
     \item[Use Current EDL] if you are working on media and still testing out the results, you can take
-    advantage of this click-box to quickly get results.  Basically, you change the media, save that change 
+    advantage of this click-box to quickly get results.  Basically, you change the media, save that change
     with another name (in order to preserve the original name in case you don't like the changes), and
     press \textit{Use Current EDL}.  As an example, a user creates a new job in the Batch Render window
     using the current media, previously defined in generic.xml, with the EDL path of \texttt{generic.xml}.  The
-    user then changes the media on the timeline, saves the changes via \texttt{File $\rightarrow$ Save as\dots} with a new 
+    user then changes the media on the timeline, saves the changes via \texttt{File $\rightarrow$ Save as\dots} with a new
     name, such as \texttt{new\_name.xml}, and then clicks on \textit{Use Current EDL}.  In this case, the EDL path
     listbox will be automatically updated to the \texttt{new\_name.xml} and the current existing highlighted job will be replaced with the \texttt{new\_name.xml} in the EDL column.
     \item[Save Jobs] when you have set up the batch jobs the way you want and you think you may have to
@@ -187,7 +187,7 @@ It is often useful to insert an effect or a transition and then select \texttt{S
 \section{Render Farm Usage}%
 \label{sec:render_farm_usage}
 
-Render Farm uses background rendering, a feature of \CGG{} where the video is rendered in the background, to speed up rendering significantly.  Because rendering is memory and cpu intensive, using multiple computers on a network via a render farm is a significant gain.  With \CGG{} installed on all nodes, the master node and the clients communicate via a network port that you specify. 
+Render Farm uses background rendering, a feature of \CGG{} where the video is rendered in the background, to speed up rendering significantly.  Because rendering is memory and cpu intensive, using multiple computers on a network via a render farm is a significant gain.  With \CGG{} installed on all nodes, the master node and the clients communicate via a network port that you specify.
 
 \CGG{} can distribute the rendering tasks over the network to the other computers of the Render Farm.  The render farm software tries to process all of the rendering in parallel so that several computers can be used to render the results.  The \textit{Total jobs to create} in the setup or labels on the timeline are used to divide a render job into that specified number of tasks.  Each background job is assigned a timeline segment to process and the jobs are sent to the various computer nodes depending upon the load balance.  The jobs are processed by the nodes separately and written to individual files.  You will have to put the files back together via a load with concatenation, or typically by using a command line tool from a script.
 
@@ -217,18 +217,18 @@ The following steps are just a guideline to start your render farm.  It is assum
         \item click OK on the bottom of the Preferences window.
     \end{itemize}
     \item On the client computers ($192.168.1.12$), start 5 background \CGG{} tasks via:
-    \begin{lstlisting}[language=bash,numbers=none]
-$ cd /{path_to_cinelerra}
-$ cin -d 401
-$ cin -d 402 
+    \begin{lstlisting}[style=sh]
+cd /{path_to_cinelerra}
+cin -d 401
+cin -d 402
 ...
-$ cin -d 405
+cin -d 405
     \end{lstlisting}
     \item On the master node (localhost), start the 2 background \CGG{} tasks via:
-    \begin{lstlisting}[language=bash,numbers=none]
-$ cd /{path_to_cinelerra}
-$ cin -d 406
-$ cin -d 407
+    \begin{lstlisting}[style=sh]
+cd /{path_to_cinelerra}
+cin -d 406
+cin -d 407
     \end{lstlisting}
     \item When your video is ready, setup a render job via \texttt{File $\rightarrow$  Render} or \texttt{File $\rightarrow$  Batch Render} and check OK.
     \item The results will be in the shared file \texttt{path/filename} that you selected in the render menu with the
@@ -261,18 +261,18 @@ Below we describe the Performance tab for configuring a render farm (figure~\ref
     \item[Sort nodes] sorts the nodes list based on the hostname.
     \item[Delete Nodes] deletes whatever node is highlighted in the nodes list.  You can highlight several at once to have them all deleted.
     \item[Client Watchdog Timeout] a default value of $15$ seconds is used here and the tumbler increments by $15$ seconds.  A value of $0$ (zero) disables the watchdog so that if you have a slow client, it will not kill the render job while waiting for that client to respond.
-    \item[Total jobs to create] determines the number of jobs to dispatch to the render farm.  Total jobs is used to divide a render job into that specified number of tasks.  Each background job is assigned a timeline segment to process.  The render farm software tries to process all of the rendering in parallel so that several computers can be used to render the results.  
-    
+    \item[Total jobs to create] determines the number of jobs to dispatch to the render farm.  Total jobs is used to divide a render job into that specified number of tasks.  Each background job is assigned a timeline segment to process.  The render farm software tries to process all of the rendering in parallel so that several computers can be used to render the results.
+
     To start, if you have computers of similar speed, a good number for \textit{Total jobs to create} is the number of computers multiplied by $3$.  You will want to adjust this according to the capabilities of your computers and after viewing the framerates.  Multiply them by $1$ to have one job dispatched for every node.  If you have $10$ client nodes and one master node, specify $33$ to have a well balanced render farm.
     \item[(overridden if new file at each label is checked)] instead of the number of jobs being set to \textit{Total jobs to create}, there will be a job created for each labeled section.  If in the render menu, the option \textit{Create new file at each label} is selected when no labels exist, only one job will be created.  It may be quite advantageous to set labels at certain points in the video to ensure that a key portion of the video will not be split into two different jobs.
     \item[Reset rates] sets the framerate for all the nodes to $0$.  Frame rates are used to scale job sizes based on CPU speed of the node.  Frame rates are calculated only when render farm is enabled.
 \end{description}
 
 Framerates can really affect how the Render Farm works.  The first time you use the render farm all of the rates are displayed as $0$ in the \texttt{Settings $\rightarrow$ Preferences}, Performance tab in the Nodes box.  As rendering occurs, all of the nodes send back framerate values to the master node and the preferences page is updated with these values.  A rate accumulates based on speed.  Once all nodes have a rate of non-zero, the program gives out less work to lower rated nodes in an effort to make the total time for the render to be almost constant.
-Initially, when the framerate scaling values are zero, the program just uses package length -- render size 
+Initially, when the framerate scaling values are zero, the program just uses package length -- render size
 divided by the number of packages to portion out the work (if not labels).  If something goes wrong or the rates become suspect, then all of the rest of the work will be dumped into the last job.  When this happens, you really should \textit{reset rates} for the next render farm session to restart with a good balance.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
     {cinelerra pathname} -h     #displays some of the options.
 \end{lstlisting}
 
@@ -282,62 +282,62 @@ divided by the number of packages to portion out the work (if not labels).  If s
 {\color{red} CAUTION }, any exact command lines worked as of $01/2018$ on a Fedora system.  These can change over time and on different operating systems/levels.  Always check/verify any command line before using.
 
 \begin{description}
-    \item[Set up \CGG{}] A \CGG{} render farm is organized into a master node and any number of client nodes.  The master node is the computer which is running the gui.  The client nodes are anywhere else on the network with \CGG{} installed and are run from the command line.  Before you start the master node for \CGG{}, you need to set up a shared filesystem on the disk storage node as this is the node that will have the common volume where all the data will be stored.  
-    The location of the project and its files should be the same in the client computers as in the master computer and to avoid problems of permissions, it is better to use the same user in master and clients. 
+    \item[Set up \CGG{}] A \CGG{} render farm is organized into a master node and any number of client nodes.  The master node is the computer which is running the gui.  The client nodes are anywhere else on the network with \CGG{} installed and are run from the command line.  Before you start the master node for \CGG{}, you need to set up a shared filesystem on the disk storage node as this is the node that will have the common volume where all the data will be stored.
+    The location of the project and its files should be the same in the client computers as in the master computer and to avoid problems of permissions, it is better to use the same user in master and clients.
     For example, if you have the project in \texttt{/home/<user>/project-video} you must create the same directory path on the clients, but empty.  Sharing the directory of the location of your project on the master computer can be done with NFS as described next.  Alternatively, you can look up on the internet how to use Samba to share a directory.
     \item[Create a shared filesystem and mount using NFS] All nodes in the render farm should use the same filesystem with the same paths to the project files on all of the master and client nodes.  This is easiest to do by setting up an NFS shared disk system.
     \begin{enumerate}
         \item On each of the computers, install the nfs software if not already installed.  For example, on Debian 9
         you will need to run: (be sure to check/verify before using any command line):
-        \begin{lstlisting}[language=bash,numbers=none]
-$ apt-get install nfs-kernel-server
+        \begin{lstlisting}[style=sh]
+apt-get install nfs-kernel-server
         \end{lstlisting}
         \item On the computer that contains the disk storage to be shared, define the network filesystem.  For
         example to export \texttt{/tmp}, edit the \texttt{/etc/exports} file to add the following line:
-        \begin{lstlisting}[language=bash,numbers=none]
+        \begin{lstlisting}[style=sh]
 192.168.1.0/24(rw,fsid=1,no_root_squash,sync,no_subtree_check)
         \end{lstlisting}
-        \item Next reset the exported nfs directories using: 
-        \begin{lstlisting}[language=bash,numbers=none]
-$ exportfs -ra
-        \end{lstlisting} 
-        and you may have to start or restart nfs: 
-        \begin{lstlisting}[language=bash,numbers=none]
-$ systemctl restart nfs
+        \item Next reset the exported nfs directories using:
+        \begin{lstlisting}[style=sh]
+exportfs -ra
+        \end{lstlisting}
+        and you may have to start or restart nfs:
+        \begin{lstlisting}[style=sh]
+systemctl restart nfs
         \end{lstlisting}
         \item Each of the render farm computers must mount the exported nfs target path.  To see the exports
         which are visible from a client, login as root to the client machine and keyin:
-        \begin{lstlisting}[language=bash,numbers=none]
-$ showmount -e <ip-addr>  #using the ip address of the storage host
+        \begin{lstlisting}[style=sh]
+showmount -e <ip-addr>  #using the ip address of the storage host
         \end{lstlisting}
         \item to access the host disk storage from the other computers in the render farm, mount the nfs export on
         the corresponding target path: (be sure to check/verify before using any command line):
-        \begin{lstlisting}[language=bash,numbers=none]
-$ mount -t nfs <ip-addr>:/<path>  <path>
+        \begin{lstlisting}[style=sh]
+mount -t nfs <ip-addr>:/<path>  <path>
         \end{lstlisting}
-        where \texttt{<path>} is the storage host directory, and \texttt{<ip-addr>} is the network address of the storage host.        
+        where \texttt{<path>} is the storage host directory, and \texttt{<ip-addr>} is the network address of the storage host.
         Because all of the computers must have the same directory path, create that same directory path with the same uid/gid/permissions on each storage client computer ahead of time.
-        \item To make this permanent across reboots on the client nodes, add the following line to \texttt{/etc/fstab}: 
-        \begin{lstlisting}[language=bash,numbers=none]
+        \item To make this permanent across reboots on the client nodes, add the following line to \texttt{/etc/fstab}:
+        \begin{lstlisting}[style=sh]
 {masternode}:/nfsshare /mnt nfs defaults 0 0
         \end{lstlisting}
         You can make this permanent on the disk storage host BUT the command lines shown, which were
         correct in January 2018 on Fedora, may be different for your operating system or in the future.  In
         addition if your network is not up, there may be numerous problems.  If you make a mistake, your
         system may not boot.  To make permanent, add the following line to \texttt{/etc/fstab}:
-        \begin{lstlisting}[language=bash,numbers=none]
+        \begin{lstlisting}[style=sh]
 192.168.1.12:/tmp /tmp nfs rw,async,hard,intr,noexec,noauto 0 0
         \end{lstlisting}
         You will still have to mount the above manually because of the \textit{noauto} parameter but you won’t
         have to remember all of the other necessary parameters.  Depending on your expertise level, you can
         change that.
-        
-        Later, to remove access to the storage host filesystem:        
-        \begin{lstlisting}[language=bash,numbers=none]
-$ umount <path>
+
+        Later, to remove access to the storage host filesystem:
+        \begin{lstlisting}[style=sh]
+umount <path>
         \end{lstlisting}
-        
-        Be aware that you may have to adjust any security or firewalls you have in place.  \textit{Most firewalls will require extra rules to allow nfs access}.  Many have built-in configurations for this. 
+
+        Be aware that you may have to adjust any security or firewalls you have in place.  \textit{Most firewalls will require extra rules to allow nfs access}.  Many have built-in configurations for this.
     \end{enumerate}
     \item[Configure Rendering on Master Node] There is 1 master node which is running the \CGG{} gui and where the video will be edited and the command given to start up the rendering.  Any number of client computers can be run from the command line only, so they can be headless since no X or any graphical libraries are needed.  Of course, the \CGG{} software must be installed on each of the client computers.
     \begin{enumerate}
@@ -349,8 +349,8 @@ $ umount <path>
         \item Add the hostname or the IP address of each of the client nodes in the Hostname textbox and the port
         number that you want to use in the Port textbox.  You can make sure a port number is not already in
         use by keying in on the command line:
-        \begin{lstlisting}[language=bash,numbers=none]
-$ netstat -n -l -4 --protocol inet
+        \begin{lstlisting}[style=sh]
+netstat -n -l -4 --protocol inet
         \end{lstlisting}
         Next, click on the \textit{Add Nodes}
         button and then you will see that host appear in the Nodes list box to the right.  The \texttt{X} in the first
@@ -362,24 +362,24 @@ $ netstat -n -l -4 --protocol inet
     \end{enumerate}
     \item[Create Workflow] While working on the master computer, it is recommended that you keep all the resources being used on the same shared disk.  Load your video/audio piece and do your editing and preparation.  Add any desired plugins, such as a Title, to fine-tune your work.  You want to make sure your video is ready to be rendered into the final product.
     \item[Start the Client Nodes] To start up the client nodes run \CGG{} from the command line on each of the client computers using the following command:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 /{cinelerra_pathname}/cin -d [port #]   ;   \#for example /mnt1/bin/cinelerra -d 401
     \end{lstlisting}
     This starts \CGG{} in command prompt mode so that it listens to the specified port number for commands from the master node for rendering.  When you start each of the clients up, you will see some messages scroll by as each client is created on that computer, such as:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 RenderFarmClient::main_loop: client started
 RenderFarmClient::main_loop: Session started from 127.0.0.1
     \end{lstlisting}
     As it completes its jobs, you will should see:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 RenderFarmClientThread::run: Session finished
     \end{lstlisting}
     A quick way to start a sequence of clients is to use:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 or n in `seq 1501 1505`; do cin -d $n; done
     \end{lstlisting}
     \item[Render Using Render Farm] After you have followed the preceding steps, you are ready to use the render farm.  Click on \texttt{File $\rightarrow$ Render}\dots which opens the render dialog.  The most important point here is to use for \textit{the Output path / Select a file to render to} a path/file name that is on the shared volume that is also mounted on the clients.  Click on OK to render. The \CGG{} program divides the timeline into the number of jobs specified by the user.  These jobs are then dispatched to the various nodes depending upon the load balance. The first segment will always render on the master node and the other segments will be farmed out to the render nodes.  Batch Rendering, as well as BD/DVD rendering, may use the render farm.  Each line in the batchbay can enable/disable the render farm.  Typically, video can be rendered into many file segments and concatenated, but normally audio is rendered as one monolithic file (not farmed).
-    
+
     Another performance feature which can use the Render Farm is \textit{Background Rendering}.  This is also enabled on the \texttt{Preferences $\rightarrow$ Performances} tab.  The background render function generates a set of image files by pre-rendering the timeline data on the fly.  As the timeline is update by editing, the image data is re-rendered to a \textit{background render} storage path.  The Render Farm will be used for this operation if it is enabled at the same time as the \textit{background render} feature.
     \item[Assemble the Output Files] Once all of the computer jobs are complete, you can put the output files together by using the shell script, \textit{RenderMux} (from the menubar \textit{scripts} button just above FF), if the files were rendered using ffmpeg, or you can load these by creating a new track and specifying concatenate to existing tracks in the load dialog in the correct numerical order.  File types which support direct copy can be concatenated into a single file by rendering to the same file format with render farm disabled as long as the track dimensions, output dimensions, and asset dimensions are equal.
 \end{description}
@@ -406,8 +406,8 @@ These steps are for quickly setting up render farm with the least amount of addi
         \item set total jobs to the number of client computers $+1$ multiplied by $3$ (or proportion to client speeds)
         \item check OK
     \end{itemize}
-    \item On each buddy client, create a job for each port:    
-    \begin{lstlisting}[language=bash,numbers=none]
+    \item On each buddy client, create a job for each port:
+    \begin{lstlisting}[style=sh]
 /{cinelerra_pathname}/cin -d port#
     \end{lstlisting}
     \item On the master, bring up the render menu and name the output files, for example \texttt{/tmp/myoutput.mp4}.
@@ -442,7 +442,7 @@ CPU count.
     \item A port in use when stopped may take up to $30$ seconds to time out before you can restart the jobs.
     \item Each of the port combinations have to be unique across clients, and not already in use in the network.
     \item \CGG{} load balances on a first come, first serve basis.  If the last section of the video is sent to the
-    slowest node, the render job will have to wait for the slowest node to finish.  It would be better to 
+    slowest node, the render job will have to wait for the slowest node to finish.  It would be better to
     start on the slowest node with the earlier section of the video so keep that in mind when designating
     port numbers.
     \item If not running as root, a port number in the higher range of $1024$ and above must be used instead of
@@ -477,7 +477,7 @@ with the clients on a shared filesystem. More information on index files configu
 \ref{sub:index_file_section}.
     \item Or, one of the convenient features of Cinelerra is the redirection of the path
  via \texttt{CIN\_CONFIG} as in:
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 CIN_CONFIG=/<shared_file_pathname>/<filename_such_as_.bcast5> /<cinelerra_pathname>/cin
 \end{lstlisting}
 This means that you can make project related configurations that do not impact the default \texttt{\$HOME} config.  You can either export your default \texttt{\$HOME} config or the \texttt{CIN\_CONFIG} config to use on the render farm.
@@ -572,7 +572,7 @@ In \CGG{} for two-pass, you need to run ffmpeg twice, with the same settings, ex
 
 This 2 line ffmpeg 2-pass operation can be functionally duplicated in \CGG{} in the steps below them:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ffmpeg -y -i input -c:v libx264 -b:v 2600k -pass 1 -c:a aac -b:a 128k -f mp4 /dev/null && \
 ffmpeg -i input -c:v libx264 -b:v 2600k -pass 2 -c:a aac -b:a 128k output.mp4
 \end{lstlisting}
@@ -592,43 +592,43 @@ ffmpeg -i input -c:v libx264 -b:v 2600k -pass 2 -c:a aac -b:a 128k output.mp4
         \item Set the Video Compression to \textit{h264.mp4} (as seen in the example).
         \item Set the bitrate to $2600000$ ($2600k$ as in ffmpeg example above).
         \item Add the following 2 lines after the first line:
-        \begin{lstlisting}[language=bash,numbers=none]
+        \begin{lstlisting}[style=sh]
 flags +pass1
 passlogfile /tmp/{temporary log file name}.log
         \end{lstlisting}
         Click checkmark OK.
-    \end{itemize}    
+    \end{itemize}
     \item Click on \textit{New} to create the second pass job.  You will see this second job in the listbox below.
      Use the Video wrench and change pass1 to pass2 as follows.
-        \begin{lstlisting}[language=bash,numbers=none]
+        \begin{lstlisting}[style=sh]
 flags +pass2
         \end{lstlisting}
     \item Click checkmark OK.
     \item Click on the \textit{Start} box and watch it go!
     \item You can now check the output file for results.  At the time this was documented, \textit{rc=2pass} will be
-        in the output.    
+        in the output.
 \end{enumerate}
 
 If you need to re-render this, the Batch Render will still be set up but you have to click on the \textit{Enabled} column in the listbox to re-enable the jobs to run which puts an X there.  Click Start again. You can reuse batch job using the \textit{save jobs} and \textit{load jobs} buttons in the batch render dialog.
 
-\paragraph{Render shortcuts for webm, h264, h265} are available by using the option files that are already set up for this purpose.  Use the render menu as usual, with ffmpeg/mp4, choose h264 or h265 \textit{pass1of2\_h26x} for the video and \textit{passes1and\-2\_h26x} for the audio; 
+\paragraph{Render shortcuts for webm, h264, h265} are available by using the option files that are already set up for this purpose.  Use the render menu as usual, with ffmpeg/mp4, choose h264 or h265 \textit{pass1of2\_h26x} for the video and \textit{passes1and\-2\_h26x} for the audio;
 with ffmpeg/webm, choose \textit{pass1of2\_vp9}.  When that is finished, you will have to use the render menu again and this time for video, choose \textit{pass2of2\_h26x} or \textit{pass2of2\_vp9}.  The logfile is hard coded in the options file so will write over any currently existing logfile if you do not change it before you start the render.
 
 \paragraph{Requirements for some other libraries} ~\\ (used instead of \textit{flags +pass1} \& \textit{passlogfile}):
 
 \begin{description}
     \item[x265:] add this line:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 x265-params=pass=1:stats=/tmp/{temporary log file name}.log
-    \end{lstlisting}      
+    \end{lstlisting}
     at the time this document was written, you should see in the output: \\  \textit{stats-read=2}
-    
+
     \item[libvpx-vp9, xvid, and huffyuv:]~
 
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
     cin_stats_filename /tmp/{temporary log file name}.log
     flags +pass1 (or flags +pass2 for the second pass)
-    \end{lstlisting}    
+    \end{lstlisting}
 \end{description}
 
 \textit{NOTE:} for vp9, the best Pixels is \textit{gbrp}
@@ -651,11 +651,11 @@ picture quality similar to the Blu-ray with some limitations.
 As container Matroska (\texttt{.mkv}) is used, but also mp4 and others are
 possible.
 
-\vspace{2ex} \begin{lstlisting}[language=bash,numbers=none]
+\vspace{2ex} \begin{lstlisting}[style=sh]
 matroska libx265
 
 # CRF 16 creates a balanced compromise
-# between quality and file size. 
+# between quality and file size.
 crf=16
 
 # Preset changes encoding speed and generally
@@ -716,7 +716,7 @@ You can pipe a video to any command line on the computer, such as ffmpeg.  This 
 
 \begin{enumerate}
     \item on a terminal window create a named pipe file, for example:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 mknod /tmp/piper.yuv p
     \end{lstlisting}
     load your video and do your editing
@@ -725,13 +725,13 @@ mknod /tmp/piper.yuv p
     \item for \textit{Insertion Strategy}, you will want to make sure to select \textit{insert nothing}
     \item click for OK on the green checkmark.(the \CGG{} gui will look like it is hanging while waiting for a command line to use the pipe.)
     \item on the terminal window, keyin your command, for example:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 /mnt0/build5/cinelerra-5.1/thirdparty/ffmpeg-3.4.1/ffmpeg -f rawvideo -pixel_format yuv420p \ -video_size 1280x720 -framerate 30000/1001 -i /tmp/piper.yuv /tmp/pys.mov
     \end{lstlisting}
 \end{enumerate}
 
 A slightly different option can be used instead that may be more familiar to some.  In the render menu after choosing the File Format of \textit{ffmpeg}, use the pulldown to choose \textit{y4m} as the file type.  This choice results in putting a header on the rendered output with some pertinent information that can be used for ffmpeg processing thus alleviating the requirement for \textit{pixel\_format}, \textit{video\_size}, and \textit{framerate} on the ffmpeg command line.  In this case the format is \textit{yuv4mpegpipe} instead of \textit{rawvideo}.  An example command line would look as follows (assuming the created pipe is called \texttt{piper.y4m}):
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ffmpeg -f yuv4mpegpipe -i /tmp/piper.y4m -vcodec libx264 /tmp/test.mp4
 \end{lstlisting}
 
@@ -741,4 +741,3 @@ ffmpeg -f yuv4mpegpipe -i /tmp/piper.y4m -vcodec libx264 /tmp/test.mp4
 If you have mov video and want to be able to start playing without having to first load the entire video, \textit{-movflags=+faststart} is needed for ffmpeg to put the meta-data, known as the \textit{moov atom}, at the beginning of the file.  Otherwise, ffmpeg puts this atom at the end of the video file which means you have to wait to play until the whole video is loaded.  Or worse yet, if the file becomes damaged in the middle and you can not get to the end, you won’t be able to play anything.
 
 Now you can have the \textit{moov atom} put on the front of the file (automatically via a second pass).  To do this, when rendering using ffmpeg \& either the mp4 or qt format/container, click on the video/audio wrenches and choose \textit{faststart\_h264}.   With the \textit{qt} format, settings will just be the default whereas the \textit{mp4} format uses the highest quality and lowest file size as possible, but you can easily modify these options in the associated Video Preset textbox.
-

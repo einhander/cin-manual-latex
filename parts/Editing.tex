@@ -12,9 +12,9 @@ The timeline is where all editing decisions are made (figure~\ref{fig:timeline})
     \label{fig:timeline}
 \end{figure}
 
-The active region is the range of time which is affected by editing commands on the 
-timeline.  The active region is determined first by the presence of in/out points on the 
-timeline.  
+The active region is the range of time which is affected by editing commands on the
+timeline.  The active region is determined first by the presence of in/out points on the
+timeline.
 If those do not exist the highlighted region is used. To reiterate, \emph{highlighting}
 is done in \emph{cut and paste mode} by moving the insertion point with the mouse in the timeline
 to where you want to start. Then hold down the LMB, drag the mouse to where you want
@@ -38,7 +38,7 @@ On the left of the timeline is a region known as the patchbay.  The patchbay ena
     \item[Expander] which is a down arrow on the right side, is for viewing more options on the patchbay and for viewing the effects represented on the track.   You can just click on the expander to expand or collapse the patchbay and the track.  If it is pointing sideways, the track is collapsed.  If it is pointing down, the track is expanded.  Existing effects appear below the media for the track.
 \end{description}
 
-\noindent Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay01}).  If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click 
+\noindent Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay01}).  If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click
 on the toggle to enable/disable the feature.
 
 \begin{wrapfigure}[15]{O}{0.3\linewidth}
@@ -74,16 +74,16 @@ The \textit{attributes} are described here next.
     \item[mixer] in the expanded patchbay for that track designate the multi-camera mixer mode.
     \item[Overlay mode] in the expanded patchbay is used for porter-duff operations and is full explained in \nameref{cha:overlays} chapter.
     \item[Nudge] is in the expanded patchbay.  The nudge value is the amount the track is shifted left or right during playback. The track is not displayed shifted on the timeline, but it is shifted when it is played back. This is useful for synchronizing audio with video, creating fake stereo, or compensating for an effect which shifts time, all without altering any edits (figure~\ref{fig:overlay}).
-    
+
     \begin{figure}[htpb]
         \centering
         \includegraphics[width=0.7\linewidth]{overlay.png}
         \caption{Video Overlay, audio Pan and Nudge.}
         \label{fig:overlay}
     \end{figure}
-    
+
     Enter the amount of time to shift to instantly shift the track. Negative numbers make the track play later. Positive numbers make the track play sooner. The nudge units are either seconds or the native units for the track (frames or samples). Select the units by right clicking on the nudge textbox and using the context sensitive menu. Nudge settings are ganged with the Gang faders toggle and the Arm track toggle. Use the mouse wheel over the nudge textbox to increment and decrement the value.
-    \item[Pan] is available in the expanded patchbay for audio tracks via a panning box. Position the pointer in the panning box and click/drag to reposition the audio output among the speaker arrangement. The loudness of each speaker is printed on the relative icon during the dragging operation. The panning box uses a special algorithm to try to allow audio to be focused through one speaker or branched between the nearest speakers when more than 2 speakers are used.  
+    \item[Pan] is available in the expanded patchbay for audio tracks via a panning box. Position the pointer in the panning box and click/drag to reposition the audio output among the speaker arrangement. The loudness of each speaker is printed on the relative icon during the dragging operation. The panning box uses a special algorithm to try to allow audio to be focused through one speaker or branched between the nearest speakers when more than 2 speakers are used.
 \end{description}
 
 Press the Tab key while the cursor is anywhere over a track to toggle the track arming status. Press Shift-Tab while the cursor is over a track to toggle the arming status of every other track.
@@ -104,7 +104,7 @@ most cases.
 \section{Manipulating Tracks}%
 \label{sec:manipulating_tracks}
 
-Tracks in \CGG{} either contain audio or video.  There is no special designation for tracks other than the type of media they contain.  When you create a new project, it contains three default tracks: one video track and two audio tracks.  You can still add and delete tracks from the menus.  The Tracks menu contains a number of options for dealing with multiple tracks simultaneously.  Each track itself has a popup menu which affects one track. 
+Tracks in \CGG{} either contain audio or video.  There is no special designation for tracks other than the type of media they contain.  When you create a new project, it contains three default tracks: one video track and two audio tracks.  You can still add and delete tracks from the menus.  The Tracks menu contains a number of options for dealing with multiple tracks simultaneously.  Each track itself has a popup menu which affects one track.
 
 Operations in the \textbf{Tracks pulldown} affect only tracks which are armed.
 
@@ -165,7 +165,7 @@ If the destination region is longer than the clip defined in the viewer, the des
 \subsection{Use Case – Working with Sequences}
 \label{sub:use_case_working_sequences}
 
-\textit{From the Viewer to the Timeline with the sequences imported 
+\textit{From the Viewer to the Timeline with the sequences imported
 in a Master Project.}
 
 A convenient methodology for working on a Master project along with 1 or more previously saved Sub projects or \textit{sequences} use case is described here.  A sequence is an edited assembly of audio and video clips generally consisting of a series of videos that relate to the same activity. This use case explains how to work this way and some things you need to be aware of.
@@ -176,7 +176,7 @@ A convenient methodology for working on a Master project along with 1 or more pr
     \item Now Drag and Drop the Sub project from the Clips folder to the Viewer.
     \item Set In and Out Pointers in the Viewer to the region of interest in the Sub project and in the Timeline of the Main window of your Master project, move the cursor position to where you would like to insert this In/Out section.
     \item Click on the \textit{Splice (v)} button in the Viewer to insert this section into the Master project timeline.  All of the attributes of the selected Sub project section will now be inserted in the main timeline to include the autos, keyframes, effects, and labels.
-    \item Alternatively, if you click on the \textit{Overwrite (b)} button in the Viewer, you can see the Sub project In/Out section in the timeline, but without its autos, effects, keyframes, etc.  If in the timeline there were some autos, effects, and keyframes in that Master project, they will be in effect for the new section.   
+    \item Alternatively, if you click on the \textit{Overwrite (b)} button in the Viewer, you can see the Sub project In/Out section in the timeline, but without its autos, effects, keyframes, etc.  If in the timeline there were some autos, effects, and keyframes in that Master project, they will be in effect for the new section.
 \end{enumerate}
 
 You can see the advantages of using Splice versus Overwrite to either insert (splice) with all of the attributes of a specific section of your Sequence or to overwrite without the attributes to allow for the smooth operation on the timeline by retaining the timeline’s attributes at that point.
@@ -211,15 +211,15 @@ In Cut and Paste editing mode you can \textit{edit labels} as well. By enabling 
 
 Using labels and In/Out points are useful in editing audio.  You can set In/Out points for the source region of the source waveform and set labels for the destination region of the destination waveform. Perform a cut, clear the In/Out points, select the region between the labels, and perform a paste.
 
-\paragraph{In / Out Points} The In and Out bracket placement is explained here to illustrate their usage.  Because of the shape of the markers [ and ] you may assume that they are inclusive -- that everything placed in between would be included in the clip, such as in the case of being transferred to the timeline from the Viewer.  In reality, one of the two markers will not include the frame that was visible at the time the marker was affixed. Depending on whether the \textit{Always show next frame} option is used or not, it is the In or Out marker that will not be inclusive. 
+\paragraph{In / Out Points} The In and Out bracket placement is explained here to illustrate their usage.  Because of the shape of the markers [ and ] you may assume that they are inclusive -- that everything placed in between would be included in the clip, such as in the case of being transferred to the timeline from the Viewer.  In reality, one of the two markers will not include the frame that was visible at the time the marker was affixed. Depending on whether the \textit{Always show next frame} option is used or not, it is the In or Out marker that will not be inclusive.
 
-To obtain a clip on the timeline exactly as you saw in the Viewer, you must necessarily move the In mark back from the beginning before the first desired frame or move the Out mark forward after the last desired frame, depending on the \textit{Always show next frame} setting. 
+To obtain a clip on the timeline exactly as you saw in the Viewer, you must necessarily move the In mark back from the beginning before the first desired frame or move the Out mark forward after the last desired frame, depending on the \textit{Always show next frame} setting.
 
 Some of the confusion can be attributed to the fact that the Viewer shows frames, while the markers determine spaces, i.e. times, that are not visible between frames. You have to think of each frame as being delimited by two spaces -- one preceding and one following.  The In mark is always placed before the displayed frame and the Out mark is always placed after the displayed frame, while taking into account in its calculations whether the \textit{Always show next frame }option is used or not. If you just remember that the reference of the markers is in the middle of the icon, you will avoid confusion.
 
 \paragraph{Overwrite} To perform overwriting within the timeline paste on a selected region (highlighted or
 between In/Out points). The selected region will be overwritten. If the clip pasted from the clipboard
-is shorter than the selected region, the selected region will be shrunk. Following edits will move. If 
+is shorter than the selected region, the selected region will be shrunk. Following edits will move. If
 the clip pasted from the clipboard is longer than the selected region, the selected region will be
 overwritten with the first part of the clip and the remaining part of the clip will be written after the
 overwriting. Following edits will move.
@@ -228,7 +228,7 @@ overwriting. Following edits will move.
 track and concatenates it by pasting those assets at the end of the first set of armed tracks. They are
 pasted one after the other, keeping the same order they have on the stack.
 
-\paragraph{Split --- blade cut and hard edges:} You can cut the tracks into 2 pieces on the timeline by putting the hairline cursor on the place you want to do a cut and then using the character “x” or the scissors tool (figure~\ref{fig:cut}). 
+\paragraph{Split --- blade cut and hard edges:} You can cut the tracks into 2 pieces on the timeline by putting the hairline cursor on the place you want to do a cut and then using the character “x” or the scissors tool (figure~\ref{fig:cut}).
 
 \begin{wrapfigure}[16]{O}{0.3\linewidth}
     \vspace{1ex}
@@ -245,14 +245,14 @@ When you do a blade cut/split, all armed tracks will be included in the cut and 
 \section{Drag and Drop Editing}%
 \label{sec:drag_drop_editing}
 
-To enable the drag and drop editing mode on the timeline, select the arrow toggle on the control bar at the top of the main program window.  Drag and drop editing is a quick and simple way of working in \CGG{}, using mostly only the mouse. The basic idea is to create a bunch of clips, then drag them in order into the timeline, thus building prototype media that you can watch in the compositor. If after watching it, you wish to re-arrange your clips, set effects, add transitions or insert/delete material, just drag and drop them on the timeline. 
+To enable the drag and drop editing mode on the timeline, select the arrow toggle on the control bar at the top of the main program window.  Drag and drop editing is a quick and simple way of working in \CGG{}, using mostly only the mouse. The basic idea is to create a bunch of clips, then drag them in order into the timeline, thus building prototype media that you can watch in the compositor. If after watching it, you wish to re-arrange your clips, set effects, add transitions or insert/delete material, just drag and drop them on the timeline.
 
 To simply get started, perform the following operations which are useful for working in a drag and drop editing session.  First load your media by using the main menu File pulldown and choose \textit{Load files}; make sure the insertion mode is set to \textit{Create new resources only}.  This loads the files into the Resources window.
 
 \begin{enumerate}
     \item Create some video and audio tracks on the timeline using the Video and Audio pulldowns.
     \item Open the Media folder in the Resources window.  Make sure the necessary tracks are armed and drag
-    a media file from the Resources window to the timeline. If the media has video, drag it onto a video 
+    a media file from the Resources window to the timeline. If the media has video, drag it onto a video
     track or if just audio, drag it onto an audio track. For a still image, drag it onto a video track.
 \end{enumerate}
 
@@ -386,7 +386,7 @@ This last section on Dragging, outlines the difference between \textit{column se
 Concerning \textit{Selection} methods, the following information is partially pertinent to all editing, but is most important to keep in mind when using Drag and Drop Editing.
 
 Originally, there was the column oriented timeline drag selection which can be seen
-in 1 of 3 ways: 
+in 1 of 3 ways:
 
 \begin{enumerate}
     \item  a highlighted vertical column
@@ -402,7 +402,7 @@ and the selection is empty, but it does have a position on the
 timeline which can be used for editing.  This is input for the
 vertical style cut/paste drag/drop editing.
 
-More recently, in addition to the column oriented timeline drag selection, there is now \textit{group} 
+More recently, in addition to the column oriented timeline drag selection, there is now \textit{group}
 capabilities which have various \textit{edit} selections.  These are
 created in the Drag and Drop editing mode by clicking edits to toggle
 select/deselection.  These groups are input to a different (more modern) set
@@ -416,7 +416,7 @@ original editing methods.
 In this \textit{group} mode, if there are In/Out markers set, they enter the selection priority queue
 between the column selection and the cursor only. You can see the In/Out markers selected
 region colored line across the timebar (slightly underneath where the time, samples or frames show
-) on the main timeline 
+) on the main timeline
 extending between the [ and ].  This means that when
 the highlighted cursor selection is empty, the In/Out selection will be used.
 
@@ -428,7 +428,7 @@ Inter-View mode provides a mapping of a particular media file to its timeline us
 This feature provides the following capabilities:
 \begin{itemize}
     \item You can see on the timeline all of the places where a particular piece of media was used.
-    \item You can see which parts of that particular media are already used so you do not reuse that same 
+    \item You can see which parts of that particular media are already used so you do not reuse that same
     piece again.
 \end{itemize}
 Figure~\ref{fig:inter-view01} shows an example of the Inter-View mode mapping preview mini-window.
@@ -486,7 +486,7 @@ To edit EDL that is included with your project as Clips, Nested Clips, Reference
 it was nested, you can edit those plugin parameter values. Previously to make any changes to these types of EDL
 you had to remake the whole clip from scratch.
 
-Here is how this works. In the Clip or Media folder or on a timeline EDL edit, the option \textit{Open EDL} for the highlighted clip or nested clip is available so that when you choose this option, that EDL will be brought up on the timeline superseding the current EDL that exists on the timeline.  Now, once the clip is open on the timeline, you can edit it however you want. The previous timeline EDL is \textit{pushed onto a stack} so it can be recalled by \textit{popping the stack} with a click of the left mouse button in the upper right hand corner of the timeline to the left of the \textit{shell cmds} icon.  Initially this button displays a 0 to indicate your initial timeline/project.  Then this button will read 1 if you choose \textit{Open EDL} and then back to 0 and your original timeline with the left mouse click.  You can go several levels deep so instead of 1, it could be 2, 3, $\dots$ but this requires some thought to avoid potential confusion.  
+Here is how this works. In the Clip or Media folder or on a timeline EDL edit, the option \textit{Open EDL} for the highlighted clip or nested clip is available so that when you choose this option, that EDL will be brought up on the timeline superseding the current EDL that exists on the timeline.  Now, once the clip is open on the timeline, you can edit it however you want. The previous timeline EDL is \textit{pushed onto a stack} so it can be recalled by \textit{popping the stack} with a click of the left mouse button in the upper right hand corner of the timeline to the left of the \textit{shell cmds} icon.  Initially this button displays a 0 to indicate your initial timeline/project.  Then this button will read 1 if you choose \textit{Open EDL} and then back to 0 and your original timeline with the left mouse click.  You can go several levels deep so instead of 1, it could be 2, 3, $\dots$ but this requires some thought to avoid potential confusion.
 \\
 
 An example of a typical set of steps to follow is:
@@ -494,7 +494,7 @@ An example of a typical set of steps to follow is:
 \begin{enumerate}
    \item Load your media using insertion strategy of \textit{Replace current project}.  There will be \# 0 in the
     upper right hand corner of the main menu with the tooltip of \textit{Close EDL}.
-   \item Highlight a selection on the timeline and press the \textit{To clip} icon and click the green checkmark OK. 
+   \item Highlight a selection on the timeline and press the \textit{To clip} icon and click the green checkmark OK.
    \item In the Resources window, open the Clip folder and you will see that Clip 1 is present.
    \item Highlight Clip1 and right mouse the item to bring up available options and select \textit{Open EDL}.
    \item Now you will see the timeline change from the original media to just the clip content and the \# in the
@@ -508,7 +508,7 @@ You can follow the same steps as above by first using the option \textit{Nest to
 
 Instead of using the \# number on the main menu to close the current EDL, both the Media and Clip folders have \textit{Close EDL} options with the left mouse button. Clicking on the \# number is quick and easy but for infrequent usage it is not obvious, whereas if you use \textit{Open EDL} you see \textit{Close EDL} right below that and so it is very obvious.  In addition in the case of where you have opened a EDL, and you no longer see that clip in the folder, the right mouse button where no media is highlighted will also display the Close EDL option.
 
-\pagebreak 
+\pagebreak
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\linewidth]{editing-img001.png}
@@ -542,28 +542,28 @@ When \textit{Open EDL} is invoked, the current EDL and current undo stack are bo
 
 It is sometimes handy to have EDL assets not as a copy, but as a reference that is
 automatically updated into your project.  Suppose you have several short videos that at
-the end have the same credits which include the current year such as 2019.  But now it 
+the end have the same credits which include the current year such as 2019.  But now it
 is 2020 and all of the videos would have to be individually updated with the new date.
-By including a \textit{Referenced File} as the EDL file type when you create each of the videos, 
-you can just change the one credits xml file and the next time you load one of the 
-videos and render it, it will now automatically have the updated information. 
+By including a \textit{Referenced File} as the EDL file type when you create each of the videos,
+you can just change the one credits xml file and the next time you load one of the
+videos and render it, it will now automatically have the updated information.
 
-The purpose of this feature is to be able to rework a smaller section of a global 
-master project at any time, which can be done by an "assistant" and then this work 
+The purpose of this feature is to be able to rework a smaller section of a global
+master project at any time, which can be done by an "assistant" and then this work
 is automatically reflected in the global master project.  It is for \textbf{advanced usage only}.
 
-Up until the addition of this feature, \CGG{} has always used copies and no 
-direct reference in order to ensure original data is never compromised.  In the 
-usual case, subprojects as xmls are copied into a master project where subprojects 
+Up until the addition of this feature, \CGG{} has always used copies and no
+direct reference in order to ensure original data is never compromised.  In the
+usual case, subprojects as xmls are copied into a master project where subprojects
 had been inserted, so that if you change something in a subproject or delete a subproject,
 it would have no affect on the master project.  But now with \textit{File by Reference}, any
 project that uses a referenced file will automatically include any changes made to the
 referenced file when loaded.  At the same time, if you use the EDL file NOT as a
-referenced file in a project since it is then just a copy, it will not be updated. 
-Because of this difference, the user needs to be very aware of what using this feature 
+referenced file in a project since it is then just a copy, it will not be updated.
+Because of this difference, the user needs to be very aware of what using this feature
 could do.
 
-\textbf{Use with extreme caution}.  However, there are several built-in safety features 
+\textbf{Use with extreme caution}.  However, there are several built-in safety features
 and a warning that should never be turned off even though it gives you the option to do so.
 These include:
 
@@ -572,8 +572,8 @@ These include:
 menu is opened, the EDL strategy will always be set to just EDL as default.  Although, if you use Apply and leave the Load Menu open, it will stay changed to what you selected until it is re-opened.
     \item  When an EDL is opened as \textit{Reference}, the color of that file name in the Resources Media folder is different in order to serve as a reminder that it is special.
     \item A warning message is displayed in a popup window when you load a \textit{File by Reference}
- that reads “Other projects can change this project and this can become a broken link”.  
-Although you can check the warning box to never see this warning again, you would be well advised to not do so.  It is a great reminder of consequences and you will not want to be 
+ that reads “Other projects can change this project and this can become a broken link”.
+Although you can check the warning box to never see this warning again, you would be well advised to not do so.  It is a great reminder of consequences and you will not want to be
 cavalier about the warning.  Instead just use the X to dismiss the warning.
 \end{enumerate}
 
@@ -614,7 +614,7 @@ To set the length of an edit in the timeline, select the region which contains t
 \subsection{Align Edits}%
 \label{sub:align_edits}
 
-When loading media, a common problem is that the various audio/video tracks do not always have exactly the same lengths. For example, you might load audio/video recordings from your camera and be dismayed to see that the audio for each segment is a half second longer than the video. If you load a large set of media clips by concatenation, the audio and video will be more skewed as more media is loaded. Align Edits makes it possible to adjust the edits so the audio and/or video align by adjusting 
+When loading media, a common problem is that the various audio/video tracks do not always have exactly the same lengths. For example, you might load audio/video recordings from your camera and be dismayed to see that the audio for each segment is a half second longer than the video. If you load a large set of media clips by concatenation, the audio and video will be more skewed as more media is loaded. Align Edits makes it possible to adjust the edits so the audio and/or video align by adjusting
 the edits so that the track lengths are consistent. To use this feature, load all of the desired media and select a region which contains all of the edits to be aligned in the timeline. Now select the menu bar \texttt{Edit $\rightarrow$ Align Edits} menu item to operate the change. The topmost armed track is used as a template reference, and the rest of the tracks are either cut or padded to align the edit boundaries.  Besides aligning audio with the video, you can also align video with the audio if the first armed track is audio. \\
 The code performs the following algorithm:
 \begin{itemize}
@@ -622,8 +622,8 @@ The code performs the following algorithm:
     \item Collect the \textit{edit project start times} on the selected master track. Only edits that are 100\% inside the selected area will be used.
     \item Set all other tracks to match the \textit{edit times} of the template track, either by putting in silence or cutting the region to align the edits on the \textit{edit times} of the master track.
 \end{itemize}
-The start time sequence of media and silence edits along the master track are collected as the target 
-alignment boundaries. All armed tracks after the master track are modified so that if the next edit edge 
+The start time sequence of media and silence edits along the master track are collected as the target
+alignment boundaries. All armed tracks after the master track are modified so that if the next edit edge
 is too soon, it adds silence; if it is too late, edits are shortened or deleted past the point of the next target
 alignment boundary time.  Align Edits works best if there are an equal number of Video and Audio sections.  Also, it is better to use cuts instead of adding silence -- if there are silence edits together, the algorithm will combine the silence edits into a single edit and results may not be as desired.
 
@@ -658,7 +658,7 @@ Figure~\ref{fig:reverse02} shows the results of executing \textit{Reverse Edits}
 
 \subsection{Shuffle Edits}%
 \label{sub:shuffle_edits}
- 
+
 The file pulldown \texttt{Edit $\rightarrow$ Shuffle Edits} will randomly exchange the location of the edits.  This feature can be used to change the order of the music like you would do from your MP4 player where you have a playlist of your favorite music.  Or perhaps you are creating an advertisement background, you can randomly change it, thus the viewer sees a different order of scenes each time shown.
 
 Figure~\ref{fig:shuffle} illustrating Shuffle Edits of the highlighted area of the first screenshot on the page.  Note the permutation of the fragments resulting in 00003 now being first, then 00005, 00002, and 00004 last.
@@ -696,7 +696,7 @@ A description of the fundamental/common terminology for choices follows.
 \end{description}
 The next table displays the options and results with the Key Table here first.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
     s = src media start\\
     p = proj position \\
     l = length \\
@@ -792,7 +792,7 @@ Now to use this feature, create a track with edits that have trims on the left a
 \subsection{Snapping while Cutting and Dragging}%
 \label{sub:snapping_cutting_dragging}
 
-\paragraph{Cutting/Snapping edits} cuts from an edit handle to the insert point. 
+\paragraph{Cutting/Snapping edits} cuts from an edit handle to the insert point.
 There are Edit Panel buttons which normally are used to move to the previous or next edit handle/label.
 \begin{wrapfigure}[5]{r}{0.2\linewidth}
     \vspace{-1ex}
@@ -845,7 +845,7 @@ that represents a quick summary of the entire video in black and white. On
 he timeline, you have 60 seconds of edits with clips, cuts, zoom in, zoom
 out and any other edits. Now you want to get this 60 seconds \textit{compressed}
 to 10 seconds, play in reverse, and in black and white at the end of your
-    video.    
+    video.
     You would copy the 60 seconds in a clip, nest the clip in the Clip folder
 of the Resources window and drag it to the timeline. You will see only a
 clean clip without all of the edits that were used to create it because
@@ -893,28 +893,28 @@ Directions for using the ShuttlePROv2 and the ShuttleXpress with \CGG{} are desc
 
 {\small
 \vspace{1ex} \texttt{/dev/input/by-id/usb-Contour\_Design\_ShuttlePRO\_v2-event-if00}
- 
+
  \texttt{/dev/input/by-id/usb-Contour\_Design\_ShuttleXpress-event-if00}
- 
+
  \texttt{/dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00}
  }
 
 \vspace{1ex}
 \noindent Only 1 necessary initial setup is required due to permission settings for non-root usage. As root, just copy a file that provides the necessary permissions to use the shuttle, then reboot,  Example copy:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 \$sudo cp {cindat_path}/doc/99-ShuttlePRO.rules /etc/udev/rules.d/
 \end{lstlisting}
 
 \noindent then the next time after you reboot, the permissions should be correct. This file only needs to contain one of the following lines depending on which shuttle version you have/use, but all will be in the file.
-\begin{lstlisting}[language=Bash,,numbers=none,basicstyle=\footnotesize]
-# for  newer PRO model 
-ATTRS{name}=="Contour Design ShuttlePro" MODE="0644"		
-# for older PRO model 
-ATTRS{name}=="Contour Design ShuttlePRO v2" MODE="0644"	
-# for the Xpress model 
-ATTRS{name}=="Contour Design ShuttleXpress" MODE="0644"	
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0020", MODE="0666" 
+\begin{lstlisting}[style=sh]
+# for  newer PRO model
+ATTRS{name}=="Contour Design ShuttlePro" MODE="0644"
+# for older PRO model
+ATTRS{name}=="Contour Design ShuttlePRO v2" MODE="0644"
+# for the Xpress model
+ATTRS{name}=="Contour Design ShuttleXpress" MODE="0644"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0020", MODE="0666"
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0b33", ATTRS{idProduct}=="0030", MODE="0666"
 \end{lstlisting}
 If you swap your shuttle, for example upgrade from an Xpress to a PROv2, just stop Cin, unplug the original shuttle, plug in the replacement shuttle, and restart Cin.  If you start the \CGG{} program and the shuttle does not function as before, stop \CGG{} and then simply unplug it and plug it in again.  There are a couple of reasons why it may stop functioning.  One is because \CGG{} was not stopped with the usual Quit command and the shuttle was improperly shut down when there was a crash.  The other possibility is that a static discharge occurred in the area.
@@ -924,7 +924,7 @@ A default shuttlerc file is automatically used when a shuttle device is plugged 
 \subsection{How to Modify the Default Key Settings}%
 \label{sub:modify_default_key_settings}
 
-Detailed information on how to modify your local .shuttlerc file is described next, but if you need help you can request more information in the forum at {\small \url{https://cinelerra-gg.org}}. In the \texttt{shuttlerc} file, a \# always represents a comment and blank lines are ignored.  The first thing you must do is copy the system supplied \texttt{shuttlerc} file to your \texttt{\$HOME} directory and rename it as \texttt{.shuttlerc} (with a period). 
+Detailed information on how to modify your local .shuttlerc file is described next, but if you need help you can request more information in the forum at {\small \url{https://cinelerra-gg.org}}. In the \texttt{shuttlerc} file, a \# always represents a comment and blank lines are ignored.  The first thing you must do is copy the system supplied \texttt{shuttlerc} file to your \texttt{\$HOME} directory and rename it as \texttt{.shuttlerc} (with a period).
 
 The \texttt{shuttlerc} file has sections that in the case of \CGG{}, represent different windows allowing you to set the keys, K1-K15 for the Pro and K5-K9 for the Xpress, the shuttle wheel positions of S0/S1/S-1 for stop, S2 through S7 for wheeling to the right, and S-7 through S-2 for wheeling to the left for reverse.  Then there is JR to jog right (clockwise) and JL to jog left (counter-clockwise) for the inner smaller wheel for single frame movement.  See the key arrangement on a later page for location of the keys for each of the two different shuttles.
 
@@ -934,110 +934,110 @@ Next are a few actual examples from the default \texttt{{cindat\_path}/shuttlerc
 
 \noindent The next brackets represent sections. Default, Resources, Load windows all use the same key values.
 
-\begin{lstlisting}[language=Bash,numbers=none]
-[Default] 
-[Resources] 
-[Load] 
-K5 XK_Home 
-K6 XK_Button_1	# same as mouse button 1 
+\begin{lstlisting}[style=sh]
+[Default]
+[Resources]
+[Load]
+K5 XK_Home
+K6 XK_Button_1	# same as mouse button 1
 K7 XK_Button_2	# same operation as mouse button 2
-K8 XK_Button_3 
-K9 XK_End 
-# for example, in the Load menu, use scroll up to get to the next file name 
-JL XK_Scroll_Up	
+K8 XK_Button_3
+K9 XK_End
+# for example, in the Load menu, use scroll up to get to the next file name
+JL XK_Scroll_Up
 JR XK_Scroll_Down
 \end{lstlisting}
 
 \noindent Cinelerra with brackets around it next, is the section with some key definitions for the main window.
 
-\begin{lstlisting}[language=Bash,numbers=none]
-[Cinelerra] 
+\begin{lstlisting}[style=sh]
+[Cinelerra]
 
-# Most useful functions have to be on K5-K9 because Xpress only has 5 keys 
-K5 XK_Home      # Beginning 
-K6 XK_KP_6      # Reverse, or if playing Stop 
-K7 XK_KP_0      # Stop 
-K8 XK_KP_3      # Play, or if playing Stop 
-K9 XK_End       # End 
-... 
-S-7 REV_16     	# Next 6 are reverse keys 
+# Most useful functions have to be on K5-K9 because Xpress only has 5 keys
+K5 XK_Home      # Beginning
+K6 XK_KP_6      # Reverse, or if playing Stop
+K7 XK_KP_0      # Stop
+K8 XK_KP_3      # Play, or if playing Stop
+K9 XK_End       # End
+...
+S-7 REV_16     	# Next 6 are reverse keys
 S-6 REV_8      	#  the number on the end represents speed
-S-5 REV_4      	#  number can be decimal up to 64 
-S-4 REV_2      	#  2 means 2x or double speed 
-S-3 REV_1 
-S-2 REV_0.5    	#  0.5 represents 1/2 speed 
-S-1 XK_KP_0    	# Because the Shuttle does not generate S0, have to use S-1 
-S0  XK_KP_0   	# Hardware does not generate S0 
-S1  XK_KP_0   	# Because the Shuttle does not generate S0, have to use S1 
-S2  FWD_0.5 
-S3  FWD_1 
-... 
+S-5 REV_4      	#  number can be decimal up to 64
+S-4 REV_2      	#  2 means 2x or double speed
+S-3 REV_1
+S-2 REV_0.5    	#  0.5 represents 1/2 speed
+S-1 XK_KP_0    	# Because the Shuttle does not generate S0, have to use S-1
+S0  XK_KP_0   	# Hardware does not generate S0
+S1  XK_KP_0   	# Because the Shuttle does not generate S0, have to use S1
+S2  FWD_0.5
+S3  FWD_1
+...
 \end{lstlisting}
 
 \noindent An explanation for the above REV and FWD key symbol values is necessary to facilitate user preferences.  Obviously REV stands for reverse and FWD for forward.  You can set any speed up to and including 64x (that is, 64 times the normal speed) on any of the S keys.  First in the line is the key name such as S-3 and then the key direction of FWD or REV followed by the symbol for underscore (\_) and then the numerical value to use.  For example, if you want the $5^{th}$ forward position, S5, to play 10$\frac{1}{2}$ times faster, you would use the statement \texttt{S5 FWD\_10.5}.  Integer or decimal numbers are legal.
 
 For the Viewer, you may want keys defined to do a Splice or an Overwrite so define differently.  Note that assignments that contain single character letters must be enclosed in quotes.
 
-\begin{lstlisting}[language=Bash,numbers=none]
-[Viewer] 
-# Splice - Viewer only; may be defined differently than Composer or Cinelerra 
-K2 "v"         
+\begin{lstlisting}[style=sh]
+[Viewer]
+# Splice - Viewer only; may be defined differently than Composer or Cinelerra
+K2 "v"
 K4 "b"         # Overwrite
 \end{lstlisting}
 
 \noindent To change any key value to an alternative value, just edit the file and make the changes.  Besides just keys and alphabetic letters of numbers, you can also use any \CGG{} value that contains the combination with Shift, Alt, and Ctrl.  For keys that are not printable characters, you can look up the symbol name to use for a specific operation in the file called: \texttt{/usr/include/X11/keysymdef.h} .
 \noindent Some examples:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 K10 Alt-XK_Left  	# Go to previous edit \\
 K13 Ctrl-XK_Right 	# Go to next label
 \end{lstlisting}
 
-\noindent For sequences of one or more \textit{printable} characters, you can just enclose them in double quotes.  For example in the \texttt{[Composer]} section, to go into or out of fullscreen mode, automatically start playing and put a label there, you could define a key like this:  K7 “f~l” - that is printable character f, a space, and printable character l.  
+\noindent For sequences of one or more \textit{printable} characters, you can just enclose them in double quotes.  For example in the \texttt{[Composer]} section, to go into or out of fullscreen mode, automatically start playing and put a label there, you could define a key like this:  K7 “f~l” - that is printable character f, a space, and printable character l.
 
 After modifying \texttt{.shuttlerc}, the next time you use the shuttle, your changes will automatically take affect without even having to stop and restart Cin.  However, the first thing to try if problems is to stop \CGG{}, unplug the shuttle, wait a few seconds, plug it in again, and then restart cin.  If for some reason, the shuttle keys still do not work after that, you may have an incorrect setup and you will have to correct that first.  For example, if you define S5 twice within the \CGG{} setup, it will fail.  It is suggested that if you make changes, you should initially uncomment DEBUG in the \texttt{.shuttlerc} file and start up \CGG{} from a terminal window so that you can make sure it is working and has no output errors.  An error might look like:
 
-\begin{lstlisting}[language=Bash,numbers=none]
-dupl key name: [Cinelerra]K1 
+\begin{lstlisting}[style=sh]
+dupl key name: [Cinelerra]K1
 shuttle config err file: /root/.shuttlerc, line:37
 \end{lstlisting}
 
-\noindent Keep in mind when changing the values, that the ShuttleXpress has fewer buttons so if you define K1 it will only work for the ShuttlePro. 
+\noindent Keep in mind when changing the values, that the ShuttleXpress has fewer buttons so if you define K1 it will only work for the ShuttlePro.
 
 Any time you are having trouble with your shuttle, you can copy the default \texttt{shuttlerc} file from \texttt{{cindat\_path}/shuttlerc} to your local \texttt{.shuttlerc} file, and edit that to\ switch to DEBUG mode by removing the \# comment from the DEBUG line.  But you will have to have started Cin from a terminal window to see the key values. The first time you use the shuttle or after you change the file, the current assignments will show in the terminal window so will look something like:
 
-\begin{lstlisting}[language=Bash,numbers=none]
-[Cinelerra] # 1 
-K5[D]: XK_KP_0/U 
-K5[U]: XK_KP_0/U 
+\begin{lstlisting}[style=sh]
+[Cinelerra] # 1
+K5[D]: XK_KP_0/U
+K5[U]: XK_KP_0/U
 \end{lstlisting}
 
 \noindent When you are in DEBUG mode and are just working away, what you will see is something like this:
 
-\begin{lstlisting}[language=Bash,numbers=none]
-key: 0058 1 
+\begin{lstlisting}[style=sh]
+key: 0058 1
 key: 0055 0
 \end{lstlisting}
 
 or:
 
-\begin{lstlisting}[language=Bash,numbers=none]
-shuttle:  00 00 00 00 00 
+\begin{lstlisting}[style=sh]
+shuttle:  00 00 00 00 00
 key: XK_Home 0
 \end{lstlisting}
 
 \noindent When you change the focus from one window to another, you will see something like this:
 
-\begin{lstlisting}[language=Bash,numbers=none]
-new focus: 04c00137 
-new translation: Viewer 
+\begin{lstlisting}[style=sh]
+new focus: 04c00137
+new translation: Viewer
 key: 0059 1
 \end{lstlisting}
 
 \noindent You can also set an environment variable to temporarily use an alternative shuttle configuration file for testing as in:
 
-\begin{lstlisting}[language=Bash,numbers=none]
-\$ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test 
+\begin{lstlisting}[style=sh]
+\$ export SHUTTLE_CONFIG_FILE=/tmp/shuttlerc_test
 \end{lstlisting}
 
 \noindent The shuttle wheel occasionally will not \textit{stop} after you have wheeled it to play forward.  This is a documented known problem from the original code so you just have to joggle it a little in the other direction and then it will stop.  S0 does not always generate a signal to do a stop and that is why S1 and S-1 have to be used to relay the stop instead.  Also, if you have a fullscreen Composer or Viewer up and the regular one also, the fullscreen takes precedence.
@@ -1047,14 +1047,14 @@ key: 0059 1
 
 In order to see if you hardware was recognized by the operating system, key in:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 \$ lsusb -v -d 0b33:0030		# for the Shuttle Pro or PROv2 \\
 \$ lsusb -v -d 0b33:0020		# for the Shuttle Xpress
 \end{lstlisting}
 
 
-\paragraph{Note 1} Currently, the keys K14 and K15 do not function on the \textit{Contour Design ShuttlePro} but do on the   \textit{Contour Design ShuttlePRO v2} due to a Report Descriptor error.  You can workaround this by uncommenting \texttt{USB\_DIRECT} in your local \texttt{.shuttlerc} file.  This directly uses libusb rather than the generic Linux hid driver.  \texttt{USB\_DIRECT} works for any of the currently tested shuttles. 
-    
+\paragraph{Note 1} Currently, the keys K14 and K15 do not function on the \textit{Contour Design ShuttlePro} but do on the   \textit{Contour Design ShuttlePRO v2} due to a Report Descriptor error.  You can workaround this by uncommenting \texttt{USB\_DIRECT} in your local \texttt{.shuttlerc} file.  This directly uses libusb rather than the generic Linux hid driver.  \texttt{USB\_DIRECT} works for any of the currently tested shuttles.
+
 \paragraph{Note 2} If you are not sure if your shuttle is fully functional, you can verify that the hardware device has been seen by your operating system with this procedure.
 
 
@@ -1062,15 +1062,15 @@ In order to see if you hardware was recognized by the operating system, key in:
     \item From a terminal window as an ordinary user key in:  lsusb  (the first character is a lower case L ---for
     list).  You will see something like the following depending on which usb device you have the
     ShuttlePro plugged into:
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2
 \end{lstlisting}
     \item To make sure you have usbmon installed key in:
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 \$ sudo modprobe usbmon
 \end{lstlisting}
     \item Next key in the following:
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 \$ sudo od -tx1 /dev/usbmon3
 \end{lstlisting}
     where the last 3 is the same \# as the Bus in above.  If it lists \texttt{Bus 002}, then use \texttt{/dev/usbmon2} instead.
@@ -1078,20 +1078,20 @@ Bus 003 Device 002: ID 0b33:0030 Contour Design, Inc. ShuttlePro v2
     should see about 12 lines similar to these below ---a new set every time you press a single key or the
     wheel.  The lines are usually not important, just the fact that you get a response is.  However if you
     have multiple devices on the same bus, you will get responses from any and all of them.  Attempt to
-    isolate your shuttle by temporarily unplugging unnecessary devices on the same bus or plug the 
+    isolate your shuttle by temporarily unplugging unnecessary devices on the same bus or plug the
     shuttle into a different usb port that has fewer devices.
-    \begin{lstlisting}[language=Bash,numbers=none]
-0000000 80 70 99 75 53 8c ff ff 43 01 81 02 03 00 2d 00 
-0000020 4e 61 5c 5c 00 00 00 00 8d 2c 06 00 00 00 00 00 
-0000040 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00 
-0000060 01 ff 00 00 00 80 70 99 75 53 8c ff ff 53 01 81 
-0000100 02 03 00 2d 3c 4e 61 5c 5c 00 00 00 00 b1 2c 06 
-0000120 00 8d ff ff ff 05 00 00 00 00 00 00 00 00 00 00 
-0000140 00 00 00 00 00 80 70 99 75 53 8c ff ff 43 01 81 
-0000160 02 03 00 2d 00 4e 61 5c 5c 00 00 00 00 3d d7 09 
-0000200 00 00 00 00 00 05 00 00 00 05 00 00 00 00 00 00 
-0000220 00 00 00 00 00 00 ff 00 00 00 80 70 99 75 53 8c 
-0000240 ff ff 53 01 81 02 03 00 2d 3c 4e 61 5c 5c 00 00 
+    \begin{lstlisting}[style=sh]
+0000000 80 70 99 75 53 8c ff ff 43 01 81 02 03 00 2d 00
+0000020 4e 61 5c 5c 00 00 00 00 8d 2c 06 00 00 00 00 00
+0000040 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00
+0000060 01 ff 00 00 00 80 70 99 75 53 8c ff ff 53 01 81
+0000100 02 03 00 2d 3c 4e 61 5c 5c 00 00 00 00 b1 2c 06
+0000120 00 8d ff ff ff 05 00 00 00 00 00 00 00 00 00 00
+0000140 00 00 00 00 00 80 70 99 75 53 8c ff ff 43 01 81
+0000160 02 03 00 2d 00 4e 61 5c 5c 00 00 00 00 3d d7 09
+0000200 00 00 00 00 00 05 00 00 00 05 00 00 00 00 00 00
+0000220 00 00 00 00 00 00 ff 00 00 00 80 70 99 75 53 8c
+0000240 ff ff 53 01 81 02 03 00 2d 3c 4e 61 5c 5c 00 00
 0000260 00 00 64 d7 09 00 8d ff ff ff 05 00 00 00 00 00
     \end{lstlisting}
     \item Next press the key that you want to verify is functioning --- if no new lines show up, then the key is
@@ -1107,29 +1107,29 @@ Another method for testing to make sure your model of the Shuttle does not have 
     \item Compile that with the command:  \texttt{c++ shdmp.C -o shudmp}
     \item Make the file executable with the command:  \texttt{chmod +x shudmp}
     \item Execute:
-    \begin{lstlisting}[language=Bash,numbers=none]
+    \begin{lstlisting}[style=sh]
 \$ sudo ./shdmp /dev/input/by-id/usb-Contour\_Design\_ShuttlePro-event-if00 # substitute your shuttle
     \end{lstlisting}
 \end{enumerate}
 
 \noindent Then press your shuttle key that is having problems and check the results.  They should look like:
 
-\begin{lstlisting}[language=Bash,numbers=none,caption={Example for K7}]
-event: (4, 4, 0x90007)		#The last number, 7, is the expected Key number. 
-event: (1, 262, 0x1) 
-event: (0, 0, 0x0) 
-event: (4, 4, 0x90007) 
-event: (1, 262, 0x0) 
-event: (0, 0, 0x0) 
+\begin{lstlisting}[style=sh,caption={Example for K7}]
+event: (4, 4, 0x90007)		#The last number, 7, is the expected Key number.
+event: (1, 262, 0x1)
+event: (0, 0, 0x0)
+event: (4, 4, 0x90007)
+event: (1, 262, 0x0)
+event: (0, 0, 0x0)
 \end{lstlisting}
 
-\begin{lstlisting}[language=Bash,numbers=none,caption={Example for K15}]
-Example for K15: 
-event: (4, 4, 0x9000f)		#The last number f is 15 in hexadecimal and is the expected Key. 
-event: (1, 270, 0x1) 
-event: (0, 0, 0x0) 
-event: (4, 4, 0x9000f) 
-event: (1, 270, 0x0) 
+\begin{lstlisting}[style=sh,caption={Example for K15}]
+Example for K15:
+event: (4, 4, 0x9000f)		#The last number f is 15 in hexadecimal and is the expected Key.
+event: (1, 270, 0x1)
+event: (0, 0, 0x0)
+event: (4, 4, 0x9000f)
+event: (1, 270, 0x0)
 event: (0, 0, 0x0)
 \end{lstlisting}
 
@@ -1137,7 +1137,7 @@ event: (0, 0, 0x0)
 
 \paragraph{Note 4} For developers, if you have a pre-UEFI Secure Boot kernel it is also possible to do the following for further in depth testing:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ls /sys/kernel/debug/hid   \# to locate numerical value of the shuttle, e.g. 0003:0B33.0030.0006
 cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/rdesc"  # substitute your own numerical value
 cat "/sys/kernel/debug/hid/0003:0B33.0030.0006/events"  # press keys to see the results
@@ -1158,7 +1158,7 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress (tab
 	\label{tab:shuttleprov2}
     % Tell table to adjust font to fix on the page using \resize
 	\resizebox{\textwidth}{!}{%
-	\begin{tabular}{c c c c c c c}       
+	\begin{tabular}{c c c c c c c}
 		\toprule
 		K1 & K2 & & K3 & K4 & & \\
 		Label & Future use & & Future use & Clip & & \\
@@ -1172,11 +1172,11 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress (tab
 		Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
 		\midrule
 		\multicolumn{7}{c}{Shuttle Outer Wheel} \\
-		\multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
+		\multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\
 		S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
 		S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
 		\midrule
-		K14	& & Jog Left & (Inner Wheel) & Jog Right & & K15 \\ 
+		K14	& & Jog Left & (Inner Wheel) & Jog Right & & K15 \\
 		Toggle In & & Frame reverse & & Frame forward & & Toggle Out \\
 				  & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\
 				  \midrule
@@ -1196,8 +1196,8 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress (tab
 	\label{tab:xpress}
     % Tell table to adjust font to fix on the page using \resize
     \resizebox{\textwidth}{!}{%
-	\begin{tabular}{c c c c c c c}       
-		\toprule        
+	\begin{tabular}{c c c c c c c}
+		\toprule
 		K5 & K6 & K7 & K8 & K9 & & \\
 		Home & Reverse & Stop & Play & End & & \\
 			 &         & Fullscreen & & & & \\
@@ -1206,14 +1206,13 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress (tab
 		Home(Defaults) & MouseBtn1(D) & MouseBtn2(D) & MouseBtn3(D) & End(Defaults) & & \\
 		\midrule
 		\multicolumn{7}{c}{Shuttle Outer Wheel} \\
-		\multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\        
+		\multicolumn{7}{c}{Play forward (first row) or Play reverse (second row)} \\
 		S1=Stop &   S2=1/2 &   S3=Normal  &  S4=2x  &  S5=4x  &  S6=8x &   S7=16x \\
 		S-1=Stop &  S-2=1/2 &  S-3=Normal &  S-4=2x &  S-5=4x &  S-6=8x  & S-7=16x \\
 		\midrule
-				 & & Jog Left & (Inner Wheel) & Jog Right & & \\ 
+				 & & Jog Left & (Inner Wheel) & Jog Right & & \\
 				 & & Frame reverse & & Frame forward & & \\
-				 & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\  
-				 \bottomrule      
+				 & & Scroll up(Defaults) & & Scroll down(Defaults) & & \\
+				 \bottomrule
 	\end{tabular}}
 \end{table}
-

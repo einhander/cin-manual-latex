@@ -24,11 +24,14 @@
 
 \clearpage
 % Remove the logo
-\ClearShipoutPicture
+\ClearShipoutPicture%
+\thispagestyle{empty}
 
 % Title page definition
+
 %\providecommand{\HUGE}{\Huge}% if not using memoir
 \newlength{\drop}% for my convenience
+
 %% specify the Webomints family
 %\newcommand*{\wb}[1]{\fontsize{#1}{#2}\usefont{U}{webo}{xl}{n}}
 %% select a (FontSite) font by its font family ID
@@ -39,6 +42,7 @@
 \newcommand*{\TXfont}[1]{\fontencoding{T1}\fontfamily{#1}\selectfont}
 %% Generic publisher’s logo
 \newcommand*{\plogo}{\fbox{$\mathcal{PL}$}}
+
 %% Some shades
 \definecolor{Dark}{gray}{0.2}
 \definecolor{MedDark}{gray}{0.4}
@@ -47,27 +51,26 @@
 %%%% Additional font series macros
 
 \newcommand*{\titleLL}{\begingroup% Lost Languages
-\drop=0.1\textheight
-\fboxsep 0.5\baselineskip
-\sffamily
-%\vspace*{\drop}
-\centering
-{\textcolor{Dark}{\HUGE Cinelerra-GG Version Infinity}}\par
-\vspace{0.5\drop}
-{\includegraphics[width=0.1\linewidth]{./images/cin-logo}}\par
-\vspace{0.5\drop}
-\colorbox{Dark}{\textcolor{white}{\normalfont\itshape\Large
-User Manual}}\par
-\vspace{0.3\drop}
-{\Large Last update}\\
-{\footnotesize \today}\\
-\url{https://www.cinelerra-gg.org}\par
+\drop=0.085\textheight
+\fboxsep0.5\baselineskip\sffamily
 \vspace*{\drop}
-{\includegraphics[width=0.5\linewidth]{./images/cin-big.png}}\par
+\centering
+\Large\textbf{Video editing for ambitious users}\par
+%
+\vspace*{2\baselineskip}
+{\textcolor{Dark}{\HUGE\textbf{\CGGI}}}\par
+\vspace*{0.3\baselineskip}
+{\textcolor{Dark}{\large\textbf{%
+      The Comprehensive User Manual}}}\par
+%
+\vspace{3\baselineskip}
+{\Large\today}\par
+\vspace{7.5\baselineskip}
+{\includegraphics[width=0.1\linewidth]{./images/cin-logo}}\par
+\href{https://www.cinelerra-gg.org}{https://www.cinelerra-gg.org}\par
 \endgroup}
-
-
 \titleLL % use cutom title
+
 
 %%% Local Variables:
 %%% mode: latex

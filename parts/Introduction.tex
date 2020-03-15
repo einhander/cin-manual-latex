@@ -20,8 +20,7 @@ possible, into this \CGG{} version and for several years has been
 adding numerous features, updates, and fixes.  All of these software
 contributions are appreciated and each individual is thanked and
 commended for their efforts.  The \CGG{} software is under \href{https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html}{GPLv2+}
-license.  % Refer to:
-% {\small\url{https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html}}
+license.
 
 As for this manual, the
 \href{https://www.gnu.org/licenses/fdl-1.3.en.html}{GNU Free
@@ -29,63 +28,70 @@ As for this manual, the
 license for free documentation, designed by the Free Software
 Foundation (FSF) for the GNU Project. It is similar to the GNU
 General Public License, giving readers the rights to copy,
-redistribute, and modify (except for "invariant sections") a work
+redistribute, and modify (except for ``variant sections'') a work
 and requires all copies and derivatives to be available under the
 same license.  The GFDL was designed for manuals, textbooks, other
 reference and instructional materials, and documentation which often
-accompanies GNU software.%   Refer to:
-% {\small\url{https://en.wikipedia.org/wiki/GNU_Free_Documentation_License}}
+accompanies GNU software.
 
-\textbf{This is a copy of the header from the original source code.}
-\begin{lstlisting}[numbers=none,basicstyle=\footnotesize]
-*
-* CINELERRA
-* Copyright (C) 1997-2012 Adam Williams <broadcast at earthling dot net>
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston
-\end{lstlisting}
-
+% FIXME The sense behind this is not apparent.
+% \textbf{This is a copy of the header from the original source code.}
+% % \begin{lstlisting}[basicstyle=\footnotesize]
+% {\small
+% \begin{verbatim}
+% *
+% * CINELERRA
+% * Copyright (C) 1997-2012 Adam Williams <broadcast at earthling dot net>
+% *
+% * This program is free software; you can redistribute it and/or modify
+% * it under the terms of the GNU General Public License as published by
+% * the Free Software Foundation; either version 2 of the License, or
+% * (at your option) any later version.
+% *
+% * This program is distributed in the hope that it will be useful,
+% * but WITHOUT ANY WARRANTY; without even the implied warranty of
+% * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+% * GNU General Public License for more details.
+% *
+% * You should have received a copy of the GNU General Public License
+% * along with this program; if not, write to the Free Software
+% * Foundation, Inc., 59 Temple Place, Suite 330, Boston
+% \end{verbatim}
+% % \end{lstlisting}
+% }
 
 \section*{\CGG{} Overview}%
 \label{sec:cinelerra_overview}
 
-Presented briefly here is an overview of \CGG{} Infinity and information provided in this manual.
-The GG version of \CGG{} has been improved for \emph{stability}, \emph{modernized} to accommodate the
-\emph{current state} of Linux software, enhanced with additional \emph{basic features}, and enriched with \emph{new features} imagined by dedicated users and then implemented by professional programmers.
+Presented briefly here is an overview of \CGGI{} and information
+provided in this manual. The \GG{} version of \textsc{Cinelerra} has
+been improved for \emph{stability}, \emph{modernized} to accommodate
+the \emph{current state} of Linux software, enhanced with additional
+\emph{basic features}, and enriched with \emph{new features}
+imagined by dedicated users and then implemented by professional
+programmers.
 
 \begin{description}
-    \item[Website] \small \url{https://www.cinelerra-gg.org}\\
+    \item[Website] \href{https://www.cinelerra-gg.org}{https://www.cinelerra-gg.org}\\
         The website for the cinelerra-gg software is a good place to start for information, help, and documentation.
         It is professionally maintained and continuously updated with more language
         translations ongoing.
-    \item[Stability] ~\\
+    \item[Stability]~\\
         Software programs that \textit{just work} are a \#1 priority in order to be of use for producing quality videos.
         A large amount of time has been invested in debugging problems and resolving crashes.
         And in a continuous process to do so, a chapter on Troubleshooting is included in order to easily provide sufficient information for users to capture issues and crashes so that they can be analyzed and quickly fixed to avoid repeat problems.
-    \item[Modernization] ~\\
+    \item[Modernization]~\\
         Artistic creativity has been applied to modernize the \CGG{} plugin icons for video and audio to even include the ffmpeg plugins.
         The Cinfinity set of plugin icons come in square or roundish versions --- your choice.
         In keeping up with the current expectation of users for a certain \textit{look and feel}, 2 very modern recent theme additions, Cakewalk and Neophyte, provide alternatives to the already existing 9 themes.
         These 11 themes give the user the choice to get the look they like best for their own eyes.
-    \item[Current and up-to-date] ~\\
+    \item[Current and up-to-date]~\\
         For today’s software, included thirdparty libraries are kept up to date in a timely manner and effort is made to always use a relatively recent version of FFmpeg, if not the latest.
         This is a big deal because there is a whole set of separate programmers working on these libraries continuously and diligently to cover all of the old and newly created formats.
         Thus \CGG{} programmers can be dedicated to working solely on \CGG{} rather than just trying to keep up with many formats.
     \item[FFmpeg usage integration]~\\
         By using FFmpeg with \CGG{}, there is the advantage that users can directly convert videos via pre- and post-processing, without the need for command lines to be executed manually before or afterwards.
-    \item[Import and Export formats] ~\\
+    \item[Import and Export formats]~\\
         Listed here are only a few of the supported Import and Export formats:
         \begin{itemize}
             \item  several standard native formats, such as mpeg, ac3, flac, exr and jpeg/png/ppm/tiff sequences
@@ -95,7 +101,7 @@ The GG version of \CGG{} has been improved for \emph{stability}, \emph{modernize
                 and recently released AV1 and WebP
             \item raw image format for over 700 supported cameras, courtesy Dave Coffin's DCraw
         \end{itemize}
-        \item[Standard Features] ~\\
+        \item[Standard Features]~\\
             \begin{itemize}
                 \item Program window for video and audio tracks, navigation, popups, playing and seeking functions.
                 \item Editing via track manipulation with either drag and drop editing or cut and paste editing.
@@ -130,7 +136,7 @@ The GG version of \CGG{} has been improved for \emph{stability}, \emph{modernize
                 \item Asset and Title colors selection including Alpha slider adjustment.
                 \item Scaling preference for any monitor size and HiDPI to support 4K monitors.
             \end{itemize}
-            \item[Innovative New Features] ~\\
+            \item[Innovative New Features]~\\
                 \begin{itemize}
                     \item Inter-View mode as invented through a collaborative effort by a user and the developer.
                     \item Proxy settings for large formatted media with the coveted Scalar option and proxy quick switch.
@@ -149,119 +155,119 @@ Below is listed a brief overview of each chapter to help you to decide which cha
 And which chapters are important for beginning to learn to use \CGG{}. At the end of the descriptions is a list of the sections to read for beginners.
 
 \begin{description}
-    \item[Chapter \ref{cha:Installation} ] \nameref{cha:Installation}.
+    \item[Chapter~\ref{cha:Installation} ] \nameref{cha:Installation}.
 
         If you just want to get started using the program, you can safely skip this chapter and instead go to:
         {\small \url{https://www.cinelerra-gg.org}}
         and simply download a pre-built linux version for your Operating System. If you would like to do your own builds so that you always have the latest, refer to this chapter to learn how.
         But if you are already familiar with doing your own builds, you can just refer to this chapter when you encounter issues.
-    \item[Chapter \ref{cha:the_4_windows} ] \nameref{cha:the_4_windows}.
+    \item[Chapter~\ref{cha:the_4_windows} ] \nameref{cha:the_4_windows}.
 
         It is important to understand the window setup in \CGG{} and what each of them is used for.
         In addition this chapter covers some basic navigation functions that you will need to know.
         However, if you have used an NLE before and don’t mind experimenting to learn how to execute certain functions, probably there is no need to peruse this chapter.
-    \item[Chapter \ref{cha:project_and_media_attributes}] \nameref{cha:project_and_media_attributes}.
+    \item[Chapter~\ref{cha:project_and_media_attributes}] \nameref{cha:project_and_media_attributes}.
 
         This chapter is helpful for basic understanding of setting up your session but it can easily be skipped.
 
-    \item[Chapter \ref{cha:load_save_and_the_EDL}] \nameref{cha:load_save_and_the_EDL}.
+    \item[Chapter~\ref{cha:load_save_and_the_EDL}] \nameref{cha:load_save_and_the_EDL}.
 
         Since this is important to not losing your work, you should read this chapter for some basic usage concepts and for some lesser used functions that may come in handy.
         Besides how to Load and Save files, there is also information on using raw camera formats.
         Helpful hints on working with image sequences, such as a bunch of pictures from your camera all loaded at once, is a time saver.
 
-    \item[Chapter \ref{cha:editing}] \nameref{cha:editing}.
+    \item[Chapter~\ref{cha:editing}] \nameref{cha:editing}.
 
         New and occasional users will find it necessary to read this chapter. However, you can decide which editing mode you prefer and concentrate on reading that section.
         Even seasoned users will want to read this chapter in order to take advantage of features that have been newly implemented or may be less familiar due to infrequent usage.
         Anyone who wants the editing capabilities that comes with use of the Shuttle Jog Wheel, will initially need to read that section to become familiar with its usage.
 
-    \item[Chapter \ref{cha:rendering}] \nameref{cha:rendering}.
+    \item[Chapter~\ref{cha:rendering}] \nameref{cha:rendering}.
 
         Minimally most users will need to read the section on single file rendering to get started; since after all the whole purpose of using an NLE is to create your own media.
         The end of this chapter includes some helpful specific rendering scenarios which could prove quite useful.
         You might also want to consider using batch rendering and background rendering for performance reasons.
         And, of course, render farm usage to take advantage of multiple computers can be a real boost.
 
-    \item[Chapter \ref{cha:keyframes}] \nameref{cha:keyframes}.
+    \item[Chapter~\ref{cha:keyframes}] \nameref{cha:keyframes}.
 
         This is a more advanced topic but extremely useful to know.
         Keyframes are data values that have been associated to the timeline that affect the media presentation.
         You can go for years without knowing all of the nuances but you will most likely have a need to use and understand them sooner or later.
 
-    \item[Chapter \ref{cha:ffmpeg_interactions}] \nameref{cha:ffmpeg_interactions}.
+    \item[Chapter~\ref{cha:ffmpeg_interactions}] \nameref{cha:ffmpeg_interactions}.
 
         Skip this chapter if you are just getting started. Skip this chapter if you just want to use common
         formats that are already set up for you. Experts may want to refer to this chapter in order to set up their
         own option files.
 
-    \item[Chapter \ref{cha:plugins}]\nameref{cha:plugins}.
+    \item[Chapter~\ref{cha:plugins}]\nameref{cha:plugins}.
 
         Use this chapter as a reference to add an audio or video plugin in order to correct color or add some fancy effect.
         You will not want to read about each and every plugin, most of which you will never use.
         On the other hand, going over the section on “some specific details concerning plugins” might come in handy.
 
-    \item[Chapter \ref{cha:transition_plugin}] \nameref{cha:transition_plugin}.
+    \item[Chapter~\ref{cha:transition_plugin}] \nameref{cha:transition_plugin}.
 
         Everyone who does not know about using transitions should read this chapter because you will want to use transitions between cuts in your video for smoothly changing scenes.
         It is short and easy reading.
 
-    \item[Chapter \ref{cha:overlays}] \nameref{cha:overlays} Modes, Alpha Blending, and Porter Duff.
+    \item[Chapter~\ref{cha:overlays}] \nameref{cha:overlays} Modes, Alpha Blending, and Porter Duff.
 
         Experts can really use the information in this chapter to spiff up their editing work through some blending type techniques.
         A lot of information and possibilities are described here.
 
-    \item[Chapter \ref{cha:capturing_recording_media}] \nameref{cha:capturing_recording_media}.
+    \item[Chapter~\ref{cha:capturing_recording_media}] \nameref{cha:capturing_recording_media}.
 
         This chapter is helpful in learning how to capture and record media from various sources.  A section on using \CGG{} with broadcast TV is especially useful.
 
-    \item[Chapter \ref{cha:dvd_bluray_creation}] \nameref{cha:dvd_bluray_creation}.
+    \item[Chapter~\ref{cha:dvd_bluray_creation}] \nameref{cha:dvd_bluray_creation}.
 
         If this is what you want to do, then read this chapter.
         In the case of DVD media creation it includes many examples and lots of tips for checking your methods.
 
-    \item[Chapter \ref{cha:multi_5}] \nameref{cha:multi_5}.
+    \item[Chapter~\ref{cha:multi_5}] \nameref{cha:multi_5}.
 
         For using multiple cameras in your video creation, this chapter is a must read. Otherwise, just refer
         to the section that becomes pertinent as you familiarize yourself with using \CGG{}.
 
-    \item[Chapter \ref{cha:shortcuts}] \nameref{cha:shortcuts}.
+    \item[Chapter~\ref{cha:shortcuts}] \nameref{cha:shortcuts}.
 
         Everyone will want to use this chapter to speed up their editing sessions.
         Once you find yourself doing the same thing over and over again, you will want to know if there is a shortcut. Then look here!
 
-    \item[Chapter \ref{cha:configuration_settings_preferences}] \nameref{cha:configuration_settings_preferences}.
+    \item[Chapter~\ref{cha:configuration_settings_preferences}] \nameref{cha:configuration_settings_preferences}.
 
         Refer to this chapter when you want to change some setting or preference.
         Otherwise if a new user, you should make sure to read the first page which includes some important basic information.
 
-    \item[Chapter \ref{cha:how_stuff_works}] \nameref{cha:how_stuff_works}.
+    \item[Chapter~\ref{cha:how_stuff_works}] \nameref{cha:how_stuff_works}.
 
         Only read this chapter if you are confused about a specific covered topic and how it works.
 
-    \item[Chapter \ref{cha:troubleshooting_help}] \nameref{cha:troubleshooting_help}.
+    \item[Chapter~\ref{cha:troubleshooting_help}] \nameref{cha:troubleshooting_help}.
 
         Use this chapter for diagnosing a problem and find out what to report to get the best resolution or help.
 
-    \item[Chapter \ref{cha:performance_tips}]  \nameref{cha:performance_tips}.
+    \item[Chapter~\ref{cha:performance_tips}]  \nameref{cha:performance_tips}.
 
         There are a few performance tips in this chapter that may eventually prove useful.
 
-    \item[Chapter \ref{cha:translations}] \nameref{cha:translations}.
+    \item[Chapter~\ref{cha:translations}] \nameref{cha:translations}.
 
         If you want to help by providing translations for a specific language, there is a complete description of how to do this and what to do.
 
-    \item[Chapter \ref{cha:licenses}] \nameref{cha:licenses}.
+    \item[Chapter~\ref{cha:licenses}] \nameref{cha:licenses}.
 
-    \item[Appendix \ref{cha:Quickstart}] \nameref{cha:Quickstart}.
+    \item[Appendix~\ref{cha:Quickstart}] \nameref{cha:Quickstart}.
 
         Here you go! If you hate to read, just go over the quick start guide or the youtube video creation and simply be on your way.
 
-    \item[Appendix \ref{cha:developer's_section}] \nameref{cha:developer's_section}.
+    \item[Appendix~\ref{cha:developer's_section}] \nameref{cha:developer's_section}.
 
         Some extra information that developers may or may not find useful.
 
-    \item[Appendix \ref{cha:auxiliary_programs}] \nameref{cha:auxiliary_programs}.
+    \item[Appendix~\ref{cha:auxiliary_programs}] \nameref{cha:auxiliary_programs}.
 
         This is a catch-all for any useful programs that may need to be included, mostly for analysis.
 
@@ -270,12 +276,17 @@ And which chapters are important for beginning to learn to use \CGG{}. At the en
 In summary, \textit{must} reads for a new user would be these chapters or sections:
 
 \begin{itemize}
-    \item Chapter \ref{cha:the_4_windows} --- \nameref{cha:the_4_windows}.
-    \item Chapter \ref{cha:load_save_and_the_EDL} --- \nameref{cha:load_save_and_the_EDL}.
-    \item Chapter \ref{cha:editing} --- \nameref{cha:editing}; read all sections except emphasize only either \nameref{sec:cut_paste_editing} or \nameref{sec:drag_drop_editing} to suit your purpose and then skim the editing mode that is not your preference as some operations work in either mode.
+    \item Chapter~\ref{cha:the_4_windows} --- \nameref{cha:the_4_windows}.
+    \item Chapter~\ref{cha:load_save_and_the_EDL} --- \nameref{cha:load_save_and_the_EDL}.
+    \item Chapter~\ref{cha:editing} --- \nameref{cha:editing}; read all sections except emphasize only either \nameref{sec:cut_paste_editing} or \nameref{sec:drag_drop_editing} to suit your purpose and then skim the editing mode that is not your preference as some operations work in either mode.
         Skip the \nameref{sec:shuttle_jog_wheels_editing} section unless you have this jog wheel in hand.
-    \item Chapter \ref{cha:rendering} --- \nameref{cha:rendering}; minimally read the \nameref{sec:single_file_rendering} section.
-    \item Chapter \ref{cha:plugins} --- \nameref{cha:plugins}; read the section on \nameref{sec:how_use_plugins}.
-    \item Chapter \ref{cha:transition_plugin} --- \nameref{cha:transition_plugin}.
-    \item Chapter \ref{cha:configuration_settings_preferences} --- \nameref{cha:configuration_settings_preferences}; read at least the first couple of paragraphs.
+    \item Chapter~\ref{cha:rendering} --- \nameref{cha:rendering}; minimally read the \nameref{sec:single_file_rendering} section.
+    \item Chapter~\ref{cha:plugins} --- \nameref{cha:plugins}; read the section on \nameref{sec:how_use_plugins}.
+    \item Chapter~\ref{cha:transition_plugin} --- \nameref{cha:transition_plugin}.
+    \item Chapter~\ref{cha:configuration_settings_preferences} --- \nameref{cha:configuration_settings_preferences}; read at least the first couple of paragraphs.
 \end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

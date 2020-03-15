@@ -58,13 +58,13 @@ For blu-ray, the filesystem generation is slightly harder.  First, it creates an
 
 NOTE of IMPORTANCE: there is a serious situation with the interaction between the Operating System (OS) and bdwrite when creating blu-ray, that requires automount to be turned off.  The blu-ray automatic script unmounts the blu-ray/UDF filesystem but the system has not finalized the directories so the OS creates a new loop file device and the data is loaded and cached for use by the new loop but it is stale.  Consequences is that not all of the data is written where it should be.  The solution is for the OS not to mount this second mount so we have to make sure it doesn't.  There are 2 methods to fix this.  The first and easiest is by using the following command to disable automount:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 gsettings set org.gnome.desktop.media-handling automount false
 \end{lstlisting}
 
 This can be reversed when you have completed the blu-ray generation via:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 gsettings set org.gnome.desktop.media-handling automount true
 \end{lstlisting}
 
@@ -193,7 +193,7 @@ Directory and file names should not be changed at this time because the scripts 
 
 If bluray to test the filesystem you just created, use the command line interface; loopback mount the filesystem image which was generated in the target directory.  For example if blu-ray:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cd /TargetDirectory/bd_20150820-093747/
 mount -o loop,ro ./bd.udfs ./udfs
 #check the media using a compatible media rendering tool like ffplay
@@ -209,20 +209,20 @@ For rewritable blu-ray (recommended) (BD-RE):
 
 Note: unwritten (virgin) media must be formatted first using:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 dvd+rw-format /dev/bd   #only done once and does not take very long
 \end{lstlisting}
 
 To write or rewrite rewritable blu-ray media:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cd /TargetDirectory/bd_20150820-093747/
 dd if=./bd.udfs of=/dev/bd bs=2048000    #the growisofs command below also works
 \end{lstlisting}
 
 To write blu-ray write-once media: (BD-R)  (no pre-formatting needed):
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cd /TargetDirectory/bd_20150820-093747/
 growisofs -dvd-compat -Z /dev/bd=./bd.udfs
 \end{lstlisting}
@@ -234,13 +234,13 @@ For rewritable DVD (DVD+RW):
 
 Note: unwritten (virgin) media must be formatted first using:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 dvd+rw-format /dev/dvd   #only done once and does not take very long
 \end{lstlisting}
 
 To write a DVD, load blank media and run the following from the command line (requires dvdauthor):
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cd /TargetDirector/dvd_20160404-175416
 growisofs -dvd-compat -Z /dev/dvd -dvd-video ./iso
 \end{lstlisting}
@@ -271,7 +271,7 @@ Below are examples of what the batch jobs generate and you will see on the termi
 \subsubsection*{SD Example: Partial Output during \CGG{} run}
 \label{ssub:sd_example_partial_output}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ...
 FFMPEG::open_decoder: some stream times estimated
 Render::render_single: Session finished.
@@ -313,7 +313,7 @@ growisofs -dvd-compat -Z /dev/dvd -dvd-video /tmp/dvd_20160407-113530/iso
 \subsubsection*{BD Example: Partial Output during \CGG{} run}
 \label{ssub:bd_example_partial_output}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ...
 FFMPEG::open_decoder: some stream times estimated
 Render::render_single: Session finished.
@@ -349,7 +349,7 @@ for RW: dd if=/tmp/bd_20161224-162059/bd.udfs of=/dev/bd bs=2048000
 \subsubsection*{SD Example – Partial Output during writing disc media}
 \label{ssub:sd_example_partial_output_writing}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 growisofs -dvd-compat -Z /dev/sr0 -dvd-video /tmp/dvd_20161224-160756/iso
 WARNING: /dev/sr0 already carries isofs!
 About to execute 'mkisofs -dvd-video /tmp/dvd_20161224-160756/iso | builtin_dd of=/dev/sr0 obs=32k seek=0'
@@ -370,7 +370,7 @@ builtin_dd: 6624*2KB out @ average 0.7x1352KBps
 \subsubsection*{BD Example – Partial Output during writing disc media}
 \label{ssub:bd_example_partial_output_writing}
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 growisofs -dvd-compat -Z /dev/sr0=/tmp/bd_20161224-155658/bd.udfs
 Executing 'builtin_dd if=/tmp/bd_20161224-155658/bd.udfs of=/dev/sr0 obs=32k seek=0'
 /dev/sr0: "Current Write Speed" is 2.0x4390KBps.
@@ -418,7 +418,7 @@ Note that there will be no files in the actual AUDIO\_TS directory.
     \item There is also a file in the same directory, called bd.jobs.  It was the information that was used in creating the batch jobs and may be helpful in determining what parameters were actually used if there are any resulting problems.  With enough background knowledge, you can make changes and rerun.
     \item For blu-ray check to make sure you do not have any spurious loopback disks mounted that may interfere with the correct generation.  Use the df command to check this and then the umount command to unmount these.  Also, check to make sure you have used the gsettings command to disable automount.
     \item For blu-ray loopback mount the \texttt{<target>/bd.udfs} image, and see if it has the BDMV filesystem written to it, and in particular a subdirectory named STREAM.  Look at the results in \texttt{./udfs} and check for  the stream file which should exist in \texttt{./udfs/BDMV/STREAM/00000.m2ts} and should have the same size as \texttt{./bd.m2ts}.
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
     mount -o loop <target>/bd.udfs <target>/udfs
     ls -lR <target>/udfs
     du -sc <target>/udfs
@@ -434,7 +434,7 @@ Note that there will be no files in the actual AUDIO\_TS directory.
     \item Did you startup \CGG{} from a terminal window so you can see informative messages?
     \item Is udftools installed for BD and dvdauthor installed for SD?
     \item Do you have loopback not enabled for bluray?  At least temporarily, disable automount via:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
     gsettings set org.gnome.desktop.media-handling automount false
     \end{lstlisting}
     \item Did you have sufficient disk space for working/writing files?  In the \textit{Create} window, the \textit{disk space} will be displayed in green if sufficient, but in red if less than what fits on the disc media.
@@ -528,7 +528,7 @@ This program can be used to scan captured broadcast data streams and convert the
 
 usage:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ./zmpeg3cc2txt  [-c cc_service ]  [-s start:length, ...]  [ -t track ]  [-v verbose ] [-w wdw mask ]  [-x file.xml ]  [-o file.udvd ]  file.ts
 \end{lstlisting}
 
@@ -555,7 +555,7 @@ usage:
 To use this program, the input file must be a transport stream (broadcast video) which contains closed captioning services.  The service id defaults to one, and the default video track is zero.  Either \texttt{-o} or \texttt{-x} must be specified to indicate the output file format desired.  If the output file name is a '-' then stdout is selected as the output file. 
 For example:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 zmpeg3cc2txt -o - /dvb_data/channel5.ts
 \end{lstlisting}
 
@@ -570,7 +570,7 @@ An MTS file is a video file saved in the high-definition (HD) MPEG Transport Str
 
 For creating a blu-ray disc, if you have HDV MPEG-2 media that is in blu-ray format, you can save the original quality of your work, rather than rendering it to another format.  Follow the steps below directly instead of going through \CGG{}.  It has been tested on 10 different MTS files.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 du -sb /yourHDVfile.MTS		# Determine the size of your file in bytes.
 blocks=((size-in-bytes/2048 + 4096))	# Convert bytes into blocks + a little more.	
 mkudffs /tmp/newfilename.udfs blocks	# Create a file with that \# of blocks + some extra.
@@ -588,7 +588,7 @@ Creating BD images to be written to media requires usage of \textit{mount} and \
 
 The line to add to \texttt{/etc/fstab} will look something like the following, assuming your username is \textit{name} and your groupid may be \textit{users} or \textit{name}.  If you do an \texttt{ls -l} in your home directory, the $3^{rd}$ and $4^{th}$ fields shown will be your uid or name and gid or groupid which you must substitute in the line below.
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 /home/name/image  /home/name/bluray  udf noauto,loop,rw,user,uid=name,gid=groupid 0 0
 \end{lstlisting}
 
@@ -601,7 +601,7 @@ Writing prepared multiple \CGG{} output files, \texttt{bd.m2ts}, to a single blu
 
 Usage of the final preparation taken from the bdwrite program comments:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ./bdwrite <tgt_dir_path> <playlist-0> <sep> <playlistp1> <sep> ... <sep> <playlist-n>
 
 <sep> == -<pgm_pid> | --<pgm_pid> | ---<pgm_pid>
@@ -614,7 +614,7 @@ One title is built for each playlist; playlist-0 is used as first-play item.  Th
 
 For example:
 
-\begin{lstlisting}[language=bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ./bdwrite /tmp/dir /path/menu_titles.m2ts --- /path/clip0.m2ts -- /path/clip1.m2ts -- /path/clip2.m2ts
 \end{lstlisting}
 
@@ -625,13 +625,13 @@ The basic idea is to use playlist-0 as a menu or directions to use the bluray pl
     \item Using \CGG{}, design your Title page using a few seconds of video and the \textit{Title} plugin.
     \item Use BD Create to render your short Title video.
     \item Next is the most complicated part which is to run \texttt{mkudffs} with a sufficient amount of disk space to hold all of the \texttt{bd.m2ts} files \textit{plus a little more!}  To calculate this, you can record the sizes from having run BD Create mkudffs.  This number is displayed on the terminal screen when using the command line interface each time and add them together.  Or recalculate the size of each \texttt{bd.m2ts} using the formula below and adding them all together.  This is the number of blocks used to make a bluray image space for bdwrite to use.  For many files, this could require a huge amount of space, so check first.
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
     Total size = File0 size in bytes / 2048 + 4094  "+"   File1 size in bytes / 2048 + 4094  "+" ...
     \end{lstlisting}
     Now create the image file via:   \texttt{mkudffs image <Total size>}  where image or udfs is the image name.
     \item Loop mount the disk image (refer to Section \hyperref[sec:bluray_workaround_mount_umount]{13.7}).
     \item Then actually write your multiple bd.m2ts type files onto the \textit{image} where \texttt{<cin\_path>} is the location of the \CGG{} binary \textit{bdwrite} file and \texttt{<path>} is your directory path.  Below is a single line that wrapped around with 4 Titles.
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
     <cin_path>/bin/bdwrite image /<path>menu_titles.m2ts --- /<path>/bd1.m2ts -- /<path>/bd2.m2ts -- /<path>/bd3.m2ts -- /<path>bd4.m2ts
     \end{lstlisting}
     Note that the 3 dashes after the \texttt{menu\_titles.m2ts} lets the bluray player know to \textit{pause} after playing the few seconds video which contains the index to the rest of the files.  The 2 dashes after each of the \texttt{bd.m2ts} signify \textit{stop}.  That is when you will have to use your remote to \textit{Search Titles} in order to play the next one you want to see.  In addition, if for some reason you just want to \textit{play all}, you will have to add another line to the Title menu as a choice and list all of the 4 files in a row at the end of your bdwrite line without any dashes in between.
@@ -728,7 +728,7 @@ Keep in mind that the monitor you are using is NOT the intended output display d
 \begin{enumerate}[start=13]
     \item Next, make sure you have the Timeline set in the Main window at the beginning of where you want to start rendering.  Also, make sure the first line in the \textit{Batches to render} section is highlighted as you can see above by the blue highlighting.  Click on the \textit{Start} box in the Batch Render window and you will see the video playing in the Compositor window.
     \item \CGG{} program will be stopped when done rendering; you will be at the terminal prompt where you will see it has printed out some informational messages (or errors if problems), the last 2 are:
-    \begin{lstlisting}[language=bash,numbers=none]
+    \begin{lstlisting}[style=sh]
     To burn dvd, load blank media and run:
     growisofs -dvd-compat -Z /dev/dvd -dvd-video /mnt0/dvd_20161027-131723/iso
     \end{lstlisting}

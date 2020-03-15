@@ -250,7 +250,7 @@ For a ladspa plugin, the text line in \texttt{\$HOME/.bcast5/ladspa\_plugins}$\d
 \texttt{AM pitchshifter} $1504922321\, 0\, 1\, 0\, 0\, 1\, 0\, 1\, 0\, 1\, 0\, 0$ indicates that you would create the icon: \\ \texttt{<cinlib\_path>/plugins/picon/cinfinity/am\_pitchshift\_1433.png} \\
 For your own personal plugins, you can create a directory on your system and put any plugin png files you like into that directory. For example, if you want a specialized picon for \textit{F\_aeval}, create a picon named \texttt{ff\_aeval.png} in: \\ \texttt{<cinlib\_path>/plugins/picon/yournamehere.}
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cd <cinlib>/plugins            # go to the correct directory
 mkdir -p picon/yournamehere    # create subdirectory if does not exist
 ls -l picon/*                  # list the picon directories
@@ -295,7 +295,7 @@ If there are recommendations for other relevant categories, they can be added. T
 
 The \texttt{expanders.txt} file has very specific requirements. The most specific is that there are no blanks -- you must use tabs only. A \# (pound sign) can be used in column 1 to indicate a comment. Here is a short example:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 Video Effects
     - Color_Correction
         Blue Banana
@@ -332,13 +332,13 @@ if using an ffmpeg plugin that uses filters and many passes over the data, the a
 
 file containing the following line, the full scale color modeling upgrade will not be performed until after any plugin, and then the render is faster:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 video_filter=xxxxxx=threads=8 # where xxxxxx is the desired filter
 \end{lstlisting}
 
 When the file loads, however, it will initially take longer because it is running through the video filter. The format \textit{rgb} in ffmpeg uses more cpu time. For comparison, ffmpeg line that might be used:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ffmpeg -i /tmp/filename.mpeg -threads 15 -vf format=rgb24,xxxxxxs=threads=8 -acodec ac3 -vcodec libx265 - y /tmp/x.mp4
 \end{lstlisting}
 
@@ -703,7 +703,7 @@ Currently available waveforms are: \textit{Sine}; \textit{Sawtooth}; \textit{Rev
 
 Ladspa effects are supported in realtime and rendered mode for audio. These audio effects are supported since \CGG{} implements the LADSPA interface as accurately as possible. Besides the supplied LADSPA effects\protect\footnote{credit Steve Harris}, additional LADSPA effects can be enabled by setting the \texttt{LADSPA\_PATH} environment variable to the location of your LADSPA plugins:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 export LADSPA_PATH=/usr/lib/ladspa
 \end{lstlisting}
 
@@ -771,7 +771,7 @@ In order to test a particular plugin without bringing up \CGG{}, especially for 
 \texttt{/cin-path/lv2ui <lv2-uri>} \\
 For example:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 /tmp/cinelerra-5.1/bin/lv2ui http://calf.sourceforge.net/plugins/Flanger
 \end{lstlisting}
 
@@ -2501,7 +2501,7 @@ The X Window system originally did not have a suitable font renderer for video. 
 
 The titler supports mainly \textit{TTF}, true type fonts. It supports others but TTF are the most reliable. To add true type fonts, copy the \texttt{.TTF} files to the fonts directory. In that directory run
 \vspace{1ex}
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
     # /usr/lib/cinelerra/fonts
     ttmkfdir && mv fonts.scale fonts.dir
 \end{lstlisting}
@@ -2590,7 +2590,7 @@ These attributes stay in effect until you change them or reset them. Additional 
 Figure~\ref{fig:title03}.
 
 \vspace{1ex}
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 <size 15>Buddy, the <color red><bold 1>bad dog</bold><color white> ate my homework !<png /tmp/buddy.png><ul 1><size +>There are<ul 0><size +>2<sup 1>10<sup 0>cats <font Action man (misc)>to chase?
 \end{lstlisting}
 
@@ -2647,7 +2647,7 @@ In order to choose a font faster, you can keyin the first few characters of the 
 Some of the system fonts are automatically included in the set of fonts being used by \CGG{}. The easiest way to add additional fonts for the Title plugin's set, is to use ones available in specific directories on your computer as long as they have a \texttt{fonts.scale} file already set up. You can run \texttt{mkfontscale} to create this file within that directory. In order to include a specific directory you set an environment variable before starting \CGG{} which stays in effect until it is unset or until the next reboot. Below is the method and an example.
 
 \vspace{1ex}
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 export BC_FONT_PATH=<colon-separated-search-path-for-fonts>
 export BC_FONT_PATH=/usr/share/fonts
 \end{lstlisting}
@@ -2660,7 +2660,7 @@ Here you will find the default set of fonts that come with the install. Copy any
 If you have problems with a specific font or set of fonts, there is a debug option available to determine which font is an issue. When starting \CGG{}, you should set up the variable:
 
 \vspace{1ex}
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 export BC_FONT_DEBUG=1	(default is 0 for no debug)
 unset BC_FONT_DEBUG		(to remove debug messages)
 \end{lstlisting}
@@ -2668,7 +2668,7 @@ unset BC_FONT_DEBUG		(to remove debug messages)
 Then start \CGG{} from a terminal window to see the fonts being loaded and previewed in the Titler. This should point out any issues. Another debug methodology is to remove all fonts from being used and subsequently add in the ones that you want. For example:
 
 \vspace{1ex}
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 export BC_FONT_PATH=:   #(the : "colon" removes all automatic system and Cinelerra fonts)
 export BC_FONT_PATH=:/usr/share/fonts #(remove all fonts and then add /usr/shar/fonts)
 \end{lstlisting}
@@ -2952,13 +2952,13 @@ Because of the build size of opencv, it is not normally included in the thirdpar
 
 To build findobject and the other plugins using opencv, access the src using git:
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 git clone -depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5
 \end{lstlisting}
 
 then configure the build, but add the \texttt{-{}-with-opencv} configure parameter.
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cd <path>/cinelerra-5.1
 ./autogen.sh
 ./configure <add std params, eg: --with-single-user> --with-findobect=sta
@@ -2978,7 +2978,7 @@ $4\, GB$ in the thirdparty build directory and more time to compile.
 
 To get opencv built in the easiest way possible (need internet access because builds directly from the opencv github but this changes wildly):
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 ./configure <params> --with-opencv=sta,git
 \end{lstlisting}
 
@@ -2987,7 +2987,7 @@ To get opencv built in the easiest way possible (need internet access because bu
 
 The OpenCV plugins are built only in the 64-bit tarball builds, both static and dynamic. However, due to size these plugins are not included with pkgs. But it is relatively easy to add the current 6 plugins for your distro via a simple procedure of copying the plugins from the tarball to the cin5 install plugin path. They are: 
 
-\begin{lstlisting}[language=Bash,numbers=none]
+\begin{lstlisting}[style=sh]
 cin/plugins/opencv/findobj.plugin 
 cin/plugins/opencv/flowobj.plugin
 cin/plugins/opencv/gaborobj.plugin

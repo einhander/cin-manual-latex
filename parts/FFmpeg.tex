@@ -18,7 +18,7 @@ ffmpeg probes late and it reads \textit{Currently: Try FFMpeg last}.  The initia
 the icon is on, that is, ffmpeg probes first. Suggestion is to leave it on except in a few special 
 cases where it may be better to have early probes disabled.  When you mouse over the main menu FF 
 toggle button, the text displays ffmpeg's \textit{Currently} set position.  Just left mouse click to change to the other setting.
-The ffmpeg early probe state is saved between sessions and is also affected by choices made in Probe Order (refer to section \ref{sub:probe_order_loading_media}). It is important to note that the various file indexes may need to be rebuilt if you change which codec is being used to decode the file.  There is a warning popup to remind you when you change the default ffmpeg early probe state (unless you have checked the box to no longer show the warning).  You can easily rebuild the index for a specific media file by going to the Resources window, right mouse click on that media, and choose \texttt{Rebuild Index} from the popup choices.
+The ffmpeg early probe state is saved between sessions and is also affected by choices made in Probe Order (refer to section~\ref{sub:probe_order_loading_media}). It is important to note that the various file indexes may need to be rebuilt if you change which codec is being used to decode the file.  There is a warning popup to remind you when you change the default ffmpeg early probe state (unless you have checked the box to no longer show the warning).  You can easily rebuild the index for a specific media file by going to the Resources window, right mouse click on that media, and choose \texttt{Rebuild Index} from the popup choices.
 
 Figure~\ref{fig:ff} shows (1) reddish colored FF in upper right hand corner of main window indicating
 that ffmpeg early probes is enabled; (2) \textit{Try FFMpeg last}  indicator message for ffmpeg early probes enabled (note that the color is different because you highlighted the icon); and (3) black colored FF indicates ffmpeg will be used last and you are changing the behavior so that \CGG{} warns you accordingly.
@@ -112,8 +112,8 @@ There are 4 special id's recognized by \CGG{} which cause special processing.  T
 
 \begin{description}
     \item[duration] overrides the probe duration when opening media for decoding
-    \item[video\_filter] adds a video stream filter, eg. edgedetect,\dots at the stream level
-    \item[audio\_filter] adds an audio stream filter, eg. echo,\dots at the stream level
+    \item[video\_filter] adds a video stream filter, eg.\ edgedetect,\dots at the stream level
+    \item[audio\_filter] adds an audio stream filter, eg.\ echo,\dots at the stream level
     \item[loglevel] sets the library logging level, as quiet, panic, \dots verbose, debug
 \end{description}
 
@@ -277,7 +277,20 @@ Then to use and to get 10 bit depth and preserve depth from decode to encode:
 
 There are thousands of options for using ffmpeg.  Now it is possible to \textit{view} the available options for a particular video and audio choice by using the \textit{wrench icon} and then clicking on the \textit{view} box.  FFmpeg has to be the selected file format for this feature to be visible.  It makes it a lot easier since only the applicable options show up as opposed to everything that ffmpeg can do.  These options are just \textit{Hints} and some may be missing due to the way that ffmpeg options are coded -- \CGG{} shows the option data ffmpeg has exposed.
 
-As an example, instead of reading the entire 264 library information, you only have to look at the shown available options.  Both the video and the audio are browsable. The options visible in the \textit{Audio/Video Preset} textbox are the final values which are used when rendering once you have checked OK.  For assistance in choosing the options you want, use the view popup to see the objects that go with the selected format tool, highlight the option, modify the parameter value in the box at the top of the \textit{Options} window based on what you want, and then click apply.  Updated parameter values or new parameters will be appended at the bottom.  Note that when you highlight an option, a tooltip will show up when available in the lower right hand corner which describes the option.  Also note that the Format and Codec types are shown on the top line of the Options window.
+As an example, instead of reading the entire 264 library
+information, you only have to look at the shown available options.
+Both the video and the audio are browsable. The options visible in
+the \textit{Audio/Video Preset} textbox are the final values which
+are used when rendering once you have checked OK\@.  For assistance
+in choosing the options you want, use the view popup to see the
+objects that go with the selected format tool, highlight the option,
+modify the parameter value in the box at the top of the
+\textit{Options} window based on what you want, and then click
+apply.  Updated parameter values or new parameters will be appended
+at the bottom.  Note that when you highlight an option, a tooltip
+will show up when available in the lower right hand corner which
+describes the option.  Also note that the Format and Codec types are
+shown on the top line of the Options window.
 
 Parameters exist in 3 layers: ffmpeg, codec, and an interface layer.  You can apply parameters to each layer.  The top 2 layers are accessed with the Kind popup menu. The ffmpeg layer is topmost, and is selected as Kind: ffmpeg.  It can specify many of the more common parameters, such as the bitrate, quality, and so on.  The middle layer is selected as Kind: codec.  These options can specialize your choices, and frequently includes presets and profiles useful for coding well known parameter sets, like \textit{profile=high422}, \textit{preset=medium}, or \textit{tune=film}, etc.   The interface layer may or may not be available.  It is usually accessible only by an \textit{opts} parameter, like \texttt{x264-params key=value:key=value}:\dots  These options are passed directly to the low level codec library.
 

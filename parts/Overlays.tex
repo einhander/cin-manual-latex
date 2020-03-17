@@ -64,7 +64,7 @@ D = Destination
 S = Source
 a = alpha
 c = chroma (color)
-|| = OR (logical operator); 
+|| = OR (logical operator);
 ? : = if (true/false) ... then (conditional ternary operator)
 \end{lstlisting}
 
@@ -203,3 +203,8 @@ Typical operations from popular \textit{paint} packages.
     \item[Softlight:] Darkens or lightens the colors, dependent on the source color value.  If the source color is lighter than 0.5, the destination is lightened. If the source color is darker than $0.5$, the destination is darkened, as if it were burned in.  The degree of darkening or lightening is proportional to the difference between the source color and $0.5$.  If it is equal to $0.5$, the destination is unchanged.  Using pure black or white produces a distinctly darker or lighter area, but does not result in pure black or white.  The effect is similar to shining a diffused spotlight on the destination.  A layer with pure black or white becomes markedly darker or lighter, but does not become pure black or white.  Soft light is not related to “Hard light” in anything but the name, but it does tend to make the edges softer and the colors not so bright.   Math formula is the same as used by Gimp; SVG formula differs.
 \end{description}
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

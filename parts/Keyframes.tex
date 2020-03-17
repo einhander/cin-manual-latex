@@ -3,15 +3,19 @@
 
 The word \textit{keyframe} has at least 3 contextual meanings in the NLE environment.  First, the oldest meaning, is the \textit{I-Frame} definition used in codecs algorithms.  These are \textit{key} frames that begin a new sequence of pictures, and are anchor points for repositioning (seeks).  Next are the automation parameter data points.  These are usually input to primitive math forms, like translation and zoom.  And last are blobs of data that are chunks of parameters to plugins that can do almost anything.  The data can be a simple value, like a fader value, or more complex like a group of points and colors in a sketcher plugin keyframe.  The word keyframe has changed a lot in meaning.  In the context of \CGG{}, keyframes are data values that have been associated to the timeline which affect the media presentation.  So a keyframe no longer refers to a frame, but to a position on the timeline.
 
-In \CGG{}, there are two general types of keyframe data, \textit{automation keyfra\-mes} (autos) which are drawn as colored lines and box icons overlayed at a point on a media track, and \textit{plugin keyframes} which are drawn as gold key symbols on a plugin bar of a track.  \quad
-\includegraphics[height=\baselineskip]{auto.png}	         
-Auto $\leftarrow$ Keyframe $\rightarrow$ 
-Plugin \includegraphics[height=\baselineskip]{plugin.png}
+In \CGG{}, there are two general types of keyframe data,
+\textit{automation keyframes} (autos) which are drawn as colored
+lines and box icons overlayed at a point on a media track, and
+\textit{plugin keyframes} which are drawn as gold key symbols on a
+plugin bar of a
+track. \includegraphics[height=\baselineskip]{auto.png} Auto
+$\leftarrow$ Keyframe $\rightarrow$ Plugin
+\includegraphics[height=\baselineskip]{plugin.png}
 
-\section{Automation Keyframes / Autos}%
+\section{Automation Keyframes,/\,Autos}%
 \label{sec:automation_keyframes_autos}
 
-The \textit{autos} are created by clicking on an \textit{automation curve} to establish the time position for the new keyframe anchor point.  The basic nature of these simple auto values make them primitive operations that are easy to apply when needed.  
+The \textit{autos} are created by clicking on an \textit{automation curve} to establish the time position for the new keyframe anchor point.  The basic nature of these simple auto values make them primitive operations that are easy to apply when needed.
 
 There are many automation curve types, and most are not normally visible or clickable.  To make them visible, use the \texttt{View} pulldown, or open the \texttt{Window $\rightarrow$ Show Overlays}. This window allows toggling of the parameters in the View pulldown but is more convenient because you can leave the window up to change values quickly.  If all of the automation curves are turned on, the timeline will be quite cluttered, and so usually only the parameters of interest are enabled during use.  When keyframes are selected, they are drawn on the timeline over the tracks to which they apply.  The keyframe is represented on the timeline as a little square on the curve, for example as in fade, or as a symbol as in a mask.  This square, timeline attachment point, can be used for positioning by clicking on a keyframe anchor and using drag and drop to set the new position.
 
@@ -19,7 +23,7 @@ The automation keyframes include:
 
 mute/play audio; camera translation x,y and zoom; projector translation x,y and zoom; fade blending; audio panning; overlay mode; mask point sets and sampling speed.
 
-Except for the mask auto, the values are all simple numbers.  Mute is different from the other autos in that it is simply a toggle of either on or off.  Mute keyframes determine where the track is processed but not rendered to the output.  An example usage would be to use auto keyframes to fade in a clip by setting the transparency to $100\%$ at the first keyframe and adding another keyframe 5 seconds later in the timeline with a transparency of $0\%$.  
+Except for the mask auto, the values are all simple numbers.  Mute is different from the other autos in that it is simply a toggle of either on or off.  Mute keyframes determine where the track is processed but not rendered to the output.  An example usage would be to use auto keyframes to fade in a clip by setting the transparency to $100\%$ at the first keyframe and adding another keyframe 5 seconds later in the timeline with a transparency of $0\%$.
 
 The Keyframes pulldown on the main timeline is used for Cut, Copy, Paste, Clear, Change to linear, Change to smooth, Create curve type of Smooth, Linear, Tangent, or Disjoint, Copy default keyframe or Paste default keyframe.  If you right click on a curve keyframe on the timeline, a set of options popup including the choices \textit{keyframe type} (such as Fade, Speed, etc.), Hide keyframe type, Delete keyframe, Copy keyframe, smooth curve, linear segments, tangent edit, or disjoint edit.
 
@@ -62,7 +66,7 @@ To make it easier to navigate curve keyframes, since there is not much room on t
     \end{enumerate}
 \end{itemize}
 
-You can click mouse button 3 on a keyframe box and a menu pops up with the first menu item showing the keyframe type.  The top menu item can be activated for immediate access to update the automation keyframe value.  Some keyframe types, which have values that can be manipulated in another way than by dragging the color coded line, now show up with a different colored background to make them more visible.  Keep in mind that Zoombar ranges/values must be set to appropriate values when working with specific keyframe types, such as Fade or Speed.  If you do not see the auto line in the visible area of the video track, try the key combination Alt-f or select the speed in the \textit{Automation Type} drop-down menu at the bottom of the main window.  To the right of this field is \textit{Automation Range} where you can set the display ratio of these lines. Simply change the values until the lines are visible again. 
+You can click mouse button 3 on a keyframe box and a menu pops up with the first menu item showing the keyframe type.  The top menu item can be activated for immediate access to update the automation keyframe value.  Some keyframe types, which have values that can be manipulated in another way than by dragging the color coded line, now show up with a different colored background to make them more visible.  Keep in mind that Zoombar ranges/values must be set to appropriate values when working with specific keyframe types, such as Fade or Speed.  If you do not see the auto line in the visible area of the video track, try the key combination Alt-f or select the speed in the \textit{Automation Type} drop-down menu at the bottom of the main window.  To the right of this field is \textit{Automation Range} where you can set the display ratio of these lines. Simply change the values until the lines are visible again.
 
 Figure~\ref{fig:overlays1} and figure~\ref{fig:fade} shows several color coded lines for different key\-fra\-mes and specifically the slider bar for the Fade keyframe.  It is in the same color as the color coded keyframe type line which is the same color which would be shown in the \textit{Show overlays} window figure~\ref{fig:overlays_window}.
 
@@ -95,7 +99,7 @@ subsequently adjusting that slope (figure~\ref{fig:controls}).  To modify a curr
 you just right mouse it and change to either Tangent or Disjoint edit.
 In the screencast to the right, the Fade Auto has pink colored curves and control points are seen as dashed lines next to the keyframe box with black filled circles on each end of the line.  Use the Ctrl key with the left mouse button to modify the control point lines.
 
-\section{Speed / Fade Automation Usage and Auto Gang}%
+\section{Speed\,/\,Fade Automation Usage and Auto Gang}%
 \label{sec:speed_fade_automation_gang}
 
 Speed automation resamples the data at a higher or lower playback rate. Speed automation can operate
@@ -152,10 +156,10 @@ all sessions.  The intent is to make a parameter set that is likely to be reused
 
 It may be useful to create a default keyframe which has specific desirable values for later use.  To do this, set the timeline to position 0 and be sure to disable \textit{generate keyframes while tweaking}.  This will create a default keyframe at the beginning of the timeline which contains global parameters for the entire duration.  Or if you have copied a non-default keyframe via Keyframes pulldown \textit{copy default keyframe}, it can be stored as the default keyframe by calling \texttt{keyframes $\rightarrow$ paste default keyframe}.  After using paste default keyframe to convert a non-default keyframe into a default keyframe, you will not see the value of the default keyframe reflected until all the non-default keyframes are removed.
 
-The \texttt{keyframes $\rightarrow$ copy default keyframe} and \texttt{keyframes} $\rightarrow$ \texttt{paste} {\texttt{de\-fault keyframe} allow conversion of the default keyframe to a non-default keyframe.
+The \texttt{keyframes $\rightarrow$ copy default keyframe} and \texttt{keyframes} $\rightarrow$ \texttt{paste} \texttt{default keyframe} allow conversion of the default keyframe to a non-default keyframe.
 
-\texttt{Keyframes $\rightarrow$ copy default keyframe} copies the default keyframe to the clipboard, no matter what region of the timeline is selected.  
-The \texttt{keyframes $\rightarrow$ paste} \texttt{keyframes} function may then be used to paste the clipboard as a non-default keyframe.  
+\texttt{Keyframes $\rightarrow$ copy default keyframe} copies the default keyframe to the clipboard, no matter what region of the timeline is selected.
+The \texttt{keyframes $\rightarrow$ paste} \texttt{keyframes} function may then be used to paste the clipboard as a non-default keyframe.
 
 \textit{Typeless keyframes} enabled under the Settings pulldown allow keyframes from any track to be pasted on either audio or video tracks.  Ordinarily audio keyframes can only be pasted to another audio track and video keyframes can only be pasted to another video track.
 
@@ -190,7 +194,7 @@ Image translation, motion direction, and speed determine the results.  Motion va
 \section{More about Editing Keyframes}%
 \label{sec:more_about_editing_keyframes}
 
-Keyframes can be shifted around and moved between tracks on the timeline using similar cut and paste operations to editing media.  Only the keyframes selected in the View menu are affected by keyframe editing operations. 
+Keyframes can be shifted around and moved between tracks on the timeline using similar cut and paste operations to editing media.  Only the keyframes selected in the View menu are affected by keyframe editing operations.
 
 An often used, keyframe editing operation is replication of some curve from one track to the other to make a stereo pair.  The first step is to solo the source track's record patch by Shift-clicking on the \textit{arm track} icon in the patchbay.  Then either set In/Out points or highlight the desired region of keyframes.  Go to \texttt{keyframes $\rightarrow$ copy keyframes} to copy them to the clipboard.  Solo the destination track's record patch by Shift-clicking on it and go to \texttt{keyframes $\rightarrow$ paste keyframes} to paste the clipboard.  Another common application for keyframe modification is to highlight a region on the timeline which contains multiple keyframes that you want to modify.  Then when you adjust a parameter or set of parameters, the change will be applied to all keyframes within the selection instead of a new keyframe being created.  This only works when the keyframe stores multiple parameters and only for mask and effect keyframes.  Other types of keyframes are generated as usual.
 
@@ -200,3 +204,9 @@ And there is an easy way to delete keyframes besides selecting a region and usin
 \label{sec:allow_keyframes_spanning}
 
 When you create a drag selection and you modify a value in a plugin then everything in the selection gets modified the same.  It use the previous keyframe and if there is no previous keyframe, then the default keyframe in your \texttt{\$HOME/.bcast5} definitions is used.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

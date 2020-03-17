@@ -7,8 +7,8 @@ The timeline is where all editing decisions are made (figure~\ref{fig:timeline})
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{timeline.png}
-    \caption{Timeline editing session using the upcoming Cinfinity theme.}
+    \includegraphics[width=1.0\linewidth]{timeline.png}
+    \caption{Timeline editing session}
     \label{fig:timeline}
 \end{figure}
 
@@ -17,11 +17,15 @@ timeline.  The active region is determined first by the presence of in/out point
 timeline.
 If those do not exist the highlighted region is used. To reiterate, \emph{highlighting}
 is done in \emph{cut and paste mode} by moving the insertion point with the mouse in the timeline
-to where you want to start. Then hold down the LMB, drag the mouse to where you want
-the end point to be and release the LMB. In \emph{drag and drop mode}, the method to create a highlighted
+to where you want to start. Then hold down the LMB\@, drag the mouse to where you want
+the end point to be and release the LMB\@. In \emph{drag and drop mode}, the method to create a highlighted
 selection is to hold down the Ctrl key and double click with the LMB with the mouse over that column.
 
- If no highlighted region exists, the insertion point is used as the start of the active region.  Some commands treat all the space to the right of the insertion point as active while others treat the active length as 0 if no end point for the active region is defined.
+If no highlighted region exists, the insertion point is used as the
+start of the active region.  Some commands treat all the space to
+the right of the insertion point as active while others treat the
+active length as 0 (zero) if no end point for the active region is
+defined.
 
 Most importantly, editing decisions never affect source material meaning that it is non-destructive editing.  So not only does your original media stay completely untouched, it is much faster than if you had to copy all the media affected by an edit.  Editing only affects pointers to source material, so if you want to have a new modified media file at the end of your editing session which represents the editing decisions, you need to render it.  Saving and loading your edit decisions is explained in the Load, Save and the EDL section and rendering is explained in the section on Rendering.
 
@@ -38,10 +42,14 @@ On the left of the timeline is a region known as the patchbay.  The patchbay ena
     \item[Expander] which is a down arrow on the right side, is for viewing more options on the patchbay and for viewing the effects represented on the track.   You can just click on the expander to expand or collapse the patchbay and the track.  If it is pointing sideways, the track is collapsed.  If it is pointing down, the track is expanded.  Existing effects appear below the media for the track.
 \end{description}
 
-\noindent Below the textbox name are several toggles referred to as \textit{attributes} for different features (currently there are 5 as shown in figure~\ref{fig:patchbay01}).  If the toggle button is shadowed by a color, the feature is enabled . If the toggle is the background color of most of the window, it is disabled. Click
-on the toggle to enable/disable the feature.
+\noindent Below the textbox name are several toggles referred to as
+\textit{attributes} for different features (currently there are 5 as
+shown in figure~\ref{fig:patchbay01}).  If the toggle button is
+shadowed by a color, the feature is enabled. If the toggle is the
+background color of most of the window, it is disabled. Click on the
+toggle to enable/disable the feature.
 
-\begin{wrapfigure}[15]{O}{0.3\linewidth}
+\begin{wrapfigure}[12]{O}{0.3\linewidth}
     \vspace{-2ex}
     \centering
     \includegraphics[width=0.79\linewidth]{patchbay01.png}
@@ -77,7 +85,7 @@ The \textit{attributes} are described here next.
 
     \begin{figure}[htpb]
         \centering
-        \includegraphics[width=0.7\linewidth]{overlay.png}
+        \includegraphics[width=0.65\linewidth]{overlay.png}
         \caption{Video Overlay, audio Pan and Nudge.}
         \label{fig:overlay}
     \end{figure}
@@ -93,7 +101,7 @@ Several convenience functions are provided for automatically setting the panning
 
     \begin{description}
         \item[Audio$\rightarrow$Map 1:1] This maps every track to its own channel and wraps around when all the channels are allocated. It is most useful for making 2 tracks with 2 channels map to stereo and for making 6 tracks with 6 channels map to a 6 channel sound card.
-        \item[Audio$\rightarrow$Map 5.1:2] This maps 6 tracks to 2 channels. The project should have 2 channels when using this function. Go to \texttt{Settings $\rightarrow$ Format} to set the output channels to 2. This is most useful for down-mixing 5.1 audio to to stereo (for more information refer to Configuration, Settings and Preferences section \ref{sub:audio_out_section}).
+        \item[Audio$\rightarrow$Map 5.1:2] This maps 6 tracks to 2 channels. The project should have 2 channels when using this function. Go to \texttt{Settings $\rightarrow$ Format} to set the output channels to 2. This is most useful for down-mixing 5.1 audio to stereo (for more information refer to Configuration, Settings and Preferences section~\ref{sub:audio_out_section}).
     \end{description}
 
 \paragraph{Standard audio mappings} Although \CGG{} lets you map any audio track to any speaker, there are standard mappings you should use to ensure the media can be played back elsewhere. Also, most audio encoders require the audio tracks to be mapped to standard speaker numbers or they will not work.
@@ -215,7 +223,7 @@ Using labels and In/Out points are useful in editing audio.  You can set In/Out 
 
 To obtain a clip on the timeline exactly as you saw in the Viewer, you must necessarily move the In mark back from the beginning before the first desired frame or move the Out mark forward after the last desired frame, depending on the \textit{Always show next frame} setting.
 
-Some of the confusion can be attributed to the fact that the Viewer shows frames, while the markers determine spaces, i.e. times, that are not visible between frames. You have to think of each frame as being delimited by two spaces -- one preceding and one following.  The In mark is always placed before the displayed frame and the Out mark is always placed after the displayed frame, while taking into account in its calculations whether the \textit{Always show next frame }option is used or not. If you just remember that the reference of the markers is in the middle of the icon, you will avoid confusion.
+Some of the confusion can be attributed to the fact that the Viewer shows frames, while the markers determine spaces, i.e.\ times, that are not visible between frames. You have to think of each frame as being delimited by two spaces -- one preceding and one following.  The In mark is always placed before the displayed frame and the Out mark is always placed after the displayed frame, while taking into account in its calculations whether the \textit{Always show next frame }option is used or not. If you just remember that the reference of the markers is in the middle of the icon, you will avoid confusion.
 
 \paragraph{Overwrite} To perform overwriting within the timeline paste on a selected region (highlighted or
 between In/Out points). The selected region will be overwritten. If the clip pasted from the clipboard
@@ -231,7 +239,7 @@ pasted one after the other, keeping the same order they have on the stack.
 \paragraph{Split --- blade cut and hard edges:} You can cut the tracks into 2 pieces on the timeline by putting the hairline cursor on the place you want to do a cut and then using the character “x” or the scissors tool (figure~\ref{fig:cut}).
 
 \begin{wrapfigure}[16]{O}{0.3\linewidth}
-    \vspace{1ex}
+    \vspace{-2ex}
     \centering
     \includegraphics[width=0.9\linewidth]{cut.png}
     \caption{Blade cut}
@@ -292,7 +300,7 @@ When an edit is marked as selected, it can be cut/copied into the paste clip buf
 The \textit{edits} popup is activated on a track and a red and yellow colored reticle appears to temporarily mark the location when you click on the middle mouse button.  An expanded explanation is provided below.
 
 \begin{center}
-    \begin{tabular}{l p{12.9cm}}
+    \begin{tabular}{l p{11cm}}
         \toprule
         \textbf{Key} & \textbf{Operations} \\
         \midrule
@@ -303,7 +311,7 @@ The \textit{edits} popup is activated on a track and a red and yellow colored re
 \end{center}
 
 \begin{center}
-    \begin{longtable}{l l p{11cm}}
+    \begin{longtable}{l l p{9.4cm}}
         \toprule
         \textbf{Popup Label} & \textbf{Key} & \textbf{Operation} \\ \midrule
         \endhead
@@ -467,7 +475,7 @@ you can operate the following buttons to display what you need to see and to mov
 Figure~\ref{fig:inter-view02} displays Inter-View window and its relation to the timeline, viewer, and compositor.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\linewidth]{inter-view02.png}
+    \includegraphics[width=1.0\linewidth]{inter-view02.png}
     \caption{Inter-View mode and the timeline}
     \label{fig:inter-view02}
 \end{figure}
@@ -512,7 +520,7 @@ Instead of using the \# number on the main menu to close the current EDL, both t
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\linewidth]{editing-img001.png}
-    \caption{Once you have an an Open EDL, there are 2 ways to close it.}
+    \caption{Once you have an Open EDL, the easiest way to close it.}
     \label{fig:open_edl}
 \end{figure}
 \relax
@@ -591,22 +599,13 @@ Here is a step by step example of how you can use \textit{File by Reference}:
      timeline the changes you just made in the previous step.
 \end{enumerate}
 
-\begin{comment}
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.6\linewidth]{lenght.png}
-    \caption{Edit Length window}
-    \label{fig:lenght}
-\end{figure}
-\end{comment}
-
 \subsection{Edit Length}%
 \label{sub:edit-lenght}
 
 To set the length of an edit in the timeline, select the region which contains the edit to be modified. Now select the menu bar \texttt{Edit $\rightarrow$ Edit Length}\dots menu item to activate the \textit{edit length} popup (figure~\ref{fig:lenght}).  The duration of the edit can be reset by entering the desired edit length in seconds.  Pressing OK will change all of the selected edits (in armed tracks) to the specified length.
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{lenght.png}
+    \includegraphics[width=0.5\linewidth]{lenght.png}
     \caption{Edit Length window}
     \label{fig:lenght}
 \end{figure}
@@ -630,7 +629,7 @@ alignment boundary time.  Align Edits works best if there are an equal number of
 The first two screenshots in figure~\ref{fig:align} show the Before, the Highlighted Edits to be manipulated, and the After results for the Align Edits. The third screenshot \textit{adds silence} in the second section as noted in red letters.
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{align.png}
+    \includegraphics[width=1.0\linewidth]{align.png}
     \caption{Align edits}
     \label{fig:align}
 \end{figure}
@@ -640,18 +639,18 @@ The first two screenshots in figure~\ref{fig:align} show the Before, the Highlig
 
 The Reverse Edits can be useful to change the order of 2 edits in the case where you would like to put a \textit{teaser} section that occurred in the middle of a movie at the beginning instead, that is, reversed positions.  To operate, highlight completely the edit areas you would like reversed and then use the pulldown \texttt{Edit $\rightarrow$ Reverse Edits}.
 
-Figure~\ref{fig:reverse01} shows the selected / highlighted area to which Edits will be applied.  Note the first edit is 00002, followed by 00003, 00004, and 00005 in that order.
+Figure~\ref{fig:reverse01} shows the selected / highlighted area to which Edits will be applied.  Note the first edit is 0002, followed by 0003, 0004, and 0005 in that order.
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{reverse01.png}
-    \caption{Selected area for edits aligment}
+    \includegraphics[width=0.9\linewidth]{reverse01.png}
+    \caption{Selected area for Reverse Edits}
     \label{fig:reverse01}
 \end{figure}
 
-Figure~\ref{fig:reverse02} shows the results of executing \textit{Reverse Edits}.  Now you will see the reversed order of 00005, 00004, 00003, and last 00002.
+Figure~\ref{fig:reverse02} shows the results of executing \textit{Reverse Edits}.  Now you will see the reversed order of 0005, 0004, 0003, and last 0002.
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{reverse02.png}
+    \includegraphics[width=0.9\linewidth]{reverse02.png}
     \caption{Results of the Reverse Edits}
     \label{fig:reverse02}
 \end{figure}
@@ -661,10 +660,10 @@ Figure~\ref{fig:reverse02} shows the results of executing \textit{Reverse Edits}
 
 The file pulldown \texttt{Edit $\rightarrow$ Shuffle Edits} will randomly exchange the location of the edits.  This feature can be used to change the order of the music like you would do from your MP4 player where you have a playlist of your favorite music.  Or perhaps you are creating an advertisement background, you can randomly change it, thus the viewer sees a different order of scenes each time shown.
 
-Figure~\ref{fig:shuffle} illustrating Shuffle Edits of the highlighted area of the first screenshot on the page.  Note the permutation of the fragments resulting in 00003 now being first, then 00005, 00002, and 00004 last.
+Figure~\ref{fig:shuffle} illustrating Shuffle Edits of the highlighted area of the first screenshot on the page.  Note the permutation of the fragments resulting in 0002 now being first, then 0004, 0003, and 0005 last.
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.8\linewidth]{shuffle.png}
+    \includegraphics[width=0.9\linewidth]{shuffle.png}
     \caption{Shuffle edits: the edits are permutated}
     \label{fig:shuffle}
 \end{figure}
@@ -794,8 +793,8 @@ Now to use this feature, create a track with edits that have trims on the left a
 
 \paragraph{Cutting/Snapping edits} cuts from an edit handle to the insert point.
 There are Edit Panel buttons which normally are used to move to the previous or next edit handle/label.
-\begin{wrapfigure}[5]{r}{0.2\linewidth}
-    \vspace{-1ex}
+\begin{wrapfigure}[3]{r}{0.2\linewidth}
+    \vspace{-2ex}
     \centering
     \includegraphics[width=0.7\linewidth]{snap.png}
 \end{wrapfigure}
@@ -824,7 +823,7 @@ The EDL session and the rendered output are visually equivalent.  Nested assets 
 
 It is somewhat important to note that nested assets and nested clips will have index files automatically created.  These index files can start to clutter up your \texttt{\$HOME/.bcast5} directory with files named \texttt{Nested\_\#\#\#.idx} and you may want to periodically delete any index files which are no longer in use.
 
-\paragraph{Nested Clips} It is also possible to create \textit{clips} and convert them to \textit{nested edl}.  This is done by first creating a clip using the standard cut, clipboard, paste, and/or edit panel buttons.  Now, using the resources \textit{clip} folder, select a clip to be nested, and use the right mouse button to select a clip.  This activates the clip popup menu.  Select the \textit{Nest to media} menu item, and the clip will be converted to a \textit{Nested: Clip}. Conversely, you can select a \textit{Nested: Clip}, use the \textit{EDL to clip} menu item, and the clip will be reverted to a \textit{Clip}.  This works similarly to the group / un-group editing features of many graphic design editing programs, but in this case the groups are rendered compositions (figure~\ref{fig:nesting}).
+\paragraph{Nested Clips} It is also possible to create \textit{clips} and convert them to \textit{nested edl}.  This is done by first creating a clip using the standard cut, clipboard, paste, and/or edit panel buttons.  Now, using the resources \textit{clip} folder, select a clip to be nested, and use the right mouse button to select a clip.  This activates the clip popup menu.  Select the \textit{Nest to media} menu item, and the clip will be converted to a \textit{Nested: Clip} and put in Media folder. Conversely, you can select a \textit{Nested: Clip}, use the \textit{EDL to clip} menu item, and the clip will be reverted to a \textit{Clip}.  This works similarly to the group / un-group editing features of many graphic design editing programs, but in this case the groups are rendered compositions (figure~\ref{fig:nesting}).
 
 Nested clips can be proxied and when they are, the resulting files
 are placed in the user's \$HOME/Videos directory by default.  This can be modified by changing
@@ -832,7 +831,7 @@ are placed in the user's \$HOME/Videos directory by default.  This can be modifi
 \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Interface} tab, Nested Proxy Path.
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{nesting.png}
+    \includegraphics[width=1.0\linewidth]{nesting.png}
     \caption{Nested clips in Timeline and Resources window}
     \label{fig:nesting}
 \end{figure}
@@ -853,7 +852,7 @@ nesting display a clip without having to actually use the Render menu.
     Now you can add a Reverse effect, Color3way plugin for black and white, and
 use the Speed auto to get the 60 seconds down to only 10 seconds.
     \item[Example 2:] You are working on a complex project with a team in a separate
-location. You create some sub projects, i.e. sequences, that you or the
+location. You create some sub projects, i.e.\ sequences, that you or the
 team will use in the Master project to merge the sequences in the right
 order and to make the final color correction steps.
 \end{description}
@@ -924,7 +923,7 @@ A default shuttlerc file is automatically used when a shuttle device is plugged 
 \subsection{How to Modify the Default Key Settings}%
 \label{sub:modify_default_key_settings}
 
-Detailed information on how to modify your local .shuttlerc file is described next, but if you need help you can request more information in the forum at {\small \url{https://cinelerra-gg.org}}. In the \texttt{shuttlerc} file, a \# always represents a comment and blank lines are ignored.  The first thing you must do is copy the system supplied \texttt{shuttlerc} file to your \texttt{\$HOME} directory and rename it as \texttt{.shuttlerc} (with a period).
+Detailed information on how to modify your local \texttt{.shuttlerc} file is described next, but if you need help you can request more information in the forum at {\small \url{https://cinelerra-gg.org}}. In the \texttt{shuttlerc} file, a \# always represents a comment and blank lines are ignored.  The first thing you must do is copy the system supplied \texttt{shuttlerc} file to your \texttt{\$HOME} directory and rename it as \texttt{.shuttlerc} (with a period).
 
 The \texttt{shuttlerc} file has sections that in the case of \CGG{}, represent different windows allowing you to set the keys, K1-K15 for the Pro and K5-K9 for the Xpress, the shuttle wheel positions of S0/S1/S-1 for stop, S2 through S7 for wheeling to the right, and S-7 through S-2 for wheeling to the left for reverse.  Then there is JR to jog right (clockwise) and JL to jog left (counter-clockwise) for the inner smaller wheel for single frame movement.  See the key arrangement on a later page for location of the keys for each of the two different shuttles.
 
@@ -1216,3 +1215,9 @@ The following is the default setting for the ShuttlePROv2 and ShuttleXpress (tab
 				 \bottomrule
 	\end{tabular}}
 \end{table}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

@@ -15,9 +15,9 @@ The EDL contains all the project settings and locations of every edit.
 Instead of media, the file contains pointers to the original media files on disk.  
 EDL files are specific to \CGG{}.    
 
-The EDL files generally have an extension of .xml.  
+The EDL files generally have an extension of \texttt{.xml}.  
 The purpose of the EDL is to separate the media from all of the editing operations so that the original media remains intact. 
-When the .xml file is loaded, changes to the attributes of the current project are made based on the EDL. Edit decision lists are text files which means they can be edited in a text editor.  EDL and XML are used interchangeably.
+When the \texttt{.xml} file is loaded, changes to the attributes of the current project are made based on the EDL\@. Edit decision lists are text files which means they can be edited in a text editor.  EDL and XML are used interchangeably.
 
 \section{Supported File Formats}%
 \label{sec:supported_file_formats}
@@ -41,7 +41,7 @@ What is an MPEG file?  A very common file format is MPEG because it works with m
 \subsection{Working with Still Images}%
 \label{sub:working_with_still_images}
 
-Still images are played from 1 to any number of times, over and over; they have no duration. You can load still images on video tracks just like you do for any video file. When loaded on the track, use the down arrow on the timeline so you can see the single frame. To extend the length of the image, drag its boundaries just as you would do with regular video media. You can drag the boundaries of a still image as much as you want. Images in \CGG{} have the ability to be dragged to an infinite length. Alternatively, you can define the initial length of the loaded images. The parameter is set in the Images section of the \texttt{Settings $\rightarrow$ ~Preferences $\rightarrow$ ~Recording} window.
+Still images are played from 1 to any number of times, over and over; they have no duration. You can load still images on video tracks just like you do for any video file. When loaded on the track, use the down arrow on the timeline so you can see the single frame. To extend the length of the image, drag its boundaries just as you would do with regular video media. You can drag the boundaries of a still image as much as you want. Images in \CGG{} have the ability to be dragged to an infinite length. Alternatively, you can define the initial length of the loaded images. The parameter is set in the Images section of the \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Recording} window.
 
 Unless your original material comes from a digital source using its best resolution (like a digital camera), the first thing you might have to do before you can use it is to somehow capture the assets into a usable digital medium. For old photos, paper maps, drawings or diagrams, you can scan them into a file format like PNG, TIF, TGA or JPG files by using a digital scanner.
 
@@ -83,7 +83,7 @@ jpeglist.sh   /<path>/file.jpg   /<path>/DSC*.jpg
 
 An example output file from running this script residing in the directory where \texttt{DSC*.jpg} files exist is shown below.
 
-To use this, turn off ffmpeg probes first, and open \texttt{timelapse.jpg} using File ~$\rightarrow$ ~Load files.
+To use this, turn off ffmpeg probes first, and open \texttt{timelapse.jpg} using File $\rightarrow$ Load files.
 
 \begin{lstlisting}[style=sh,caption={Example: timelapse.jpg},captionpos=t]
 JPEGLIST
@@ -133,9 +133,9 @@ This will access the media using ffmpeg which is slower so be patient.
 
 \hspace{4em}	{\small \url{https://www.cybercom.net/~dcoffin/dcraw/}}
 
-For example, included is the Canon Powershot SX60 (newly available in August, 2014).  Because ffmpeg tries to load \textit{any and every} file if \textit{Try Ffmpeg first} is enabled. it will make an attempt to load Raw Camera files first before any other file driver gets the chance.  In addition, there is the possibility that dcraw could conflict with the standard TIFF format, since it might be seen as format type \textit{tiff-pipe}.  Therefore it is necessary to specifically enable CR2 and either move it to the top or disable \textit{FFMPEG\_Early} and enable \textit{FFMPEG\_late} in the \textit{Probe Order} as described in another section (\ref{sub:probe_order_loading_media} and \ref{sec:ffmpeg_early_probe_explanation}).  These changed settings will be retained across \CGG{} sessions in .\texttt{bcast5}.  Raw Camera mode is most likely going to be used by expert camera users.
+For example, included is the Canon Powershot SX60 (newly available in August, 2014).  Because ffmpeg tries to load \textit{any and every} file if \textit{Try Ffmpeg first} is enabled. It will make an attempt to load Raw Camera files first before any other file driver gets the chance.  In addition, there is the possibility that dcraw could conflict with the standard TIFF format, since it might be seen as format type \textit{tiff-pipe}.  Therefore it is necessary to specifically enable CR2 and either move it to the top or disable \textit{FFMPEG\_Early} and enable \textit{FFMPEG\_late} in the \textit{Probe Order} as described in another section (\ref{sub:probe_order_loading_media} and \ref{sec:ffmpeg_early_probe_explanation}).  These changed settings will be retained across \CGG{} sessions in \texttt{.bcast5}.  Raw Camera mode is most likely going to be used by expert camera users.
 
-The first screenshot in figure~\ref{fig:raw} as in \texttt{Settings $\rightarrow$ ~Preferences $\rightarrow$ ~Playback A} Tab, shows the default checked settings of \textit{Interpolate CR2 images} and \textit{White balance CR2 images} which display the raw images in a way that you expect.  However, you may want to uncheck them to ensure that no program manipulation has modified your images so that you can add plugins or make your own modifications.  Unchecked indicates that the images are as closest as possible to unadulterated raw.
+The first screenshot in figure~\ref{fig:raw} as in \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Playback A} Tab, shows the default checked settings of \textit{Interpolate CR2 images} and \textit{White balance CR2 images} which display the raw images in a way that you expect.  However, you may want to uncheck them to ensure that no program manipulation has modified your images so that you can add plugins or make your own modifications.  Unchecked indicates that the images are as closest as possible to unadulterated raw.
 
 The second screenshot showing CR2 for Raw Camera highlighed/enabled in the Preferences Probes’ screen.
 
@@ -183,7 +183,7 @@ All data that you work with in \CGG{} is acquired either by loading from disk or
     \CGG{} lets you change what happens when you load a file.  In the Load dialog window go to the Insertion strategy box and select one of the options in the drop down menu. Each of these options loads the file a different way.
     
     \begin{description}
-       \item [Replace current project:] all tracks in the current project are deleted and a set of new tracks are created to match the source file.  Project attributes are only changed when loading XML. If multiple files are selected for loading, \CGG{} adds a set of new tracks for each file. New resources are created in the Resources Window, replacing the current ones.
+       \item [Replace current project:] all tracks in the current project are deleted and a set of new tracks are created to match the source file.  Project attributes are only changed when loading XML\@. If multiple files are selected for loading, \CGG{} adds a set of new tracks for each file. New resources are created in the Resources Window, replacing the current ones.
        \item [Replace current project and concatenate tracks: ] same as replace current project, except that if multiple files are selected, \CGG{} will concatenate the tracks of each file, inserting different source files in the same set of tracks, one after another, in alphanumeric order, starting at 0. New resources are created in the Resources Window, replacing the current ones.  Files go across the timeline.
     \end{description}
     For ffmpeg and mpeg files, when the Insertion strategy methodology in the \texttt{File $\rightarrow$ Load files} pulldown is chosen to be either \textit{Replace current project} or \textit{Replace current project and concatenate tracks}, the basic session format parameters are reinitialized to match new media.  This selects the default asset and determines its width, height, and video length, frame rate, calculates the colormodel, and assumes square pixels to make an intelligent guess about aspect ratio for video.  For audio, the sample rate, audio length, and channel count (mono, stereo, or 5.1) are reinitialized.  In addition the \textit{Track Size} will be computed and is reinitialized to match the new loaded media.  When using \textit{replace} type insertion strategy, the new asset list is the only media in use so that this update saves the user from immediately needing to change the session format to match the only possibility.
@@ -279,7 +279,7 @@ The order change will not take effect until you click on the checkmark in both t
 \subsection{Program Selection Support after Load}%
 \label{sub:program_selection_support_load}
 
-Some kinds of media have \textit{program} streams, like captured mpeg broadcast stream data.  For example, you may be able to \textit{tune} to channel 9, but be able to see 9-1, 9-2, and 9-3 on your TV.  If you open a capture of this kind of media, all of the channels are present in the timeline.  To select and view just one program, you can use Alt-1 to select program 1, or Alt-2 to select program 2, etc. up to Alt-8.  This will remove all of the other unrelated tracks and reset the format.  This feature can be used even if there is only one program, by pressing Alt-1, and the effect will be to reset the session format to the parameters from the media probe.  Note that there may be several audio \textit{programs} associated to a video stream;
+Some kinds of media have \textit{program} streams, like captured mpeg broadcast stream data.  For example, you may be able to \textit{tune} to channel 9, but be able to see 9-1, 9-2, and 9-3 on your TV\@.  If you open a capture of this kind of media, all of the channels are present in the timeline.  To select and view just one program, you can use Alt-1 to select program 1, or Alt-2 to select program 2, etc.\ up to Alt-8.  This will remove all of the other unrelated tracks and reset the format.  This feature can be used even if there is only one program, by pressing Alt-1, and the effect will be to reset the session format to the parameters from the media probe.  Note that there may be several audio \textit{programs} associated to a video stream;
 for example, there may be dialog in another language or some kind of descriptive dialog.  Since the first associated audio is always selected, this may not produce the intended results.
 
 \begin{figure}[htpb]
@@ -299,7 +299,7 @@ You can save your work as a project, which is what is loaded in \CGG{} now, or a
 \subsection{Saving Project Files}%
 \label{sub:saving_project_files}
 
-Saving  XML files is useful to save the current state of \CGG{} before quitting an editing session. \CGG{} saves projects as XML files. There are a few options you can use to save your work via the File pulldown menu: \textit{Save}, \textit{Save as\dots}, \textit{Export project}, \textit{Save backup}.  You can either overwrite an existing file or enter a new filename. \CGG{} automatically concatenates .xml to the filename if no .xml extension is given.
+Saving  XML files is useful to save the current state of \CGG{} before quitting an editing session. \CGG{} saves projects as XML files. There are a few options you can use to save your work via the File pulldown menu: \textit{Save}, \textit{Save as\dots}, \textit{Export project}, \textit{Save backup}.  You can either overwrite an existing file or enter a new filename. \CGG{} automatically concatenates \texttt{.xml} to the filename if no \texttt{.xml} extension is given.
 
 When \CGG{} saves a file, it saves the EDL of the current project but does not save any media, instead just pointers to the original media files. For each media file, the XML file stores either an absolute path or just the relative path. If the media is in the same directory as the XML file, a relative path is saved. If it is in a different directory, an absolute path is saved.
 
@@ -314,16 +314,16 @@ Real-time effects in an XML file have to be re-created every time you play it ba
 \subsection{Export Project – Save or Moving Project to another Computer}%
 \label{sub:export_project}
 
-A File pulldown called \textit{Export Project\dots} is also available (figure~\ref{fig:export}).  Although, it can be used in the same manner as the other \textit{save} options, it is very useful when it is necessary to move a project to another computer that may have a different top level directory structure or if you want to include subdirectories to better organize your files.  
-
-Originally, the easiest way to maintain a project for moving to another computer, was to put all of the files in a single directory with no subdirectories along with the EDL saved .xml file.   This is commonly called a \textit{flat} file structure.  So if the media was in the same directory as the XML file, a relative path was saved.  If it was in a different directory, an absolute path was saved.
-
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.6\linewidth]{export.png}
     \caption{Export Project option popup and the 3         available options.}
     \label{fig:export}
 \end{figure}
+
+A File pulldown called \textit{Export Project\dots} is also available (figure~\ref{fig:export}).  Although, it can be used in the same manner as the other \textit{save} options, it is very useful when it is necessary to move a project to another computer that may have a different top level directory structure or if you want to include subdirectories to better organize your files.  
+
+Originally, the easiest way to maintain a project for moving to another computer, was to put all of the files in a single directory with no subdirectories along with the EDL saved \texttt{.xml} file.   This is commonly called a \textit{flat} file structure.  So if the media was in the same directory as the XML file, a relative path was saved.  If it was in a different directory, an absolute path was saved.
 
 \noindent Definition of Fields:
 
@@ -380,3 +380,8 @@ Some notes to keep in mind about Perpetual session are:
     \item to start \CGG{} without using your Perpetual session data even if enabled, use your\_cinelerra\_path\texttt{/cin/bin -S}
 \end{itemize}
 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

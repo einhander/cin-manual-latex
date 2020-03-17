@@ -18,12 +18,17 @@ It is the output of the rendering operations and this is what is saved when you 
 Immediately to the left of the timeline is the patchbay. The patchbay contains options that affect each track.  
 These options are described in great detail in the Editing section (\ref{sec:patchbay}).
 
-The \textit{Window} pulldown on the main window contains options that affect the 4 main windows. The first 3 options are used to display each of the windows in case one was accidentally closed.  You can
-move or resize the windows as needed, save that particular layout, and revert to the default positions
-to reposition all 4 windows to the original screen configuration.
-On dual headed displays, the \textit{Default positions} operation only uses the one monitor to display the windows, but as you
-can see in the \textit{Window} pulldown you have more options to change that. Usage with dual monitors is
-explained in \ref{sec:multiscreen_playback_configuration}.
+The \textit{Window} pulldown on the main window contains options
+that affect the 4 main windows. The first 3 options are used to
+display each of the windows in case one was accidentally closed.
+You can move or resize the windows as needed, save that particular
+layout, and revert to the default positions to reposition all 4
+windows to the original screen configuration.  On dual headed
+displays, the \textit{Default positions} operation only uses the one
+monitor to display the windows, but as you can see in the
+\textit{Window} pulldown you have more options to change that. Usage
+with dual monitors is explained
+in~\ref{sec:multiscreen_playback_configuration}.
 
 \subsection{Video and Audio Tracks and Navigation}%
 \label{sub:video_and_audio_tracks_and_navigation}
@@ -68,7 +73,7 @@ In order of appearance in the zoom panel as rectangular boxes and either tumbler
 Then more details are provided in the next paragraphs.
 
 \vspace{2ex}
-\begin{tabular}{ l  l }
+\begin{tabular}{ll}
    \hline
 	Sample zoom & Duration visible on the timeline \\
 	Amplitude & Audio waveform scale \\
@@ -203,12 +208,12 @@ With the arrow highlighted for \emph{drag and drop mode}, a double click with th
 Then dragging in the timeline repositions that edit and this can be used for moving effects,
 changing the order of playlists, or moving video pieces around. 
 There are numerous methods to cut and paste in \emph{drag and drop mode} by setting In/Out points to define
-a selected region or using the Copy/Paste Behavior as outlined in \ref{sub:copy_paste_behavior}. 
+a selected region or using the Copy/Paste Behavior as outlined in~\ref{sub:copy_paste_behavior}. 
 In this mode, clicking the LMB in the timeline does not reposition the \textit{Insertion Point}. 
 
 When the I-beam is highlighted, you are in \emph{cut and paste mode}.
 In cut and paste mode, clicking the LMB in the timeline does reposition the \textit{Insertion Point}. 
-Double clicking in the timeline selects the entire edit the cursor is over, i.e. that column. 
+Double clicking in the timeline selects the entire edit the cursor is over, i.e.\ that column. 
 Dragging in the timeline with the LMB pressed down, highlights a selected region and this is the region that is affected by cut
 and paste operations.  It is also the playback range used for the subsequent playback operation. 
 Holding down the Shift key while clicking in the timeline extends the highlighted region.
@@ -503,7 +508,7 @@ Now you can clip/play/expand or edit the previous playback selection.
 
 The speed automation causes the playback sampling rate to increase or decrease to a period controlled by the speed automation curve.  
 This can make playback speed-up or slow-down according to the scaled sampling rate, as \textit{time is multiplied by speed} (Speed $\times$ Unit\_rate). For more information on changing
-the speed, read the section on Speed Automation \ref{sec:speed_fade_automation_gang}.
+the speed, read the section on Speed Automation~\ref{sec:speed_fade_automation_gang}.
 
 \subsubsection*{Alternative to using Numeric Keypad for Playing}%
 \label{ssub:alternative_to_using_numeric_keypad_for_playing}
@@ -565,8 +570,7 @@ On the bottom of the window, there are many
 of the same transport buttons and controls that are available in the Program window.
 They work the same as in the Program window and also have tooltips that are visible 
 when you mouse over each of the icons so their use is fairly obvious.  However,
-of particular note is the button \textit{Click to play} which is described in
-\ref{sub:click_to_play_in_viewer_and_compositor}.
+of particular note is the button \textit{Click to play} which is described in~\ref{sub:click_to_play_in_viewer_and_compositor}.
 
 Next to all of these controls all the way to the right side, there is a \textit{zoom menu} and a \textit{tally light}.  The \textit{zoom menu} has a pulldown with different settings that you can choose from
 or you can just use the tumbler arrows to the right. Generally when just getting started, you
@@ -649,7 +653,7 @@ get to the desired spot - these X,Y coordinates will be displayed in the \textit
 box.  Clicking the LMB creates Point 1 and then continue to hold down the LMB so that a ruler line is created between
 this Point 1 and the stopping Point 2.  \textit{Deltas} is the X,Y difference between the 2 points;
 \textit{Distance} is the number of pixels between the 2 points; and \textit{Angle} is the angle in degrees of the ruler line.  
-In Figure ~\ref{fig:safe_regions} you can see the Ruler menu on the right side of the Compositor window.
+In Figure~\ref{fig:safe_regions} you can see the Ruler menu on the right side of the Compositor window.
 
 Holding down the Ctrl key while dragging with the LMB on one of the points, will
 ensure that the line is always at a multiple of a 45 degree angle.  Holding down the Alt key while
@@ -657,13 +661,13 @@ dragging with the LMB on one of the points, will translate the ruler line to ano
 the video while maintaining its length and angle. If you dismiss the Ruler menu, click on
 \textit{Show tool info} to get the menu to popup again.  
     \item[Adjust camera automation]  the camera brings up the camera editing tool. Enable \textit{Show tool info} if the popup menu does not appear. More detail for usage is provided in the subsequent
-paragraph \ref{sub:camera_and_projector}.
+paragraph~\ref{sub:camera_and_projector}.
     \item[Adjust projector automation]  the projector brings up the projector editing tool. Enable \textit{Show tool info} to get the menu to popup again. More detail for usage is provided in the
-subsequent paragraph \ref{sub:camera_and_projector}.
+subsequent paragraph~\ref{sub:camera_and_projector}.
     \item[Crop a layer or output]  this is a cropping tool used to reduce the visible picture area.
 More detail for usage is provided in a 
 subsequent paragraph (\ref{sub:cropping}).  There is also a Crop \& Position plugin that provides
-a different set of capabilities \ref{sub:crop_position}.
+a different set of capabilities~\ref{sub:crop_position}.
     \item[Get color / eyedropper]  brings up the eyedropper used to detect the color at a
 particular spot.  Enable the \textit{Show tool info} if the Color popup menu does not come up 
 automatically or if that menu was accidentally dismissed.  Click on a specific color in the video
@@ -687,7 +691,7 @@ no dialog popup menus.
 can see in Figure~\ref{fig:safe_regions}.
 On some particular TVs/monitors/displays, the borders of the image are cut off and that
 cut off section might not be as square as it appears in the compositor window. 
-These are especially useful if the device for the output display is an older model TV.
+These are especially useful if the device for the output display is an older model TV\@.
 The outside largest outline is the \textit{action safe overlay}; whereas the inside smallest
 outline is the \textit{title safe overlay}.
 
@@ -789,7 +793,7 @@ editing mode, click on the \textit{Adjust projector automation} icon in the Comp
 will then see red border lines surrounding the image and 2 diagonal lines criss-crossing in the 
 middle, displayed in the video window.  The red outline indicates the size of the frame that will be
 sent to the Output. You can easily drag the box with LMB, moving the frame in $x$ and $y$ directions.
-When moving along the $z-axis$ (i.e. the zoom, with SHIFT+Drag) the box exactly follows the movement
+When moving along the $z-axis$ (i.e.\ the zoom, with SHIFT+Drag) the box exactly follows the movement
 and the size of the frame. After you position the video with the projector, you may next want to
 \textit{Adjust camera automation}.
 
@@ -826,7 +830,7 @@ The green box is the Viewport; at the beginning it coincides with the size of th
 \label{ssub:camera_and_projector_menu}
 
 The camera and projector have shortcut operations that do not appear in the popup menu and are not represented in video overlays. 
-These are accessed in the \emph{Show tool info} window . 
+These are accessed in the \emph{Show tool info} window.
 Most operations in the Compositor window have a tool window which is enabled by activating the question mark icon (figure~\ref{fig:camera_tool}).
 
 \begin{wrapfigure}[10]{O}{0.45\linewidth} 
@@ -867,7 +871,7 @@ In the compositing window, there is a popup menu of options for the camera and p
 
 \begin{enumerate}
     \item Start by shrinking the projector to $z=0,500$ ($\frac{1}{4}$ of the original frame).
-    \item The next step is to switch to the camera and note that the green box has assumed the size of the projector, i.e. the red box. The value of $z$ of the camera is always equal to $1,000$ (default) but the frame is $\frac{1}{4}$ of the original frame, i.e. it has the size of the projector that has $z=0,500$. This is the current viewport size.
+    \item The next step is to switch to the camera and note that the green box has assumed the size of the projector, i.e.\ the red box. The value of $z$ of the camera is always equal to $1,000$ (default) but the frame is $\frac{1}{4}$ of the original frame, i.e.\ it has the size of the projector that has $z=0,500$. This is the current viewport size.
     \item You enlarge the room bringing $z=2,000$. You can see that the dimensions of the viewport (green box) do not change, remaining the same as those of the projector. However, the frame has been enlarged and this variation is indicated by the enlargement of the yellow box. Let's remember that this follows the changes made with the camera tool.
     \item We can drag the room so that we can center the frame to our liking. The movement of the yellow box shows well the variation compared to the green box.
     \item Finally, if we want, we can switch to the projector tool to move the output frame to the position we want with respect to the size of the source. Of course, we can also work on the $z$, which in the example is at $z=0.500$, if we have decided to change the size of the output.
@@ -958,7 +962,7 @@ The \textit{Enable} row of masks makes it so you can enable all or none of the m
 
 There are 4 shapes that are automatically available for usage as masks – square, circle, triangle, and oval.  In addition, the next 3 symbols in this section are for the purpose of loading, saving, and deleting your own customized shapes.  The first symbol, \textit{Load} preset, will bring up a list of your previously saved presets.  Clicking on \textit{Save} preset brings up a popup window allowing you to provide a name used to identify the preset you want to save, along with a pulldown to see the names of your other saved presets.   Clicking on \textit{Delete} preset also brings up a textbox with a pulldown to choose which one to delete.  There is a file, called \texttt{mask\_rc}, in \texttt{\$HOME/.bcast5} that records your custom masks.  
 
-When you click \textit{Load} preset, keep in mind that it will write the mask number that you have selected so if you already have a mask at that location, it will write over it – just \textit{Undo mask} under the main window Edit pulldown (shortcut 'z') to revert to the previous if you made this mistake.
+When you click \textit{Load} preset, keep in mind that it will write the mask number that you have selected so if you already have a mask at that location, it will write over it – just \textit{Undo mask} under the main window Edit pulldown (shortcut `z') to revert to the previous if you made this mistake.
 
 \subsubsection*{Position \& Scale section}%
 \label{ssub:position_scale_section}
@@ -1032,7 +1036,7 @@ Note: Not all OpenGL software can support the current masking methods.  If your 
 The \textit{Help} checkbox can be enabled in order to see a list of the keys used to perform various operations.  If you use Masking infrequently, these are a valuable reminder to which key combinations to use.  Currently they are as follows:
 
 \vspace{2ex}
-\begin{tabular}{ l  l }
+\begin{tabular}{ll}
     \hline			
     Shift+LMB & move an end point \\
     Ctrl+LMB & move a control point \\
@@ -1050,7 +1054,7 @@ The \textit{Help} checkbox can be enabled in order to see a list of the keys use
 \vspace{2ex} Note: For some desktop window managers, certain keys may already be in use by the operating system, so you will either have to redefine them in your desktop or use different key combinations.  For example, at least some desktops used with \textit{UbuntuStudio 16.04} and \textit{Arch} field the \texttt{Alt} key, thus requiring alternative key combinations to be needed.  Below are some of these alternatives.
 
 \vspace{2ex}
-\begin{tabular}{ l p{11cm}}
+\begin{tabular}{lp{11cm}}
     \hline			
     LMB & move/create an end point (to move the end point the pointer must be above the point) \\
     Shift+LMB & move an end point (the pointer may be near the point, not above it) \\
@@ -1066,7 +1070,7 @@ The \textit{Help} checkbox can be enabled in order to see a list of the keys use
 Focus checkbox = unchecked:
 
 \vspace{2ex}
-\begin{tabular}{ l  l }
+\begin{tabular}{ll}
     \hline			
     Wheel & rotate around Pivot Point \\
     Shift+Wheel & scale around Pivot Point \\
@@ -1080,7 +1084,7 @@ Focus checkbox = unchecked:
 Focus checkbox = checked:
 
 \vspace{2ex}
-\begin{tabular}{ l  l }
+\begin{tabular}{ll}
     \hline			
     Wheel & rotate around Pivot Point (“Custom focus point”) \\
     Shift+Wheel & scale around Pivot Point (“Custom focus point”) \\       
@@ -1185,7 +1189,7 @@ are listed next.
     \item  Switch to a fullscreen display by choosing \textit{Fullscreen}.  To switch back, click
 with the RMB on the display again and choose \textit{Windowed}.
     \item  Change the display size by choosing the \textit{Zoom} function to select a zoom level of
-25\%, 33\%, ... 300\%, or 400\% of the original media size.
+25\%, 33\%, \ldots 300\%, or 400\% of the original media size.
     \item  To remove the current media from being displayed, choose \textit{Close source}.
 \end{enumerate}
 
@@ -1194,7 +1198,7 @@ original asset's format. Operations performed in the Viewer affect a temporary E
 than the timeline.  By default, the Viewer window is automatically available but if it gets
 accidentally closed you can open it again by using the pulldown \texttt{Window $\rightarrow$ Show
 Viewer} to bring it back up.  More details for editing in the Viewer window with the Two Screen
-Editing method is explained in \ref{sec:two_screen_editing}.
+Editing method is explained in~\ref{sec:two_screen_editing}.
 
 \section{Options in both the Compositor and Viewer Windows}%
 \label{sec:options_in_both_the_compositor_and_viewer_windows}
@@ -1261,7 +1265,7 @@ There are either a left or right resize pointer and you can click and drag in ei
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=1.0\linewidth]{timebar2.png}
-    \caption{ A left-facing arrow on the right side of the blue slider bar is used to drag the bar.}
+    \caption{A left-facing arrow on the right side of the blue slider bar is used to drag the bar.}
     \label{fig:timebar2}
 \end{figure}
 
@@ -1999,8 +2003,7 @@ Overloading by less than 3 dB is usually acceptable.
 While overloading is treated as positive numbers in \CGG{}, it is clipped to 0 when sent to a sound card or file.
 
 
-
-
-
-
-
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../CinelerraGG_Manual"
+%%% End:

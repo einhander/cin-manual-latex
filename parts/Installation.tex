@@ -18,11 +18,6 @@ have been made) available at the link below.
   \href{https://cinelerra-gg.org/download/}{https://cinelerra-gg.org/download/}
 \end{center}
 
-Because there are many references to "git" in this section, it is
-assumed that the user is somewhat familiar with its use.  Because
-"git" has more than 130 commands and is Open Source, it is well
-documented so for problems in usage, please refer to those.
-
 There are 2 kinds of builds, the default system-build and a
 single-user build.  A system build has results which are installed
 to the system.  The majority of the files are installed in the
@@ -122,6 +117,12 @@ grep "\*\*\*.*error" -ai log
 \begin{lstlisting}[style=sh]
 make install
 \end{lstlisting}
+Where <os> represents the Operating System supported by \CGG{}, such
+as centos, fedora, suse, ubuntu, mint, debian.
+The ``with-single-user'' parameter makes it so.
+% Make and log build (
+Check for errors before proceeding.
+
 
 \item If it all worked, you are all setup. Just click on the \CGG{}
   desktop icon.
@@ -172,6 +173,12 @@ The ``with-single-user'' parameter makes it so.
 % Make and log build (
 Check for errors before proceeding.
 
+
+Then just start the application by keying in: \texttt{./cin} in the
+bin subdirectory OR add a desktop icon by using the appropriate
+directory to copy the files to, run as \textbf{root}, and edit to
+correct the directory path.  Below are generic directions of how to
+do this.
 
 Then just start the application by keying in: \texttt{./cin} in the
 bin subdirectory OR add a desktop icon by using the appropriate
@@ -630,328 +637,225 @@ file in the \texttt{download} directory with instructions so you
 can \textit{cut and paste} and avoid typos; it is also shown
 next.
 
-% FIXME (!) It doesn't work that way. The text is set as it is
-% written.
-% \begin{lstlisting}[style=sh]
-{\tiny
-\begin{verbatim}
-Depending on the distro, use the instructions below and select the appropriate
-setup operations to install, update or remove cinelerr-gg infinity.  (02/05/2020)
-To upgrade, refresh repo, then replace "install" with "update", or whatever.
-
-Email problems to cin@lists.cinelerra-gg.org
-If repository problems, usually you can manually do an install by using:
- UBUNTU, MINT, DEBIAN
-  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.deb
-  and install it manually: dpkg -i cin_5.1.{substitute_filename}.deb
- ARCH
-  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.pkg.tar.xz
-  and install it manually: pacman -U cin_5.1.{substitute_filename}.pkg.tar.xz
- FEDORA
-  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
-  and install it manually: dnf install cin_5.1.{substitute_filename}.rpm
- LEAP, SUSE
-  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
-  and install it manually: zypper install cin_5.1.{substitute_filename}.rpm
- CENTOS
-  wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
-  and install it manually: yum localinstall cin_5.1.{substitute_filename}.rpm
-
-# GENTOO - there are static and dynamic tarballs for Base Release 2.6
-  https://cinelerra-gg.org/download/tars/cinelerra-5.1-gentoo-20200202.x86_64-static.txz
-  https://cinelerra-gg.org/download/tars/cinelerra-5.1-gentoo-20200202.x86_64.txz
-  download one of the above and then refer to README.txt
-
-# FREEBSD - there is a tarball based on FreeBSD version 12.1 at
-  https://cinelerra-gg.org/download/testing/bsdcin.tar.xz
-  download the above and then refer to README.txt
-
-# FEDORA
-# Replace the XX in fedoraXX in the next line with your current O/S version number
-dnf install cinelerra --nogpgcheck --repofrompath cingg,https://cinelerra-gg.org/download/pkgs/fedoraXX/
-# dnf erase cinelerra
-
-# CENTOS
-# Python 2 has been updated for other distros to Python 3 so you might have to create a soft link
-#   to get the correct version.  For help, send email to cin@lists.cinelerra-gg.org
-# first create the file /etc/yum.repos.d/cin_gg, with the following contents:
-[cin_gg]
-name=cingg
-baseurl=https://cinelerra-gg.org/download/pkgs/centos7
-gpgcheck=0
-# end of cin_gg
-yum install cinelerra
-# yum erase cinelerra
-
-# UBUNTU, replace ub14 with your distro id: ub16,ub18
-#  Some ubuntu apt downloads register status as working 0% constantly while running the package
-#   download, like ubuntu 14.  It may take a few minutes for this step so be patient.
-apt install software-properties-common apt-transport-https
-apt-add-repository https://cinelerra-gg.org/download/pkgs/ub14
-# UBUNTU 16/18 note - This has been known to work, but things change quickly:
-# VIP - for the first install, the above line adds \CGG{} to /etc/apt/sources.list but...
-# Version 16/18 of Ubuntu are more strict for licensing so you will have to edit
-#  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
-# For example the line should be: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub16 xenial main
-#   Or for ub18: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub18 bionic main
-# Also, on the install you will get an error message that you can either ignore as \CGG{}
-#  will run anyway, or else (the first time only) on the commnand line keyin:
-#  echo > /etc/sysctl.d/50-cin.conf "kernel.shmmax=0x7fffffff"
-apt update
-apt install cin
-#to update a previous install (ignore any i386 errors as only 64 bit version available):
-apt update
-apt upgrade cin
-##apt remove cin
-
-# MINT should use the same procedure as Ubuntu, but apt-add-repository does not seem to work,
-#  so use the GUI UpdateManager as follows:
-#  Administration->Software Sources->Additional Repositories->Add a new repository
-#    (Note instead of Administration, some versions of Mint GUI UpdateManager might be System)
-#  For Mint18,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint18 xenial main
-#  For Mint19,add: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint19 bionic main
-# IMPORTANT NOTE: if you get "malformed input" error, you will have to create a file
-#    by typing the command: sudo touch /etc/apt/sources.list.d/additional-repositories.list
-#    then wait 10 minutes or so and try using the Gui Update Manager again.
-apt update
-apt install cin
-#to update a previous install
-apt update
-apt upgrade cin
-##apt remove cin
-
-# DEBIAN uses the same basic procedure as Ubuntu.
-#  The apt-add-repository varies per system so you will have to use your best judgement
-apt install software-properties-common apt-transport-https
-apt-add-repository https://cinelerra-gg.org/download/pkgs/debian8
-OR apt-add-repository https://cinelerra-gg.org/download/pkgs/debian9
-OR apt-add-repository https://cinelerra-gg.org/download/pkgs/debian10
-# VIP - for the first install, the above line adds cinelerra to /etc/apt/sources.list but...
-# Debian stretch/jessie/buster are more strict for licensing so you will have to edit
-#  the file /etc/apt/sources.list to add [trusted=yes] after deb and before https...cin...
-# For example for debian8: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian8 jessie main
-# For example for debian9: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian9 stretch main
-# For example for debian10: deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian10 buster main
-apt update
-apt install cin
-#to update a previous install
-apt update
-apt upgrade cin
-##apt remove cin
-
-# SUSE/LEAP/TUMBLEWEED
-# (Note: you may have to zypper libavc and libiec versions if not already installed)
-# cinelerra packages are unsigned so you will have to ignore: Package is not signed!
-# openSUSE LEAP 15
-zypper ar -f https://cinelerra-gg.org/download/pkgs/leap15/ cingg
-zypper install -r cingg cinelerra   # or cinelerra10bit for 10 bit
-# openSUSE LEAP 42
-zypper ar -f https://cinelerra-gg.org/download/pkgs/leap42/ cingg
-# as of 42.3 SUSE there is a new requirement, so you will need to add:
-zypper mr -G cingg
-zypper install -r cingg cinelerra   # or cinelerra10bit for 10 bit
-# openSUSE TUMBLEWEED
-zypper ar -f https://cinelerra-gg.org/download/pkgs/tweed/ cingg
-# as of 42.3 SUSE there is a new requirement, so you will need to add:
-zypper mr -G cingg
-zypper install -r cingg cinelerra
-##zypper remove cinelerra	    # or cinelerra10bit for 10 bit
-#to update a previous install (assuming you enabled autorefresh as above)
-zypper refresh cingg
-zypper up cinelerra  # or cinelerra10bit for 10 bit
-
-# SLACKWARE, substitute slk32 for slk64 and i486-1 for x86_64-1
-wget -P /tmp https://cinelerra-gg.org/download/pkgs/slk64/cin-{date}-slk64-x86_64.txz
-installpkg /tmp/cin...    # name you used in the above line
-#to update a previous install
-upgradepkg /tmp/cin...    # name you used in the above line
-##removepkg cin
-
-# ARCH linux
-#  (A loosely defined list of packages that you should install first is listed in this file:
-#   https://www.cinelerra-gg.org/download/pkgs/README.arch   )
-# first edit the file /etc/pacman.conf, to include the following:
-[cingg]
-SigLevel = Optional TrustAll
-Server = https://cinelerra-gg.org/download/pkgs/arch
-# end of cingg
-#
-# next run from a window the following 2 commands;
-pacman -Syu
-pacman -S cin
-# NOTE: the first line above updates your Arch system to the current rolling release and the second
-#  line updates \CGG{} based on the rolling release that was in effect on the last day of the month.
-#  Please complete the 2 steps above in order, one right after the other to avoid risk of a partial upgrade.
-#  Due to the unpredictability of when Arch libraries are updated, performing an install of \CGG{} at
-#  any time other than shortly after the last day of the month when the new build package is created,
-#  could lead to library incompatibilities.  In that case, please consider using the Arch static tar file
-#  for installation instead.
-#to remove a previous install
-##pacman -R cin
-\end{verbatim}
-}
-% \end{lstlisting}
+\lstset{inputpath=extra/}
+\lstinputlisting[
+style=nil,
+basicstyle=\footnotesize,
+caption={README.pkgs}
+]{README.pkgs}
 
 \section{Windows 10 with Cygwin for \CGG{} Limited}%
 \label{sec:ms_windows10}
 
-To run \CGG{} on a Windows 10 computer, you will need to have Cygwin installed on your system, 
-along with the  \CGG{} static tar and a patched library: libxbc.  This setup has been tested 
-with Windows 10, version 1909, on an HP EliteBook 820 at 2.3 GHz.
+To run \CGG{} on a Windows 10 computer, you will need to have
+Cygwin installed on your system, along with the \CGG{} static tar
+and a patched library: libxbc.  This setup has been tested with
+Windows 10, version 1909, on an HP EliteBook 820 at 2.3 GHz.
 
-This limited version provides \textit{core} functionality at this time with the standard Windows FFmpeg
-executable, meaning that specific modifications in FFmpeg needed for \CGG{} are not available. 
-Limited capabilities include only a few render output formats available - for example \textit{mov}, \textit{qt} 
-as \textit{mjpeg}, and \textit{mpeg} for videos and \textit{avi} and \textit{qt} as \textit{s16le} 
-for audio, but not \textit{mkv} or \textit{mp4}.  
-This is due to the fact that several codec and utility libraries are not currently compiled to 
-work with Windows.
+This limited version provides \textit{core} functionality at this
+time with the standard Windows FFmpeg executable, meaning that
+specific modifications in FFmpeg needed for \CGG{} are not
+available.  Limited capabilities include only a few render output
+formats available - for example \textit{mov}, \textit{qt} as
+\textit{mjpeg}, and \textit{mpeg} for videos and \textit{avi} and
+\textit{qt} as \textit{s16le} for audio, but not \textit{mkv} or
+\textit{mp4}.  This is due to the fact that several codec and
+utility libraries are not currently compiled to work with Windows.
 
 \subsection*{Installing Cygwin}
 \label{sec:installing_cygwin}
 
-Cygwin is an environment that runs natively on Windows which allows Unix programs to be compiled 
-and run on Windows.  With cygwin installed on your Windows 10 computer, you will be able to run 
-\CGG{}.  Before installing cygwin, you need to be warned that the Avast anti-virus software 
-kills files necessary for cygwin installation and execution, so you will have to remove it and 
-use alternative anti-virus software (the standard default already included with Windows 10 
-is Defender). Below are the steps for installation:
+Cygwin is an environment that runs natively on Windows which
+allows Unix programs to be compiled and run on Windows.  With
+cygwin installed on your Windows 10 computer, you will be able to
+run \CGG{}.  Before installing cygwin, you need to be warned that
+the Avast anti-virus software kills files necessary for cygwin
+installation and execution, so you will have to remove it and use
+alternative anti-virus software (the standard default already
+included with Windows 10 is Defender). Below are the steps for
+installation:
 
 \begin{enumerate}
-	\item Download cygwin for your 64-bit computer at: {\small \url{https://www.cygwin.com/}}
-	\item Generally just take the defaults as they show up, but the next steps show what comes up.
-	\item When a warning window pops up, click \textit{Yes}.
-	\item Click \textit{Next}.
-	\item Choose \textit{Install from Internet} option and then click \textit{Next}.
-	\item Choose your desired directory by clicking on Browse button. Choose \textit{All Users (Recommended)} and then click \textit{Next}.
-	\item Choose the local package directory where you would like your installation files to be placed. Click \textit{Next}.
-	\item Choose \textit{Direct Connection} if you are using Internet with plug and play device. Click \textit{Next}.
-	\item Choose any download site preferably ``cygwin.mirror.constant.com'' and then click \textit{Next}.
-	\item For list of things to install, leave all set to \textit{Default} except these to \textit{Install} instead:
+\item Download cygwin for your 64-bit computer at:
+  \href{https://www.cygwin.com/}{https://www.cygwin.com/}
 
-\begin{tabular}{ll}
-	base& devel\\
-	gnome& graphics\\
-	system& video\\
-	X11 \\
-\end{tabular}
+\item Generally just take the defaults as they show up, but the
+  next steps show what comes up.
 
-     This install takes a long time; approximately 2 hours on an EliteBook and requires approximately 20GB storage.
-	\item Finally you will want to have the icons on your desktop (already default) and then click \textit{Finish}.
+\item When a warning window pops up, click \textit{Yes}.
+
+\item Click \textit{Next}.
+
+\item Choose \textit{Install from Internet} option and then click
+  \textit{Next}.
+
+\item Choose your desired directory by clicking on Browse
+  button. Choose \textit{All Users (Recommended)} and then click
+  \textit{Next}.
+
+\item Choose the local package directory where you would like your
+  installation files to be placed. Click \textit{Next}.
+
+\item Choose \textit{Direct Connection} if you are using Internet
+  with plug and play device. Click \textit{Next}.
+
+\item Choose any download site preferably
+  ``cygwin.mirror.constant.com'' and then click \textit{Next}.
+
+\item For list of things to install, leave all set to
+  \textit{Default} except these to \textit{Install} instead:
+
+  \begin{tabular}{ll}
+    base& devel\\
+    gnome& graphics\\
+    system& video\\
+    X11
+  \end{tabular}
+
+  This install takes a long time; approximately 2 hours on an
+  EliteBook and requires approximately 20GB storage.
+
+\item Finally you will want to have the icons on your desktop
+  (already default) and then click \textit{Finish}.
 \end{enumerate}
 
-Then to install the \CGG{} tar files, you will need to start a cygwin console terminal from the startup menu as shown here:
-	\texttt{Start $\rightarrow$ Cygwin $\rightarrow$ Cygwin64} Terminal
+Then to install the \CGG{} tar files, you will need to start a
+cygwin console terminal from the startup menu as shown here:
+\texttt{Start $\rightarrow$ Cygwin $\rightarrow$ Cygwin64}
+Terminal
 
 \subsection*{Installing \CGG{}}
 \label{sec:installing_cinelerra}
 
 \begin{enumerate}
-	\item Download the tar file at:\\
-	 {\small \url{https://cinelerra-gg.org/download/testing/libxcb-bld.tar.bz2}}
-	\item Install libxbc from the tar file -- installs into \texttt{/usr/local} and requires approximately 21MB storage.
+\item Download the tar file
+  \href{https://cinelerra-gg.org/download/testing/libxcb-bld.tar.bz2}{libxcb-bld.tar.bz2}.
+
+\item Install libxbc from the tar file -- installs into
+  \texttt{/usr/local} and requires approximately 21MB storage.
 \begin{lstlisting}[style=sh]
-	$ tar -C /usr/local -xJf /path/libxcb-bld.tar.bz2
+tar -C /usr/local -xJf /path/libxcb-bld.tar.bz2
 \end{lstlisting}
-The libxcb path repairs an error (XIOError), which stops Cinelerra.
-	\item Download the tar file at:\\
-	{\small \url{https://cinelerra-gg.org/download/testing/cygcin-bld.tar.bz2}}	
-	\item Install cygcin from the tar file - this installs into home directory.  Note this is cygcin NOT cygwin. You must change the \texttt{path} below to the name of the path where you downloaded the tar file.
+  The libxcb path repairs an error (XIOError), which stops
+  Cinelerra.
+
+\item Download the tar file
+  \href{https://cinelerra-gg.org/download/testing/cygcin-bld.tar.bz2}{cygcin-bld.tar.bz2}.
+
+\item Install cygcin from the tar file - this installs into home
+  directory.  Note this is cygcin \emph{not} cygwin. You must change the
+  \texttt{path} below to the name of the path where you downloaded
+  the tar file.
 \begin{lstlisting}[style=sh]
-	$ cd
-	$ tar -xJf /path/cygcin-bld.tar.bz2
+cd
+tar -xJf /path/cygcin-bld.tar.bz2
 \end{lstlisting}
 \end{enumerate}
-This creates \texttt{\~{}/cygcin} , a user build installation of \CGG{} and requires approximately 400MB storage.
+
+This creates \texttt{\~{}/cygcin}, a user build installation of
+\CGG{} and requires approximately 400MB storage.
 
 \underline{Running \CGG{}:}
 
 You will need to start a cygwin desktop from the startup menu:
 \begin{enumerate}
-	\item \texttt{Start$\rightarrow$ Cygwin-X $\rightarrow$ Openbox}
+\item \texttt{Start$\rightarrow$ Cygwin-X $\rightarrow$ Openbox}
 
-You should start a console controlling terminal so that you can see program logging.
-	\item \texttt{Start$\rightarrow$ Cygwin $\rightarrow$ Cygwin64} Terminal
+  You should start a console controlling terminal so that you can
+  see program logging.
 
-This opens a separate window that can survive a cygwin hang and bugs. Without these logs, it is much more difficult to use.
+\item \texttt{Start$\rightarrow$ Cygwin $\rightarrow$ Cygwin64} Terminal
 
-	\item Type into that console controlling window, the following:
+  This opens a separate window that can survive a cygwin hang and
+  bugs. Without these logs, it is much more difficult to use.
+
+\item Type into that console controlling window, the following:
 \begin{lstlisting}[style=sh]
-	$ export DISPLAY=:0.0
+export DISPLAY=:0.0
 \end{lstlisting}
-	\item Change directories to where \CGG{} is installed:
+
+\item Change directories to where \CGG{} is installed:
 \begin{lstlisting}[style=sh]
-	$ cd /path/cygcin    (NOT cygwin)
+cd /path/cygcin    (NOT cygwin)
 \end{lstlisting}
-	\item Finally keyin:
+
+\item Finally keyin:
 \begin{lstlisting}[style=sh]
-	$ ./cin
+./cin
 \end{lstlisting}
-which starts up your 4 \CGG{} windows.
+  which starts up your 4 \CGG{} windows.
 \end{enumerate}
 
-The most noticeable difference from the Linux versions is that \CGG{} seems to run 
-very slowly on Windows 10. You must be very tolerant and patient to see this work.  
-It can however exhibit astonishing speed when encoding.  \CGG{} has to be downgraded significantly due to lack of supported interfaces, codecs (for example h264/h265), and utilities.  
-The only graphics driver is X11 and the only sound driver is pulseaudio.  Almost all configurable
-omissions are applied to this build.  
+The most noticeable difference from the Linux versions is that
+\CGG{} seems to run very slowly on Windows 10. You must be very
+tolerant and patient to see this work.  It can however exhibit
+astonishing speed when encoding.  \CGG{} has to be downgraded
+significantly due to lack of supported interfaces, codecs (for
+example h264/h265), and utilities.  The only graphics driver is
+X11 and the only sound driver is pulseaudio.  Almost all
+configurable omissions are applied to this build.
 
 \underline{\CGG{} build on cygwin from source code:}
 
 \begin{enumerate}
-	\item Download and install ffmpeg into /usr/local :
+\item Download and install ffmpeg into /usr/local :
 
-   	download ffmpeg (currently 4.2.2)
+  download ffmpeg (currently 4.2.2)
 \begin{lstlisting}[style=sh]
-	$ cd /tmp
-	$ tar -xJf /path/ffmpeg-4.2.2.tar.bz2
-	$ cd ffmpeg-4.2.2
-	$ ./configure
-	$ make -j
-	$ make install
+cd /tmp
+tar -xJf /path/ffmpeg-4.2.2.tar.bz2
+cd ffmpeg-4.2.2
+./configure
+make -j
+make install
 \end{lstlisting}
-	\item Download and install a patched libxcb:
+
+\item Download and install a patched libxcb:
 \begin{lstlisting}[style=sh]
-	$ cd /tmp
-	$ rm -rf libxcb-1.13/
-	$ tar -xf /path/libxcb-1.13.tar.bz2
-	$ cd libxcb-1.13/
-	$ patch -p1 < /path/cinelerra-5.1/thirdparty/src/libxcb.patch1
-	   patching file configure.ac
-	   patching file src/xcb_in.c
-	$ ./autogen.sh
-	$ ./configure
-	$ make -j
-	$ make install
+cd /tmp
+rm -rf libxcb-1.13/
+tar -xf /path/libxcb-1.13.tar.bz2
+cd libxcb-1.13/
+patch -p1 < /path/cinelerra-5.1/thirdparty/src/libxcb.patch1
+   patching file configure.ac
+   patching file src/xcb_in.c
+./autogen.sh
+./configure
+make -j
+make install
 \end{lstlisting}
-	\item Download cinelerra-gg:
+\item Download cinelerra-gg:
 \begin{lstlisting}[style=sh]
-	$ cd /build_path/
-	$ git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git"
-	$ cd cinelerra-gg/cinelerra-5.1
+cd /build_path/
+git clone "git://git.cinelerra-gg.org/goodguy/cinelerra.git"
+cd cinelerra-gg/cinelerra-5.1
 \end{lstlisting}
-	\item Apply cygwin patch:
+\item Apply cygwin patch:
 \begin{lstlisting}[style=sh]
-	$ patch -p2 < blds/cygwin.patch
+patch -p2 < blds/cygwin.patch
 \end{lstlisting}
-	\item Run the build with:
+\item Run the build with:
 \begin{lstlisting}[style=sh]
-	$ ./blds/cygwin.bld
+./blds/cygwin.bld
 \end{lstlisting}
 \end{enumerate}
 
-This produces a directory: $/build\_path$/cinelerra-gg$/cinelerra$-5.1/bin
+This produces a directory: /build\_path/cinelerra-gg/cinelerra-5.1/bin
 which is used to create the cygcin archive.
 
 Currently, the targets are not stripped and can be run from gdb.
 There is only very limited signal handler dmp file support.
-Running gdb from inside a desktop resident console (not a cygwin64 window) will hang cygwin (and cin) when it hits a breakpoint.  You must run from an external console window to avoid this issue.
+Running gdb from inside a desktop resident console (not a cygwin64
+window) will hang cygwin (and cin) when it hits a breakpoint.  You
+must run from an external console window to avoid this issue.
 
 
 \section{Distribution Systems with \CGG{} Included}%
 \label{sec:distribution_systems_with_cinelerra_included}
 
-There are also some special complete distribution systems available that include \CGG{} for audio and video production capabilities.
+There are also some special complete distribution systems
+available that include \CGG{} for audio and video production
+capabilities.
 
 \subsection{AV Linux}
 \label{sec:AV_Linux}
@@ -976,23 +880,32 @@ graphics, animations, physical computing, etc.
 Click here for the
 \href{https://gitlab.com/giuseppetorre/bodhilinuxmedia}{homepage of Bodhi Linux}.
 
--\begin{center}
--       {\small \url{https://gitlab.com/giuseppetorre/bodhilinuxmedia}}
--\end{center}   
 
 \section{Cinx and a “Bit” of Confusion}%
 \label{sec:cinx_and_a_bit_of_confusion}
 
-Cinx is the exact same program as Cin.  
-The X (x) represents the roman numeral 10 for 10-bit as opposed to 8-bit standard.  
-The third-party library used for x265 must be specially compiled with \texttt{--bit-depth=10} in order to produce 10-bit rendered output.  
-This build will not be able to output 8-bit depth which means you have to retain the Cin version also.  
-Whatever build ffmpeg is linked to will determine what bit depth it can output.  
-This is why there have to be separate builds.  
-If you install both packages, Cin and CinX, you may get \textit{file conflicts of same file name} --- just continue.
+Cinx is the exact same program as Cin.  The X (x) represents the
+roman numeral 10 for 10-bit as opposed to 8-bit standard.  The
+third-party library used for x265 must be specially compiled with
+\texttt{--bit-depth=10} in order to produce 10-bit rendered
+output.
+%
+This build will not be able to output 8-bit depth which means you
+have to retain the Cin version also.
+%
+Whatever build ffmpeg is linked to will determine what bit depth
+it can output.  This is why there have to be separate builds.  If
+you install both packages, Cin and CinX, you may get \textit{file
+  conflicts of same file name} --- just continue.
 
-Keep in mind that the regular 8-bit version works on 8-bit bytes --- the standard word size for computers, but the 10-bit version has to use 2 words to contain all 10 bits so you can expect rendering to be as much as twice as slow.  
-There is also a 12-bit version for consideration but currently the results are simply the same as 10-bit with padding to make 12-bit so it is of no value.
+Keep in mind that the regular 8-bit version works on 8-bit bytes
+--- the standard word size for computers, but the 10-bit version
+has to use 2 words to contain all 10 bits so you can expect
+rendering to be as much as twice as slow.
+%
+There is also a 12-bit version for consideration but currently the
+results are simply the same as 10-bit with padding to make 12-bit
+so it is of no value.
 
 
 %%% Local Variables:

@@ -91,17 +91,46 @@ Video switches segments via a small rectangular view that gradually grows to ful
 \subsection*{Shape Wipe}%
 \label{sub:shape_wipe}
 
-Wipe a specific shape across the video. Currently available shapes are: \textit{asimetric\_clocks}, \textit{asimetric\_clocks\_2}, \textit{audio}, \textit{burst}, \textit{Butterfly},
- \textit{Cinelerra16-9-Heavy}, \textit{Cinelerra16-9-Light}, \textit{CinelerraGG}, \textit{Circle-h\_01}, \textit{Circle-h\_02}, \textit{Circle-v\_01}, \textit{Circle-v\_02},
- \textit{circle}, \textit{clock}, \textit{Clouds\_01}, \textit{Clouds\_02}, \textit{crazy\_clock}, \textit{cream}, \textit{Cross-Iris\_01}, \textit{Cross\_01},
-\textit{Diagonal-Curve}, \textit{Diagonal-Linear}, \textit{Diamond-Iris\_01}, \textit{Diamond\_01},
- \textit{Diamond\_02}, \textit{Diamond\_03}, \textit{Double-Door-h}, \textit{Double-Door-v}, \textit{film}, \textit{film2}, \textit{Gravity},
-\textit{heart}, \textit{Linear-h}, \textit{Linear-v}, \textit{mosaic}, \textit{multi\_box}, \textit{Plasma\_01}, 
- \textit{rare\_spiral}, \textit{specks}, \textit{spiral}, \textit{spiral\_clock}, \textit{square}, \textit{squares}, \textit{star}, \textit{tile2x2h}, \textit{tile2x2v}, \textit{Venetian-Blinds-h-x05},
- \textit{Venetian-Blinds-h-x10}, \textit{Venetian-Blinds-v-x05}, and \textit{Venetian-Blinds-v-x10}, \textit{water}\protect\footnote{many shapes by Igor Beg and Rafa Mar}. 
+Wipe a specific shape across the video. Currently available 51 shapes\protect\footnote{many shapes by Igor Beg and Rafa Mar} are:
+
+\begin{center}
+	\begin{longtable}{p{4cm}p{4cm}p{4cm}}
+		\label{tabular:transitions}
+		\textit{asimetric\_clocks} & \textit{asimetric\_clocks\_2} & \textit{audio} \\
+		\textit{burst} & \textit{Butterfly} & \textit{Cinelerra16-9-Heavy} \\
+		\textit{Cinelerra16-9-Light} & \textit{CinelerraGG} & \textit{Circle-h\_01} \\
+		\textit{Circle-h\_02} & \textit{Circle-v\_01} & \textit{Circle-v\_02} \\
+		\textit{circle} & \textit{clock} & \textit{Clouds\_01} \\
+		\textit{Clouds\_02} &\textit{crazy\_clock}  & \textit{cream} \\
+		\textit{Cross-Iris\_01} & \textit{Cross\_01} & \textit{Diagonal-Curve} \\
+		\textit{Diagonal-Linear} & \textit{Diamond-Iris\_01} & \textit{Diamond\_01} \\
+		\textit{Diamond\_02} & \textit{Diamond\_03} & \textit{Double-Door-h} \\
+		\textit{Double-Door-v} & \textit{film} & \textit{film2} \\
+		\textit{Gravity} & \textit{heart} & \textit{Linear-h} \\
+		\textit{Linear-v} & \textit{mosaic} & \textit{multi\_box} \\
+		\textit{Plasma\_01} & \textit{rare\_spiral} & \textit{specks} \\
+		\textit{spiral} & \textit{spiral\_clock} & \textit{square} \\
+		\textit{squares} & \textit{star} & \textit{tile2x2h} \\
+		\textit{tile2x2v} & \textit{Venetian-Blinds-h-x05} & \textit{Venetian-Blinds-h-x10} \\
+		\textit{Venetian-Blinds-v-x05} & \textit{Venetian-Blinds-v-x10} & \textit{water} \\
+\\
+		\textit{16-9\_boart} & \textit{16-9\_boxes} & \textit{16-9\_cat\_eyes} \\
+		\textit{16-9\_file\_bands} & \textit{16-9\_multi\_circle} & \textit{16-9\_multi\_spiral} \\
+		\textit{16-9\_multi\_square} & \textit{16-9\_rare\_spiral} & \textit{16-9\_rectangles} \\
+		\textit{16-9\_star} & \textit{16-9\_stars} & \textit{16-9\_wood} \\
+
+		\bottomrule
+	\end{longtable}
+\end{center}
 
 The menu for Shape Wipe that popups when you click on \textit{Show} has several possible choices.  First, the \textit{Shape} allows for choosing from the list of shapes as outlined previously either by typing in the textbox, using the down arrow, or clicking on the tumbler down/up arrows.
-Next, there is a \textit{Feather} textbox with tumbler arrows or a slider bar to easily change the blending amount.  A reset button is conveniently located to the right of the slider bar.  There is a checkbox to \textit{Preserve shape aspect ratio} and a \textit{Direction} of \textit{White to Black} or \textit{Black to White}.
+Next, there is a \textit{Feather} textbox with tumbler arrows or a slider bar to easily change the blending amount.  A reset button is conveniently located to the right of the slider bar.  There is a checkbox to \textit{Preserve shape aspect ratio} and a \textit{Direction} of \textit{White to Black} or \textit{Black to White} (figure~\ref{fig:star}).
+
+\begin{figure}[htpb] \centering
+	\includegraphics[width=0.9\linewidth]{star.png}
+	\caption{Example of the Shape Wipe $\rightarrow$ Star}
+	\label{fig:star}
+\end{figure}
 
 You can add your own images to the Shape Wipe transition and there are some free ones available to download such as under the \texttt{Video $\rightarrow$ Transitions} pulldown at {\small \url{assistcg.com}}.
 

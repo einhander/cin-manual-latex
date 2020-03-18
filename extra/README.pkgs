@@ -1,0 +1,211 @@
+# Depending on the distro, use the instructions below and
+# select the appropriate setup operations to install, update
+# or remove cinelerr-gg infinity. (11/24/2019) To upgrade,
+# refresh repo, then replace "install" with "update", or
+# whatever.
+
+# Email problems to cin@lists.cinelerra-gg.org. If
+# repository problems, usually you can manually do an
+# install by using:
+
+# UBUNTU, MINT, DEBIAN
+wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.deb
+# and install it manually:
+dpkg -i cin_5.1.{substitute_filename}.deb
+
+# ARCH
+wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.pkg.tar.xz
+# and install it manually:
+pacman -U cin_5.1.{substitute_filename}.pkg.tar.xz
+
+# FEDORA
+wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
+# and install it manually:
+dnf install cin_5.1.{substitute_filename}.rpm
+
+# LEAP, SUSE
+wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
+# and install it manually:
+zypper install cin_5.1.{substitute_filename}.rpm
+
+# CENTOS
+wget https://cinelerra-gg.org/download/pkgs/{substitute_name}/cin_5.1.<sub_name>.rpm
+# and install it manually:
+yum localinstall cin_5.1.{substitute_filename}.rpm
+
+# GENTOO
+# There are static and dynamic tarballs for
+# Base Release 2.6
+https://cinelerra-gg.org/download/tars/cinelerra-5.1-gentoo-20200202.x86_64-static.txz
+https://cinelerra-gg.org/download/tars/cinelerra-5.1-gentoo-20200202.x86_64.txz
+# download one of the above and then refer to README.txt
+
+# FREEBSD
+# There is a tarball based on FreeBSD version 12.1 at
+https://cinelerra-gg.org/download/testing/bsdcin.tar.xz
+# download the above and then refer to README.txt
+
+# FEDORA
+# Replace the XX in fedoraXX in the next
+# line with your current O/S version number
+dnf install cinelerra --nogpgcheck --repofrompath cingg,https://cinelerra-gg.org/download/pkgs/fedoraXX/
+# dnf erase cinelerra
+
+# CENTOS
+# Python 2 has been updated for other distros to Python 3 so
+# you might have to create a soft link to get the correct
+# version. For help, send email to
+# cin@lists.cinelerra-gg.org first create the file
+# /etc/yum.repos.d/cin_gg, with the following contents:
+[cin_gg]
+name=cingg
+baseurl=https://cinelerra-gg.org/download/pkgs/centos7
+gpgcheck=0
+# end of cin_gg
+yum install cinelerra
+# yum erase cinelerra
+
+# UBUNTU, replace ub14 with your distro id: ub16,ub18 Some
+# ubuntu apt downloads register status as working 0%
+# constantly while running the package download, like ubuntu
+# 14. It may take a few minutes for this step so be patient.
+apt install software-properties-common apt-transport-https
+apt-add-repository https://cinelerra-gg.org/download/pkgs/ub14
+
+# UBUNTU 16/18 note - This has been known to work, but
+# things change quickly:
+# VIP - for the first install, the above line adds cinelerra
+# to /etc/apt/sources.list but... Version 16/18 of Ubuntu
+# are more strict for licensing so you will have to edit the
+# file /etc/apt/sources.list to add [trusted=yes] after deb
+# and before https...cin...
+
+# For example the line should be:
+# deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub16 xenial main
+# Or for ub18:
+# deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/ub18 bionic main
+# Also, on the install you will get an error message that you
+# can either ignore as cinelerra will run anyway, or else (the
+# first time only) on the commnand line keyin:
+# echo > /etc/sysctl.d/50-cin.conf "kernel.shmmax=0x7fffffff"
+apt update
+apt install cin
+# to update a previous install (ignore any i386 errors as only 64
+# bit version available):
+apt update
+apt upgrade cin
+# apt remove cin
+
+# MINT should use the same procedure as Ubuntu, but
+# apt-add-repository does not seem to work, so use the GUI
+# UpdateManager as follows:
+# Administration -> Software Sources -> Additional
+# Repositories -> Add a new repository
+# (Note instead of Administration, some versions of Mint GUI
+# UpdateManager might be System)
+# For Mint18, add:
+# deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint18 xenial main
+# For Mint19, add:
+# deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/mint19 bionic main
+# IMPORTANT NOTE: if you get "malformed input" error, you will
+# have to create a file by typing the command: sudo touch
+# /etc/apt/sources.list.d/additional-repositories.list then
+# wait 10 minutes or so and try using the Gui Update Manager
+# again.
+apt update
+apt install cin
+# to update a previous install
+apt update
+apt upgrade cin
+# apt remove cin
+
+# DEBIAN uses the same basic procedure as Ubuntu.
+# The apt-add-repository varies per system so you will have to
+# use your best judgement
+apt install software-properties-common apt-transport-https
+apt-add-repository https://cinelerra-gg.org/download/pkgs/debian8
+# OR
+# apt-add-repository https://cinelerra-gg.org/download/pkgs/debian9
+# OR
+# apt-add-repository https://cinelerra-gg.org/download/pkgs/debian10
+# VIP - for the first install, the above line adds cinelerra
+# to /etc/apt/sources.list but... Debian jessie/buster are
+# more strict for licensing so you will have to edit the file
+# /etc/apt/sources.list to add [trusted=yes] after deb and
+# before https...cin...
+# For example for debian9:
+# deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian9 stretch main
+# For example for debian9:
+# deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian10 buster main
+apt update
+apt install cin
+#to update a previous install
+apt update
+apt upgrade cin
+# apt remove cin
+
+# SUSE/LEAP/TUMBLEWEED
+# (Note: you may have to zypper libavc and libiec versions if
+# not already installed) cinelerra packages are unsigned so
+# you will have to ignore: Package is not signed!
+
+# openSUSE LEAP 15
+zypper ar -f https://cinelerra-gg.org/download/pkgs/leap15/ cingg
+zypper install -r cingg cinelerra # or cinelerra10bit for 10 bit
+# openSUSE LEAP 42
+zypper ar -f https://cinelerra-gg.org/download/pkgs/leap42/ cingg
+# as of 42.3 SUSE there is a new requirement, so you will need
+# to add:
+zypper mr -G cingg
+zypper install -r cingg cinelerra # or cinelerra10bit for 10 bit
+# openSUSE TUMBLEWEED
+zypper ar -f https://cinelerra-gg.org/download/pkgs/tweed/ cingg
+# as of 42.3 SUSE there is a new requirement,
+# so you will need to add:
+zypper mr -G cingg
+zypper install -r cingg cinelerra
+#zypper remove cinelerra
+# or cinelerra10bit for 10 bit.
+# to update a previous install
+# (assuming you enabled autorefresh as above)
+zypper refresh cingg
+zypper up cinelerra
+# or cinelerra10bit for 10 bit.
+
+# SLACKWARE
+# substitute slk32 for slk64 and i486-1 for x86_64-1
+wget -P /tmp https://cinelerra-gg.org/download/pkgs/slk64/cin-{date}-slk64-x86_64.txz
+installpkg /tmp/cin... # name you used in the above line
+#to update a previous install
+upgradepkg /tmp/cin... # name you used in the above line
+#removepkg cin
+
+# ARCH linux
+# (A loosely defined list of packages that you should install
+# first is listed in this file:
+# https://www.cinelerra-gg.org/download/pkgs/README.arch) first
+# edit the file /etc/pacman.conf, to include the following:
+[cingg]
+SigLevel = Optional TrustAll
+Server = https://cinelerra-gg.org/download/pkgs/arch
+# end of cingg
+
+# next run from a window the following 2 commands;
+pacman -Syu
+pacman -S cin
+
+# NOTE: the first line above updates your Arch system to the
+# current rolling release and the second line updates
+# Cinelerra-GG based on the rolling release that was in effect
+# on the last day of the month.
+# Please complete the 2 steps above in order, one right after
+# the other to avoid risk of a partial upgrade.
+
+# Due to the unpredictability of when Arch libraries are
+# updated, performing an install of Cinelerra at any time
+# other than shortly after the last day of the month when the
+# new build package is created, could lead to library
+# incompatibilities. In that case, please consider using the
+# Arch static tar file for installation instead. to remove a
+# previous install:
+# pacman -R cin

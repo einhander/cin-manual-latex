@@ -444,13 +444,15 @@ git clean -i     # interactive clean, use answer 1 to "clean"
 \subsection{How to Build from a Previous GIT Version}%
 \label{sub:how_to_build_from_a_previous_git_version}
 
-% FIXME The listing is here because...
+If you have a problem with the current GIT version, you can revert
+to a previous working version easily.  The commands to use will be
+similar to these next lines which are then explained in more detail.
 \strut
-%
+ 
 \begin{lstlisting}[style=sh]
-cd /<path>/cin5_repo
-git log
-git checkout <version>
+cd /<path>/cin5  # substitute your repo path name for cin5
+git log		 # shows a list of versions
+git checkout <version> # choose a version number as listed
 \end{lstlisting}
 
 The \texttt{git log} command produces a log file with hash values
@@ -509,10 +511,10 @@ static (non\_debug) build as follows but instead of using
 \texttt{/tmp} substitute your permanent disk path if you want to
 keep it.
 
-% FIXME cd /tmp/ && git clone ?
 \begin{lstlisting}[style=sh]
-git clone ...
-cp -a /path/cinelerra-5.1 /tmp/
+cd /<repo_path>/
+git clone --depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5 
+cp -a /<repo_path>/cinelerra-5.1 /tmp/
 cd /tmp/cinelerra-5.1
 ./bld.sh
 \end{lstlisting}

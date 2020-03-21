@@ -1,5 +1,7 @@
-% Cover sheet with full logo,
+% ================================================================
+% Page 1 -- Cover sheet with full logo,
 % realized with eso-pic as background image.
+%
 \thispagestyle{empty}
 \newcommand\CinBackgroundLogo{%
    \put(0,0){%
@@ -26,7 +28,10 @@
 % Remove the logo
 \ClearShipoutPicture%
 
-% Title page definition
+
+% ================================================================
+% Page 2 -- Title page definition
+%
 \thispagestyle{empty}
 
 %\providecommand{\HUGE}{\Huge}% if not using memoir
@@ -70,7 +75,70 @@
 \href{https://www.cinelerra-gg.org}{https://www.cinelerra-gg.org}\par
 \endgroup}
 \titleLL % use cutom title
+\clearpage
 
+% ================================================================
+% Page 3 -- Imprint
+%
+\begingroup % imprint
+\setlength{\parskip}{0.4\baselineskip}
+\subsection*{\sffamily\CGG{} -- The Comprehensive User Manual}
+\label{sec:Impressum}
+%
+% In various countries, various details are mandatory in every
+% book. Translators should pay attention to this if necessary.
+% German entries are mandatory: Real name and address of the
+% author/rights holder.
+% The following is an example that needs to be adapted to the
+% respective conditions.
+%
+Maintained and published by Phyllis Smith\\[+1.2em]
+Copyright~\copyright{} 2020 The \CGG{} Community\par
+Please report errors in the book to our \href{https://www.cinelerra-gg.org/bugtracker/}{bug tracker} or the \href{https://www.cinelerra-gg.org/forum/}{user forum}\par
+% Contributing authors: \textsc{Phyllis Smith, Andrea Paz, Andrey}\par
+Graphic cover page: \textsc{Sam}, License
+\textsc{\href{https://creativecommons.org/licenses/by/3.0/}{CC\,BY\,3.0}}\par
+Cover design: The \CGG{} Community\par
+Illustrations: The \CGG{} Community%, for individual proofs, if different, see list of figures% \par
+% Translation: Translator
+\bigskip%
+
+\footnotesize
+\subsubsection*{\sffamily{}Legal information}
+\label{sec:Legal-information}
+At this point, the express reference to the licence under which this
+manual is published could be entered.
+
+\subsubsection*{\sffamily{}Disclaimer}
+\label{sec:Disclaimer}
+%
+% Caution, in some countries a disclaimer often does
+% more harm than good.
+%
+In this capacity, the author of this manual is not responsible for
+the function or errors of the software described in this
+manual. Great care has been taken in the creation of texts and
+illustrations. Nevertheless, errors cannot be completely
+excluded.\par
+However, the author cannot assume any legal responsibility or
+liability for incorrect information and its consequences. The author
+is grateful for suggestions for improvement and information on
+errors.
+
+\subsubsection*{\sffamily{}Trademarks}
+\label{sec:Warenzeichen}
+In this manual, trade names are used without the guarantee of free
+usability and without special marking. However, it can be assumed
+that many of the trade names are registered trade names or are to be
+regarded as such at the same time.
+
+\subsubsection*{\sffamily{}Links}
+\label{sec:Link-liability}
+Many links in this PDF are active. If the pointer points to a link,
+your PDF reader should additionally display the actual destination
+address. This way you can check if the target matches the link
+description before clicking.
+\endgroup % imprint
 
 %%% Local Variables:
 %%% mode: latex

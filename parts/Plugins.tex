@@ -29,12 +29,12 @@ Note that when you change the plugin icons, your session will automatically save
     \centering
     \begin{tikzpicture}[scale=1, transform shape]
     \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.5\linewidth]{plugin-icons.png}};
-    \node [yshift=-8mm, xshift=-1cm,anchor=east] at (img1.north west) (Preferences) {Preferences Window};
-    \node [yshift=-17mm, xshift=-1cm,anchor=east] at (img1.north west) (Tab) {Tab section};
-    \node [yshift=-41mm, xshift=-1cm,anchor=east] at (img1.north west) (Icon) {Plugin icon choices};
-    \draw [->, line width=1mm] (Preferences) edge  ([yshift=-8mm] img1.north west);
-    \draw [->, line width=1mm] (Tab) edge  ([yshift=-17mm] img1.north west);
-    \draw [->, line width=1mm] (Icon) edge    ([yshift=-41mm] img1.north west);
+    \node [yshift=-6mm, xshift=-1cm,anchor=east] at (img1.north west) (Preferences) {Preferences Window};
+    \node [yshift=-14mm, xshift=-1cm,anchor=east] at (img1.north west) (Tab) {Tab section};
+    \node [yshift=-35mm, xshift=-1cm,anchor=east] at (img1.north west) (Icon) {Plugin icon choices};
+    \draw [->, line width=1mm] (Preferences) edge  ([yshift=-6mm] img1.north west);
+    \draw [->, line width=1mm] (Tab) edge  ([yshift=-14mm] img1.north west);
+    \draw [->, line width=1mm] (Icon) edge    ([yshift=-35mm] img1.north west);
     \end{tikzpicture}
     \caption{Screencast showing the screen to change your plugin icons set}
     \label{fig:plugin-icons}
@@ -128,19 +128,18 @@ In order to prevent the shared track from mixing the same data as the original t
 \end{wrapfigure}
 Note that using this is directly changing a keyframe object so you will only want to modify parameters you are familiar with. Most of the data is obvious and safe to change.
 
-A Presets button on the plugin bar to the left of the Controls and On/Off button allows for quick access to this feature. The symbol resembles a gear (figure~\ref{fig:preset02}).
-    %\todo{I can't to remedy}%
+A Presets button on the plugin bar to the left of the Controls and On/Off button allows for quick access to this feature. The symbol resembles a slider (figure~\ref{fig:preset02}).
 
 \begin{figure}[htpb]
     \centering
     \begin{tikzpicture}[scale=1, transform shape]
     \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{preset02.png}};
-    \node [yshift=-30mm, xshift=-1cm,anchor=east] at (img1.north west) (Green) {A user preset Green};
-    \node [yshift=-101mm, xshift=-1cm,anchor=south east,text width=10em, inner ysep=-3mm] at (img1.north west) (Textbox) {Textbox to type in the title for the chosen preset or name for a new preset.};
-    \node [yshift=-110mm, xshift=-1cm,anchor=north east,text width=10em,inner ysep=-3mm] at (img1.north west) (Save) {Use the Delete, Save or Apply button for operation.};
-    \draw [->, line width=1mm] (Green) edge  ([yshift=-30mm] img1.north west);
-    \draw [->, line width=1mm] (Textbox.south east) --  ([yshift=-101mm] img1.north west);
-    \draw [->, line width=1mm] (Save.north east) --    ([yshift=-110mm] img1.north west);
+    \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Green) {A user preset Green};
+    \node [yshift=-68mm, xshift=-1cm,anchor=south east,text width=10em, inner ysep=-3mm] at (img1.north west) (Textbox) {Textbox to type in the title for the chosen preset or name for a new preset.};
+    \node [yshift=-80mm, xshift=-1cm,anchor=north east,text width=10em,inner ysep=-3mm] at (img1.north west) (Save) {Use the Delete, Save or Apply button for operation.};
+    \draw [->, line width=1mm] (Green) edge  ([yshift=-20mm] img1.north west);
+    \draw [->, line width=1mm] (Textbox.south east) --  ([yshift=-68mm] img1.north west);
+    \draw [->, line width=1mm] (Save.north east) --    ([yshift=-80mm] img1.north west);
     \end{tikzpicture}
     \caption{Screencast shows 4 Factory presets as preceded by an *.}
     \label{fig:preset02}
@@ -154,11 +153,11 @@ These next few sections explain some details about the plugins that are not dire
 \subsection{How to see short Description of a Plugin}%
 \label{sub:short_description_plugin}
 
-To get a short one or a few lines description of a plugin, right click on that plugin in the Resources window and when the popup menu appears, select \textit{Info}. Some of the plugins may not have any description included. An example screenshot is next (figure~\ref{fig:info-effect}).
+To get a short one or a few lines description of a plugin, mouse over that plugin in the Resources window and a popup appears. You can disable the popup by right-clicking and choosing \textit{Info Off} (shortcut "i"). And again enable it with \textit{Info On}. Some of the plugins may not have any description included. An example screenshot is next (figure~\ref{fig:info-effect}).
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{info-effect.png}
+    \includegraphics[width=0.8\linewidth]{info-effect.png}
     \caption{Effect Info for Color 3 Way}
     \label{fig:info-effect}
 \end{figure}
@@ -322,7 +321,7 @@ Audio Effects
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.8\linewidth]{expander.png}
-    \caption{$\bigtriangledown$, $\rhd$ =expander; "-" = options}
+    \caption{$\triangledown$,$\triangleright$ = expander; "-" = options}
     \label{fig:expander}
 \end{figure}
 
@@ -482,7 +481,7 @@ Graphic equalizer sets the output levels for specified frequency bands. This eff
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.7\linewidth]{equalizer.png}
+    \includegraphics[width=0.8\linewidth]{equalizer.png}
     \caption{Graphic Equalizer audio plugin}
     \label{fig:equalizer}
 \end{figure}
@@ -495,7 +494,7 @@ Parametric equalizer shows and outputs levels for \textit{frequency}, \textit{qu
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.4\linewidth]{eq_param.png}
-	\caption{Graphic Equalizer audio plugin}
+	\caption{EQ Parametric audio plugin}
 	\label{fig:eq_param}
 \end{figure}
 
@@ -553,7 +552,7 @@ The delay introduced consists of two distinct components: the \textit{constant d
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{flanger.png}
+	\includegraphics[width=0.6\linewidth]{flanger.png}
 	\caption{GUI of configuration for Flanger plugin}
 	\label{fig:flanger}
 \end{figure}
@@ -636,7 +635,7 @@ The configuration window (figure~\ref{fig:reverb}) shows a graph of the full ban
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{reverb.png}
+	\includegraphics[width=0.6\linewidth]{reverb.png}
 	\caption{GUI of configuration for Reverb plugin}
 	\label{fig:reverb}
 \end{figure}
@@ -759,7 +758,7 @@ Below is a screencast showing the auto start gui flag and the \texttt{LV2\_PATH}
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{reload.png}
+    \includegraphics[width=1.0\linewidth]{reload.png}
     \caption{Reload plugin index in yellow and Auto start lv2 gui unchecked}
     \label{fig:reload}
 \end{figure}

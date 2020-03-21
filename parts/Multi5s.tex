@@ -115,8 +115,41 @@ The best way to use proxy with your multiple cameras is to follow the steps belo
     \item Choose the size and other options you want and click the checkmark OK. If you choose the option \textit{Beep when done} you will hear a short beep if all media is already proxied or a longer beep when all proxies have been created.
     \item When your editing is complete, use \textit{Settings} pulldown and proxy to \textit{original size}.
 \end{enumerate}
-
 Instead of Open Mixers, you can Insert Mixers with new tracks at the timeline insertion point.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=1.0\linewidth]{mixer-playable.png}
+    \caption{A Mixer window showing available options with the white X designating no playing}
+    \label{fig:mixer-playable}
+\end{figure}
+
+\subsubsection*{Options available in the \textit{Mixer Windows}}%
+\label{ssub:options_available_with_mixers}
+
+There are several options you will see in each Mixer window that help with using them. These
+are shown in figure~\ref{fig:mixer-playable}. To use these, RMB in the desired mixer window,
+and choose one of the options as described here.
+
+\begin{enumerate}
+    \item Fullscreen / Windowed - will bring up a fullscreen display of that window or revert to the original size.
+    \item Resize Window - allows for resizing the window to a choice of different sizes.
+    \item Tile Mixers - makes it easy to get all of the mixers nicely tiled to a standard size.
+This is also available in the Window pulldown.
+    \item Playable - enabled by default so that you will see a checkmark next to it in the 
+popup.  The benefit of making a mixer window not playable is to save cpu time. When a specific
+mixer window is unchecked, so not Playable, a white cross appears in the upper left hand corner
+of the mixer.  To switch back to playing again, RMB and choose Playable and this will turn
+playing back on. The program automatically updates the mixer image when the timeline cursor
+stops or when it is moved to a different spot even when play is disabled. You can see the
+white cross designating not playable in figure~\ref{fig:mixer-playable}. Statistics that show
+the savings are as follows on a 16 cpu laptop:
+\begin{verbatim}
+  5 Mixers all playing -- cpu usage = 1275
+  1 only playing       -- cpu usage =  405
+  2 only playing       -- cpu usage =  800
+\end{verbatim}
+\end{enumerate}
 
 \subsection{Mixer Align by Audio}%
 \label{sub:mixer_align_audio}

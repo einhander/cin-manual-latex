@@ -321,6 +321,42 @@ The rule targets create the set of thirdparty packages which are built from loca
 	24 cpus & = & 2 mins\\
 \end{tabular}
 
+
+\section{Using the very latest Libraries}
+\label{sec:latest_libraries}
+
+Using the most current libraries can be a challenge for some of the Operating System distros that use
+stable compilers, assemblers, and their own libraries.  Because they are stable, they frequently do
+not keep up with the very latest of thirdparty libraries.  Consequently, some program constructs may
+not yet be implemented. 
+
+\CGG{} attempts to upgrade to the latest releases of many thirdparty libraries about every 3-4
+months. But it is often difficult to keep some of these thirdparty libraries up to date as their
+developers switch from tried and true standard tools to newer, less standard tools. As a result 
+in order to build \CGG{} on 2-3 versions of any distro rather than only the most current version,
+some thirdparty libraries can not be kept up to date and may even be to the point of no further
+updates.  In a lot of cases, the updated releases provide little new capabilities but rather
+are bug fixes that may not even be relevant to \CGG{}'s use.
+
+So as a computer savvy user or a developer, if you would like to build \CGG{} with the latest
+thirdparty releases for some of the packages here are a few suggestions based on experimentation.
+
+\textbf{dav1d} 
+\begin{description}
+     \item Status - currently \CGG{} is staying at 0.5.  This is disappointing because there are speed
+up gains in version 0.6 that would be beneficial.
+     \item Problem - 0.6 dav1d requires NASM 2.14. It also uses meson which is not widely available on all
+distros.  The only distros that are built for \CGG{} that are at 2.14 are the latest version
+of Arch, Debian(10), Gentoo, Tumbleweed, and Fedora(31). The rest are at 2.12 and 2.13 including
+the most widely used Ubuntu.
+     \item Workaround already in use by \CGG{} - a Makefile was generated to replace Meson usage
+but has to be continuously updated for new releases. Dav1d 0.5 requires NASM 2.13 so at this level
+the newer distros mostly work.  The availability of meson and nasm are a significant problem on
+many systems which are still in wide use.  A request to dav1d developers to consider changes to
+ensure their library is more widely usable did not appear to be in their future. It works for
+them.
+\end{description}
+
 \section{Find Lock Problems with Booby Trap}
 \label{sec:find_lock_problems_booby_trap}
 

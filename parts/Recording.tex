@@ -602,10 +602,15 @@ To review media stored in the \texttt{media.db}, and delete old expired commerci
 
 Currently, only a customized \textit{ati-x10} (kernel mod required) radio remote control works.  But this can quite readily be modified for other remote control models.
 
-\section{Transfer VHS/DVD Media into \CGG{}}%
-\label{sec:transfer_vhs_dvd_into_cinelerra}
+\section{Transfer VHS/DVD Media or Video8/Hi8 Tapes into \CGG{}}%
+\label{sec:transfer_vhs_dvd_tapes_into_cinelerra}
 
-If you want to transfer the data on a VHS tape or DVD disc into \CGG{}, you can do so by playing the media and recording while playing.  This captures the media, which you are able to view as it plays, and writes it to a file so it can be played directly or edited.  Because there is so much variation in hardware on both the Computer side and the Media Player side, these \textit{how to} directions are only a guideline.  You will most likely still have to do some experimentation and testing to see what works for you.
+If you want to transfer the data on a VHS tape, DVD disc, or Video8/Hi8 Tapes into \CGG{}, you
+can do so by playing the media and recording while playing.  This captures the media, which you
+are able to view as it plays, and writes it to a file so it can be played directly or edited.
+Because there is so much variation in hardware on both the Computer side and the Media Player side,
+these \textit{how to} directions are only a guideline.  You will most likely still have to do some
+experimentation and testing to see what works for you.
 
 The basic strategy consists of 3 operations:  connect the relevant outputs to representative inputs, configure the capture card to match the video, and start the Record monitor.  Each of these may have to be experimented with to get them correct for your hardware setup.
 
@@ -613,7 +618,7 @@ The basic strategy consists of 3 operations:  connect the relevant outputs to re
 
 For example in a test case using the \textit{CX23418} capture card (an older/unusual single chip MPEG-2 encoder with integrated analog video/broadcast audio decoder), one end of an S-Video cable was plugged into the back of a DVD player and the other end plugged into this computer’s Capture card; the audio was plugged into the \textit{line in} on the computer sound card.
 
-\textit{Step 2}:Setup \CGG{} and it might be best the first time if you start with a default \texttt{.bcast5} file by using a
+\textit{Step 2}: Setup \CGG{} and it might be best the first time if you start with a default \texttt{.bcast5} file by using a
 command line from a window of \\
 \texttt{CIN\_CONFIG=\$HOME/bcast6 {cinelerra\_path}/bin/cin}
 
@@ -621,8 +626,8 @@ command line from a window of \\
     \item Choose \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Recording} tab in the Preferences menu (figure~\ref{fig:recordingx}).
     \item Choose a \textit{File Format} -- a common suggestion is \textit{ffmpeg} with a \textit{file type} of mp4.  In some cases depending on your capture card, the File Format will be set to \textit{MPEG stream} capture. Some formats support MPEG stream capture technique, otherwise the data has to be decoded first and then encoded.
     \item Check that the \textit{Audio In} section has the \textit{Record Driver} set to \textit{Alsa} with \textit{Device} set to \textit{default} as the Capture Source.  If you are using something besides Alsa, change that selection accordingly. This may not always be default and you may have to change to something else based on your specific hardware. It has to match up what you see in our Control Panel on your computer. So for example, if your device is HDMI, than the \textit{default} could be \textit{HDMI}\dots instead.
-    \item In the \textit{Video In} section, change the\textit{ Record Driver} to whatever makes sense for your capture card. The test case for the CX23418 would use Video4Linux2 MPEG. If unknown what your card uses, you should experiment with Video4Linux2 or Screencapture as good possibilities.
-    \item Also, \textit{Device path} should be verified to be correct in case you have more than 1 device.
+    \item In the \textit{Video In} section, change the\textit{ Record Driver} to whatever makes sense for your capture card. The test case for the CX23418 would use Video4Linux2 MPEG. A test case for an EasyCap Model \#DC60 would use Video4Linux2 JPEG.  If unknown what your card uses, you should experiment with Video4Linux2 or Screencapture as good possibilities.
+    \item Also, \textit{Device path} should be verified to be correct in case you have more than 1 device. In the 2 previously mentioned devices, it should proabably be set to /dev/video0.
 \end{itemize}
 
 \begin{figure}[htpb]
@@ -665,4 +670,77 @@ There are many more parameters that you may want to vary in the Recording menu o
 \end{figure}
 
 Now you can \textit{Load} the file that you played and recorded via the \textit{Insertion strategy} choices on the bottom of the Recording menu and edit the file as usual.  Note, that the audio and video may have started at slightly different times so you might have to initially line them up at the beginning using \texttt{nudge}.  Generally once they are correctly aligned they will stay that way.  Nudge is in the expanded patchbay. The nudge value is the amount the track is shifted left or right during playback. The track is not displayed shifted on the timeline, but it is shifted when it is played back.
+
+\subsection{Use Case \#1 – EasyCap Model \# DC60}
+\label{sub:use_case_easycap_model_dc60}
+
+A very specific case using an Easy CAPture USB 2.0 Video Adapter with Audio, Model \#DC60 (supports
+NTSC and PAL) is shown here next. The setup for this device is seen in figure~\ref{fig:recording-usb}.
+A somewhat unusual choice to make note of in this image is the setting for the Video In, Record Driver
+of Video4Linux2 JPEG. 
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{recording05.png}
+    \caption{Recording setup for EasyCap device}
+    \label{fig:recording-usb}
+\end{figure}
+
+Output on startup window while playing:
+\begin{lstlisting}[style=sh]
+DeviceV4L2Base::v4l2_open pixels="MJPG"; res="480x320 640x480 720x480"
+DeviceV4L2Base::v4l2_open pixels="YUYV"; res="480x320"
+v4l2 s_fmt 640x480 MJPG
+DeviceV4L2Base::v4l2_open VIDIOC_S_STD: Inappropriate ioctl for device
+DeviceV4L2Base::v4l2_open VIDIOC_G_JPEGCOMP: Inappropriate ioctl for device
+DeviceV4L2Base::v4l2_open VIDIOC_S_JPEGCOMP: Inappropriate ioctl for device
+[Detaching after vfork from child process 6539]
+\end{lstlisting}
+
+\begin{lstlisting}[style=sh]
+Output from "dmesg" for EasyCap - Model \# DC60:
+
+[  748.560775] usb 3-1.2: new high-speed USB device number 8 using xhci_hcd
+[  748.574296] usb 3-1.2: New USB device found, idVendor=534d, idProduct=0021, bcdDevice= 1.21
+[  748.574303] usb 3-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[  748.574307] usb 3-1.2: Product: AV TO USB2.0
+[  748.574310] usb 3-1.2: Manufacturer: MACROSILICON
+[  748.574313] usb 3-1.2: SerialNumber: 20150130
+[  748.635600] hid-generic 0003:534D:0021.0008: hiddev97,hidraw0: USB HID v1.10 Device [MACROSILICON AV TO USB2.0] on usb-0000:16:00.3-1.2/input4
+[  748.698491] mc: Linux media interface: v0.10
+[  748.727360] videodev: Linux video capture interface: v2.00
+[  748.796533] usbcore: registered new interface driver snd-usb-audio
+[  748.796660] uvcvideo: Found UVC 1.00 device AV TO USB2.0 (534d:0021)
+[  748.796876] uvcvideo: UVC non compliance - GET_DEF(PROBE) not supported. Enabling workaround.
+[  748.797204] uvcvideo 3-1.2:1.0: Entity type for entity Processing 2 was not initialized!
+[  748.797212] uvcvideo 3-1.2:1.0: Entity type for entity Camera 1 was not initialized!
+[  748.797353] usbcore: registered new interface driver uvcvideo
+[  748.797356] USB Video Class driver (1.1.1)
+[ 3982.626522] retire_capture_urb: 7 callbacks suppressed
+[ 3982.747515] usb 3-1.2: USB disconnect, device number 8
+[ 4007.286371] usb 3-1.2: new high-speed USB device number 9 using xhci_hcd
+[ 4007.302726] usb 3-1.2: New USB device found, idVendor=534d, idProduct=0021, bcdDevice= 1.21
+[ 4007.302732] usb 3-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[ 4007.302736] usb 3-1.2: Product: AV TO USB2.0
+[ 4007.302740] usb 3-1.2: Manufacturer: MACROSILICON
+[ 4007.302743] usb 3-1.2: SerialNumber: 20150130
+[ 4007.354826] uvcvideo: Found UVC 1.00 device AV TO USB2.0 (534d:0021)
+[ 4007.354939] uvcvideo: UVC non compliance - GET_DEF(PROBE) not supported. Enabling workaround.
+[ 4007.355252] uvcvideo 3-1.2:1.0: Entity type for entity Processing 2 was not initialized!
+[ 4007.355256] uvcvideo 3-1.2:1.0: Entity type for entity Camera 1 was not initialized!
+[ 4007.420828] hid-generic 0003:534D:0021.0009: hiddev97,hidraw0: USB HID v1.10 Device [MACROSILICON AV TO USB2.0] on usb-0000:16:00.3-1.2/input4
+\end{lstlisting}
+
+\subsection{Use Case \#2 – Hauppauge WinTV-HVR}
+\label{sub:use_case_wintv}
+ 
+In the case of the Hauppauge 9500 WinTV-HVR Hybrid TV stick, the setup is similar as in case
+\#1 with the major exception being that the Video In, Record Driver should be Video4Linux2 MPEG.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{recording06.png}
+    \caption{Two possible capture devices using USB}
+    \label{fig:recording-usb}
+\end{figure}
 

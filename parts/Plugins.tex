@@ -2264,14 +2264,14 @@ This plugin allows the user to manipulate an SVG (scalable vector graphics) imag
     \item[Out\_w/Out\_h]  The scaling is controlled by width and height as they are normal parameters to overlay.
 \end{description}
 
-Figure~\ref{fig:svg} shows the menu options plugin window and the SVG image in the Inkscape window.
-
 \begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=1.0\linewidth]{svg.png}
-    \caption{Control window and Inkscape}
-    \label{fig:svg}
+	\centering
+	\includegraphics[width=1.0\linewidth]{svg.png}
+	\caption{Control window and Inkscape}
+	\label{fig:svg}
 \end{figure}
+
+Figure~\ref{fig:svg} shows the menu options plugin window and the SVG image in the Inkscape window.
 
 \subsection{Scale}%
 \label{sub:scale}
@@ -2303,8 +2303,8 @@ With the Scale Ratio plugin you can manipulate your video to maintain the pixel 
 
 This plugin is designed to smooth out non-moving areas of a video clip (figure~\ref{fig:staveraging}).
 \vspace{2ex}
-\begin{wrapfigure}[20]{O}{0.4\linewidth}
-   % \vspace{-4ex}
+\begin{wrapfigure}[18]{O}{0.4\linewidth}
+   \vspace{-2ex}
     \includegraphics[width=0.9\linewidth]{staveraging.png}
     \caption{STA control window}
     \label{fig:staveraging}
@@ -2495,17 +2495,17 @@ This effect is basically a primitive \textit{luminance key} to produce a \textit
 \subsection{Time average}%
 \label{sub:time_average}
 
+\begin{wrapfigure}[18]{O}{0.35\linewidth}
+	\vspace{-2ex}
+	\includegraphics[width=0.9\linewidth]{timeaverage.png}
+	\caption{GUI for Time Average}
+	\label{fig:timeaverage}
+\end{wrapfigure}
+
 Time average is one effect which has many uses besides creating trail patterns of moving objects (figure~\ref{fig:timeaverage}).
 The main use is reducing noise in still images (or in the motionless parts of a video). Merely point a video camera at a stationary subject for $30$ frames, capture the frames, and average them using time average and you will have a high quality print. In floating point color models, time average can increase the dynamic range of low quality cameras.
 
 Inside the time average effect is an accumulation buffer and a divisor. A number of frames are accumulated in the \textit{accumulation} buffer and divided by the divisor to get the average (for $10$ accumulated frames the divisor is $10$). Because the time average can consume large amounts of memory, it is best applied by first disabling playback for the track, dropping the time average in it, configuring time average for the desired number of frames, and re-enabling playback for the track.
-
-\begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=0.35\linewidth]{timeaverage.png}
-    \caption{GUI for Time Average}
-    \label{fig:timeaverage}
-\end{figure}
 
 \begin{description}
     \item[Frames count] this determines the number of frames to be accumulated in the accumulation buffer. Ranges from $1 to 1024$ frames.
@@ -2666,7 +2666,7 @@ Figure~\ref{fig:title03}.
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.9\linewidth]{title03.png}
+    \includegraphics[width=1.0\linewidth]{title03.png}
     \caption{Final result of the exemple}
     \label{fig:title03}
 \end{figure}
@@ -2695,7 +2695,7 @@ The Text Color window has several enhanced features as listed here and seen in f
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.6\linewidth]{title04.png}
+    \includegraphics[width=0.7\linewidth]{title04.png}
     \caption{Screencast showing the Color Picker menu.}
     \label{fig:title04}
 \end{figure}
@@ -2746,17 +2746,17 @@ export BC_FONT_PATH=:/usr/share/fonts #(remove all fonts and then add /usr/shar/
 One last item of information about fonts that may lead to some confusion. The checkbox for Bold and Italic will occasionally be ghosted out if no bold or italic version of the selected font is available. This is no guarantee, but currently as good as it can get due to inconsistency in the creation of fonts. It is mostly just a hint. If boxes are checkmarked, but ghosted, you can not uncheck until you change to a font that does not ghost out the boxes. If you use the popup helper with the boxes checked, and attempt to keyin a font that does not have the bold/italic attribute as checked, the font will be considered illegal.
 Text: chars is output and updated to indicate the number of characters already used. The only limit to the number of characters based on a count of single $8\, bit$ characters is the available resources on the user computer available for \CGG{} use. Keep in mind that unicode or other special characters may consist of $2$ to $4$ $8\,bit$ bytes. Also, newlines are a character and any of the attributes you use count in the total. There is now a horizontal scroll bar as well as the vertical one in the textbox and they only appear when there are more lines or characters that can fit in the original sized textbox.
 
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.4\linewidth]{title05.png}
+	\caption{Kerning in action}
+	\label{fig:title05}
+\end{figure}
+
 \subsubsection*{Kerning}%
 \label{ssub:kerning}
 
 When using the Titler, kerning is applied in order to allow parts of a letter to go outside the standard sized letter box.  Kerning is the process of adjusting the space between individual letters.  It is not the same as proportional spacing.  In kerning, a bounding box is allowed to overlay another bounding box.  The philosophy here is to aim at the ability to have boxes overlap in order to make the letters look more visually appealing.  Bounding box and escapement are tracked separately.  In addition to adjusting individual letter spacing, the program will also expand the render box in order to have any parts of the letter extend outside the standard letter box.  Kerning is applied to any and all fonts (figure~\ref{fig:title05}).
-
-\begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=0.5\linewidth]{title05.png}
-    \caption{Kerning in action}
-    \label{fig:title05}
-\end{figure}
 
 \subsection{Tracer}%
 \label{sub:tracer}
@@ -2768,6 +2768,13 @@ Tracer creates an outline around an object after a few points are designated, so
 	\includegraphics[width=0.55\linewidth]{tracer-01.png}
 	\caption{Gui for Tracer plugin}
 	\label{fig:tracer-01}
+\end{figure}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.7\linewidth]{tracer-02.png}
+	\caption{Rug in the top picture is traced in order to black it out or replace later}
+	\label{fig:tracer-02}
 \end{figure}
 
 \begin{description}
@@ -2787,12 +2794,7 @@ Tracer creates an outline around an object after a few points are designated, so
 
 Be sure to uncheck \textit{Draw} and \textit{Drag} before rendering so that the lines do not show in the video output.
 
-\begin{figure}[hbtp]
-	\centering
-	\includegraphics[width=0.7\linewidth]{tracer-02.png}
-	\caption{Rug in the top picture is traced in order to black it out or replace later}
-	\label{fig:tracer-02}
-\end{figure}
+
 
 \subsection{Translate}%
 \label{sub:translate}
@@ -2937,7 +2939,7 @@ A corrected video image is shown in the bottom. Now the red and blue colors are 
 
 \begin{figure}[hbtp]
     \centering
-    \includegraphics[width=0.7\linewidth]{yuvshift.png}
+    \includegraphics[width=0.8\linewidth]{yuvshift.png}
     \caption{Before and after YUVShift adjusting}
     \label{fig:yuvshift}
 \end{figure}

@@ -3006,58 +3006,39 @@ Produce animated particles (figure~\ref{fig:n_body}).
 \label{sec:opencv_plugins}
 \settocdepth{section}
 
-The \textit{Find Object} plugin searches a Scene for an Object, and the Object can be overlayed with a Replacement object. It requires the thirdparty \textit{OpenCV} (Open Computer Vision) library and you will have to do your own build. Also, be aware that the two useful algorithms of \textit{Sift} and \textit{Surf} have been removed from versions of OpenCV after version $4$.
+There are currently 6 OpenCV plugins hooked into Cinelerra static and dynamic tars with the most
+widely known being FindObj.  The \textit{Find Object} plugin searches a Scene for an Object and
+then the Object can be overlaid with a Replacement object. The other 5 are FlowObj, GaborObj,
+MoveObj, PuzzleObj, and StylizeObj. These  plugins require the thirdparty \textit{OpenCV}
+(Open Computer Vision) library.  Of note for OpenCV is that the \textit{Surf} algorithm is non-free
+and has been removed from the user supplied versions of OpenCV being built.
 
-There are some potential pitfalls with using this to include:
+There are some potential pitfalls with using OpenCV to include:
 
 \begin{enumerate}
-    \item openCV code is constantly changing, making it difficult to keep the plugin up to date
-    \item there is some confusion about licensing/patents for specific algorithms
+    \item openCV code is constantly changing, making it difficult to keep the plugins up to date
+    \item there is some confusion about licensing/patents for specific algorithms, notably Surf
     \item some parts don’t work all that well and it can be slow
-    \item internally the colormodel is converted to greyscale, which means the color information is not used
+    \item internally the colormodel is converted to greyscale, which means the color information
+is not used
+    \item cmake is minimally required to be at version 3.5.1 for OpenCV version 4.2; therefore
+for some older verions of distros with a lower cmake version, OpenCV is only at 3.4.1; and in
+really old versions such as Ubuntu14 32/64 bit, it is not in the build at all
 \end{enumerate}
 
-Because of the build size of opencv, it is not normally included in the thirdparty directory. Building opencv adds a lot of storage demand ($4\,GB$) to the \CGG{} build tree, and the opencv compile time is significant. For these reasons, \textit{findobject} is not normally built. You can however invoke a build which adds findobject to the \CGG{} plugin library. Building findobject will configure and build opencv into the thirdparty library build area if needed (it does not rebuild if already done). System builds are possible, but the system compatibility of the newer opencv interfaces can vary between distros. The opencv interface is rapidly changing; we recommend the static library build and link to avoid problems.
-
-\subsection{How to Build OpenCV Plugins}%
-\label{sub:how_build_opencv_plugins}
-
-To build findobject and the other plugins using opencv, access the src using git:
-
-\begin{lstlisting}[style=sh]
-git clone -depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5
-\end{lstlisting}
-
-then configure the build, but add the \texttt{-{}-with-opencv} configure parameter.
-
-\begin{lstlisting}[style=sh]
-cd <path>/cinelerra-5.1
-./autogen.sh
-./configure <add std params, eg: --with-single-user> --with-findobect=sta
---with-opencv may be set to [<bld>][,<src>]
-bld=typ sta,dyn,sys:	 sta=static, dyn=shared, sys=system libraries
-src=typ git,tar,git=url,tar=url: git (default git_url), tar (default: tar_url)
-
-# For example, like:
---with-opencv=sta
---with-opencv=dyn
---with-opencv=sta,tar=https://cinelerra-gg.org/download/opencv/opencv-20180401.tgz
-\end{lstlisting}
-
-Once thirdparty/opencv is built, it will be reused. Use target \texttt{mrclean} to remove \texttt{thirdparty/opencv*}.
-Network access is required to obtain the OpenCV source, at least once. You will need a minimum of
-$4\, GB$ in the thirdparty build directory and more time to compile.
-
-To get opencv built in the easiest way possible (need internet access because builds directly from the opencv github but this changes wildly):
-
-\begin{lstlisting}[style=sh]
-./configure <params> --with-opencv=sta,git
-\end{lstlisting}
+Because of the build size of OpenCV, the source is not included in the thirdparty directory.
+Building OpenCV adds a lot of storage demand ($4\,GB$) to the \CGG{} build tree, and its compile
+time is significant. For these reasons, \textit{findobject} and the other 5 plugins are not
+included in System build packages.  We recommend using the static library build which has the OpenCV
+plugins included for consistency and to avoid problems.
 
 \subsection{Using OpenCV Plugins from the Automatic Builds}%
 \label{sub:using_opencv_automatic_builds}
 
-The OpenCV plugins are built only in the 64-bit tarball builds, both static and dynamic. However, due to size these plugins are not included with pkgs. But it is relatively easy to add the current 6 plugins for your distro via a simple procedure of copying the plugins from the tarball to the cin5 install plugin path. They are:
+The OpenCV plugins are built only in the 64-bit tarball builds, both static and dynamic, but due
+to size these plugins are not included with pkgs, i.e. the System builds. However it is relatively
+easy to add the current plugins for your distro via a simple procedure of copying the plugins
+from the static tarball to the cin5 install plugin path. They are:
 
 \begin{lstlisting}[style=sh]
 cin/plugins/opencv/findobj.plugin
@@ -3069,7 +3050,7 @@ cin/plugins/opencv/stylizeobj.plugin
 \end{lstlisting}
 
 \begin{enumerate}
-    \item do your package install of the current build for your distro as usual;
+    \item do your package install of the current build for your distro as usual
     \item look in {\small \url{https://cinelerra-gg.org/download/tars}} to see your distro name's static tar;
     \item download the corresponding distro static tarball;
     for example for arch:
@@ -3083,7 +3064,7 @@ cin/plugins/opencv/stylizeobj.plugin
     \item \texttt{tar -xf} location-of-the-tarball-you-downloaded;
     \item \texttt{cp plugins/*obj.plugin <see below for your location>/.} (note the period on the end!)
     \item Start \CGG{} and look for the six plugins in Video Effects;
-    \item To reverse this, simply delete the six plugin files (eg.
+    \item To reverse this, simply delete the six plugin files (for example:
 
     \texttt{rm /usr/lib*/cin*/*obj.plugin}).
 \end{enumerate}
@@ -3097,6 +3078,114 @@ Location for some System installs, this is:
 \texttt{/usr/lib/cin/plugins/} (most ubuntu distros)
 
 \texttt{/usr/lib64/cin/plugins/} (Leap distro)
+
+\subsection{How to Build OpenCV Plugins}%
+\label{sub:how_build_opencv_plugins}
+
+For users who do their own build or for administrators who want to create a System build that
+includes OpenCV, here are some notes to facilitate doing so.  Building findobject will configure
+and build OpenCV into the thirdparty library build area if needed (it does not rebuild if done
+previously).  Network access is required to obtain the OpenCV source, at least once. You will
+need a minimum of $4\, GB$ in the thirdparty build directory and more time to compile.
+
+\subsubsection*{Build using current git version}%
+\label{ssub:current_git}
+
+To build findobject and the other plugins using OpenCV, access the src using git:
+
+\begin{lstlisting}[style=sh]
+git clone -depth 1 "git://git.cinelerra-gg.org/goodguy/cinelerra.git" cinelerra5
+\end{lstlisting}
+To use the latest version, the method for creating a tarball is:
+ 
+\begin{enumerate}
+     \item download both opencv and opencv\_contrib source tarballs from the web:
+       {\small \url{https://sourceforge.net/projects/opencvlibrary/files/4.2.0/}}
+       {\small \url{https://github.com/opencv/opencv\_contrib/archive/4.2.0.tar.gz}}
+     \item create a temporary directory opencv\_src and unpack the tarballs into the src directory
+     \item rename these sources to opencv and opencv\_contrib
+     \item run a test build, using opencv\_build for config:
+\end{enumerate}
+
+\begin{lstlisting}[style=sh]
+cd opencv\_src
+mkdir build
+cd build && cmake \
+  -DCMAKE\_BUILD\_TYPE=RELEASE \
+  -DWITH\_IPP=OFF \
+  -DWITH\_LAPACK=OFF \
+  -DWITH\_GPHOTO2=OFF \
+  -DBUILD\_SHARED\_LIBS=ON \ 
+  -DINSTALL\_C\_EXAMPLES=ON \
+  -DINSTALL\_PYTHON\_EXAMPLES=ON \
+  -DBUILD\_EXAMPLES=ON .. \
+  -DBUILD\_opencv\_python3=no \
+  -DCMAKE\_INSTALL\_PREFIX=/usr/local \
+  -DOPENCV\_EXTRA\_MODULES\_PATH="\$(opencv)\_contrib/modules/"
+\end{lstlisting}
+
+Next configure the build, but add the \texttt{-{}-with-opencv} configure parameter. An example
+of usage of shown next.
+
+\begin{lstlisting}[style=sh]
+cd <path>/cinelerra-5.1
+./autogen.sh
+./configure <add std params, eg: --with-single-user> --with-findobect=sta
+--with-opencv may be set to [<bld>][,<src>]
+bld=typ sta,dyn,sys:	 sta=static, dyn=shared, sys=system libraries
+src=typ git,tar,git=url,tar=url: git (default git\_url), tar (default: tar\_url)
+
+# Use one of the following:
+--with-opencv=sta
+--with-opencv=dyn
+--with-opencv=sta,tar=https://cinelerra-gg.org/download/opencv/opencv-20180401.tgz
+
+# For example: ./configure <params> --with-opencv=sta,git
+\end{lstlisting}
+
+Once thirdparty/opencv is built, it will be reused.  To remove \texttt{thirdparty/opencv*}, use
+\texttt{mrclean}.
+
+Ordinarily OpenCV requires the network to download pieces. But to avoid downloading the same
+source multiple times as you do test builds, you can instead use the following procedure.
+
+\begin{enumerate}
+     \item Create a new opencv\_src directory with the needed source (src) files, plus
+the missing pieces in ./opencv/.cache/;  This source base does not require the network, and
+so is usable for batch builds.  
+     \item Store the tarballs in a safe location, and reference them from an httpd server
+running locally on the build system.  for example:\newline
+/var/www/html/cinelerra.patch\newline
+/var/www/html/opencv-20180401.tgz -> /mnt0/opencv-20180401.tgz\newline
+/var/www/html/opencv-20200306.tgz -> /mnt0/opencv-20200306.tgz\newline
+     \item systemctl start httpd
+\end{enumerate}
+
+\subsubsection*{Build using stable tarballs}%
+\label{ssub:stable_tars}
+
+Instead of using the latest git version, there is a custom archive source tarball on the
+website already created to build and test OpenCV versions.  The reason for this is that OpenCV
+is quite volatile, and may or may not work on any given day so this is an already tested version
+that is considered to be more stable.  A build using the tarball requires that your
+system have \textit{wget} already installed to initially download the prepared source tar. 
+There are currently 2 tarballs of stable versions on the website used for user builds.
+The 20180401 version:\newline
+{\small \url{ https://cinelerra-gg.org/download/opencv/opencv-20180401.tgz}}\newline
+works with older version of cmake, and 20200308 is the current 4.2 release:\newline
+{\small \url{https://cinelerra-gg.org/download/opencv/opencv-20200306.tgz}}
+
+To build using the tarballs on the website, use this bld.sh procedure (you may want to run "make
+clean" first):
+\begin{lstlisting}[style=sh]
+#!/bin/bash
+( ./autogen.sh
+  ./configure --with-single-user --with-booby \
+    --with-opencv=sta,tar=http://cinelerra-gg.org/download/opencv/opencv-20200306.tgz
+  make && make install ) 2>&1 | tee log
+mv Makefile Makefile.cfg
+cp Makefile.devel Makefile
+\end{lstlisting}
 
 \subsection{Description of Find Object Plugin}%
 \label{sub:description_findobj_plugin}
@@ -3117,6 +3206,8 @@ As in the standard OpenCV FindObj program, there are $5$ \textit{detector} metho
 \begin{description}
     \item[SIFT] Scale-Invariant Feature Transform
     \item[SURF] Speeded-Up Robust Features
+ Be aware that \textit{Surf} is non-free and has been removed from versions of OpenCV being built.
+ If you have used it in a past project, it could result in a SEGV crash.
     \item[ORB] Oriented fast and Rotated Brief
     \item[AKAZE] Accelerated Keypoint detector And descriptor Extractor
     \item[BRISK] Binary Robust Invariant Scalable Keypoin
@@ -3176,6 +3267,13 @@ Once the replacement corners are calculated, the replacement object is overlayed
 
 The following steps were used to set up the example in figure~\ref{fig:findobj}.
 
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{findobj.png}
+    \caption{Timeline; control window and compositor for FindObj}
+    \label{fig:findobj}
+\end{figure}
+
 \begin{enumerate}
     \item For best results, set \textit{Play every frame} in \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Play\-back A}.
     \item Load 3 tracks of png/jpg files – this is one of the more useful working cases:
@@ -3201,13 +3299,6 @@ The following steps were used to set up the example in figure~\ref{fig:findobj}.
     \item Turn off all of the \textit{Draw borders} and whichever \textit{Drag box} that may still be checked.
     \item Check \textit{Replace object} to see the replacement overlay. At this time you may still want to change the checkboxes of \textit{Aspect}, \textit{Rotate}, \textit{Scale}, and \textit{Translate} and adjust \textit{DX/DY} in the Replace column.
 \end{enumerate}
-
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.9\linewidth]{findobj.png}
-    \caption{Timeline; control window and compositor for FindObj}
-    \label{fig:findobj}
-\end{figure}
 
 \subsection{MoveObj, FlowObj, GaborObj, StylizeObj, PuzzleObj}%
 \label{sub:move_flow_gabor_stylize_puzzle}

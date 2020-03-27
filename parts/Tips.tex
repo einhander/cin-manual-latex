@@ -312,7 +312,7 @@ profile=high
 
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.7\linewidth]{render-vaapi.png}
+	\includegraphics[width=1.0\linewidth]{render-vaapi.png}
 	\caption{Render menu setup to encode using GPU with vaapi}
 	\label{fig:render-vaapi}
 \end{figure}
@@ -389,7 +389,7 @@ something like:
 
 \begin{lstlisting}[numbers=none]
 	env CUDA_PATH=/opt/cuda
-#OR if using the bash shell: 
+OR if using the bash shell: 
 	export CUDA_PATH=/opt/cuda
 \end{lstlisting}
 For all distros you will need to add to the ./configure line in your build script, the following:
@@ -397,7 +397,7 @@ For all distros you will need to add to the ./configure line in your build scrip
 
 \begin{lstlisting}[numbers=none]
 	--with-cuda
-#so your configure line will look something like this:
+so your configure line will look something like this:
 	./configure --with-single-user --with-booby --with-cuda
 \end{lstlisting}
 

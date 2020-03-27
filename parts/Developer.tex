@@ -321,14 +321,15 @@ The rule targets create the set of thirdparty packages which are built from loca
 	24 cpus & = & 2 mins\\
 \end{tabular}
 
-
 \section{Using the very latest Libraries}
 \label{sec:latest_libraries}
 
 Using the most current libraries can be a challenge for some of the Operating System distros that use
 stable compilers, assemblers, and their own libraries.  Because they are stable, they frequently do
 not keep up with the very latest of thirdparty libraries.  Consequently, some program constructs may
-not yet be implemented. 
+not yet be implemented.  \CGG{} tries to maintain stability since it is better to have less features
+and no crashes.  The goal is to make \CGG{} widely available on many platforms rather than
+dependent on advanced tools that are not supported on some distros.
 
 \CGG{} attempts to upgrade to the latest releases of many thirdparty libraries about every 3-4
 months. But it is often difficult to keep some of these thirdparty libraries up to date as their
@@ -339,22 +340,71 @@ updates.  In a lot of cases, the updated releases provide little new capabilitie
 are bug fixes that may not even be relevant to \CGG{}'s use.
 
 So as a computer savvy user or a developer, if you would like to build \CGG{} with the latest
-thirdparty releases for some of the packages here are a few suggestions based on experimentation.
+thirdparty releases for some of the packages here are a few suggestions based on other 
+developer's feedback and experimentation.
 
 \textbf{dav1d} 
-\begin{description}
-     \item Status - currently \CGG{} is staying at 0.5.  This is disappointing because there are speed
-up gains in version 0.6 that would be beneficial.
-     \item Problem - 0.6 dav1d requires NASM 2.14. It also uses meson which is not widely available on all
+\begin{description}[noitemsep]
+     \item Status - currently \CGG{} is staying at 0.5.  This is disappointing because there
+may be speed gains in version 0.6 that would be beneficial. However, it is usable for decoding
+whereas libaom is just too slow.  Unfortunately, it has no effective encoder.
+     \item Problem - 0.6 dav1d requires NASM 2.14 and uses instructions like vgf2p8affineqb,
+not exactly an "add" instruction. It also uses meson which is not widely available on all
 distros.  The only distros that are built for \CGG{} that are at 2.14 are the latest version
 of Arch, Debian(10), Gentoo, Tumbleweed, and Fedora(31). The rest are at 2.12 and 2.13 including
-the most widely used Ubuntu.
+the most widely used Ubuntu. The NASM requirement apparently provides for using AVX-512 
+instructions (like vgf2p8affineqb, which is more like a whole routine than a simple instruction).
      \item Workaround already in use by \CGG{} - a Makefile was generated to replace Meson usage
 but has to be continuously updated for new releases. Dav1d 0.5 requires NASM 2.13 so at this level
 the newer distros mostly work.  The availability of meson and nasm are a significant problem on
-many systems which are still in wide use.  A request to dav1d developers to consider changes to
-ensure their library is more widely usable did not appear to be in their future. It works for
-them.
+many systems which are still in wide use.
+     \item Your workaround - Because a request to dav1d developers to consider changes to
+ensure their library is more widely usable does not appear to be in their future, since it works
+for them, you can upgrade NASM to 2.14 to stay up to date.  Of course, install meson also.
+\end{description}
+
+\textbf{OpenExr} 
+\begin{description}[noitemsep]
+     \item Status - currently at latest version 
+     \item Problem - the OpenExr tarball is not a single package but is 2 packages instead
+     \item Workaround already in use by \CGG{} - reworked the packages so that it looks like
+one package with 2 stubs
+     \item Your workaround - perhaps use the same workaround
+\end{description}
+
+\textbf{OpenCV}
+\begin{description}[noitemsep]
+     \item Status - 2 different versions specific for O/S but none for Ubuntu 14, 32 or 64 bit
+     \item Problem - There are really 2 problems here.  The first is OpenCV is not really
+"Open" in that Surf is patented/non-free and there is no actual source available for certain
+capabilities. The second is that cmake 3.5.1 is required for OpenCV 4.2.
+     \item Workaround already in use by \CGG{} - using 3.4.1 for older distros and 4.2 for newer
+     \item Your workaround - upgrade cmake to 3.5.1 for upgrade to 4.2; add non-free to the
+compile; and use binaries that you do not know what they contain since no source code to compile.
+\end{description}
+
+\textbf{webp}
+\begin{description}[noitemsep]
+     \item Status - currently at version 1.1.0
+     \item Problem - requires cmake 3.5 
+     \item Workaround already in use by \CGG{} - leaving out of Ubuntu14, Ubuntu, Centos7
+     \item Your workaround - upgrade on those systems to cmake 3.5
+\end{description}
+
+\textbf{libaom}
+\begin{description}[noitemsep]
+     \item Status - currently at version 1.0.0 
+     \item Problem - requires cmake 3.5 
+     \item Workaround already in use by \CGG{} - leaving out of Ubuntu14, Ubuntu, Centos7
+     \item Your workaround - upgrade on those systems to cmake 3.5
+\end{description}
+
+\textbf{libvpx}
+\begin{description}[noitemsep]
+     \item Status - currently at version 1.8.1
+     \item Problem - when decoding a test file, it failed to correctly load to the timeline
+     \item Workaround already in use by \CGG{} - not upgrading to 1.8.2
+     \item Your workaround - no analysis for a solution has been performed yet
 \end{description}
 
 \section{Find Lock Problems with Booby Trap}

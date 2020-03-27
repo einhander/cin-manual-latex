@@ -94,33 +94,33 @@ To recap, position is usually set in the program as a location that is between a
 Since some users prefer the insertion pointer to reflect the same as the Compositor a choice is available.  For playing forward, there is a preference option which results in what looks like 1 was added to the frame displayed in the Compositor window.  To enable this mode, check the box \texttt{Always show next frame}, and this will be saved to \texttt{.bcast5}.  The option checkbox is in the \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Appearance} tab and when checked, any forward \textit{plays} in the Compositor window show the same frame as you would with a seek.  Reverse plays and plays using a selection or In/Out pointers (with Ctrl) work the same as without this preference set.  But you will no longer see the odd behavior where if you frame advance forward and then frame advance backward, the displayed frame does not change -- instead it will change and look more natural.
 A color indicator that shows in the main track canvas timeline and the compositor timeline reminds the user which mode is currently active.  The cursor in the compositor turns \textit{red} for default mode and \textit{white} for \textit{Always show next frame} mode.  The top portion of the insertion cursor in the track canvas mirrors this, with red for default and white otherwise.
 
-Figure~\ref{fig:cursor01} using the default \textit{playing} method where the frame in the compositor is the one that was just played; in this case play was in the forward direction.  Note that the insertion pointer in the main track canvas shows 01:20 but the compositor show 01:19 so you know what you last saw.  Also, the cursor/cursor tops in both windows is red.
+Figure~\ref{fig:cursor01} using the default \textit{playing} method where the frame in the compositor is the one that was just played; in this case play was in the forward direction.  Note that the insertion pointer in the main track canvas shows 03:16 but the compositor show 03:15 so you know what you last saw.  Also, the cursor/cursor tops in both windows is red.
 
 \begin{figure}[htpb]
 	\centering
 	%\includegraphics[width=0.8\linewidth]{name.ext}
 	\begin{tikzpicture}[scale=1, transform shape]
 	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{cursor01.png}};    
-	\node [yshift=-21mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {Red cursor in Compositor};
-	\node [yshift=-26mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {red cursor in Timeline};
-	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-21mm] img1.north west);
-	\draw [->, line width=1mm] (Timeline) edge  ([yshift=-26mm] img1.north west);   
+	\node [yshift=-29mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {Red cursor in Compositor};
+	\node [yshift=-40mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {red cursor in Timeline};
+	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-29mm] img1.north west);
+	\draw [->, line width=1mm] (Timeline) edge  ([yshift=-40mm] img1.north west);   
 	\end{tikzpicture}    
 	\caption{"Default" mode with red cursors}
 	\label{fig:cursor01}
 \end{figure}
 
-Figure~\ref{fig:cursor02} using the \textit{Always show next frame} method where the frame in the compositor is the same one that would have shown with a seek; in this case play was in the forward direction.  Note that the insertion pointer in the main track canvas shows 01:20 and the compositor shows 01:20.  Also, the cursor/cursor tops in both windows is white.
+Figure~\ref{fig:cursor02} using the \textit{Always show next frame} method where the frame in the compositor is the same one that would have shown with a seek; in this case play was in the forward direction.  Note that the insertion pointer in the main track canvas shows 03:16 and the compositor shows 03:16.  Also, the cursor/cursor tops in both windows is white.
 
 \begin{figure}[htpb]
 	\centering
 	%\includegraphics[width=0.8\linewidth]{name.ext}
 	\begin{tikzpicture}[scale=1, transform shape]
 	\node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{cursor02.png}};    
-	\node [yshift=-23mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {White cursor in Compositor};
-	\node [yshift=-28mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {White cursor in Timeline};
-	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-23mm] img1.north west);
-	\draw [->, line width=1mm] (Timeline) edge  ([yshift=-28mm] img1.north west);    
+	\node [yshift=-29mm, xshift=-1cm,anchor=east] at (img1.north west) (Compositor) {White cursor in Compositor};
+	\node [yshift=-40mm, xshift=-1cm,anchor=east] at (img1.north west) (Timeline) {White cursor in Timeline};
+	\draw [->, line width=1mm] (Compositor) edge  ([yshift=-29mm] img1.north west);
+	\draw [->, line width=1mm] (Timeline) edge  ([yshift=-40mm] img1.north west);    
 	\end{tikzpicture}    
 	\caption{"Always show next frame" mode with white cursors}
 	\label{fig:cursor02}
@@ -140,7 +140,7 @@ This can create a visible effect of a switch in color in the Compositor, usually
 The cause of the issue is that X11 is RGB only and it is used to draw the \textit{refresh frame}.  So single step is always drawn in RGB.  To make a YUV frame into RGB, a color model transfer function is used.  The math equations are based on color\_space and color\_range.  In this case, color\_range is the cause of the \textit{gray} offset.  The \textit{YUV mpeg} color range is $[16..235]$ for Y, $[16..240]$ for UV, and the color range used by \textit{YUV jpeg} is $[0..255]$ for YUV.
 
 \begin{wrapfigure}[11]{O}{0.5\textwidth} 
-    \vspace{-5ex}
+    \vspace{-2ex}
     \centering
     \includegraphics[width=0.5\textwidth,keepaspectratio]{color.png}
     \caption{Color space and Color range}

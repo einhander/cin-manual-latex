@@ -3032,8 +3032,8 @@ time is significant. For these reasons, \textit{findobject} and the other 5 plug
 included in System build packages.  We recommend using the static library build which has the OpenCV
 plugins included for consistency and to avoid problems.
 
-\subsection{Using OpenCV Plugins from the Automatic Builds}%
-\label{sub:using_opencv_automatic_builds}
+\subsection{Adding OpenCV Plugins to the System Package Builds}%
+\label{sub:adding_opencv_to_system_builds}
 
 The OpenCV plugins are built only in the 64-bit tarball builds, both static and dynamic, but due
 to size these plugins are not included with pkgs, i.e. the System builds. However it is relatively
@@ -3051,7 +3051,7 @@ cin/plugins/opencv/stylizeobj.plugin
 
 \begin{enumerate}
     \item do your package install of the current build for your distro as usual
-    \item look in {\small \url{https://cinelerra-gg.org/download/tars}} to see your distro name's static tar;
+    \item look in {\small \url{https://cinelerra-gg.org/download/tars}} to see your distro name's static tar
     \item download the corresponding distro static tarball;
     for example for arch:
 \end{enumerate}
@@ -3059,25 +3059,24 @@ cin/plugins/opencv/stylizeobj.plugin
     {\small \url{https://cinelerra-gg.org/download/tars/cinelerra-5.1-arch-{date}-x86_64-static.txz}}
 
 \begin{enumerate}[resume]
-    \item create a temporary directory on your computer;
-    \item \texttt{cd} that-directory;
-    \item \texttt{tar -xf} location-of-the-tarball-you-downloaded;
-    \item \texttt{cp plugins/*obj.plugin <see below for your location>/.} (note the period on the end!)
-    \item Start \CGG{} and look for the six plugins in Video Effects;
+    \item create a temporary directory on your computer
+    \item \texttt{cd} that-directory
+    \item \texttt{tar -xf} location-of-the-tarball-you-downloaded
+    \item \texttt{cp plugins/*obj.plugin <see below for your location>/.} (note the period on the end)
+    \item Start \CGG{} and look for the six plugins in Video Effects
     \item To reverse this, simply delete the six plugin files (for example:
 
     \texttt{rm /usr/lib*/cin*/*obj.plugin}).
 \end{enumerate}
 
-location for most User installs, this is:
+The location for most User installs is:
 
-\texttt{<cinlib\_path>/plugins/}
+\hspace{4em}\texttt{<cinlib\_path>/plugins/}
 
-Location for some System installs, this is:
+Location for some System installs is:
 
-\texttt{/usr/lib/cin/plugins/} (most ubuntu distros)
-
-\texttt{/usr/lib64/cin/plugins/} (Leap distro)
+\hspace{4em}\texttt{/usr/lib/cin/plugins/} (most ubuntu distros)\newline
+\hspace{4em}\texttt{/usr/lib64/cin/plugins/} (Leap distro)
 
 \subsection{How to Build OpenCV Plugins}%
 \label{sub:how_build_opencv_plugins}
@@ -3087,6 +3086,32 @@ includes OpenCV, here are some notes to facilitate doing so.  Building findobjec
 and build OpenCV into the thirdparty library build area if needed (it does not rebuild if done
 previously).  Network access is required to obtain the OpenCV source, at least once. You will
 need a minimum of $4\, GB$ in the thirdparty build directory and more time to compile.
+
+\subsubsection*{Build using stable tarballs}%
+\label{ssub:stable_tars}
+
+Instead of using the latest git version, there is a custom archive source tarball on the
+website already created to build and test OpenCV versions.  The reason for this is that OpenCV
+is quite volatile, and may or may not work on any given day so this is an already tested version
+that is considered to be more stable.  A build using the tarball requires that your
+system have \textit{wget} already installed to initially download the prepared source tar. 
+There are currently 2 tarballs of stable versions on the website used for user builds.
+The 20180401 version:\newline
+{\small \url{ https://cinelerra-gg.org/download/opencv/opencv-20180401.tgz}}\newline
+works with older version of cmake, and 20200308 is the current 4.2 release:\newline
+{\small \url{https://cinelerra-gg.org/download/opencv/opencv-20200306.tgz}}
+
+To build using the tarballs on the website, use this bld.sh procedure (you may want to run "make
+clean" first):
+\begin{lstlisting}[style=sh]
+#!/bin/bash
+( ./autogen.sh
+  ./configure --with-single-user --with-booby \
+    --with-opencv=sta,tar=http://cinelerra-gg.org/download/opencv/opencv-20200306.tgz
+  make && make install ) 2>&1 | tee log
+mv Makefile Makefile.cfg
+cp Makefile.devel Makefile
+\end{lstlisting}
 
 \subsubsection*{Build using current git version}%
 \label{ssub:current_git}
@@ -3160,32 +3185,6 @@ running locally on the build system.  for example:\newline
 /var/www/html/opencv-20200306.tgz -> /mnt0/opencv-20200306.tgz\newline
      \item systemctl start httpd
 \end{enumerate}
-
-\subsubsection*{Build using stable tarballs}%
-\label{ssub:stable_tars}
-
-Instead of using the latest git version, there is a custom archive source tarball on the
-website already created to build and test OpenCV versions.  The reason for this is that OpenCV
-is quite volatile, and may or may not work on any given day so this is an already tested version
-that is considered to be more stable.  A build using the tarball requires that your
-system have \textit{wget} already installed to initially download the prepared source tar. 
-There are currently 2 tarballs of stable versions on the website used for user builds.
-The 20180401 version:\newline
-{\small \url{ https://cinelerra-gg.org/download/opencv/opencv-20180401.tgz}}\newline
-works with older version of cmake, and 20200308 is the current 4.2 release:\newline
-{\small \url{https://cinelerra-gg.org/download/opencv/opencv-20200306.tgz}}
-
-To build using the tarballs on the website, use this bld.sh procedure (you may want to run "make
-clean" first):
-\begin{lstlisting}[style=sh]
-#!/bin/bash
-( ./autogen.sh
-  ./configure --with-single-user --with-booby \
-    --with-opencv=sta,tar=http://cinelerra-gg.org/download/opencv/opencv-20200306.tgz
-  make && make install ) 2>&1 | tee log
-mv Makefile Makefile.cfg
-cp Makefile.devel Makefile
-\end{lstlisting}
 
 \subsection{Description of Find Object Plugin}%
 \label{sub:description_findobj_plugin}

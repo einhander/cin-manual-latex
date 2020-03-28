@@ -381,6 +381,7 @@ capabilities. The second is that cmake 3.5.1 is required for OpenCV 4.2.
      \item Workaround already in use by \CGG{} - using 3.4.1 for older distros and 4.2 for newer
      \item Your workaround - upgrade cmake to 3.5.1 for upgrade to 4.2; add non-free to the
 compile; and use binaries that you do not know what they contain since no source code to compile.
+Look into opencv4/opencv2/core/types.hpp:711;27
 \end{description}
 
 \textbf{webp}
@@ -397,6 +398,14 @@ compile; and use binaries that you do not know what they contain since no source
      \item Problem - requires cmake 3.5 
      \item Workaround already in use by \CGG{} - leaving out of Ubuntu14, Ubuntu, Centos7
      \item Your workaround - upgrade on those systems to cmake 3.5
+\end{description}
+
+\textbf{x10tv}
+\begin{description}[noitemsep]
+     \item Status - this is the x10 TV remote control
+     \item Problem - INPUT\_PROP\_POINTING\_STICK not defined error on older distros
+     \item Workaround already in use by \CGG{} - leaving out of Ubuntu14, Ubuntu, Centos7
+     \item Your workaround - look into /usr/include/linux/input-event-codes.h
 \end{description}
 
 \textbf{libvpx}

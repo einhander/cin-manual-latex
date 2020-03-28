@@ -1,20 +1,10 @@
 % FIXME Settings
 % - Page numbers always on the right, matching the chapter
-%   number. Possibly coloring.
-% - Improve header, remove the line, because with the listings also
-%   come lines and when they meet it looks bad. Set italics and
-%   color if necessary.
-% - But be careful, too much ink can quickly have a negative
-%   effect.
+%   number.
 
 % FIXME Text
 % - Change all tables to variable dimensions. -> use draft
-% - (Remove all leading \$ characters from the shell
-%   examples. Alternative: invalidate according to TeX rules, so that
-%   other editors do not consider this an error. Do not automate, this
-%   must be adjusted manually.)
-% - no * in the font
-% - No novels in the listings.
+% - Remove all leading \$ characters from the shell examples.
 
 % The Settings
 
@@ -62,8 +52,10 @@
 \setsubparaheadstyle{\normalfont\bfseries\color{CinBlueText}}% SubParagraph
 
 % Table of contents
-\addtodef{\tocheadstart}{\color{CinBlueText}}{} % If you want the whole TOC to be blue also
-%\addtoiargdef{\printtoctitle}{\color{CinBlueText}}{} % If you just want the TOC title blue
+\addtoiargdef{\printtoctitle}{\color{CinBlueText}}{} % If you just want the TOC title blue
+% \addtodef{\tocheadstart}{\color{CinBlueText}}{} % If you want the
+% whole TOC to be blue also. The page numbers are also colored, but
+% these are not links, that's confusing.
 
 
 % PDF properties
@@ -73,7 +65,7 @@
   filecolor=[named]{CinBlueText},
   urlcolor=[named]{CinBlueText},
   bookmarksnumbered=true,
-  pdftitle={The Comprehensive User Manual},
+  pdftitle={Cinelerra-GG -- The Comprehensive User Manual},
   pdfauthor={The Cinelerra-GG Community},
   pdfsubject={Video Editing},
   pdfkeywords={Cinelerra-GG, CGG, Cin5, Infinity, User Manual, Video
@@ -82,7 +74,6 @@
 
 
 % Package listings
-% FIXME: PDF c&p d o e s  n o t  w o r k.
 \lstset{% Common settings
   frame=single,
   framerule=0pt,
@@ -109,6 +100,8 @@
                    % title
   inputencoding=utf8,
   extendedchars=true,
+  % Required for c&p (PDF -> Clipboard):
+  columns=fullflexible,
   postbreak=\mbox{\textcolor{CinSilver}{$\hookrightarrow$}\space},
   keywordstyle=\color{CinDarkGray},
   commentstyle=\footnotesize\color{gray},
@@ -130,34 +123,13 @@
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%====================== Page geometry
-% \geometry{left=2.0cm}
-% \geometry{right=2.0cm}
-% \geometry{top=2.0cm}
-% \geometry{bottom=2.0cm}
-
 \parindent=0.0cm                    % first indent in section
 \righthyphenmin=2                   % hyphen last charecter
 \setsecnumdepth{subsubsection} 		% section numeration depth
 
-%\pagestyle{plain}
-%\pagenumbering{roman}
-%\renewcommand{\chapterheadstart}{
-%%\vspace*{\beforechapskip}
-%\hrule\medskip}
-%\renewcommand{\chapnamefont}{\normalfont\large\scshape}
-%\renewcommand{\chapnumfont}{\normalfont\large\scshape}
-%\renewcommand{\chaptitlefont}{\normalfont\large\scshape}
-%\renewcommand{\printchaptername}{\normalfont\large\scshape История}
-%\renewcommand{\chapternamenum}{ }
-%\renewcommand{\printchapternum}{\chapnumfont \thechapter}
-%\renewcommand{\afterchapternum}{. }
-%\renewcommand{\afterchapskip}{\vspace{2ex}}
-%\renewcommand{\afterchaptertitle}{\par\nobreak\medskip\hrule\vskip 
-%\afterchapskip}
-%}
-%\chapterstyle{madsen}		% one of chapter header style for memoir documentclass
-\chapterstyle{morrow}		% one of chapter header style for memoir documentclass
+% We use the chapter header style:
+\chapterstyle{morrow}
+
 % \renewcommand{\printchaptername}{\normalfont\large\scshape Chapter}
 \renewcommand{\chapterheadstart}{}
 %\renewcommand{\beforechapskip}{\vspace{2pt}}
@@ -166,6 +138,8 @@
 \setlength{\cftfigurenumwidth}{4em} % memoir class, more space between figure number and text.
 
 \renewcommand{\nomname}{Glossary} % glossary name
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Define the Cinnelerra-GG wordmark - a rough draft that can be
 % adapted at any time. To be used in the text with \CGG{}

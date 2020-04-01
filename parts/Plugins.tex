@@ -31,10 +31,10 @@ Note that when you change the plugin icons, your session will automatically save
     \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.5\linewidth]{plugin-icons.png}};
     \node [yshift=-6mm, xshift=-1cm,anchor=east] at (img1.north west) (Preferences) {Preferences Window};
     \node [yshift=-14mm, xshift=-1cm,anchor=east] at (img1.north west) (Tab) {Tab section};
-    \node [yshift=-35mm, xshift=-1cm,anchor=east] at (img1.north west) (Icon) {Plugin icon choices};
+    \node [yshift=-34mm, xshift=-1cm,anchor=east] at (img1.north west) (Icon) {Plugin icon choices};
     \draw [->, line width=1mm] (Preferences) edge  ([yshift=-6mm] img1.north west);
     \draw [->, line width=1mm] (Tab) edge  ([yshift=-14mm] img1.north west);
-    \draw [->, line width=1mm] (Icon) edge    ([yshift=-35mm] img1.north west);
+    \draw [->, line width=1mm] (Icon) edge    ([yshift=-34mm] img1.north west);
     \end{tikzpicture}
     \caption{Screencast showing the screen to change your plugin icons set}
     \label{fig:plugin-icons}
@@ -135,11 +135,11 @@ A Presets button on the plugin bar to the left of the Controls and On/Off button
     \begin{tikzpicture}[scale=1, transform shape]
     \node (img1) [yshift=0cm, xshift=0cm, rotate=0] {\includegraphics[width=0.6\linewidth]{preset02.png}};
     \node [yshift=-20mm, xshift=-1cm,anchor=east] at (img1.north west) (Green) {A user preset Green};
-    \node [yshift=-68mm, xshift=-1cm,anchor=south east,text width=10em, inner ysep=-3mm] at (img1.north west) (Textbox) {Textbox to type in the title for the chosen preset or name for a new preset.};
-    \node [yshift=-80mm, xshift=-1cm,anchor=north east,text width=10em,inner ysep=-3mm] at (img1.north west) (Save) {Use the Delete, Save or Apply button for operation.};
+    \node [yshift=-67mm, xshift=-1cm,anchor=south east,text width=10em, inner ysep=-3mm] at (img1.north west) (Textbox) {Textbox to type in the title for the chosen preset or name for a new preset.};
+    \node [yshift=-79mm, xshift=-1cm,anchor=north east,text width=10em,inner ysep=-3mm] at (img1.north west) (Save) {Use the Delete, Save or Apply button for operation.};
     \draw [->, line width=1mm] (Green) edge  ([yshift=-20mm] img1.north west);
-    \draw [->, line width=1mm] (Textbox.south east) --  ([yshift=-68mm] img1.north west);
-    \draw [->, line width=1mm] (Save.north east) --    ([yshift=-80mm] img1.north west);
+    \draw [->, line width=1mm] (Textbox.south east) --  ([yshift=-67mm] img1.north west);
+    \draw [->, line width=1mm] (Save.north east) --    ([yshift=-79mm] img1.north west);
     \end{tikzpicture}
     \caption{Screencast shows 4 Factory presets as preceded by an *.}
     \label{fig:preset02}
@@ -1029,6 +1029,10 @@ This is a Gaussian type blur. Other blur plugins -- \textit{Linear}, \textit{Mot
     \item[Alpha determines radius] use alpha to define the amount of blur to apply. (radius=gray value of alpha)
     \item[Blur alpha, red, green, blue] specifies which color channels is to be blurred.
 \end{description}
+
+\subsection{BoxBlur}%
+\label{sub:boxblur}
+Based on ffmpeg’s. To blur horizontal, vertical, and with power.Very fast
 
 \subsection{Brightness/Contrast}%
 \label{sub:brightness_contrast}
@@ -2386,7 +2390,7 @@ There is no \textit{undo} recorded between gui updates. It is recommended that y
 
 \begin{center}
 	\small
-	\begin{longtable}{{m{15em}m{13em}m{12em}}}
+	\begin{longtable}{{m{12em}m{13em}m{12em}}}
 		\caption{Sketcher controls}
 		\label{tabular:sketcher_controls} \\ % note that double backslash is mandatory here
 		\toprule
@@ -2975,6 +2979,14 @@ Only for Nvidia GPU and Cuda SDK
 \label{sub:mandelbrot}
 
 Produce fractal figures (figure~\ref{fig:mandelbrot}). Use case:
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.8\linewidth]{mandelbrot.png}
+	\caption{Mandelbrot Cuda plugin}
+	\label{fig:mandelbrot}
+\end{figure}
+
 \begin{enumerate}
 	\item add the Mandelbrot Cuda video effect to the timeline
 	\item you must enable Drag in the plugin popup menu
@@ -2982,13 +2994,6 @@ Produce fractal figures (figure~\ref{fig:mandelbrot}). Use case:
 	\item enable "Generate keyframes while tweaking" and move to another spot on the timeline and RMB drag again
 	\item so now when you play the video from the beginning because you have keyframes, the fractal will be animated between keyframes.
 \end{enumerate}
-
-\begin{figure}[hbtp]
-	\centering
-	\includegraphics[width=0.9\linewidth]{mandelbrot.png}
-	\caption{Mandelbrot Cuda plugin}
-	\label{fig:mandelbrot}
-\end{figure}
 
 \subsection{N\_Body}%
 \label{sub:n_body}
@@ -3075,7 +3080,7 @@ The location for most User installs is:
 
 Location for some System installs is:
 
-\hspace{4em}\texttt{/usr/lib/cin/plugins/} (most ubuntu distros)\newline
+\hspace{4em}\texttt{/usr/lib/cin/plugins/} (most ubuntu distros)\\
 \hspace{4em}\texttt{/usr/lib64/cin/plugins/} (Leap distro)
 
 \subsection{How to Build OpenCV Plugins}%

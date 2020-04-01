@@ -1623,7 +1623,7 @@ Examples with some caveats first:
     \caption{Examples}
     \label{tab:label}
     \small
-    \begin{tabular}{llllm{10em}} \toprule
+    \begin{tabular}{lllm{10em}m{10em}} \toprule
         Enable&	Target&	Op&	Value&	meaning\\\midrule
 Or	&Patterns  &Matches   &*&	 all files from the Media folder are included\\
 And Not&Filesize&Lt	&160000000& no files that are less than 160MB in size \\
@@ -1936,6 +1936,32 @@ Here is a list of how they work.  Keep in mind that if the Expander on the patch
         checkboxes except for the one you are on.  Then this named box will have outline for a  \textit{hot} spot.
     \item  Shift+LMB on this \textit{hot} spot will return to \textit{cool} of the previous settings with all of the previous
         checkboxes checked again.
+\end{itemize}
+
+\begin{figure}[htpb]
+	\begin{minipage}{.29\linewidth}
+		\centering
+		\includegraphics[width=0.99\linewidth]{overlays_list1.png}
+		\caption{Original Settings --- cool spot}
+		\label{fig:overlays_list1}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{.29\linewidth}
+		\centering
+		\includegraphics[width=0.99\linewidth]{overlays_list2.png}
+		\caption{Note Titles box hot spot  }
+		\label{fig:overlays_list2}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{.29\linewidth}
+		\centering
+		\includegraphics[width=0.99\linewidth]{overlays_list3.png}
+		\caption{Cam/Proj XYZ toggle to fine tune}
+		\label{fig:overlays_list3}
+	\end{minipage}
+\end{figure}
+
+\begin{itemize}
     \item  Shift+LMB on a non-\textit{hot} spot will simply check or uncheck a box and there is no previous state.
     \item This all works in conjunction with the View pulldown menu which, of course, has no hot spots.
     \item  Caveat \#1 - Shift+LMB on the top 4 choices of Assets, Titles, Transitions, Plugin Keyframes will turn
@@ -1945,28 +1971,7 @@ Here is a list of how they work.  Keep in mind that if the Expander on the patch
         \item Caveat \#3 - XYZ toggle on/off of Camera and Projector are not affected.
 \end{itemize}
 
-\begin{figure}[htpb]
-    \begin{minipage}{.29\linewidth}
-        \centering
-        \includegraphics[width=0.99\linewidth]{overlays_list1.png}
-        \caption{Original Settings --- cool spot}
-        \label{fig:overlays_list1}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{.29\linewidth}
-        \centering
-        \includegraphics[width=0.99\linewidth]{overlays_list2.png}
-        \caption{Note Titles box hot spot  }
-        \label{fig:overlays_list2}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{.29\linewidth}
-        \centering
-        \includegraphics[width=0.99\linewidth]{overlays_list3.png}
-        \caption{Cam/Proj XYZ toggle to fine tune}
-        \label{fig:overlays_list3}
-    \end{minipage}
-\end{figure}
+
 
 
 \subsection{Sound Level Meters Window}%

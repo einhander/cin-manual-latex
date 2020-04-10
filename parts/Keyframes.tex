@@ -200,10 +200,20 @@ An often used, keyframe editing operation is replication of some curve from one 
 
 And there is an easy way to delete keyframes besides selecting a region and using \texttt{keyframes $\rightarrow$ clear keyframes}. Click-drag a keyframe before its preceding keyframe or after its following keyframe on the track.  This is the only way you can simultaneously delete keyframes on ganged tracks.
 
-\section{Allow Keyframes Spanning}%
+\section{Allow Keyframe Spanning}%
 \label{sec:allow_keyframes_spanning}
 
-When you create a drag selection and you modify a value in a plugin then everything in the selection gets modified the same.  It use the previous keyframe and if there is no previous keyframe, then the default keyframe in your \texttt{\$HOME/.bcast5} definitions is used.
+\textit{Allow keyframe spanning} is enabled on the timeline by clicking on the icon that
+is on the right side of the \textit{Generate keyframes while tweaking}.  With this enabled,
+when you create a drag selection and you modify a value in a plugin then everything in
+the selection gets modified the same.  It uses the previous keyframe and if there is no
+previous keyframe, then the default keyframe in your \texttt{\$HOME/.bcast5} definitions
+is used.
+
+This is particularly useful in plugins that have the \textit{Drag} box enabled.  You can
+select the area on the timeline where all of the keyframes exist with the drag enabled,
+turn on \textit{Allow keyframe spanning}, and then modify the menu for that plugin to turn
+off the drag.
 
 
 %%% Local Variables:

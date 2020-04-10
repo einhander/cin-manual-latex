@@ -1032,7 +1032,33 @@ This is a Gaussian type blur. Other blur plugins -- \textit{Linear}, \textit{Mot
 
 \subsection{BoxBlur}%
 \label{sub:boxblur}
-Based on ffmpeg’s. To blur horizontal, vertical, and with power.Very fast
+Based on ffmpeg’s boxblur, this is a very fast algorithm which can be used to blur horizontal,
+vertical, and at a power level.  Simplest usage is to just blur the entire image but with
+the following parameters, you can create a specific rectangular section to blur instead.  
+
+\begin{description}
+    \item[X/Y:] point coordinates of a rectangular box to be blurred. X and Y of 0 are in the
+upper left hand corner.  Default to be blurred is the entire image.
+    \item[Drag:] is used when you want to create just a rectangular area to be blurred rather
+than the enire image. If you used keyframes to cover a moving area and had left the Drag box
+enabled, you can remove the drag box with \textit{Allow keyframe spanning} whose use is
+described in \nameref{sec:allow_keyframes_spanning}.
+    \item[W/H] the values in these 2 boxes specify the width and height of the drag area box
+measured in pixels as shown in the compositor window. You can set these manually and if you
+can not see the location of your box, set them to zero because $0$ sets it to the same as the
+width/height of the project.
+    \item[Horiz:] slider goes from $0\, to\, 100$. Increasing this \textit{horizontal} number,
+increases the blurriness in the horizontal direction. The default value is 2. You can also use
+the mouse wheel to scroll the slider.  There is a clear button on the right to set the value to 0.
+    \item[Vert:] slider goes from $0\, to\, 100$. Increasing this \textit{vertical} number,
+increases the blurriness in the vertical direction.  The default value is 2. You can also use
+the mouse wheel to scroll the slider. There is a clear button on the right to set the value to 0.
+    \item[Power:] the way \textit{Power} works is like stacking up the blur multiple times.
+For example, a power of 3 would be like blurring once, then blurring that again, and finally
+blurring that a third time. The slider varies from 1 to 10 with 2 being the default value. There
+is a clear button on the right to set the value to 1.
+    \item[Reset:] button to revert to the default values and turn off Drag if it is on.
+\end{description}
 
 \subsection{Brightness/Contrast}%
 \label{sub:brightness_contrast}
@@ -1275,7 +1301,7 @@ To start, if not already checked, turn on drag. In the composer window select an
     \item[X, Y:] points coordinate.
     \item[Buttons:] \textit{New} to create a new point, \textit{Up/Dn} to move highlighted point up or down \textit{Del} to delete the highlighted point.
     \item[Threshold:] slider goes from $0\, to\, 1$. Increasing the threshold, increases the area to be filled or masked. You can also use the mouse wheel to scroll the slider.
-    \item[Drag:] for ease of use.
+    \item[Drag:] for ease of use. If you need to clear the Drag enabled, you can easily do this with \textit{Allow keyframe spanning} whose use is described in \nameref{sec:allow_keyframes_spanning}.
     \item[Reset:] button to revert to only the default middle point with all others being deleted.
     \item[ListBox:] "E" for Enabled with $*$ marking that; "X" is the point’s $x$ coordinate; "Y" is the point’s $y$ coordinate; "T" is the threshold value of $X,Y$ point; \textit{Tag} represents the \# of the selected
     point.
@@ -2446,7 +2472,7 @@ There is no \textit{undo} recorded between gui updates. It is recommended that y
 \begin{description}
 	\item[Anti-Aliasing] You can set Off; On or Double. Default is On.
     \item[Color] refers to the current curve pen color. Click on the \textit{Color rectangle} to bring up the Color window to change any of the color values, including alpha.
-    \item[Drag] check to create curves and to be able to see any Off type curves. Uncheck for render/viewing.
+    \item[Drag] check to create curves and to be able to see any Off type curves. Uncheck for render/viewing.  If you need to clear the Drag enabled, you can easily do this with \textit{Allow keyframe spanning} whose use is described in \nameref{sec:allow_keyframes_spanning}.
     \item[Reset] -- in the \textit{Curve section}, all of the curve lines will be deleted except for an empty default curve;
     -- in the \textit{Point section}, all points for the highlighted curve in the Curve section will be deleted.
     \item[Width] integer width of line; width of $1$ is the default; width of $0$ is the smallest size of $1$ pixel.
@@ -2589,7 +2615,7 @@ If the video is displayed on a consumer TV, the outer border is going to be crop
 \begin{description}
     \item[Drag] initial default checkbox is \textit{off} so that the Title plugin will work as it always has.
     \begin{description}
-        \item[Anchors] When you turn on the Drag feature, nine different anchors/handles will appear on compositor window. The \textit{middle anchor} allows you to drag your title wherever you want in the compositor window ($X, Y$ coordinates). The other 8 handles, drawn as arrows in each corner and in the middle of each side, let you change the size of the drag area box so that your title is within that area if it fits and as it is directed.
+        \item[Anchors] When you turn on the Drag feature, nine different anchors/handles will appear on compositor window. The \textit{middle anchor} allows you to drag your title wherever you want in the compositor window ($X, Y$ coordinates). The other 8 handles, drawn as arrows in each corner and in the middle of each side, let you change the size of the drag area box so that your title is within that area if it fits and as it is directed.  If you need to clear the Drag enabled, you can easily do this with \textit{Allow keyframe spanning} whose use is described in \nameref{sec:allow_keyframes_spanning}.
         \item[W/H] the values in these 2 boxes specify the size of the drag area box measured in pixels as shown in the compositor window. You can set these manually and if you can't see the location of your box or find your handles, set them to zero because $0$ sets it to the same as the width/height of the media.
         The Drag effect ignores all boundaries, including the \textit{Title Safe Region} of the Compositor so that if you drag your titles off the screen, it will look like they disappeared completely. Reset X and Y to reasonable values to have it reappear. The Title \textit{text}, \textit{background}, and \textit{pngs} are applied on a single layer so that they will drag together as an entity. All of the Title capabilities work in conjunction with dragging so if you want to justify the title, you can still use the \textit{Left/Center/Right/Top/Mid/Bottom} within the drag area. Be sure to turn off Drag when rendering or the box will show in the video; keep in mind that drag bars do not appear until there is some text in the text box and you can not actually drag until the Title window controls are available.
     \end{description}
@@ -2789,7 +2815,7 @@ Tracer creates an outline around an object after a few points are designated, so
 	\item[Invert] to change the mask to outside.
 	\item[Feather] to sort of blur the edges (inward and outward). Feather influences the softness of the edge. The higher the number Feather is set to, the softer the edges become.
 	\item[Radius] for varying the size a little. Radius extends the area further in or out to cover more or less area.
-	\item[Drag] to enable or disable moving.
+	\item[Drag] to enable or disable moving.  If you need to clear the Drag enabled, you can easily do this with \textit{Allow keyframe spanning} whose use is described in \nameref{sec:allow_keyframes_spanning}.
 	\item[Draw] to draw the outline for visual.
 	\item[Fill] to black out the object (no alpha); figure~\ref{fig:tracer-02}.
 	\item[Mouse wheel] rotate the outline, centered on cursor. Note that this rotates the outline around the nearest point. The slower you scroll, the more precise the the result. If you scroll faster, an accelerator kicks in that allows you to make complete rotations more quickly.

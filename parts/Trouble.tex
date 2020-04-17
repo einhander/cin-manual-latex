@@ -149,6 +149,13 @@ Some messages you may see in the startup window may or may not be errors. Some e
 This is not a problem. Basically, when you open a file if a stream has a known duration, there is no message. If the duration is unknown, it is estimated by using the File Size and Bitrate to estimate the duration. This may just indicate that the stream number \CGG{} uses versus ffmpeg may be counted differently.
 \bigskip
 
+\textit{FFMPEG::scan: codec open failed} followed by
+\newline 
+\textit{FFMPEG::scan:file=} \quad \texttt{your directory/filename}
+
+This is not a problem. \CGG{} is building an index for your file in order to better seek.  In that process, different methods are tried until a successful scan is complete.
+\bigskip
+
 \textit{AudioALSA::write\_buffer err -32(Broken pipe) at sample \#}
 
 This indicates that there is something wrong with the audio. Some reasons for this are:

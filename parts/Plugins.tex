@@ -2857,36 +2857,92 @@ This effect applies a traditional \textit{darkroom} technique, the so called \te
 \subsection{Videoscope}%
 \label{sub:videoscope}
 
-Videoscope summarizes intensity and color on a calibrated display. The Videoscope can be used in conjunction with other \CGG{} plugins such as \textit{Color 3 Way}, \textit{YUV}, \textit{Brightness}, \textit{Color Balance} or \textit{Histogram} to accurately correct video for contrast, clarity, conformance (to normalize various videos shot under different light settings), or for cinematic purposes. The human eye is not specialized to match precise level of light and color, but Videoscope is. Videoscope contains three displays: the waveform scope and the vectorscope, plus the histograms (figure~\ref{fig:videoscope01}). Instead of applying the plugin to the tracks/edits we want to examine, we can use the Videoscope button in the Composer and Viewer windows. The Videoscope menu window has many options. From the pulldown menu (\textit{Scopes}) we can choose between two histograms (Histogram and Histogram RGB); three waveforms (Waveform, Waveform RGB and Waveform Ply) and two vectorscopes (Vectorscope and VectorWheel). The \textit{Smooth} checkbox serves to make the graph more homogeneous while the \textit{sliders} allow for varying the 'solidity' of the dots shown. You can get to the subpixel
-level for precision.
+Videoscope summarizes intensity and color on a calibrated display. The Videoscope can be used in conjunction with other \CGG{} plugins such as \textit{Color 3 Way}, \textit{YUV}, \textit{Brightness}, \textit{Color Balance} or \textit{Histogram} to accurately correct video for contrast, clarity, conformance (to normalize various videos shot under different light settings), or for cinematic purposes. The human eye is not specialized to match precise level of light and color, but Videoscope is. Videoscope contains three displays: the waveform scope and the vectorscope, plus the histograms (figure~\ref{fig:videoscope01}). Instead of applying the plugin to the tracks/edits we want to examine, we can use the Videoscope buttons in the Composer and Viewer windows. \includegraphics[height=\baselineskip]{scope.png} In this way the monitors act on the frame indicated by the insertion point, without taking into account the stack of tracks or on which edits to apply the plugin.
+
+The Videoscope menu window has many options.
+
+\paragraph*{Scopes:} we can choose between two histograms:
+
+\begin{itemize}[noitemsep]
+	\item \textit{Histogram}
+	\item \textit{Histogram RGB}
+\end{itemize}
+three waveforms: 
+\begin{itemize}[noitemsep]
+	\item \textit{Waveform}
+	\item \textit{Waveform RGB} (aka RGB Parade)
+	\item \textit{Waveform Ply} (which superimposes the three Waveform RGB graphs in a single view.)
+\end{itemize}
+and two vectorscopes: 
+\begin{itemize}[noitemsep]
+	\item \textit{Vectorscope}
+	\item \textit{VectorWheel}
+\end{itemize}
 
 \begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=1.0\linewidth]{videoscope01.png}
-    \caption{GUI of the Videoscope. You see Histogram, RGB Parade and Vectorscope}
-    \label{fig:videoscope01}
+	\centering
+	\includegraphics[width=1.0\linewidth]{videoscope01.png}
+	\caption{GUI of the Videoscope. You see Histogram, RGB Parade and Vectorscope}
+	\label{fig:videoscope01}
 \end{figure}
+
+\paragraph*{Settings:} It is divided into two sections. The upper section contains two items:
+
+\begin{description}
+	\item[Smooth:] serves to make the graph more homogeneous, improving its visualization.
+	\item[Refresh on Stop:] is used to block frame monitoring during playback. Since videoscopes are heavy on the system, it is advisable to deactivate them during playback and reactivate them only when we have chosen the frame to examine.
+\end{description}
+
+ The lower section, called \textit{VectorWheel Grids}, it is only active when VectorWheel is set up in Scopes pull-down and contains four entries (figure~\ref{fig:videoscope06}):
+ 
+ \begin{description}
+ 	\item[None:] It only shows the colour wheel, without any superimposed graticula.
+ 	\item[All:] Shows the most complete grid that allows precise and useful measurements. It also shows the skintones area.
+ 	\item[Hue:] Show a more minimal grid.  It also shows the I-Line.
+ 	\item[IQ:] Show shows only I-Line and Q-Line.
+ \end{description}
+
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{videoscope06.png}
+	\caption{Pull-down Settings}
+	\label{fig:videoscope06}
+\end{figure}
+
+You can create custom grids. These are raster .png images of adequate resolution and must be put in:
+
+\begin{lstlisting}[style=sh]
+[your cinelerra path]/bin/plugins/scopes/custom_grid.png
+\end{lstlisting}
+
+More information in the later section on Vectorscope.
+
+\paragraph*{Sliders:} allow for varying the \textit{solidity} of the dots shown in Waveforms and Vectorscope. You can get to the subpixel level for precision. They are accompanied by Reset buttons that restore them to default values.
+
+
 
 \subsubsection*{Waveform/RGB Parade/Waveform Ply}%
 \label{ssub:waveform_rgb_parade_ply}
 
-The \textit{Waveform Scope} displays image intensity (luminance) versus image $X$ position. The \textit{Waveform RGB} (or RGB Parade) displays image RGB intensity versus image $X$ position (one graph per channel). The \textit{Waveform Ply} shows the three channels in a single graph. The Waveform Scope appears on the left side or in the middle of the Videoscope window. The display is calibrated vertically from $0\%$ intensity (black) at the bottom up to $100\%$ intensity (white) at the top. Each column of pixels in the image corresponds to one column of pixels in the Waveform Scope (figure~\ref{fig:videoscope02}). Note that the height of the values of a waveform/RGB Parade corresponds exactly to the values on the $x\, axis$ in the \textit{histogram}. A vertical/horizontal correspondence is therefore obtained.
+The \textit{Waveform Scope} displays image intensity (luminance) versus image $X$ position. The \textit{Waveform RGB} displays image RGB intensity versus image $X$ position (one graph per channel). The \textit{Waveform Ply} shows the three channels in a single graph. The Waveform Scope appears on the left side or in the middle of the Videoscope window. The display is calibrated vertically from $0\%$ intensity (black) at the bottom up to $100\%$ intensity (white) at the top. Each column of pixels in the image corresponds to one column of pixels in the Waveform Scope (figure~\ref{fig:videoscope02}). Note that the height of the values of a waveform/waveform RGB corresponds exactly to the values on the $x\, axis$ in the \textit{histogram}. A vertical/horizontal correspondence is therefore obtained.
 
 \begin{figure}[hbtp]
     \centering
     \includegraphics[width=1.0\linewidth]{videoscope02.png}
-    \caption{Colortest 75\% with RGB Parade (left) and Waveform (right)}
+    \caption{Colortest 75\% with Waveform RGB (left) and Waveform (right)}
     \label{fig:videoscope02}
 \end{figure}
 
-On the left is shown RGB Parade: instead of the color shadows as in figure~\ref{fig:videoscope01}, we have lines representing the color bar test at $75\%$. They are pure colors, so all pixels have the same value. In fact, they are all at the level of $75\%$ except for the $100\%$ white band and the $0\%$ black band. In the waveform on the right, we have the same behavior with regard to luminance: the white band is $100\%$; the black band is $0\%$ and all the others $75\%$.
+On the left is shown waveform RGB: instead of the color shadows as in figure~\ref{fig:videoscope01}, we have lines representing the color bar test at $75\%$. They are pure colors, so all pixels have the same value. In fact, they are all at the level of $75\%$ except for the $100\%$ white band and the $0\%$ black band. In the waveform on the right, we have the same behavior with regard to luminance: the white band is $100\%$; the black band is $0\%$ and all the others $75\%$.
 
-The Waveform scope helps correct image light levels for contrast range or for conforming light levels on various scenes originally shot on different light settings (figure~\ref{fig:videoscope03}). The same can be done with RGB Parade or the convenient overlapping representation (Waveform Ply).
+If we left-click on the graph with the mouse, we will see a crosshair that we can place exactly where we want to measure. We can read the precise values of X and Luminance (Value) in the pop-up box that appears at the bottom right (figure~\ref{fig:videoscope03}).
+
+The Waveform scope helps correct image light levels for contrast range or for conforming light levels on various scenes originally shot on different light settings. The same can be done with Waveform RGB or the convenient overlapping representation (Waveform Ply).
 
 \begin{figure}[hbtp]
     \centering
     \includegraphics[width=1.0\linewidth]{videoscope03.png}
-    \caption{Examples of waveform, waveform RGB and waveform Ply}
+    \caption{Examples of waveform (with crosshair and the coordinates' box), waveform RGB and waveform Ply}
     \label{fig:videoscope03}
 \end{figure}
 
@@ -2895,10 +2951,10 @@ The Waveform scope helps correct image light levels for contrast range or for co
 
 \begin{enumerate}
     \item Add the \textit{Brightness/Contrast}, \textit{Histogram}, \textit{Color 3 Way} or another video adjustment effect on your track/edit.
-    \item Add the Videoscope effect on the track below. Make sure that it is placed below so it can see the adjustment effect's results. If it is not, right-click and move it down. Or do not use the plugin but activate the Videoscope button in the Compositor window.
+    \item Add the Videoscope effect on the track. Make sure that it is placed below in the stack of effects, so it can see the adjustment effect's results. If it is not, right-click and move it down. Or do not use the plugin but activate the Videoscope button in the Compositor window.
     \item Show both the effect and Videoscope.
     \item Adjust the contrast while observing the waveform to match the desired light level.
-    \item Precise adjustments can be made by measuring the values on the waveform with the crosshair (by clicking LMB, and reading numeric values on top left of the window) and reporting these numbers in the effects window (\textit{Histogram Bézier}, for example).
+    \item Precise adjustments can be made by measuring the values on the waveform with the crosshair (by clicking LMB, and reading numeric values on the pop-up box) and reporting these numbers in the effects window (\textit{Histogram Bézier}, for example).
 \end{enumerate}
 
 For example, if you are looking for maximum contrast range, adjust the \textit{Brightness/Contrast} levels to align the darkest point on the scope with the $0\%$ level and the brightest portion with $100\%$. Anything above $100\%$ is over saturated. Limits may be highlighted with checkbox controls.
@@ -2921,21 +2977,16 @@ If you are producing a video for NTSC television broadcast, keep the intensity b
 \subsubsection*{Vectorscope}%
 \label{ssub:Vectorscope}
 
-The Vectorscope displays \textit{hue} (angle on the color wheel) and \textit{saturation} (radius). Each pixel in the source image is drawn as a point on the color wheel. The distance from the center is the color saturation. Gray values are close to the center, and high saturation values are near the perimeter ($100\%$). In the center there is pure white ($0\%$). By clicking with the mouse on the color wheel a radius and circle 
-will appear whose values of hue and saturation are shown at the top left of the window, similar to the values of $X$ and luminance of the Waveform and RGB Parade (figure~\ref{fig:videoscope05}).
+The Vectorscope displays \textit{hue} (angle on the color wheel) and \textit{saturation} (radius). Each pixel in the source image is drawn as a point on the color wheel. The distance from the center is the color saturation. Gray values are close to the center, and high saturation values are near the perimeter ($100\%$). In the center there is pure white ($0\%$). By clicking with the mouse on the color wheel a radius and circle will appear whose values of hue and saturation are shown in the  pop-up box at the bottom right of the window, similar to the values of $X$ and luminance of the Waveform and RGB Parade (figure~\ref{fig:videoscope05}).
 
 \begin{figure}[hbtp]
 	\centering
-	\includegraphics[width=0.9\linewidth]{videoscope05.png}
-	\caption{Vectorscope (with I-Line) and VectorWheel (with IQ-Hue-Tics reticule)}
+	\includegraphics[width=0.8\linewidth]{videoscope05.png}
+	\caption{Vectorscope (with H/S pop-up box) and VectorWheel (with 3 default grids)}
 	\label{fig:videoscope05}
 \end{figure}
 
-Note that when you choose \textit{VectorWheel} from \textit{Scopes} pulldown, the \textit{Overlay} pulldown
-appears where you can choose between different grids. In addition, any number of user-supplied grid patterns
-can be added in the form of a square image of type png.  The user can design and maintain individual grid
-overlays for various purposes.  The user would keep their overlays in a safe spot on their disk and make
-a copy of them in the \{cinelerra\_pathname\}/bin/plugins/scopes every time a new version of \CGG{} is installed.
+Note that when you choose \textit{VectorWheel} from \textit{Scopes} pulldown, you can choose between different grids in the \textit{Settings} pulldown. In addition, any number of user-supplied grid patterns can be added in the form of a square image of type png.  The user can design and maintain individual grid overlays for various purposes.  The user would keep their overlays in a safe spot on their disk and make a copy of them in the \texttt{\{cinelerra\_pathname\}/bin/plugins/scopes} every time a new version of \CGG{} is installed.
 
 Generally the Vectorscope has the following uses:
 
@@ -2952,7 +3003,7 @@ Generally the Vectorscope has the following uses:
 \begin{figure}[hbtp]
     \centering
     \includegraphics[width=0.9\linewidth]{videoscope04.png}
-    \caption{Balancing a yellow dominace tint}
+    \caption{Balancing a yellow color cast}
     \label{fig:videoscope04}
 \end{figure}
 

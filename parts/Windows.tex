@@ -751,7 +751,7 @@ screens, zooms, and pans in the compositor.
 
 The \textit{Output size} can be set in \texttt{File $\rightarrow$ New} when creating a new project,
 or by using \texttt{Settings $\rightarrow$ Format}, or in the Resources window with RMB click on
-a video asset and choosing \emph{Match project size}. When you \emph{Match project size}, you
+a video asset and choosing \texttt{Match $\rightarrow$ Match project size}. When you \emph{Match project size}, you
 are conforming the output to the asset. Once you have set the output size in 1 of these 3 ways,
 any newly created tracks will conform to the specified output size.  When rendering, the project's
 output size is the final video track size where the temporary pipeline is rendered into.  
@@ -821,7 +821,7 @@ green and yellow colored outlines.
 placement.
 \end{enumerate}
 
-When you drag over the viewport in the compositor window, it looks like you are moving the camere
+When you drag over the viewport in the compositor window, it looks like you are moving the camera
 with the mouse.  The viewport moves in the same manner.
 
 \subsubsection*{Camera Compositing}%
@@ -850,7 +850,7 @@ By either tumbling or entering text directly, the camera and projector can be pr
 Justification types are also defined for easy access. 
 A popular justification operation is upper left projection after image reduction. 
 This is used when reducing the size of video with aspect ratio adjustment.  
-In the last figure you see the choices for justification as the red stripe in the 6 boxes in the order of left, center horizontal, right, top, center vertical, and bottom.
+In the last figure you see the choices for justification as the location of the line in the 6 boxes in the order of left, center horizontal, right, top, center vertical, and bottom.
 
 The translation effect allows simultaneous aspect ratio conversion and reduction but is easier to use if the reduced video is put in the upper left of the \textit{temporary} instead of in the center. 
 The track size is set to the original size of the video and the camera is centered. 
@@ -875,9 +875,9 @@ In the compositing window, there is a popup menu of options for the camera and p
 \label{ssub:use_case_interaction_camera_projector}
 
 \begin{enumerate}
-    \item Start by shrinking the projector to $z=0,500$ ($\frac{1}{4}$ of the original frame).
-    \item The next step is to switch to the camera and note that the green box has assumed the size of the projector, i.e.\ the red box. The value of $z$ of the camera is always equal to $1,000$ (default) but the frame is $\frac{1}{4}$ of the original frame, i.e.\ it has the size of the projector that has $z=0,500$. This is the current viewport size.
-    \item You enlarge the room bringing $z=2,000$. You can see that the dimensions of the viewport (green box) do not change, remaining the same as those of the projector. However, the frame has been enlarged and this variation is indicated by the enlargement of the yellow box. Let's remember that this follows the changes made with the camera tool.
+    \item Start by shrinking the projector to $z=0.500$ ($\frac{1}{4}$ of the original frame).
+    \item The next step is to switch to the camera and note that the green box has assumed the size of the projector, i.e.\ the red box. The value of $z$ of the camera is always equal to $1.000$ (default) but the frame is $\frac{1}{4}$ of the original frame, i.e.\ it has the size of the projector that has $z=0.500$. This is the current viewport size.
+    \item You enlarge the room bringing $z=2.000$. You can see that the dimensions of the viewport (green box) do not change, remaining the same as those of the projector. However, the frame has been enlarged and this variation is indicated by the enlargement of the yellow box. Let's remember that this follows the changes made with the camera tool.
     \item We can drag the room so that we can center the frame to our liking. The movement of the yellow box shows well the variation compared to the green box.
     \item Finally, if we want, we can switch to the projector tool to move the output frame to the position we want with respect to the size of the source. Of course, we can also work on the $z$, which in the example is at $z=0.500$, if we have decided to change the size of the output.
 \end{enumerate}
@@ -927,10 +927,12 @@ that you are viewing in the compositor.  An easy way to see the masked area is t
 below the target track and drag the \textit{Gradient} plugin to a highlighted area on that track.
      \item  You can move existing points to new locations by simply using the LMB at a point to
 drag that point to a different location.
-    \item  The mask can be translated as a single entity by Alt-dragging the mask.
+    \item  The mask can be translated as a single entity by Alt-dragging the mask.  For some desktop
+window managers, such as \textit{UbuntuStudio 16.4} and \textit{Arch}, the Alt key is already in use
+by the Operating System so you will have to use Alt+Ctrl instead.
     \item To create curved instead of straight lines between the points, use  Ctrl-drag on a
 specific point. Using Ctrl-drag activates bezier handles (control points) to create these curves
-between the points.       
+between the points. For example, on a mask with just two points, you can create a romantic heart mask.     
 \end{enumerate}
 
 There are a lot more operations you can do using the Mask menu as shown in 
@@ -974,7 +976,9 @@ When you click \textit{Load} preset, keep in mind that it will write the mask nu
 
 \textit{Center} mask button allows for quickly centering a mask on the video track. 
 \textit{Normalize} mask button makes it easy to normalize the size of the mask based on the scale of the video. 
-The next 3 symbols concern the direction to \textit{drag translate} a mask using the \texttt{Alt+LMB} thus making it easy to preserve the current $X$ or $Y$ value when desirable.
+The next 3 symbols concern the direction to \textit{drag translate} a mask using the \texttt{Alt+LMB} thus making it easy to preserve the current $X$ or $Y$ value when desirable.  For some desktop window managers,
+such as \textit{UbuntuStudio 16.4} and \textit{Arch}, the Alt key is already in use by the Operating System
+so you will have to use Alt+Ctrl instead.
 
 \texttt{xlate/scale x}	- drag translate constrained in the $X$ direction
 
@@ -987,7 +991,7 @@ The next 3 symbols concern the direction to \textit{drag translate} a mask using
 
 The \texttt{Fade}: textbox is used to type in a fade value; the tumbler to the right of the textbox allows you to increase or decrease that number; and the slider bar makes it quick to adjust the fade value.  The fader goes from $-100$ on the left to $+100$ on the right for negative to positive.  Default value is $+100$. The fade slider includes a sticky point at 0 so that it is easy to get to 0 without going too far or not quite far enough -- that way you don’t have to keep jiggling to get there. 
 
-In addition there is a \textit{Gang fader} symbol to allow for having all of the masks fade in unison. The symbol is surrounded by a gold colored background when it is in effect.  If you have multiple masks with different modes, a decision had to be made on what value to use -- it uses the maximum transparency value of the background to determine the operations results.  To understand how this works, here is a summary:
+In addition there is a \textit{Gang fader} symbol to allow for having all of the masks fade in unison. The symbol is surrounded by a green colored background (in the default theme) when it is in effect.  If you have multiple masks with different modes, a decision had to be made on what value to use -- it uses the maximum transparency value of the background to determine the operations results.  To understand how this works, here is a summary:
 
 Note1: The area outside the mask is referred to as the background.
 

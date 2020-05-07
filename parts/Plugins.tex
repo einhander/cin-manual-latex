@@ -2890,7 +2890,16 @@ and two vectorscopes:
 
 \begin{description}
 	\item[Smooth:] serves to make the graph more homogeneous, improving its visualization.
-	\item[Refresh on Stop:] is used to block frame monitoring during playback. Since videoscopes are heavy on the system, it is advisable to deactivate them during playback and reactivate them only when we have chosen the frame to examine.
+	\item[Refresh on Stop ON:] scopes are updated when you stop playback at a given location. Instead, they are locked at the start position while you playback (by dragging the cursor or using the Transport buttuns). This saves system resources and makes playback smoother.
+	\item[Refresh on Stop OFF:] the display of the scopes is synchronized with the playback. Every variation of the graphs is in realtime. There may be some decrease in fps during playback.
+	\item[Refresh on Release:] This works for the Viewer and Compositor windows. Scopes are not updated
+during playback. The update occurs only when you stop playback, that is at the final position (either by
+dragging the cursor or using the Transport buttons). When in the timeline, if you drag on the TimeBar or
+reposition in the TimeBar in either Drag and Drop or Cut and Paste mode, the release of the button also will
+update the Scopes.  This saves system resources and makes playback smoother.  Because there is no update when
+playing in the main window, you can still easily get a videoscope update simply by moving the mouse to the
+Compositor and a single click there will update the scopes without changing the frame (as long as Click to
+Play is not enabled).
 \end{description}
 
  The lower section, called \textit{VectorWheel Grids}, it is only active when VectorWheel is set up in Scopes pull-down and contains four entries (figure~\ref{fig:videoscope06}):

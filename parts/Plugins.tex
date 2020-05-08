@@ -2890,7 +2890,7 @@ and two vectorscopes:
 
 \begin{description}
 	\item[Smooth:] serves to make the graph more homogeneous, improving its visualization.
-	\item[Refresh on Stop ON:] scopes are updated when you stop playback at a given location. Instead, they are locked at the start position while you playback (by dragging the cursor or using the Transport buttuns). This saves system resources and makes playback smoother.
+	\item[Refresh on Stop ON:] scopes are updated when you stop playback at a given location. Instead, they are locked at the start position while you playback (by Transport buttons). This saves system resources and makes playback smoother.
 	\item[Refresh on Stop OFF:] the display of the scopes is synchronized with the playback. Every variation of the graphs is in realtime. There may be some decrease in fps during playback.
 	\item[Refresh on Release:] This works for the Viewer and Compositor windows. Scopes are not updated
 during playback. The update occurs only when you stop playback, that is at the final position (either by
@@ -2903,6 +2903,13 @@ Play is not enabled).
 \end{description}
 
  The lower section, called \textit{VectorWheel Grids}, it is only active when VectorWheel is set up in Scopes pull-down and contains four entries (figure~\ref{fig:videoscope06}):
+
+ \begin{figure}[hbtp]
+ 	\centering
+ 	\includegraphics[width=1.0\linewidth]{videoscope06.png}
+ 	\caption{Pull-down Settings}
+ 	\label{fig:videoscope06}
+ \end{figure}
  
  \begin{description}
  	\item[None:] It only shows the colour wheel, without any superimposed graticula.
@@ -2911,12 +2918,6 @@ Play is not enabled).
  	\item[IQ:] Show shows only I-Line and Q-Line.
  \end{description}
 
-\begin{figure}[hbtp]
-	\centering
-	\includegraphics[width=1.0\linewidth]{videoscope06.png}
-	\caption{Pull-down Settings}
-	\label{fig:videoscope06}
-\end{figure}
 
 You can create custom grids. These are raster .png images of adequate resolution and must be put in:
 

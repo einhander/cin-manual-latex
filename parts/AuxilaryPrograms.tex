@@ -62,11 +62,11 @@ Example script to create a jpeglist sequence file is next:
 \begin{lstlisting}[numbers=none]
 #!/bin/bash
 out="$1"
-dir=`dirname "$out"`
+dir=$(dirname "$out")
 shift
-geom=`jpegtopnm "$1" | head -2 | tail -1`
-w=`(set - $geom; echo $1)`
-h=`(set - $geom; echo $2)`
+geom=$(jpegtopnm "$1" | head -2 | tail -1)
+w="$(echo $geom | cut -d " " -f1)"
+h="$(echo $geom | cut -d " " -f2)"
 exec > $out
 echo "JPEGLIST"
 echo "# First line is always JPEGLIST"
@@ -78,7 +78,7 @@ echo "# Height:"
 echo "$h"
 echo "# List of image files follows"
 while [ $# -gt 0 ]; do
-  if [ x`dirname "$1"` = x"$dir" ]; then
+  if [ x$(dirname "$1") = x"$dir" ]; then
 	f=./`basename "$1"`;
   else
 	f="$1";
@@ -87,6 +87,8 @@ while [ $# -gt 0 ]; do
   shift
 done
 \end{lstlisting}
+To use this script, you will have to install the package on your operating system that
+includes \textit{jpegtopnm} which is ususally \textit{netpbm}.
 Example usage of this script follows:
 
 \qquad \texttt{jpeglist.sh outfile infiles*.jpg}

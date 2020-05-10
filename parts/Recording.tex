@@ -431,15 +431,14 @@ Figure~\ref{fig:two-monitors04} shows 2 monitors with Compositor window on the 2
 \subsection{Remote Control for DVB}%
 \label{sub:remote_control_dvb}
 
-\begin{wrapfigure}[18]{O}{0.3\linewidth} 
-    \centering
-    \includegraphics[width=0.5\linewidth]{remote01.png}
-    \caption{Ati-x10 Remote}
-    \label{fig:remote01}
-\end{wrapfigure}
-
 \CGG{} DVB recording/playback can now easily be done in \textit{couch potato} mode using a remote control.  This comes in handy when you want to playback on a big TV screen for multiple person viewing. You can use the Application/Menu key on the keyboard to toggle between standard \CGG{} usage or a Dispatcher methodology through use of a remote control, an Android programmed device such as a tablet, or keyboard. The Application/Menu key on most keyboards is between the Alt and Ctrl keys on the right hand side bottom and depicts a menu on it either with or without a pointer (see image below).  An ati-x10 Remote Control device (figure~\ref{fig:remote01}) is currently working with \CGG{} and other remote controls may work but have never been tried.  The red/orange box on the top left main screen of \CGG{}  indicates Dispatcher Method access is activated which allows for keyboard grab which routes all key strokes until toggled off.  Below are the currently defined operations.
-\newline
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.1\linewidth]{remote01.png}
+	\caption{Ati-x10 Remote}
+	\label{fig:remote01}
+\end{figure}
 
 Remote Control Keys (Application/Menu key toggle for ati-x10 remote)
 
@@ -542,7 +541,7 @@ Figure~\ref{fig:remote03} shows an Android Tablet that can be used as a Remote C
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.6\linewidth]{remote03.png}
+    \includegraphics[width=0.5\linewidth]{remote03.png}
     \caption{A Tablet with Android Remote Control}
     \label{fig:remote03}
 \end{figure}
@@ -632,6 +631,13 @@ For example in a test case using the \textit{CX23418} capture card (an older/unu
 command line from a window of \\
 \texttt{CIN\_CONFIG=\$HOME/bcast6 {cinelerra\_path}/bin/cin}
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{recording03.png}
+	\caption{Example of the Preferences menu with the Recording tab highlighted}
+	\label{fig:recordingx}
+\end{figure}
+
 \begin{itemize}
     \item Choose \texttt{Settings $\rightarrow$ Preferences $\rightarrow$ Recording} tab in the Preferences menu (figure~\ref{fig:recordingx}).
     \item Choose a \textit{File Format} -- a common suggestion is \textit{ffmpeg} with a \textit{file type} of mp4.  In some cases depending on your capture card, the File Format will be set to \textit{MPEG stream} capture. Some formats support MPEG stream capture technique, otherwise the data has to be decoded first and then encoded.
@@ -640,30 +646,20 @@ command line from a window of \\
     \item Also, \textit{Device path} should be verified to be correct in case you have more than 1 device. In the 2 previously mentioned devices, it should proabably be set to /dev/video0.
 \end{itemize}
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.9\linewidth]{recording03.png}
-    \caption{Example of the Preferences menu with the Recording tab highlighted}
-    \label{fig:recordingx}
-\end{figure}
-
 \textit{Step 3}: Next use the \textit{File} pulldown to choose \textit{Record} and then the Recording menu will popup (figure~\ref{fig:vhs01}).
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{vhs01.png}
+	\caption{Example of the Recording, Video In, and Channels, along with the Add option, menus.}
+	\label{fig:vhs01}
+\end{figure}
 
 \begin{itemize}
     \item Click on the Antenna icon ($3^{rd}$ icon from the left on the left side of the right hand screen window).
     \item In the popup \textit{Channels} menu, click on \texttt{Add} which brings up the \textit{Edit Channel} menu.
     \item Use the down arrow in the \textit{Input} box to display the available options.  In the test case, and very likely your case too, \textit{S-Video 1} should be picked.
-    \item In the Recording menu, be sure to designate a complete path and filename in the \textit{Path:} textbox which will be used to record/write the playing media.  Remember you must have the media on a file in order for \CGG{} to load it on the timeline for editing purposes.    
-\end{itemize}
-
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=1.0\linewidth]{vhs01.png}
-    \caption{Example of the Recording, Video In, and Channels, along with the Add option, menus.}
-    \label{fig:vhs01}
-\end{figure}
-
-\begin{itemize}
+    \item In the Recording menu, be sure to designate a complete path and filename in the \textit{Path:} textbox which will be used to record/write the playing media.  Remember you must have the media on a file in order for \CGG{} to load it on the timeline for editing purposes.
     \item Then highlight \textit{S-Video} in the \textit{Channels} Menu.  Again, the choice in the Channels Menu might not be S-Video -- choices could vary widely. Start recording in your Recording menu by clicking on the second icon from the left, next to the \textit{Transport} label (it is usually a round red colored button).
     \item Next press \textit{play} on your media hardware device.  If on the \textit{Video In} side window you see only noise, then S-Video or something else was an incorrect choice and you will have to perform some tests to find correct choices.
 \end{itemize}
@@ -741,6 +737,8 @@ Output from "dmesg" for EasyCap - Model \# DC60:
 [ 4007.420828] hid-generic 0003:534D:0021.0009: hiddev97,hidraw0: USB HID v1.10 Device [MACROSILICON AV TO USB2.0] on usb-0000:16:00.3-1.2/input4
 \end{lstlisting}
 
+\newpage
+
 \subsection{Use Case \#2 – Hauppauge WinTV-HVR}
 \label{sub:use_case_wintv}
  
@@ -749,7 +747,7 @@ In the case of the Hauppauge 9500 WinTV-HVR Hybrid TV stick, the setup is simila
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{recording06.png}
+    \includegraphics[width=0.6\linewidth]{recording06.png}
     \caption{Two possible capture devices using USB}
     \label{fig:recording-usb}
 \end{figure}

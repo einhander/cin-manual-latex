@@ -439,6 +439,15 @@ However, if you proxy your session, the clips do not get proxied to the Proxy fo
 As usual, you can delete proxy files from the project or disk in the Resources window if you no longer want to retain them.
 And you can save your project either as proxied or not.
 
+Because Proxy works on the original media in all circumstances, when you resize the
+media in the Resources window, it does not actually resize the media but puts it in
+a "buffer" in that format. This might lead to some confusion for the user who
+expects this resizing to be maintained when disabling Proxy for that media. However,
+that does not happen because the resize is only in a buffer and not in the original
+media. This result is different than in the case of media "edits", like cuts or
+adding plugins because this information is not in a buffer but rather part of the
+copy "Editing Decision List" (EDL).
+
 You can also nest clips while in a proxied state, but you can not drag the proxied nested clips
 to the viewer or the timeline.
 If you create proxies for Nested clips they will be saved in \texttt{\$HOME/Videos} unless you modify that in
@@ -489,9 +498,6 @@ Checking the \textit{Auto proxy/scale media loads} results in any additional med
 If you get error messages when creating proxies, check the Video wrench settings.  These usually default to values that are expected to work correctly for the \textit{File Format} and codec you selected but they can be changed and may result in errors.  If you get an error message of \textit{check\_frame\_rate failed} followed by \textit{Error making proxy} in the popup Errors window, do just that and check the Frame rate value by going to the Resources window, Media folder, and use the right mouse button for the Info option for that specific media in question.  You can change the frame rate in this window to a more codec acceptable value.  Different codecs may have different legal values.
 
 More specific information on which plugins need to use scaler is provided here next.  If the keyframe data uses coordinate data that is absolute, then the scaler should be used.  If the data is normalized (like always $0-100\%$) then the proxy can be done without the scaler.  The session geometry format, shown in \texttt{Settings $\rightarrow$ Format} as $width \times height$, is changed if the scaler is not used to cause all of the data to be in the reduced format.  If this affects the plugin operation, then scaler should be used.  Examples of plugins that need the scaler are: Title, AutoScale, Scale, ScaleRatio, and Translate.  Most others are safe to use without scaling.
-
- This makes its so that you can save your project
-either as proxied or not.
 
 \textbf{Transcode}, an option under the Settings pulldown right next to the Proxy settings option, is a type of full resolution \textbf{1:1 Proxy}.
 The process of transcoding works directly from the resource; it is independent of the timeline. 

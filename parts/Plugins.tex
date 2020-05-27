@@ -3686,7 +3686,13 @@ The following is a list of the integrated video plug-ins.
   on top of an image which is commonly used in filmmaking. The concept
   is that you align the key elements in the image using this grid at
   the intersection of the lines or along and within the
-  vertical/horizontal lines.
+  vertical/horizontal lines.  In general the bottom and right sides of
+  the video will not be bordered by the grid.  So for example, if you
+  only add the effect to the video, there will be a frame around the
+  video with the size of the \textit{thickness}
+  but the frame is only visible on the top and left and not on the bottom
+  or left side.  You can get a line to show by using a larger thickness
+  and specifying a negative value for x and y of -2, -3, or more. 
 \item [F\_edgedetect]~\\Detects and draws edge.
 \item [F\_elbg]~\\Apply posterize effect, using the ELBG
   algorithm.

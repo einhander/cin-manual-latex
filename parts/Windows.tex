@@ -746,7 +746,7 @@ cropped.
 \subsubsection*{Track and Output size}%
 \label{ssub:track_size}
 
-The \textit{Track size} is used to define the temporary size with each track having a different size.
+The \textit{Track size} is used to define the temporary size with each track having a different size (viewports).
 You can see or set the track size by RMB click on a track and then select \emph{Resize Track} to resize
 the track to any size. Or select \emph{Match output size} to make the track the same size as the
 output.  When a track is resized what it looks like on the compositor changes.  The relationship
@@ -757,7 +757,7 @@ screens, zooms, and pans in the compositor.
 The \textit{Output size} can be set in \texttt{File $\rightarrow$ New} when creating a new project,
 or by using \texttt{Settings $\rightarrow$ Format}, or in the Resources window with RMB click on
 a video asset and choosing \texttt{Match $\rightarrow$ Match project size}. When you \emph{Match project size}, you
-are conforming the output to the asset. Once you have set the output size in 1 of these 3 ways,
+are conforming the output to the asset. To change the size and aspect ratio of the output (Projector) we have to change the whole project, which will alter all the tracks in the timeline. Once you have set the output size in 1 of these 3 ways,
 any newly created tracks will conform to the specified output size.  When rendering, the project's
 output size is the final video track size where the temporary pipeline is rendered into.  
 
@@ -810,13 +810,7 @@ and the size of the frame. After you position the video with the projector, you 
 \subsubsection*{The Viewport}%
 \label{ssub:viewport}
 
-The \textit{viewport} is a window on the camera that frames the area of source video. The size of
-the current track is used for the initial size of the viewport. A smaller viewport, for example
-($640\times480$), captures a smaller area; whereas a larger viewport of ($800\times600$) captures
-a larger area.  If the captured area is larger than the source video, the empty spaces will be
-automatically filled with blanks.  After the viewport is defined, the camera needs to be placed
-right above the area of interest in the source video. Operations to control the location of the
-camera are as follows:
+The \textit{viewport} is a window on the camera that frames the area of source video. The size of the current track is used for the initial size of the viewport. A smaller viewport, for example ($640\times480$), captures a smaller area; whereas a larger viewport of ($800\times600$) captures a larger area.  If the captured area is larger than the source video, the empty spaces will be automatically filled with blanks.  To change the size and aspect ratio of the viewport (Camera) of a single track, right-click on the track in the timeline and choose Resize Track. Here we can vary the height and base of the viewport in pixels or use the ratio between the sides. With OK we will see the change in the Compositor window with the new dimensions reflected in the green box. We can have different size viewports for each video track on the timeline. To go back, reset the viewport to the original value. After the viewport is defined, the camera needs to be placed right above the area of interest in the source video. Operations to control the location of the camera are as follows:
 
 \begin{enumerate}
     \item  In the compositor window you should see the selected track.

@@ -173,13 +173,15 @@ Two different methods of aligning the audio for mixers are available. They are m
     \item Load your camera media with insertion strategy of \textit{resources only}
     \item Highlight in the Resources window, all of the media you want to mix.
     \item Right mouse button on one of the media and click on Open Mixers; all mixer windows come up.
-    \item Provide a small target audio pattern on the Master Track for syncing by marking with the In/Out points ([ and ]).
-    \item Make a selection on the timeline in which to look for the pattern. Left mouse click, then drag select and highlight a search time domain.
+    \item To arm the created mixer tracks and related audio tracks. They are automatically placed on the timeline disarmed. This is right for multi-cam but not for audio sync.
+    \item Provide a small target audio pattern on the Master Track for syncing by marking with the In/Out points ([ and ]). NOTE: When choosing between the audio tracks to align the one that will have to work as Master, we must rigorously use the one with the right-most synchronization peak. This is because the Master track will be started at the beginning of the timeline. If during alignment the other tracks should move further to the left than the Master, they will be truncated at 00:00:00:000, finding no more space available, and will be shortened with loss of footage for the next multi-cam
+    \item Make a selection on the timeline in which to look for the pattern. Left mouse click, then drag select and highlight a search time domain. 
     \item Use the \texttt{Window $\rightarrow$ Mixers$\dots$ $\rightarrow$  Align mixers} to bring up its dialog window.
     \item Highlight in the first listbox, the Mixer number you want to align. Click on \textit{Match}. This will take a few seconds so watch the rendering time percentage on the lower right hand side zoom panel. The buttons will be ghosted out until finished. Now note the changed values in the Audio Tracks listbox.
     \item If you are satisfied with the calculated Nudge values -- that is they are very close to $1.0$ -- in the Audio Tracks listbox and the audio track selected as the Master Track in the Master Track listbox, hit the \textit{Apply} button.
     \item If you plan on performing more alignment tasks, click on Checkpoint so you can go back to a previous step in case you make a mistake.
     \item Last, click on the OK green checkmark or to cancel click on the red X.  Or just close the gui.
+    \item To disarm the mixer tracks and related audio tracks for the next multi-cam operations.
 \end{enumerate}
 
 \paragraph{Reset} is used to start over with the current session data, not an undo.  This means you can use the match repeatedly to refine alignments.  All of the Audio Tracks listbox values will be reset.
@@ -206,7 +208,7 @@ More detailed information follows about how this all works and the information i
 \begin{enumerate}
     \item \textit{Mixers} lists the mixers that are active by highlighting them all initially. You can decide that you do
     not want 1 or more mixers to be used in the correlation calculation by un-highlighting the one(s) that should not be used. In some cases you have to have at least 2 in order to align audio.
-    \item \textit{Master Track} lists each of the audio tracks currently loaded for all of the mixers. You can decide to highlight a different audio track to be used as the master for correlation, but only 1 can be used.
+    \item \textit{Master Track} lists each of the audio tracks currently loaded for all of the mixers. You can decide to highlight a different audio track to be used as the master for correlation, but only 1 can be used. Remember to use the track with the right-most synchronization peak as the Master.
     \item \textit{Audio Tracks} lists each of the mixer audio tracks.  Again, you can highlight a different set of which
     mixer audio tracks that you want to use for the waveform correlation.  Any audio tracks that are not
     highlighted, that is \textit{turned off}, will not be considered in the correlation calculation.
@@ -214,7 +216,7 @@ More detailed information follows about how this all works and the information i
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{mixer-align03.png}
+    \includegraphics[width=1.0\linewidth]{mixer-align03.png}
     \caption{Match setup for aligning by audio.  Note that [ ] are set over a sample waveform highlighted selection that includes that.}
     \label{fig:mixer-align03}
 \end{figure}
@@ -230,7 +232,7 @@ The Mixer with the master track generally does not move, everything else will be
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=0.9\linewidth]{mixer-align04.png}
+    \includegraphics[width=1.0\linewidth]{mixer-align04.png}
     \caption{An audio Match is complete. Note the waveform is aligned.}
     \label{fig:mixer-align04}
 \end{figure}

@@ -721,7 +721,8 @@ export LADSPA_PATH=/usr/lib/ladspa
 
 LV2 is an open standard for audio plugins using a simple interface with extensions which add functionality to support audio software. These plugins were written by external developers and provide additional audio effects to \CGG{} audio without having to change \CGG{} every time. Because the LV2 plugins are separate from \CGG{} Infinity, if one fails or does not perform as expected, \CGG{} should stay running and you will have to contact the programmers responsible for that plugin for a fix.
 
-Typically, a user OS has specialized package groups installed. It is difficult to create one build of \CGG{} to accommodate all potential LV2 plugins. Specifically for the \textit{Calf-Studio LV2 plugins}, you should install the \textit{Calf Plugins} package. The user’s computer must have \textit{gtk-2-runtime} installed, which seems to be automatically done already for most distros. For users doing their own builds, you can build \CGG{} without LV2 support by including \texttt{-{}-without-lv2} in the configure step. The default build is \texttt{-{}-with-lv2=yes} and requires that \textit{GTK-2-devel} must be installed or the build will fail and notify you.
+Typically, a user OS has specialized package groups installed. It is difficult to create one build of \CGG{} to accommodate all potential LV2 plugins. Specifically for the \textit{Calf-Studio LV2 plugins}, you should install the \textit{Calf Plugins} package. The user’s computer must have \textit{gtk-2-runtime} installed, which seems to be automatically done already for most distros. For users doing their own builds, you can build \CGG{} without LV2 support by including \texttt{-{}-without-lv2} in the configure step. The default build is \texttt{-{}-with-lv2=yes} and requires that \textit{GTK-2-devel} must be installed or the build will fail and notify you. In addition for some newer distros, you will need to install
+\textit{lv2-calf-plugins-gui}; for example Fedora version 32.
 
 LV2 plugins have their own category in the \textit{Audio Plugins Visibility} as lv2. There is a simple text interface which is available via the usual \textit{Show controls} button when the plugin is attached to the audio track. This window has a Reset button to get back to the default settings. To change a value of one of the parameters, highlight that parameter and type in the new value in the topmost text box and then hit Apply to take effect -- the reason for requiring hitting apply is so that the audio is not moving all over the place while you are still typing a value. More easily, you can just move the \textit{pot dial} or the \textit{slider} bar which take effect automatically.
 
@@ -1956,9 +1957,32 @@ Since it is a very slow effect, there is a method to applying the motion tracker
 
 Enable which of translation motion or rotation motion vectors you want to track. By watching the compositor window and adjusting the \textit{Block x,y} settings, center the block on the part of the image you want to track. It is advisable to choose elements that have evident edges in the $x$ and $y$ directions because the calculations are made on these coordinates. Then set \textit{search radius}, \textit{block size} and \textit{block coordinates} for translation and rotation.
 
-Once this is configured, set the calculation to \textit{Save coords} and do test runs through the sequence to see if the motion tracker works and to save the motion vectors. Next, disable playback for the track, disable \textit{Draw vectors}, set the motion action to perform on the target layer and change the calculation to \textit{Load coords}. Finally enable playback for the track.
+Once this is configured, set the calculation to \textit{Save coords} and do test runs through the sequence to see if the motion tracker works and to save the motion vectors. Next, disable \textit{Draw vectors}, set the motion action to perform on the target layer and change the calculation to \textit{Load coords}.
 
 When using a single starting frame to calculate the motion of a sequence (Keep Shape), the starting frame should be a single frame with the least motion to any of the other frames. This is rarely frame $0$. Usually it is a frame near the middle of the sequence. This way the search radius need only reach halfway to the full extent of the motion in the sequence.
+
+Summarizing:
+
+\begin{enumerate}
+	\item In the Master Layer create and save the tracking file:
+	\begin{itemize}
+		\item \textit{Draw vectors}: checked
+		\item \textit{Action}: Do Nothing
+		\item \textit{Calculation}: Save coords to Tracking File
+	\end{itemize}
+	\item Clone the track, which becomes the Target Layer. The Motion plugin will also be copied.
+		\begin{itemize}
+			\item \textit{Draw vectors}: unchecked
+			\item \textit{Action}: Do Nothing
+			\item \textit{Calculation}: Load coords from Tracking File
+		\end{itemize}
+	\item Add a third track to place the video of the object to be superimposed. Add the shared effects of the motion plugin taken from the Master Layer.
+		\begin{itemize}
+			\item \textit{Draw vectors}: unchecked
+			\item \textit{Action}: Track Subpixel
+			\item \textit{Calculation}: Load coords from Tracking File
+		\end{itemize}
+\end{enumerate}
 
 If the motion tracker is used on a render farm, Save coords and previous frame mode will not work. The results of the save coords operation are saved to the hard drives on the render nodes, not the master node. Future rendering operations on these nodes will process different frames and read the wrong coordinates from the node filesystems. The fact that render nodes only visualize a portion of the timeline also prevents previous frame from working since it depends on calculating an absolute motion vector starting on frame $0$.
 

@@ -104,6 +104,15 @@ Two other effect types available in the Attach Effect dialog are \textit{Shared 
     \item The insertion point or selected region must start inside the other effects.
 \end{itemize}
 
+Before going into further detail about how to use \textit{Shared effects}, an easier
+alternative method of application which is especially useful for Audio tracks is
+available.  In this method, all you have to do is use the \textit{Audio} pulldown and
+choose \textit{Attach effect}, highlight the effect you would like and make sure the
+default of \textit{Attach single standalone and share others} is checked on.  It will
+automatically be a "Shared Effect" on all audio tracks (be sure to disarm any audio
+tracks that you do not want to have the effect shared on).  This method also works for
+Video tracks using the \textit{Video} pulldown choice of \textit{Attach effect}.
+
 In the case of a shared track, there must be another track on the timeline of the same type as the track you are applying an effect to. If you right clicked on a video track to attach an effect, there will not be anything in the shared tracks column if no other video track exists. The same applies equally to audio tracks in that another audio track must exist. Shared tracks are often used as layers for titles, curves and keyframes.
 
 If shared effects or shared tracks are available, they appear in the shared effects and shared tracks columns when you used the \textit{Attach effect} option (RMB on a track). When the green colored checkmark is clicked OK, anything highlighted in the column is attached under the current track.
@@ -2156,6 +2165,15 @@ Figure~\ref{fig:perspective01} show the results of the 4 different smoothing opt
     \caption{Clockwise: Nearest; Linear; OpenGL and Cubic}
     \label{fig:perspective01}
 \end{figure}
+
+Just a side note about the possibility of ending up with a divide by 0 case when manipulating
+the endpoints.  Sometimes this results in a single frame anomaly but you can workaround this
+by setting the X value for the middle keyframe of a series to just a little more than 0,
+such as .01 so that dividing by 0 is avoided. The actual cause of the problem is that the
+interpolated X1..X4 auto coordinates used by perspective eventually have x1==x2, x3==x4, so
+that all points x are scaled by zero. Another solution is to tweak the frame count to an even
+number, so that the center is not over the point where x1==x2, x3==x4, or perturb the midpoint
+position a little so that the answers are not exactly zero.
 
 \subsection{Polar}%
 \label{sub:polar}

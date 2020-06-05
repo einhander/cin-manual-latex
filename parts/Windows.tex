@@ -82,7 +82,8 @@ Then more details are provided in the next paragraphs.
    \hline
 	Sample zoom & Duration visible on the timeline \\
 	Amplitude & Audio waveform scale \\
-	Track zoom & Height of tracks in the timeline \\
+	Track audio zoom & Height of audio tracks \\
+	Track video zoom & Height of video tracks \\
 	  (type) & Automation Type \\
 	Curve zoom & Automation range minimum and maximum \\
 	Selection change & 3 boxes with starting point, length, and ending point \\
@@ -99,10 +100,10 @@ You can either use the $\uparrow$ and $\downarrow$ arrows to change the sample z
 
 The next option is \emph{amplitude} and it only affects the audio waveform size. \texttt{Ctrl-$\uparrow$} and \texttt{Ctrl-$\downarrow$} are shortcuts used to change the amplitude zoom as an alternative to the down arrow to the right of the numerical size.
 
-The \emph{track zoom} affects all tracks and determines the height of each track. 
-If you change the track zoom, the amplitude zoom will be changed also so that the audio waveforms
+The \emph{track audio and video zoom} affects all tracks of that type and determines the height of each track. 
+If you change the audio track zoom, the amplitude zoom will be changed also so that the audio waveforms
 are proportionally sized.
-Shortcuts, \texttt{Ctrl-Pgup} and \texttt{Ctrl-Pgdown}, change the track zoom.
+Shortcuts, \texttt{Ctrl-Pgup} and \texttt{Ctrl-Pgdown}, change the track zoom to the next level simultaneously for all of the audio and video tracks.
 
 \emph{Automation type} is used for selecting one of the following: Audio Fade, Video Fade, Zoom, Speed, X, or Y (X and Y are for the compositor's Camera and Projector).  When an auto line is present on
 the timeline and is being manipulated, a small square the same color as the line will be shown to 
@@ -2013,6 +2014,14 @@ An additional window, the levels window, can be brought up from the Window pulld
 The levels window displays the output audio levels after all mixing is done.  
 The visible range of the sound level meters is configurable in \texttt{Settings $\rightarrow$ Preferences, Interface tab} under the Operations section.
 
+\begin{wrapfigure}[18]{O}{0.3\linewidth} 
+	\centering
+	\vspace{-2ex}
+	\includegraphics[width=0.5\linewidth]{volume_meter.png}
+	\caption{Sound Level Meters Window}
+	\label{fig:volume_meter}
+\end{wrapfigure}
+
 Sound level meters can be toggled in the viewer and compositor windows with the show meters button.  
 They also appear in the patchbay when the track is expanded and in the recording monitor when audio is being recorded. 
 
@@ -2020,14 +2029,6 @@ The sound levels in the levels window, compositor, and viewer correspond to the 
 In the record monitor they are the input values from the sound card.  
 In the patchbay they are the sound levels for each track after all effects are processed and before down-mixing for the output.  
 Most of the time, audio levels have numerical markings in dB but in the patchbay there is not enough room.
-
-\begin{wrapfigure}[15]{O}{0.3\linewidth} 
-	\centering
-	\vspace{-4ex}
-	\includegraphics[width=0.5\linewidth]{volume_meter.png}
-	\caption{Sound Level Meters Window}
-	\label{fig:volume_meter}
-\end{wrapfigure}
 
 The sound level is color coded as an extra means of determining the sound level.  
 Even without numerical markings, the sound level color can distinguish between several ranges and overload.  

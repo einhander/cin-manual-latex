@@ -786,6 +786,13 @@ Note the UI button in the upper right hand corner above the Reset button (figure
 
 When the glitzy ui is up, the simple text window remains up also since it is the \CGG{} side and keeps track of the value changes so they remain in effect for further usage of the plugin. Changes to one or the other will occur in both with the exception of certain features in the glitzy window which are not communicated correctly back to \CGG{}; for example a reset button -- the simple interface Reset button must be used instead. To change values in the glitzy window you use the mouse and move up or down unlike a knob that turns! (Figure~\ref{fig:calf02})
 
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.8\linewidth]{calf02.png}
+	\caption{Screencast with a Calf plugin glitzy window that appears when clicking the simple interface UI button.}
+	\label{fig:calf02}
+\end{figure}
+
 In order to test a particular plugin without bringing up \CGG{}, especially for ones that do not operate, it is possible to manually display an lv2ui gui with: \\
 \texttt{/cin-path/lv2ui <lv2-uri>} \\
 For example:
@@ -794,12 +801,6 @@ For example:
 /tmp/cinelerra-5.1/bin/lv2ui http://calf.sourceforge.net/plugins/Flanger
 \end{lstlisting}
 
-\begin{figure}[htpb]
-    \centering
-    \includegraphics[width=0.8\linewidth]{calf02.png}
-    \caption{Screencast with a Calf plugin glitzy window that appears when clicking the simple interface UI button.}
-    \label{fig:calf02}
-\end{figure}
 
 \section[Video Effects --- Native]{Video Effects -- Native}%
 \label{sec:video_effects_native}

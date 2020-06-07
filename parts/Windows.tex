@@ -750,20 +750,40 @@ cropped.
 \subsubsection*{Track and Output size}%
 \label{ssub:track_size}
 
-The \textit{Track size} is used to define the temporary size with each track having a different size (viewports).
+The \textit{Track size} is used to define the temporary size with each track having a different size (viewports). It also serves to conform the input media to a chosen format (aspect ratio). So each track can have a different format (viewport).
 You can see or set the track size by RMB click on a track and then select \emph{Resize Track} to resize
 the track to any size. Or select \emph{Match output size} to make the track the same size as the
-output.  When a track is resized what it looks like on the compositor changes.  The relationship
+output. Or from the Resources window, RMB on a video media and choose \textit{Info} and then \textit{Resize}. When a track is resized what it looks like on the compositor changes.  The relationship
 between the track and the project's output size makes it possible to magnify or reduce the size of
-a track in regards to the final output. This feature means you cancreate visual effects such as split
-screens, zooms, and pans in the compositor.
+a track in regards to the final output. This feature means you can create visual effects such as different aspect ratios, adjust split screens, zooms, and pans in the compositor.
 
 The \textit{Output size} can be set in \texttt{File $\rightarrow$ New} when creating a new project,
 or by using \texttt{Settings $\rightarrow$ Format}, or in the Resources window with RMB click on
 a video asset and choosing \texttt{Match $\rightarrow$ Match project size}. When you \emph{Match project size}, you
 are conforming the output to the asset. To change the size and aspect ratio of the output (Projector) we have to change the whole project, which will alter all the tracks in the timeline. Once you have set the output size in 1 of these 3 ways,
 any newly created tracks will conform to the specified output size.  When rendering, the project's
-output size is the final video track size where the temporary pipeline is rendered into.  
+output size is the final video track size where the temporary pipeline is rendered into. 
+
+\subsubsection*{Aspect Ratio (Theory)}%
+\label{ssub:aspect_ratio_theory}
+
+The aspect ratio is the ratio of the sides of the frame (\textit{Width} and \textit{Height}). For example, classically broadcast TV was 4:3 (= 1.33), whereas today it has changed to 16:9 (= 1.85); in cinema we use the 35 mm aspect ratio of 1.37 (Academic aperture), but even more so the super 35 mm (2.35). There are also anamorphic formats, i.e. that have no square pixels, like Cinemascope (2.35). The projection must be \textit{normalized} to have an undistorted view.
+
+From the film or digital sensors of the cameras, we can extract any frame size we want. We are talking about \textit{viewports}, which we will examine shortly. Also important is the output of the film that will be rendered, because it is what we will see at the cinema, or on TV, or on the monitor of the PC, tablet or smartphone. Referring to figure~\ref{fig:temporary-01}, you can see these two possibilities: with the Camera you choose the size and aspect ratio of the source file (regardless of the original size); while with the Projector you choose the size and aspect ratio of the output.
+
+The following formula is used to vary the aspect ratio:
+
+\qquad $\frac{W}{H} =$ aspect ratio ($\frac{pixels}{pixels}$)
+
+For example to obtain an aspect ratio of Super 35 mmm (2.35) starting from a FullHD file (1920x1080) whose base extension (1920) we want to keep:
+
+\qquad $\frac{1920}{H} = 2.35$
+
+from which: $H = 817$ pixels
+
+\CGG{} allows you to vary the input and output aspect ratio in the ways indicated in the previous section: by varying the pixels of the sides or by setting a multiplication coefficient.
+
+In \texttt{Settings $\rightarrow$ Format} there is the additional possibility to vary the shape of the pixels from 1:1 (square) to handle anamorphic formats.
 
 \subsection{Camera and Projector}%
 \label{sub:camera_and_projector}
@@ -842,7 +862,7 @@ These are accessed in the \emph{Show tool info} window.
 Most operations in the Compositor window have a tool window which is enabled by activating the question mark icon (figure~\ref{fig:camera_tool}).
 
 \begin{wrapfigure}[10]{O}{0.45\linewidth} 
-	\vspace{1ex}
+	%\vspace{1ex}
     \includegraphics[width=1.0\linewidth]{camera_tool.png}
     \caption{Camera and Projector tool}
     \label{fig:camera_tool}
@@ -1418,6 +1438,12 @@ For Clips, \emph{Nest} and \emph{UnNest} as described elsewhere are available.
 The asset \emph{Info} window also can be used to display detailed information about the selected/highlighted media file -- available for any loaded media of type mpeg or ffmpeg.  
 This is extremely helpful in determining what type of media it is, size, resolution, format, and type/number of audio streams.  It is especially useful for multiple program streams.  You can have the info window popped on several of your assets simultaneously.
 
+\textit{Detail} opens an additional window with more information.
+
+\textit{Sample rate} and \textit{Frame rate} allows you to impose a different sampling or Fps of the audio and video assets.
+
+Another option is \textit{Resize} button, which allows you to change the sides (in pixels) of the frame of the asset.
+
 \textit{Asset's interlacing}  is the type of interlacing the asset has: If the file is (H)DV type, recognition and configuration is done automatically. All other media types will be set unknown. So we have to manually set the interlacing \protect\footnote{From Igor ubuntu's mail}.
 
 Figure~\ref{fig:info_asset_details} shows the \textit{Detail} box to click on the left side and a simple, typical output in the Asset Detail window on the right side.  Also, note the highlighted media in the Resources window.
@@ -1425,7 +1451,7 @@ Figure~\ref{fig:info_asset_details} shows the \textit{Detail} box to click on th
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=0.99\linewidth]{info_asset_details.png}
-    \caption{The “Detail” box}
+    \caption{Info windows with the “Detail” box}
     \label{fig:info_asset_details}
 \end{figure}
 

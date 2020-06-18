@@ -117,7 +117,7 @@ is all that is needed to repair a media problem.
 that a new file with the original name will be created with original defaults.  You will lose your preferences,
 but it is just for testing and you can move back the renamed \CGG{}\_rc over the new one if that is not the
 cause of the problem.  Be sure to stop and restart \CGG{} whenever you rename this file.
-	\item Some media has only a single keyframe at the beginning of the file so that moving anywhere on the timeline results in just a black image in the compositor. \CGG{} needs more keyframes to determine position. You can temporarily use \texttt{Settings $\rightarrow$ Proxy} to $\frac{1}{2}$ size to put in keyframes. How to use Proxy is explained in \href{sec:proxy_settings}{Proxy settings and Transcode}.
+	\item Some media has only a single keyframe at the beginning of the file so that moving anywhere on the timeline results in just a black image in the compositor. \CGG{} needs more keyframes to determine position. You can temporarily use \texttt{Settings $\rightarrow$ Proxy} to $\frac{1}{2}$ size to put in keyframes. How to use Proxy is explained in \ref{sec:proxy_settings} {Proxy Settings and Transcode}.
         \item If you have enabled an \textit{Automation Curve} such as Fade or Speed on your track but it
 does not show, it could simply be because the range minimum and maximum are incorrectly set in the zoom bar.
 Set them to more reasonable values until you see the lines appear. Just as a reminder, the zoom bar is on the
@@ -169,7 +169,7 @@ This indicates that there is something wrong with the audio. Some reasons for th
 
 \textit{Playback does not keep up so you hear the audio ahead of the video.}
 
-When this occurs, it most likely means that there is not enough CPU power to keep up. You can go into \texttt{Settings $\rightarrow$ Preferences, Playback} tab and uncheck \textit{Play every frame}. Not playing every frame means that as it plays, if it can not keep up with doing all it has to do to change the frame into a vframe and then draw it, the program just notes that it is falling behind so skips frames to catch back up. This does not affect rendering. A different solution is to use Background Rendering as described in \href{sec:background_rendering}{Rendering}.
+When this occurs, it most likely means that there is not enough CPU power to keep up. You can go into \texttt{Settings $\rightarrow$ Preferences, Playback} tab and uncheck \textit{Play every frame}. Not playing every frame means that as it plays, if it can not keep up with doing all it has to do to change the frame into a vframe and then draw it, the program just notes that it is falling behind so skips frames to catch back up. This does not affect rendering. A different solution is to use Background Rendering as described in section \ref{sec:background_rendering}.
 \bigskip
 
 \textit{\CGG{} will not start and produces error message on the startup window.}

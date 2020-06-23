@@ -769,6 +769,7 @@ output size is the final video track size where the temporary pipeline is render
 
 The aspect ratio is the ratio of the sides of the frame (\textit{Width} and \textit{Height}). For example, classically broadcast TV was 4:3 (= 1.33), whereas today it has changed to 16:9 (= 1.85); in cinema we use the 35 mm aspect ratio of 1.37 (Academic aperture), but even more so the super 35 mm (2.35). There are also anamorphic formats, i.e. that have no square pixels, like Cinemascope (2.35). The projection must be \textit{normalized} to have an undistorted view.
 
+
 From the film or digital sensors of the cameras, we can extract any frame size we want. We are talking about \textit{viewports}, which we will examine shortly. Also important is the output of the film that will be rendered, because it is what we will see at the cinema, or on TV, or on the monitor of the PC, tablet or smartphone. Referring to figure~\ref{fig:temporary-01}, you can see these two possibilities: with the Camera you choose the size and aspect ratio of the source file (regardless of the original size); while with the Projector you choose the size and aspect ratio of the output.
 
 The following formula is used to vary the aspect ratio:
@@ -783,7 +784,18 @@ from which: $H = 817$ pixels
 
 \CGG{} allows you to vary the input and output aspect ratio in the ways indicated in the previous section: by varying the pixels of the sides or by setting a multiplication coefficient.
 
-In \texttt{Settings $\rightarrow$ Format} there is the additional possibility to vary the shape of the pixels from 1:1 (square) to handle anamorphic formats.
+In \texttt{Settings $\rightarrow$ Format} there is the additional possibility to vary the shape of the pixels from 1:1 (square) to handle anamorphic formats. In such cases we use:
+
+\qquad $PAR=\frac{DAR}{SAR}$
+
+where:
+
+\textit{DAR}= Display Aspect Ratio
+
+\textit{PAR}= Pixel Aspect Ratio (1 or 1:1 is square)
+
+\textit{SAR}= Storage Aspect Ratio (i.e media file aspect ratio)
+
 
 \subsection{Camera and Projector}%
 \label{sub:camera_and_projector}

@@ -1792,7 +1792,7 @@ Uses a Bayer filter algorithm to interpolate (estimate) missing color informatio
 \subsubsection*{Theory}
 \label{ssub:theory}
 
-Each video has its own framerate. If we want to change it (for \textit{timelapse} or \textit{slowmotion}) the best thing is to shoot the scene with suitable framerate. But even in post production we can do something. The simplest method is to remove some frames to speed up the movie or add some to slow it down (from now on, for simplicity we will consider only the timelapse). Needless to say, the result is not smooth and the viewer will notice it immediately. A better method is to use the interpolation, mediating the pairs of frames that alternate. For example, if we have a sequence of frames $1, 2, 3, 4, 5, 6, 7, 8\dots$ we can make a timelapse mixing frames $1$ and $2$, $3$ and $4$, $5$ and $6$, $7$ and $8$ and so on. So we will have a new sequence of $4$ frames instead of the initial $8$: $\underline{12, 34, 56, 78}\dots$ We will get $50\%$ acceleration but it will always be of bad quality because of the too rough blending between the pairs of frames. Blending can be improved by weighing it differently by $50\% frame 1 + 50\% frame 2$, but the result is still unsatisfactory. Further improvements can be achieved by using $logarithmic$ or $exponential$ interpolation instead of $linear$ interpolation. But the most sophisticated methods that lead to better results are based on \textit{optical flow analysis}. These analyses the movement of circumscribed areas over a given period of time. With this method the intermediate frames do not derive from an approximate blending, but from the calculation of the \textit{vector} of the motion between two frames that determines the displacement (\textit{warping}) of the moving figure in the new intermediate frame. \textit{Interpolate Video} works this way.
+Each video has its own framerate. If we want to change it (for \textit{timelapse} or \textit{slow motion}) the best thing is to shoot the scene with suitable framerate. But even in post production we can do something. The simplest method is to remove some frames to speed up the movie or add some to slow it down (from now on, for simplicity we will consider only the timelapse). Needless to say, the result is not smooth and the viewer will notice it immediately. A better method is to use the interpolation, mediating the pairs of frames that alternate. For example, if we have a sequence of frames $1, 2, 3, 4, 5, 6, 7, 8\dots$ we can make a timelapse mixing frames $1$ and $2$, $3$ and $4$, $5$ and $6$, $7$ and $8$ and so on. So we will have a new sequence of $4$ frames instead of the initial $8$: $\underline{12, 34, 56, 78}\dots$ We will get $50\%$ acceleration but it will always be of bad quality because of the too rough blending between the pairs of frames. Blending can be improved by weighing it differently by $50\% frame 1 + 50\% frame 2$, but the result is still unsatisfactory. Further improvements can be achieved by using $logarithmic$ or $exponential$ interpolation instead of $linear$ interpolation. But the most sophisticated methods that lead to better results are based on \textit{optical flow analysis}. These analyses the movement of circumscribed areas over a given period of time. With this method the intermediate frames do not derive from an approximate blending, but from the calculation of the \textit{vector} of the motion between two frames that determines the displacement (\textit{warping}) of the moving figure in the new intermediate frame. \textit{Interpolate Video} works this way.
 
 \subsubsection*{Practice}
 \label{ssub:practice}
@@ -2207,6 +2207,13 @@ Most cameras take the light coming into the lens, and convert that into $3$ sets
 
 Radial blur is a \textit{Bokeh} effect that creates a whirlpool which simulates a swirling camera. You can vary the location, type, and quality of the blur.
 
+\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.8\linewidth]{radial.png}
+	\caption{For clarity of presentation only 2 fields are shown}
+	\label{fig:radial}
+\end{figure}
+
 \begin{description}
     \item[X,Y] center of the circle of movement.
     \item[Angle] angle of motion in one direction.
@@ -2216,12 +2223,6 @@ Radial blur is a \textit{Bokeh} effect that creates a whirlpool which simulates 
 
 Figure~\ref{fig:radial} has the parameters: $Angle=-35$ and $Steps=2$.
 
-\begin{figure}[hbtp]
-    \centering
-    \includegraphics[width=0.8\linewidth]{radial.png}
-    \caption{For clarity of presentation only 2 fields are shown}
-    \label{fig:radial}
-\end{figure}
 
 \subsection{ReframeRT}%
 \label{sub:reframert}
@@ -2245,11 +2246,11 @@ to interpolation.
 
 Stretch mode multiplies the current frame number of its output by the \textit{scale factor} to arrive at the frame to read from its input. The scaling factor is not entered directly but using a number of \textit{input} frames to be divided by the number of \textit{output} frames.
 
-\vspace{1ex} \texttt{Scale factor = Input frames / Output frames}
+\vspace{1ex} \texttt{Scale factor (SF) = Input frames / Output frames}
 
-\[\frac{1}{8} \Rightarrow scale\, factor = 0.125 \qquad (slowmotion)\]
+\[\frac{1}{8} \Rightarrow scale\, factor = 0.125 \qquad (slow\, motion)\]
 
-That is, one input frame of the original movie corresponds to $8$ new output frames originated by interpolation. It is the opposite with regard to \textit{fast play}.
+For slow motion we leave 1 for the frames of the input and we increase the number of frames of the output (for example putting 8 for the output we have slow motion $8\times$, with $SF=\frac{1}{8}=0.125$). For fast motion we leave 1 for the output and we increase the number for the input (for example 8 to have $8\times$, with $SF=\frac{8}{1}=8$). Another possibility is to put the frame rate of the media (e.g 120 fps) in the input and the project frame rate in the output (e.g 30 fps) or the opposite.
 
 The stretch mode has the effect of changing the length of output video by the inverse of the scale factor. If the scale factor is greater than $1$, the output will end before the end of the sequence on the timeline. If it is less than $1$, the output will end after the end of the sequence on the timeline. The ReframeRT effect must be lengthened to the necessary length to accommodate the scale factor. Change the length of the effect by clicking on the endpoint of the effect and dragging.
 
@@ -2262,6 +2263,8 @@ in stretch mode with a value less than $1$.
 
 \textit{Example:} you have a clip that you want to put in slow motion. The clip starts at $33.792\, seconds$ and ends at $39.765$. The clip is $5.973\, seconds$ long. You want to play it at $\frac{4}{10}^{ths}$ normal speed. You divide the clip length by the playback speed ($5.973\div0.4$) to get a final clip length of $14.9325\,seconds$. You create an in point at the start of your clip: $33.792\,seconds$. You put an out point $14.9325\,seconds$ later, at $48.7245\,seconds$ ($33.792 + 14.9325$). You attach a \texttt{ReframeRT} effect, set it to $0.4$ and stretch. You change the out point at $48.7245$ to an in point. You start your next clip after the slow motion effect at the $48.7245$ out point. You can do this without making any calculations by first applying the effect and then lengthening or shortening the bar to where the stretched movie ends.
 
+Now in the timeline we have the affected part of the plugin where we see the slow/fast effect, and the continuation of the timeline from where the plugin ends. We then have to select the interval on which the plugin acts and render it or transform it into a nested clip or nested asset. In this way we can replace or overlap it with the part of the timeline that originally included all of the part we wanted to slow down/speed up.
+
 \subsubsection*{Downsample}%
 \label{ssub:downsample}
 
@@ -2273,10 +2276,11 @@ Downsample mode changes the frame rate of the input as well as the number of the
 \label{ssub:other_important_points}
 
 \begin{itemize}
-    \item ReframeRT uses the fps indicated in \texttt{Settings$\rightarrow$ Format$\rightarrow$ fps} project and not the \texttt{fps} of the assets.
+    \item ReframeRT uses the fps indicated in \texttt{Settings $\rightarrow$ Format $\rightarrow$ fps} project and not the \texttt{fps} of the assets.
     \item It can be associated with Nested Clips.
-    \item As an alternative to ReframeRT you can use the \textit{speed curve}, or change the framerate in \texttt{Resources$\rightarrow$ info} and in the \texttt{Project}.
+    \item As an alternative to ReframeRT you can use the \textit{speed curve}, or change the framerate in \texttt{Resources $\rightarrow$ info} and in the \texttt{Project}.
     \item It is keyframmable.
+    \item ResampleRT with the same settings is used to act on audio tracks.
 \end{itemize}
 
 \subsection{Reroute}%

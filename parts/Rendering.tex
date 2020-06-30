@@ -469,16 +469,14 @@ communication, shared filesystem, permissions and usernames synched.
   \item set the Total number of jobs to create;
   \item click OK on the bottom of the Preferences window.
   \end{itemize}
-\item On the client computers ($192.168.1.12$), start 5 background
-  \CGG{} tasks via:
+\item Now we must join the nodes created to instances of \CGG{}. On the client computers ($192.168.1.12$), on the terminal, start 5 background  \CGG{} tasks via:
 \begin{lstlisting}[style=sh]
 cd {path_to_cinelerra}
 cin -d 401 cin -d 402
 ...
 cin -d 405
 \end{lstlisting}
-\item On the master node (localhost), start the 2 background \CGG{}
-  tasks via:
+\item Similarly, on the terminal, we must join the local nodes created to instances of \CGG{}. On the master node (localhost), start the 2 background \CGG{}  tasks via:
 \begin{lstlisting}[style=sh]
 cd {path_to_cinelerra}
 cin -d 406
@@ -850,10 +848,10 @@ count, setting up a render farm can really take advantage of using
 all of the cpus. This is much faster than the default automatic
 threading capability. Since you don’t need to communicate with other
 computers, you will not have to be concerned about TCP communication
-or shared disks/files. When you are going to be doing other work
+or shared disks/files; only localhost nodes. On the terminal, we will open many instances of \CGG{} by connecting them to the jobs created. The number of such jobs can be the total number of CPU threads or not. When you are going to be doing other work
 simultaneously while rendering a large job, you will want to leave
-some of the cpus available for that.  Be sure to set “Project SMP
-cpus” in the Settings $\rightarrow$ Preferences, Performance tab to your CPU
+some of the cpus available for that.  Be sure to set \textit{Project SMP
+cpus} in the \texttt{Settings $\rightarrow$ Preferences, Performance} tab to your CPU
 count.
 
 \subsection{Troubleshooting Tips and Warnings}%

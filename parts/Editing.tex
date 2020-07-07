@@ -132,13 +132,6 @@ The 7 \textit{attributes} are described here next followed by the other availabl
 \end{description}
 
 \begin{description}
-\item[Gang Fader] cause the fader to track the movement of
-  whatever other fader you are adjusting by dragging either the fader
-  or the curve on the track.  It doesn't affect the editing made with
-  menu controls.  A fader is only ganged if the arm track is also on.
-  This is often used to adjust audio levels on all the tracks
-  simultaneously.  Gang also causes Nudge parameters to synchronize
-  across all the ganged tracks.
 \item[Draw Media] determines if picons or waveforms are drawn on
   the asset in the track.  You may want to disable this if you know
   that the media/format takes a long time to draw on the timeline.  By
@@ -158,11 +151,18 @@ The 7 \textit{attributes} are described here next followed by the other availabl
   Mute track is used to keep the track with the shared track effect
   from overlapping the output of the source track (the shared track)
   where the shared track effect is not present.
+\item[Gang Fader] cause the fader to track the movement of
+  whatever other fader you are adjusting by dragging either the fader
+  or the curve on the track.  It doesn't affect the editing made with
+  menu controls.  A fader is only ganged if the arm track is also on.
+  This is often used to adjust audio levels on all the tracks
+  simultaneously.  Gang also causes Nudge parameters to synchronize
+  across all the ganged tracks.
+\item[Master Track] Mark a track as \textit{master} serves when using \textit{Gang Channels} or \textit{Gang Media} mode. See \ref{sub:displaying_tracks_ganged}
 \item[Track Data Height] this up/down toggle symbol to the immediate right
 of the 5 attributes, is used to individually resize each track.  This makes
 it very easy to temporarily expand or contract the size of that track either
 by clickin with the left mouse button or using the middle wheel up/down.
-\item[Master Track] Mark a track as \textit{master} serves when using \textit{Gang Channels} or \textit{Gang Media} mode. see ...
 \item[Fader slider] fade values are represented on the timeline
   with a pink (default color) curve that is keyframable.  All tracks have a fader, but
   the units of each fader depend on whether it is audio or video.
@@ -311,50 +311,44 @@ on top of old tracks.
 
 Often users working on media where Audio is the main focus, want all of a media's audio channels, whether stereo or 5:1 channels, to be treated as a single unit. They are more familiar with working with a DAW (Digital Audio Workstation software) and find that it takes extra work and a lot more care to have to individually manage audio tracks rather than have them automatically edited as a ganged group.
 
-To use this capability, there is a \textit{Gang Tracks} toggle button on the main timeline controls to switch between 3 modes of working with multiple channels so that the tracks are automatically edited as a single unit. Operations affected include edits such as cuts, moving sections, and adding plugins. Group masters are marked by the \textit{Master Track} toggle in the patchbays. A track gang group begins on a master track, and extends to but does not include the next master track. The 3 \textit{Gang Tracks} modes are:
+To get this capability, there is a \textit{Gang Tracks} toggle button on the main timeline controls to switch between 3 modes of working with multiple channels so that the tracks are automatically edited as a single unit. Operations affected include edits such as cuts, moving sections, and adding plugins. Group masters are marked by the \textit{Master Track} toggle in the patchbays. A track gang group begins on a master track, and extends to, but not including, the next master track. The 3 \textit{Gang Tracks} modes are:
 
 \begin{enumerate}
-	\item \textbf{Gang None:} this is the default mode and is the traditional way Cinelerra operates. If you never toggle the "Gang Tracks" button, everything operates normally as it always has. In this mode, the button icon looks like 3 tracks with $\dots$ on the end and all tracks are visible on the timeline. See figure~\ref{fig:gang-track-01}.
+	\item \textbf{Gang None:} this is the default mode and is the traditional way Cinelerra operates. If you never toggle the "Gang Tracks" button, everything operates normally as it always has. In this mode, the button icon looks like 3 tracks with $\dots$ on the end and all tracks are visible on the timeline. See figure~\ref{fig:gang-track-01}
 \end{enumerate}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.99\linewidth]{gang-track-01.png}
-	\caption{Gang None: only the video track is master. We see all tracks, both master and non-master (default).}
+	\caption{Gang None: only the video track is master. We see all tracks both master and non-master (default)}
 	\label{fig:gang-track-01}
 \end{figure}
 
 \begin{enumerate}[start=2]
-	\item \textbf{Gang Channels:} in this mode, only the \textit{Master Tracks} and the first track of video, audio, or subtitles which are not master tracks are shown. Stereo tracks, or 5:1 channels/any number of audio tracks, are drawn as 1 audio track for the purpose of making changes on that single track which are then propagated to all of its other channel tracks automatically. This is the DAW-like mode. The \textit{Gang Tracks} button icon looks like 2 tracks and only the first video and first audio tracks will be shown. See figure~\ref{fig:gang-track-02}.
+	\item \textbf{Gang Channels:} in this mode, only the \textit{Master Tracks} and the first track of video, audio, or subtitles not master will are shown. Stereo tracks, or 5:1 channels/any number of audio tracks, are drawn as 1 audio track for the purpose of making changes on that single track which are propagated to all of its other channel tracks automatically. This is the DAW-like mode. The \textit{Gang Tracks} button icon looks like 2 tracks and only the first video and first audio tracks will be shown. See figure~\ref{fig:gang-track-02}
 \end{enumerate}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.99\linewidth]{gang-track-02.png}
-	\caption{Gang Channels: only the video track is master. We see the master tracks and the first of the non-master tracks.}
+	\caption{Gang Channels: only the video track is master. Let's see the master tracks and the first of the non master tracks}
 	\label{fig:gang-track-02}
 \end{figure}
 
 \begin{enumerate}[start=3]
-	\item \textbf{Gang Media:} this mode only shows the \textit{Master Tracks} of the media but changes are propagated to the appropriate other related tracks (even if they are not visible). The \textit{Gang Tracks} button icon looks like a single track. See figure~\ref{fig:gang-track-03}.
+	\item \textbf{Gang Media:} this mode only shows the \textit{Master Tracks} of the media but changes are propagated to the appropriate other related tracks (even if they are not visible). The \textit{Gang Tracks} button icon looks like a single track. See figure~\ref{fig:gang-track-03}
 \end{enumerate}
 
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=0.99\linewidth]{gang-track-03.png}
-	\caption{Gang Media: only the video track is master. We only see the master tracks.}
+	\caption{Gang Media: only the video track is master. We only see the master tracks}
 	\label{fig:gang-track-03}
 \end{figure}
 
-The current \textit{Gang Tracks} mode is saved across sessions and will be saved in your project. Although most users will work in the \textit{Gang None} mode, those more familiar with DAW software will tend to use the \textit{Gang Channel}s mode.
+The current \textit{Gang Tracks} mode is saved across sessions and will be saved in your project. Although most likely users will work in the \textit{Gang None} mode, users more familiar with DAW software will tend to use the \textit{Gang Channel}s mode.
 
-To understand why certain aspects work the way they do in the gang modes, here is an explanation.
-Adding in this DAW-like feature to long time existing code called for an exact algorithm because tracks are
-not inherently bound or in a container. Because of this, there is a requirement that the tracks have to be
-lined up at the beginning and this timeline alignment is what creates the binding and allows for ganging.  
-
-Next, more details about master tracks are explained, which in addition to the alignment help to define the
-scope of a grouped gang. Each patchbay has a \textit{Master Track} button on the extreme right of the patchbay. These mark which tracks of the media are master tracks. The span of tracks between the gang group masters are the gang track group. The master track toggles can be disabled/enabled as the user wishes to create the desired track groups. Normal file loads will mark the first stream of each file loaded as a master if the media is loaded with insertion strategy of\textit{ Replace current project}, \textit{Replace current project and concatenate tracks} or \textit{Append in new tracks}. Frequently, editing is done on video, audio, or audio/video groups to maintain timeline synchronization. By grouping related tracks, this procedure is much more automatic.
+More details ares described next about master tracks. Each patchbay has a \textit{Master Track} button on the extreme right of the patchbay. These mark which tracks of the media are master tracks. The span of tracks between the gang group masters are the gang track group. The master track toggles can be disabled/enabled as the user wishes to create the desired track groups. Normal file loads will mark the first stream of each file loaded as a master, if the media is loaded with insertion strategy of\textit{ Replace current project}, \textit{Replace current project and concatenate tracks} or \textit{Append in new tracks}. Frequently, editing is done on video, audio, or audio/video groups to maintain timeline synchronization. By grouping related tracks, this procedure is much more automatic.
 
 Previously existing projects created before the addition of ganged tracks, will have ALL tracks marked as master tracks and changing the \textit{Gang Tracks} button mode will have no effect. The user will have to properly designate which track is the master track and disabling the others in order to make use of the toggle modes.
 
@@ -365,9 +359,6 @@ NOTES:
 	\item When in \textit{Gang Channels} or \textit{Gang Media} mode, if the first audio track is not disarmed, but 	any of its connected channel tracks are, the disarm of those channels are ignored and all channels are treated as being armed. This is to be consistent with the purpose of using this mode; the purpose being that any edits to the first master track are automatically propagated to all other channels.
 	\item It may be better when using the \textit{Gang Channels} or \textit{Gang Media} mode to make any changes
 	to the first audio channel to be automatically duplicated before reverting to the \textit{Gang None} mode to make other changes. Once you start changing individual channels (that is, audio tracks) so that they are no longer coordinated in their edits/plugins, it may be more difficult to switch back to \textit{Gang Channels} mode and get the desired results since the channels may no longer be lined up.
-	\item When in Drag and Drop mode and you create a \textit{Permanent Group} as described in section
-~\ref{sub:grouping_edits} the grouping does not take precedence over ganging; i.e. they are ignored and only
-the timeline alignment is honored.
 \end{itemize}
 
 \section{Two Screen Editing}%

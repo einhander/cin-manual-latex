@@ -3585,6 +3585,7 @@ The following is a list of the integrated audio plug-ins.
   the data.
 \item [F\_astats]~\\Shows time domain statistics about audio
   frames.
+\item [F\_asubboost]~\\Boost subwoofer frequencies.
 \item [F\_atempo]~\\Adjusts audio tempo.
 \item [F\_atrim]~\\Pick one continuous section from the input,
   drop the rest.
@@ -3669,6 +3670,7 @@ The following is a list of the integrated audio plug-ins.
 
 The following is a list of the integrated video plug-ins.
 \begin{description}
+\item [F\_addroi]~\\Mark a region of interest in a video frame.
 \item [F\_amplify]~\\Amplify changes between successive video
   frames.
 \item [F\_atadenoise]~\\Apply an Adaptive Temporal Averaging
@@ -3676,6 +3678,7 @@ The following is a list of the integrated video plug-ins.
 \item [F\_avgblur]~\\Apply average blur filter.
 \item [F\_bbox]~\\Compute bounding box for each frame.
 \item [F\_bench]~\\Benchmarks part of a filtergraph.
+\item [F\_bilateral]~\\Apply bilateral filter, spatial smoothing while preserving edges.
 \item [F\_bitplaneoise]~\\Measure bit plane noise.
 \item [F\_blackdetect]~\\Detect video intervals that are
   (almost) black.
@@ -3684,6 +3687,7 @@ The following is a list of the integrated video plug-ins.
   settings you are able to change the power and the radius of the
   boxblur applied to luma, chroma and alpha.
 \item [F\_bwdif]~\\Deinterlaces the input image.
+\item [F\_cas]~\\Apply Contrast Adaptive Sharpen filter to video.
 \item [F\_chromakey]~\\Turns a certain color into
   transparency. Operates on YUV colors.
 \item [F\_ciescope]~\\Video CIE scope.
@@ -3702,6 +3706,7 @@ The following is a list of the integrated video plug-ins.
 \item [F\_cropdetect]~\\Auto-detect crop size.
 \item [F\_curves]~\\Adjust components curves.
 \item [F\_datascope]~\\Video data analysis.
+\item [F\_dblur]~\\Apply Directional blur filter.
 \item [F\_dctdnoiz]~\\Denoise frames using $2D DCT$.
 \item [F\_deband]~\\Debands video.
 \item [F\_deblock]~\\Deblocks video.
@@ -3766,6 +3771,7 @@ The following is a list of the integrated video plug-ins.
 \item [F\_fspp]~\\Applies Fast Simple Post-processing filter.
 \item [F\_gblur]~\\Apply Gaussian Blur filter.
 \item [F\_gradfun]~\\Debands video quickly using gradients.
+\item [F\_gradients]~\\Draws a transparent gradient.
 \item [F\_graphmonitor]~\\Show various filtergraph stats.
 \item [F\_greyedge]~\\Estimates scene illumination by grey
   edge assumption.
@@ -3807,6 +3813,7 @@ The following is a list of the integrated video plug-ins.
 \item [F\_mandelbrot]~\\Render a Mandelbrot fractal.
 \item [F\_mcdeint]~\\Applies motion compensating
   deinterlacing.
+\item [F\_median]~\\Pick median pixel from rectangle defined by radius.
 \item [F\_mestimate]~\\Generate motion vectors.
 \item [F\_mpdecimate]~\\Remove near-duplicate frames.
 \item [F\_mptestsrc]~\\Generate various test pattern.
@@ -3827,6 +3834,7 @@ The following is a list of the integrated video plug-ins.
 \item [F\_perms]~\\Set permissions for the output video frame.
 \item [F\_perspective]~\\Corrects the perspective of video.
 \item [F\_phase]~\\Phases shift fields.
+\item [F\_photosensitivity]~\\Filter out photosensitive epilepsy seizure-inducing flashes.
 \item [F\_pixscope]~\\Pixel data analysis for checking color
   and levels. It will display sample values of color channels.
 \item [F\_pp]~\\Filters video using libpostproc.
@@ -3850,6 +3858,8 @@ The following is a list of the integrated video plug-ins.
 \item [F\_sab]~\\Applies shape adaptive blur.
 \item [F\_scale]~\\Scale the input video size and/or convert
   the image format.
+\item [F\_scdet]~\\Detect video scene change.
+\item [F\_scroll]~\\Scroll input video horizontally and/or vertically by constant speed.
 \item [F\_separatefields]~\\Split input video frames into
   fields.
 \item [F\_setparams]~\\Force field, or color property for the
@@ -3859,6 +3869,7 @@ The following is a list of the integrated video plug-ins.
 \item [F\_showpalette]~\\Display frame palette.
 \item [F\_shuffleframes]~\\Shuffles video frames.
 \item [F\_shuffleplanes]~\\Shuffles video planes.
+\item [F\_sierpinski]~\\Generate a Sierpinski carpet/triangle fractal, and randomly pan around.
 \item [F\_signalstats]~\\Separates statistics from video
   analysis.
 \item [F\_smartblur]~\\Blurs the input video without impacting
@@ -3876,15 +3887,19 @@ The following is a list of the integrated video plug-ins.
 \item [F\_tblend]~\\Blend successive frames.
 \item [F\_testsrc]~\\Generate test pattern.
 \item [F\_testsrc2]~\\Generate another test pattern.
+\item [F\_thistogram]~\\Compute and draw a color distribution histogram for the input video across time.
 \item [F\_tile]~\\Tile several successive frames together.
 \item [F\_tinterlace]~\\Performs temporal field interlacing.
 \item [F\_tlut2]~\\Compute and apply a lookup table from 2
   successive frames.
+\item [F\_tmedian]~\\Pick median pixels from successive frames.
 \item [F\_tmix]~\\Mix successive video frames.
 \item [F\_transpose]~\\Transposes input video.
 \item [F\_unsharp]~\\Sharpen or blur the input videlo.
+\item [F\_untile]~\\Untile a frame into a sequence of frames.
 \item [F\_uspp]~\\Applies Ultra Simple/Slow Post-processing
   filter.
+\item [F\_v360]~\\Convert 360 videos between various formats.
 \item [F\_vaguedenoiser]~\\Applies a Wavelet based Denoiser.
 \item [F\_vectorscope]~\\Video vectorscope.
 \item [F\_vflip]~\\Flips the input video vertically.
@@ -3900,6 +3915,7 @@ The following is a list of the integrated video plug-ins.
 \item [F\_weave]~\\Weaves input video fields into frames.
 \item [F\_xbr]~\\Scales the input using $xBR$ algorithm.
 \item [F\_yadif]~\\Deinterlaces the input image.
+\item [F\_yaepblur]~\\Yet another edge preserving blur filter.
 \item [F\_yuvtestsrc]~\\Generate YUV test pattern.
 \item [F\_zoompan]~\\Applies Zoom \& Pan effect.
 \end{description}

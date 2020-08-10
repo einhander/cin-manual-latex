@@ -1809,6 +1809,20 @@ tab, Nested Proxy Path.
   \label{fig:nesting}
 \end{figure}
 
+\paragraph{Notes:} creating nested clips is a complicated internal process for \CGG{}, especially for managing audio tracks. Therefore you need to make sure you have your project set up as you expect before you start nesting with the \texttt{Nest to Media} command.  Below are several things to remember.
+
+\begin{itemize}
+	\item The creation of the nested clip is based on the settings in \texttt{Settings $\rightarrow$ Format}. Be sure that the number of audio tracks and channels is the same as we want to have in the nested clip. In addition, it is better to make each audio track independent from the others (which could be linked in more than one channel) using the option: \texttt{Audio $\rightarrow$ Map 1:1}
+	\item You can do any editing on the nested clip once it is loaded to the timeline. For example we can start an OpenEDL session to make the changes. Once out of the OpenEDL session it may be that the changes made are not visible in the original nested clip. You can fix this by doing RMB on the nested clip in the \textit{Resources/Media} window and choosing \texttt{Rebuild index}. This process may take some time depending on the size of
+the media; because of the additional time required to do this, it is not done automatically in order to allow
+the user to make the decision as to when they are done editing enough and need to see the exact results
+in order to save time.
+	\item Because of the way the timeline thumbnails are displayed, after editing using OpenEDL of a
+nested clip, the thumbnails of the video track may be redrawn and may look different and out of sync with the
+way they did originally with respect to the audio waveforms. This is simply a result of the redrawing of the
+ video track which is independent from the redrawing of the audio tracks. The playback is still synchronized.
+\end{itemize}
+
 \paragraph{Usage Examples of Nested Clips}
 
 \begin{description}

@@ -108,7 +108,9 @@ audio, with a double click. The curves to be affected must be both armed and gan
 patchbays to be included in the operation. You can see the advantage of having different media types
 ganged the same so that they will remain synchronized.  However, if as recommended you have Settings of \textit{Align cursor on frames} set, video will always snap to a frame, whereas audio does not.  Because the smallest pieces are audio and not video, when video is present in order to maintain synchronization be sure to do the double click on the video track.  The single/double click feature also works in the same manner for Fade Automation.
 
-The conversion algorithms that calculate the duration are approximate, not exact.   Speed is not checked when inserting media on a track that already has speed adjustments so duration will not be corrected in that case.  You can not do negative time and you can not play backwards.
+The conversion algorithms that calculate the duration are approximate, not exact.   Speed is not checked when inserting media on a track that already has speed adjustments so duration will not be corrected in that case.  You can not do negative time and you can not play backwards.  When working with edits and the speed auto, if you 
+make a "cut" in a section, the speed curve values should not change over the remaining playable edits.  It is
+possible to easily add "disjoint" curve points at the boundaries of the edit to preserve the curve shape.
 
 Steps to demonstrate Auto Gang of Speed/Fade on all of the audio and video tracks are listed below:
 

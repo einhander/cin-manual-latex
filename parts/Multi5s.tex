@@ -288,6 +288,126 @@ Repeat steps 2 through 7 for each of the mixer viewers you need going down the p
 
 Sometimes the association does not stick initially.  If not, highlight the mixer viewer with the problem, change the mixer arrows to point up, and reassociate.
 
+\section{Align Timecodes}%
+\label{sec:align_timecodes}
+
+Align Timecodes is especially useful in the case where you create video with multiple cameras capable of recording a timecode in the metadata of each file.  Let’s say we have recorded three videos at the same time at a concert with each camera set up at unique positions and at different angles.   All of the cameras start recording at various times but were synchronized with the same master clock so that the recordings are timestamped with that synchronized time.  For example, the 3 cameras have embedded metadata as follows:
+
+\begin{center}
+	\begin{tabular}{l r}
+	camera 1 & 00:00:00:01 \\
+	camera 2 & 00:00:10:07 \\
+	camera 3 & 00:00:17:22 \\
+	\end{tabular}
+\end{center}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.0\linewidth]{timecode-01.png}
+	\caption{Before sync}
+	\label{fig:timecode-01}
+\end{figure}
+
+Timecode synchronization is performed by the program when you choose the option \textit{Align Timecodes} and works in 2 steps. The first automatic step is to locate the earliest timecode and the second step is to align the edits on the armed tracks using that time on the timeline. 
+
+When you load in the three files to different tracks, they'll be placed on a timeline that starts from $00:00:00:00$ as usual. But, by middle mouse clicking (MMB) on any of the video tracks, you can view the timecode embedded at that point in that file.
+
+To make it easy to align the videos onto the timeline manually, set the \textit{origin point}, that is the leftmost time index, of the timebar to the timecode of the earliest video.  For the 3 aforementioned cameras this would be camera 1 with a timeecode of $00:00:00:01$.  By using the \textit{clapboard} button on the main timeline, you can set $00:00:00:01$ as the start timecode. Then positioning the camera 1 video at the start of the timeline will line its frames up with the times on the timebar.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.0\linewidth]{timecode-02.png}
+	\caption{Clapperboard button}
+	\label{fig:timecode-02}
+\end{figure}
+
+Similarly, using the middle mouse button to view the other 2 camera’s timecodes, you can position them  so their timecodes line up and now all three tracks will be in sync.  You can do this manually or simply do it automatically with the option under: \texttt{Tracks  $\rightarrow$  Align Timecodes}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.0\linewidth]{timecode-03.png}
+	\caption{After sync}
+	\label{fig:timecode-03}
+\end{figure}
+
+Timecode synchronization in \CGG{} is based on the inclusion of an actual \textit{timecode} saved in
+the media as can be seen using the \texttt{ffprobe} or \texttt{mediainfo} command line. Examples are shown here:
+
+\begin{lstlisting}[style=sh]
+# ffprobe tut1.mov
+		Metadata:
+		handler_name:	VideoHandler
+		timecode:		00:00:20:01
+
+# mediainfo mtb.mp4
+		Time code of first frame:	11:05:49:41
+		Time code, striped:		Yes
+		Title:				GoPro AVC
+\end{lstlisting}
+
+Many newer cameras and media in a MOV container have valid timecodes often with SMPTE
+compliant start Timecode in Quicktime format, whereas others do not. Most low end cameras do not.
+When no timecode is present, various clock time values may be used to synchronize instead.
+
+There are various types of timecodes and they are written in metadata in various ways. Because it is not clear which timecode in the file is the one to use or there is none, the precedence as described next is followed. The contexts, packets, streams, and data refer to the corresponding ffmpeg data or metadata objects:
+
+\begin{enumerate}
+	\item if the format context has a timecode use: \texttt{fmt\_ctx $\rightarrow$ timecode - 0}
+	\item if the layer/channel has a timecode use: \texttt{st $\rightarrow$ timecode - (start\_time -nudge)}
+	\item find the first program stream with video stream, and if the video stream has a timecode use:
+	\texttt{st $\rightarrow$ timecode - (start\_time-nudge)}
+	\item find timecode in any stream use: \texttt{st $\rightarrow$ timecode}
+	\item read 100 packets, save \texttt{ofs=pkt.pts*st $\rightarrow$ time\_base - st $\rightarrow$ nudge}:
+	\begin{itemize}
+		\item decode frame for video stream of the first program
+		\item if \texttt{frame $\rightarrow$ timecode} has a timecode use:\texttt{ frame $\rightarrow$ timecode - ofs}
+		\item if side\_data has gop (group of pictures) timecode use: \texttt{gop $\rightarrow$ timecode - ofs}
+		\item if side\_data has smpte timecode use: \texttt{smpte $\rightarrow$ timecode - ofs}
+	\end{itemize}
+	\item if the \texttt{filename/url} scans \texttt{*date\_time.ext} use: \texttt{date\_time} (yr, month, day, hr, min, sec, nanosecond)
+	\item if stat (display file status) works on the \texttt{filename/url} use: \texttt{mtime} (modification time)
+	\item finally, if none of the above are usable, then return \texttt{failure}
+\end{enumerate}
+
+Operation of Align Timecodes includes the following options to help in your setup and review:
+
+\begin{itemize}
+	\item \textit{Align Timecodes} under the \textit{Tracks} pulldown
+	\item \textit{Clapperboard} icon on the main timeline to set a timecode.
+	\item Timecode option added to timebar choices (in timecode $hh:mm:ss:ff$) with use of the session frame
+	rate as a time standard.
+	\item Time Code Start in the Resources window on the bottom of \textit{Info} for the media if the timecode for that
+	asset has been scanned and is known. You can scan the asset’s Timecode by using the middle mouse
+	button on its track which then displays the timecode for that on the timebar.
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.0\linewidth]{timecode-04.png}
+	\caption{Timecode via MMB on track and via Resources windows/Info}
+	\label{fig:timecode-04}
+\end{figure}
+
+\paragraph*{Notes}
+
+\begin{itemize}
+	\item \textit{Align Timecodes} is a good first step to quickly sync media up either perfectly or roughly.
+	\item Currently this is not known to function for syncing audio recorded on a separate audio device,
+	because no test material was provided to ensure that this works.
+	\item Disarmed tracks will not be affected by using \textit{Align Timecodes}.
+	\item No edits or sections will get cut off on the left or elsewhere, unless the moved edits overlap.
+	\item You can add a timecode to video using an \texttt{ffmpeg} command if you want to align a particular video
+	which has no timecode to ones that do. For example:
+\end{itemize}
+
+\begin{lstlisting}[style=sh]
+ffmpeg -i originalfile.mp4 -metadata timecode="14:36:08:29" -c copy newfile.mp4
+
+# where "-i" is followed by the input filename
+# where "-metadata timecode" is followed by the timecode key
+# where "-c copy" just copies the video/audio to the following output filename
+\end{lstlisting}
+
 \section{Multi-Pane Support}%
 \label{sec:multipane_support}
 

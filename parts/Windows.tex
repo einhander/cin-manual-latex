@@ -1,4 +1,4 @@
-\chapter{The 4+ Windows}%
+\chapter{Interface (the 4+ Windows)}%
 \label{cha:the_4_windows}
 
 \begin{figure}[htpb]
@@ -11,8 +11,7 @@
 
 First it is important to know what an EDL is. When \CGG{} saves a file, it saves the EDL,
 Edit Decision List, of your project which contains all the settings and locations of edits
-and pointers to the media so that the media is not modified. The EDL is described in the
-Load, Save and the EDL chapter (\ref{sec:edl_edit_decision_list}).
+and pointers to the media so that the media is not modified. The EDL is described in \nameref{sec:edl_edit_decision_list}.
 
 \section{Program Window}%
 \label{sec:program_window}
@@ -21,7 +20,7 @@ The main window is called the \textit{Program} window and is often just referred
 This timeline consists of a vertical stack of tracks with time represented horizontally on the track. 
 It is the output of the rendering operations and this is what is saved when you run the File pulldown, Save command.
 Immediately to the left of the timeline is the patchbay. The patchbay contains options that affect each track.  
-These options are described in great detail in the Editing chapter (\ref{sec:patchbay}).
+These options are described in great detail in \nameref{sec:patchbay}.
 
 The \textit{Window} pulldown on the main window contains options
 that affect the 4 main windows. The first 3 options are used to
@@ -33,7 +32,7 @@ displays, the \textit{Default positions} operation only uses the one
 monitor to display the windows, but as you can see in the
 \textit{Window} pulldown you have more options to change that. Usage
 with dual monitors is explained
-in~\ref{sec:multiscreen_playback_configuration}.
+in~\nameref{sec:playback_a_b}.
 
 \subsection{Video and Audio Tracks and Navigation}%
 \label{sub:video_and_audio_tracks_and_navigation}
@@ -66,7 +65,7 @@ And use the horizontal scroll bar to scan across time, or again even easier, you
 Once you have become familiar with many of the graphical tools and pulldowns, you can switch to using more of
 the keyboard to navigate.  Many of the key equivalences are listed in each of the pulldowns to the right of the option
  as a shortcut. All of the shortcuts are listed in a document for keyboard 
-navigation (\ref{sub:main_menu_keys}). This includes, for example, shortcuts like the \texttt{Home} and \texttt{End} keys to go to the beginning or end of the timeline.  
+navigation (\nameref{cha:shortcuts}). This includes, for example, shortcuts like the \texttt{Home} and \texttt{End} keys to go to the beginning or end of the timeline.  
 Another example is in the default cut and paste mode, hold down \texttt{Shift} while pressing \texttt{Home} or \texttt{End} in order to select the region of the timeline between the insertion point and the key pressed.
 
 \subsection{Zoom Panel}%
@@ -152,6 +151,8 @@ The Track Menu contains a number of options:
         media. In Drag and Drop editing mode, if you select multiple edits all of those clips will have
 their title name changed.
     \item[Bar color]  allows the user to select a specific color for the title bar.  This helps to more easily locate a piece of media.
+    \item[Swap up] moves the selected track one step up in the stack of its corresponding type - audio or video.
+    \item[Swap down]  moves the selected track one step down in the stack of its corresponding type - audio or video.
     \item[Resize Track]  resizes the track; this is only applicable to video tracks.
     \item[Match Output Size]  resizes the track to match the current output size; this is only applicable to video tracks.
 \end{description}
@@ -410,7 +411,7 @@ and \textit{Attach transition}.  The \textit{Attach effect} is especially useful
 you need the effect to be applied to all related audio tracks as a \textit{Shared effect}
 and is described as an alternative method of application in section \ref{sec:shared_effect_tracks}.
     \item[Video]  video functions such as \textit{Add track, Default/Attach transition, Render effect}.
-    \item[Tracks]  move or delete tracks are the most often used.
+    \item[Tracks]  move or delete tracks are the most often used plus \textit{Align Timecodes}.
     \item[Settings]  much of this is described elsewhere with the most frequently used to include
 Preferences (\ref{cha:configuration_settings_preferences}), Format (\ref{cha:project_and_media_attributes}), 
 Proxy and Transcode (\ref{sec:proxy_settings}), as well as the others.
@@ -451,6 +452,21 @@ The files containing the coordinates for your layouts will automatically be save
 To use the desired layout, keyin the shortcut or use the Window pulldown and choose \emph{Load layout} and then make your choice. It is very beneficial to learn the shortcuts for your
 layouts because they can be executed from any of the 4 windows instead of just the main
 timeline window.
+
+\subsection{Multi-Pane Support}%
+\label{sub:multipane_support}
+
+The main \CGG{} edit window holds the Track Canvas which can be divided into 4 panes of track data: 1 or 2 vertical panes and/or 1 or 2 horizontal panes.  To split the track, use the Window pulldown, and then click on \textit{Split X} or \textit{Split Y} depending on how you wish to split the track.  Alternatively, the canvas pane types can be changed using keys \textit{<Ctrl-1>} for toggle split horizontal or \textit{<Ctrl-2>} for toggle split vertical.  Or the track can be split into panes by using the \textit{+ widget} in the lower right hand corner of the track canvas.  Once the track has been divided, you can use the + widget shortcut or the drag bars to change the size of the panes.
+
+Multi-Pane, or split screen, allows you to look at the first part of a movie at the same time as a part that is a long ways away on the timeline which would have been off the screen.  By having multiple panes, you can see the 2 parts you want to look at simultaneously and drag/drop easily between the 2.  Also, the \textit{X pane split} is extremely convenient for laptop users and computer monitors with small screens since it can be used with horizontal scrolling with the mouse wheel + Ctrl.  The \textit{Y-pane split} makes it easy to see 2 simultaneous drag and drop zones when you have lots of tracks (figure~\ref{fig:multi-pane01}).
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{multi-pane01.png}
+	\caption{Shown are 4 panes that have split in X and Y the main track canvas}
+	\label{fig:multi-pane01}
+\end{figure}
+
 
 \subsection{Just Playing!}%
 \label{sub:just_playing_}
@@ -896,6 +912,18 @@ The translation effect is dropped onto the video track. The input dimensions of 
 To put the reduced video in the center subsection that the projector shows would require offsetting out $x$ and out $y$ by a complicated calculation. 
 Instead, we leave out $x$ and out $y$ at 0 and use the projector's tool window. 
 By selecting left justify and top justify, the projector displays the reduced image from the top left corner of the \textit{temporary} in the center of the output.
+
+Other buttons cover the 5 modes of curves interpolation: smooth, linear, tangent, free, bump.
+
+\begin{description}
+	\item[smooth:] bezier interpolation which are flat at the endpts
+	\item[linear:] piecewise linear curve.
+	\item[tangent:] bezier interpolation with collinear endpts in a specified line.
+	\item[disjoint:] piecewise bezier, if there is such a thing.
+	\item[bump:] has 2 values, one viewed from the left/right, discontinuous.
+\end{description}
+
+Finally there are the 2 buttons for the bump curves: settings on Right/Left Edges and Span (see \nameref{sec:bump_autos}).
 
 \subsubsection*{Reset to Default}%
 \label{ssub:reset_default}

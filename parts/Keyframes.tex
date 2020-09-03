@@ -108,9 +108,8 @@ audio, with a double click. The curves to be affected must be both armed and gan
 patchbays to be included in the operation. You can see the advantage of having different media types
 ganged the same so that they will remain synchronized.  However, if as recommended you have Settings of \textit{Align cursor on frames} set, video will always snap to a frame, whereas audio does not.  Because the smallest pieces are audio and not video, when video is present in order to maintain synchronization be sure to do the double click on the video track.  The single/double click feature also works in the same manner for Fade Automation.
 
-The conversion algorithms that calculate the duration are approximate, not exact.   Speed is not checked when inserting media on a track that already has speed adjustments so duration will not be corrected in that case.  You can not do negative time and you can not play backwards.  When working with edits and the speed auto, if you 
-make a "cut" in a section, the speed curve values should not change over the remaining playable edits.  It is
-possible to easily add "disjoint" curve points at the boundaries of the edit to preserve the curve shape.
+The conversion algorithms that calculate the duration are approximate, not exact.   Speed is not checked when inserting media on a track that already has speed adjustments so duration will not be corrected in that case.  You can not do negative time and you can not play backwards.  When working with edits and the speed auto, if you make a \textit{cut} in a section, the speed curve values should not change over the remaining playable edits.  It is
+possible to easily add \textit{disjoint} curve points at the boundaries of the edit to preserve the curve shape.
 
 Steps to demonstrate Auto Gang of Speed/Fade on all of the audio and video tracks are listed below:
 
@@ -140,6 +139,94 @@ Figure~\ref{fig:always} shows orange keyframes and lines for the ganged speed au
 \end{figure}
 
 One other helpful item is a small colored indicator in the zoombar \textit{Automation Type} box when you have clicked on an auto line.  It will be the same color as that line so you can easily see out of the corner of your eye what that line refers to.  This is especially useful for the Camera and Projector X,Y,Z lines which are often right on top of each other.  In addition the status bar will have the colored indicator to the left of the last auto value when that status is visible.
+
+\section{Bump autos}%
+\label{sec:bump_autos}
+
+Bump autos are a kind of floating point keyframe that differs from the rest
+of the floating autos, like smooth and linear, in that they have two values:
+
+   a left edge and a right edge value.
+
+The presence of a \textit{bump} creates boundaries
+to regions on the timeline.  The region begins at that bump, and extends to
+the next bump auto.  If the bump \textit{span} toggle is set, then adjusting the
+left/right edge value will raise or lower all of the auto values in the
+bump region.  For example, if you put a speed bump in at 1.0 secs and
+another at 2.0 secs on the timeline, and adjust the right edge of the first auto to
+speed 3.0, then the first region of playback (between 0.0 and 1.0 secs) will
+play at normal speed, the next region (between the speed bumps) will play
+at 3x, and the last region (after the 2.0, which moved to 1.333 after speed up)
+will play at normal speed (figure~\ref{fig:bump-autos-04}).
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.6\linewidth]{bump-autos-04.png}
+	\caption{range from left keyframe to right keyframe}
+	\label{fig:bump-autos-04}
+\end{figure}
+
+Adjusting the \textit{bump} edge values when \textit{span} is on modifies all of the keyframes between edges of bumps, or to the beginning or end of media if there are no bumps to end the bump region.  Turn \textit{span} off if you only want to change the edge value without modifying the region values.
+
+\paragraph{Technical Insight:} The \textit{bump} is a kind of FloatAuto, an element in an automation list that is one of the 12 automation types of keyframe lists:
+
+\qquad \textit{mute, cam\_x,y,z, proj\_x,y,z fade, pan, mode, mask, speed}
+
+which are part of the Track.  A FloatAuto is one of 4 auto \textit{value} types
+that are stored in the auto at the keyframe position: \texttt{float, mask, int,
+pan}.
+
+A FloatAuto stores a floating value for the automation at a position on
+the track.  When a FloatAuto \texttt{get\_value} is invoked at a track position, the
+position is used to access a previous and next auto list element values
+based on the \textit{current} position.  The returned value is generated using
+one of 5 modes of curve interpolation: smooth, linear, tangent, disjoint, bump.
+
+When a FloatAuto is created, it gets a list default value.  This varies
+by auto type speed=0, fade=100, ..., and at position 0, but this is almost
+always immediately changed to a value specified for the current position,
+a value/mode you specify in the sliders and drag values of the GUI updates.
+
+The best way to create bump keyframes is highlight a region and then:
+
+\texttt{Keyframes $\rightarrow$ Create curve type $\rightarrow$ bump}
+
+\texttt{Keyframes $\rightarrow$ Create keyframes $\rightarrow$ speed} (or other)
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{bump-autos-01.png}
+	\caption{Bump autos creation}
+	\label{fig:bump-autos-01}
+\end{figure}
+
+However, you can also create them by clicking or double-clicking on the curve, then:
+
+\texttt{RMB $\rightarrow$ bump}
+
+\texttt{RMB $\rightarrow$ speed} (or other)
+
+Make sure that the keyframes at the edges are bump type, span is active and that the left edge is set to the right (if we want to change the next interval). Changing the \textit{Left/Right Edge} and \textit{Span} options will involve all the autos of the curve. Actually the changes concern the whole curve, not the individual keyframes.
+
+\textbf{Warning}: bump autos works only via slider. Dragging the keyframe with the mouse makes you lose the \textit{right/left edge} and \textit{span} settings and behave as normal autos (figure~\ref{fig:bump-autos-02}).
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{bump-autos-02.png}
+	\caption{Speed autos slider}
+	\label{fig:bump-autos-02}
+\end{figure}
+
+With using the sliders on a track, the keyframes ganged track are changed if the positions match; tracks can be excluded by switching the track gang mode off. Another way to edit all armed tracks of all types at the same time is as follows:
+
+\begin{itemize}
+	\item disable \textit{Master track} of all tracks except the first one, on which we will work.
+	\item switch to \textit{gang media} mode. Now only the Master track is visible, but every change made on its keyframes is also applied to the other tracks. (see \nameref{sub:displaying_tracks_ganged})
+\end{itemize}
+
+In the Camera and Projector tools configuration window you will find the \textit{Bump curve}, \textit{Span} and \textit{Rigth/Left Edge} buttons. The Camera-XYZ and Projector-XYZ curves can also create and use Bump autos. (see \nameref{ssub:camera_and_projector_menu})
+
+\paragraph{Note:} do not confuse the autos bump span button with the keyframes span button of the plugins (on MenuBar); they are different and work differently (see \nameref{sec:allow_keyframes_spanning}). With the plugin keyframes, the update is done by first creating a textual \texttt{diff} on the xml values of the plugin keyframes, then applying that diff to all of the keyframes selected in the \textit{span} range.  The bump FloatAuto \texttt{bump\_update} subtracts the old and new values to create a \texttt{diff} that is added to all of the values in the [\textit{right\_edge $\dots$ auto values $\dots$ left\_edge}] region created by bump autos and media endpts.
 
 \section{Plugin Keyframes}%
 \label{sec:plugin_keyframe}

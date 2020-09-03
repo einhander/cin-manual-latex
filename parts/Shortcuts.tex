@@ -29,6 +29,7 @@ The Main window (also called the program window) consists of pulldown menus, but
   & -- load tool & Ctrl-a & Selects all files. \\
   & -- load tool & Ctrl-z & Deselects any highlighted files. \\
   & Save & s & Save project. \\
+  & Save & Ctrl-s & Save project. \\
   & Save As\dots & Shift-S & Save a project for easy moving. \\
   & Export Project & Alt-s & Save a project for easy moving. \\
   & Record\dots & r & Open record window. \\
@@ -46,6 +47,7 @@ The Main window (also called the program window) consists of pulldown menus, but
   & Save Backup & b & Save auto-backup file “backup.xml". \\
   \midrule
   \textcolor{CinBlueText}{Edit} & Undo clear & z & Undo from history previous operation. \\
+  & Undo clear & Ctrl-z & Undo from history previous opration. \\
   & Redo & Shift-Z & Redo from history next opration. \\
   & Cut & x & Copy selection to cut buffer and delete. \\
   & Split & x & Split edit into 2 sections at hairline cursor. \\
@@ -107,7 +109,7 @@ The Main window (also called the program window) consists of pulldown menus, but
   & -- Edit effects &  & Toggle plugins follow edits. \\
   & -- Keyfrs fol.\ edits &  & Toggle keyframes follow edits. \\
   & -- Typeless keyfrs &  & Toggle typeless keyframes mode. \\
-  & Save settings & Ctrl-s & Save \CGG{}\_rc. \\
+  & Save settings now & Ctrl-Shift-S & Save \CGG{}\_rc. \\
   & Loop Playback & Shift-L & Set loop playback region to selection/all. \\
   & Set bkg render & Shift-G & Toggle background rendering. \\
   \midrule
@@ -216,12 +218,13 @@ The Main window (also called the program window) consists of pulldown menus, but
   & Manual Goto & g & Jump to time selected by popup. \\
   \midrule
   \textcolor{CinBlueText}{Drag/Drop Edits} & Clear Select & Ctrl-Shift-A & Deselect all selected edits. \\
+  & Select Edits & Ctrl-Alt-a & Add highlight to selected edits. \\
   & Copy & Ctrl-c & Copy selected edits into copy buffer. \\
   & Cut & Ctrl-x & Delete selected edits/put in buffer/collapse. \\
   & Mute & Ctrl-m & Delete selected edits/put in buffer/insert space. \\
   & Mute & Backspace & Delete selected edits/put in buffer/insert space. \\
   & Copy Pack & Ctrl-Shift-C & Copy selected edits and pack together. \\
-  & Cut Pack & Ctrl-z & Delete selected edits/put in buffer/collapse. \\
+  & Cut Pack & Ctrl-Alt-z & Delete selected edits/put in buffer/collapse. \\
   & Mute Pack & Ctrl-Shift-M & Delete selected edits/put in buffer/insert space. \\
   & Paste & Ctrl-v & Paste (splice) buffer at insertion point or reticle. \\
   & Overwrite & Ctrl-b & Paste (overwrite) buffer at insertion pt/reticle. \\

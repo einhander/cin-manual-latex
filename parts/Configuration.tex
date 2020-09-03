@@ -16,6 +16,22 @@ Several ways exist to change \CGG{}’s operational characteristics.  A lot of v
 \section{Playback A / Playback B}%
 \label{sec:playback_a_b}
 
+\CGG{} supports 2 separate preferences for the playback configuration.  \CGG{} can be operated in a single or dual screen configuration, both by using Xinerama or dual screen configuration of X windows.  It will take some setup using Xconfig to make this work.
+
+The \texttt{Settings $\rightarrow$ Preferences} menu has \textit{Playback A and Playback B} tabs.  The target display and audio device configuration can be separate, to support up to 2 display and/or audio device stations.  The active configuration displays an asterisk (*) in its selection tab and the selected tab will be made active when OK is pressed.  For example: you may have a dual screen monitor system with the left screen showing the \CGG{} main window and the right screen showing the composer.  Another setup might use a monitor for the left screen and an HDTV as the right screen displaying the composer.  When a playback configuration is selected, the audio/video device configuration is switched to the playback selection.  The active playback setup can be changed through use of the menu pulldown of \texttt{Settings $\rightarrow$ Preferences} or via the remote control menu selection (see the section Remote Control for DVB for more detail). 
+
+\subsection*{Yes, you can watch TV on \CGG{} instead of \CGG{} on TV.}%
+\label{sub:watch_tv_on_cinelerra}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.75\linewidth]{multi-screen01.png}
+	\caption{Multi-screen Playback example useful for watching \CGG{} run on the \textit{big screen}}
+	\label{fig:multi-screen01}
+\end{figure}
+
+Figure~\ref{fig:multi-screen01} shows partial window of \textit{*Playback A} selected and the second tab for \textit{Playback B}.  Note that on the bottom right of the window, \textit{Default B Display:} is set to $:0.1$, representing the setting for Screen 1.  On the unseen \textit{Playback A} window, the \textit{Default A Display:} will be set to $:0.0$ meaning for Screen 0.  Otherwise, the default would be nothing there or just <empty>.
+
 \subsection{Audio Out section}%
 \label{sub:audio_out_section}
 
@@ -268,11 +284,9 @@ To change a \textit{Theme} in the main window pulldown, select:
 \texttt{Settings $\rightarrow$ Preferences};
 
 then in Preferences window, click on the \textit{Appearance} tab. In the Editing section in the lower left hand corner,	click on the \textit{down arrow} next to Theme to see your choices. Click on your desired choice from the list given. Check OK, \CGG{} will automatically shutdown and restart.
-
-\begin{description}
-    \item[Plugin Icons] here are currently 4 choices for different plugin icons to include the old original.
-    \item[Layout Scale] allows for setting up scaling 
-for your 4K monitors or any monitor where you would like the text and icons to be just a little bigger or a lot bigger. This scale setting is automatically saved across sessions. 
+\paragraph{Plugin Icons} here are currently 4 choices for different plugin icons to include the old original.
+\paragraph{Locale} The default is \textit{sys} so that the system language is active. With the pulldown menu we can choose among the other languages present in ... This language will be saved inyour Configuration and used each time you start up CinGG. In order to change the environment variable, LANGUAGE, the setting must be \textit{sys} because that is the best way we could get it working.
+\paragraph{Layout Scale} allows for setting up scaling for your 4K monitors or any monitor where you would like the text and icons to be just a little bigger or a lot bigger. This scale setting is automatically saved across sessions. 
 When first using \CGG{}, or if \textit{Layout Scale} has never been set, the initial value is 0.0.
 This means an automatic probe of the biggest monitor in use will be used for the setting. The advantage of this is that "new users" with a 4K monitor will not immediately be discouraged with too small text/icons.
 Leaving it at 0 instead of 1 is what most people will do and is probably preferable so that if you move to a different monitor with different dimensions/resolution, it will automatically probe. 
@@ -292,13 +306,9 @@ and then when you get back into \CGG{}, fix \textit{Layout Scale} value in Prefe
 \begin{lstlisting}[numbers=none]
         BC_SCALE=1.0 {your Cinelerra path}/bin/cin
 \end{lstlisting}
-
-    \item[View thumbnail size] you can increase or decrease the thumbnail size -- larger size uses more cpu.
-    \item[Vicon quality]  increase the quality used for thumbnails to get more clarity of pixels -- this will use
-    more memory.
-    \item[Vicon color mode] modify the color mode to Low, Medium, or High for the thumbnails -- High will
-    look the best but takes more memory.
-\end{description}
+\paragraph{View thumbnail size} you can increase or decrease the thumbnail size -- larger size uses more cpu.
+\paragraph{Vicon quality}  increase the quality used for thumbnails to get more clarity of pixels -- this will use more memory.
+\paragraph{Vicon color mode} modify the color mode to Low, Medium, or High for the thumbnails -- High will look the best but takes more memory.
 
 \subsection{Time Format section}%
 \label{sub:time_format_section}
@@ -308,6 +318,9 @@ Various representations of time are given so that you can select the most conven
 \begin{itemize}[noitemsep]
     \item Hours : Minutes : Seconds : xxx
     \item Hours : Minutes : Seconds : frames
+    \item Timecode
+    \item Samples
+    \item Hex Samples
     \item Frames
     \item Feet-frames  [frames per foot \dots]
     \item Seconds
@@ -316,10 +329,26 @@ Various representations of time are given so that you can select the most conven
 \subsection{Color section}%
 \label{sub:color_section}
 
+
+\paragraph{Highlighting Inversion color} modify the selection area color; default is \textit{ffffff} which is white. When you make a selection, that area becomes an inverse image which by default becomes a whitish color.  You can set it to a different color by modifying the hex value in the box next to \textit{Highlight inversion color}.   Keep in mind that if you set the value to a low value, you will not be able to see the outlined selected area (for example the hex value "f" is not readily visible and leads to confusion).  A leading 0 or blank is not allowed and will be automatically changed to \textit{ffffff}.
+\paragraph{YUV color space} default is \textit{BT601}; others \textit{BT709} (high definition), \textit{BT2020} (ultra high definition).
+\paragraph{YUV color range} JPEG [$0-255$] and MPEG [$16-235$]
+
+
+\subsection{Warnings section}%
+\label{sub:warnings_section}
+
 \begin{description}
-    \item[Highlighting Inversion color] modify the selection area color; default is \textit{ffffff} which is white. When you make a selection, that area becomes an inverse image which by default becomes a whitish color.  You can set it to a different color by modifying the hex value in the box next to \textit{Highlight inversion color}.   Keep in mind that if you set the value to a low value, you will not be able to see the outlined selected area (for example the hex value "f" is not readily visible and leads to confusion).  A leading 0 or blank is not allowed and will be automatically changed to \textit{ffffff}.
-    \item[YUV color space] default is \textit{BT601}; others \textit{BT709} (high definition), \textit{BT2020} (ultra high definition).
-    \item[YUV color range] JPEG [$0-255$] and MPEG [$16-235$]
+	\item[ffmpeg probe warns rebuild indexes] this warning is very important for switching from using ffmpeg to using native formats, such as in the case of MPEG, so that you are reminded to \textit{rebuild indexes}.  If you do not rebuild the indexes, seeking on the timeline back and forth could very well be problematic, meaning it might not go to the right place.  Notification about rebuilding the indexes will appear by default as shown in the figure~\ref{fig:ff_probe} when you click on the FF icon in the main timeline in the upper right hand corner.  Once you click on \textit{Don’t show this warning again} you will no longer be warned and this flag will no longer be enabled.
+	\begin{figure}[htpb]
+		\centering \includegraphics[width=0.9\linewidth]{ff_probe.png}
+		\caption{Default warning when you click on FF icon in main window}
+		\label{fig:ff_probe}
+	\end{figure}
+	\item[EDL version warns if mismatched] in the case of a Batch Render, it is often helpful to be warned if the EDL has been changed so that you are aware that what is going to be rendered is different than your current EDL session.
+	\item[Create Bluray warns if not root] if checked and you are not logged in as root, you will get an error message in order to avoid doing a lot of work and then failing out because root is required for automount and to write on DVD hardware.
+	\item[Warn on creating file references] if checked, you will always be warned when using "File by 
+	Reference", that is when an EDL is opened as \textit{Reference}.  This is best left checked to ensure that you are aware of the fact that when changes are made to this file and rendered, any other uses of the same file will be affected and modified also.	
 \end{description}
 
 \subsection{Flags section}%
@@ -327,32 +356,21 @@ Various representations of time are given so that you can select the most conven
 
 This section contains many useful options to cater to the various preferences of individual users.
 
-\begin{description}
-    \item[Show tip of the day] if checked, a tip will be displayed in a popup box when start up \CGG{}.
+\begin{description}   
     \item[Autocolor assets] to make it visually easier to see your clips on the timeline that are from the same media file, you can have them automatically colored. Use of this feature requires additional memory and cpu on every timeline redraw, therefore smaller computers may not want this checked on.
-    \item[ffmpeg probe warns rebuild indexes] this warning is very important for switching from using ffmpeg to using native formats, such as in the case of MPEG, so that you are reminded to \textit{rebuild indexes}.  If you do not rebuild the indexes, seeking on the timeline back and forth could very well be problematic, meaning it might not go to the right place.  Notification about rebuilding the indexes will appear by default as shown in the figure~\ref{fig:ff_probe} when you click on the FF icon in the main timeline in the upper right hand corner.  Once you click on \textit{Don’t show this warning again} you will no longer be warned and this flag will no longer be enabled.
-    \begin{figure}[htpb]
-        \centering \includegraphics[width=0.9\linewidth]{ff_probe.png}
-        \caption{Default warning when you click on FF icon in main window}
-        \label{fig:ff_probe}
-    \end{figure}
-    \item[EDL version warns if mismatched] in the case of a Batch Render, it is often helpful to be warned if the EDL has been changed so that you are aware that what is going to be rendered is different than your current EDL session.
-    \item[Create Bluray warns if not root] if checked and you are not logged in as root, you will get an error message in order to avoid doing a lot of work and then failing out because root is required for automount and to write on DVD hardware.
-    \item[Warn on creating file references] if checked, you will always be warned when using "File by 
-Reference", that is when an EDL is opened as \textit{Reference}.  This is best left checked to ensure that you are aware of the fact that when changes are made
-to this file and rendered, any other uses of the same file will be affected and modified also.
+    \item[Perpetual session] is very useful for working on a project over many days so you can just quit before
+    shutting down and the next time you start up \CGG{} you will be right back where you left off. You
+    will retain all of your undo's and redo's.
+    \item[Timeline Rectify Audio] for displaying rectified audio on the timeline instead of a standard audio waveform, check this flag.  The waveform is cut on the zero line, thus making the silent areas more visible and the waveform is stretched more over the entire height of the audio track, which improves the visibility of certain areas. This only affects the timeline and not any other audio waveform displays.
+    \item[Clears before toggle] when using copy/paste in drag and drop mode some users prefer to resort to the addition of the Ctrl key for adding multiple selections.  By checking this flag, the user retains usage as is commonly done for listbox operations.
+    \item[Always show next frame] in this mode the insertion pointer reflects the same as the Compositor so that for playing forward, the result is what looks like 1 was added to the frame displayed in the Compositor window.  This is fully explained in another section (\nameref{sub:playing_seeking}).
+    \item[Show tip of the day] if checked, a tip will be displayed in a popup box when start up \CGG{}.
+    \item[Use thumbnails in resource window] the Resource Window displays thumbnails of assets by default, but drawing asset thumbnails can take more time and CPU so you may want to uncheck this.   
     \item[Popups activate on button up] this is the default but if unchecked, popups activate on button down.
     \item[Set Input Focus when window entered] this is checked on by default because on some operating system distros, when you move your mouse to a different window, nothing happens and you are left wondering why you can not enter information.  When checked this causes the input focus to shift to any \CGG{} window when the cursor enters an exposed region of the window which eliminates the need to switch input focus by tabbing. 
     \item[Click to activate text focus] Click to activate text focus
     \item [Click to deactivate text focus] if checked, you will have to click to deactivate text focus.
-    \item [Auto rotate ffmpeg media] this is the default setting so that your media will automatically be rotated when there is metadata in the file with a rotation value.  Especially useful for cell phone.
-    \item[Always show next frame] in this mode the insertion pointer reflects the same as the Compositor so that for playing forward, the result is what looks like 1 was added to the frame displayed in the Compositor window.  This is fully explained in another section (\hyperref[sub:playing_seeking]{Playing is Different than Seeking/Positioning!}).
-    \item[Use thumbnails in resource window] the Resource Window displays thumbnails of assets by default, but drawing asset thumbnails can take more time and CPU so you may want to uncheck this.
-    \item[Perpetual session] is very useful for working on a project over many days so you can just quit before
-    shutting down and the next time you start up \CGG{} you will be right back where you left off. You
-    will retain all of your undo's and redo's.
-    \item[Clears before toggle] when using copy/paste in drag and drop mode some users prefer to resort to the addition of the Ctrl key for adding multiple selections.  By checking this flag, the user retains usage as is commonly done for listbox operations.
-    \item[Timeline Rectify Audio] for displaying rectified audio on the timeline instead of a standard audio waveform, check this flag.  The waveform is cut on the zero line, thus making the silent areas more visible and the waveform is stretched more over the entire height of the audio track, which improves the visibility of certain areas. This only affects the timeline and not any other audio waveform displays.
+    \item [Auto rotate ffmpeg media] this is the default setting so that your media will automatically be rotated when there is metadata in the file with a rotation value.  Especially useful for cell phone.    
 \end{description}
 
 \section{About}%

@@ -31,8 +31,8 @@ VDPAU, Video Decode and Presentation API for Unix, is an open source library to 
 
 VA-API, Video Acceleration API, is an open source library which provides both hardware accelerated video encoding and decoding for use mostly with Intel (and AMD) graphics boards. 
 
-Currently only the most common codecs, such as MPEG-1, MPEG-2, MPEG-4, H.264 /MPEG-4 and h265 (hevc), are accelerated/optimized by the graphics card to play these particular video formats efficiently. The other formats are not optimized so you will see no performance improvement since the CPU will handle them as before, just as if no hardware acceleration was activated. There are many different graphics cards and computer systems setup, so you will have to test which specific settings work best for you.  So far this has been tested at least with Nvidia, Radeon, and Broadwell graphics boards on some AMD and Intel computers; depending on the graphics card, two to ten times higher processing speeds can be achieved.  However, most graphic operations are single-threaded so that 
-performing the operations in the hardware may actually be slower than in software making use of multiple CPUs, which frequently multi-thread many operations simultaneously.
+
+Currently only the most common codecs, such as MPEG-1, MPEG-2, MPEG-4, H.264 /MPEG-4 and h265 (hevc), are accelerated/optimized by the graphics card to play these particular video formats efficiently. The other formats are not optimized so you will see no performance improvement since the CPU will handle them as before, just as if no hardware acceleration was activated. There are many different graphics cards and computer systems setup, so you will have to test which specific settings work best for you.  So far this has been tested at least with Nvidia, Radeon, and Broadwell graphics boards on some AMD and Intel computers; depending on the graphics card, two to ten times higher processing speeds can be achieved.  However, most graphic operations are single-threaded so that performing the operations in the hardware may actually be slower than in software making use of multiple CPUs, which frequently multi-thread many operations simultaneously.
 
 \subsection{GPU hardware decoding}%
 \label{sub:gpu_hardware_decoding}
@@ -303,19 +303,18 @@ There are currently 4 options files available in the Render menu already set up 
 \end{description}
 Other option files can be added as needed for your specific hardware if it is known to work for you, such as VP8 and VP9.  An example of the included \CGG{}’s \texttt{ffmpeg/video/h264\_vaapi.mp4} file (figure~\ref{fig:render-vaapi}):
 
-
-\begin{lstlisting}[numbers=none]
-mp4 h264_vaapi
-cin_hw_dev=vaapi
-profile=high
-\end{lstlisting}
-
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[width=1.0\linewidth]{render-vaapi.png}
 	\caption{Render menu setup to encode using GPU with vaapi}
 	\label{fig:render-vaapi}
 \end{figure}
+
+\begin{lstlisting}[numbers=none]
+mp4 h264_vaapi
+cin_hw_dev=vaapi
+profile=high
+\end{lstlisting}
 
 According to an online wiki, hardware encoders usually create output of lower quality than some software encoders like x264, but are much faster and use less CPU. Keep this in mind as you might want to set a higher bitrate to get output of similar visual quality.
 
@@ -429,89 +428,11 @@ With the X11 video driver choice, large format files such as 4K, will playback f
 \section{Proxy Settings and Transcode}%
 \label{sec:proxy_settings}
 
-Working with videos that have large image geometry can greatly impede editing.  Instead you can substitute \textit{proxies} which will create smaller video image files from the original file that can then be edited more quickly.   When you are done working on this smaller scale, you will need to bring up the Proxy settings menu again, and change the Scale factor back to the Original size so that all of your edits/work take affect on that original higher quality video on the timeline.  
+Info on proxies in \nameref{sec:proxy}
 
-To use this feature, select \texttt{Settings $\rightarrow$ Proxy settings} and change the Scale factor from Original size to your downsized choice.  You can choose ffmpeg as the File Format and a choice of various codecs associated with that.  A good choice is the default of mpeg which can usually be quite fast.  In addition, to modify values for that codec, click on the wrench icon.  When you have completed your choices, just click OK, and then the video tracks will be rendered. This may take some time, but previous proxy renders will be reused.  
-The proxy videos will be added to your assets in a separate Proxy folder, and the video track edits will use the proxies.
-The assets in both the Media folder and Proxy folder will look proxied when dragged to the Viewer although the scale may be different.
-Proxy downsizing renders all loaded tracks, but only work on the $1^{st}$ video layer of any multi-layer media.  Rendered proxy media is saved in the same directory as the original media.
-However, if you proxy your session, the clips do not get proxied to the Proxy folder, but if you Drag and Drop the clip from the Clip folder to the Viewer or the Timeline, you will see that it too is proxied.  
-As usual, you can delete proxy files from the project or disk in the Resources window if you no longer want to retain them.
-And you can save your project either as proxied or not.
+Info on transcode in \nameref{sec:transcode}
 
-Because Proxy works on the original media in all circumstances, when you resize the
-media in the Resources window, it does not actually resize the media but puts it in
-a "buffer" in that format. This might lead to some confusion for the user who
-expects this resizing to be maintained when disabling Proxy for that media. However,
-that does not happen because the resize is only in a buffer and not in the original
-media. This result is different than in the case of media "edits", like cuts or
-adding plugins because this information is not in a buffer but rather part of the
-copy "Editing Decision List" (EDL).
 
-You can also nest clips while in a proxied state, but you can not drag the proxied nested clips
-to the viewer or the timeline.
-If you create proxies for Nested clips they will be saved in \texttt{\$HOME/Videos} unless you modify that in
-\texttt{Settings $\rightarrow$ Preferences, Interface} tab, \textit{Nested Proxy Path}. 
-
-There are two ways that the proxy files can be used, with or without input scaling. When the proxy is done without rescaling, the Mask, Camera and Projector automations are re-scaled accordingly. In this situation, the entire project will be re-sized so that the session is in the resized geometry.  Not all plugins are useful when the project is rescaled, because the keyframe data must be in the original geometry.  In this case, you can use the rescaler, by enabling \textit{Use scaler (FFMPEG only)}. This has the added advantage that the project size does not change and the proxy media is down-scaled as usual and up-scaled on read-in, which means the project editing is done in full scale.   Since decoding is done on smaller video, there is a time savings, but all rendering is done full scale.  The main reason for using \textit{scaler} is that it does not change the image coordinate data, so that automation and plugin parameters will be in the original project geometry.   This is not as fast as the first option, but is a performance gain, and may be needed if you are using plugins that need coordinate data such as the Title plugin.  As noted, the scaler only works on ffmpeg video formats.
-
-In the upper right hand corner of the main window, there is a toggle button to easily switch back and forth when you have a proxied file on the timeline.  The icon is to the left of the FF icon.  It will have the letter “P” as the icon for Proxy or if \textit{Using Scaler}, the letter “S”. \quad \includegraphics[height=\baselineskip]{proxy-01.png} \quad This quick switch is especially useful when editing and you need to see a better image temporarily.
-
-Screencast in figure~\ref{fig:proxy-02} shows the Use scaler checked so you can still use plugins and the original project size is kept.  The Scale factor pull-down gives you available size options.  Note the new media dimensions shown (partially covered).  If the size is an odd number, 1 is added to make the dimensions both even numbers.
-
-In the case of the scaler checkbox, it will retain that setting for ease of use.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[width=0.6\linewidth]{proxy-02.png}
-	\caption{Proxy settings dialog}
-	\label{fig:proxy-02}
-\end{figure}
-
-There is also a convenient \textit{Beep on done volume} dial included so that you can work on other tasks until there is an audible notify of completion.  The default volume is set to 0 for no audible notify.
-
-A good choice for proxy settings with 1080p source video is:
-
-\begin{lstlisting}[numbers=none]
-Scale Factor: 	1/4
-Use Scaler:	unchecked
-File Format:	FFMPEG - mpeg
-Video Preset:
-Compression:	mpeg.mpeg
-Bitrate:	1800000
-Quality:	-1
-Pixels:		yuv420p
-\end{lstlisting}
-
-If you get errors for some videos, such as those with strange variable bit rate or some types of files made on a smartphone, a usually reliable alternative is to change the following parameters:
-
-\begin{lstlisting}[numbers=none]
-File Format:	FFMPEG - mov
-Video Preset:
-Compression:	mov.mov
-\end{lstlisting}
-
-Or if you want small files with high image quality, a File Format of m2ts is optimal.  For example a 1 GB file can be reduced to 50 MB with scale $\frac{1}{2}$. 
-
-Checking the \textit{Auto proxy/scale media loads} results in any additional media loads to be automatically proxy scaled.  However, single frame media such as PNG or JPEG \textit{stills}, can not be scaled to \textit{stream} media.  If this type of media exists, you should \textit{use scaler}.
-
-If you get error messages when creating proxies, check the Video wrench settings.  These usually default to values that are expected to work correctly for the \textit{File Format} and codec you selected but they can be changed and may result in errors.  If you get an error message of \textit{check\_frame\_rate failed} followed by \textit{Error making proxy} in the popup Errors window, do just that and check the Frame rate value by going to the Resources window, Media folder, and use the right mouse button for the Info option for that specific media in question.  You can change the frame rate in this window to a more codec acceptable value.  Different codecs may have different legal values.
-
-More specific information on which plugins need to use scaler is provided here next.  If the keyframe data uses coordinate data that is absolute, then the scaler should be used.  If the data is normalized (like always $0-100\%$) then the proxy can be done without the scaler.  The session geometry format, shown in \texttt{Settings $\rightarrow$ Format} as $width \times height$, is changed if the scaler is not used to cause all of the data to be in the reduced format.  If this affects the plugin operation, then scaler should be used.  Examples of plugins that need the scaler are: Title, AutoScale, Scale, ScaleRatio, and Translate.  Most others are safe to use without scaling.
-
-\textbf{Transcode}, an option under the Settings pulldown right next to the Proxy settings option, is a type of full resolution \textbf{1:1 Proxy}.
-The process of transcoding works directly from the resource; it is independent of the timeline. 
-All of the loaded asset media will be converted, that is, rendered in the selected format and loaded onto the timeline. 
-Menu choices besides the usual File Format and File Type include: \textit{Tag suffix} (to add to media filename), \textit{Remove originals from project}, \textit{Into Nested Proxy directory} (an option to have the file saved here instead of the location of the original media), and \textit{Beep on done} volume.
-
-The settings of the project have an effect, for example the dimensions are taken into account. The resulting files are also larger than if they were created directly with ffmpeg.
-Transcode works for videos with or without audio and even single frame files, like png's.
-If you have a video file that also contains audio, and you convert only the video, the original audio will stay on the timeline if do not check \textit{Remove originals from project}. Or vice versa if audio converted and not video.
-Multiple stream media will only transcode the first stream (this would be like the TV channel recordings in the United States).
-You will get an error message if you already have a transcoded file in the selected format with the same suffix name and try to transcode it again with a different selection made -- you will have to delete that file first. An example would be
-an already converted file that has both video and audio and now you request video only. 
-
-The BIGGEST gain from using this is if you have media that is not \textit{seekable}, that is, you can play it from the beginning but can not move to another spot and have the audio or video play correctly. A video file with no keyframes makes seeking next to impossible, but then a Transcode generally adds these keyframes. 
 
 \section{Some Settings Parameter Values}%
 \label{sec:settings_parameter_values}

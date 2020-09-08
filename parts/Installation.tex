@@ -1,5 +1,76 @@
 \chapter{Installation}
 \label{cha:Installation}
+
+\section{Download Already Built \CGG{}}%
+\label{sec:download_already_built_cinelerra_gg}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=1.0\linewidth]{download-distros.png}
+	\caption{Screencast of the website Download page for installing \CGG{} for various O/S.}
+	\label{fig:download-distros}
+\end{figure}
+
+If you prefer to not have to take the time to build \CGG{} Infinity
+yourself, there are pre-built dynamic or static binaries for various
+versions of Ubuntu, Mint, Suse, Fedora, Debian, Centos, Arch, and
+Slackware linux as well as Gentoo and FreeBSD.  If you do want to build it yourself so that
+you get the added benefit of the latest checked in changes, please reference
+~\ref{sec:How_to_build}.
+%
+A Windows 10 version installation is described in~\ref{sec:ms_windows10}.  There are also 32-bit i686 Ubuntu, Debian,
+and Slackware versions available.  These are updated on a fairly
+regular basis as long as significant code changes have been made.
+They are in subdirectories of:
+
+\begin{list}{}{}
+	\item \href{https://cinelerra-gg.org/download/tars}{https://cinelerra-gg.org/download/tars}
+	\item \href{https://cinelerra-gg.org/download/pkgs}{https://cinelerra-gg.org/download/pkgs}
+\end{list}
+
+The \textbf{tars} directory contains single-user static builds for
+different distros.
+%
+This is the recommended usage of \CGG{} because all of the files
+will exist in a single directory.  Generally all of the necessary
+libraries are built into the static build, but in some cases you may
+have to install another library that is being called for.
+%
+To install the single user builds, download the designated tarball
+from the \texttt{./tars} subdirectory and unpack as indicated below:
+
+\begin{lstlisting}[style=sh]
+	cd /path
+	mkdir cin
+	cd cin
+	tar -xJf /src/path/cinelerra-5.1-*.txz  # for the *,
+	# substitute your distro tarball name
+\end{lstlisting}
+
+\emph{Do not download the LEAP 10-bit version unless you specifically want to
+use h265 rendering to 10-bit instead of the more standard 8-bit.} For more
+information see ~\ref{sec:cinx_and_a_bit_of_confusion}.
+
+The \textbf{pkgs} directory contains the standard packaged
+application for various distros.  This will install a dynamic
+system version for users who prefer to have the binaries in the
+system area and for multi-user systems.
+%
+In addition, performing the package install checks the md5sum in
+the file \texttt{md5sum.txt} to ensure the channel correctly
+transmits the package.  There is a
+\href{https://cinelerra-gg.org/download/README.pkgs}{README.pkgs}
+file in the \texttt{download} directory with instructions so you
+can \textit{cut and paste} and avoid typos; it is also shown
+next.
+
+\lstset{inputpath=extra/}
+\lstinputlisting[
+style=nil,
+basicstyle=\footnotesize,
+caption={README.pkgs}
+]{README.pkgs}
+
 \section{How to Build \CGG{} from Developer's Git Repository}%
 \label{sec:How_to_build}
 
@@ -39,14 +110,14 @@ where you will have more control to catch problems.  All that
 said, the system builds can be useful in a university lab setting
 where there are possibly multiple users, or multiple versions.
 
-There are two notable differences between \textit{standard} views
+There are two notable differences between standard views
 of \CGG{} and this implementation for the system builds.  Both of
 these can be configured during installation.  The differences make
 it possible to have several different versions installed without
-having them \textit{walk} on each other.
+having them interfere with each other.
 
 \begin{enumerate}
-\item application name can be set during installation and defaults
+\item application name can be set during a build but defaults
   to: \texttt{cin}
 \item the home configuration directory can also be set and
   traditionally defaults to: \texttt{\$HOME/.bcast5}
@@ -196,9 +267,8 @@ After you have followed the above, in the cin.desktop file, change
 the \texttt{Exec=cin} line to be
 \texttt{Exec=<your\_directory\_path>/bin/cin}.
 
-The preceding directions for doing a single-user build have been
-meticulously followed to build and run on a newly installed ubuntu
-15 system WITHOUT BEING ROOT except for the \texttt{bld\_prepare.sh}
+The preceding directions for doing a single-user build may work
+without being root on some distros except for the \texttt{bld\_prepare.sh}
 and creating the desktop icon.
 
 
@@ -451,12 +521,14 @@ similar to these next lines which are then explained in more detail.
  
 \begin{lstlisting}[style=sh]
 cd /<path>/cin5  # substitute your repo path name for cin5
-git log		 # shows a list of versions
+git log		 # shows a list of versions depending on history depth specification
 git checkout <version> # choose a version number as listed
 \end{lstlisting}
 
 The \texttt{git log} command produces a log file with hash values
-for commit keys. The hash ids are the commit names to use when you
+for commit keys to the level specifed if the the depth paramter
+was specified. 
+The hash ids are the commit names to use when you
 use git checkout. Next is displayed sample output:
 
 \begin{lstlisting}[style=nil]
@@ -545,7 +617,7 @@ subdirectory.  The \texttt{bsd.bld} should be used with the
 \texttt{cygwin.bld} should be used with the \texttt{cygwin.patch}
 file in that same directory.
 
-The reason that Cin Infinity traditionally uses thirdparty builds
+The reason that Cin Infinity traditionally uses its own thirdparty builds
 (bundled builds) is because there are a lot of different distros
 with varying levels of ffmpeg and other needed thirdparty
 libraries.  However, some users prefer using their current system
@@ -576,75 +648,6 @@ current case of Leap 15, libx264 and libx265 are not built in and
 this can be debilitating; you can always run \texttt{ffmpeg
   -formats} and \texttt{ffmpeg -codecs} to see what is available
 on your system.
-
-
-\section{Download Already Built \CGG{}}%
-\label{sec:download_already_built_cinelerra_gg}
-
-\begin{figure}[htpb]
-  \centering
-  \includegraphics[width=1.0\linewidth]{download-distros.png}
-  \caption{Screencast of the website Download page for installing \CGG{} for various O/S.}
-  \label{fig:download-distros}
-\end{figure}
-
-If you prefer to not have to take the time to build \CGG{} Infinity
-yourself, there are pre-built dynamic or static binaries for various
-versions of Ubuntu, Mint, Suse, Fedora, Debian, Centos, Arch, and
-Slackware linux as well as Gentoo and FreeBSD.
-%
-A Windows 10 version installation is described in~\ref{sec:ms_windows10}.  There are also 32-bit i686 Ubuntu, Debian,
-and Slackware versions available.  These are updated on a fairly
-regular basis as long as significant code changes have been made.
-They are in subdirectories of:
-
-\begin{list}{}{}
-\item \href{https://cinelerra-gg.org/download/tars}{https://cinelerra-gg.org/download/tars}
-\item \href{https://cinelerra-gg.org/download/pkgs}{https://cinelerra-gg.org/download/pkgs}
-\end{list}
-
-The \textbf{tars} directory contains single-user static builds for
-different distros.
-%
-This is the recommended usage of \CGG{} because all of the files
-will exist in a single directory.  Generally all of the necessary
-libraries are built into the static build, but in some cases you may
-have to install another library that is being called for.
-%
-To install the single user builds, download the designated tarball
-from the \texttt{./tars} subdirectory and unpack as indicated below:
-
-\begin{lstlisting}[style=sh]
-cd /path
-mkdir cin
-cd cin
-tar -xJf /src/path/cinelerra-5.1-*.txz  # for the *,
-                                        # substitute your
-                                        # distro tarball name
-\end{lstlisting}
-
-\emph{Do not download the LEAP 10-bit version unless you use h265 (it
-can't render 8-bit h265).}
-
-The \textbf{pkgs} directory contains the standard packaged
-application for various distros.  This will install a dynamic
-system version for users who prefer to have the binaries in the
-system area and for multi-user systems.
-%
-In addition, performing the package install checks the md5sum in
-the file \texttt{md5sum.txt} to ensure the channel correctly
-transmits the package.  There is a
-\href{https://cinelerra-gg.org/download/README.pkgs}{README.pkgs}
-file in the \texttt{download} directory with instructions so you
-can \textit{cut and paste} and avoid typos; it is also shown
-next.
-
-\lstset{inputpath=extra/}
-\lstinputlisting[
-style=nil,
-basicstyle=\footnotesize,
-caption={README.pkgs}
-]{README.pkgs}
 
 \section{Windows 10 with Cygwin for \CGG{} Limited}%
 \label{sec:ms_windows10}
@@ -895,7 +898,8 @@ Cinx is the exact same program as Cin.  The X (x) represents the
 roman numeral 10 for 10-bit as opposed to 8-bit standard.  The
 third-party library used for x265 must be specially compiled with
 \texttt{--bit-depth=10} in order to produce 10-bit rendered
-output.
+output.  A cinx version can be built for most other distros if 
+rendering at 10-bit is desirable instead of 8-bit.
 %
 This build will not be able to output 8-bit depth which means you
 have to retain the Cin version also.

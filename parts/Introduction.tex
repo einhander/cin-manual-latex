@@ -129,9 +129,10 @@ programmers.
                     \item Title plugin virtually unlimited script size with many changeable attributes such as size, blink, color.
                     \item Motion Graphics using the Sketcher plugin to create elements such as ellipses, rectangles and shapes for simpler motion graphics.
                     \item Open EDL for editing clips, nested clips, and xml files while working on a Project.
+		    \item File by Reference; To be able to modify the original source during editing (which, in this case, becomes destructive).
                     \item The Vectorscope option in the Videoscope plugin allows for the use of any number of user-supplied grid patterns as an Overlay.
-                    \item Hardware acceleration with vaapi and vdpau for computers with graphics boards meeting certain criteria.
-                    \item Bump Autos is a new type of autos that allows you to easily create and manage keyframes intervals in Speed, Fade and Camera/Projector-XYZ curves.
+                    \item Hardware acceleration with vaapi and vdpau for computers with graphics hardware meeting certain criteria.
+                    \item Bump Autos is a new type of keyframe automation that allows you to easily create and manage keyframes intervals in Speed, Fade and Camera/Projector-XYZ curves.
                 \end{itemize}
 \end{description}
 
@@ -161,7 +162,9 @@ And which chapters are important for beginning to learn to use \CGG{}. At the en
 
         Since this is important to not losing your work, you should read this chapter for some basic usage concepts and for some lesser used functions that may come in handy.
         Besides how to Load and Save files, there is also information on using raw camera formats.
-        Helpful hints on working with image sequences, such as a bunch of pictures from your camera all loaded at once, is a time saver.
+        Helpful hints on working with image sequences, such as a bunch of pictures from your camera all loaded at once, is a time saver. Understanding that the EDL is the list of changes that
+would be made to the original media in order to produce the desired output is key to ensuring
+that that media remains intact.
 
     \item[Chapter~\ref{cha:editing}] \nameref{cha:editing}.
 
@@ -183,7 +186,7 @@ And which chapters are important for beginning to learn to use \CGG{}. At the en
     \item[Chapter~\ref{cha:keyframes}] \nameref{cha:keyframes}.
 
         This is a more advanced topic but extremely useful to know.
-        Keyframes are data values that have been associated to the timeline that affect the media presentation.
+        Keyframes are data values that have been associated to media on the timeline that affect the media presentation.
         You can go for years without knowing all of the nuances but you will most likely have a need to use and understand them sooner or later.
 
     \item[Chapter~\ref{cha:ffmpeg_interactions}] \nameref{cha:ffmpeg_interactions}.
@@ -210,7 +213,7 @@ And which chapters are important for beginning to learn to use \CGG{}. At the en
 
     \item[Chapter~\ref{cha:capturing_recording_media}] \nameref{cha:capturing_recording_media}.
 
-        This chapter is helpful in learning how to capture and record media from various sources.  A section on using \CGG{} with broadcast TV is especially useful.
+        This chapter is helpful in learning how to capture and record media from various sources.  A section on using \CGG{} with broadcast TV (NTSC) is especially useful.
 
     \item[Chapter~\ref{cha:dvd_bluray_creation}] \nameref{cha:dvd_bluray_creation}.
 
